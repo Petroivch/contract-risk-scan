@@ -7,13 +7,13 @@ import type { ContractRiskScannerApi, RequestContext, RequestMeta } from './type
 
 export interface ApiClientConfig {
   baseUrl?: string;
-  transport?: 'stub' | 'http';
+  transport?: 'local' | 'stub' | 'http';
   getLanguage?: () => SupportedLanguage;
   timeoutMs?: number;
 }
 
 export class ApiClientNotImplementedError extends Error {
-  constructor(message = 'HTTP transport is not implemented yet. Use stub transport for Stage 1.') {
+  constructor(message = 'HTTP transport is not implemented yet. Use local transport for offline mobile runs.') {
     super(message);
     this.name = 'ApiClientNotImplementedError';
   }
@@ -43,9 +43,9 @@ export const prepareRequestContext = (
 };
 
 export const createApiClient = (config: ApiClientConfig = {}): ContractRiskScannerApi => {
-  const transport = (config.transport ?? appConfig.api.transport) as 'stub' | 'http';
+  const transport = (config.transport ?? appConfig.api.transport) as 'local' | 'stub' | 'http';
 
-  if (transport === 'stub') {
+  if (transport === 'local' || transport === 'stub') {
     return createStubApiClient({ getLanguage: config.getLanguage });
   }
 

@@ -100,6 +100,10 @@ export const createLocalFirstAdapter = (
 
         if (config.enableLocalFirst) {
           await localCache.saveStatus(status);
+          if (status.status === 'completed') {
+            const report = await remoteClient.getReport({ analysisId, selectedRole: status.selectedRole }, meta);
+            await localCache.saveReport(report);
+          }
         }
 
         return status;
@@ -139,8 +143,13 @@ export const createLocalFirstAdapter = (
     listHistory: async (meta?: RequestMeta) => {
       try {
         const history = await remoteClient.listHistory(meta);
+        const cachedHistory = config.enableLocalFirst ? await localCache.getHistory() : [];
 
         if (config.enableLocalFirst) {
+          if (history.length === 0 && cachedHistory.length > 0) {
+            return cachedHistory;
+          }
+
           await localCache.replaceHistory(history);
         }
 

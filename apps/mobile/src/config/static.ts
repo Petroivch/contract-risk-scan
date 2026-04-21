@@ -4,8 +4,8 @@ export const DEFAULT_LANGUAGE = 'ru' as const;
 export const DEFAULT_ROLE_PRESET_KEYS = ['roles.performer', 'roles.employer', 'roles.customer', 'roles.contractor'];
 
 export const CONFIG_DEFAULTS = {
-  apiBaseUrl: 'http://localhost:3000/api/v1',
-  apiTransport: 'stub',
+  apiBaseUrl: '',
+  apiTransport: 'local',
   apiTimeoutMs: 15000,
   statusPollIntervalMs: 2000,
   maxUploadFileMb: 25,
