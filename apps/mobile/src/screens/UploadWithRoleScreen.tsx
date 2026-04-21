@@ -127,13 +127,36 @@ export const UploadWithRoleScreen = ({ navigation }: Props): JSX.Element => {
   const fileSize = selectedFile ? formatFileSize(selectedFile.fileSizeBytes) : '—';
 
   return (
-    <ScreenShell title={t('upload.title')} subtitle={t('upload.subtitle')}>
+    <ScreenShell title={t('upload.title')} subtitle={t('upload.subtitle')} scroll>
+      <View style={styles.roleCard}>
+        <View style={styles.cardHeader}>
+          <View style={styles.cardCopy}>
+            <Text style={styles.cardKicker}>{t('upload.roleStepKicker')}</Text>
+            <Text style={styles.cardTitle}>{t('upload.roleStepTitle')}</Text>
+            <Text style={styles.cardSubtitle}>{t('upload.roleStepSubtitle')}</Text>
+          </View>
+          <StatusChip label={selectedRole ? selectedRole : t('upload.selectRole')} tone="brand" />
+        </View>
+
+        <RoleBadge role={selectedRole} />
+        <EditableRoleDropdown
+          value={selectedRole}
+          presets={presetRoles}
+          onChange={setSelectedRole}
+          label={t('upload.roleLabel')}
+          placeholder={t('upload.selectRole')}
+          customPlaceholder={t('upload.customRolePlaceholder')}
+          modalTitle={t('upload.choosePresetOrCustom')}
+          customOptionLabel={t('upload.customRole')}
+        />
+      </View>
+
       <View style={styles.heroCard}>
-        <View style={styles.heroHeader}>
-          <View style={styles.heroCopy}>
-            <Text style={styles.heroKicker}>{t('upload.panelKicker')}</Text>
-            <Text style={styles.heroTitle}>{t('upload.panelTitle')}</Text>
-            <Text style={styles.heroSubtitle}>{t('upload.panelSubtitle')}</Text>
+        <View style={styles.cardHeader}>
+          <View style={styles.cardCopy}>
+            <Text style={styles.cardKicker}>{t('upload.fileStepKicker')}</Text>
+            <Text style={styles.cardTitle}>{t('upload.fileStepTitle')}</Text>
+            <Text style={styles.cardSubtitle}>{t('upload.fileStepSubtitle')}</Text>
           </View>
           <StatusChip
             label={selectedFile ? t('upload.readyToAnalyze') : t('upload.selectFile')}
@@ -176,20 +199,6 @@ export const UploadWithRoleScreen = ({ navigation }: Props): JSX.Element => {
         ) : null}
       </View>
 
-      <View style={styles.roleCard}>
-        <RoleBadge role={selectedRole} />
-        <EditableRoleDropdown
-          value={selectedRole}
-          presets={presetRoles}
-          onChange={setSelectedRole}
-          label={t('upload.roleLabel')}
-          placeholder={t('upload.selectRole')}
-          customPlaceholder={t('upload.customRolePlaceholder')}
-          modalTitle={t('upload.choosePresetOrCustom')}
-          customOptionLabel={t('upload.customRole')}
-        />
-      </View>
-
       <Pressable style={[styles.primaryButton, (!selectedFile || !selectedRole || submitting) && styles.disabled]} onPress={startAnalysis} disabled={!selectedFile || !selectedRole || submitting}>
         <Text style={styles.primaryButtonText}>{submitting ? t('upload.submitting') : t('common.startAnalysis')}</Text>
       </Pressable>
@@ -207,17 +216,17 @@ const styles = StyleSheet.create({
     gap: spacing.md,
     ...shadow.raised,
   },
-  heroHeader: {
+  cardHeader: {
     flexDirection: 'row',
     alignItems: 'flex-start',
     justifyContent: 'space-between',
     gap: spacing.md,
   },
-  heroCopy: {
+  cardCopy: {
     flex: 1,
     gap: spacing.xxs,
   },
-  heroKicker: {
+  cardKicker: {
     color: colors.textMuted,
     fontSize: typography.size.caption,
     lineHeight: typography.lineHeight.caption,
@@ -225,13 +234,13 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
     letterSpacing: 0.7,
   },
-  heroTitle: {
+  cardTitle: {
     color: colors.textPrimary,
     fontSize: typography.size.subtitle,
     lineHeight: typography.lineHeight.subtitle,
     fontWeight: typography.weight.bold,
   },
-  heroSubtitle: {
+  cardSubtitle: {
     color: colors.textSecondary,
     fontSize: typography.size.body,
     lineHeight: typography.lineHeight.body,
