@@ -70,18 +70,18 @@ export class ContractsController {
     }
   })
   @ApiResponse({ status: 201, type: UploadContractResponseDto })
-  upload(
+  async upload(
     @Body() dto: UploadContractDto,
     @UploadedFile() file?: Express.Multer.File
-  ): UploadContractResponseDto {
+  ): Promise<UploadContractResponseDto> {
     return this.contractsService.upload(dto, file);
   }
 
   @Get('history')
   @ApiOperation({ summary: 'Get user contracts history' })
   @ApiResponse({ status: 200, type: ContractsHistoryResponseDto })
-  history(): ContractsHistoryResponseDto {
-    const items = this.contractsService.history();
+  async history(): Promise<ContractsHistoryResponseDto> {
+    const items = await this.contractsService.history();
     return { items };
   }
 
@@ -89,10 +89,10 @@ export class ContractsController {
   @ApiOperation({ summary: 'Run risk analysis for uploaded contract' })
   @ApiParam({ name: 'id', required: true, example: 'ctr_k2v4m8x1' })
   @ApiResponse({ status: 200, type: AnalyzeContractResponseDto })
-  analyze(
+  async analyze(
     @Param('id') contractId: string,
     @Body() dto: AnalyzeContractDto
-  ): AnalyzeContractResponseDto {
+  ): Promise<AnalyzeContractResponseDto> {
     return this.contractsService.analyze(contractId, dto);
   }
 
@@ -100,7 +100,7 @@ export class ContractsController {
   @ApiOperation({ summary: 'Get analysis job status for contract' })
   @ApiParam({ name: 'id', required: true, example: 'ctr_k2v4m8x1' })
   @ApiResponse({ status: 200, type: ContractStatusResponseDto })
-  status(@Param('id') contractId: string): ContractStatusResponseDto {
+  async status(@Param('id') contractId: string): Promise<ContractStatusResponseDto> {
     return this.contractsService.status(contractId);
   }
 
@@ -108,8 +108,8 @@ export class ContractsController {
   @ApiOperation({ summary: 'Get analysis report with risks and disputed clauses' })
   @ApiParam({ name: 'id', required: true, example: 'ctr_k2v4m8x1' })
   @ApiResponse({ status: 200, type: ContractReportDto })
-  report(@Param('id') contractId: string): ContractReportDto {
-    const report = this.contractsService.report(contractId);
+  async report(@Param('id') contractId: string): Promise<ContractReportDto> {
+    const report = await this.contractsService.report(contractId);
     if (!report) {
       throw new ConflictException({
         message: MESSAGE_POLICY.REPORT_NOT_READY,

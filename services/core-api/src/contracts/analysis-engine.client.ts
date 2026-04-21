@@ -1,85 +1,241 @@
 import { Injectable } from '@nestjs/common';
-import { RiskSeverity } from '../common/domain/risk-severity.enum';
+import { ConfigService } from '@nestjs/config';
+import { ANALYSIS_ENGINE_POLICY } from '../common/policies/analysis-engine.policy';
 import { SupportedLocale } from '../common/i18n/supported-locale.enum';
-import { CONTRACT_POLICY } from '../common/policies/contracts.policy';
-import {
-  ContractObligationDto,
-  ContractReportDto,
-  ContractRiskDto,
-  DisputedClauseDto
-} from './dto/contract-report.dto';
+import { AppConfig } from '../config/app-config.type';
 
 export interface AnalyzeEnginePayload {
   contractId: string;
+  documentName: string;
   role: string;
   counterpartyRole?: string;
   locale: SupportedLocale;
   focusNotes?: string;
+  documentText?: string;
+  documentBase64?: string;
+  mimeType?: string;
+}
+
+type RemoteAnalysisStatus = 'queued' | 'processing' | 'completed' | 'failed';
+
+interface RemoteRunResponse {
+  job_id: string;
+  status: RemoteAnalysisStatus;
+}
+
+interface RemoteStatusResponse {
+  job_id: string;
+  status: RemoteAnalysisStatus;
+  error_message?: string | null;
+}
+
+export interface AnalysisEngineRiskItem {
+  risk_id: string;
+  title: string;
+  severity: 'low' | 'medium' | 'high' | 'critical';
+  clause_id?: string | null;
+  description: string;
+  role_relevance: string;
+  mitigation: string;
+}
+
+export interface AnalysisEngineDisputedClauseItem {
+  clause_id: string;
+  clause_excerpt: string;
+  dispute_reason: string;
+  possible_consequence: string;
+  confidence: number;
+}
+
+export interface AnalysisEngineRoleFocusedSummary {
+  role: string;
+  overview: string;
+  must_do: string[];
+  should_review: string[];
+  payment_terms: string[];
+  deadlines: string[];
+  penalties: string[];
+}
+
+export interface AnalysisEngineExecutionPlan {
+  mode: string;
+  offline_capable: boolean;
+  network_required: boolean;
+  policy_source: string;
+  reason: string;
+}
+
+export interface AnalysisEngineOutput {
+  language: string;
+  locale: string;
+  execution_plan: AnalysisEngineExecutionPlan;
+  contract_brief: string;
+  risks: AnalysisEngineRiskItem[];
+  disputed_clauses: AnalysisEngineDisputedClauseItem[];
+  role_focused_summary: AnalysisEngineRoleFocusedSummary;
+}
+
+interface RemoteResultResponse {
+  job_id: string;
+  status: RemoteAnalysisStatus;
+  result?: AnalysisEngineOutput | null;
+  error_message?: string | null;
+}
+
+export interface AnalysisEngineRunResult {
+  jobId: string;
+  status: RemoteAnalysisStatus;
+}
+
+export interface AnalysisEngineStatusResult {
+  jobId: string;
+  status: RemoteAnalysisStatus;
+  errorMessage?: string | null;
+}
+
+export interface AnalysisEngineResult {
+  jobId: string;
+  status: RemoteAnalysisStatus;
+  result?: AnalysisEngineOutput;
+  errorMessage?: string | null;
+}
+
+export class AnalysisEngineUnavailableError extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = 'AnalysisEngineUnavailableError';
+  }
 }
 
 @Injectable()
 export class AnalysisEngineClient {
-  generateReport(payload: AnalyzeEnginePayload): ContractReportDto {
-    const obligations: ContractObligationDto[] = [
-      {
-        subject: payload.role,
-        action: 'Deliver services according to statement of work and timeline',
-        dueCondition: 'Within deadlines defined in section 4.2'
-      },
-      {
-        subject: payload.counterpartyRole ?? CONTRACT_POLICY.DEFAULT_COUNTERPARTY_LABEL,
-        action: 'Provide payment within contractual term',
-        dueCondition: 'Within 10 banking days after invoice acceptance'
-      }
-    ];
+  constructor(private readonly configService: ConfigService<AppConfig, true>) {}
 
-    const risks: ContractRiskDto[] = [
-      {
-        id: 'RISK-001',
-        title: 'Penalty clause without cap',
-        severity: RiskSeverity.High,
-        description: 'Liability section defines open-ended penalties.',
-        roleImpact: `Can materially increase financial exposure for role '${payload.role}'.`,
-        recommendation: 'Introduce liability cap as percentage of contract value.'
-      },
-      {
-        id: 'RISK-002',
-        title: 'Ambiguous acceptance criteria',
-        severity: RiskSeverity.Medium,
-        description: 'No objective acceptance checklist found.',
-        roleImpact: 'Can trigger disputes around completion and payment milestones.',
-        recommendation: 'Add measurable acceptance criteria and timeline.'
-      }
-    ];
+  async runAnalysis(payload: AnalyzeEnginePayload): Promise<AnalysisEngineRunResult> {
+    this.assertEnabled();
 
-    const disputedClauses: DisputedClauseDto[] = [
+    const response = await this.request<RemoteRunResponse>(
+      ANALYSIS_ENGINE_POLICY.RUN_PATH,
       {
-        clauseRef: '8.4',
-        fragment: 'Party is fully liable for all indirect damages.',
-        issue: 'Non-market liability allocation likely disputed in negotiations.',
-        recommendation: 'Limit indirect damages and define excluded categories.'
+        method: 'POST',
+        body: JSON.stringify({
+          document_name: payload.documentName,
+          role_context: {
+            role: payload.role,
+            counterparty_role: payload.counterpartyRole ?? null
+          },
+          document_text: payload.documentText,
+          document_base64: payload.documentBase64,
+          mime_type: payload.mimeType,
+          language: payload.locale,
+          locale: payload.locale
+        })
       },
-      {
-        clauseRef: '11.2',
-        fragment: 'Unilateral termination without cure period.',
-        issue: 'No cure period increases termination risk.',
-        recommendation: 'Add 15-30 day cure period before termination rights apply.'
-      }
-    ];
+      payload.locale
+    );
 
     return {
-      contractId: payload.contractId,
-      locale: payload.locale,
-      roleFocus: payload.role,
-      summary:
-        `Contract analysis generated for role '${payload.role}' with locale '${payload.locale}'. ` +
-        `Priority obligations and risk interpretation are focused on this side. ` +
-        `Counterparty role: ${payload.counterpartyRole ?? 'not specified'}.`,
-      obligations,
-      risks,
-      disputedClauses,
-      generatedAt: new Date().toISOString(),
-      generationNotes: payload.focusNotes ?? null
+      jobId: response.job_id,
+      status: response.status
     };
+  }
+
+  async getAnalysisStatus(
+    jobId: string,
+    locale: SupportedLocale
+  ): Promise<AnalysisEngineStatusResult> {
+    this.assertEnabled();
+
+    const response = await this.request<RemoteStatusResponse>(
+      ANALYSIS_ENGINE_POLICY.STATUS_PATH(jobId),
+      {
+        method: 'GET'
+      },
+      locale
+    );
+
+    return {
+      jobId: response.job_id,
+      status: response.status,
+      errorMessage: response.error_message ?? null
+    };
+  }
+
+  async getAnalysisResult(
+    jobId: string,
+    locale: SupportedLocale
+  ): Promise<AnalysisEngineResult> {
+    this.assertEnabled();
+
+    const response = await this.request<RemoteResultResponse>(
+      ANALYSIS_ENGINE_POLICY.RESULT_PATH(jobId),
+      {
+        method: 'GET'
+      },
+      locale
+    );
+
+    return {
+      jobId: response.job_id,
+      status: response.status,
+      result: response.result ?? undefined,
+      errorMessage: response.error_message ?? null
+    };
+  }
+
+  private async request<T>(
+    resourcePath: string,
+    init: RequestInit,
+    locale: SupportedLocale
+  ): Promise<T> {
+    const baseUrl = this.configService.get('analysisEngine.baseUrl', { infer: true });
+    const url = new URL(resourcePath, this.ensureTrailingSlash(baseUrl)).toString();
+    const controller = new AbortController();
+    const timeout = setTimeout(
+      () => controller.abort(),
+      this.configService.get('analysisEngine.requestTimeoutMs', { infer: true })
+    );
+
+    try {
+      const response = await fetch(url, {
+        ...init,
+        signal: controller.signal,
+        headers: {
+          Accept: 'application/json',
+          'Accept-Language': locale,
+          ...(init.body ? { 'Content-Type': 'application/json' } : {}),
+          ...(init.headers ?? {})
+        }
+      });
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new AnalysisEngineUnavailableError(
+          `analysis-engine request failed (${response.status}): ${errorText || response.statusText}`
+        );
+      }
+
+      return (await response.json()) as T;
+    } catch (error) {
+      if (error instanceof AnalysisEngineUnavailableError) {
+        throw error;
+      }
+
+      const message =
+        error instanceof Error ? error.message : 'Unknown analysis-engine transport error';
+      throw new AnalysisEngineUnavailableError(message);
+    } finally {
+      clearTimeout(timeout);
+    }
+  }
+
+  private assertEnabled(): void {
+    if (!this.configService.get('analysisEngine.enabled', { infer: true })) {
+      throw new AnalysisEngineUnavailableError('analysis-engine integration is disabled');
+    }
+  }
+
+  private ensureTrailingSlash(baseUrl: string): string {
+    return baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
   }
 }

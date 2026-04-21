@@ -1,6 +1,8 @@
 import { AuthTokenType } from '../common/domain/auth-token-type.enum';
+import { ANALYSIS_ENGINE_POLICY } from '../common/policies/analysis-engine.policy';
 import { AUTH_POLICY } from '../common/policies/auth.policy';
 import { HTTP_POLICY } from '../common/policies/http.policy';
+import { STORAGE_POLICY } from '../common/policies/storage.policy';
 import { UPLOAD_POLICY } from '../common/policies/upload.policy';
 import { AppConfig } from './app-config.type';
 import {
@@ -58,6 +60,33 @@ export default (): AppConfig => {
       allowedMimeTypes: parseListEnv(
         process.env.ALLOWED_MIME_TYPES,
         UPLOAD_POLICY.ALLOWED_MIME_TYPES_DEFAULT
+      )
+    },
+    storage: {
+      dataDir: process.env.DATA_DIR?.trim() || STORAGE_POLICY.DATA_DIR_DEFAULT
+    },
+    analysisEngine: {
+      enabled: parseBooleanEnv(
+        process.env.ANALYSIS_ENGINE_ENABLED,
+        ANALYSIS_ENGINE_POLICY.ENABLED_DEFAULT
+      ),
+      baseUrl:
+        process.env.ANALYSIS_ENGINE_BASE_URL?.trim() ||
+        ANALYSIS_ENGINE_POLICY.BASE_URL_DEFAULT,
+      requestTimeoutMs: parseNumberEnv(
+        process.env.ANALYSIS_ENGINE_REQUEST_TIMEOUT_MS,
+        ANALYSIS_ENGINE_POLICY.REQUEST_TIMEOUT_MS_DEFAULT,
+        'ANALYSIS_ENGINE_REQUEST_TIMEOUT_MS'
+      ),
+      pollIntervalMs: parseNumberEnv(
+        process.env.ANALYSIS_ENGINE_POLL_INTERVAL_MS,
+        ANALYSIS_ENGINE_POLICY.POLL_INTERVAL_MS_DEFAULT,
+        'ANALYSIS_ENGINE_POLL_INTERVAL_MS'
+      ),
+      maxPollingDurationMs: parseNumberEnv(
+        process.env.ANALYSIS_ENGINE_MAX_POLLING_DURATION_MS,
+        ANALYSIS_ENGINE_POLICY.MAX_POLLING_DURATION_MS_DEFAULT,
+        'ANALYSIS_ENGINE_MAX_POLLING_DURATION_MS'
       )
     }
   };

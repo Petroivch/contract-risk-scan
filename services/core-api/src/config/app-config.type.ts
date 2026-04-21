@@ -24,4 +24,14 @@ export interface AppConfig {
     maxUploadSizeMb: number;
     allowedMimeTypes: string[];
   };
+  storage: {
+    dataDir: string;
+  };
+  analysisEngine: {
+    enabled: boolean;
+    baseUrl: string;
+    requestTimeoutMs: number;
+    pollIntervalMs: number;
+    maxPollingDurationMs: number;
+  };
 }
