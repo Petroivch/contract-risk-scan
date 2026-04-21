@@ -1,10 +1,11 @@
 openapi: 3.0.3
 info:
-  title: Contract Risk Scanner Core API (MVP Draft)
-  version: 0.3.0
+  title: Contract Risk Scanner Core API
+  version: 0.4.0
   description: |
-    Draft contract for mobile clients and backend integrations.
-    Runtime URL, API prefix and limits are configuration-driven.
+    Актуальный контракт для mobile-клиента и backend-интеграций.
+    Core API работает как persistent orchestration-слой между upload/analyze/status/report/history
+    и analysis-engine. Runtime URL, лимиты и policy-параметры управляются через env.
 servers:
   - url: '{PUBLIC_BASE_URL}/{API_PREFIX}'
     description: Config-driven runtime endpoint
@@ -20,6 +21,8 @@ x-runtime-policy:
   localeFallback: ru
   maxUploadSizeMb: env(MAX_UPLOAD_SIZE_MB)
   allowedMimeTypes: env(ALLOWED_MIME_TYPES)
+  dataDir: env(DATA_DIR)
+  analysisEngineBaseUrl: env(ANALYSIS_ENGINE_BASE_URL)
 
 tags:
   - name: auth
@@ -69,7 +72,7 @@ paths:
   /contracts/upload:
     post:
       tags: [contracts]
-      summary: Upload contract file
+      summary: Upload contract file and start analysis automatically
       security:
         - bearerAuth: []
       requestBody:
@@ -103,7 +106,7 @@ paths:
                   format: binary
       responses:
         '201':
-          description: File metadata accepted
+          description: File saved and analysis accepted
           content:
             application/json:
               schema:
@@ -114,7 +117,7 @@ paths:
   /contracts/{id}/analyze:
     post:
       tags: [contracts]
-      summary: Run analysis pipeline for contract
+      summary: Trigger analysis or re-analysis for uploaded contract
       security:
         - bearerAuth: []
       parameters:
@@ -127,7 +130,7 @@ paths:
               $ref: '#/components/schemas/AnalyzeContractRequest'
       responses:
         '200':
-          description: Analysis state accepted
+          description: Analysis accepted or current state returned
           content:
             application/json:
               schema:
@@ -138,7 +141,7 @@ paths:
   /contracts/{id}/status:
     get:
       tags: [contracts]
-      summary: Get job status and available next transitions
+      summary: Get normalized analysis status plus backend pipeline status
       security:
         - bearerAuth: []
       parameters:
@@ -156,7 +159,7 @@ paths:
   /contracts/{id}/report:
     get:
       tags: [contracts]
-      summary: Fetch generated report
+      summary: Fetch generated report in mobile-friendly form
       security:
         - bearerAuth: []
       parameters:
@@ -180,7 +183,7 @@ paths:
   /contracts/history:
     get:
       tags: [contracts]
-      summary: List previously uploaded contracts
+      summary: List persisted contracts history
       security:
         - bearerAuth: []
       responses:
@@ -245,6 +248,14 @@ components:
         - preprocessing
         - analyzing
         - report_ready
+        - failed
+
+    AnalysisLifecycleStatus:
+      type: string
+      enum:
+        - queued
+        - processing
+        - completed
         - failed
 
     ApiError:
@@ -315,14 +326,35 @@ components:
 
     UploadContractResponse:
       type: object
-      required: [contractId, status, locale, originalFileName, uploadedAt]
+      required:
+        [
+          contractId,
+          analysisId,
+          status,
+          pipelineStatus,
+          locale,
+          selectedRole,
+          progress,
+          originalFileName,
+          uploadedAt
+        ]
       properties:
         contractId:
           type: string
+        analysisId:
+          type: string
         status:
+          $ref: '#/components/schemas/AnalysisLifecycleStatus'
+        pipelineStatus:
           $ref: '#/components/schemas/JobStatus'
         locale:
           $ref: '#/components/schemas/Locale'
+        selectedRole:
+          type: string
+        progress:
+          type: integer
+          minimum: 0
+          maximum: 100
         originalFileName:
           type: string
         uploadedAt:
@@ -348,27 +380,59 @@ components:
 
     AnalyzeContractResponse:
       type: object
-      required: [contractId, status, locale, message]
+      required:
+        [contractId, analysisId, status, pipelineStatus, locale, selectedRole, progress, message]
       properties:
         contractId:
           type: string
+        analysisId:
+          type: string
         status:
+          $ref: '#/components/schemas/AnalysisLifecycleStatus'
+        pipelineStatus:
           $ref: '#/components/schemas/JobStatus'
         locale:
           $ref: '#/components/schemas/Locale'
+        selectedRole:
+          type: string
+        progress:
+          type: integer
+          minimum: 0
+          maximum: 100
         message:
           type: string
 
     ContractStatusResponse:
       type: object
-      required: [contractId, status, locale, allowedTransitions, updatedAt]
+      required:
+        [
+          contractId,
+          analysisId,
+          status,
+          pipelineStatus,
+          locale,
+          selectedRole,
+          progress,
+          allowedTransitions,
+          updatedAt
+        ]
       properties:
         contractId:
           type: string
+        analysisId:
+          type: string
         status:
+          $ref: '#/components/schemas/AnalysisLifecycleStatus'
+        pipelineStatus:
           $ref: '#/components/schemas/JobStatus'
         locale:
           $ref: '#/components/schemas/Locale'
+        selectedRole:
+          type: string
+        progress:
+          type: integer
+          minimum: 0
+          maximum: 100
         allowedTransitions:
           type: array
           items:
@@ -383,6 +447,21 @@ components:
           type: string
           nullable: true
 
+    ContractSummary:
+      type: object
+      required: [title, contractType, shortDescription, obligationsForSelectedRole]
+      properties:
+        title:
+          type: string
+        contractType:
+          type: string
+        shortDescription:
+          type: string
+        obligationsForSelectedRole:
+          type: array
+          items:
+            type: string
+
     ContractObligation:
       type: object
       required: [subject, action, dueCondition]
@@ -396,9 +475,11 @@ components:
 
     ContractRisk:
       type: object
-      required: [id, title, severity, description, roleImpact, recommendation]
+      required: [id, clauseRef, title, severity, description, roleImpact, recommendation]
       properties:
         id:
+          type: string
+        clauseRef:
           type: string
         title:
           type: string
@@ -413,8 +494,11 @@ components:
 
     DisputedClause:
       type: object
-      required: [clauseRef, fragment, issue, recommendation]
+      required:
+        [id, clauseRef, fragment, issue, recommendation, whyDisputed, suggestedRewrite]
       properties:
+        id:
+          type: string
         clauseRef:
           type: string
         fragment:
@@ -423,19 +507,42 @@ components:
           type: string
         recommendation:
           type: string
+        whyDisputed:
+          type: string
+        suggestedRewrite:
+          type: string
 
     ContractReport:
       type: object
       required:
-        [contractId, locale, roleFocus, summary, obligations, risks, disputedClauses, generatedAt, generationNotes]
+        [
+          contractId,
+          analysisId,
+          locale,
+          roleFocus,
+          selectedRole,
+          summary,
+          summaryText,
+          obligations,
+          risks,
+          disputedClauses,
+          generatedAt,
+          generationNotes
+        ]
       properties:
         contractId:
+          type: string
+        analysisId:
           type: string
         locale:
           $ref: '#/components/schemas/Locale'
         roleFocus:
           type: string
+        selectedRole:
+          type: string
         summary:
+          $ref: '#/components/schemas/ContractSummary'
+        summaryText:
           type: string
         obligations:
           type: array
@@ -458,19 +565,44 @@ components:
 
     ContractHistoryItem:
       type: object
-      required: [contractId, role, locale, status, originalFileName, uploadedAt, updatedAt]
+      required:
+        [
+          contractId,
+          analysisId,
+          role,
+          selectedRole,
+          locale,
+          status,
+          pipelineStatus,
+          originalFileName,
+          fileName,
+          uploadedAt,
+          createdAt,
+          updatedAt
+        ]
       properties:
         contractId:
           type: string
+        analysisId:
+          type: string
         role:
+          type: string
+        selectedRole:
           type: string
         locale:
           $ref: '#/components/schemas/Locale'
         status:
+          $ref: '#/components/schemas/AnalysisLifecycleStatus'
+        pipelineStatus:
           $ref: '#/components/schemas/JobStatus'
         originalFileName:
           type: string
+        fileName:
+          type: string
         uploadedAt:
+          type: string
+          format: date-time
+        createdAt:
           type: string
           format: date-time
         updatedAt:

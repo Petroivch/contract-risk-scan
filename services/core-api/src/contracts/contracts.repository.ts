@@ -1,7 +1,7 @@
 import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { mkdir, readFile, readdir, writeFile } from 'node:fs/promises';
-import path from 'node:path';
+import * as path from 'node:path';
 import { STORAGE_POLICY } from '../common/policies/storage.policy';
 import { AppConfig } from '../config/app-config.type';
 import { StoredContract } from './stored-contract.type';

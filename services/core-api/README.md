@@ -1,42 +1,114 @@
-# Contract Risk Scanner - Core API (NestJS)
+# Contract Risk Scanner: Core API (NestJS)
 
-Core API for Contract Risk Scanner mobile clients and backend-ai integration.
+`core-api` обслуживает мобильный клиент Contract Risk Scanner и связывает upload/analyze/status/report/history с `analysis-engine`.
 
-## Stage-1 scope
-- NestJS skeleton with module structure.
-- OpenAPI draft for MVP endpoints.
-- Controllers + DTO validation + job status orchestration.
-- Multilingual locale contract (`ru|en|it|fr`, default/fallback `ru`).
-- Local-first and release-size integration docs.
+## Что уже реализовано
+- persistent-контур для договоров: метаданные и загруженные файлы сохраняются локально на диске;
+- `POST /contracts/upload` сразу запускает анализ после успешного сохранения файла;
+- `POST /contracts/{id}/analyze` поддерживает повторный запуск анализа и смену `locale`;
+- `GET /contracts/{id}/status` и `GET /contracts/history` синхронизируют состояние с `analysis-engine`;
+- `GET /contracts/{id}/report` отдает сохраненный отчет в mobile-friendly форме;
+- поддержка языков `ru | en | it | fr` с `ru` по умолчанию и fallback на `ru`;
+- local-first friendly контракт: backend не нужен для запуска приложения и просмотра уже закешированной истории на устройстве;
+- все runtime-параметры вынесены в конфиг, без хардкода URL, лимитов и секретов.
 
-## Project structure
-- `src/auth/**` - registration/login stubs.
-- `src/contracts/**` - upload/analyze/status/report/history endpoints.
-- `src/common/i18n/**` - locale enum + normalization/fallback.
-- `src/common/policies/**` - centralized runtime and domain policies.
-- `src/config/**` - typed runtime config.
-- `openapi/contract-risk-scanner-mvp.yaml` - API draft.
+## Что еще упрощено
+- `auth` пока остается упрощенным контуром без production-ready persistence;
+- качество анализа и итоговый контент полностью зависят от доступности `analysis-engine`.
 
-## Quick start (VS Code)
-1. Open folder: `services/core-api`
-2. Create local env file from `.env.example`
-3. Install deps:
-   ```bash
-   npm install
-   ```
-4. Run dev server:
-   ```bash
-   npm run start:dev
-   ```
+## Структура
+- `src/auth/**` - временный auth-контур.
+- `src/contracts/**` - upload/analyze/status/report/history, файловое хранилище и интеграция с `analysis-engine`.
+- `src/common/i18n/**` - enum языков, нормализация и fallback.
+- `src/common/policies/**` - централизованные runtime/domain policy.
+- `src/config/**` - типизированный конфиг и разбор env.
+- `openapi/contract-risk-scanner-mvp.yaml` - актуальный OpenAPI-контракт.
 
-Swagger URL is config-driven by `SWAGGER_PATH` (default `api/docs`).
+## Как работает flow договора
+1. Клиент отправляет `multipart/form-data` на `POST /contracts/upload`.
+2. `core-api` валидирует MIME type и размер файла.
+3. Файл сохраняется в локальное storage-хранилище, рядом сохраняется JSON-метадата договора.
+4. `core-api` автоматически вызывает `analysis-engine` и получает `job_id`.
+5. Статус анализа периодически синхронизируется с `analysis-engine`.
+6. После завершения итоговый отчет нормализуется в формат mobile UI и сохраняется локально.
+7. История и отчет переживают рестарт `core-api`, потому что лежат на диске.
 
-## Configuration policy
-- No runtime URL/secret/limits are hardcoded in service logic.
-- Required secret: `JWT_SECRET` (placeholder value is rejected at runtime).
-- Upload limits/mime policy and API URL pathing are controlled via env config.
+Текущее соответствие идентификаторов:
+- `contractId` - основной идентификатор договора;
+- `analysisId` - пока равен `contractId`, чтобы мобильному клиенту не приходилось держать второй внешний id;
+- `analysisJobId` - внутренний id job в `analysis-engine`, хранится только внутри `core-api`.
 
-## Notes
-- Business logic is still stubbed for stage-1.
-- Auth token and analysis output are mock implementations.
-- File persistence/DB/worker integration are next-stage items.
+## Storage-модель
+По умолчанию данные пишутся в:
+
+```text
+.runtime/core-api-data/
+```
+
+Структура:
+- `.runtime/core-api-data/contracts/*.json` - сохраненные метаданные и отчет;
+- `.runtime/core-api-data/uploads/*` - исходные файлы договоров.
+
+Путь можно переопределить через `DATA_DIR`.
+
+## Быстрый старт
+Требования:
+- `Node.js 20+`
+- доступный `analysis-engine` по `ANALYSIS_ENGINE_BASE_URL`
+
+Шаги:
+1. Откройте папку `services/core-api` в VS Code.
+2. Создайте `.env` на основе `.env.example`.
+3. Установите зависимости:
+
+```bash
+npm install
+```
+
+4. Запустите dev-сервер:
+
+```bash
+npm run start:dev
+```
+
+Swagger поднимается по пути из `SWAGGER_PATH` (`api/docs` по умолчанию).
+
+## Ключевые переменные окружения
+- `JWT_SECRET` - обязателен, placeholder запрещен.
+- `MAX_UPLOAD_SIZE_MB` - лимит размера загружаемого файла.
+- `ALLOWED_MIME_TYPES` - допустимые MIME type. Текущий default: `pdf`, `docx`, `text/plain`.
+- `DATA_DIR` - каталог локального persistence.
+- `ANALYSIS_ENGINE_ENABLED` - включение/отключение внешнего анализа.
+- `ANALYSIS_ENGINE_BASE_URL` - адрес `analysis-engine`.
+- `ANALYSIS_ENGINE_REQUEST_TIMEOUT_MS` - timeout HTTP-запроса к `analysis-engine`.
+- `ANALYSIS_ENGINE_POLL_INTERVAL_MS` - интервал фонового polling.
+- `ANALYSIS_ENGINE_MAX_POLLING_DURATION_MS` - максимальное окно ожидания результата.
+
+## Smoke-check после сборки
+Минимальный smoke:
+
+```bash
+npm run build
+```
+
+Для runtime-smoke:
+1. поднимите `analysis-engine`,
+2. запустите `core-api`,
+3. отправьте тестовый `txt/pdf/docx` в `POST /contracts/upload`,
+4. проверьте `status -> report -> history`.
+
+## Примечания по mobile-контракту
+- ответы `upload/analyze/status/history` теперь содержат:
+  - `analysisId`
+  - `status` (`queued | processing | completed | failed`)
+  - `pipelineStatus`
+  - `selectedRole`
+  - `progress`
+- ответ `report` содержит:
+  - `summary` как объект,
+  - `summaryText`,
+  - `risks[]`,
+  - `disputedClauses[]`,
+  - `obligations[]`,
+  - `generatedAt`,
+  - `generationNotes`.
