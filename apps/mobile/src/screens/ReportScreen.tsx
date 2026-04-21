@@ -1,17 +1,20 @@
-﻿import type { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { useEffect, useState } from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import type { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { useEffect, useMemo, useState } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 
 import { useApiClient } from '../api/ApiClientProvider';
 import type { AnalysisReport } from '../api/types';
+import { RoleBadge } from '../components/RoleBadge';
 import { DisputedCard } from '../components/cards/DisputedCard';
 import { RiskCard } from '../components/cards/RiskCard';
-import { RoleBadge } from '../components/RoleBadge';
 import { ScreenShell } from '../components/layout/ScreenShell';
+import { ActionButton } from '../components/ui/ActionButton';
+import { Panel } from '../components/ui/Panel';
+import { StatusChip } from '../components/ui/StatusChip';
 import { useAppLanguage } from '../i18n/LanguageProvider';
 import type { RootStackParamList } from '../navigation/types';
-import { colors, radius, shadow, spacing, typography } from '../theme/tokens';
+import { colors, spacing, typography } from '../theme/tokens';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Report'>;
 type ReportTab = 'summary' | 'risks' | 'disputed';
@@ -22,7 +25,7 @@ export const ReportScreen = ({ navigation, route }: Props): JSX.Element => {
   const api = useApiClient();
 
   const { analysisId, selectedRole } = route.params;
-  const [activeTab, setActiveTab] = useState<ReportTab>('summary');
+  const [activeTab, setActiveTab] = useState<ReportTab>('risks');
   const [report, setReport] = useState<AnalysisReport | null>(null);
 
   useEffect(() => {
@@ -35,39 +38,38 @@ export const ReportScreen = ({ navigation, route }: Props): JSX.Element => {
   }, [analysisId, api, language, selectedRole]);
 
   const tabs: { id: ReportTab; label: string }[] = [
-    { id: 'summary', label: t('report.tabs.summary') },
     { id: 'risks', label: t('report.tabs.risks') },
     { id: 'disputed', label: t('report.tabs.disputed') },
+    { id: 'summary', label: t('report.tabs.summary') },
   ];
+
+  const riskCountLabel = useMemo(() => t('report.riskCount', { value: report?.risks.length ?? 0 }), [report?.risks.length, t]);
 
   return (
     <ScreenShell title={t('report.title')} subtitle={t('report.analysisId', { analysisId })} scroll>
-      <RoleBadge role={report?.selectedRole ?? selectedRole ?? ''} />
+      <Panel
+        eyebrow={t('report.summaryStripEyebrow')}
+        title={report?.summary.title ?? t('common.loading')}
+        description={report?.summary.shortDescription ?? t('report.loadingDescription')}
+        rightSlot={<StatusChip label={riskCountLabel} tone="warning" />}
+      >
+        <View style={styles.summaryStripMeta}>
+          <RoleBadge role={report?.selectedRole ?? selectedRole ?? ''} size="compact" />
+          <StatusChip label={report?.summary.contractType ?? t('common.loading')} tone="neutral" />
+        </View>
+      </Panel>
 
       <View style={styles.tabBar}>
         {tabs.map((tab) => (
-          <Pressable
+          <ActionButton
             key={tab.id}
-            style={[styles.tabItem, activeTab === tab.id && styles.tabItemActive]}
+            label={tab.label}
             onPress={() => setActiveTab(tab.id)}
-          >
-            <Text style={[styles.tabText, activeTab === tab.id && styles.tabTextActive]}>{tab.label}</Text>
-          </Pressable>
+            variant={activeTab === tab.id ? 'primary' : 'ghost'}
+            style={styles.tabButton}
+          />
         ))}
       </View>
-
-      {activeTab === 'summary' ? (
-        <View style={styles.summaryCard}>
-          <Text style={styles.summaryTitle}>{report?.summary.title ?? t('common.loading')}</Text>
-          <Text style={styles.summaryText}>{report?.summary.shortDescription ?? ''}</Text>
-          <Text style={styles.sectionTitle}>{t('report.obligationsTitle')}</Text>
-          {(report?.summary.obligationsForSelectedRole ?? []).map((item) => (
-            <Text key={item} style={styles.bulletItem}>
-              • {item}
-            </Text>
-          ))}
-        </View>
-      ) : null}
 
       {activeTab === 'risks'
         ? (report?.risks ?? []).map((risk) => <RiskCard key={risk.id} item={risk} />)
@@ -77,58 +79,41 @@ export const ReportScreen = ({ navigation, route }: Props): JSX.Element => {
         ? (report?.disputedClauses ?? []).map((clause) => <DisputedCard key={clause.id} item={clause} />)
         : null}
 
-      <Pressable style={styles.secondaryButton} onPress={() => navigation.navigate('History')}>
-        <Text style={styles.secondaryButtonText}>{t('common.openHistory')}</Text>
-      </Pressable>
+      {activeTab === 'summary' ? (
+        <Panel title={t('report.summaryTabTitle')} description={t('report.summaryTabDescription')}>
+          <Text style={styles.summaryLead}>{report?.summary.shortDescription ?? ''}</Text>
+          <Text style={styles.sectionTitle}>{t('report.obligationsTitle')}</Text>
+          {(report?.summary.obligationsForSelectedRole ?? []).map((item) => (
+            <Text key={item} style={styles.bulletItem}>
+              • {item}
+            </Text>
+          ))}
+        </Panel>
+      ) : null}
+
+      <View style={styles.actionRow}>
+        <ActionButton label={t('common.openHistory')} onPress={() => navigation.navigate('History')} variant="secondary" style={styles.actionFlex} />
+        <ActionButton label={t('common.backToUpload')} onPress={() => navigation.navigate('UploadWithRole')} variant="ghost" style={styles.actionFlex} />
+      </View>
     </ScreenShell>
   );
 };
 
 const styles = StyleSheet.create({
+  summaryStripMeta: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: spacing.sm,
+  },
   tabBar: {
     flexDirection: 'row',
-    backgroundColor: colors.surface,
-    borderRadius: radius.lg,
-    borderWidth: 1,
-    borderColor: colors.border,
-    padding: spacing.xs,
     gap: spacing.xs,
-    ...shadow.card,
   },
-  tabItem: {
+  tabButton: {
     flex: 1,
-    minHeight: 42,
-    borderRadius: radius.md,
-    alignItems: 'center',
-    justifyContent: 'center',
+    minHeight: 46,
   },
-  tabItemActive: {
-    backgroundColor: colors.accent,
-  },
-  tabText: {
-    color: colors.textSecondary,
-    fontSize: typography.size.bodySm,
-    fontWeight: typography.weight.semibold,
-  },
-  tabTextActive: {
-    color: colors.textOnAccent,
-  },
-  summaryCard: {
-    borderRadius: radius.lg,
-    backgroundColor: colors.surface,
-    borderWidth: 1,
-    borderColor: colors.border,
-    padding: spacing.md,
-    gap: spacing.sm,
-    ...shadow.card,
-  },
-  summaryTitle: {
-    color: colors.textPrimary,
-    fontSize: typography.size.subtitle,
-    lineHeight: typography.lineHeight.subtitle,
-    fontWeight: typography.weight.bold,
-  },
-  summaryText: {
+  summaryLead: {
     color: colors.textSecondary,
     fontSize: typography.size.body,
     lineHeight: typography.lineHeight.body,
@@ -144,19 +129,11 @@ const styles = StyleSheet.create({
     fontSize: typography.size.body,
     lineHeight: typography.lineHeight.body,
   },
-  secondaryButton: {
-    minHeight: 50,
-    borderRadius: radius.lg,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: colors.accentSoft,
-    borderWidth: 1,
-    borderColor: colors.border,
+  actionRow: {
+    flexDirection: 'row',
+    gap: spacing.sm,
   },
-  secondaryButtonText: {
-    color: colors.accentStrong,
-    fontWeight: typography.weight.bold,
-    fontSize: typography.size.body,
+  actionFlex: {
+    flex: 1,
   },
 });
-
