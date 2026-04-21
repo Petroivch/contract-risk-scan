@@ -1,200 +1,187 @@
-﻿# 01. Screen Map and User Flow
+﻿# 01. Карта экранов и пользовательский поток
 
-## 1) Screen Map
+## 1) Карта экранов
 
 1. Splash
-2. Onboarding (3 slides)
+2. Onboarding (3 слайда)
 3. Auth Gateway
 4. Sign In (email + OTP / magic link)
-5. Role Selection (editable dropdown)
-6. Upload Contract
-7. Parsing/Analysis Status
-8. Report
-9. History
-10. Report Details (opened from History)
-11. Settings/Profile (language, notifications, legal)
+5. Выбор роли (редактируемый dropdown)
+6. Загрузка договора
+7. Статус парсинга и анализа
+8. Отчет
+9. История
+10. Детали отчета (из истории)
+11. Settings / Profile (язык, уведомления, legal)
 
-Target platforms for this UX map: mobile apps only (Android and iOS).
+Целевые платформы для этого UX-контракта: только мобильные приложения `Android` и `iPhone`.
 
-## 2) Information Architecture
+## 2) Информационная архитектура
 
-### Bottom Navigation
-- Home (upload + recent report shortcut)
+### Нижняя навигация
+- Home
 - History
 - Settings
 
-### Implementation Standard
-- UI copy and labels are referenced by i18n keys only.
-- Numeric limits are referenced by constants from `06_ui-quality-standards.md`.
+### Стандарт реализации
+- все тексты и подписи приходят только через `i18n keys`;
+- все числовые ограничения берутся из `06_ui-quality-standards.md`.
 
-### Local-First Scope
-- Locally available without network:
-- history list metadata;
-- previously opened reports and cached tab content;
-- selected role and app language;
-- user preferences (notifications, legal acknowledgement flags).
-- Sync model: write locally first, then sync when online.
+### Local-first область
+Локально без сети доступны:
+- метаданные истории;
+- ранее открытые отчеты и закэшированное содержимое вкладок;
+- выбранная роль и язык приложения;
+- пользовательские предпочтения и юридические acknowledgements.
 
-### Language Support
-- Default locale: `ru`.
-- Supported locales: `ru`, `en`, `it`, `fr`.
-- Language selector location: Settings/Profile (mandatory).
+Модель синхронизации:
+- запись сначала локально;
+- затем синхронизация при наличии сети.
 
-### Report Tabs
+### Поддержка языков
+- язык по умолчанию: `ru`;
+- поддерживаемые языки: `ru`, `en`, `it`, `fr`;
+- переключатель языка обязателен в `Settings / Profile`.
+
+### Вкладки отчета
 - Risks
 - Disputed Clauses
 - Summary
 
-## 3) Primary User Flow (happy path)
+## 3) Основной пользовательский поток (happy path)
 
-1. Open app -> Splash -> Onboarding (first launch only).
-2. User signs in.
-3. User lands on Role Selection.
-4. User chooses role from editable dropdown:
+1. Пользователь открывает приложение -> Splash -> Onboarding (только при первом запуске).
+2. Пользователь проходит вход.
+3. Приложение приводит его на экран выбора роли.
+4. Пользователь выбирает роль через редактируемый dropdown:
 - `role.option.contractor`
 - `role.option.employer`
-- custom role (free text, max length = `CONST_ROLE_MAX_LENGTH`)
-5. User proceeds to Upload Contract and selects file (allowed formats from backend contract; max size = `CONST_UPLOAD_MAX_FILE_MB`).
-6. App uploads file and starts analysis.
-7. User sees Parsing/Analysis Status with stage progress.
-8. On success, app opens Report tab set:
-- Risks (default tab)
-- Disputed Clauses
-- Summary (role-focused obligations)
-9. User saves report to History.
-10. Later user opens History -> Report Details.
+- кастомная роль, max length = `CONST_ROLE_MAX_LENGTH`
+5. Пользователь переходит к загрузке договора и выбирает файл.
+6. Приложение загружает файл и запускает анализ.
+7. Пользователь видит экран статуса с поэтапным прогрессом.
+8. После успешного анализа открывается отчет:
+- Risks — вкладка по умолчанию;
+- Disputed Clauses;
+- Summary — с фокусом на выбранной роли.
+9. Отчет сохраняется в историю.
+10. Позже пользователь открывает History -> Report Details.
 
-## 3.1) Local-First / Offline UX Flow (mandatory)
+## 3.1) Local-first / Offline поток (обязательный)
 
-1. User opens app with no internet.
-2. Home shows offline indicator and available local content.
-3. User opens History and can read cached reports locally.
-4. User attempts new upload while offline:
-- app offers queue option via key `upload.offline_queue_cta`;
-- file and metadata stored locally with `queued` status.
-5. Network restored:
-- app prompts or auto-starts upload for queued items;
-- status changes from `queued` -> `uploading` -> `analyzing` -> `ready`.
-6. If user disables auto-sync, queued items remain local until manual action.
+1. Пользователь открывает приложение без интернета.
+2. Home показывает offline-индикатор и локально доступный контент.
+3. Пользователь может открыть History и прочитать закэшированные отчеты.
+4. При попытке новой загрузки без сети приложение предлагает очередь через `upload.offline_queue_cta`.
+5. Файл и метаданные сохраняются локально в статусе `queued`.
+6. После появления сети элемент проходит путь:
+`queued -> uploading -> analyzing -> ready`.
+7. Если авто-синхронизация выключена, queued-элементы остаются локально до ручного действия пользователя.
 
-## 3.2) No-Extra-Download Policy UX Flow (mandatory)
+## 3.2) UX-политика без дополнительных загрузок
 
-1. User installs release build and launches app.
-2. App does not request additional model/content downloads.
-3. If optional feature is unavailable because of no-download policy, app explains:
-- feature is not included in current build;
-- core analysis flow remains available.
+1. Пользователь устанавливает релизную сборку и запускает приложение.
+2. Приложение не должно просить скачать дополнительные модели, пакеты или контент.
+3. Если какая-то второстепенная функция отсутствует из-за no-download policy, приложение объясняет это текстом, но не ломает основной flow анализа.
 
-## 3.3) Language Selection UX Flow (mandatory)
+## 3.3) Поток выбора языка (обязательный)
 
-1. App starts with locale resolution:
-- if saved user preference exists -> use it;
-- else if device locale in supported set (`ru`, `en`, `it`, `fr`) -> use device locale;
-- else -> fallback to `ru`.
-2. User opens Settings/Profile.
-3. User taps key `settings.language_title`.
-4. User selects one option:
+1. На старте приложение определяет язык так:
+- если сохранена пользовательская настройка — использовать ее;
+- иначе если язык устройства входит в `ru|en|it|fr` — использовать его;
+- иначе fallback на `ru`.
+2. Пользователь открывает `Settings / Profile`.
+3. Нажимает `settings.language_title`.
+4. Выбирает один из вариантов:
 - `ru` (Русский)
 - `en` (English)
 - `it` (Italiano)
 - `fr` (Français)
-5. App applies language immediately on the current screen and persists preference without extra confirmation step.
-6. If some keys are missing in selected locale, UI falls back to `ru` for missing strings only.
-7. During active analysis, language switch is allowed without canceling analysis; status/report UI refreshes labels in selected language.
+5. Язык применяется мгновенно, без отдельного confirm-шага.
+6. Если часть переводов отсутствует, для недостающих ключей используется `ru`.
+7. Во время активного анализа смена языка не должна отменять анализ.
 
-## 4) Alternative Flows
+## 4) Альтернативные потоки
 
-### 4.1 Auth failed
-- User gets inline error and retry CTA.
+### 4.1 Ошибка авторизации
+- inline error;
+- retry CTA.
 
-### 4.2 Unsupported file or too large
-- Upload blocked with validation message and file requirements hint.
+### 4.2 Неподдерживаемый или слишком большой файл
+- загрузка блокируется;
+- показывается пояснение с требованиями к файлу.
 
-### 4.3 OCR/analysis timeout
-- Status screen shows timeout with options:
+### 4.3 Timeout OCR / анализа
+Экран статуса показывает timeout и действия:
 - Retry analysis
 - Upload another file
 - Contact support
 
-### 4.4 No significant risks found
-- Report still generated with:
-- low-risk badge
-- explanation of analysis limits
-- suggestion to review manually.
+### 4.4 Значимых рисков не найдено
+Отчет все равно строится и показывает:
+- low-risk badge;
+- пояснение об ограничениях анализа;
+- рекомендацию на ручную проверку.
 
-### 4.5 Role edited after report ready
-- App asks: "Rebuild report with updated role focus?"
-- If confirmed, trigger role re-focus without re-upload when cached analysis payload is sufficient; otherwise request backend re-ranking using existing uploaded file reference.
+### 4.5 Роль изменена после готовности отчета
+Приложение спрашивает: пересобрать фокус отчета под новую роль.
+- если подтверждено и достаточно кэшированных данных — выполнить re-focus без повторной загрузки;
+- иначе запросить переоценку на backend по уже загруженному файлу.
 
-### 4.6 Language changed while viewing report
-- App keeps report data and refreshes UI strings immediately.
-- If backend summary/disclaimer in selected language is unavailable, show `ru` content and flag `shown_in_fallback_language`.
+### 4.6 Язык изменен при просмотре отчета
+- данные отчета сохраняются;
+- интерфейс обновляет подписи сразу;
+- если narrative от backend недоступен на выбранном языке, показывается `ru` с fallback-маркером.
 
-### 4.7 Missing translation key
-- UI renders `ru` value for missing key.
-- Non-blocking log event sent for localization QA.
+### 4.7 Отсутствует translation key
+- UI показывает `ru`-значение для отсутствующего ключа;
+- в телеметрию уходит non-blocking событие.
 
-### 4.8 Offline at upload start
-- Upload action is converted to local queue action.
-- User sees ETA note: processing starts after connection recovery.
+### 4.8 Старт загрузки без сети
+- upload-действие превращается в queued-действие;
+- пользователь видит пояснение, что обработка начнется после восстановления соединения.
 
-### 4.9 Offline while viewing history/report
-- Local cached content remains accessible.
-- Non-cached parts show lightweight placeholder with retry when online.
+### 4.9 Нет сети при просмотре истории или отчета
+- кэшированный контент остается доступен;
+- некэшированные части получают легкий placeholder с retry при появлении сети.
 
-### 4.10 Total release build exceeds `CONST_RELEASE_TOTAL_BUDGET_MB` (global gate)
-- Release is blocked before store submission.
-- Product applies size optimization profile (see Section 6).
-- If UX cuts are enabled, app surfaces transparent note in Settings -> "Lite mode details".
+### 4.10 Общая релизная сборка превышает `CONST_RELEASE_TOTAL_BUDGET_MB`
+- релиз блокируется до оптимизации;
+- продукт включает профиль оптимизации размера;
+- если включен облегченный визуальный профиль, в `Settings` появляется объяснение `Lite mode details`.
 
-## 5) Entry Points
-- First run -> onboarding flow.
-- Push notification "Analysis complete" -> opens Report Details.
-- History item tap -> Report Details.
-- Offline launch -> opens Home/History with local data first.
+## 5) Точки входа
+- первый запуск -> onboarding;
+- push `Analysis complete` -> открывает детали отчета;
+- tap по History item -> открывает детали отчета;
+- offline launch -> открывает Home/History с локальными данными в приоритете.
 
-## 6) Total Release Budget UX Plan (Threshold: `CONST_RELEASE_TOTAL_BUDGET_MB`)
+## 6) UX-план для ограничения общего размера релиза
 
-### Trigger
-- Measured total final release build size is `> CONST_RELEASE_TOTAL_BUDGET_MB`.
-- Total size includes full app package (code, native dependencies, bundled UI assets, embedded resources).
+### Триггер
+- измеренный размер финальной общей сборки `> CONST_RELEASE_TOTAL_BUDGET_MB`.
 
-### UX-first optimization sequence
-1. Remove non-critical visual assets (large illustrations, heavy animations).
-2. Reduce embedded media quality for onboarding backgrounds.
-3. Replace animated loaders with static placeholders on onboarding, history, and settings first; keep explicit stage feedback on Status.
-4. Limit number of bundled custom fonts/weights.
-5. Move advanced, non-core screens behind "not in this build" note (only if required).
+### Последовательность UX-оптимизации
+1. убрать некритичные крупные визуальные assets;
+2. снизить качество встроенных фоновых медиа;
+3. заменить тяжелые анимации статичными версиями там, где это не бьет по core flow;
+4. сократить число встроенных шрифтов и весов;
+5. скрыть неключевые визуальные улучшения за пояснением в Lite mode только при крайней необходимости.
 
-### UI assets optimization priority (first-pass)
-1. Onboarding raster/video assets (compress, reduce resolution, remove duplicates).
-2. Animation assets (Lottie/GIF/video) -> replace with lighter static/limited-motion versions.
-3. Custom fonts -> keep one family and minimal weights.
-4. Icon/image sets -> remove unused assets and prefer vector where runtime-safe.
-5. Illustration packs for empty states -> keep only core screens.
-6. Decorative backgrounds/gradients -> simplify to code-generated styles before removing any functional content block.
+## 7) UX-компромиссы при превышении бюджета
+- упрощенные onboarding-визуалы;
+- меньше font variants;
+- меньше motion на переходах;
+- часть неключевых удобств может быть перенесена в следующий релиз;
+- глубина локального кэша сокращается первой и должна быть прозрачно объяснена пользователю.
 
-### User communication rules
-- Do not ask user to download extra packs/modules.
-- Explain reduced capabilities in plain text inside Settings > Lite mode details.
-- Do not hide removed features silently.
-
-## 7) UX Compromises If Total Build > `CONST_RELEASE_TOTAL_BUDGET_MB`
-- Simplified onboarding visuals (fewer illustrations, less motion).
-- Fewer font variants (possible small typography expressiveness loss).
-- Reduced animation richness on status/report transitions.
-- Some non-core convenience features delayed to next release.
-- Deeper historical cache window is the first storage-related compromise on low-storage devices and must be disclosed in Lite mode details if applied.
-- Any compromise decision is validated against the global release budget, not a UI-only budget.
-
-## 8) UX Acceptance Criteria for Stages 1-2
-- User can reach upload in <= `CONST_NAV_TO_UPLOAD_MAX_TAPS` taps from authenticated home.
-- Role input is editable and clearly affects report focus.
-- Every async state has visible progress and at least one recovery action.
-- Report tabs are understandable without training.
-- User can change app language in Settings/Profile at any time.
-- App supports `ru`, `en`, `it`, `fr` with `ru` as default.
-- Missing translations never break UI and always fall back to `ru`.
-- Existing history/reports are accessible in offline mode from local cache.
-- User is never forced to download post-install content.
-- Release UX profile remains compliant with global release threshold `<= CONST_RELEASE_TOTAL_BUDGET_MB`.
+## 8) UX acceptance criteria для стадий 1–2
+- пользователь доходит до upload не более чем за `CONST_NAV_TO_UPLOAD_MAX_TAPS` taps после авторизации;
+- поле роли редактируемо и явно влияет на фокус отчета;
+- у каждого async-состояния есть видимый прогресс и хотя бы одно recovery-действие;
+- вкладки отчета понятны без обучения;
+- язык приложения можно сменить в любой момент;
+- поддерживаются `ru`, `en`, `it`, `fr`, fallback — `ru`;
+- история и ранее открытые отчеты доступны offline из локального кэша;
+- пользователь не вынужден ничего скачивать после установки;
+- UX остается совместимым с общим релизным бюджетом `<= CONST_RELEASE_TOTAL_BUDGET_MB`.

@@ -1,30 +1,33 @@
-# 04. Microcopy and Localization Spec (No Hardcode)
+﻿# 04. Микротексты и локализация (без хардкода)
 
-## 1) Objective
-Define production-grade i18n rules so UI text is loaded only from localization resources, never from inline component literals.
+## 1) Цель
+Зафиксировать production-grade правила для текстов интерфейса, чтобы весь UI-контент приходил из словарей локализации, а не из inline literals в компонентах.
 
-## 2) Source of Truth
-- Localization resources are key-based catalogs per locale.
-- Recommended structure:
-  - `i18n/ru.json` (default + fallback)
-  - `i18n/en.json`
-  - `i18n/it.json`
-  - `i18n/fr.json`
-- Runtime locale fallback: `active_locale_key -> ru -> missing_key_error`.
+## 2) Источник истины
+Рекомендуемая структура ресурсов:
+- `i18n/ru.json` — базовый каталог и fallback;
+- `i18n/en.json`;
+- `i18n/it.json`;
+- `i18n/fr.json`.
 
-## 3) Language Policy (MVP)
-- Default locale: `ru`.
-- Supported locales: `ru`, `en`, `it`, `fr`.
-- Missing key in active locale must render `ru` value.
-- Localization failure must not block critical user actions.
+Runtime-цепочка fallback:
+`active_locale -> ru -> missing_key_error`
 
-## 4) Required Key Namespaces
+## 3) Языковая политика
+- язык по умолчанию: `ru`;
+- поддерживаемые языки: `ru`, `en`, `it`, `fr`;
+- если ключ отсутствует в активной locale, UI показывает значение из `ru`;
+- ошибка локализации не должна блокировать вход, загрузку, анализ, открытие истории или просмотр отчета.
+
+## 4) Обязательные namespaces
 - `onboarding.*`
 - `auth.*`
 - `role.*`
 - `upload.*`
 - `status.*`
 - `report.tabs.*`
+- `report.risk.*`
+- `report.disputed.*`
 - `report.summary.*`
 - `history.*`
 - `settings.*`
@@ -32,96 +35,82 @@ Define production-grade i18n rules so UI text is loaded only from localization r
 - `errors.*`
 - `empty.*`
 - `cta.*`
-- `offline.*`
-- `lite_mode.*`
 
-## 5) Mandatory Key Sets by UX Zone
+## 5) Тон продукта
+Интерфейс должен звучать как спокойный и уверенный legal-tech продукт.
 
-### Onboarding/Auth
-- `onboarding.slide_1_title`
-- `onboarding.slide_2_title`
-- `onboarding.slide_3_title`
-- `auth.sign_in_title`
-- `auth.email_label`
-- `auth.send_code_cta`
-- `auth.sending_code`
-- `auth.signing_in`
-- `errors.auth_sign_in_failed`
+### Тон по умолчанию
+- ясный;
+- деловой;
+- без драматизации;
+- без рекламной манеры;
+- без избыточной юридической тяжеловесности.
 
-### Role Selection
-- `role.title`
-- `role.field_label`
-- `role.helper`
-- `role.placeholder`
-- `role.option.contractor`
-- `role.option.employer`
-- `role.use_custom_role_cta`
-- `errors.role_required`
-- `errors.role_max_length`
+### Что избегать
+- панические формулировки;
+- кликбейтные слова вроде «шок», «опасно», «срочно»;
+- длинные канцелярские конструкции;
+- двусмысленные указания в критичных CTA.
 
-### Upload / Status
-- `upload.title`
+## 6) Правила для CTA и кнопок
+Все action labels должны быть короткими и однозначными.
+
+### Допустимые паттерны
 - `upload.choose_file_cta`
-- `upload.progress`
-- `upload.file_requirements`
+- `upload.start_analysis_cta`
 - `upload.offline_queue_cta`
-- `status.stage_file_received`
-- `status.stage_text_extraction`
-- `status.stage_clause_detection`
-- `status.stage_risk_scoring`
-- `status.stage_report_generation`
-- `status.still_working_notice`
+- `status.retry_cta`
+- `status.resume_cta`
+- `report.open_history_cta`
+- `role.apply_role_cta`
 
-### Report / History
-- `report.tabs.risks`
-- `report.tabs.disputed`
-- `report.tabs.summary`
-- `empty.no_critical_risks`
-- `empty.no_disputed_clauses`
-- `empty.no_reports`
-- `history.offline_empty_hint`
+### Недопустимо
+- составные фразы с несколькими действиями в одной кнопке;
+- неясные CTA вроде «Продолжить дальше» без контекста;
+- разные формулировки для одного и того же действия на соседних экранах.
 
-### Settings / Localization
-- `settings.language_title`
-- `settings.language_applying`
-- `settings.language_applied`
-- `settings.language_fallback_notice`
-- `settings.lite_mode_details_title`
+## 7) Критичные сообщения по анализу договора
 
-### Offline / Local-First
-- `offline.banner`
-- `offline.cached_data_available`
-- `offline.queue_saved`
-- `offline.sync_resumed`
+### Upload
+- сообщение об unsupported format должно объяснять причину и допустимые форматы;
+- сообщение о лимите файла должно явно ссылаться на ограничение `CONST_UPLOAD_MAX_FILE_MB`;
+- offline queue текст должен объяснять, что файл будет отправлен позже, без потери данных.
 
-### Build Budget / Lite Mode
-- `lite_mode.notice`
-- `lite_mode.removed_visual_assets`
-- `lite_mode.core_features_available`
-- `lite_mode.learn_more_cta`
+### Status
+- этапы анализа должны называться как понятные шаги процесса, а не как внутренние backend-сигналы;
+- stalled notice должен успокаивать, а не создавать ощущение падения сервиса;
+- timeout copy обязан предлагать конкретное следующее действие.
 
-### Disclaimers and Legal
-- `disclaimer.short`
-- `disclaimer.full`
+### Report
+- risk card copy должен объяснять, почему пункт опасен именно для выбранной роли;
+- disputed clause copy должен кратко объяснять источник неоднозначности;
+- summary должен описывать, кто кому что должен, без расплывчатых формулировок.
 
-## 6) Template Keys (Dynamic Content)
-- `report.summary.contractor_template`
-- `report.summary.employer_template`
-- `report.summary.custom_role_template`
+## 8) Дисклеймеры
+Обязательный юридический дисклеймер:
+- анализ носит информационный характер;
+- это не юридическая консультация;
+- при высокой значимости документа рекомендуется ручная проверка специалистом.
 
-Template rules:
-- Use named placeholders only: `{role}`, `{obligations}`, `{risks}`.
-- Placeholder names must be identical across locales.
-- No grammar by string concatenation in code.
+Дисклеймер должен:
+- быть коротким на основном экране отчета;
+- иметь развернутую версию в legal/settings;
+- локализоваться на все поддерживаемые языки.
 
-## 7) Hardcode Ban Rules
-- Components/screens must not contain inline user-facing literals.
-- Debug/test literals must be blocked from release branch.
-- Any new UI text must be added to key catalog first.
+## 9) Правила для кастомной роли
+- система не должна делать вид, что кастомная роль юридически распознана лучше, чем preset-роль;
+- copy должен подтверждать выбранный контекст, но не обещать абсолютную точность;
+- если re-focus требует повторного анализа, это объясняется простым текстом без технических терминов.
 
-## 8) QA and Release Checks
-- Check 1: 100% UI text coverage by keys.
-- Check 2: each required namespace exists in all locales.
-- Check 3: forced missing key in `en/it/fr` falls back to `ru`.
-- Check 4: localization fallback event emitted (`localization_fallback_triggered`).
-- Check 5: no literal strings in UI source (static lint rule).
+## 10) Технические правила
+- не собирать предложения через склейку строк;
+- pluralization и grammar rules решать средствами i18n-системы;
+- значения вроде лимитов, ETA и чисел передавать через параметры форматирования;
+- отсутствующие ключи логировать в telemetry.
+
+## 11) Definition of done для микротекстов
+- нет production literals в экранах и компонентах;
+- все критичные UX-состояния покрыты ключами;
+- все поддерживаемые locale имеют полный набор обязательных namespaces;
+- fallback на `ru` работает на уровне отдельного ключа, а не только всего экрана.
+

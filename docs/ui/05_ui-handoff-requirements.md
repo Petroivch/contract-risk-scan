@@ -1,89 +1,123 @@
-# 05. UI Handoff (Compact, FE-Ready)
+﻿# 05. Передача во фронтенд (готово к реализации)
 
-## 1) Non-Negotiable Constraints
-- Mobile-only release targets: Android + iOS.
-- User must not download anything post-install except store release build.
-- Local-first UX: history/report cache must be available offline.
-- Multilingual: `ru`, `en`, `it`, `fr`; default and fallback locale is `ru`.
-- Global release budget (total final build): `CONST_RELEASE_TOTAL_BUDGET_MB`.
-- No-hardcode standard:
-- text via i18n keys only;
-- visual values via design tokens only;
-- limits via constants only.
-- Screen/flow contract sources:
-- flow/navigation from `01_screen-map-user-flow.md`;
-- state behavior from `02_screen-states.md`;
-- component and token contract from `03_component-spec.md`;
-- copy and fallback rules from `04_microcopy-guide.md`;
-- visual direction and hi-fi behavior from `07_visual-direction-v1.md` and `08_visual-themes-and-hifi-spec.md`.
+## 1) Непереговорные ограничения
+- релиз только для `Android` и `iPhone`;
+- после установки пользователь не скачивает дополнительные пакеты, модели или assets;
+- UX обязан быть `local-first`;
+- обязательные языки: `ru`, `en`, `it`, `fr`, язык по умолчанию и fallback — `ru`;
+- общий лимит финальной сборки: `CONST_RELEASE_TOTAL_BUDGET_MB`;
+- no-hardcode стандарт обязателен:
+  - текст — только через `i18n keys`;
+  - визуальные значения — только через `design tokens`;
+  - лимиты и размеры — только через `constants registry`.
 
-## 2) Frontend Implementation Checklist
-1. Implement screen/flow from `01_screen-map-user-flow.md`.
-2. Implement state matrix from `02_screen-states.md`.
-3. Implement components from `03_component-spec.md` with tokenized styling.
-4. Implement i18n catalog loading from `04_microcopy-guide.md`:
-- runtime language switch in Settings/Profile;
-- per-key fallback to `ru`;
-- no inline production literals in screen/component code.
-5. Implement local-first behavior:
-- cache report/history payloads locally;
-- queue uploads while offline;
-- resume queue when network restored.
-6. Implement Lite mode communication when release profile is optimized:
-- display `settings.lite_mode_details_title`;
-- explain removed/reduced visual features;
-- never suggest in-app module download.
-7. Implement mobile-only shell behavior:
-- bottom navigation contains Home, History, Settings only;
-- respect platform safe areas and gesture insets on Android and iPhone;
-- preserve current screen state during locale switch and app foreground/background return.
-8. Implement hi-fi behaviors exactly as specified:
-- Upload uses asymmetric header + upload module composition, not generic centered uploader;
-- Status uses timeline block, not single generic progress bar;
-- Report uses severity rail + confidence micro-bar pairing on risk cards;
-- History uses archival ticket-like cards with persistent cached marker;
-- Settings language selector uses full-row tap targets with wrap-safe locale labels.
-9. Add FE verification hooks:
-- stable screen/component IDs for UI automation;
-- telemetry for localization fallback and offline queue resume;
-- theme switch support at token-set level without structural divergence.
+## 2) Источники контракта
+Frontend обязан читать документы в таком порядке:
+1. flow и навигация — `01_screen-map-user-flow.md`
+2. состояния экранов — `02_screen-states.md`
+3. компоненты и токены — `03_component-spec.md`
+4. microcopy и fallback — `04_microcopy-guide.md`
+5. визуальная рамка — `07_visual-direction-v1.md`
+6. screen-level hi-fi — `08_visual-themes-and-hifi-spec.md`
 
-## 3) Required Backend Inputs for FE
-- Upload/start/status/report/history APIs with stable error codes.
-- Status must support network-waiting state for offline queue UX.
-- Report payload must be cache-safe for offline read.
-- Language-aware response metadata:
-- `response_language`
-- `fallback_language`
-- optional `fallback_keys[]`
-- Role-aware response metadata:
-- `selected_role_label`
-- `selected_role_type` (`preset|custom`)
-- `report_focus_version` for role re-focus invalidation/reload logic
-- Report sections must be independently retriable so partial content failures do not blank the whole report screen.
-- History payload must identify:
-- cached availability
-- queue status
-- last-local-open timestamp
+## 3) Передача требований по рабочим кнопкам и действиям
 
-## 4) Build Budget UX Optimization Priority (UI Assets First)
-1. Onboarding media (video/raster backgrounds).
-2. Animation packs (Lottie/GIF/video).
-3. Extra font families/weights.
-4. Unused icon/image sets.
-5. Decorative assets (non-functional backgrounds/illustrations).
+### Auth
+- кнопка входа должна менять состояние на loading внутри той же композиции;
+- ошибка OTP не должна пересобирать весь экран;
+- после успешного входа переход идет либо на role selection, либо сразу в последнюю релевантную точку, если flow это допускает.
 
-Rule: optimization decisions are evaluated against total app build size, not UI-only size.
+### Role Selection
+- primary CTA неактивен, пока роль не валидна;
+- tap по CTA обязан сохранять выбранную роль локально;
+- если роль кастомная, frontend должен сохранять и `label`, и `selected_role_type=custom`.
 
-## 5) Acceptance Gates (Done Criteria)
-- All mandatory flows run on Android and iOS.
-- Offline history/report access works without network.
-- Offline upload queue/resume works.
-- Locale switch works for `ru/en/it/fr`, with fallback to `ru`.
-- Static checks report no hardcoded UI literals in production screens/components.
-- Design/token checks report no ad-hoc visual values.
-- Numeric limits in FE reference constants registry only.
-- Release candidate meets `CONST_RELEASE_TOTAL_BUDGET_MB`, or approved lite-mode profile is documented.
-- Visual QA confirms structural parity with `08_visual-themes-and-hifi-spec.md` on both platforms.
-- Dynamic type and locale expansion do not clip role badge, tab labels, language rows, or history metadata.
-- Android and iPhone safe-area handling keeps bottom navigation, primary CTA rows, and report actions fully tappable.
+### Upload Contract
+- главный сценарий: `choose file -> validate -> start analysis`;
+- если сети нет, этот же CTA должен переключаться на queued-сценарий, а не просто падать ошибкой;
+- после выбора файла экран обязан показать:
+  - имя файла;
+  - формат;
+  - размер;
+  - выбранную роль;
+  - актуальное действие: upload или queue.
+
+### Analysis Status
+- status screen не декоративный: это рабочий экран с живыми переходами состояния;
+- обязательные действия:
+  - `Retry`
+  - `Cancel`
+  - `Resume`, если элемент был queued или waiting_for_network;
+- при возврате приложения из background экран должен восстановить текущий этап, а не стартовать заново визуально.
+
+### Report
+- вкладки `Risks`, `Disputed Clauses`, `Summary` обязаны реально переключаться и хранить свой scroll state;
+- tap по `RiskCard` раскрывает детали в пределах карточки или через согласованный details-pattern;
+- изменение роли из report header обязано запускать confirm-flow на `re-focus` анализа;
+- если report section частично не загрузилась, остальные секции не должны становиться пустыми.
+
+### History
+- tap по элементу истории открывает детальный отчет;
+- queued и cached состояния должны быть видимы прямо в list item;
+- offline-элементы, доступные локально, остаются интерактивными.
+
+### Settings
+- language rows должны быть full-row tappable;
+- смена языка должна происходить сразу;
+- текущий экран после смены языка не должен сбрасывать user state.
+
+## 4) Передача требований по главному потоку анализа договора
+
+### Обязательный пользовательский путь
+1. Пользователь проходит вход.
+2. Выбирает роль.
+3. Загружает файл договора.
+4. Видит живой статус анализа.
+5. Открывает отчет с 3 вкладками.
+6. Может вернуться в историю и открыть тот же отчет повторно.
+
+### Что для frontend критично
+- роль должна быть видна на этапах `upload`, `status`, `report`, `history item`;
+- `Summary` должно явно показывать обязательства и ответственность именно для выбранной роли;
+- `Risks` должно визуально отдавать приоритет `high` и `critical`;
+- `Disputed Clauses` не должны визуально перебивать `critical risks`, если их severity ниже.
+
+### Что считать поломанным flow
+- кнопка загрузки не дает результата при offline без queued fallback;
+- анализ стартует без выбранной роли;
+- смена языка сбрасывает экран статуса;
+- report tabs не переключаются независимо;
+- история не открывает cached report без сети.
+
+## 5) Требования к реализации визуала
+- Upload не должен выглядеть как generic centered card;
+- Status не должен сводиться к одному полосатому progress bar;
+- Report не должен быть равномерной серой лентой карточек;
+- high-risk состояния обязаны иметь более сильную визуальную иерархию, чем medium/low;
+- дизайн должен оставаться плотным и читаемым на small screens `320–390dp`.
+
+## 6) Обязательные backend-входы для frontend
+- стабильные API для `upload`, `start`, `status`, `report`, `history`;
+- предсказуемые error codes;
+- статус `waiting_for_network` для offline queue UX;
+- cache-safe payload для offline чтения отчета;
+- метаданные языка:
+  - `response_language`
+  - `fallback_language`
+  - `fallback_keys[]` — опционально
+- метаданные роли:
+  - `selected_role_label`
+  - `selected_role_type`
+  - `report_focus_version`
+- возможность секционного retry для частичных ошибок отчета.
+
+## 7) Приемочные гейты
+- все ключевые действия работают на `Android` и `iPhone`;
+- offline queue и resume работают;
+- язык переключается между `ru/en/it/fr` без ломания состояния;
+- в production UI нет хардкодных текстов;
+- все визуальные значения токенизированы;
+- `RiskCard`, `DisputedClauseCard`, `RoleBadge`, `StatusBlock` реализованы в соответствии с контрактом;
+- визуальное поведение совпадает с `08_visual-themes-and-hifi-spec.md`.
+
+

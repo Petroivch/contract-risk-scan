@@ -1,71 +1,71 @@
-﻿# 02. Screen States (normal/loading/empty/error)
+﻿# 02. Состояния экранов (обычное / загрузка / пусто / ошибка)
 
-## 1) Onboarding/Auth
+## 1) Onboarding / Auth
 
 ### Normal
-- Intro cards with short value statements.
-- Sign in form with primary CTA.
-- All labels/messages shown in active locale (`ru` default).
-- Copy references i18n keys (`onboarding.*`, `auth.*`) only.
+- вступительные карточки с короткими ценностными сообщениями;
+- форма входа с primary CTA;
+- все тексты показываются в активной locale, по умолчанию `ru`;
+- весь copy использует ключи `onboarding.*`, `auth.*`.
 
 ### Loading
-- Button spinner keys: `auth.sending_code`, `auth.signing_in`.
+- spinner на кнопке с ключами `auth.sending_code`, `auth.signing_in`.
 
 ### Empty
-- N/A (form-driven screen).
+- не применяется.
 
 ### Error
-- Invalid email format.
-- Wrong/expired OTP.
-- Network unavailable.
-- Generic key: `errors.auth_sign_in_failed`.
-- Missing translation key -> fallback to `ru` for key only.
+- неправильный email;
+- неверный или просроченный OTP;
+- сеть недоступна;
+- общий ключ: `errors.auth_sign_in_failed`;
+- отсутствующий перевод -> fallback на `ru`.
 
-## 2) Role Selection (editable dropdown)
+## 2) Выбор роли
 
 ### Normal
-- Label key: `role.field_label`
-- Editable dropdown + recent/custom suggestions.
-- Helper key: `role.helper`
-- Current app language indicator is shown in the header only on Settings/Profile; Role Selection keeps focus on role input.
+- label: `role.field_label`;
+- редактируемый dropdown с подсказками;
+- helper: `role.helper`;
+- акцент экрана — на выборе роли, а не на служебных настройках.
 
 ### Loading
-- If role presets loaded remotely: skeleton for list.
+- если presets приходят удаленно, показывается skeleton списка.
 
 ### Empty
-- No suggestion matches typed role -> show CTA key `role.use_custom_role_cta`.
+- если совпадений нет, показывается `role.use_custom_role_cta`.
 
 ### Error
-- Role field empty on continue.
-- Role too long (`> CONST_ROLE_MAX_LENGTH`).
-- Unsupported symbols (if validation enabled).
-- Missing translation key -> fallback `ru`.
+- поле роли пустое при continue;
+- длина роли `> CONST_ROLE_MAX_LENGTH`;
+- неподдерживаемые символы, если включена валидация;
+- missing translation key -> fallback `ru`.
 
-## 3) Upload Contract
+## 3) Загрузка договора
 
 ### Normal
-- Upload area + file requirements.
-- Primary CTA key: `upload.choose_file_cta`.
-- Texts localized to active locale.
-- If offline, CTA changes to local queue action.
+- upload-модуль и требования к файлу;
+- primary CTA: `upload.choose_file_cta`;
+- тексты локализованы;
+- при отсутствии сети CTA меняется на локальное queued-действие.
 
 ### Loading
-- Upload progress bar with percent and cancel action.
+- progress bar загрузки с процентом и cancel action.
 
 ### Empty
-- No file selected yet.
+- файл еще не выбран.
 
 ### Error
-- Unsupported format.
-- File too large (`> CONST_UPLOAD_MAX_FILE_MB`).
-- Upload failed (retry + choose another file).
-- Missing translation key -> fallback `ru`.
-- Offline network error -> offer key `upload.offline_queue_cta`.
+- неподдерживаемый формат;
+- размер файла `> CONST_UPLOAD_MAX_FILE_MB`;
+- ошибка загрузки;
+- missing translation key -> fallback `ru`;
+- offline error -> предложить `upload.offline_queue_cta`.
 
-## 4) Analysis Status
+## 4) Статус анализа
 
 ### Normal
-- Stepper with stages:
+Степпер этапов:
 1. `status.stage_file_received`
 2. `status.stage_text_extraction`
 3. `status.stage_clause_detection`
@@ -73,126 +73,133 @@
 5. `status.stage_report_generation`
 
 ### Loading
-- Active stage animation + ETA hint when backend provides `eta_seconds`; otherwise show `status.still_working_notice`.
-- Language switch in Settings does not interrupt ongoing analysis.
-- If connection drops, status pauses and item moves to `queued`/`waiting_for_network`.
+- активный этап анимируется;
+- если backend дает `eta_seconds`, показывается ETA;
+- иначе используется `status.still_working_notice`;
+- смена языка не прерывает анализ;
+- при потере сети элемент уходит в `queued` или `waiting_for_network`.
 
 ### Empty
-- N/A.
+- не применяется.
 
 ### Error
-- Timeout, parser failure, AI service unavailable.
-- Actions: Retry, Back to Upload, Contact support.
-- Missing translation key -> fallback `ru`.
+- timeout;
+- parser failure;
+- AI service unavailable;
+- действия: Retry, Back to Upload, Contact support;
+- missing translation key -> fallback `ru`.
 
-## 5) Report (tabs)
+## 5) Отчет
 
 ### Normal
-- Tab 1 Risks: ranked cards by severity.
-- Tab 2 Disputed Clauses: clauses requiring interpretation.
-- Tab 3 Summary: key obligations and responsibilities focused on selected role.
-- Tabs, labels, CTA, and disclaimers are localized.
+- вкладка `Risks`: карточки рисков по severity;
+- вкладка `Disputed Clauses`: спорные формулировки;
+- вкладка `Summary`: обязательства и ответственность с фокусом на выбранной роли;
+- вкладки, CTA и disclaimers локализованы.
 
 ### Loading
-- Skeleton cards per tab during report fetch/re-rank.
+- skeleton-карточки на уровне вкладки при подгрузке или re-rank.
 
 ### Empty
-- Risks tab key: `empty.no_critical_risks` + informational note key.
-- Disputed tab key: `empty.no_disputed_clauses` + limits note key.
-- Summary tab: fallback short summary with confidence label.
+- Risks: `empty.no_critical_risks` + пояснение об ограничениях анализа;
+- Disputed: `empty.no_disputed_clauses` + limits note;
+- Summary: короткое fallback summary с confidence label.
 
 ### Error
-- Failed to load report / partial data missing.
-- Retry section load.
-- If localized backend narrative unavailable, display `ru` narrative + fallback marker.
+- не удалось загрузить отчет полностью или частично;
+- секционный retry;
+- если narrative нет на выбранном языке — показать `ru` + fallback marker.
 
 ## 6) History
 
 ### Normal
-- Chronological report list with status and date.
-- Search/filter by role and severity.
-- Cached reports are available offline.
+- список отчетов по времени;
+- поиск и фильтрация по роли и severity;
+- кэшированные отчеты доступны offline.
 
 ### Loading
-- List skeletons.
+- skeleton-элементы списка.
 
 ### Empty
-- Keys: `empty.no_reports`, `cta.upload_first_contract`.
-- Offline + no cache: show dedicated local-empty hint.
+- `empty.no_reports`, `cta.upload_first_contract`;
+- если offline и кэша нет, показать отдельное объяснение локальной пустоты.
 
 ### Error
-- Fetch failed + retry.
-- Missing translation key -> fallback `ru`.
+- ошибка загрузки списка + retry;
+- missing translation key -> fallback `ru`.
 
-## 7) Settings/Profile
+## 7) Settings / Profile
 
 ### Normal
-- Language, notifications, legal pages, sign out.
-- Lite mode details (visible only when release optimizations are enabled).
-- Language selector options:
-- `ru` (Русский)
-- `en` (English)
-- `it` (Italiano)
-- `fr` (Français)
-- Current language has selected state.
+- язык;
+- уведомления;
+- legal pages;
+- sign out;
+- `Lite mode details`, если включен оптимизированный профиль;
+- варианты языка:
+  - `ru` (Русский)
+  - `en` (English)
+  - `it` (Italiano)
+  - `fr` (Français)
 
 ### Loading
-- Save preference spinner.
-- Message key: `settings.language_applying`.
+- spinner на сохранении настройки;
+- сообщение `settings.language_applying`.
 
 ### Empty
-- N/A.
+- не применяется.
 
 ### Error
-- Preference update failed.
-- On language load failure -> use `ru` and show non-blocking notice.
+- не удалось сохранить настройку;
+- если язык не загрузился, использовать `ru` и показать ненавязчивое уведомление.
 
-## 8) Local-First and Offline Rules
+## 8) Local-first и offline-правила
 
 ### Normal
-- User can open cached history/report content without network.
-- New uploads can be queued locally.
+- пользователь может открыть кэшированный отчет и историю без сети;
+- новые загрузки можно ставить в локальную очередь.
 
 ### Loading
-- When network restores, queued items resume automatically (or by user action if auto-sync disabled).
+- после восстановления сети queued-элементы продолжаются автоматически или по действию пользователя.
 
 ### Empty
-- If no cached data exists, show guidance to upload when online.
+- если локальных данных нет, показать guidance для загрузки при наличии сети.
 
 ### Error
-- Offline state must never block access to already cached reports.
-- No blocking prompt to download additional modules/assets is allowed.
+- offline не должен блокировать доступ к уже сохраненным отчетам;
+- запрещено требовать скачивание дополнительных модулей или assets.
 
-## 9) Cross-Screen Localization Rules
+## 9) Кросс-экранные правила локализации
 
 ### Normal
-- Active locale applies to onboarding/auth, upload, status, report tabs, errors, disclaimers, and all CTA.
+- активная locale применяется ко всем ключевым экранам, состояниям и disclaimer-блокам.
 
 ### Loading
-- Locale switch may trigger brief text skeletons, but it must preserve user state, scroll position, and active tab on the same screen.
+- при смене языка допустим короткий text skeleton, но без сброса состояния экрана, scroll position и активной вкладки.
 
 ### Empty
-- Empty-state copy is localized and uses same keys across all locales.
+- empty-state copy локализован и использует одни и те же namespaces.
 
 ### Error
-- Fallback policy is deterministic: missing key/value -> render `ru`.
-- Localization failure must never block core actions (upload, retry, open report).
+- fallback deterministic: отсутствующий ключ -> `ru`;
+- ошибка локализации не может ломать core actions: upload, retry, open report.
 
-## 10) Build Budget Optimization Mode (Total build > `CONST_RELEASE_TOTAL_BUDGET_MB`)
+## 10) Режим оптимизации размера сборки
 
 ### Normal
-- App runs in optimized UX profile ("Lite mode details" in Settings).
+- приложение работает в облегчённом UX-профиле и объясняет это в `Lite mode details`.
 
 ### Loading
-- Heavy visual placeholders are replaced with lightweight equivalents.
+- тяжелые визуальные placeholders заменяются легкими эквивалентами.
 
 ### Empty
-- If optional visual packs were removed from release, show neutral placeholder.
+- если декоративные packs убраны, показывается нейтральный placeholder.
 
 ### Error
-- UX must not suggest downloading additional in-app packs.
-- If feature omitted due global budget constraints, show explanatory message and core-flow alternative.
+- UX не должен предлагать скачивать дополнительные пакеты;
+- если функция убрана ради общего размера сборки, пользователь получает прозрачное объяснение и core-flow альтернативу.
 
-## 11) Hardcode Ban Rules
-- Screen documents must reference keys/constants/tokens, not literal production strings.
-- Any literal string in this file is illustrative only and must map to i18n key before implementation.
+## 11) Правила запрета хардкода
+- документы экранов должны ссылаться на `keys`, `constants`, `tokens`, а не на production literals;
+- любые literal strings здесь носят иллюстративный характер и в коде обязаны быть заменены на `i18n keys`.
+

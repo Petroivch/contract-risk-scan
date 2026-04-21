@@ -1,14 +1,14 @@
-# 03. Component Design Spec (Production-Grade)
+﻿# 03. Спецификация компонентов (production-grade)
 
-## 1) System Rules (No Hardcode)
-- All user-facing text must be referenced by i18n key.
-- All visual values must use design tokens (no ad-hoc colors/sizes).
-- All numeric limits must reference constants from `06_ui-quality-standards.md`.
-- Any new value requires documented rationale and owner.
+## 1) Системные правила
+- весь пользовательский текст приходит только через `i18n keys`;
+- все визуальные значения берутся из `design tokens`;
+- все числовые ограничения ссылаются на `06_ui-quality-standards.md`;
+- любое новое значение требует документированного обоснования.
 
-## 2) Token Contract
+## 2) Контракт токенов
 
-### Color Tokens (semantic)
+### Цветовые токены
 - `color.brand.primary`
 - `color.brand.primaryHover`
 - `color.risk.critical`
@@ -26,7 +26,7 @@
 - `color.text.secondary`
 - `color.text.inverse`
 
-### Typography Tokens
+### Типографика
 - `typography.display.s`
 - `typography.title.l`
 - `typography.title.m`
@@ -35,140 +35,141 @@
 - `typography.label.m`
 - `typography.caption.s`
 
-### Spacing and Layout Tokens
+### Отступы и layout
 - `space.2`, `space.4`, `space.8`, `space.12`, `space.16`, `space.24`, `space.32`
 - `radius.s`, `radius.m`, `radius.l`
 - `elevation.0`, `elevation.1`, `elevation.2`
 
-### Border and Indicator Tokens
+### Границы и индикаторы
 - `border.subtle`
 - `border.strong`
 - `border.role.custom`
 - `indicator.confidence.*`
 
-### Motion Tokens
+### Motion
 - `motion.duration.fast`
 - `motion.duration.normal`
 - `motion.easing.standard`
 
-## 3) Component: `RiskCard`
+## 3) Компонент `RiskCard`
 
-### Purpose
-Render one detected risk with severity, impact, and recommendation.
+### Назначение
+Показ одного найденного риска с severity, impact и recommendation.
 
-### Data Fields
-- `risk_title_key` or `risk_title_text`
+### Поля данных
+- `risk_title_key` или `risk_title_text`
 - `severity`
 - `clause_reference`
-- `impact_summary_key` or `impact_summary_text`
-- `recommendation_key` or `recommendation_text`
+- `impact_summary_key` или `impact_summary_text`
+- `recommendation_key` или `recommendation_text`
 - `confidence_score`
 
-### Behavior
-- Tap expands details.
-- Bookmark action optional.
-- Default sort by severity descending.
+### Поведение
+- tap раскрывает детали;
+- bookmark — опционально;
+- сортировка по умолчанию: severity desc.
 
-### States
+### Состояния
 - `normal`
 - `expanded`
 - `loading`
 - `error`
 
-### Token Rules
-- Severity accent uses `color.risk.*` semantic tokens.
-- Typography and spacing use token contract only.
+### Визуальные правила
+- severity accent использует только `color.risk.*`;
+- типографика и spacing — только через токены;
+- high и critical должны визуально считываться быстрее остальных уровней.
 
-## 4) Component: `DisputedClauseCard`
+## 4) Компонент `DisputedClauseCard`
 
-### Purpose
-Render ambiguous clause likely to cause dispute.
+### Назначение
+Показ спорного или неоднозначного пункта договора.
 
-### Data Fields
+### Поля данных
 - `clause_quote`
-- `why_disputed_key` or `why_disputed_text`
+- `why_disputed_key` или `why_disputed_text`
 - `party_impact`
-- `suggested_revision_key` or `suggested_revision_text`
+- `suggested_revision_key` или `suggested_revision_text`
 - `confidence_score`
 
-### Constraints
-- Quote preview max chars: `CONST_DISPUTED_PREVIEW_MAX_CHARS`.
+### Ограничения
+- max preview: `CONST_DISPUTED_PREVIEW_MAX_CHARS`.
 
-### Behavior
-- Tap expands full clause.
-- Copy action optional.
+### Поведение
+- tap раскрывает полный фрагмент;
+- copy action — опционально.
 
-### States
+### Состояния
 - `normal`
 - `expanded`
 - `loading`
 - `empty_placeholder`
 
-## 5) Component: `RoleBadge`
+## 5) Компонент `RoleBadge`
 
-### Purpose
-Show active role across upload/status/report contexts.
+### Назначение
+Показ активной роли на экранах upload, status и report.
 
-### Data Fields
+### Поля данных
 - `role_label`
 - `is_custom`
 
-### Behavior
-- Tap opens role edit modal.
-- If role changes after report is ready, confirm re-focus flow.
+### Поведение
+- tap открывает изменение роли;
+- если роль меняется после готовности отчета, запускается confirm-flow на re-focus.
 
-### States
+### Состояния
 - `normal`
 - `editing`
 - `validation_error`
 
-## 6) Component: `StatusBlock`
+## 6) Компонент `StatusBlock`
 
-### Purpose
-Represent processing stage and reliability status.
+### Назначение
+Отображение этапа обработки и надежности состояния.
 
-### Data Fields
+### Поля данных
 - `stage_name_key`
 - `stage_state` (`pending|active|done|failed|waiting_for_network`)
 - `message_key`
-- `eta_seconds` (optional)
-- `action_type` (`retry|cancel|resume`) optional
+- `eta_seconds` — опционально
+- `action_type` (`retry|cancel|resume`) — опционально
 
-### Behavior
-- Real-time refresh via polling or websocket.
-- Inactivity notice after `CONST_STATUS_STALL_NOTICE_SEC`.
+### Поведение
+- обновление через polling или websocket;
+- notice после `CONST_STATUS_STALL_NOTICE_SEC`.
 
-### States
+### Состояния
 - `processing`
 - `success`
 - `warning`
 - `error`
 
-## 7) Component: `LanguageSelector`
+## 7) Компонент `LanguageSelector`
 
-### Purpose
-Change locale in Settings/Profile.
+### Назначение
+Смена locale в `Settings / Profile`.
 
-### Data Fields
+### Поля данных
 - `active_locale` (`ru|en|it|fr`)
 - `available_locales[]`
 - `fallback_notice_visible`
 
-### Behavior
-- Runtime switch without app restart.
-- Persist selection.
-- Missing key fallback to `ru` (per-key).
+### Поведение
+- runtime switch без рестарта;
+- сохранение выбора;
+- отсутствующий ключ -> fallback на `ru`.
 
-### States
+### Состояния
 - `normal`
 - `applying`
 - `save_error`
 
-## 8) Global Constraints
-- Minimum touch target: `CONST_TOUCH_TARGET_MIN_PX`.
-- Title truncation: `CONST_CARD_TITLE_MAX_LINES`.
-- Body truncation: `CONST_CARD_BODY_MAX_LINES`.
-- Dynamic text support up to `CONST_DYNAMIC_TYPE_MAX_PERCENT`.
-- Stable component IDs required for automated UI tests.
-- Offline/local-first mode must preserve access to cached report/history content.
-- Components used in hi-fi screens must map to `07_visual-direction-v1.md` and `08_visual-themes-and-hifi-spec.md` without introducing extra visual primitives outside this token contract.
+## 8) Глобальные ограничения
+- minimum touch target: `CONST_TOUCH_TARGET_MIN_PX`;
+- заголовок карточки: `CONST_CARD_TITLE_MAX_LINES`;
+- основной текст карточки: `CONST_CARD_BODY_MAX_LINES`;
+- поддержка dynamic text до `CONST_DYNAMIC_TYPE_MAX_PERCENT`;
+- стабильные component IDs обязательны для UI automation;
+- offline/local-first режим должен сохранять доступ к cached history/report;
+- hi-fi экраны обязаны маппиться на `07_visual-direction-v1.md` и `08_visual-themes-and-hifi-spec.md`.
