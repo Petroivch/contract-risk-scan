@@ -1,4 +1,4 @@
-# Data Lifecycle Policy (Local-First + Config-Driven)
+﻿# Политика жизненного цикла данных (Local-First + Config-Driven)
 
 ## 1. Принцип
 - Политики хранения и лимиты не хардкодятся в приложении.
@@ -31,7 +31,7 @@
 - hard delete по policy `data.retention.contract_hard_delete_days`.
 
 2. `analysis_jobs` и связанный отчет:
-- живут вместе с договором (каскадные связи).
+- живут вместе с договором через каскадные связи.
 
 3. `audit_logs`:
 - TTL по policy `data.retention.audit_logs_days`.
@@ -42,12 +42,12 @@
 
 ## 5. Мультиязычность и locale
 1. Поддерживаемые языки:
-- задаются `language_catalog` (active set).
+- задаются `language_catalog` как active set.
 
 2. Default/fallback:
-- `app_config.language.default` + `language_catalog.is_default`.
+- `app_config.language.default` и `language_catalog.is_default`.
 
-3. `users.locale`/`users.timezone`:
+3. `users.locale` и `users.timezone`:
 - defaults задаются через `app_config.locale.default` и `app_config.timezone.default`.
 
 ## 6. Наблюдаемость

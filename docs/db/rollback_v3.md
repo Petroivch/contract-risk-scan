@@ -1,4 +1,4 @@
-# Rollback: v3__language_support.sql
+﻿# Откат: v3__language_support.sql
 
 ## Порядок отката
 Если уже применена `v4`, сначала выполнить:

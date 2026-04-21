@@ -1,7 +1,7 @@
-# Rollback: v4__config_registry_and_invariants.sql
+﻿# Откат: v4__config_registry_and_invariants.sql
 
 ## Когда использовать
-- Нужно откатить конфигурационный реестр (`app_config`) и языковой справочник (`language_catalog`).
+- Нужно откатить реестр конфигов (`app_config`) и языковой справочник (`language_catalog`).
 - Необходимо вернуться к модели `v3` с CHECK-ограничениями по языкам.
 
 ## Важно
