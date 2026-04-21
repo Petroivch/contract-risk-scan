@@ -1,14 +1,14 @@
-﻿# Visual Implementation Notes
+﻿# Заметки по визуальной реализации
 
-## Visual Direction
-- High-contrast clean editorial UI with cool-blue palette.
-- Layered cards and decorative background blobs for depth.
-- Strong hierarchy via large headers + compact metadata badges.
+## Визуальное направление
+- Контрастный editorial UI с чистой светлой базой и насыщенным фирменным акцентом.
+- Глубина строится за счет слоев поверхности, границ, ритма и статусных акцентов, а не за счет тяжелых декоративных фоновых blobs.
+- Главная иерархия: заголовок экрана -> роль/статус -> ключевое действие -> рабочий контент.
 
-## Theme Layer
-- Token source: `apps/mobile/src/config/designTokens.ts`
+## Слой темы
+- Источник токенов: `apps/mobile/src/config/designTokens.ts`
 - Runtime theme exports: `apps/mobile/src/theme/tokens.ts`
-- Token groups:
+- Группы токенов:
   - colors
   - spacing
   - radius
@@ -16,28 +16,38 @@
   - shadow
   - motion timings
 
-## Screen Shell Pattern
-- Shared shell: `components/layout/ScreenShell.tsx`
-- Provides:
-  - decorative background
-  - elevated header card
-  - consistent content gutter
-  - language selector placement
+## Паттерн screen shell
+- Общий shell: `components/layout/ScreenShell.tsx`
+- Он должен обеспечивать:
+  - цельную screen composition;
+  - устойчивый header pattern;
+  - единый content gutter;
+  - safe-area корректность на Android и iPhone;
+  - предсказуемое размещение служебных controls.
 
-## Demo Components
+## Базовые demo-компоненты
 - `RoleBadge`
 - `RiskCard`
 - `DisputedCard`
+- `StatusBlock`
 
-## Applied Screens
-- Auth (styled shell)
+## Экраны, где визуальная система обязательна
+- Auth
+- Role Selection
 - Upload
 - Analysis Status
-- Report (tabbed shell)
+- Report
 - History
 - Settings
 
-## Maintainability Rules
-- No direct color/typography literals in screens.
-- Use tokenized style values only.
-- UI text from i18n keys only.
+## Правила поддерживаемости
+- никаких прямых цветовых и типографических literals в экранах;
+- все значения только из token layer;
+- тексты только из i18n keys;
+- high-risk и critical UI состояния не должны реализовываться ad-hoc стилями в конкретном экране.
+
+## Важно для рабочих кнопок
+- все CTA должны иметь явные состояния `default/pressed/loading/disabled`;
+- смена состояния кнопки не должна вызывать layout jump;
+- на Upload и Status primary action должен оставаться в визуальном фокусе даже при появлении ошибок или queued state.
+
