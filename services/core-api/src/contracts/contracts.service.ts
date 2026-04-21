@@ -611,6 +611,10 @@ export class ContractsService {
       return RiskSeverity.Medium;
     }
 
+    if (severity === 'critical') {
+      return RiskSeverity.Critical;
+    }
+
     return RiskSeverity.High;
   }
 
