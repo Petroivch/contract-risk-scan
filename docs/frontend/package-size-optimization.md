@@ -1,57 +1,57 @@
-﻿# Package Size Optimization Plan
+﻿# План оптимизации размера пакета
 
-## Budget Definition
-- **Total final project release budget**: `228 MB` (global limit)
-- This includes all deliverables in the release package set.
+## Определение бюджета
+- **Общий лимит релизной сборки проекта**: `228 MB` (глобальный предел)
+- В этот бюджет входят все deliverables, которые попадают в release package set.
 
-## Frontend Mobile Share Estimate
-- Target mobile contribution (frontend package share): **<= 120 MB**
-- Rationale:
-  - leave budget headroom for backend deliverables, docs/assets, and release metadata
-  - reduce risk of crossing global 228 MB cap in final aggregation
+## Оценка вклада mobile frontend
+- Целевой вклад mobile (доля frontend-пакета): **<= 120 MB**
+- Причина:
+  - оставить запас для backend deliverables, docs/assets и release metadata
+  - снизить риск превышения глобального лимита 228 MB при финальной агрегации
 
-## Current Risk Factors (Mobile)
-- React Native/Expo runtime binaries
-- Native deps growth (SQLite, file-system, media/libs)
+## Текущие факторы риска (mobile)
+- runtime-бинарники React Native/Expo
+- рост native dependencies (SQLite, file-system, media/libs)
 - bundled assets (images/fonts/icons)
-- duplicated localization/media resources
+- дублирование localization/media resources
 
-## Optimization Checklist
+## Чеклист оптимизации
 1. Assets
-   - compress raster assets (WebP/AVIF where applicable)
-   - remove unused design assets and duplicates
-   - subset fonts (only used glyph ranges)
+   - сжимать raster assets (WebP/AVIF, где применимо)
+   - удалять неиспользуемые design assets и дубликаты
+   - делать subsetting шрифтов (только используемые диапазоны glyphs)
 2. JS/TS bundle
-   - trim dead dependencies
-   - avoid heavy utility libs when native/light alternatives exist
-   - split debug-only modules from release path
+   - убирать мертвые зависимости
+   - не использовать тяжелые utility libs, если есть native/light альтернативы
+   - выносить debug-only модули из release path
 3. Native build config
-   - enable Hermes for release
-   - enable minify/proguard/r8 for Android
-   - strip symbols in release pipeline
+   - включить Hermes для release
+   - включить minify/proguard/r8 для Android
+   - strip symbols в release pipeline
 4. ABI strategy
-   - prefer split ABI artifacts for distribution channels that support it
+   - по возможности использовать split ABI artifacts для каналов дистрибуции, которые их поддерживают
 5. Localization
-   - keep only required locales (`ru/en/it/fr`) in app bundle
+   - оставлять в app bundle только нужные locale (`ru/en/it/fr`)
 
-## If Total > 228 MB (Options and Trade-offs)
+## Если общий размер > 228 MB (варианты и компромиссы)
 1. Split ABI delivery
-   - Expected effect: `~15-35%` smaller per-device APK
-   - Trade-off: multiple artifacts to manage in CI/CD
-2. Aggressive asset compression + font subsetting
-   - Expected effect: `~10-25 MB` reduction
-   - Trade-off: quality tuning time, potential visual compromise
-3. Remove/replace heavy dependencies
-   - Expected effect: `~5-20 MB` depending on library
-   - Trade-off: refactor effort and re-testing
-4. Move non-critical demo content to optional backend-provided data
-   - Expected effect: variable (`5-30 MB`)
-   - Trade-off: requires runtime network for that optional content
-5. Separate debug tooling from release build
-   - Expected effect: `~3-10 MB`
-   - Trade-off: stricter release pipeline discipline
+   - Ожидаемый эффект: примерно `15-35%` уменьшения размера на устройство для APK
+   - Компромисс: больше артефактов нужно управлять в CI/CD
+2. Агрессивное сжатие assets + subsetting шрифтов
+   - Ожидаемый эффект: `10-25 MB` экономии
+   - Компромисс: время на настройку качества, возможные визуальные потери
+3. Удаление или замена тяжелых зависимостей
+   - Ожидаемый эффект: `5-20 MB` в зависимости от библиотеки
+   - Компромисс: рефакторинг и повторное тестирование
+4. Перенос не критичного demo content в опциональные backend-provided data
+   - Ожидаемый эффект: переменный (`5-30 MB`)
+   - Компромисс: для этого контента потребуется runtime network
+5. Разделение debug tooling и release build
+   - Ожидаемый эффект: `3-10 MB`
+   - Компромисс: более строгая дисциплина release pipeline
 
-## Verification
-- Track artifact sizes in CI for each commit.
-- Block release if estimated global package sum > 228 MB.
-- Keep mobile share trend dashboard (target <= 120 MB).
+## Проверка
+- Отслеживать размеры артефактов в CI для каждого коммита.
+- Блокировать release, если оценка суммарного размера > 228 MB.
+- Вести dashboard по mobile share (цель <= 120 MB).

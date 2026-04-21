@@ -1,8 +1,8 @@
-import { StyleSheet, Text, View } from 'react-native';
+﻿import { StyleSheet, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 
 import type { DisputedClause } from '../../api/types';
-import { StatusChip } from '../ui/StatusChip';
+import { StatusChip } from '../StatusChip';
 import { colors, radius, shadow, spacing, typography } from '../../theme/tokens';
 
 interface DisputedCardProps {
@@ -14,13 +14,19 @@ export const DisputedCard = ({ item }: DisputedCardProps): JSX.Element => {
 
   return (
     <View style={styles.card}>
-      <View style={styles.header}>
-        <Text style={styles.title}>{t('report.clause', { value: item.clauseRef })}</Text>
-        <StatusChip label={t('report.disputedBadge')} tone="warning" />
+      <View style={styles.headlineRow}>
+        <View style={styles.titleBlock}>
+          <Text style={styles.kicker}>{t('report.disputedCardLabel')}</Text>
+          <Text style={styles.title}>{t('report.clause', { value: item.clauseRef })}</Text>
+        </View>
+        <StatusChip label={t('report.disputedTone')} tone="warning" />
       </View>
+
       <Text style={styles.description}>{item.whyDisputed}</Text>
+
       <View style={styles.rewriteBox}>
-        <Text style={styles.rewrite}>{t('report.rewrite', { text: item.suggestedRewrite })}</Text>
+        <Text style={styles.rewriteLabel}>{t('report.rewriteLabel')}</Text>
+        <Text style={styles.rewrite}>{item.suggestedRewrite}</Text>
       </View>
     </View>
   );
@@ -28,22 +34,34 @@ export const DisputedCard = ({ item }: DisputedCardProps): JSX.Element => {
 
 const styles = StyleSheet.create({
   card: {
-    borderRadius: radius.xl,
+    borderRadius: radius.lg,
     backgroundColor: colors.surface,
     borderWidth: 1,
     borderColor: colors.border,
+    borderLeftWidth: 6,
+    borderLeftColor: colors.warning,
     padding: spacing.md,
     gap: spacing.sm,
     ...shadow.card,
   },
-  header: {
+  headlineRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'flex-start',
     gap: spacing.sm,
   },
-  title: {
+  titleBlock: {
     flex: 1,
+    gap: spacing.xxs,
+  },
+  kicker: {
+    color: colors.textMuted,
+    fontSize: typography.size.caption,
+    lineHeight: typography.lineHeight.caption,
+    fontWeight: typography.weight.semibold,
+    textTransform: 'uppercase',
+    letterSpacing: 0.6,
+  },
+  title: {
     color: colors.textPrimary,
     fontSize: typography.size.subtitle,
     lineHeight: typography.lineHeight.subtitle,
@@ -60,6 +78,15 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: colors.divider,
     padding: spacing.sm,
+    gap: spacing.xxs,
+  },
+  rewriteLabel: {
+    color: colors.textMuted,
+    fontSize: typography.size.caption,
+    lineHeight: typography.lineHeight.caption,
+    fontWeight: typography.weight.semibold,
+    textTransform: 'uppercase',
+    letterSpacing: 0.5,
   },
   rewrite: {
     color: colors.textPrimary,

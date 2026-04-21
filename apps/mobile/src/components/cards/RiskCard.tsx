@@ -1,8 +1,8 @@
-import { StyleSheet, Text, View } from 'react-native';
+﻿import { StyleSheet, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 
 import type { RiskItem } from '../../api/types';
-import { StatusChip } from '../ui/StatusChip';
+import { StatusChip } from '../StatusChip';
 import { colors, radius, shadow, spacing, typography } from '../../theme/tokens';
 
 interface RiskCardProps {
@@ -15,31 +15,25 @@ const severityToneMap = {
   high: 'danger',
 } as const;
 
-const confidenceWidthMap = {
-  low: '42%',
-  medium: '71%',
-  high: '92%',
-} as const;
-
 export const RiskCard = ({ item }: RiskCardProps): JSX.Element => {
   const { t } = useTranslation();
 
   return (
-    <View style={styles.card}>
-      <View style={[styles.rail, item.severity === 'high' ? styles.railHigh : item.severity === 'medium' ? styles.railMedium : styles.railLow]} />
-      <View style={styles.content}>
-        <View style={styles.headlineRow}>
+    <View style={[styles.card, styles[`severity_${item.severity}`]]}>
+      <View style={styles.headlineRow}>
+        <View style={styles.titleBlock}>
+          <Text style={styles.kicker}>{t('report.riskCardLabel')}</Text>
           <Text style={styles.title}>{item.title}</Text>
-          <StatusChip label={t(`severity.${item.severity}`)} tone={severityToneMap[item.severity]} />
         </View>
-        <Text style={styles.meta}>{t('report.clause', { value: item.clauseRef })}</Text>
-        <Text style={styles.description}>{item.description}</Text>
-        <View style={styles.recommendationBox}>
-          <Text style={styles.recommendation}>{t('report.recommendation', { text: item.recommendation })}</Text>
-        </View>
-        <View style={styles.confidenceTrack}>
-          <View style={[styles.confidenceFill, { width: confidenceWidthMap[item.severity] }]} />
-        </View>
+        <StatusChip label={t(`severity.${item.severity}`)} tone={severityToneMap[item.severity]} />
+      </View>
+
+      <Text style={styles.meta}>{t('report.clause', { value: item.clauseRef })}</Text>
+      <Text style={styles.description}>{item.description}</Text>
+
+      <View style={styles.recommendationBox}>
+        <Text style={styles.recommendationLabel}>{t('report.recommendationLabel')}</Text>
+        <Text style={styles.recommendation}>{item.recommendation}</Text>
       </View>
     </View>
   );
@@ -47,39 +41,42 @@ export const RiskCard = ({ item }: RiskCardProps): JSX.Element => {
 
 const styles = StyleSheet.create({
   card: {
-    flexDirection: 'row',
-    borderRadius: radius.xl,
+    borderRadius: radius.lg,
     backgroundColor: colors.surface,
     borderWidth: 1,
     borderColor: colors.border,
-    overflow: 'hidden',
+    borderLeftWidth: 6,
+    padding: spacing.md,
+    gap: spacing.sm,
     ...shadow.card,
   },
-  rail: {
-    width: 8,
+  severity_low: {
+    borderLeftColor: colors.success,
   },
-  railLow: {
-    backgroundColor: colors.success,
+  severity_medium: {
+    borderLeftColor: colors.warning,
   },
-  railMedium: {
-    backgroundColor: colors.warning,
-  },
-  railHigh: {
-    backgroundColor: colors.danger,
-  },
-  content: {
-    flex: 1,
-    padding: spacing.md,
-    gap: spacing.xs,
+  severity_high: {
+    borderLeftColor: colors.danger,
   },
   headlineRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'flex-start',
     gap: spacing.sm,
   },
-  title: {
+  titleBlock: {
     flex: 1,
+    gap: spacing.xxs,
+  },
+  kicker: {
+    color: colors.textMuted,
+    fontSize: typography.size.caption,
+    lineHeight: typography.lineHeight.caption,
+    fontWeight: typography.weight.semibold,
+    textTransform: 'uppercase',
+    letterSpacing: 0.6,
+  },
+  title: {
     color: colors.textPrimary,
     fontSize: typography.size.subtitle,
     lineHeight: typography.lineHeight.subtitle,
@@ -102,22 +99,20 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: colors.divider,
     padding: spacing.sm,
+    gap: spacing.xxs,
+  },
+  recommendationLabel: {
+    color: colors.textMuted,
+    fontSize: typography.size.caption,
+    lineHeight: typography.lineHeight.caption,
+    fontWeight: typography.weight.semibold,
+    textTransform: 'uppercase',
+    letterSpacing: 0.5,
   },
   recommendation: {
     color: colors.textPrimary,
     fontSize: typography.size.bodySm,
     lineHeight: typography.lineHeight.bodySm,
     fontWeight: typography.weight.semibold,
-  },
-  confidenceTrack: {
-    height: 6,
-    borderRadius: radius.pill,
-    backgroundColor: colors.divider,
-    overflow: 'hidden',
-    marginTop: spacing.xs,
-  },
-  confidenceFill: {
-    height: '100%',
-    backgroundColor: colors.accent,
   },
 });

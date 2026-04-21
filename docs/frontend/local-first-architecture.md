@@ -1,44 +1,44 @@
-﻿# Local-First Architecture (Frontend MVP)
+﻿# Архитектура local-first (frontend MVP)
 
-## Goal
-Provide resilient mobile UX when network is unstable while keeping backend contract unchanged.
+## Цель
+Обеспечить устойчивый mobile UX при нестабильной сети, не меняя backend-контракт.
 
-## Storage Stack
-1. SQLite (mandatory)
-   - Tables: status cache, report cache, history cache, upload queue, schema migrations
-   - Migrations run on app start via `SQLiteLocalCache.initialize()`
+## Стек хранения
+1. SQLite (обязателен)
+   - Таблицы: кэш status, кэш report, кэш history, очередь upload, миграции схемы
+   - Миграции запускаются при старте приложения через `SQLiteLocalCache.initialize()`
 2. File cache (helper)
-   - Stores local file artifacts when needed by upload/report flows
-   - Isolated cache directory in app sandbox
+   - Хранит локальные файлы, когда они нужны сценариям upload/report
+   - Изолированная директория кэша внутри sandbox приложения
 
-## Data Flow
-1. Screen calls API interface (`useApiClient`).
-2. `LocalFirstAdapter` executes remote request first.
-3. On success:
-   - response is persisted to SQLite cache
-   - response is returned to UI
-4. On failure:
-   - adapter attempts SQLite fallback for status/report/history
-   - cached payload is returned if available
-5. For new uploads:
-   - document is selected via system picker
-   - file is copied into app-local cache directory
-   - if upload request fails and local file exists, adapter creates queued local analysis item
-   - queued item is persisted to SQLite and shown as `queued`
+## Поток данных
+1. Экран вызывает API interface (`useApiClient`).
+2. `LocalFirstAdapter` сначала выполняет remote request.
+3. При успехе:
+   - ответ сохраняется в SQLite-кэш
+   - ответ возвращается в UI
+4. При ошибке:
+   - adapter пытается взять fallback из SQLite для status/report/history
+   - если cached payload есть, он возвращается в UI
+5. Для новых загрузок:
+   - документ выбирается через системный picker
+   - файл копируется в app-local cache directory
+   - если upload не удается и local file существует, adapter создает локальный queued analysis item
+   - queued item сохраняется в SQLite и отображается как `queued`
 
-## Migration Strategy
-- `schema_migrations` table tracks applied migration IDs.
-- Migrations are ordered and idempotent.
-- New schema changes are additive in MVP (`v1`, `v2`, ...).
+## Стратегия миграций
+- Таблица `schema_migrations` отслеживает примененные migration ID.
+- Миграции идут по порядку и должны быть идемпотентными.
+- Новые изменения схемы в MVP только добавочные (`v1`, `v2`, ...).
 
-## Offline Expectations for MVP
-- History and previously fetched reports/status are available offline.
-- New upload can be captured locally and converted into queued work item when immediate remote upload is unavailable.
-- Queued item currently preserves file metadata, cached file URI, role, language, and synthetic queued status.
-- Automatic replay of queued uploads is still a next-step item.
+## Ожидания по offline для MVP
+- История и ранее полученные отчеты/status доступны offline.
+- Новая загрузка может быть сохранена локально и преобразована в queued work item, если remote upload недоступен.
+- Queued item сейчас сохраняет метаданные файла, cached file URI, роль, язык и синтетический queued status.
+- Автоматический replay queued uploads остается задачей следующего шага.
 
-## TODO (next increment)
-- Automatic replay worker for queued uploads when connectivity returns.
-- TTL and eviction policy for old cache rows.
-- Conflict resolution for stale report/status versions.
-- Encryption-at-rest for sensitive cached payloads.
+## TODO на следующий инкремент
+- Worker для автоматического replay queued uploads после восстановления connectivity.
+- TTL и eviction policy для старых строк кэша.
+- Разрешение конфликтов для устаревших report/status версий.
+- Encryption-at-rest для чувствительных cached payload.

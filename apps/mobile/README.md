@@ -1,34 +1,34 @@
 ﻿# Contract Risk Scanner - Mobile App
 
-React Native (Expo) mobile client for Android and iOS.
+Мобильный клиент на React Native (Expo) для Android и iPhone.
 
-## MVP Highlights
-- Screen flow: `Auth -> UploadWithRole -> AnalysisStatus -> Report -> History -> Settings`
-- i18n: `ru` default + `en/it/fr` with fallback to `ru`
-- Local-first data flow: SQLite cache + local-first adapter fallback
-- Real document selection via system picker + local file cache for upload flow
-- Queued upload fallback when immediate remote upload is unavailable
-- Theme-layer with design tokens (colors/typography/radius/shadow/motion)
-- Reusable styled components: `RoleBadge`, `RiskCard`, `DisputedCard`
+## Основные возможности MVP
+- Поток экранов: `Auth -> UploadWithRole -> AnalysisStatus -> Report -> History -> Settings`
+- i18n: `ru` по умолчанию + `en/it/fr` с fallback на `ru`
+- Local-first поток данных: SQLite cache + local-first adapter fallback
+- Реальный выбор документа через системный picker + локальный файловый кэш для сценария загрузки
+- Fallback на queued upload, когда remote upload недоступен
+- Слой темы с design tokens (colors/typography/radius/shadow/motion)
+- Переиспользуемые стилизованные компоненты: `RoleBadge`, `RiskCard`, `DisputedCard`
 
-## Runtime Rule
-- User installs release package only.
-- No additional feature/module downloads after install.
+## Правило runtime
+- Пользователь устанавливает только релизный пакет.
+- После установки приложение не скачивает дополнительные feature/module assets.
 
-## Quick Start
+## Быстрый старт
 1. `npm install`
 2. `npm run start`
 3. Android: `npm run android`
-4. iOS: `npm run ios`
+4. iPhone: `npm run ios`
 
-## Quality Scripts
+## Скрипты качества
 - `npm run lint`
 - `npm run typecheck`
 - `npm run format`
 
-## Frontend Docs
-- Setup: `docs/frontend/setup.md`
-- Integration: `docs/frontend/integration-notes.md`
+## Документация фронтенда
+- Настройка: `docs/frontend/setup.md`
+- Интеграция: `docs/frontend/integration-notes.md`
 - Local-first: `docs/frontend/local-first-architecture.md`
-- Size budget: `docs/frontend/package-size-optimization.md`
-- Visual notes: `docs/frontend/visual-implementation-notes.md`
+- Бюджет размера: `docs/frontend/package-size-optimization.md`
+- Визуальные заметки: `docs/frontend/visual-implementation-notes.md`
