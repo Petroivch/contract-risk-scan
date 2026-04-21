@@ -1,102 +1,103 @@
-﻿# Analysis Engine Quality Baseline (Stage 1)
+# Базовый quality baseline для Analysis Engine (Stage 1)
 
-## Goal
-Define minimum quality requirements and guardrails for contract-risk analysis before model hardening.
+## Цель
+Определить минимальные требования к качеству и guardrails для contract-risk анализа до следующего этапа model hardening.
 
-## Quality metrics (MVP baseline)
-1. API reliability
-- Success rate for valid `/analysis/run` requests: >= 99%
-- Non-2xx responses must include explicit machine-readable error message
+## Метрики качества (MVP baseline)
+1. Надежность API
+- успешность валидных `POST /analysis/run` запросов: `>= 99%`
+- каждый non-2xx ответ должен содержать явную machine-readable ошибку
 
-2. Job lifecycle correctness
-- Every created job must finish in terminal state (`completed` or `failed`)
-- Status transitions are linear: `queued -> processing -> completed|failed`
+2. Корректность жизненного цикла задачи
+- каждая созданная задача обязана дойти до terminal state: `completed` или `failed`
+- переходы статусов только линейные: `queued -> processing -> completed|failed`
 
-3. Output schema validity
-- 100% of completed jobs must conform to `AnalysisResultResponse` schema
-- API responses must include both locale keys for compatibility:
+3. Валидность схемы ответа
+- `100%` завершенных задач должны соответствовать `AnalysisResultResponse`
+- все API-ответы обязаны содержать оба ключа для совместимости:
   - `language`
   - `locale`
-- Required sections must never be empty simultaneously:
+- обязательные секции не должны одновременно быть пустыми:
   - `contract_brief`
   - `risks`
   - `role_focused_summary`
 
-4. Locale behavior quality
-- Supported locales: `ru`, `en`, `it`, `fr`
-- Invalid/missing locale must fallback to `ru`
-- `locale` and `language` must be synchronized in all responses
-- Missing-job read endpoints must support localized `404` via query `locale`/`language`
-- Localized fields coverage must be 100% for completed jobs:
+4. Качество locale behavior
+- поддерживаемые языки: `ru`, `en`, `it`, `fr`
+- невалидный/пустой locale -> fallback в `ru`
+- `locale` и `language` синхронизированы во всех ответах
+- read-endpoints обязаны поддерживать локализованный `404` через query `locale`/`language`
+- покрытие локализованных полей для completed jobs должно быть `100%`:
   - `contract_brief`
   - risk `title`, `description`, `role_relevance`, `mitigation`
   - `dispute_reason`, `possible_consequence`
-  - summary `overview` and fallback list items
+  - summary `overview` и fallback-элементы списков
 
-5. Risk extraction precision baseline (stub stage)
-- Keyword-driven precision target for sampled contracts: >= 0.6
-- Recall target is not enforced at Stage 1 (heuristic prototype)
+5. Базовая точность извлечения рисков (эвристическая стадия)
+- precision target для keyword/rules-first анализа на выборке договоров: `>= 0.6`
+- recall target на Stage 1 пока не вводится
 
-6. Role-focus quality
-- `role_focused_summary.role` must always match input role label
-- At least one role-oriented recommendation in `must_do` or `should_review`
+6. Качество role-focus
+- `role_focused_summary.role` всегда совпадает с входной ролью
+- хотя бы одна role-oriented рекомендация должна быть в `must_do` или `should_review`
+- `contract_brief` должен объяснять, что важно для выбранной роли и по возможности показывать обязанности обеих сторон
 
-7. Build-size and local-first quality
-- Global final project build must be <= 228 MB
-- AI contribution must be tracked as a share of total build (`ai_assets_mb / total_build_mb`)
-- AI share targets:
-  - pass: <= 35%
-  - warning: > 35% and <= 40%
-  - hard review: > 40%
-- Lightweight-first policy is mandatory for AI features
-- Every analysis response should expose machine-readable execution routing (`execution_plan`)
+7. Ограничение размера сборки и local-first quality
+- общий release build проекта должен быть `<= 228 МБ`
+- вклад AI должен отслеживаться как доля общего build (`ai_assets_mb / total_build_mb`)
+- пороги по доле AI:
+  - pass: `<= 35%`
+  - warning: `> 35%` и `<= 40%`
+  - hard review: `> 40%`
+- lightweight-first policy для AI-функций обязательна
+- каждый analysis response должен содержать machine-readable `execution_plan`
 
-8. No-hardcode compliance
-- Rules/texts/thresholds/timeouts/fallbacks must come from runtime config
-- Rule entries must include source references
-- Config load must fail on incomplete locale maps
+8. Соответствие no-hardcode
+- правила, тексты, пороги, timeout'ы и fallback'и приходят только из runtime config
+- rule entries обязаны содержать `source_ref`
+- загрузка конфига должна падать на неполных locale maps
 
 ## Guardrails
-1. Safety and legal boundaries
-- Service provides risk indicators, not legal advice
-- Every generated result must be interpretable and traceable to text fragments
+1. Безопасность и юридические границы
+- сервис выдает индикаторы риска, а не юридическое заключение
+- результат должен быть интерпретируемым и привязанным к текстовым фрагментам договора
 
-2. Deterministic fallback behavior
-- If no risk/dispute marker found, return low-confidence fallback records (never empty arrays)
-- If locale input is invalid, force deterministic fallback to `ru`
+2. Детерминированный fallback
+- если не найдено ни одного risk/dispute marker, сервис все равно возвращает fallback-объекты, а не пустые массивы
+- если locale невалиден, fallback всегда детерминированно идет в `ru`
 
-3. Failure isolation
-- Pipeline exceptions must fail only current job, not service process
-- Failure must preserve error details in job status
+3. Изоляция сбоев
+- падение пайплайна должно ломать только конкретную задачу, а не весь процесс сервиса
+- ошибка обязана сохраняться в job status
 
-4. Input limits (config-driven)
-- Max file size and text limits are controlled only by runtime config
-- Time budgets are controlled only by runtime config
+4. Input limits
+- лимиты на размер текста и binary payload управляются только конфигом
+- time budgets управляются только конфигом
 
-5. Observability (to implement next stage)
-- Structured logs per pipeline step with `job_id` and locale
-- Metrics per step latency: ingestion, OCR, segmentation, scoring, summary
-- Error taxonomy for top failure classes
-- Build-size telemetry for AI artifacts and total app artifact
+5. Наблюдаемость (следующий этап)
+- structured logs по шагам пайплайна с `job_id` и locale
+- метрики latency по этапам: ingestion, OCR, segmentation, scoring, summary
+- error taxonomy для основных классов сбоев
+- size telemetry для AI-артефактов и общего app artifact
 
-6. Over-limit reduction order (> 228 MB)
-- First offload: local semantic AI inference
-- Second offload/reduction: expanded OCR assets
-- Third reduction: secondary AI enrichments (rerankers/explanation layers)
-- Preserve local deterministic core (ingestion, segmentation, rules-first risk output)
+6. Порядок сокращения функциональности при превышении `228 МБ`
+- первым offload'ится локальный semantic AI inference
+- затем сокращаются расширенные OCR assets
+- затем убираются вторичные AI enrichments
+- deterministic local core должен сохраняться
 
-## Reference documents
+## Ссылки на связанные документы
 - `docs/backend-ai/on-device-offline-feasibility.md`
 - `docs/backend-ai/no-hardcode-standard.md`
 - `docs/backend-ai/rule-source-registry.md`
 - `docs/backend-ai/core-api-locale-contract.md`
 
-## Acceptance for Stage 1 completion
-- Endpoints respond according to contract
-- Pipeline stubs are connected end-to-end
-- Multilingual fallback behavior is validated (`invalid -> ru`)
-- Read-path error localization and lightweight/offload execution plan are validated by API tests
-- Global build budget gates are documented and enforced in CI/CD
-- AI share in total build is measured and reported
-- No-hardcode policy is enforced by config and validation
-- Quality baseline documented and aligned with backend/core-api integration team
+## Критерии завершения Stage 1
+- endpoints отвечают по согласованному контракту
+- pipeline stubs связаны end-to-end
+- multilingual fallback поведение проверено (`invalid -> ru`)
+- read-path error localization и lightweight/offload execution plan покрыты API-тестами
+- size budget gates для всего продукта задокументированы и могут быть включены в CI/CD
+- доля AI в общем build измеряется и репортится
+- no-hardcode policy обеспечивается конфигом и валидацией
+- quality baseline согласован с backend/core-api/mobile интеграцией

@@ -134,8 +134,20 @@ class SummaryGenerationConfig(BaseModel):
     fallback_values: SummaryFallbackConfig
 
 
+class ContractBriefSectionsConfig(BaseModel):
+    intro: dict[str, str]
+    role_obligations: dict[str, str]
+    counterparty_obligations: dict[str, str]
+    general_obligations: dict[str, str]
+    payment_terms: dict[str, str]
+    deadlines: dict[str, str]
+    penalties: dict[str, str]
+    disputed_clauses: dict[str, str]
+
+
 class TemplatesConfig(BaseModel):
     contract_brief: dict[str, str]
+    contract_brief_sections: ContractBriefSectionsConfig
 
 
 class ServiceMetadataConfig(BaseModel):

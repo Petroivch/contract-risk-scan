@@ -3,9 +3,10 @@
 import asyncio
 
 from app.config.runtime import get_runtime_config
-from app.localization import normalize_analysis_language, resolve_localized_text
+from app.localization import normalize_analysis_language
 from app.schemas.analysis import AnalysisOutput, AnalysisRunRequest
 from app.services.clause_segmentation import ClauseSegmentationService
+from app.services.contract_brief import ContractBriefGenerationService
 from app.services.execution_strategy import ExecutionStrategyService
 from app.services.ingestion import IngestionService
 from app.services.job_store import InMemoryJobStore
@@ -25,6 +26,7 @@ class AnalysisOrchestrator:
         clause_segmentation_service: ClauseSegmentationService | None = None,
         risk_scoring_service: RiskScoringService | None = None,
         summary_generation_service: SummaryGenerationService | None = None,
+        contract_brief_generation_service: ContractBriefGenerationService | None = None,
         execution_strategy_service: ExecutionStrategyService | None = None,
     ) -> None:
         self.store = store
@@ -34,6 +36,9 @@ class AnalysisOrchestrator:
         self.clause_segmentation_service = clause_segmentation_service or ClauseSegmentationService()
         self.risk_scoring_service = risk_scoring_service or RiskScoringService()
         self.summary_generation_service = summary_generation_service or SummaryGenerationService()
+        self.contract_brief_generation_service = (
+            contract_brief_generation_service or ContractBriefGenerationService()
+        )
         self.execution_strategy_service = execution_strategy_service or ExecutionStrategyService()
 
     async def process_job(self, job_id: str, request: AnalysisRunRequest) -> None:
@@ -60,17 +65,18 @@ class AnalysisOrchestrator:
                     clauses,
                     risks,
                     request.role_context.role,
+                    request.role_context.counterparty_role,
                     language,
                 )
 
-                contract_brief_template = resolve_localized_text(
-                    self._runtime_config.templates.contract_brief,
-                    language,
-                )
-                contract_brief = contract_brief_template.format(
+                contract_brief = self.contract_brief_generation_service.generate(
                     document_name=request.document_name,
-                    clauses_count=len(clauses),
+                    document_text=ocr_result.text,
+                    clauses=clauses,
                     role=request.role_context.role,
+                    counterparty_role=request.role_context.counterparty_role,
+                    language=language,
+                    disputed_clauses=disputed_clauses,
                 )
 
                 output = AnalysisOutput(

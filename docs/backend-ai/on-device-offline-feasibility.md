@@ -1,175 +1,171 @@
-﻿# On-Device and Offline Feasibility (Global Build Limit: 228 MB)
+# Feasibility on-device и offline (общий лимит сборки: 228 МБ)
 
-## Purpose
-This document defines how Contract Risk Scanner should satisfy mobile constraints:
-- no post-install downloads on user devices,
-- local-first behavior where feasible,
-- global final build size <= 228 MB for the whole product (not only AI module).
+## Назначение
+Документ фиксирует, как `Contract Risk Scanner` должен соблюдать мобильные ограничения:
+- после установки пользователь ничего не скачивает отдельно
+- local-first поведение используется везде, где это реально
+- итоговая release-сборка всего продукта должна быть не больше `228 МБ`
 
-It focuses on analysis-engine implications and handoff constraints for mobile and platform teams.
+Ниже описаны последствия именно для `analysis-engine` и handoff-ограничения для mobile/platform-команд.
 
-## Global constraints
-1. The 228 MB threshold applies to the total release build artifact of the project.
-2. Release app must include all required runtime assets at install time.
-3. No model/data pack downloads after installation.
-4. Prefer local analysis and local storage when quality and latency are acceptable.
-5. If total build exceeds 228 MB, optimization + scoped offloading plan is mandatory.
+## Глобальные ограничения
+1. Порог `228 МБ` относится ко всему release artifact проекта, а не только к AI-модулю.
+2. Release-приложение должно уже содержать все обязательные runtime assets.
+3. После установки нельзя скачивать модели, rule packs и data packs.
+4. Предпочтение отдается локальному анализу и локальному хранению, пока качество и latency приемлемы.
+5. Если общий размер превышает `228 МБ`, команда обязана сделать оптимизацию и/или ограниченный offload-план.
 
-## AI share in total build budget
-Define explicit AI contribution inside the global 228 MB envelope:
-- `total_build_mb`: final app artifact size.
-- `ai_assets_mb`: sum of OCR/NLP models, tokenizers, rule packs, AI-native libraries.
-- `ai_share_percent = ai_assets_mb / total_build_mb * 100`.
+## Доля AI в общем build budget
+Нужно явно отслеживать вклад AI внутри общего лимита `228 МБ`:
+- `total_build_mb` — итоговый размер release artifact
+- `ai_assets_mb` — OCR/NLP модели, tokenizers, rule packs, AI-native библиотеки
+- `ai_share_percent = ai_assets_mb / total_build_mb * 100`
 
-Target policy:
-- AI target share: <= 35%
-- AI warning share: > 35% and <= 40%
-- AI hard review: > 40%
+Целевая политика:
+- норма: `<= 35%`
+- warning: `> 35%` и `<= 40%`
+- hard review: `> 40%`
 
-Practical envelope:
-- AI target: 45-70 MB
-- AI warning: 71-85 MB
-- AI hard review: > 85 MB
+Практический диапазон:
+- норма: `45-70 МБ`
+- warning: `71-85 МБ`
+- hard review: `> 85 МБ`
 
-Rationale: non-AI layers (UI, platform runtimes, networking, media, security, observability) must retain enough space in the same 228 MB budget.
-
-## Feasibility by pipeline stage
-| Stage | Local-only feasibility | AI size impact | Runtime impact | Recommended mode |
+## Реализуемость по этапам пайплайна
+| Этап | Реализуемость локально | Влияние на размер | Влияние на runtime | Рекомендуемый режим |
 |---|---|---:|---:|---|
-| File ingestion (PDF/DOCX/TXT) | High | Low | Low | On-device |
-| Text extraction for digital PDF/DOCX | High | Low | Low | On-device |
-| OCR for scanned docs | Medium | Medium/High | Medium | Local with compact OCR pack, else server assist |
-| Clause segmentation | High | Low | Low | On-device |
-| Rules-first risk detection | High | Low | Low | On-device |
-| LLM-level semantic risk analysis | Medium/Low | High | High | Optional, offload-first when size pressure exists |
-| Role-focused summary generation | Medium | Medium | Medium | Local templates/rules first, semantic enrichment optional |
+| Ingestion файлов (PDF/DOCX/TXT) | Высокая | Низкое | Низкое | On-device |
+| Извлечение текста из digital PDF/DOCX | Высокая | Низкое | Низкое | On-device |
+| OCR для сканов | Средняя | Среднее/высокое | Среднее | Локально с компактным OCR pack, иначе server assist |
+| Сегментация на пункты | Высокая | Низкое | Низкое | On-device |
+| Rules-first выявление рисков | Высокая | Низкое | Низкое | On-device |
+| Semantic/LLM-анализ рисков | Средняя/низкая | Высокое | Высокое | Опционально, offload-first при давлении по размеру |
+| Role-focused summary | Средняя | Среднее | Среднее | Сначала rules/templates, semantic enrichment опционален |
 
-## Local-first architecture (lightweight priority)
-1. Tier 1 (always local, lightweight mandatory)
-- Deterministic rules-first analyzer.
-- Clause segmentation and role extraction by heuristics.
-- Local storage for input metadata and analysis outputs.
+## Архитектура local-first
+1. Tier 1 — всегда локально, обязательно lightweight
+- deterministic rules-first анализатор
+- сегментация пунктов и role extraction на эвристиках
+- локальное хранение метаданных и результатов анализа
 
-2. Tier 2 (conditional local)
-- Small quantized semantic model only if quality gain is measurable.
-- Strict cap on AI bundle size and latency.
+2. Tier 2 — условно локально
+- компактная quantized semantic-модель только если ее польза измерима
+- строгий лимит по размеру AI-бандла и latency
 
-3. Tier 3 (server-assisted fallback)
-- Heavy semantic reasoning and low-quality scan recovery.
-- Must preserve stable response schema so mobile UX is unchanged.
+3. Tier 3 — server-assisted fallback
+- тяжелая semantic reasoning логика
+- восстановление качества на слабых сканах
+- при этом схема ответа должна остаться той же, чтобы mobile UX не менялся
 
-## Current analysis-engine encoding
-Current skeleton encodes this policy in `services/analysis-engine/app/config/analysis_config.json` under `execution_strategy`.
+## Как это отражено в текущем analysis-engine
+Политика зашита в `services/analysis-engine/app/config/analysis_config.json`, секция `execution_strategy`.
 
-Current route policy:
+Текущие правила маршрутизации:
 - `document_text` -> `local_first`
-- `document_base64` -> `server_assist` by default
-- `mime_type` overrides can force `server_assist` for PDFs/images/office binaries
+- `document_base64` -> `server_assist` по умолчанию
+- `mime_type` overrides могут принудительно переключить PDF/изображения/office binaries в `server_assist`
 
-Current API contract exposure:
-- `/analysis/run`
-- `/analysis/{job_id}/status`
-- `/analysis/{job_id}/result`
-
-All three responses include `execution_plan` with:
+Во всех ответах присутствует `execution_plan`:
 - `mode`
 - `offline_capable`
 - `network_required`
 - `policy_source`
 - `reason`
 
-This keeps the mobile/core-api layer aware of local-first vs offload routing without introducing a separate contract.
+Это позволяет mobile/core-api понимать выбранный маршрут, не вводя отдельный API-контракт.
 
-## Global build budget template (<= 228 MB)
-Recommended allocation:
-- Core app + UI + platform dependencies: 95-125 MB
-- AI assets total: 45-70 MB
-- Non-AI shared libs and integrations: 20-30 MB
-- Reserve for patches and compliance updates: 10-20 MB
+## Шаблон распределения общего бюджета (<= 228 МБ)
+Рекомендуемое распределение:
+- core app + UI + platform dependencies: `95-125 МБ`
+- AI assets total: `45-70 МБ`
+- shared non-AI libs и интеграции: `20-30 МБ`
+- резерв под патчи и compliance: `10-20 МБ`
 
-Hard policy:
-- Soft warning: > 210 MB total
-- Release risk: > 220 MB total
-- Hard fail: > 228 MB total
+Жесткая политика:
+- soft warning: `> 210 МБ`
+- release risk: `> 220 МБ`
+- hard fail: `> 228 МБ`
 
-## Anti-bloat recommendations (AI-first)
-1. Prefer rules-first baseline before any embedded semantic model.
-2. Do not embed large foundation models in default release.
-3. Use quantized models (int8/int4) and remove unused operators.
-4. Keep one shared tokenizer/vocabulary across languages when possible.
-5. Deduplicate OCR/NLP runtime libraries across modules.
-6. Remove unused ABIs/debug symbols from release outputs.
-7. Keep localization compact: shared keys, no duplicated prompt bodies.
-8. Track component-level size deltas in CI for every merge.
+## Рекомендации против раздувания размера
+1. Сначала rules-first baseline, потом только semantic модель.
+2. Не включать крупные foundation models в дефолтный релиз.
+3. Использовать quantized модели (`int8/int4`) и убирать неиспользуемые операторы.
+4. По возможности держать один общий tokenizer/vocabulary на все языки.
+5. Дедуплицировать OCR/NLP runtime libraries между модулями.
+6. Удалять неиспользуемые ABI/debug symbols из release output.
+7. Держать локализацию компактной: общие ключи, без дублирования больших prompt body.
+8. Отслеживать size delta по компонентам в CI на каждом merge.
 
-## Over-limit action plan (> 228 MB total)
+## План действий при превышении лимита (> 228 МБ)
 
-### Phase 0: measurement and ownership
-1. Generate artifact-level size report (top contributors).
-2. Split report by domain: AI vs non-AI.
-3. Confirm AI share and top 5 AI-heavy assets.
+### Фаза 0: измерение и ownership
+1. Снять отчет по размеру итогового артефакта и топ-вкладчикам.
+2. Разделить вклад на AI и non-AI.
+3. Подтвердить AI share и топ-5 тяжелых AI-ассетов.
 
-### Phase 1: no-regression optimizations
-1. Recompress assets and strip debug symbols.
-2. Remove duplicate native/runtime libraries.
-3. Apply stronger quantization to local models.
+### Фаза 1: оптимизации без изменения UX
+1. Пережимать assets и удалять debug symbols.
+2. Убирать дублирующиеся native/runtime библиотеки.
+3. Применять более жесткую quantization для локальных моделей.
 
-### Phase 2: prioritized disable/offload order (first to cut)
-1. Disable local semantic LLM/classifier first.
-- Keep local rules-first risk extraction.
-- Offload advanced semantic reasoning to backend API.
+### Фаза 2: порядок отключения/offload
+1. Первым выключается локальный semantic LLM/classifier.
+- rules-first risk extraction должен остаться локальным
+- advanced semantic reasoning переносится в backend API
 
-2. Reduce OCR package breadth.
-- Keep only must-have OCR configuration.
-- Offload difficult scanned-document OCR cases.
+2. Затем урезается OCR package breadth.
+- остается только must-have OCR конфигурация
+- сложные сканы уезжают в server-assisted fallback
 
-3. Remove secondary AI enrichments.
-- Embedding-based rerankers.
-- Extra explanation generation layers.
+3. Затем отключаются вторичные AI enrichment-слои.
+- embedding rerankers
+- explanation generation layers
 
-4. Compress multilingual AI artifacts.
-- Keep unified multilingual asset set.
-- Remove per-language duplicated AI resources.
+4. Затем ужимаются multilingual AI artifacts.
+- сохраняется единый multilingual asset set
+- удаляются дубли по языкам
 
-5. Preserve core local experience.
-- Never remove local ingestion, clause segmentation, deterministic risk output.
+5. Базовый локальный пользовательский опыт нельзя ломать.
+- local ingestion
+- clause segmentation
+- deterministic risk output
 
-### Phase 3: release alternatives (no post-install downloads)
-1. Publish two complete install variants selected before install:
-- `Standard`: lightweight local-first + server semantic fallback
-- `Extended`: larger local AI pack where store policy permits
-2. Keep identical API schema and UX flow across variants.
+### Фаза 3: release-варианты без пост-установочных скачиваний
+1. Допустимо выпустить две полные install-вариации, выбираемые до установки:
+- `Standard` — lightweight local-first + server semantic fallback
+- `Extended` — более тяжелый локальный AI pack, если это разрешает store policy
+2. UX и API-schema у обеих вариаций должны быть одинаковыми.
 
-### Phase 4: emergency gate
-If still > 228 MB after Phase 1-3:
-- Block release candidate.
-- Escalate to architecture board with accepted cut list and impact note.
+### Фаза 4: аварийный стоп
+Если после Фазы 1-3 размер все еще > `228 МБ`:
+- release candidate блокируется
+- вопрос эскалируется на архитектурный разбор с явным cut list и impact note
 
-## Quality and product guardrails
-1. Local mode must always produce schema-valid output even at low confidence.
-2. Fallback from local semantic to rules-first must be deterministic and logged.
-3. Server-assisted branch must not break user flow or contracts.
-4. Privacy defaults:
-- Store intermediate artifacts locally by default.
-- Send data to server only for explicitly required fallback paths.
+## Product и quality guardrails
+1. Локальный режим всегда должен выдавать schema-valid результат, даже при низкой уверенности.
+2. Переход с local semantic на rules-first fallback должен быть детерминированным и наблюдаемым.
+3. Server-assisted ветка не должна ломать пользовательский flow и API-контракты.
+4. Приватность по умолчанию:
+- промежуточные артефакты хранятся локально
+- на сервер уходит только то, что реально требуется fallback-ветке
 
-## CI/CD acceptance checks
+## CI/CD проверки
 1. Global size gate
-- Pass: <= 210 MB
-- Warning: 210-228 MB
-- Fail: > 228 MB
+- pass: `<= 210 МБ`
+- warning: `210-228 МБ`
+- fail: `> 228 МБ`
 
 2. AI share gate
-- Pass: <= 35%
-- Warning: > 35% and <= 40%
-- Hard review: > 40%
+- pass: `<= 35%`
+- warning: `> 35%` и `<= 40%`
+- hard review: `> 40%`
 
 3. Offline smoke checks
-- Analyze representative digital contract without network.
-- Analyze representative scanned contract without network if compact OCR is bundled.
+- анализ representative digital contract без сети
+- анализ representative scanned contract без сети, если compact OCR реально включен в build
 
-4. Localization checks
-- ru/en/it/fr outputs remain schema-valid in local mode.
+4. Проверки локализации
+- `ru/en/it/fr` остаются schema-valid в local mode
 
-5. Mode consistency
-- Local-first and server-assisted outputs both satisfy the same API schema.
+5. Проверки mode consistency
+- и `local_first`, и `server_assist` обязаны соответствовать одной и той же API-схеме

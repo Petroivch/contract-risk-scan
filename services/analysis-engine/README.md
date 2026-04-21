@@ -1,52 +1,46 @@
-﻿# Contract Risk Scanner: Analysis Engine (FastAPI)
+# Contract Risk Scanner: Analysis Engine (FastAPI)
 
-## Scope
-This service owns contract analysis pipeline for the MVP:
-- Receives analysis job request (`/analysis/run`)
-- Tracks job lifecycle (`/analysis/{job_id}/status`)
-- Returns structured analysis output (`/analysis/{job_id}/result`)
+## Зона ответственности
+Этот сервис отвечает за пайплайн анализа договора в MVP:
+- принимает задачу анализа через `POST /analysis/run`
+- отслеживает жизненный цикл задачи через `GET /analysis/{job_id}/status`
+- возвращает структурированный результат через `GET /analysis/{job_id}/result`
+- определяет, можно ли обработать документ в `local_first`, или нужен `server_assist`
 
-## Current stage
-Implemented skeleton with production-oriented configuration principles:
-- Multilingual output: `ru`, `en`, `it`, `fr`
-- Default/fallback language: `ru`
-- Config-driven pipeline (no hardcoded rules/texts/thresholds in code)
-- Config-driven execution plan for `local_first` vs `server_assist`
-- API routers and response contracts
-- Domain schemas for:
-  - risks
-  - disputed clauses
-  - role-focused summary
-- In-memory job store
-- Stub modules:
-  - ingestion
-  - ocr
-  - clause segmentation
-  - risk scoring
-  - summary generation
+## Что реализовано сейчас
+Текущая версия уже выполняет рабочий эвристический анализ договора:
+- мультиязычный вывод: `ru`, `en`, `it`, `fr`
+- язык по умолчанию и fallback: `ru`
+- полностью конфигурируемый пайплайн без бизнес-хардкода в Python-коде
+- стабильный `run -> status -> result` flow
+- role-focused summary с приоритизацией выбранной роли
+- `contract_brief`, который кратко объясняет, кто и кому что должен, где оплата, сроки и санкции
+- rules-first извлечение рисков и спорных формулировок
+- `execution_plan` в каждом ответе для mobile/core-api
+- in-memory job store для MVP-стадии
+- API-тесты на контракт, локализацию и содержательный результат анализа
 
-## Configuration contract
-All pipeline behavior is centralized in:
-- `app/config/analysis_config.json`
+## Ключевые принципы
+- `no-hardcode`: правила, тексты, fallback и лимиты живут в конфиге
+- `local-first`: легкие сценарии обрабатываются без обязательного offload
+- совместимость с mobile/core-api по полям `language` и `locale`
+- детерминированный fallback: пустые массивы и неинтерпретируемые ответы не допускаются
 
-Covered by config:
-- language behavior
-- thresholds and timeouts
-- lightweight/offload routing policy
-- risk/dispute rules and localized texts
-- fallback messages and templates
-- service metadata
+## Где что лежит
+- `app/main.py` — точка входа FastAPI
+- `app/api/routers/analysis.py` — HTTP-роуты анализа
+- `app/schemas/analysis.py` — request/response и доменные схемы
+- `app/localization.py` — нормализация языка и выбор локализованных значений
+- `app/config/analysis_config.json` — главный runtime-конфиг пайплайна
+- `app/config/models.py` — типизированные модели конфига
+- `app/config/runtime.py` — загрузка и валидация runtime-конфига
+- `app/services/analysis_orchestrator.py` — orchestration всего пайплайна
+- `app/services/contract_brief.py` — генерация краткого объяснения договора
+- `app/services/risk_scoring.py` — rules-first риски и спорные пункты
+- `app/services/summary_generation.py` — role-focused summary
+- `tests/` — API и flow tests
 
-## Directory structure
-- `app/main.py` - FastAPI entrypoint
-- `app/api/routers/analysis.py` - API routes
-- `app/schemas/analysis.py` - request/response and domain schemas
-- `app/localization.py` - centralized locale normalization and localized value resolution
-- `app/config/` - runtime config models/loader/payload
-- `app/services/` - pipeline orchestration + stage stubs
-- `tests/` - API-level contract tests for locale sync, job flow, and execution plan
-
-## Run locally
+## Локальный запуск
 ```bash
 python -m venv .venv
 .venv\Scripts\activate
@@ -54,20 +48,25 @@ pip install -r requirements.txt
 uvicorn app.main:app --reload --port 8010
 ```
 
-## Example request
+## Быстрая проверка
+```bash
+python -m pytest -q
+```
+
+## Пример запроса
 ```bash
 curl -X POST http://127.0.0.1:8010/analysis/run \
   -H "Content-Type: application/json" \
   -d '{
     "document_name": "contract.txt",
-    "role_context": {"role": "executor", "counterparty_role": "employer"},
-    "document_text": "Исполнитель обязан выполнить работы в срок 10 дней. Штраф за просрочку 1%.",
-    "language": "fr"
+    "role_context": {"role": "исполнитель", "counterparty_role": "заказчик"},
+    "document_text": "Исполнитель обязан выполнить работы в срок 10 дней. Заказчик обязан оплатить услуги в течение 5 банковских дней. Штраф за просрочку 1%.",
+    "language": "ru"
   }'
 ```
 
-## Notes
-- This version still uses heuristic stubs and in-memory storage.
-- Missing-job localization on GET endpoints can be overridden via query params `language` or `locale`.
-- Responses include `execution_plan` so mobile/core-api can distinguish lightweight local-first vs server-assisted handling without schema branching.
-- Production rollout requires persistent queue/store, robust OCR/NLP stack, and full integration tests.
+## Ограничения текущей стадии
+- OCR пока stub-based
+- хранилище задач пока in-memory
+- анализ остается эвристическим, без тяжелой semantic/LLM-модели
+- для production нужны persistent queue/store, наблюдаемость и интеграционные тесты с core-api/mobile
