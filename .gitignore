@@ -1,0 +1,12 @@
+apps/mobile/.expo/
+apps/mobile/node_modules/
+apps/mobile/expo-dev.log
+apps/mobile/expo-web.log
+services/core-api/node_modules/
+services/core-api/dist/
+services/analysis-engine/.pytest_cache/
+services/analysis-engine/**/__pycache__/
+*.pyc
+builds/
+
+apps/mobile/*build-agent.log

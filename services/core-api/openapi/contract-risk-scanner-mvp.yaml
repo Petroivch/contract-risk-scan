@@ -1,0 +1,487 @@
+openapi: 3.0.3
+info:
+  title: Contract Risk Scanner Core API (MVP Draft)
+  version: 0.3.0
+  description: |
+    Draft contract for mobile clients and backend integrations.
+    Runtime URL, API prefix and limits are configuration-driven.
+servers:
+  - url: '{PUBLIC_BASE_URL}/{API_PREFIX}'
+    description: Config-driven runtime endpoint
+    variables:
+      PUBLIC_BASE_URL:
+        default: https://api.contract-risk-scanner.local
+      API_PREFIX:
+        default: api/v1
+
+x-runtime-policy:
+  localeDefault: ru
+  localeSupported: [ru, en, it, fr]
+  localeFallback: ru
+  maxUploadSizeMb: env(MAX_UPLOAD_SIZE_MB)
+  allowedMimeTypes: env(ALLOWED_MIME_TYPES)
+
+tags:
+  - name: auth
+  - name: contracts
+
+paths:
+  /auth/register:
+    post:
+      tags: [auth]
+      summary: Register user account
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterRequest'
+      responses:
+        '201':
+          description: User registered
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+
+  /auth/login:
+    post:
+      tags: [auth]
+      summary: Login user account
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+      responses:
+        '200':
+          description: User authenticated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+        '401':
+          description: Invalid credentials
+
+  /contracts/upload:
+    post:
+      tags: [contracts]
+      summary: Upload contract file
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required: [role, file]
+              properties:
+                role:
+                  type: string
+                  minLength: 2
+                  maxLength: 64
+                  description: User role selected before upload (editable dropdown in UI)
+                locale:
+                  $ref: '#/components/schemas/Locale'
+                language:
+                  allOf:
+                    - $ref: '#/components/schemas/Locale'
+                  deprecated: true
+                  description: Alias for locale
+                counterpartyRole:
+                  type: string
+                  maxLength: 64
+                contractLabel:
+                  type: string
+                  maxLength: 120
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '201':
+          description: File metadata accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UploadContractResponse'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+
+  /contracts/{id}/analyze:
+    post:
+      tags: [contracts]
+      summary: Run analysis pipeline for contract
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/ContractId'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AnalyzeContractRequest'
+      responses:
+        '200':
+          description: Analysis state accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnalyzeContractResponse'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+
+  /contracts/{id}/status:
+    get:
+      tags: [contracts]
+      summary: Get job status and available next transitions
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/ContractId'
+      responses:
+        '200':
+          description: Current analysis status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContractStatusResponse'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+
+  /contracts/{id}/report:
+    get:
+      tags: [contracts]
+      summary: Fetch generated report
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/ContractId'
+      responses:
+        '200':
+          description: Report payload
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContractReport'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '409':
+          description: Report not ready yet
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportNotReadyError'
+
+  /contracts/history:
+    get:
+      tags: [contracts]
+      summary: List previously uploaded contracts
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Contract history list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContractsHistoryResponse'
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  parameters:
+    ContractId:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      example: ctr_k2v4m8x1
+
+  responses:
+    ValidationError:
+      description: Validation failed
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+    NotFoundError:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+
+  schemas:
+    Locale:
+      type: string
+      enum: [ru, en, it, fr]
+      default: ru
+      example: ru
+      description: Missing or unsupported value is normalized to ru in backend policy.
+
+    AuthTokenType:
+      type: string
+      enum: [Bearer]
+
+    RiskSeverity:
+      type: string
+      enum: [low, medium, high, critical]
+
+    JobStatus:
+      type: string
+      enum:
+        - uploaded
+        - queued
+        - preprocessing
+        - analyzing
+        - report_ready
+        - failed
+
+    ApiError:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          example: 400
+        error:
+          type: string
+          example: Bad Request
+        message:
+          oneOf:
+            - type: string
+            - type: array
+              items:
+                type: string
+
+    ReportNotReadyError:
+      type: object
+      required: [message, statusEndpoint]
+      properties:
+        message:
+          type: string
+        statusEndpoint:
+          type: string
+
+    RegisterRequest:
+      type: object
+      required: [email, password, fullName]
+      properties:
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+          minLength: 8
+        fullName:
+          type: string
+
+    LoginRequest:
+      type: object
+      required: [email, password]
+      properties:
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+          minLength: 8
+
+    AuthResponse:
+      type: object
+      required: [userId, email, accessToken, tokenType, expiresIn]
+      properties:
+        userId:
+          type: string
+        email:
+          type: string
+          format: email
+        accessToken:
+          type: string
+        tokenType:
+          $ref: '#/components/schemas/AuthTokenType'
+        expiresIn:
+          type: integer
+          example: 3600
+
+    UploadContractResponse:
+      type: object
+      required: [contractId, status, locale, originalFileName, uploadedAt]
+      properties:
+        contractId:
+          type: string
+        status:
+          $ref: '#/components/schemas/JobStatus'
+        locale:
+          $ref: '#/components/schemas/Locale'
+        originalFileName:
+          type: string
+        uploadedAt:
+          type: string
+          format: date-time
+
+    AnalyzeContractRequest:
+      type: object
+      properties:
+        forceReanalyze:
+          type: boolean
+          default: false
+        locale:
+          $ref: '#/components/schemas/Locale'
+        language:
+          allOf:
+            - $ref: '#/components/schemas/Locale'
+          deprecated: true
+          description: Alias for locale
+        focusNotes:
+          type: string
+          maxLength: 500
+
+    AnalyzeContractResponse:
+      type: object
+      required: [contractId, status, locale, message]
+      properties:
+        contractId:
+          type: string
+        status:
+          $ref: '#/components/schemas/JobStatus'
+        locale:
+          $ref: '#/components/schemas/Locale'
+        message:
+          type: string
+
+    ContractStatusResponse:
+      type: object
+      required: [contractId, status, locale, allowedTransitions, updatedAt]
+      properties:
+        contractId:
+          type: string
+        status:
+          $ref: '#/components/schemas/JobStatus'
+        locale:
+          $ref: '#/components/schemas/Locale'
+        allowedTransitions:
+          type: array
+          items:
+            $ref: '#/components/schemas/JobStatus'
+        updatedAt:
+          type: string
+          format: date-time
+        errorCode:
+          type: string
+          nullable: true
+        errorMessage:
+          type: string
+          nullable: true
+
+    ContractObligation:
+      type: object
+      required: [subject, action, dueCondition]
+      properties:
+        subject:
+          type: string
+        action:
+          type: string
+        dueCondition:
+          type: string
+
+    ContractRisk:
+      type: object
+      required: [id, title, severity, description, roleImpact, recommendation]
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        severity:
+          $ref: '#/components/schemas/RiskSeverity'
+        description:
+          type: string
+        roleImpact:
+          type: string
+        recommendation:
+          type: string
+
+    DisputedClause:
+      type: object
+      required: [clauseRef, fragment, issue, recommendation]
+      properties:
+        clauseRef:
+          type: string
+        fragment:
+          type: string
+        issue:
+          type: string
+        recommendation:
+          type: string
+
+    ContractReport:
+      type: object
+      required:
+        [contractId, locale, roleFocus, summary, obligations, risks, disputedClauses, generatedAt, generationNotes]
+      properties:
+        contractId:
+          type: string
+        locale:
+          $ref: '#/components/schemas/Locale'
+        roleFocus:
+          type: string
+        summary:
+          type: string
+        obligations:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContractObligation'
+        risks:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContractRisk'
+        disputedClauses:
+          type: array
+          items:
+            $ref: '#/components/schemas/DisputedClause'
+        generatedAt:
+          type: string
+          format: date-time
+        generationNotes:
+          type: string
+          nullable: true
+
+    ContractHistoryItem:
+      type: object
+      required: [contractId, role, locale, status, originalFileName, uploadedAt, updatedAt]
+      properties:
+        contractId:
+          type: string
+        role:
+          type: string
+        locale:
+          $ref: '#/components/schemas/Locale'
+        status:
+          $ref: '#/components/schemas/JobStatus'
+        originalFileName:
+          type: string
+        uploadedAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+
+    ContractsHistoryResponse:
+      type: object
+      required: [items]
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContractHistoryItem'
