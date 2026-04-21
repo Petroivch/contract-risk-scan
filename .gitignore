@@ -1,4 +1,5 @@
 apps/mobile/.expo/
+apps/mobile/.analysis-tmp/
 apps/mobile/node_modules/
 apps/mobile/expo-dev.log
 apps/mobile/expo-web.log

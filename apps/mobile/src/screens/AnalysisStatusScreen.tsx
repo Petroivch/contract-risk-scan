@@ -1,4 +1,4 @@
-﻿import type { NativeStackScreenProps } from '@react-navigation/native-stack';
+import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
@@ -67,7 +67,7 @@ export const AnalysisStatusScreen = ({ navigation, route }: Props): JSX.Element 
 
   const updatedAtLabel = useMemo(() => {
     if (!status?.updatedAt) {
-      return '—';
+      return '�';
     }
 
     const parsedDate = new Date(status.updatedAt);
@@ -126,8 +126,6 @@ export const AnalysisStatusScreen = ({ navigation, route }: Props): JSX.Element 
     navigation.navigate('UploadWithRole');
   };
 
-  const canResume = status?.status === 'queued' || status?.status === 'failed' || status?.status === 'processing';
-
   return (
     <ScreenShell title={t('analysis.title')} subtitle={t('analysis.analysisId', { analysisId })}>
       <View style={styles.heroCard}>
@@ -179,17 +177,10 @@ export const AnalysisStatusScreen = ({ navigation, route }: Props): JSX.Element 
 
       <View style={styles.actionRow}>
         <Pressable style={styles.secondaryButton} onPress={refreshStatus}>
-          <Text style={styles.secondaryButtonText}>{t('analysis.retry')}</Text>
+          <Text style={styles.secondaryButtonText}>{t('analysis.refreshNow')}</Text>
         </Pressable>
         <Pressable style={styles.secondaryButton} onPress={goBackToUpload}>
-          <Text style={styles.secondaryButtonText}>{t('analysis.cancel')}</Text>
-        </Pressable>
-        <Pressable
-          style={[styles.secondaryButton, !canResume && styles.secondaryButtonDisabled]}
-          onPress={refreshStatus}
-          disabled={!canResume}
-        >
-          <Text style={styles.secondaryButtonText}>{t('analysis.resume')}</Text>
+          <Text style={styles.secondaryButtonText}>{t('common.backToUpload')}</Text>
         </Pressable>
       </View>
 
@@ -355,9 +346,6 @@ const styles = StyleSheet.create({
     backgroundColor: colors.accentSoft,
     borderWidth: 1,
     borderColor: colors.border,
-  },
-  secondaryButtonDisabled: {
-    opacity: 0.5,
   },
   secondaryButtonText: {
     color: colors.accentStrong,

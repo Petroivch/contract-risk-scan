@@ -10,9 +10,7 @@ import type {
   ContractRiskScannerApi,
   HistoryItem,
   RequestMeta,
-  SignInRequest,
   UploadContractRequest,
-  UserSession,
 } from './types';
 
 interface StoredAnalysis {
@@ -100,23 +98,6 @@ const toHistory = (entity: StoredAnalysis): HistoryItem => {
 };
 
 export const createStubApiClient = (config: StubClientConfig = {}): ContractRiskScannerApi => ({
-  async signIn(payload: SignInRequest, meta?: RequestMeta): Promise<UserSession> {
-    await delay(250);
-    const requestContext = prepareRequestContext(meta, config.getLanguage);
-    const requestLanguage = payload.language ?? requestContext.language ?? defaultLanguage;
-
-    return {
-      accessToken: `local-access-token-${requestLanguage}`,
-      refreshToken: `local-refresh-token-${requestLanguage}`,
-      expiresAt: new Date(Date.now() + 60 * 60 * 1000).toISOString(),
-      user: {
-        id: 'local-user-1',
-        email: payload.email,
-        displayName: 'Offline Mobile User',
-      },
-    };
-  },
-
   async uploadContract(
     payload: UploadContractRequest,
     meta?: RequestMeta,

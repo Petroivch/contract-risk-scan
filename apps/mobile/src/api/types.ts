@@ -12,25 +12,6 @@ export interface RequestContext {
   headers: Record<string, string>;
 }
 
-export interface UserProfile {
-  id: string;
-  email: string;
-  displayName: string;
-}
-
-export interface UserSession {
-  accessToken: string;
-  refreshToken?: string;
-  expiresAt: string;
-  user: UserProfile;
-}
-
-export interface SignInRequest {
-  email: string;
-  password: string;
-  language?: SupportedLanguage;
-}
-
 export interface UploadContractRequest {
   fileName: string;
   mimeType: string;
@@ -101,7 +82,6 @@ export interface QueuedUploadItem {
 }
 
 export interface ContractRiskScannerApi {
-  signIn(payload: SignInRequest, meta?: RequestMeta): Promise<UserSession>;
   uploadContract(
     payload: UploadContractRequest,
     meta?: RequestMeta,

@@ -29,7 +29,7 @@ export const ApiClientProvider = ({ children }: PropsWithChildren): JSX.Element 
       createApiClient({
         baseUrl: appConfig.api.baseUrl,
         timeoutMs: appConfig.api.timeoutMs,
-        transport: appConfig.api.transport as 'stub' | 'http',
+        transport: appConfig.api.transport as 'local' | 'stub' | 'http',
         getLanguage: () => language,
       }),
     [language],

@@ -5,14 +5,21 @@
     "version": "0.1.0",
     "orientation": "portrait",
     "userInterfaceStyle": "light",
+    "icon": "./assets/icon.png",
     "assetBundlePatterns": ["**/*"],
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0D2236"
+    },
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "package": "com.contractriskscanner.mobile",
       "adaptiveIcon": {
-        "backgroundColor": "#F6F7FB"
+        "foregroundImage": "./assets/adaptive-icon-foreground.png",
+        "backgroundColor": "#0D2236"
       }
     },
     "extra": {
@@ -32,8 +39,6 @@
       "SQLITE_DB_NAME": "contract-risk-scanner.db",
       "FILE_CACHE_DIR": "contract-file-cache",
       "LANGUAGE_PREFERENCE_KEY": "contract-risk-scanner.language",
-      "DEMO_EMAIL": "demo@company.com",
-      "DEMO_PASSWORD": "password",
       "STUB_CONTRACT_FILENAME": "service-agreement-draft.pdf"
     }
   }

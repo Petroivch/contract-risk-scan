@@ -1,5 +1,4 @@
-﻿export type RootStackParamList = {
-  Auth: undefined;
+export type RootStackParamList = {
   UploadWithRole: undefined;
   AnalysisStatus: {
     analysisId: string;

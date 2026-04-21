@@ -3,7 +3,6 @@ import type {
   HistoryItem,
   QueuedUploadItem,
   RequestMeta,
-  SignInRequest,
   UploadContractRequest,
 } from './types';
 import type { LocalCacheStore } from '../data/local/types';
@@ -58,10 +57,6 @@ export const createLocalFirstAdapter = (
   config: LocalFirstAdapterConfig,
 ): ContractRiskScannerApi => {
   return {
-    signIn: async (payload: SignInRequest, meta?: RequestMeta) => {
-      return remoteClient.signIn(payload, meta);
-    },
-
     uploadContract: async (payload: UploadContractRequest, meta?: RequestMeta) => {
       try {
         const response = await remoteClient.uploadContract(payload, meta);

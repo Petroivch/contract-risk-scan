@@ -1,6 +1,7 @@
-﻿import type { PropsWithChildren } from 'react';
+import type { PropsWithChildren } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 
 import { LanguageSelector } from '../LanguageSelector';
 import { colors, radius, shadow, spacing, typography } from '../../theme/tokens';
@@ -12,8 +13,11 @@ interface ScreenShellProps extends PropsWithChildren {
 }
 
 const Header = ({ title, subtitle }: { title: string; subtitle?: string }): JSX.Element => {
+  const { t } = useTranslation();
+
   return (
     <View style={styles.headerCard}>
+      <Text style={styles.brandLabel}>{t('common.appName')}</Text>
       <LanguageSelector />
       <Text style={styles.title}>{title}</Text>
       {subtitle ? <Text style={styles.subtitle}>{subtitle}</Text> : null}
@@ -83,6 +87,14 @@ const styles = StyleSheet.create({
     padding: spacing.lg,
     gap: spacing.sm,
     ...shadow.raised,
+  },
+  brandLabel: {
+    color: colors.textMuted,
+    fontSize: typography.size.caption,
+    lineHeight: typography.lineHeight.caption,
+    fontWeight: typography.weight.bold,
+    textTransform: 'uppercase',
+    letterSpacing: 0.7,
   },
   title: {
     color: colors.textPrimary,

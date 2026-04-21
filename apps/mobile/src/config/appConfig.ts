@@ -31,9 +31,7 @@ export const appConfig = {
     enableSQLiteCache: readBoolean('ENABLE_SQLITE_CACHE', true),
     enableFileCache: readBoolean('ENABLE_FILE_CACHE', true),
   },
-  demo: {
-    email: readString('DEMO_EMAIL', CONFIG_DEFAULTS.demoEmail),
-    password: readString('DEMO_PASSWORD', CONFIG_DEFAULTS.demoPassword),
+  defaults: {
     stubContractFileName: readString('STUB_CONTRACT_FILENAME', CONFIG_DEFAULTS.stubContractFileName),
   },
 } as const;

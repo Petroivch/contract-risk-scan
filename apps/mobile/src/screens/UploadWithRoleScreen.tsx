@@ -89,7 +89,7 @@ export const UploadWithRoleScreen = ({ navigation }: Props): JSX.Element => {
     const cachedUri = asset.uri ? await fileCache.cacheFile(cacheId, asset.uri) : undefined;
 
     setSelectedFile({
-      fileName: asset.name ?? appConfig.demo.stubContractFileName,
+      fileName: asset.name ?? appConfig.defaults.stubContractFileName,
       mimeType: asset.mimeType ?? 'application/octet-stream',
       fileSizeBytes: asset.size,
       localFileUri: cachedUri,
