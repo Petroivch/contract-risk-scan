@@ -23,7 +23,7 @@ const riskRank: Record<'low' | 'medium' | 'high', number> = {
   low: 2,
 };
 
-export const ReportScreen = ({ navigation, route }: Props): JSX.Element => {
+export const ReportScreen = ({ route }: Props): JSX.Element => {
   const { t } = useTranslation();
   const { language } = useAppLanguage();
   const api = useApiClient();
@@ -80,7 +80,7 @@ export const ReportScreen = ({ navigation, route }: Props): JSX.Element => {
             <Text style={styles.summaryTitle}>{report?.summary.title ?? t('common.loading')}</Text>
             <Text style={styles.summaryText}>{report?.summary.shortDescription ?? ''}</Text>
           </View>
-          <StatusChip label={t('report.summaryTone')} tone="brand" />
+          <StatusChip label={t('report.summaryTone')} tone="brand" style={styles.summaryToneChip} />
         </View>
 
         <View style={styles.summaryMetaRow}>
@@ -156,10 +156,6 @@ export const ReportScreen = ({ navigation, route }: Props): JSX.Element => {
           ))}
         </View>
       ) : null}
-
-      <Pressable style={styles.secondaryButton} onPress={() => navigation.navigate('History')}>
-        <Text style={styles.secondaryButtonText}>{t('common.openHistory')}</Text>
-      </Pressable>
     </ScreenShell>
   );
 };
@@ -175,14 +171,16 @@ const styles = StyleSheet.create({
     ...shadow.raised,
   },
   summaryHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: 'column',
     gap: spacing.sm,
     alignItems: 'flex-start',
   },
   summaryCopy: {
-    flex: 1,
+    width: '100%',
     gap: spacing.xxs,
+  },
+  summaryToneChip: {
+    maxWidth: '100%',
   },
   summaryKicker: {
     color: colors.textMuted,
@@ -210,10 +208,12 @@ const styles = StyleSheet.create({
   },
   statsRow: {
     flexDirection: 'row',
+    flexWrap: 'wrap',
     gap: spacing.sm,
   },
   statCard: {
     flex: 1,
+    minWidth: 96,
     borderRadius: radius.lg,
     borderWidth: 1,
     borderColor: colors.border,
@@ -321,19 +321,5 @@ const styles = StyleSheet.create({
     lineHeight: typography.lineHeight.body,
     textAlign: 'center',
     paddingVertical: spacing.sm,
-  },
-  secondaryButton: {
-    minHeight: 50,
-    borderRadius: radius.lg,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: colors.accentSoft,
-    borderWidth: 1,
-    borderColor: colors.border,
-  },
-  secondaryButtonText: {
-    color: colors.accentStrong,
-    fontWeight: typography.weight.bold,
-    fontSize: typography.size.body,
   },
 });

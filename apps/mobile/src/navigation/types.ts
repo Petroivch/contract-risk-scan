@@ -8,6 +8,4 @@ export type RootStackParamList = {
     analysisId: string;
     selectedRole?: string;
   };
-  History: undefined;
-  Settings: undefined;
 };
