@@ -1,4 +1,4 @@
-# Rollback: v2__optimization_and_guards.sql
+﻿# Откат: v2__optimization_and_guards.sql
 
 ## Порядок отката
 Если применены более новые миграции:

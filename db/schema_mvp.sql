@@ -1,13 +1,20 @@
 -- Contract Risk Scanner
--- MVP database schema snapshot (after migrations v1..v4).
+-- Schema snapshot after migrations v1..v4.
 -- Source of truth for deployment:
 --   db/migrations/v1__init_schema.sql
 --   db/migrations/v2__optimization_and_guards.sql
 --   db/migrations/v3__language_support.sql
 --   db/migrations/v4__config_registry_and_invariants.sql
--- Note: default inserts into app_config/language_catalog are applied by v4 migration.
 
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
+
+CREATE OR REPLACE FUNCTION set_updated_at()
+RETURNS TRIGGER AS $$
+BEGIN
+    NEW.updated_at = NOW();
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
 
 CREATE TABLE IF NOT EXISTS app_config (
     key TEXT PRIMARY KEY CHECK (key ~ '^[a-z0-9._-]+$'),
@@ -34,6 +41,10 @@ CREATE TABLE IF NOT EXISTS language_catalog (
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
+
+CREATE UNIQUE INDEX IF NOT EXISTS uq_language_catalog_single_default
+ON language_catalog (is_default)
+WHERE is_default = TRUE;
 
 CREATE OR REPLACE FUNCTION get_default_language_code()
 RETURNS VARCHAR(2) AS $$
@@ -134,6 +145,26 @@ BEGIN
       AND is_active = FALSE;
 END;
 $$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION normalize_supported_language(input_lang TEXT)
+RETURNS VARCHAR(2) AS $$
+DECLARE
+    normalized_code VARCHAR(2);
+BEGIN
+    IF input_lang IS NULL OR btrim(input_lang) = '' THEN
+        RETURN get_default_language_code();
+    END IF;
+
+    input_lang := lower(btrim(input_lang));
+
+    SELECT code INTO normalized_code
+    FROM language_catalog
+    WHERE code = input_lang AND is_active = TRUE
+    LIMIT 1;
+
+    RETURN COALESCE(normalized_code, get_default_language_code());
+END;
+$$ LANGUAGE plpgsql STABLE;
 
 CREATE TABLE IF NOT EXISTS users (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -258,222 +289,169 @@ CREATE TABLE IF NOT EXISTS audit_logs (
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
-CREATE OR REPLACE FUNCTION trg_app_config_enforce_invariants()
-RETURNS TRIGGER AS $$
+CREATE TRIGGER trg_app_config_updated_at
+BEFORE UPDATE ON app_config
+FOR EACH ROW EXECUTE FUNCTION set_updated_at();
+
+CREATE TRIGGER trg_language_catalog_updated_at
+BEFORE UPDATE ON language_catalog
+FOR EACH ROW EXECUTE FUNCTION set_updated_at();
+
+CREATE TRIGGER trg_users_updated_at
+BEFORE UPDATE ON users
+FOR EACH ROW EXECUTE FUNCTION set_updated_at();
+CREATE TRIGGER trg_role_profiles_updated_at
+BEFORE UPDATE ON role_profiles
+FOR EACH ROW EXECUTE FUNCTION set_updated_at();
+CREATE TRIGGER trg_contracts_updated_at
+BEFORE UPDATE ON contracts
+FOR EACH ROW EXECUTE FUNCTION set_updated_at();
+CREATE TRIGGER trg_analysis_jobs_updated_at
+BEFORE UPDATE ON analysis_jobs
+FOR EACH ROW EXECUTE FUNCTION set_updated_at();
+CREATE TRIGGER trg_risk_items_updated_at
+BEFORE UPDATE ON risk_items
+FOR EACH ROW EXECUTE FUNCTION set_updated_at();
+CREATE TRIGGER trg_disputed_clauses_updated_at
+BEFORE UPDATE ON disputed_clauses
+FOR EACH ROW EXECUTE FUNCTION set_updated_at();
+CREATE TRIGGER trg_summaries_updated_at
+BEFORE UPDATE ON summaries
+FOR EACH ROW EXECUTE FUNCTION set_updated_at();
+
+CREATE OR REPLACE FUNCTION normalize_supported_language(input_lang TEXT)
+RETURNS VARCHAR(2) AS
 DECLARE
-    requested_default VARCHAR(2);
-    effective_priority_min INTEGER;
-    effective_priority_max INTEGER;
-    effective_db_target_mb INTEGER;
-    effective_db_hard_cap_mb INTEGER;
-    effective_release_limit_mb INTEGER;
+    normalized_code VARCHAR(2);
 BEGIN
-    IF NEW.key = 'language.supported' THEN
-        NEW.value_json := COALESCE(
-            (SELECT jsonb_agg(code ORDER BY code) FROM language_catalog WHERE is_active = TRUE),
-            '[]'::jsonb
-        );
-        NEW.value_type := 'array';
-    ELSIF NEW.key = 'language.default' THEN
-        requested_default := lower(btrim(trim(both '"' FROM NEW.value_json::text)));
-
-        IF requested_default IS NULL OR requested_default = '' THEN
-            RAISE EXCEPTION 'language.default must be a non-empty active language code';
-        END IF;
-
-        IF NOT EXISTS (
-            SELECT 1
-            FROM language_catalog
-            WHERE code = requested_default
-              AND is_active = TRUE
-        ) THEN
-            RAISE EXCEPTION 'language.default must reference an active language_catalog code: %', requested_default;
-        END IF;
-
-        NEW.value_json := to_jsonb(requested_default);
-        NEW.value_type := 'string';
-    ELSIF NEW.key IN ('analysis.priority.min', 'analysis.priority.max') THEN
-        IF NEW.value_type <> 'integer' THEN
-            RAISE EXCEPTION '% must use integer value_type', NEW.key;
-        END IF;
-
-        effective_priority_min := CASE
-            WHEN NEW.key = 'analysis.priority.min' THEN (NEW.value_json::text)::INTEGER
-            ELSE COALESCE(
-                (SELECT (value_json::text)::INTEGER FROM app_config WHERE key = 'analysis.priority.min' LIMIT 1),
-                1
-            )
-        END;
-        effective_priority_max := CASE
-            WHEN NEW.key = 'analysis.priority.max' THEN (NEW.value_json::text)::INTEGER
-            ELSE COALESCE(
-                (SELECT (value_json::text)::INTEGER FROM app_config WHERE key = 'analysis.priority.max' LIMIT 1),
-                9
-            )
-        END;
-
-        IF effective_priority_min < 1 OR effective_priority_max > 9 OR effective_priority_min > effective_priority_max THEN
-            RAISE EXCEPTION 'analysis priority config must satisfy 1 <= min <= max <= 9';
-        END IF;
-    ELSIF NEW.key IN (
-        'build.db_contribution_target_mb',
-        'build.db_contribution_hard_cap_mb',
-        'build.final_release_size_limit_mb'
-    ) THEN
-        IF NEW.value_type <> 'integer' THEN
-            RAISE EXCEPTION '% must use integer value_type', NEW.key;
-        END IF;
-
-        effective_db_target_mb := CASE
-            WHEN NEW.key = 'build.db_contribution_target_mb' THEN (NEW.value_json::text)::INTEGER
-            ELSE COALESCE(
-                (SELECT (value_json::text)::INTEGER FROM app_config WHERE key = 'build.db_contribution_target_mb' LIMIT 1),
-                35
-            )
-        END;
-        effective_db_hard_cap_mb := CASE
-            WHEN NEW.key = 'build.db_contribution_hard_cap_mb' THEN (NEW.value_json::text)::INTEGER
-            ELSE COALESCE(
-                (SELECT (value_json::text)::INTEGER FROM app_config WHERE key = 'build.db_contribution_hard_cap_mb' LIMIT 1),
-                40
-            )
-        END;
-        effective_release_limit_mb := CASE
-            WHEN NEW.key = 'build.final_release_size_limit_mb' THEN (NEW.value_json::text)::INTEGER
-            ELSE COALESCE(
-                (SELECT (value_json::text)::INTEGER FROM app_config WHERE key = 'build.final_release_size_limit_mb' LIMIT 1),
-                228
-            )
-        END;
-
-        IF effective_db_target_mb <= 0 OR effective_db_hard_cap_mb <= 0 OR effective_release_limit_mb <= 0 THEN
-            RAISE EXCEPTION 'build size config must be positive integers';
-        END IF;
-
-        IF effective_db_target_mb > effective_db_hard_cap_mb OR effective_db_hard_cap_mb > effective_release_limit_mb THEN
-            RAISE EXCEPTION 'build size config must satisfy target <= hard cap <= final release limit';
-        END IF;
+    IF input_lang IS NULL OR btrim(input_lang) = '' THEN
+        RETURN get_default_language_code();
     END IF;
 
-    RETURN NEW;
-END;
-$$ LANGUAGE plpgsql;
+    input_lang := lower(btrim(input_lang));
 
-CREATE OR REPLACE FUNCTION trg_app_config_sync_language_default()
-RETURNS TRIGGER AS $$
-DECLARE
-    requested_default VARCHAR(2);
-BEGIN
-    IF pg_trigger_depth() > 1 THEN
-        RETURN NEW;
-    END IF;
-
-    requested_default := lower(btrim(trim(both '"' FROM NEW.value_json::text)));
-
-    PERFORM set_default_language_code(requested_default);
-
-    RETURN NEW;
-END;
-$$ LANGUAGE plpgsql;
-
-CREATE OR REPLACE FUNCTION trg_language_catalog_sync_config()
-RETURNS TRIGGER AS $$
-DECLARE
-    active_language_count INTEGER;
-    default_code VARCHAR(2);
-    supported_codes JSONB;
-BEGIN
-    IF pg_trigger_depth() > 1 THEN
-        RETURN NULL;
-    END IF;
-
-    SELECT COUNT(*)
-    INTO active_language_count
+    SELECT code INTO normalized_code
     FROM language_catalog
-    WHERE is_active = TRUE;
-
-    IF active_language_count = 0 THEN
-        RAISE EXCEPTION 'language_catalog must contain at least one active language';
-    END IF;
-
-    SELECT code
-    INTO default_code
-    FROM language_catalog
-    WHERE is_default = TRUE
-      AND is_active = TRUE
-    ORDER BY code
+    WHERE code = input_lang AND is_active = TRUE
     LIMIT 1;
 
-    IF default_code IS NULL THEN
-        SELECT code
-        INTO default_code
-        FROM language_catalog
-        WHERE is_active = TRUE
-        ORDER BY code
-        LIMIT 1;
-
-        PERFORM set_default_language_code(default_code);
-    ELSE
-        UPDATE language_catalog
-        SET is_default = FALSE
-        WHERE is_default = TRUE
-          AND (code <> default_code OR is_active = FALSE);
-    END IF;
-
-    SELECT COALESCE(jsonb_agg(code ORDER BY code), '[]'::jsonb)
-    INTO supported_codes
-    FROM language_catalog
-    WHERE is_active = TRUE;
-
-    INSERT INTO app_config (key, value_json, value_type, scope, description)
-    VALUES (
-        'language.supported',
-        supported_codes,
-        'array',
-        'global',
-        'Supported language codes for UI/API selection'
-    )
-    ON CONFLICT (key) DO UPDATE
-    SET
-        value_json = EXCLUDED.value_json,
-        value_type = EXCLUDED.value_type,
-        scope = EXCLUDED.scope,
-        description = EXCLUDED.description,
-        updated_at = NOW();
-
-    INSERT INTO app_config (key, value_json, value_type, scope, description)
-    VALUES (
-        'language.default',
-        to_jsonb(default_code),
-        'string',
-        'global',
-        'Default language code for fallback logic'
-    )
-    ON CONFLICT (key) DO UPDATE
-    SET
-        value_json = EXCLUDED.value_json,
-        value_type = EXCLUDED.value_type,
-        scope = EXCLUDED.scope,
-        description = EXCLUDED.description,
-        updated_at = NOW();
-
-    RETURN NULL;
+    RETURN COALESCE(normalized_code, get_default_language_code());
 END;
-$$ LANGUAGE plpgsql;
+ LANGUAGE plpgsql STABLE;
 
-DROP TRIGGER IF EXISTS trg_app_config_enforce_invariants ON app_config;
-CREATE TRIGGER trg_app_config_enforce_invariants
-BEFORE INSERT OR UPDATE ON app_config
-FOR EACH ROW EXECUTE FUNCTION trg_app_config_enforce_invariants();
+CREATE OR REPLACE FUNCTION trg_users_normalize_language()
+RETURNS TRIGGER AS
+BEGIN
+    NEW.preferred_language := normalize_supported_language(NEW.preferred_language);
+    RETURN NEW;
+END;
+ LANGUAGE plpgsql;
 
-DROP TRIGGER IF EXISTS trg_app_config_sync_language_default ON app_config;
-CREATE TRIGGER trg_app_config_sync_language_default
-AFTER INSERT OR UPDATE OF value_json ON app_config
-FOR EACH ROW
-WHEN (NEW.key = 'language.default')
-EXECUTE FUNCTION trg_app_config_sync_language_default();
+CREATE OR REPLACE FUNCTION trg_contracts_normalize_language()
+RETURNS TRIGGER AS
+BEGIN
+    NEW.language_code := normalize_supported_language(NEW.language_code);
+    RETURN NEW;
+END;
+ LANGUAGE plpgsql;
 
-DROP TRIGGER IF EXISTS trg_language_catalog_sync_config ON language_catalog;
-CREATE TRIGGER trg_language_catalog_sync_config
-AFTER INSERT OR UPDATE OR DELETE ON language_catalog
-FOR EACH STATEMENT EXECUTE FUNCTION trg_language_catalog_sync_config();
+CREATE OR REPLACE FUNCTION trg_analysis_jobs_normalize_language()
+RETURNS TRIGGER AS
+BEGIN
+    NEW.report_language := normalize_supported_language(NEW.report_language);
+    RETURN NEW;
+END;
+ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION trg_summaries_normalize_language()
+RETURNS TRIGGER AS
+BEGIN
+    NEW.report_language := normalize_supported_language(NEW.report_language);
+    RETURN NEW;
+END;
+ LANGUAGE plpgsql;
+
+INSERT INTO language_catalog (code, display_name, is_active, is_default)
+VALUES
+    ('ru', 'Russian', TRUE, TRUE),
+    ('en', 'English', TRUE, FALSE),
+    ('it', 'Italian', TRUE, FALSE),
+    ('fr', 'French', TRUE, FALSE)
+ON CONFLICT (code) DO UPDATE
+SET
+    display_name = EXCLUDED.display_name,
+    is_active = EXCLUDED.is_active,
+    updated_at = NOW();
+
+INSERT INTO app_config (key, value_json, value_type, scope, description)
+VALUES
+    ('language.default', '"ru"'::jsonb, 'string', 'global', 'Default language code for fallback logic'),
+    ('language.supported', '["ru","en","it","fr"]'::jsonb, 'array', 'global', 'Supported language codes for UI/API selection'),
+    ('locale.default', '"ru-RU"'::jsonb, 'string', 'global', 'Default locale for UI formatting'),
+    ('timezone.default', '"Europe/Moscow"'::jsonb, 'string', 'global', 'Default timezone for timestamps'),
+    ('analysis.priority.min', '1'::jsonb, 'integer', 'db', 'Minimum analysis priority'),
+    ('analysis.priority.max', '9'::jsonb, 'integer', 'db', 'Maximum analysis priority'),
+    ('data.retention.contract_hard_delete_days', '30'::jsonb, 'integer', 'db', 'Hard delete delay for soft-deleted contracts'),
+    ('data.retention.audit_logs_days', '365'::jsonb, 'integer', 'db', 'Audit log retention period'),
+    ('mobile.cache.max_contracts', '50'::jsonb, 'integer', 'mobile', 'Suggested local cache limit for contracts'),
+    ('migration.runtime_budget_ms', '500'::jsonb, 'integer', 'db', 'Target runtime budget for mobile DB migration on startup'),
+    ('migration.max_complex_ops_per_release', '1'::jsonb, 'integer', 'db', 'Maximum count of complex migration operations per release'),
+    ('build.final_release_size_limit_mb', '228'::jsonb, 'integer', 'build', 'Max allowed total release package size'),
+    ('build.db_contribution_target_mb', '35'::jsonb, 'integer', 'build', 'Target DB contribution in final release package'),
+    ('build.db_contribution_hard_cap_mb', '40'::jsonb, 'integer', 'build', 'Hard cap for DB contribution in final release package')
+ON CONFLICT (key) DO UPDATE
+SET
+    value_json = EXCLUDED.value_json,
+    value_type = EXCLUDED.value_type,
+    scope = EXCLUDED.scope,
+    description = EXCLUDED.description,
+    updated_at = NOW();
+
+CREATE TRIGGER trg_users_normalize_language
+BEFORE INSERT OR UPDATE ON users
+FOR EACH ROW EXECUTE FUNCTION trg_users_normalize_language();
+CREATE TRIGGER trg_contracts_normalize_language
+BEFORE INSERT OR UPDATE ON contracts
+FOR EACH ROW EXECUTE FUNCTION trg_contracts_normalize_language();
+CREATE TRIGGER trg_analysis_jobs_normalize_language
+BEFORE INSERT OR UPDATE ON analysis_jobs
+FOR EACH ROW EXECUTE FUNCTION trg_analysis_jobs_normalize_language();
+CREATE TRIGGER trg_summaries_normalize_language
+BEFORE INSERT OR UPDATE ON summaries
+FOR EACH ROW EXECUTE FUNCTION trg_summaries_normalize_language();
+CREATE INDEX idx_users_status_created_at ON users (status, created_at DESC);
+CREATE INDEX idx_users_preferred_language ON users (preferred_language);
+
+CREATE INDEX idx_role_profiles_user_id ON role_profiles (user_id);
+CREATE INDEX idx_role_profiles_user_default ON role_profiles (user_id, is_default) WHERE is_default = TRUE;
+CREATE UNIQUE INDEX uq_role_profiles_one_default_per_user ON role_profiles (user_id) WHERE is_default = TRUE;
+
+CREATE INDEX idx_contracts_user_uploaded_at ON contracts (user_id, uploaded_at DESC);
+CREATE INDEX idx_contracts_status_uploaded_at ON contracts (status, uploaded_at DESC);
+CREATE INDEX idx_contracts_active_user ON contracts (user_id, id) WHERE deleted_at IS NULL;
+CREATE INDEX idx_contracts_sha256 ON contracts (file_sha256);
+CREATE INDEX idx_contracts_language_uploaded_at ON contracts (language_code, uploaded_at DESC);
+
+CREATE INDEX idx_analysis_jobs_contract_created ON analysis_jobs (contract_id, created_at DESC);
+CREATE INDEX idx_analysis_jobs_status_created ON analysis_jobs (status, created_at DESC);
+CREATE INDEX idx_analysis_jobs_requested_by_created ON analysis_jobs (requested_by, created_at DESC);
+CREATE INDEX idx_analysis_jobs_queue ON analysis_jobs (status, priority DESC, created_at ASC) WHERE status IN ('queued', 'running');
+CREATE INDEX idx_analysis_jobs_report_language_created ON analysis_jobs (report_language, created_at DESC);
+
+CREATE INDEX idx_risk_items_job_severity ON risk_items (analysis_job_id, severity, score DESC);
+CREATE INDEX idx_risk_items_contract_severity ON risk_items (contract_id, severity, created_at DESC);
+CREATE INDEX idx_risk_items_category ON risk_items (category);
+CREATE INDEX idx_risk_items_role_impact ON risk_items (role_impact);
+
+CREATE INDEX idx_disputed_clauses_job ON disputed_clauses (analysis_job_id, created_at DESC);
+CREATE INDEX idx_disputed_clauses_contract ON disputed_clauses (contract_id, created_at DESC);
+CREATE INDEX idx_disputed_clauses_role_impact ON disputed_clauses (role_impact);
+
+CREATE INDEX idx_summaries_contract_id ON summaries (contract_id);
+CREATE INDEX idx_summaries_report_language ON summaries (report_language);
+
+CREATE INDEX idx_audit_logs_created_at ON audit_logs (created_at DESC);
+CREATE INDEX idx_audit_logs_event_type_created ON audit_logs (event_type, created_at DESC);
+CREATE INDEX idx_audit_logs_user_created ON audit_logs (user_id, created_at DESC);
+CREATE INDEX idx_audit_logs_contract_created ON audit_logs (contract_id, created_at DESC);
+CREATE INDEX idx_audit_logs_analysis_created ON audit_logs (analysis_job_id, created_at DESC);

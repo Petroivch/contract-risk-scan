@@ -1,13 +1,13 @@
-# Index Strategy (Server + Mobile)
+﻿# Стратегия индексов (Server + Mobile)
 
 ## 1. Цель
 - Обеспечить быстрые запросы для mobile flow:
   - история договоров;
   - статус анализа;
-  - отчет (риски/спорные пункты/summary);
+  - отчет: риски, спорные пункты, summary;
   - фильтрация по языкам.
 
-## 2. Server-side индексы (PostgreSQL)
+## 2. Server-side индексы PostgreSQL
 1. Contracts:
 - `idx_contracts_user_uploaded_at`
 - `idx_contracts_status_uploaded_at`
@@ -35,7 +35,7 @@
 ## 3. Mobile local DB (offline-first)
 - На устройстве держать минимальный набор индексов для:
   - списка договоров;
-  - поиска по статусу/дате;
+  - поиска по статусу и дате;
   - открытия последнего отчета.
 - Не копировать все server-side индексы в локальную БД.
 
