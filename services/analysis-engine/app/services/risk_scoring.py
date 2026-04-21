@@ -16,14 +16,20 @@ class RiskScoringService:
 
     def score(self, clauses: list[ClauseSegment], role: str, language: str) -> list[RiskItem]:
         resolved_language = normalize_analysis_language(language)
-        role_lower = role.lower().strip()
-        risks: list[RiskItem] = []
+        role_lower = role.casefold().strip()
+        risks_with_rank: list[tuple[int, int, RiskItem]] = []
+        seen_pairs: set[tuple[str, str]] = set()
 
-        for clause in clauses:
-            normalized_clause = clause.text.lower()
+        for clause_index, clause in enumerate(clauses):
+            normalized_clause = clause.text.casefold()
+            role_mentioned = bool(role_lower and role_lower in normalized_clause)
             for rule in self._config.risk_rules:
                 if not any(keyword in normalized_clause for keyword in rule.keywords):
                     continue
+                dedupe_key = (rule.id, clause.clause_id)
+                if dedupe_key in seen_pairs:
+                    continue
+                seen_pairs.add(dedupe_key)
 
                 severity = RiskSeverity(rule.severity)
                 risk_title = self._format_risk_title(
@@ -32,21 +38,31 @@ class RiskScoringService:
                     title_fragment=resolve_localized_text(rule.title, resolved_language),
                 )
 
-                risks.append(
-                    RiskItem(
-                        risk_id=f"{self._config.risk_id_prefix}{len(risks) + 1}",
-                        title=risk_title,
-                        severity=severity,
-                        clause_id=clause.clause_id,
-                        description=resolve_localized_text(rule.description, resolved_language),
-                        role_relevance=self._build_role_relevance(
-                            language=resolved_language,
-                            role=role,
-                            role_mentioned=role_lower in normalized_clause,
+                risks_with_rank.append(
+                    (
+                        self._severity_rank(severity),
+                        clause_index,
+                        RiskItem(
+                            risk_id="",
+                            title=risk_title,
+                            severity=severity,
+                            clause_id=clause.clause_id,
+                            description=resolve_localized_text(rule.description, resolved_language),
+                            role_relevance=self._build_role_relevance(
+                                language=resolved_language,
+                                role=role,
+                                role_mentioned=role_mentioned,
+                            ),
+                            mitigation=resolve_localized_text(rule.mitigation, resolved_language),
                         ),
-                        mitigation=resolve_localized_text(rule.mitigation, resolved_language),
                     )
                 )
+
+        risks_with_rank.sort(key=lambda item: (-item[0], item[1]))
+        risks = [
+            risk.model_copy(update={"risk_id": f"{self._config.risk_id_prefix}{index}"})
+            for index, (_, _, risk) in enumerate(risks_with_rank, start=1)
+        ]
 
         if not risks:
             risks.append(
@@ -69,12 +85,17 @@ class RiskScoringService:
     def extract_disputed_clauses(self, clauses: list[ClauseSegment], language: str) -> list[DisputedClauseItem]:
         resolved_language = normalize_analysis_language(language)
         disputed: list[DisputedClauseItem] = []
+        seen_pairs: set[tuple[str, str]] = set()
 
         for clause in clauses:
-            normalized_clause = clause.text.lower()
+            normalized_clause = clause.text.casefold()
             for marker in self._config.dispute_markers:
                 if not any(item in normalized_clause for item in marker.markers):
                     continue
+                dedupe_key = (clause.clause_id, marker.id)
+                if dedupe_key in seen_pairs:
+                    continue
+                seen_pairs.add(dedupe_key)
 
                 disputed.append(
                     DisputedClauseItem(
@@ -113,6 +134,16 @@ class RiskScoringService:
             localized_labels = self._config.severity_labels[self._language_behavior.fallback_language]
 
         return localized_labels.get(severity.value, severity.value)
+
+    @staticmethod
+    def _severity_rank(severity: RiskSeverity) -> int:
+        ranks = {
+            RiskSeverity.LOW: 1,
+            RiskSeverity.MEDIUM: 2,
+            RiskSeverity.HIGH: 3,
+            RiskSeverity.CRITICAL: 4,
+        }
+        return ranks[severity]
 
     def _build_role_relevance(self, language: str, role: str, role_mentioned: bool) -> str:
         if role_mentioned:

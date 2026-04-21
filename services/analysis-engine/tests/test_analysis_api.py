@@ -1,9 +1,30 @@
+import base64
 import time
 from typing import Any
 
 from fastapi.testclient import TestClient
 
 from app.main import app
+
+TEXT_CONTRACT_RU = "\n".join(
+    [
+        "Исполнитель обязан выполнить работы в срок 10 дней.",
+        "Заказчик обязан оплатить услуги в течение 5 банковских дней.",
+        "За просрочку применяется штраф 5%.",
+        "Изменение сроков возможно по соглашению сторон.",
+        "Заказчик вправе в одностороннем порядке отказаться от договора.",
+    ]
+)
+
+TEXT_CONTRACT_EN = "\n".join(
+    [
+        "Buyer must pay within 10 days.",
+        "Seller shall deliver the goods within 5 days.",
+        "Penalty 1% applies for delay.",
+        "Any change is by agreement of the parties.",
+        "Buyer may unilaterally terminate the contract.",
+    ]
+)
 
 
 def _run_job(client: TestClient, payload: dict[str, Any]) -> dict[str, Any]:
@@ -31,8 +52,8 @@ def test_run_analysis_contract_returns_local_first_plan_for_text_input() -> None
 
     payload = {
         "document_name": "sample-contract.txt",
-        "role_context": {"role": "executor", "counterparty_role": "employer"},
-        "document_text": "Исполнитель обязан выполнить работы в срок 10 дней.",
+        "role_context": {"role": "исполнитель", "counterparty_role": "заказчик"},
+        "document_text": TEXT_CONTRACT_RU,
         "language": "ru",
         "mime_type": "text/plain",
     }
@@ -62,14 +83,14 @@ def test_capabilities_endpoint_exposes_language_and_execution_policy() -> None:
     assert "application/pdf" in body["mime_type_overrides"]
 
 
-def test_status_and_result_flow_returns_completed_output_with_execution_plan() -> None:
+def test_status_and_result_flow_returns_meaningful_contract_analysis() -> None:
     client = TestClient(app)
 
     payload = {
         "document_name": "scan.pdf",
         "role_context": {"role": "buyer", "counterparty_role": "seller"},
-        "document_base64": "QnV5ZXIgbXVzdCBwYXkgd2l0aGluIDEwIGRheXMuIFBlbmFsdHkgMSUu",
-        "locale": "IT",
+        "document_base64": base64.b64encode(TEXT_CONTRACT_EN.encode("utf-8")).decode("ascii"),
+        "locale": "EN",
         "mime_type": "application/pdf",
     }
 
@@ -79,25 +100,39 @@ def test_status_and_result_flow_returns_completed_output_with_execution_plan() -
 
     status_body = _wait_for_terminal_status(client, run_body["job_id"])
     assert status_body["status"] == "completed"
-    assert status_body["language"] == "it"
-    assert status_body["locale"] == "it"
+    assert status_body["language"] == "en"
+    assert status_body["locale"] == "en"
     assert status_body["execution_plan"]["mode"] == "server_assist"
 
     result_response = client.get(f"/analysis/{run_body['job_id']}/result")
     assert result_response.status_code == 200
     result_body = result_response.json()
+    result = result_body["result"]
 
     assert result_body["status"] == "completed"
-    assert result_body["language"] == "it"
-    assert result_body["locale"] == "it"
-    assert result_body["execution_plan"]["mode"] == "server_assist"
-    assert result_body["result"]["language"] == "it"
-    assert result_body["result"]["locale"] == "it"
-    assert result_body["result"]["execution_plan"]["mode"] == "server_assist"
-    assert result_body["result"]["execution_plan"]["offline_capable"] is False
-    assert result_body["result"]["contract_brief"]
-    assert result_body["result"]["risks"]
-    assert result_body["result"]["role_focused_summary"]["role"] == "buyer"
+    assert result_body["language"] == "en"
+    assert result_body["locale"] == "en"
+    assert result["language"] == "en"
+    assert result["locale"] == "en"
+    assert result["execution_plan"]["mode"] == "server_assist"
+    assert result["execution_plan"]["offline_capable"] is False
+    assert result["contract_brief"]
+    assert "What buyer must do" in result["contract_brief"]
+    assert "What seller must do" in result["contract_brief"]
+    assert "Payment terms" in result["contract_brief"]
+    assert "Deadlines and timing" in result["contract_brief"]
+    assert "Penalties and sanctions" in result["contract_brief"]
+    assert "Detected disputed or vague clauses" in result["contract_brief"]
+
+    assert result["risks"]
+    assert result["risks"][0]["severity"] == "critical"
+    assert any(item["severity"] == "high" for item in result["risks"])
+    assert result["role_focused_summary"]["role"] == "buyer"
+    assert any("Buyer must pay" in line for line in result["role_focused_summary"]["must_do"])
+    assert any("deliver" in line.lower() for line in result["role_focused_summary"]["must_do"])
+    assert any("pay" in line.lower() for line in result["role_focused_summary"]["payment_terms"])
+    assert any("10 days" in line.lower() or "5 days" in line.lower() for line in result["role_focused_summary"]["deadlines"])
+    assert result["disputed_clauses"]
 
 
 def test_language_fallback_to_ru_for_invalid_code() -> None:
@@ -105,8 +140,8 @@ def test_language_fallback_to_ru_for_invalid_code() -> None:
 
     payload = {
         "document_name": "sample-contract.txt",
-        "role_context": {"role": "executor", "counterparty_role": "employer"},
-        "document_text": "Исполнитель обязан выполнить работы в срок 10 дней.",
+        "role_context": {"role": "исполнитель", "counterparty_role": "заказчик"},
+        "document_text": TEXT_CONTRACT_RU,
         "language": "de",
     }
 
@@ -122,7 +157,7 @@ def test_language_normalization_for_uppercase_code() -> None:
     payload = {
         "document_name": "sample-contract.txt",
         "role_context": {"role": "executor", "counterparty_role": "employer"},
-        "document_text": "Исполнитель обязан выполнить работы в срок 10 дней.",
+        "document_text": "Executor must deliver the work within 10 days.",
         "language": "EN",
     }
 
@@ -138,7 +173,7 @@ def test_locale_alias_is_supported_for_core_api_contract() -> None:
     payload = {
         "document_name": "sample-contract.txt",
         "role_context": {"role": "executor", "counterparty_role": "employer"},
-        "document_text": "Исполнитель обязан выполнить работы в срок 10 дней.",
+        "document_text": "Executor must deliver the work within 10 days.",
         "locale": "IT",
     }
 
@@ -154,7 +189,7 @@ def test_locale_has_priority_over_language_when_both_are_provided() -> None:
     payload = {
         "document_name": "sample-contract.txt",
         "role_context": {"role": "executor", "counterparty_role": "employer"},
-        "document_text": "Исполнитель обязан выполнить работы в срок 10 дней.",
+        "document_text": "Executor must deliver the work within 10 days.",
         "language": "en",
         "locale": "fr",
     }

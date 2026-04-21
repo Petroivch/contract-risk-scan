@@ -51,6 +51,43 @@ def _validate_runtime_config(config: AnalysisRuntimeConfig) -> None:
         _assert_localized_map(f"pipeline.errors.{error_name}", localized_map, supported_languages)
 
     _assert_localized_map("templates.contract_brief", config.templates.contract_brief, supported_languages)
+    brief_sections = config.templates.contract_brief_sections
+    _assert_localized_map("templates.contract_brief_sections.intro", brief_sections.intro, supported_languages)
+    _assert_localized_map(
+        "templates.contract_brief_sections.role_obligations",
+        brief_sections.role_obligations,
+        supported_languages,
+    )
+    _assert_localized_map(
+        "templates.contract_brief_sections.counterparty_obligations",
+        brief_sections.counterparty_obligations,
+        supported_languages,
+    )
+    _assert_localized_map(
+        "templates.contract_brief_sections.general_obligations",
+        brief_sections.general_obligations,
+        supported_languages,
+    )
+    _assert_localized_map(
+        "templates.contract_brief_sections.payment_terms",
+        brief_sections.payment_terms,
+        supported_languages,
+    )
+    _assert_localized_map(
+        "templates.contract_brief_sections.deadlines",
+        brief_sections.deadlines,
+        supported_languages,
+    )
+    _assert_localized_map(
+        "templates.contract_brief_sections.penalties",
+        brief_sections.penalties,
+        supported_languages,
+    )
+    _assert_localized_map(
+        "templates.contract_brief_sections.disputed_clauses",
+        brief_sections.disputed_clauses,
+        supported_languages,
+    )
 
     if not config.execution_strategy.allow_server_assist and config.execution_strategy.network_required_modes:
         raise ValueError("execution_strategy.network_required_modes requires allow_server_assist=true")

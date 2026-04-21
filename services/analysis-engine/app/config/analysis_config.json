@@ -6,7 +6,7 @@
   "service_metadata": {
     "title": "Contract Risk Scanner - Analysis Engine",
     "description": "AI analysis service for contract risk extraction and role-focused summary.",
-    "version": "0.2.0"
+    "version": "0.3.0"
   },
   "language_behavior": {
     "default_language": "ru",
@@ -120,6 +120,56 @@
       "en": "Contract '{document_name}' was processed by configurable pipeline. {clauses_count} clauses were detected. Analysis is focused on role '{role}'.",
       "it": "Il contratto '{document_name}' e stato elaborato dal pipeline configurabile. Sono state rilevate {clauses_count} clausole. L'analisi e focalizzata sul ruolo '{role}'.",
       "fr": "Le contrat '{document_name}' a ete traite par un pipeline configurable. {clauses_count} clauses ont ete detectees. L'analyse est axee sur le role '{role}'."
+    },
+    "contract_brief_sections": {
+      "intro": {
+        "ru": "Договор '{document_name}' разобран на {clauses_count} пунктов. Ниже кратко показано, что важно для роли '{role}'.",
+        "en": "Contract '{document_name}' was split into {clauses_count} clauses. The brief below highlights what matters for role '{role}'.",
+        "it": "Il contratto '{document_name}' e stato suddiviso in {clauses_count} clausole. Il riepilogo seguente evidenzia cio che conta per il ruolo '{role}'.",
+        "fr": "Le contrat '{document_name}' a ete decoupe en {clauses_count} clauses. Le resume ci-dessous montre ce qui est important pour le role '{role}'."
+      },
+      "role_obligations": {
+        "ru": "Что должен {role}: {statements}.",
+        "en": "What {role} must do: {statements}.",
+        "it": "Cosa deve fare {role}: {statements}.",
+        "fr": "Ce que {role} doit faire : {statements}."
+      },
+      "counterparty_obligations": {
+        "ru": "Что должен {counterparty_role}: {statements}.",
+        "en": "What {counterparty_role} must do: {statements}.",
+        "it": "Cosa deve fare {counterparty_role}: {statements}.",
+        "fr": "Ce que {counterparty_role} doit faire : {statements}."
+      },
+      "general_obligations": {
+        "ru": "Ключевые обязательства по договору для роли '{role}': {statements}.",
+        "en": "Key obligations in the contract for role '{role}': {statements}.",
+        "it": "Obblighi chiave del contratto per il ruolo '{role}': {statements}.",
+        "fr": "Obligations principales du contrat pour le role '{role}' : {statements}."
+      },
+      "payment_terms": {
+        "ru": "Условия оплаты: {statements}.",
+        "en": "Payment terms: {statements}.",
+        "it": "Condizioni di pagamento: {statements}.",
+        "fr": "Conditions de paiement : {statements}."
+      },
+      "deadlines": {
+        "ru": "Сроки и дедлайны: {statements}.",
+        "en": "Deadlines and timing: {statements}.",
+        "it": "Scadenze e tempistiche: {statements}.",
+        "fr": "Echeances et delais : {statements}."
+      },
+      "penalties": {
+        "ru": "Штрафы и санкции: {statements}.",
+        "en": "Penalties and sanctions: {statements}.",
+        "it": "Penali e sanzioni: {statements}.",
+        "fr": "Penalites et sanctions : {statements}."
+      },
+      "disputed_clauses": {
+        "ru": "Найдено спорных или расплывчатых пунктов: {count}.",
+        "en": "Detected disputed or vague clauses: {count}.",
+        "it": "Clausole controverse o vaghe rilevate: {count}.",
+        "fr": "Clauses litigieuses ou vagues detectees : {count}."
+      }
     }
   },
   "risk_scoring": {
@@ -385,11 +435,11 @@
   },
   "summary_generation": {
     "markers": {
-      "must_do": ["обязан", "должен", "must", "shall", "obblig", "doit", "devra"],
-      "should_review": ["вправе", "может", "may", "entitled", "facolta", "peut", "reserve"],
-      "payment_terms": ["оплат", "вознагражден", "цена", "payment", "fee", "price", "pagamento", "prix"],
-      "deadlines": ["срок", "дней", "календар", "deadline", "days", "termine", "delai"],
-      "penalties": ["штраф", "неустойк", "пен", "penalty", "liquidated", "penale", "penalite"]
+      "must_do": ["обязан", "должен", "обязуется", "must", "shall", "undertakes", "obblig", "deve", "doit", "devra"],
+      "should_review": ["вправе", "может", "may", "entitled", "reserve", "facolta", "puo", "peut", "est autorise"],
+      "payment_terms": ["оплат", "оплатить", "вознагражден", "цена", "payment", "pay", "paid", "fee", "price", "invoice", "pagamento", "pagare", "corrispettivo", "prix", "paiement", "payer"],
+      "deadlines": ["срок", "дней", "календар", "deadline", "days", "within", "termine", "giorni", "delai", "jours"],
+      "penalties": ["штраф", "неустойк", "пен", "penalty", "liquidated", "damages", "penale", "penalite", "sanction"]
     },
     "max_items_per_section": 5,
     "max_line_length": 240,

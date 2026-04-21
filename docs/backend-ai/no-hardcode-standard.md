@@ -1,24 +1,33 @@
-﻿# No-Hardcode Standard (Analysis Engine)
+# Стандарт No-Hardcode для Analysis Engine
 
-## Policy
-Production-quality changes must avoid hardcoded business rules and localized texts in code.
+## Политика
+Изменения production-уровня не должны вшивать бизнес-правила, локализованные тексты и пороги напрямую в код сервиса.
 
-## Mandatory requirements
-1. Pipeline parameters, thresholds, timeouts, model toggles, and fallback behavior live in config.
-2. Texts/rules must have a documented source reference.
-3. Language normalization and localized value resolution are centralized.
-4. Modules are composable/testable and consume config through typed models.
+## Обязательные требования
+1. Параметры пайплайна, лимиты, timeout'ы, feature toggle'ы и fallback-поведение живут в конфиге.
+2. Правила и тексты обязаны иметь задокументированный `source_ref`.
+3. Нормализация языка и выбор локализованных значений централизованы.
+4. Модули должны быть композиционными, тестируемыми и получать конфиг через типизированные модели.
 
-## Authoritative files
+## Канонические файлы
 - Runtime config: `services/analysis-engine/app/config/analysis_config.json`
-- Typed config models: `services/analysis-engine/app/config/models.py`
-- Config loader + validation: `services/analysis-engine/app/config/runtime.py`
-- Localization behavior: `services/analysis-engine/app/localization.py`
-- Lightweight/offload routing policy: `services/analysis-engine/app/services/execution_strategy.py`
-- Rule source registry: `docs/backend-ai/rule-source-registry.md`
+- Типизированные модели конфига: `services/analysis-engine/app/config/models.py`
+- Загрузка и валидация конфига: `services/analysis-engine/app/config/runtime.py`
+- Локализация и language fallback: `services/analysis-engine/app/localization.py`
+- Policy для `local_first/server_assist`: `services/analysis-engine/app/services/execution_strategy.py`
+- Реестр источников правил: `docs/backend-ai/rule-source-registry.md`
 
-## Change checklist
-1. Update config first, then code wiring if needed.
-2. Add or update source reference in rule registry for every new rule.
-3. Add tests for locale fallback and config-driven branch behavior.
-4. Verify no text/rule constants are introduced in service modules.
+## Чеклист изменений
+1. Сначала меняется конфиг, потом wiring в коде, если это действительно нужно.
+2. Для каждого нового правила или dispute marker одновременно обновляется реестр источников.
+3. Для каждой новой ветки поведения добавляются тесты на locale fallback и config-driven логику.
+4. В service-модулях не должны появляться бизнес-константы, локализованные сообщения и ручные rule table.
+
+## Что считается допустимым hardcode'ом
+Допустим только технический код, который не описывает предметную область:
+- композиция сервисов
+- алгоритм сортировки/дедупликации
+- базовые операции со строками и структурами данных
+- инфраструктурная обработка ошибок
+
+Все предметные сущности уровня договора, риска, локализованного текста и порога чувствительности должны ехать из конфига.

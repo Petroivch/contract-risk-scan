@@ -1,29 +1,29 @@
-﻿# Rule Source Registry (No-Hardcode Compliance)
+# Реестр источников правил (контроль no-hardcode)
 
-## Purpose
-This registry documents source references for every configurable heuristic/rule used by analysis-engine.
+## Назначение
+Этот реестр фиксирует источники для каждого конфигурируемого эвристического правила, которое использует `analysis-engine`.
 
-## Authoritative config
+## Канонический конфиг
 - `services/analysis-engine/app/config/analysis_config.json`
 
-## Source policy
-1. Rules and localized texts are configuration artifacts, not code constants.
-2. Every rule/dispute marker must include `source_ref`.
-3. New rules require update of this registry and config in the same change.
+## Политика по источникам
+1. Правила и локализованные тексты — это конфигурационные артефакты, а не константы в коде.
+2. Каждый `risk_rule` и `dispute_marker` обязан содержать `source_ref`.
+3. Любое новое правило должно добавляться в конфиг и в этот реестр в одном и том же изменении.
 
-## Risk rule sources
-- `RSK-001`: Penalty clause heuristic baseline (legal risk pattern taxonomy, internal curation v1).
-- `RSK-002`: Liquidated damages heuristic baseline (internal curation v1).
-- `RSK-003`: Unilateral change/termination heuristic baseline (internal curation v1).
-- `RSK-004`: Confidentiality obligation heuristic baseline (internal curation v1).
-- `RSK-005`: Indemnification heuristic baseline (internal curation v1).
+## Источники risk rules
+- `RSK-001` — базовая эвристика для penalty clause (taxonomy legal risk patterns, internal curation v1)
+- `RSK-002` — базовая эвристика для liquidated damages / неустойки (internal curation v1)
+- `RSK-003` — базовая эвристика для unilateral change/termination (internal curation v1)
+- `RSK-004` — базовая эвристика для confidentiality obligations (internal curation v1)
+- `RSK-005` — базовая эвристика для indemnification / возмещения убытков (internal curation v1)
 
-## Dispute marker sources
-- `DSP-001`: Future-agreement ambiguity marker set (internal curation v1).
-- `DSP-002`: Discretionary-right marker set (internal curation v1).
-- `DSP-003`: Subjective-timeline marker set (internal curation v1).
+## Источники dispute markers
+- `DSP-001` — ambiguity marker для формулировок про будущее соглашение сторон (internal curation v1)
+- `DSP-002` — marker для discretionary rights одной стороны (internal curation v1)
+- `DSP-003` — marker для субъективных сроков без точной границы (internal curation v1)
 
-## Validation requirements
-- All localized maps must include `ru`, `en`, `it`, `fr`.
-- Unsupported severity values are rejected at config load time.
-- Missing source references are not allowed in production updates.
+## Требования к валидации
+- все localized maps обязаны содержать `ru`, `en`, `it`, `fr`
+- неподдерживаемые severity values отклоняются на этапе загрузки конфига
+- отсутствие `source_ref` недопустимо для production-изменений
