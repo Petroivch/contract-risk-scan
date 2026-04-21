@@ -4,6 +4,8 @@ import JSZip from 'jszip';
 import type { UploadContractRequest } from '../api/types';
 import type { SupportedLanguage } from '../i18n/types';
 
+import { decodeXmlEntities, normalizeExtractedText } from './textNormalization';
+
 export interface ExtractedContractText {
   text: string;
   warnings: string[];
@@ -12,8 +14,6 @@ export interface ExtractedContractText {
 const PDF_TEXT_OBJECT_PATTERN = /\(([^()]*(?:\\.[^()]*)*)\)\s*Tj/g;
 const PDF_TEXT_ARRAY_PATTERN = /\[(.*?)\]\s*TJ/g;
 const XML_TAG_PATTERN = /<[^>]+>/g;
-const XML_ENTITY_PATTERN = /&(?:amp|lt|gt|quot|apos);/g;
-const WHITESPACE_PATTERN = /\s+/g;
 const MIN_EXTRACTED_TEXT_LENGTH = 160;
 
 const localizedWarnings: Record<SupportedLanguage, { emptyText: string; limitedPdf: string }> = {
@@ -44,26 +44,7 @@ const localizedWarnings: Record<SupportedLanguage, { emptyText: string; limitedP
 };
 
 const normalizeText = (input: string): string => {
-  return input.replace(/\r/g, '\n').replace(WHITESPACE_PATTERN, ' ').trim();
-};
-
-const decodeXmlEntities = (input: string): string => {
-  return input.replace(XML_ENTITY_PATTERN, (entity) => {
-    switch (entity) {
-      case '&amp;':
-        return '&';
-      case '&lt;':
-        return '<';
-      case '&gt;':
-        return '>';
-      case '&quot;':
-        return '"';
-      case '&apos;':
-        return "'";
-      default:
-        return entity;
-    }
-  });
+  return normalizeExtractedText(input);
 };
 
 const base64Alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
@@ -137,17 +118,27 @@ const extractDocxText = async (uri: string): Promise<string> => {
     return '';
   }
 
-  return normalizeText(decodeXmlEntities(documentXml.replace(XML_TAG_PATTERN, ' ')));
+  const structuredXml = documentXml
+    .replace(/<w:tab\b[^>]*\/>/g, ' ')
+    .replace(/<w:br\b[^>]*\/>/g, '\n')
+    .replace(/<\/w:p>/g, '\n')
+    .replace(/<w:t\b[^>]*>/g, '')
+    .replace(/<\/w:t>/g, '')
+    .replace(XML_TAG_PATTERN, ' ');
+
+  return normalizeText(decodeXmlEntities(structuredXml));
 };
 
-const resolveLanguageWarnings = (language: SupportedLanguage) => localizedWarnings[language] ?? localizedWarnings.ru;
+const resolveLanguageWarnings = (language: SupportedLanguage): { emptyText: string; limitedPdf: string } => {
+  return localizedWarnings[language] ?? localizedWarnings.ru;
+};
 
 export const extractContractText = async (
   payload: Pick<UploadContractRequest, 'localFileUri' | 'mimeType' | 'rawText' | 'fileName'>,
   language: SupportedLanguage,
 ): Promise<ExtractedContractText> => {
   if (payload.rawText?.trim()) {
-    return { text: payload.rawText.trim(), warnings: [] };
+    return { text: normalizeText(payload.rawText), warnings: [] };
   }
 
   if (!payload.localFileUri) {
