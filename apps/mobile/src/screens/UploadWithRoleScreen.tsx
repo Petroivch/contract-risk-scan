@@ -8,6 +8,9 @@ import { useApiClient } from '../api/ApiClientProvider';
 import { EditableRoleDropdown } from '../components/EditableRoleDropdown';
 import { RoleBadge } from '../components/RoleBadge';
 import { ScreenShell } from '../components/layout/ScreenShell';
+import { ActionButton } from '../components/ui/ActionButton';
+import { Panel } from '../components/ui/Panel';
+import { StatusChip } from '../components/ui/StatusChip';
 import { appConfig } from '../config/appConfig';
 import { LocalFileCache } from '../data/local/file/LocalFileCache';
 import { useAppLanguage } from '../i18n/LanguageProvider';
@@ -95,9 +98,17 @@ export const UploadWithRoleScreen = ({ navigation }: Props): JSX.Element => {
   };
 
   return (
-    <ScreenShell title={t('upload.title')} subtitle={t('upload.subtitle')}>
-      <View style={styles.sectionCard}>
-        <RoleBadge role={selectedRole} />
+    <ScreenShell title={t('upload.title')} subtitle={t('upload.subtitle')} scroll>
+      <Panel
+        eyebrow={t('upload.roleEyebrow')}
+        title={t('upload.rolePanelTitle')}
+        description={t('upload.rolePanelDescription')}
+        rightSlot={<RoleBadge role={selectedRole} size="compact" />}
+      >
+        <View style={styles.chipRow}>
+          <StatusChip label={t('upload.localFirstChip')} tone="success" />
+          <StatusChip label={t('upload.languageChip', { value: t(`language.${language}`) })} tone="neutral" />
+        </View>
         <EditableRoleDropdown
           value={selectedRole}
           presets={presetRoles}
@@ -108,67 +119,114 @@ export const UploadWithRoleScreen = ({ navigation }: Props): JSX.Element => {
           modalTitle={t('upload.choosePresetOrCustom')}
           customOptionLabel={t('upload.customRole')}
         />
-      </View>
+      </Panel>
 
-      <Pressable style={styles.fileButton} onPress={chooseFile}>
-        <Text style={styles.fileButtonText}>
-          {selectedFile ? t('upload.selectedFile', { fileName: selectedFile.fileName }) : t('upload.selectFile')}
-        </Text>
-      </Pressable>
+      <Panel eyebrow={t('upload.fileEyebrow')} title={t('upload.fileTitle')} description={t('upload.fileDescription')}>
+        <Pressable style={styles.fileSurface} onPress={chooseFile}>
+          <Text style={styles.fileSurfaceTitle}>{selectedFile ? selectedFile.fileName : t('upload.selectFile')}</Text>
+          <Text style={styles.fileSurfaceMeta}>{t('upload.fileFormats')}</Text>
+          <Text style={styles.fileSurfaceMeta}>{t('upload.localFirstHint')}</Text>
+        </Pressable>
 
-      <Pressable
-        style={[styles.primaryButton, (!selectedFile || !selectedRole || submitting) && styles.disabled]}
-        onPress={startAnalysis}
-        disabled={!selectedFile || !selectedRole || submitting}
-      >
-        <Text style={styles.primaryButtonText}>
-          {submitting ? t('upload.submitting') : t('upload.startAnalysis')}
-        </Text>
-      </Pressable>
+        {selectedFile ? (
+          <View style={styles.fileMetaBox}>
+            <Text style={styles.fileMetaLabel}>{t('upload.selectedFileLabel')}</Text>
+            <Text style={styles.fileMetaValue}>{selectedFile.fileName}</Text>
+            <Text style={styles.fileMetaHint}>{selectedFile.mimeType}</Text>
+          </View>
+        ) : null}
+      </Panel>
+
+      <Panel title={t('upload.privacyTitle')} description={t('upload.privacyDescription')}>
+        <View style={styles.actionStack}>
+          <ActionButton
+            label={submitting ? t('upload.submitting') : t('upload.startAnalysis')}
+            onPress={startAnalysis}
+            disabled={!selectedFile || !selectedRole || submitting}
+          />
+          <View style={styles.secondaryActionsRow}>
+            <ActionButton
+              label={t('common.openHistory')}
+              onPress={() => navigation.navigate('History')}
+              variant="secondary"
+              style={styles.actionFlex}
+            />
+            <ActionButton
+              label={t('common.openSettings')}
+              onPress={() => navigation.navigate('Settings')}
+              variant="ghost"
+              style={styles.actionFlex}
+            />
+          </View>
+        </View>
+      </Panel>
     </ScreenShell>
   );
 };
 
 const styles = StyleSheet.create({
-  sectionCard: {
-    borderRadius: radius.lg,
-    borderWidth: 1,
-    borderColor: colors.border,
-    backgroundColor: colors.surface,
-    padding: spacing.md,
+  chipRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
     gap: spacing.sm,
-    ...shadow.card,
   },
-  fileButton: {
-    minHeight: 54,
-    borderRadius: radius.lg,
+  fileSurface: {
+    minHeight: 148,
+    borderRadius: radius.xl,
     borderWidth: 1,
     borderColor: colors.border,
-    backgroundColor: colors.surface,
-    justifyContent: 'center',
-    paddingHorizontal: spacing.md,
+    borderStyle: 'dashed',
+    backgroundColor: colors.surfaceElevated,
+    padding: spacing.lg,
+    justifyContent: 'space-between',
     ...shadow.card,
   },
-  fileButtonText: {
+  fileSurfaceTitle: {
+    color: colors.textPrimary,
+    fontSize: typography.size.subtitle,
+    lineHeight: typography.lineHeight.subtitle,
+    fontWeight: typography.weight.bold,
+  },
+  fileSurfaceMeta: {
+    color: colors.textSecondary,
+    fontSize: typography.size.body,
+    lineHeight: typography.lineHeight.body,
+  },
+  fileMetaBox: {
+    borderRadius: radius.lg,
+    borderWidth: 1,
+    borderColor: colors.divider,
+    backgroundColor: colors.surfaceElevated,
+    padding: spacing.md,
+    gap: spacing.xs,
+  },
+  fileMetaLabel: {
+    color: colors.textMuted,
+    fontSize: typography.size.caption,
+    lineHeight: typography.lineHeight.caption,
+    fontWeight: typography.weight.bold,
+    textTransform: 'uppercase',
+    letterSpacing: 0.6,
+  },
+  fileMetaValue: {
     color: colors.textPrimary,
     fontSize: typography.size.body,
     lineHeight: typography.lineHeight.body,
-  },
-  primaryButton: {
-    minHeight: 54,
-    borderRadius: radius.lg,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: colors.accent,
-    ...shadow.raised,
-  },
-  disabled: {
-    opacity: 0.5,
-  },
-  primaryButtonText: {
-    color: colors.textOnAccent,
     fontWeight: typography.weight.bold,
-    fontSize: typography.size.body,
-    lineHeight: typography.lineHeight.body,
+  },
+  fileMetaHint: {
+    color: colors.textSecondary,
+    fontSize: typography.size.bodySm,
+    lineHeight: typography.lineHeight.bodySm,
+  },
+  actionStack: {
+    gap: spacing.sm,
+  },
+  secondaryActionsRow: {
+    flexDirection: 'row',
+    gap: spacing.sm,
+  },
+  actionFlex: {
+    flex: 1,
   },
 });
