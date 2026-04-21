@@ -1,79 +1,94 @@
 # Contract Risk Scanner
 
-Mobile-first project for Android and iPhone that analyzes contract files and returns:
-- risks
-- disputed clauses
-- role-focused summary
+Мобильный проект для Android и iPhone, который анализирует файл договора и возвращает:
+- риски
+- спорные пункты
+- краткое описание договора
+- акценты по выбранной роли пользователя
 
-Supported UI languages:
-- `ru` default
+Поддерживаемые языки интерфейса и ответа:
+- `ru` по умолчанию
 - `en`
 - `it`
 - `fr`
 
-## Repository layout
+## Структура репозитория
 
-- `apps/mobile` - React Native + Expo mobile client
-- `services/core-api` - NestJS core API
-- `services/analysis-engine` - FastAPI analysis service
-- `db` - SQL schema and migrations
-- `docs` - architecture, UI, frontend, backend, DB handoff docs
+- `apps/mobile` - мобильное приложение на React Native + Expo
+- `services/core-api` - основной API-сервис на NestJS
+- `services/analysis-engine` - сервис анализа на FastAPI
+- `db` - SQL-схема, миграции и проверки
+- `docs` - проектная документация, UX/UI, frontend/backend/db handoff
 
-## Current development mode
+## Кратко о выполненной работе
 
-The mobile app supports two runtime modes:
+На текущий момент в проекте уже сделано:
+- собран мобильный каркас приложения под Android и iPhone
+- реализованы основные экраны: авторизация, загрузка договора, статус анализа, отчет, история, настройки
+- добавена мультиязычность `ru/en/it/fr` с `ru` как языком по умолчанию
+- реализован local-first подход: локальный кэш, SQLite, очередь загрузок и fallback-сценарии
+- подключен системный выбор файла через `expo-document-picker`
+- подготовлена визуальная система, дизайн-токены и UI-документация
+- собран `core-api` skeleton на NestJS с DTO, маршрутами и OpenAPI-контрактом
+- собран `analysis-engine` skeleton на FastAPI с тестами и базовой логикой пайплайна
+- подготовлены SQL-миграции и документация по БД
+- репозиторий и ветки уже загружены на GitHub
 
-1. `stub` mode  
-   UI works without a running backend. Good for interface review and UX testing.
+## Текущий режим разработки
 
-2. `api` mode  
-   Mobile app talks to `core-api`, which then integrates with `analysis-engine`.
+Сейчас мобильное приложение поддерживает два режима работы:
 
-Default local development is currently oriented around interface-first work. For full end-to-end behavior, run both backend services and switch the mobile runtime config away from stub transport.
+1. `stub`  
+   Интерфейс работает без реального backend. Подходит для UX/UI-проверки и демонстрации экранов.
 
-## Prerequisites
+2. `api`  
+   Мобильное приложение обращается в `core-api`, а тот дальше интегрируется с `analysis-engine`.
 
-For all environments:
+По умолчанию проект пока ориентирован на interface-first разработку. Для полноценного end-to-end запуска нужно поднимать оба backend-сервиса.
+
+## Требования к окружению
+
+Для всех сценариев:
 - `Node.js 20 LTS`
 - `npm 10+`
 - `Python 3.11+`
 - `VS Code`
 
-For Android local run/build:
+Для локального запуска и сборки Android:
 - `Android Studio`
 - Android SDK
-- Java 17
-- USB debugging or Android emulator
+- `Java 17`
+- Android-эмулятор или физическое Android-устройство
 
-For iPhone local run/build:
+Для локального запуска и сборки iPhone:
 - `macOS`
 - `Xcode`
-- CocoaPods
-- iPhone simulator or physical iPhone
+- `CocoaPods`
+- iPhone simulator или физический iPhone
 
-Important:
-- Android can be developed from Windows.
-- iPhone native build cannot be produced locally from Windows with `expo run:ios`; that requires macOS/Xcode.
+Важно:
+- Android можно разрабатывать и запускать с Windows.
+- Нативную iPhone-сборку нельзя штатно собирать локально с Windows через `expo run:ios`; для этого нужен `macOS + Xcode`.
 
-## VS Code workflow
+## Работа через VS Code
 
-Open the repository root:
+Открыть проект:
 
 ```powershell
 cd C:\path\to\contract-risk-scan
 code .
 ```
 
-Recommended VS Code extensions:
+Рекомендуемые расширения VS Code:
 - `dbaeumer.vscode-eslint`
 - `esbenp.prettier-vscode`
 - `ms-python.python`
 - `ms-python.vscode-pylance`
 - `ms-azuretools.vscode-docker`
 
-## Fast interface start on another computer
+## Быстрый запуск интерфейса на другом компьютере
 
-If the goal is only to open and test the interface quickly:
+Если нужно просто открыть и потыкать интерфейс:
 
 ```powershell
 cd apps\mobile
@@ -81,46 +96,46 @@ npm install
 npx expo start --web
 ```
 
-Then open the local URL shown by Expo, usually:
+После этого открыть локальный адрес, который покажет Expo. Обычно это:
 
 ```text
 http://localhost:8081
 ```
 
-or:
+или:
 
 ```text
 http://localhost:19006
 ```
 
-Depending on Expo port selection.
+В зависимости от занятого порта.
 
-## Run the mobile interface in development
+## Запуск мобильного интерфейса
 
-### 1. Install mobile dependencies
+### 1. Установить зависимости mobile-приложения
 
 ```powershell
 cd apps\mobile
 npm install
 ```
 
-### 2. Start Expo
+### 2. Запустить Expo
 
 ```powershell
 npm run start
 ```
 
-### 3. Run on Android
+### 3. Запустить Android
 
 ```powershell
 npm run android
 ```
 
-This uses the native Android toolchain and is suitable for:
+Подходит для:
 - Android emulator
-- connected Android phone
+- подключенного Android-телефона
 
-### 4. Run on iPhone
+### 4. Запустить iPhone
 
 ```bash
 cd apps/mobile
@@ -128,19 +143,19 @@ npm install
 npm run ios
 ```
 
-This requires:
-- macOS
-- Xcode
+Для этого обязательно нужны:
+- `macOS`
+- `Xcode`
 
-If another developer is on Windows, they can still run:
+Если разработчик работает на Windows, он может запускать:
 - web preview
-- Android app
+- Android
 
-but not a local native iPhone build.
+Но не локальную нативную iPhone-сборку.
 
-## Run full local stack
+## Полный локальный запуск всех сервисов
 
-### 1. Start analysis engine
+### 1. Запуск analysis-engine
 
 ```powershell
 cd services\analysis-engine
@@ -150,9 +165,9 @@ pip install -r requirements.txt
 uvicorn app.main:app --reload --port 8010
 ```
 
-### 2. Start core API
+### 2. Запуск core-api
 
-In another terminal:
+В другом терминале:
 
 ```powershell
 cd services\core-api
@@ -161,9 +176,9 @@ npm install
 npm run start:dev
 ```
 
-### 3. Start mobile app
+### 3. Запуск mobile-приложения
 
-In another terminal:
+В еще одном терминале:
 
 ```powershell
 cd apps\mobile
@@ -171,9 +186,9 @@ npm install
 npm run start
 ```
 
-## Web-only interface review
+## Отдельный запуск только web-интерфейса
 
-If a designer, PM, or reviewer only needs the interface:
+Если дизайнеру, тестировщику или заказчику нужен только интерфейс:
 
 ```powershell
 cd apps\mobile
@@ -181,9 +196,9 @@ npm install
 npx expo start --web
 ```
 
-This is the simplest reproducible command set for another computer.
+Это самый простой и воспроизводимый набор команд для запуска интерфейса на другом компьютере.
 
-## Quality commands
+## Команды проверки качества
 
 ### Mobile
 
@@ -202,7 +217,7 @@ npm run lint
 npm run build
 ```
 
-### Analysis engine
+### Analysis Engine
 
 ```powershell
 cd services\analysis-engine
@@ -212,11 +227,11 @@ pip install -r requirements.txt
 python -m pytest -q
 ```
 
-## Mobile build notes
+## Команды для нативной mobile-сборки
 
 ### Android
 
-For a native Android build on a machine with Android Studio:
+Для Android-машины с настроенным Android Studio:
 
 ```powershell
 cd apps\mobile
@@ -225,11 +240,11 @@ npx expo prebuild --platform android
 npm run android
 ```
 
-For a release APK/AAB, the Android signing and release pipeline still needs to be finalized in the project build flow.
+Для полноценного release `APK/AAB` еще нужно финализировать Android signing и release pipeline.
 
 ### iPhone
 
-For a native iPhone build on macOS:
+Для iPhone-сборки на `macOS`:
 
 ```bash
 cd apps/mobile
@@ -238,28 +253,32 @@ npx expo prebuild --platform ios
 npm run ios
 ```
 
-For an installable iPhone release package, signing, provisioning profile, and Xcode archive/export steps are still required.
+Для итогового installable iPhone-пакета еще нужны:
+- signing
+- provisioning profile
+- archive/export через Xcode
 
-## Release expectations
+## Ожидаемые требования к релизу
 
-The user requirement for this project is:
-- the end user installs only the final mobile package
-- no additional downloads after install
-- target total final release size budget: `228 MB` max
+Целевые требования проекта:
+- пользователь должен устанавливать только готовую release-сборку
+- после установки не должно требоваться скачивание дополнительных модулей
+- общий бюджет финальной сборки: не более `228 МБ`
 
-Current implementation direction:
-- local-first mobile cache
-- multilingual UI and analysis output
-- config-driven behavior instead of hardcoded runtime values
+Текущее направление реализации:
+- local-first
+- мультиязычность
+- конфигурируемое поведение без хардкода
 
-## Important current limitations
+## Текущие ограничения
 
-- `core-api` still contains stage-1 stub/in-memory parts
-- `analysis-engine` is a working skeleton with tests, but not yet a production NLP/OCR pipeline
-- native release packaging for Android/iPhone is not fully finalized in-repo yet
-- iPhone local native build requires macOS
+- в `core-api` еще остаются stage-1 stub/in-memory части
+- `analysis-engine` пока является рабочим skeleton, а не полноценным production OCR/NLP пайплайном
+- release packaging для Android/iPhone еще не доведен до финального состояния
+- локальная нативная iPhone-сборка требует `macOS`
+- Android native toolchain на Windows сейчас упирается в проблему с non-ASCII путем проекта, потому release-артефакт еще не получен
 
-## Key docs
+## Ключевые документы
 
 - `docs/ui/README.md`
 - `docs/ui/08_visual-themes-and-hifi-spec.md`
