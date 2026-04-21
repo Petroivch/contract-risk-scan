@@ -1,33 +1,33 @@
-﻿# Frontend Integration Notes
+﻿# Заметки по интеграции фронтенда
 
-## Contracts (Mobile -> Core API)
-- Language propagation:
-  - Request headers: `Accept-Language`, `X-Client-Language`
-  - Body: `language` in POST payloads
-- Supported UI languages: `ru`, `en`, `it`, `fr`
-- Fallback language: `ru`
+## Контракты (mobile -> core API)
+- Передача языка:
+  - Заголовки запроса: `Accept-Language`, `X-Client-Language`
+  - Тело запроса: `language` в POST payload
+- Поддерживаемые языки интерфейса: `ru`, `en`, `it`, `fr`
+- Язык fallback: `ru`
 
-## Local-First Contract
-- Repository flow:
-  1. request remote API
-  2. cache successful response in SQLite
-  3. on remote failure, return cached SQLite entity if exists
-- Upload flow:
-  1. select file with system document picker
-  2. copy file into sandboxed local cache
-  3. send upload request with file metadata and local file URI
-  4. if upload fails, persist queued upload locally and expose queued status/history item
-- Cached entities:
-  - analysis status
-  - report payload
-  - history items
-  - queued upload metadata
+## Контракт local-first
+- Поток репозитория:
+  1. запрос к remote API
+  2. сохранение успешного ответа в SQLite-кэш
+  3. при ошибке remote-запроса возврат cached SQLite entity, если она есть
+- Поток загрузки:
+  1. выбор файла через системный document picker
+  2. копирование файла в sandboxed local cache
+  3. отправка upload-запроса с метаданными файла и local file URI
+  4. если upload не удался, сохранить queued upload локально и показать состояние queued/history item
+- Кэшируемые сущности:
+  - status анализа
+  - payload отчета
+  - элементы истории
+  - метаданные queued upload
 
-## Visual Contract
-- Theme tokens + screen shells + reusable cards are centralized in `apps/mobile/src/theme` and `apps/mobile/src/components`.
-- No screen-level hardcoded palette/typography constants.
+## Визуальный контракт
+- Токены темы, screen shells и reusable cards централизованы в `apps/mobile/src/theme` и `apps/mobile/src/components`.
+- В screen-level коде не должно быть жестко заданной палитры или типографики.
 
-## Build/Release Constraints
-- No extra user downloads after installation.
-- Total project release budget: `228 MB`.
-- Frontend mobile expected share and optimization plan: `docs/frontend/package-size-optimization.md`.
+## Ограничения сборки и релиза
+- После установки пользователю не нужны дополнительные загрузки.
+- Общий бюджет релизного пакета проекта: `228 MB`.
+- Ожидаемый вклад mobile и план оптимизации: `docs/frontend/package-size-optimization.md`.

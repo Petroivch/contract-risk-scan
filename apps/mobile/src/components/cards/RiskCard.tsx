@@ -2,35 +2,39 @@
 import { useTranslation } from 'react-i18next';
 
 import type { RiskItem } from '../../api/types';
+import { StatusChip } from '../StatusChip';
 import { colors, radius, shadow, spacing, typography } from '../../theme/tokens';
 
 interface RiskCardProps {
   item: RiskItem;
 }
 
-const severityColorMap = {
-  low: colors.success,
-  medium: colors.warning,
-  high: colors.danger,
+const severityToneMap = {
+  low: 'success',
+  medium: 'warning',
+  high: 'danger',
 } as const;
 
 export const RiskCard = ({ item }: RiskCardProps): JSX.Element => {
   const { t } = useTranslation();
 
   return (
-    <View style={styles.card}>
+    <View style={[styles.card, styles[`severity_${item.severity}`]]}>
       <View style={styles.headlineRow}>
-        <Text style={styles.title}>{item.title}</Text>
-        <View style={[styles.severityBadge, { backgroundColor: `${severityColorMap[item.severity]}20` }]}>
-          <Text style={[styles.severityText, { color: severityColorMap[item.severity] }]}>
-            {t(`severity.${item.severity}`)}
-          </Text>
+        <View style={styles.titleBlock}>
+          <Text style={styles.kicker}>{t('report.riskCardLabel')}</Text>
+          <Text style={styles.title}>{item.title}</Text>
         </View>
+        <StatusChip label={t(`severity.${item.severity}`)} tone={severityToneMap[item.severity]} />
       </View>
 
       <Text style={styles.meta}>{t('report.clause', { value: item.clauseRef })}</Text>
       <Text style={styles.description}>{item.description}</Text>
-      <Text style={styles.recommendation}>{t('report.recommendation', { text: item.recommendation })}</Text>
+
+      <View style={styles.recommendationBox}>
+        <Text style={styles.recommendationLabel}>{t('report.recommendationLabel')}</Text>
+        <Text style={styles.recommendation}>{item.recommendation}</Text>
+      </View>
     </View>
   );
 };
@@ -41,31 +45,41 @@ const styles = StyleSheet.create({
     backgroundColor: colors.surface,
     borderWidth: 1,
     borderColor: colors.border,
+    borderLeftWidth: 6,
     padding: spacing.md,
-    gap: spacing.xs,
+    gap: spacing.sm,
     ...shadow.card,
+  },
+  severity_low: {
+    borderLeftColor: colors.success,
+  },
+  severity_medium: {
+    borderLeftColor: colors.warning,
+  },
+  severity_high: {
+    borderLeftColor: colors.danger,
   },
   headlineRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     gap: spacing.sm,
   },
-  title: {
+  titleBlock: {
     flex: 1,
+    gap: spacing.xxs,
+  },
+  kicker: {
+    color: colors.textMuted,
+    fontSize: typography.size.caption,
+    lineHeight: typography.lineHeight.caption,
+    fontWeight: typography.weight.semibold,
+    textTransform: 'uppercase',
+    letterSpacing: 0.6,
+  },
+  title: {
     color: colors.textPrimary,
     fontSize: typography.size.subtitle,
     lineHeight: typography.lineHeight.subtitle,
-    fontWeight: typography.weight.bold,
-  },
-  severityBadge: {
-    alignSelf: 'flex-start',
-    borderRadius: radius.pill,
-    paddingHorizontal: spacing.sm,
-    paddingVertical: spacing.xs,
-  },
-  severityText: {
-    fontSize: typography.size.caption,
-    lineHeight: typography.lineHeight.caption,
     fontWeight: typography.weight.bold,
   },
   meta: {
@@ -78,6 +92,22 @@ const styles = StyleSheet.create({
     color: colors.textSecondary,
     fontSize: typography.size.body,
     lineHeight: typography.lineHeight.body,
+  },
+  recommendationBox: {
+    backgroundColor: colors.surfaceElevated,
+    borderRadius: radius.md,
+    borderWidth: 1,
+    borderColor: colors.divider,
+    padding: spacing.sm,
+    gap: spacing.xxs,
+  },
+  recommendationLabel: {
+    color: colors.textMuted,
+    fontSize: typography.size.caption,
+    lineHeight: typography.lineHeight.caption,
+    fontWeight: typography.weight.semibold,
+    textTransform: 'uppercase',
+    letterSpacing: 0.5,
   },
   recommendation: {
     color: colors.textPrimary,

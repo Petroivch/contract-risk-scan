@@ -1,4 +1,4 @@
-import * as DocumentPicker from 'expo-document-picker';
+﻿import * as DocumentPicker from 'expo-document-picker';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { useMemo, useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next';
 import { useApiClient } from '../api/ApiClientProvider';
 import { EditableRoleDropdown } from '../components/EditableRoleDropdown';
 import { RoleBadge } from '../components/RoleBadge';
+import { StatusChip } from '../components/StatusChip';
 import { ScreenShell } from '../components/layout/ScreenShell';
 import { appConfig } from '../config/appConfig';
 import { LocalFileCache } from '../data/local/file/LocalFileCache';
@@ -19,8 +20,35 @@ type Props = NativeStackScreenProps<RootStackParamList, 'UploadWithRole'>;
 interface SelectedFileState {
   fileName: string;
   mimeType: string;
+  fileSizeBytes?: number;
   localFileUri?: string;
 }
+
+const formatFileType = (mimeType: string): string => {
+  if (mimeType === 'application/pdf') {
+    return 'PDF';
+  }
+  if (mimeType === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document') {
+    return 'DOCX';
+  }
+  if (mimeType === 'text/plain') {
+    return 'TXT';
+  }
+  return mimeType.split('/').pop()?.toUpperCase() ?? 'FILE';
+};
+
+const formatFileSize = (sizeInBytes?: number): string => {
+  if (!sizeInBytes || sizeInBytes <= 0) {
+    return '—';
+  }
+
+  const sizeInMb = sizeInBytes / (1024 * 1024);
+  if (sizeInMb < 1) {
+    return `${Math.max(1, Math.round(sizeInBytes / 1024))} KB`;
+  }
+
+  return `${sizeInMb.toFixed(sizeInMb >= 10 ? 0 : 1)} MB`;
+};
 
 export const UploadWithRoleScreen = ({ navigation }: Props): JSX.Element => {
   const { t } = useTranslation();
@@ -63,6 +91,7 @@ export const UploadWithRoleScreen = ({ navigation }: Props): JSX.Element => {
     setSelectedFile({
       fileName: asset.name ?? appConfig.demo.stubContractFileName,
       mimeType: asset.mimeType ?? 'application/octet-stream',
+      fileSizeBytes: asset.size,
       localFileUri: cachedUri,
     });
   };
@@ -94,9 +123,60 @@ export const UploadWithRoleScreen = ({ navigation }: Props): JSX.Element => {
     }
   };
 
+  const fileType = selectedFile ? formatFileType(selectedFile.mimeType) : '—';
+  const fileSize = selectedFile ? formatFileSize(selectedFile.fileSizeBytes) : '—';
+
   return (
     <ScreenShell title={t('upload.title')} subtitle={t('upload.subtitle')}>
-      <View style={styles.sectionCard}>
+      <View style={styles.heroCard}>
+        <View style={styles.heroHeader}>
+          <View style={styles.heroCopy}>
+            <Text style={styles.heroKicker}>{t('upload.panelKicker')}</Text>
+            <Text style={styles.heroTitle}>{t('upload.panelTitle')}</Text>
+            <Text style={styles.heroSubtitle}>{t('upload.panelSubtitle')}</Text>
+          </View>
+          <StatusChip
+            label={selectedFile ? t('upload.readyToAnalyze') : t('upload.selectFile')}
+            tone={selectedFile ? 'success' : 'brand'}
+          />
+        </View>
+
+        <Pressable style={styles.filePanel} onPress={chooseFile}>
+          <View style={styles.filePanelTopRow}>
+            <View style={styles.filePanelMain}>
+              <Text style={styles.fileLabel}>{t('upload.fileLabel')}</Text>
+              <Text style={styles.fileName} numberOfLines={2}>
+                {selectedFile ? selectedFile.fileName : t('upload.filePlaceholder')}
+              </Text>
+            </View>
+            <StatusChip label={selectedFile ? fileType : t('upload.fileTypeFallback')} tone={selectedFile ? 'soft' : 'neutral'} />
+          </View>
+
+          <View style={styles.fileMetaGrid}>
+            <View style={styles.fileMetaBlock}>
+              <Text style={styles.fileMetaLabel}>{t('upload.fileTypeLabel')}</Text>
+              <Text style={styles.fileMetaValue}>{fileType}</Text>
+            </View>
+            <View style={styles.fileMetaBlock}>
+              <Text style={styles.fileMetaLabel}>{t('upload.fileSizeLabel')}</Text>
+              <Text style={styles.fileMetaValue}>{fileSize}</Text>
+            </View>
+          </View>
+
+          <Text style={styles.fileHint}>
+            {selectedFile ? t('upload.pickAnotherFile') : t('upload.fileTapHint')}
+          </Text>
+        </Pressable>
+
+        {selectedFile ? (
+          <View style={styles.localCopyStrip}>
+            <Text style={styles.localCopyLabel}>{t('upload.localCopyLabel')}</Text>
+            <Text style={styles.localCopyText}>{t('upload.localCopyText')}</Text>
+          </View>
+        ) : null}
+      </View>
+
+      <View style={styles.roleCard}>
         <RoleBadge role={selectedRole} />
         <EditableRoleDropdown
           value={selectedRole}
@@ -110,27 +190,136 @@ export const UploadWithRoleScreen = ({ navigation }: Props): JSX.Element => {
         />
       </View>
 
-      <Pressable style={styles.fileButton} onPress={chooseFile}>
-        <Text style={styles.fileButtonText}>
-          {selectedFile ? t('upload.selectedFile', { fileName: selectedFile.fileName }) : t('upload.selectFile')}
-        </Text>
-      </Pressable>
-
-      <Pressable
-        style={[styles.primaryButton, (!selectedFile || !selectedRole || submitting) && styles.disabled]}
-        onPress={startAnalysis}
-        disabled={!selectedFile || !selectedRole || submitting}
-      >
-        <Text style={styles.primaryButtonText}>
-          {submitting ? t('upload.submitting') : t('upload.startAnalysis')}
-        </Text>
+      <Pressable style={[styles.primaryButton, (!selectedFile || !selectedRole || submitting) && styles.disabled]} onPress={startAnalysis} disabled={!selectedFile || !selectedRole || submitting}>
+        <Text style={styles.primaryButtonText}>{submitting ? t('upload.submitting') : t('common.startAnalysis')}</Text>
       </Pressable>
     </ScreenShell>
   );
 };
 
 const styles = StyleSheet.create({
-  sectionCard: {
+  heroCard: {
+    borderRadius: radius.xl,
+    borderWidth: 1,
+    borderColor: colors.border,
+    backgroundColor: colors.surface,
+    padding: spacing.md,
+    gap: spacing.md,
+    ...shadow.raised,
+  },
+  heroHeader: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    justifyContent: 'space-between',
+    gap: spacing.md,
+  },
+  heroCopy: {
+    flex: 1,
+    gap: spacing.xxs,
+  },
+  heroKicker: {
+    color: colors.textMuted,
+    fontSize: typography.size.caption,
+    lineHeight: typography.lineHeight.caption,
+    fontWeight: typography.weight.semibold,
+    textTransform: 'uppercase',
+    letterSpacing: 0.7,
+  },
+  heroTitle: {
+    color: colors.textPrimary,
+    fontSize: typography.size.subtitle,
+    lineHeight: typography.lineHeight.subtitle,
+    fontWeight: typography.weight.bold,
+  },
+  heroSubtitle: {
+    color: colors.textSecondary,
+    fontSize: typography.size.body,
+    lineHeight: typography.lineHeight.body,
+  },
+  filePanel: {
+    borderRadius: radius.lg,
+    borderWidth: 1,
+    borderColor: colors.border,
+    backgroundColor: colors.surfaceElevated,
+    padding: spacing.md,
+    gap: spacing.sm,
+  },
+  filePanelTopRow: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    justifyContent: 'space-between',
+    gap: spacing.sm,
+  },
+  filePanelMain: {
+    flex: 1,
+    gap: spacing.xxs,
+  },
+  fileLabel: {
+    color: colors.textMuted,
+    fontSize: typography.size.caption,
+    lineHeight: typography.lineHeight.caption,
+    fontWeight: typography.weight.semibold,
+    textTransform: 'uppercase',
+    letterSpacing: 0.5,
+  },
+  fileName: {
+    color: colors.textPrimary,
+    fontSize: typography.size.body,
+    lineHeight: typography.lineHeight.body,
+    fontWeight: typography.weight.semibold,
+  },
+  fileMetaGrid: {
+    flexDirection: 'row',
+    gap: spacing.sm,
+  },
+  fileMetaBlock: {
+    flex: 1,
+    borderRadius: radius.md,
+    backgroundColor: colors.surface,
+    borderWidth: 1,
+    borderColor: colors.divider,
+    padding: spacing.sm,
+    gap: spacing.xxs,
+  },
+  fileMetaLabel: {
+    color: colors.textMuted,
+    fontSize: typography.size.caption,
+    lineHeight: typography.lineHeight.caption,
+    fontWeight: typography.weight.semibold,
+  },
+  fileMetaValue: {
+    color: colors.textPrimary,
+    fontSize: typography.size.bodySm,
+    lineHeight: typography.lineHeight.bodySm,
+    fontWeight: typography.weight.bold,
+  },
+  fileHint: {
+    color: colors.textSecondary,
+    fontSize: typography.size.bodySm,
+    lineHeight: typography.lineHeight.bodySm,
+  },
+  localCopyStrip: {
+    borderRadius: radius.lg,
+    borderWidth: 1,
+    borderColor: '#C9EAD9',
+    backgroundColor: '#ECFBF4',
+    padding: spacing.md,
+    gap: spacing.xxs,
+  },
+  localCopyLabel: {
+    color: colors.success,
+    fontSize: typography.size.caption,
+    lineHeight: typography.lineHeight.caption,
+    fontWeight: typography.weight.semibold,
+    textTransform: 'uppercase',
+    letterSpacing: 0.6,
+  },
+  localCopyText: {
+    color: colors.textPrimary,
+    fontSize: typography.size.bodySm,
+    lineHeight: typography.lineHeight.bodySm,
+  },
+  roleCard: {
     borderRadius: radius.lg,
     borderWidth: 1,
     borderColor: colors.border,
@@ -139,23 +328,8 @@ const styles = StyleSheet.create({
     gap: spacing.sm,
     ...shadow.card,
   },
-  fileButton: {
-    minHeight: 54,
-    borderRadius: radius.lg,
-    borderWidth: 1,
-    borderColor: colors.border,
-    backgroundColor: colors.surface,
-    justifyContent: 'center',
-    paddingHorizontal: spacing.md,
-    ...shadow.card,
-  },
-  fileButtonText: {
-    color: colors.textPrimary,
-    fontSize: typography.size.body,
-    lineHeight: typography.lineHeight.body,
-  },
   primaryButton: {
-    minHeight: 54,
+    minHeight: 56,
     borderRadius: radius.lg,
     alignItems: 'center',
     justifyContent: 'center',
@@ -163,7 +337,7 @@ const styles = StyleSheet.create({
     ...shadow.raised,
   },
   disabled: {
-    opacity: 0.5,
+    opacity: 0.45,
   },
   primaryButtonText: {
     color: colors.textOnAccent,

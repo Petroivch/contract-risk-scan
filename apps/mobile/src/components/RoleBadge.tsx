@@ -9,7 +9,9 @@ interface RoleBadgeProps {
 export const RoleBadge = ({ role }: RoleBadgeProps): JSX.Element => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>{role}</Text>
+      <Text style={styles.text} numberOfLines={2}>
+        {role}
+      </Text>
     </View>
   );
 };
@@ -17,6 +19,7 @@ export const RoleBadge = ({ role }: RoleBadgeProps): JSX.Element => {
 const styles = StyleSheet.create({
   container: {
     alignSelf: 'flex-start',
+    maxWidth: '100%',
     borderRadius: radius.pill,
     backgroundColor: colors.accentSoft,
     borderWidth: 1,
@@ -29,5 +32,7 @@ const styles = StyleSheet.create({
     fontSize: typography.size.bodySm,
     lineHeight: typography.lineHeight.bodySm,
     fontWeight: typography.weight.semibold,
+    flexShrink: 1,
+    textAlign: 'center',
   },
 });

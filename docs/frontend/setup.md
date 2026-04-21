@@ -1,53 +1,53 @@
-﻿# Frontend Setup (React Native / Expo)
+﻿# Настройка фронтенда (React Native / Expo)
 
-## Working Directory
-- `C:\Users\user\Documents\Codex\вайбкод\contract-risk-scan\apps\mobile`
+## Рабочая директория
+- `C:\Users\user\Documents\Codex\вайбкод\contract-risk-scan-worktrees\agent-ui\apps\mobile`
 
-## Runtime Rule (No Post-Install Downloads)
-- User installs only the final release app package.
-- After installation, app must work without downloading additional modules/assets/features.
-- MVP bundle must include all UI assets, dictionaries (`ru/en/it/fr`) and local data schema migrations.
+## Правило запуска без догрузок после установки
+- Пользователь устанавливает только финальный релизный пакет приложения.
+- После установки приложение должно работать без скачивания дополнительных модулей, ассетов или функций.
+- MVP-сборка должна содержать все UI-ассеты, словари (`ru/en/it/fr`) и локальные миграции схемы данных.
 
-## Prerequisites (Developer)
+## Требования к окружению разработчика
 - Node.js 20 LTS
 - npm 10+
 - VS Code
-- Android Studio (Android emulator)
-- Xcode (iOS simulator on macOS)
+- Android Studio (эмулятор Android)
+- Xcode (симулятор iPhone на macOS)
 
-## Install and Run
-1. Open terminal in `apps/mobile`.
-2. Install dependencies: `npm install`
-3. Start app: `npm run start`
-4. Launch platform:
+## Установка и запуск
+1. Откройте терминал в `apps/mobile`.
+2. Установите зависимости: `npm install`
+3. Запустите приложение: `npm run start`
+4. Запуск платформы:
    - Android: `npm run android`
-   - iOS: `npm run ios`
+   - iPhone: `npm run ios`
 
-## i18n Configuration
-- Default language: `ru`
-- Supported languages: `ru`, `en`, `it`, `fr`
-- Fallback language: `ru`
-- Translation resources: `apps/mobile/src/i18n/resources/*.ts`
-- Language persistence: AsyncStorage key from runtime config (`LANGUAGE_PREFERENCE_KEY`)
+## Конфигурация i18n
+- Язык по умолчанию: `ru`
+- Поддерживаемые языки: `ru`, `en`, `it`, `fr`
+- Язык fallback: `ru`
+- Ресурсы переводов: `apps/mobile/src/i18n/resources/*.ts`
+- Сохранение языка: ключ AsyncStorage из runtime config (`LANGUAGE_PREFERENCE_KEY`)
 
-## Local-First
-- Local DB/cache is mandatory for MVP.
-- Current frontend architecture includes:
-  - SQLite cache storage (status/report/history)
-  - file cache helper
-  - local-first API adapter with fallback to SQLite when remote request fails
-- Details: `docs/frontend/local-first-architecture.md`
+## Local-first
+- Локальная база данных и кэш обязательны для MVP.
+- Текущая архитектура фронтенда включает:
+  - SQLite-кэш для status/report/history
+  - helper для файлового кэша
+  - local-first API adapter с fallback на SQLite при ошибке remote-запроса
+- Подробности: `docs/frontend/local-first-architecture.md`
 
-## Quality and Architecture Standards
-- No hardcoded runtime-critical values in UI components.
-- Endpoints, limits, timeouts, role presets and feature flags are read from config (`app.json` `expo.extra` + env overrides).
-- UI text is only from i18n dictionaries.
+## Стандарты качества и архитектуры
+- Никаких runtime-critical значений в UI-компонентах.
+- Endpoints, лимиты, таймауты, preset-роли и feature flags читаются из config (`app.json` `expo.extra` + env overrides).
+- UI-тексты берутся только из словарей i18n.
 
-## Release Size Budget
-- Global project budget: `228 MB` (total final release size).
-- Frontend mobile target share and optimization checklist: `docs/frontend/package-size-optimization.md`
+## Бюджет размера релиза
+- Общий бюджет проекта: `228 MB`.
+- Целевой вклад mobile и чеклист оптимизации: `docs/frontend/package-size-optimization.md`
 
-## Recommended VS Code Extensions
+## Рекомендуемые расширения VS Code
 - `dbaeumer.vscode-eslint`
 - `esbenp.prettier-vscode`
 - `msjsdiag.vscode-react-native`
@@ -56,5 +56,5 @@
 - `usernamehw.errorlens`
 - `eamodio.gitlens`
 
-## Visual Implementation
-- Theme tokens and visual shell notes: docs/frontend/visual-implementation-notes.md`n
+## Визуальная реализация
+- Заметки по токенам темы и screen shell: `docs/frontend/visual-implementation-notes.md`

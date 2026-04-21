@@ -1,5 +1,6 @@
 ﻿import type { PropsWithChildren } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { LanguageSelector } from '../LanguageSelector';
 import { colors, radius, shadow, spacing, typography } from '../../theme/tokens';
@@ -22,7 +23,7 @@ const Header = ({ title, subtitle }: { title: string; subtitle?: string }): JSX.
 
 export const ScreenShell = ({ title, subtitle, scroll = false, children }: ScreenShellProps): JSX.Element => {
   return (
-    <View style={styles.root}>
+    <SafeAreaView style={styles.root} edges={['top', 'bottom']}>
       <View style={styles.decorativeBlobA} />
       <View style={styles.decorativeBlobB} />
 
@@ -37,7 +38,7 @@ export const ScreenShell = ({ title, subtitle, scroll = false, children }: Scree
           <View style={styles.body}>{children}</View>
         </View>
       )}
-    </View>
+    </SafeAreaView>
   );
 };
 
@@ -68,7 +69,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   scrollContent: {
-    paddingBottom: spacing.xl,
+    paddingBottom: spacing.xxl,
   },
   headerCard: {
     marginTop: spacing.xl,
@@ -77,8 +78,10 @@ const styles = StyleSheet.create({
     backgroundColor: colors.surface,
     borderWidth: 1,
     borderColor: colors.border,
+    borderLeftWidth: 4,
+    borderLeftColor: colors.accent,
     padding: spacing.lg,
-    gap: spacing.xs,
+    gap: spacing.sm,
     ...shadow.raised,
   },
   title: {
@@ -96,5 +99,6 @@ const styles = StyleSheet.create({
     marginTop: spacing.lg,
     marginHorizontal: spacing.lg,
     gap: spacing.md,
+    paddingBottom: spacing.lg,
   },
 });
