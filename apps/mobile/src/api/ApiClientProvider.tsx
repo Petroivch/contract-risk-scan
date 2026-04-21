@@ -7,6 +7,7 @@ import { SQLiteLocalCache } from '../data/local/sqlite/SQLiteLocalCache';
 import { useAppLanguage } from '../i18n/LanguageProvider';
 import { createApiClient } from './client';
 import { createLocalFirstAdapter } from './localFirstAdapter';
+import { createStubApiClient } from './stubs';
 import type { ContractRiskScannerApi } from './types';
 
 const ApiClientContext = createContext<ContractRiskScannerApi | null>(null);
@@ -35,15 +36,23 @@ export const ApiClientProvider = ({ children }: PropsWithChildren): JSX.Element 
     [language],
   );
 
+  const fallbackClient = useMemo(
+    () =>
+      createStubApiClient({
+        getLanguage: () => language,
+      }),
+    [language],
+  );
+
   const client = useMemo(() => {
     if (!featureFlags.localFirstCache) {
       return remoteClient;
     }
 
-    return createLocalFirstAdapter(remoteClient, localCache, {
+    return createLocalFirstAdapter(remoteClient, fallbackClient, localCache, {
       enableLocalFirst: true,
     });
-  }, [localCache, remoteClient]);
+  }, [fallbackClient, localCache, remoteClient]);
 
   return <ApiClientContext.Provider value={client}>{children}</ApiClientContext.Provider>;
 };

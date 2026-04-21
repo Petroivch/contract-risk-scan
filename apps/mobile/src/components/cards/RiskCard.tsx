@@ -34,6 +34,7 @@ export const RiskCard = ({ item }: RiskCardProps): JSX.Element => {
         </View>
         <Text style={styles.meta}>{t('report.clause', { value: item.clauseRef })}</Text>
         <Text style={styles.description}>{item.description}</Text>
+        {item.roleImpact ? <Text style={styles.impact}>{item.roleImpact}</Text> : null}
         <View style={styles.recommendationBox}>
           <Text style={styles.recommendation}>{t('report.recommendation', { text: item.recommendation })}</Text>
         </View>
@@ -95,6 +96,12 @@ const styles = StyleSheet.create({
     color: colors.textSecondary,
     fontSize: typography.size.body,
     lineHeight: typography.lineHeight.body,
+  },
+  impact: {
+    color: colors.accentStrong,
+    fontSize: typography.size.bodySm,
+    lineHeight: typography.lineHeight.bodySm,
+    fontWeight: typography.weight.semibold,
   },
   recommendationBox: {
     backgroundColor: colors.surfaceElevated,

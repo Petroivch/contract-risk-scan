@@ -5,7 +5,7 @@ export const DEFAULT_ROLE_PRESET_KEYS = ['roles.performer', 'roles.employer', 'r
 
 export const CONFIG_DEFAULTS = {
   apiBaseUrl: 'http://localhost:3000/api/v1',
-  apiTransport: 'stub',
+  apiTransport: 'http',
   apiTimeoutMs: 15000,
   statusPollIntervalMs: 2000,
   maxUploadFileMb: 25,

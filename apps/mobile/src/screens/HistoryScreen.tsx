@@ -76,6 +76,7 @@ export const HistoryScreen = ({ navigation }: Props): JSX.Element => {
             style={styles.card}
             onPress={() =>
               navigation.navigate('Report', {
+                contractId: item.contractId,
                 analysisId: item.analysisId,
                 selectedRole: item.selectedRole,
               })
@@ -87,8 +88,9 @@ export const HistoryScreen = ({ navigation }: Props): JSX.Element => {
             </View>
             <View style={styles.metaRow}>
               <RoleBadge role={item.selectedRole} size="inline" />
-              <Text style={styles.meta}>{formatTimestamp(item.createdAt, language)}</Text>
+              <StatusChip label={item.pipelineStatus} tone="neutral" />
             </View>
+            <Text style={styles.meta}>{formatTimestamp(item.updatedAt, language)}</Text>
             <Text style={styles.metaSecondary}>{t('history.openReportHint')}</Text>
           </Pressable>
         );

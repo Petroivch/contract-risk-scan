@@ -22,13 +22,13 @@ export const AnalysisStatusScreen = ({ navigation, route }: Props): JSX.Element 
   const { t } = useTranslation();
   const { language } = useAppLanguage();
   const api = useApiClient();
-  const { analysisId, selectedRole } = route.params;
+  const { contractId, analysisId, selectedRole } = route.params;
   const [status, setStatus] = useState<AnalysisStatusType | null>(null);
 
   const refreshStatus = useCallback(async () => {
-    const nextStatus = await api.getAnalysisStatus(analysisId, { language });
+    const nextStatus = await api.getAnalysisStatus({ contractId, analysisId }, { language });
     setStatus(nextStatus);
-  }, [analysisId, api, language]);
+  }, [analysisId, api, contractId, language]);
 
   useEffect(() => {
     refreshStatus();
@@ -64,7 +64,7 @@ export const AnalysisStatusScreen = ({ navigation, route }: Props): JSX.Element 
       } else if (currentStatus === 'processing') {
         if (index < 2) {
           state = 'done';
-        } else if (index === 2) {
+        } else if (index === 2 || index === 3) {
           state = 'active';
         }
       } else if (currentStatus === 'completed') {
@@ -83,6 +83,7 @@ export const AnalysisStatusScreen = ({ navigation, route }: Props): JSX.Element 
 
   const openReport = (): void => {
     navigation.navigate('Report', {
+      contractId,
       analysisId,
       selectedRole,
     });
@@ -106,6 +107,7 @@ export const AnalysisStatusScreen = ({ navigation, route }: Props): JSX.Element 
       >
         <View style={styles.statusSummaryRow}>
           <StatusChip label={t(`status.${status?.status ?? 'queued'}`)} tone={statusTone} />
+          <StatusChip label={status?.pipelineStatus ?? 'queued'} tone="neutral" />
           <StatusChip label={t('analysis.progress', { progress: status?.progress ?? 0 })} tone="neutral" />
         </View>
 
@@ -131,7 +133,7 @@ export const AnalysisStatusScreen = ({ navigation, route }: Props): JSX.Element 
           {status?.status === 'completed'
             ? t('analysis.completedHint')
             : status?.status === 'failed'
-              ? t('analysis.failedHint')
+              ? status.errorMessage ?? t('analysis.failedHint')
               : t('analysis.pollingHint')}
         </Text>
       </Panel>

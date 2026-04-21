@@ -77,19 +77,30 @@ export const UploadWithRoleScreen = ({ navigation }: Props): JSX.Element => {
 
     setSubmitting(true);
     try {
-      const { analysisId } = await api.uploadContract(
+      const uploaded = await api.uploadContract(
         {
           fileName: selectedFile.fileName,
           mimeType: selectedFile.mimeType,
           localFileUri: selectedFile.localFileUri,
           selectedRole,
+          contractLabel: selectedFile.fileName,
           language,
         },
         { language },
       );
 
+      const analyzed = await api.analyzeContract(
+        {
+          contractId: uploaded.contractId,
+          analysisId: uploaded.analysisId,
+          selectedRole,
+        },
+        { language },
+      );
+
       navigation.navigate('AnalysisStatus', {
-        analysisId,
+        contractId: analyzed.contractId,
+        analysisId: analyzed.analysisId,
         selectedRole,
       });
     } finally {

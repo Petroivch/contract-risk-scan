@@ -24,18 +24,18 @@ export const ReportScreen = ({ navigation, route }: Props): JSX.Element => {
   const { language } = useAppLanguage();
   const api = useApiClient();
 
-  const { analysisId, selectedRole } = route.params;
+  const { contractId, analysisId, selectedRole } = route.params;
   const [activeTab, setActiveTab] = useState<ReportTab>('risks');
   const [report, setReport] = useState<AnalysisReport | null>(null);
 
   useEffect(() => {
     const load = async (): Promise<void> => {
-      const nextReport = await api.getReport({ analysisId, selectedRole }, { language });
+      const nextReport = await api.getReport({ contractId, analysisId, selectedRole }, { language });
       setReport(nextReport);
     };
 
     load();
-  }, [analysisId, api, language, selectedRole]);
+  }, [analysisId, api, contractId, language, selectedRole]);
 
   const tabs: { id: ReportTab; label: string }[] = [
     { id: 'risks', label: t('report.tabs.risks') },
@@ -46,7 +46,7 @@ export const ReportScreen = ({ navigation, route }: Props): JSX.Element => {
   const riskCountLabel = useMemo(() => t('report.riskCount', { value: report?.risks.length ?? 0 }), [report?.risks.length, t]);
 
   return (
-    <ScreenShell title={t('report.title')} subtitle={t('report.analysisId', { analysisId })} scroll>
+    <ScreenShell title={t('report.title')} subtitle={t('report.analysisId', { analysisId: report?.analysisId ?? analysisId ?? contractId })} scroll>
       <Panel
         eyebrow={t('report.summaryStripEyebrow')}
         title={report?.summary.title ?? t('common.loading')}
@@ -57,6 +57,7 @@ export const ReportScreen = ({ navigation, route }: Props): JSX.Element => {
           <RoleBadge role={report?.selectedRole ?? selectedRole ?? ''} size="compact" />
           <StatusChip label={report?.summary.contractType ?? t('common.loading')} tone="neutral" />
         </View>
+        {report?.summaryText ? <Text style={styles.summaryText}>{report.summaryText}</Text> : null}
       </Panel>
 
       <View style={styles.tabBar}>
@@ -88,6 +89,11 @@ export const ReportScreen = ({ navigation, route }: Props): JSX.Element => {
               • {item}
             </Text>
           ))}
+          {(report?.obligations ?? []).map((item) => (
+            <Text key={`${item.subject}-${item.action}`} style={styles.bulletItem}>
+              • {item.subject}: {item.action} ({item.dueCondition})
+            </Text>
+          ))}
         </Panel>
       ) : null}
 
@@ -104,6 +110,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     gap: spacing.sm,
+  },
+  summaryText: {
+    color: colors.textSecondary,
+    fontSize: typography.size.body,
+    lineHeight: typography.lineHeight.body,
   },
   tabBar: {
     flexDirection: 'row',

@@ -6,15 +6,20 @@ import type {
   AnalysisLifecycleStatus,
   AnalysisReport,
   AnalysisStatus,
+  AnalyzeContractRequest,
+  AnalyzeContractResponse,
   ContractRiskScannerApi,
   HistoryItem,
+  PipelineStatus,
   RequestMeta,
   SignInRequest,
   UploadContractRequest,
+  UploadContractResponse,
   UserSession,
 } from './types';
 
 interface StoredAnalysis {
+  contractId: string;
   analysisId: string;
   fileName: string;
   selectedRole: string;
@@ -32,10 +37,14 @@ interface LocalizedRiskDraft {
   severity: 'low' | 'medium' | 'high';
   title: string;
   description: string;
+  roleImpact: string;
   recommendation: string;
 }
 
 interface LocalizedDisputedDraft {
+  fragment: string;
+  issue: string;
+  recommendation: string;
   whyDisputed: string;
   suggestedRewrite: string;
 }
@@ -44,22 +53,27 @@ interface LocalizedTemplate {
   reportTitle: (fileName: string) => string;
   contractType: string;
   shortDescription: (role: string) => string;
-  obligations: (role: string) => string[];
+  summaryText: (role: string) => string;
+  obligationsForRole: (role: string) => string[];
+  obligations: (role: string) => Array<{ subject: string; action: string; dueCondition: string }>;
   risks: (role: string) => LocalizedRiskDraft[];
   disputedClauses: (role: string) => LocalizedDisputedDraft[];
 }
 
 const lifecycle: AnalysisLifecycleStatus[] = ['queued', 'processing', 'processing', 'completed'];
+const pipelineLifecycle: PipelineStatus[] = ['uploaded', 'preprocessing', 'analyzing', 'report_ready'];
 const storage = new Map<string, StoredAnalysis>();
 
 const delay = (ms: number): Promise<void> => new Promise((resolve) => setTimeout(resolve, ms));
 const nowIso = (): string => new Date().toISOString();
+const buildContractId = (): string => `ctr_${Date.now()}`;
+const buildAnalysisId = (): string => `anl_${Date.now()}`;
 
-const progressByStatus = (status: AnalysisLifecycleStatus): number => {
-  if (status === 'queued') return 12;
-  if (status === 'processing') return 68;
-  if (status === 'completed') return 100;
-  return 0;
+const progressByStatusIndex = (statusIndex: number): number => {
+  if (statusIndex <= 0) return 15;
+  if (statusIndex === 1) return 42;
+  if (statusIndex === 2) return 74;
+  return 100;
 };
 
 const localizedTemplates: Record<SupportedLanguage, LocalizedTemplate> = {
@@ -67,40 +81,55 @@ const localizedTemplates: Record<SupportedLanguage, LocalizedTemplate> = {
     reportTitle: (fileName) => `Анализ договора: ${fileName}`,
     contractType: 'Договор оказания услуг',
     shortDescription: (role) =>
-      `Документ описывает объем услуг, сроки приемки, оплату и ответственность сторон. В отчете акцент смещен на обязательства и риски для роли «${role}».`,
+      `Документ описывает объем услуг, оплату, приемку, ответственность и прекращение. Отчет смещает акцент на риски и обязанности для роли «${role}».`,
+    summaryText: (role) =>
+      `Отчет собран для роли «${role}». В первую очередь выделены ответственность, порядок приемки, сроки оплаты и условия прекращения.`,
+    obligationsForRole: (role) => [
+      `Проверить срок оплаты и момент, когда у роли «${role}» возникает право на выставление документов.`,
+      `Убедиться, что порядок приемки не позволяет другой стороне бесконечно затягивать подтверждение результата.`,
+      `Отдельно проверить основания для удержаний, штрафов и одностороннего расторжения, влияющих на роль «${role}».`,
+    ],
     obligations: (role) => [
-      `Проверить сроки оплаты и порядок приемки, если роль «${role}» зависит от подписания актов.`,
-      `Сверить штрафы, удержания и право одностороннего изменения условий, влияющих на роль «${role}».`,
-      `Оценить условия расторжения и срок уведомления, которые могут создать дополнительную нагрузку на роль «${role}».`,
+      { subject: role, action: 'Исполнить согласованный объем работ', dueCondition: 'В сроки, указанные в основном разделе о графике' },
+      { subject: role, action: 'Передать результаты по правилам приемки', dueCondition: 'После выполнения работ и до выставления финального счета' },
     ],
     risks: (role) => [
       {
         severity: 'high',
         title: 'Неограниченная ответственность',
-        description: `В договоре нет верхнего лимита убытков, поэтому для роли «${role}» риск по претензиям остается открытым.`,
-        recommendation: 'Добавить совокупный лимит ответственности, привязанный к цене договора.',
+        description: `В договоре нет лимита убытков, поэтому роль «${role}» остается открытой для крупных требований.`,
+        roleImpact: `Для роли «${role}» это создает прямой финансовый риск выше стоимости договора.`,
+        recommendation: 'Добавить совокупный лимит ответственности и перечень исключенных убытков.',
       },
       {
         severity: 'medium',
-        title: 'Размытый порядок приемки',
-        description: `Критерии приемки сформулированы общо, из-за чего роль «${role}» может столкнуться с затяжным согласованием.`,
-        recommendation: 'Закрепить измеримые критерии приемки и срок ответа на замечания.',
+        title: 'Размытая приемка результата',
+        description: `Критерии приемки сформулированы общо, из-за чего другая сторона может затянуть подтверждение.`,
+        roleImpact: `Для роли «${role}» это задерживает оплату и формальное закрытие этапа.`,
+        recommendation: 'Зафиксировать измеримые критерии приемки и срок ответа на замечания.',
       },
       {
         severity: 'low',
-        title: 'Слабая детализация коммуникаций',
-        description: `Нет четкого канала уведомлений, поэтому важные сообщения для роли «${role}» могут быть оспорены.`,
-        recommendation: 'Прописать официальный канал уведомлений и момент, когда сообщение считается полученным.',
+        title: 'Неоформленный канал уведомлений',
+        description: `Договор не закрепляет официальный канал уведомлений и момент получения сообщения.`,
+        roleImpact: `Для роли «${role}» это создает спорность при отправке претензий и уведомлений.`,
+        recommendation: 'Установить официальный канал уведомлений и порядок подтверждения доставки.',
       },
     ],
     disputedClauses: (role) => [
       {
-        whyDisputed: `Право на одностороннее расторжение сформулировано в пользу другой стороны и создает перекос против роли «${role}».`,
-        suggestedRewrite: 'Сделать право на расторжение симметричным и установить одинаковый срок уведомления для обеих сторон.',
+        fragment: 'Одна из сторон вправе в любое время отказаться от договора без ограничений.',
+        issue: 'Условие о прекращении несимметрично и не защищает баланс сторон.',
+        recommendation: 'Сделать право на расторжение взаимным и добавить единый срок уведомления.',
+        whyDisputed: `Формулировка дает другой стороне слишком сильное преимущество против роли «${role}».`,
+        suggestedRewrite: 'Каждая сторона вправе отказаться от договора с письменным уведомлением не менее чем за 30 календарных дней.',
       },
       {
-        whyDisputed: `Порядок согласования дополнительных работ не фиксирует, кто подтверждает объем и цену, что критично для роли «${role}».`,
-        suggestedRewrite: 'Добавить обязательное письменное согласование объема, цены и срока дополнительных работ до начала исполнения.',
+        fragment: 'Дополнительные работы выполняются по устной договоренности сторон.',
+        issue: 'Нет прозрачного механизма подтверждения объема и цены дополнительных работ.',
+        recommendation: 'Требовать письменное согласование объема, цены и срока до начала работ.',
+        whyDisputed: `Для роли «${role}» это создает спор о том, что именно было согласовано.`,
+        suggestedRewrite: 'Дополнительные работы выполняются только после письменного согласования объема, цены и сроков обеими сторонами.',
       },
     ],
   },
@@ -108,40 +137,55 @@ const localizedTemplates: Record<SupportedLanguage, LocalizedTemplate> = {
     reportTitle: (fileName) => `Contract review: ${fileName}`,
     contractType: 'Service Agreement',
     shortDescription: (role) =>
-      `The document defines service scope, acceptance timing, payment, and liability boundaries. The report prioritizes obligations and risks for the “${role}” role.`,
+      `The document defines scope, payment, acceptance, liability, and termination. The report prioritizes obligations and risks for the “${role}” side.`,
+    summaryText: (role) =>
+      `The report is generated for the “${role}” side and emphasizes liability, acceptance timing, payment, and termination mechanics.`,
+    obligationsForRole: (role) => [
+      `Check when the “${role}” side becomes entitled to invoice and receive payment.`,
+      'Confirm that acceptance wording does not allow endless approval delays.',
+      `Review penalties, deductions, and unilateral termination triggers affecting the “${role}” side.`,
+    ],
     obligations: (role) => [
-      `Verify payment timing and acceptance mechanics if the “${role}” side depends on signed acceptance documents.`,
-      `Check penalties, deductions, and unilateral change rights that directly affect the “${role}” side.`,
-      `Review termination mechanics and notice windows that could add operational pressure to the “${role}” side.`,
+      { subject: role, action: 'Deliver the agreed scope of work', dueCondition: 'Within the timeline set in the schedule section' },
+      { subject: role, action: 'Submit deliverables under the acceptance procedure', dueCondition: 'After completion and before final invoicing' },
     ],
     risks: (role) => [
       {
         severity: 'high',
         title: 'Unlimited liability exposure',
-        description: `The contract does not cap losses, leaving the “${role}” side exposed to open-ended claims.`,
-        recommendation: 'Add an aggregate liability cap linked to contract value.',
+        description: 'The agreement does not cap losses, leaving the party exposed to open-ended claims.',
+        roleImpact: `For the “${role}” side, this creates financial exposure that can exceed contract value.`,
+        recommendation: 'Introduce an aggregate liability cap and define excluded damages.',
       },
       {
         severity: 'medium',
-        title: 'Ambiguous acceptance procedure',
-        description: `Acceptance criteria stay vague, so the “${role}” side may face prolonged approval cycles.`,
-        recommendation: 'Define measurable acceptance criteria and a response deadline for comments.',
+        title: 'Ambiguous acceptance mechanics',
+        description: 'Acceptance criteria stay broad and allow long approval cycles.',
+        roleImpact: `For the “${role}” side, this delays payment and formal completion.`,
+        recommendation: 'Set measurable acceptance criteria and a deadline for comments.',
       },
       {
         severity: 'low',
-        title: 'Weak notice channel definition',
-        description: `The notice channel is not formalized, which may undermine key messages for the “${role}” side.`,
-        recommendation: 'Specify the official notice channel and when a notice is deemed received.',
+        title: 'Undefined notice channel',
+        description: 'The agreement does not define an official notice channel or receipt moment.',
+        roleImpact: `For the “${role}” side, this creates disputes around claims and notices.`,
+        recommendation: 'Specify the notice channel and the moment when notice is deemed received.',
       },
     ],
     disputedClauses: (role) => [
       {
-        whyDisputed: `Termination for convenience is drafted asymmetrically and disadvantages the “${role}” side.`,
-        suggestedRewrite: 'Make termination rights symmetrical and apply the same notice period to both parties.',
+        fragment: 'One party may terminate the agreement at any time without limitation.',
+        issue: 'Termination rights are asymmetrical and unbalanced.',
+        recommendation: 'Make termination rights mutual and add the same notice period.',
+        whyDisputed: `The current wording gives the other side a strong leverage against the “${role}” side.`,
+        suggestedRewrite: 'Either party may terminate the agreement with at least 30 calendar days written notice.',
       },
       {
-        whyDisputed: `The change-order flow does not define who confirms scope and price, which is risky for the “${role}” side.`,
-        suggestedRewrite: 'Require written approval of scope, price, and delivery date before extra work starts.',
+        fragment: 'Additional work may be agreed verbally by the parties.',
+        issue: 'There is no transparent mechanism for confirming scope and price.',
+        recommendation: 'Require written approval of scope, price, and delivery dates before extra work starts.',
+        whyDisputed: `For the “${role}” side, this creates disputes about what was actually agreed.`,
+        suggestedRewrite: 'Additional work is performed only after written approval of scope, price, and timing by both parties.',
       },
     ],
   },
@@ -149,40 +193,55 @@ const localizedTemplates: Record<SupportedLanguage, LocalizedTemplate> = {
     reportTitle: (fileName) => `Revisione contratto: ${fileName}`,
     contractType: 'Contratto di servizi',
     shortDescription: (role) =>
-      `Il documento definisce ambito dei servizi, accettazione, pagamento e responsabilità. Il report dà priorità agli obblighi e ai rischi per il ruolo “${role}”.`,
+      `Il documento definisce ambito, pagamento, accettazione, responsabilità e recesso. Il report dà priorità a obblighi e rischi per il ruolo “${role}”.`,
+    summaryText: (role) =>
+      `Il report è generato per il ruolo “${role}” e mette in evidenza responsabilità, accettazione, pagamento e recesso.`,
+    obligationsForRole: (role) => [
+      `Controllare quando il ruolo “${role}” matura il diritto a fatturare e ricevere il pagamento.`,
+      'Confermare che l’accettazione non consenta ritardi indefiniti di approvazione.',
+      `Rivedere penali, trattenute e trigger di recesso unilaterale che colpiscono il ruolo “${role}”.`,
+    ],
     obligations: (role) => [
-      `Verificare tempi di pagamento e meccanica di accettazione se il ruolo “${role}” dipende dalla firma dei verbali.`,
-      `Controllare penali, trattenute e diritti di modifica unilaterale che impattano il ruolo “${role}”.`,
-      `Rivedere recesso e termini di preavviso che possono aumentare la pressione operativa sul ruolo “${role}”.`,
+      { subject: role, action: 'Eseguire l’ambito concordato', dueCondition: 'Entro le scadenze del calendario contrattuale' },
+      { subject: role, action: 'Consegnare il risultato secondo la procedura di accettazione', dueCondition: 'Dopo l’esecuzione e prima della fattura finale' },
     ],
     risks: (role) => [
       {
         severity: 'high',
         title: 'Responsabilità senza limite',
-        description: `Il contratto non prevede un tetto ai danni e lascia il ruolo “${role}” esposto a pretese aperte.`,
-        recommendation: 'Inserire un limite complessivo di responsabilità collegato al valore del contratto.',
+        description: 'L’accordo non prevede un tetto alle perdite e lascia la parte esposta a pretese aperte.',
+        roleImpact: `Per il ruolo “${role}” questo crea un’esposizione economica superiore al valore del contratto.`,
+        recommendation: 'Introdurre un tetto complessivo di responsabilità e definire i danni esclusi.',
       },
       {
         severity: 'medium',
-        title: 'Procedura di accettazione ambigua',
-        description: `I criteri di accettazione sono vaghi e il ruolo “${role}” può subire approvazioni molto lente.`,
-        recommendation: 'Definire criteri misurabili di accettazione e un termine per le osservazioni.',
+        title: 'Accettazione ambigua',
+        description: 'I criteri di accettazione sono ampi e consentono cicli lunghi di approvazione.',
+        roleImpact: `Per il ruolo “${role}” questo ritarda pagamento e chiusura formale.`,
+        recommendation: 'Definire criteri misurabili di accettazione e un termine per i commenti.',
       },
       {
         severity: 'low',
-        title: 'Canale notifiche poco chiaro',
-        description: `Il canale di notifica non è formalizzato e i messaggi importanti per il ruolo “${role}” possono essere contestati.`,
-        recommendation: 'Stabilire il canale ufficiale di notifica e il momento di ricezione.',
+        title: 'Canale notifiche non definito',
+        description: 'Il contratto non definisce un canale ufficiale di notifica né il momento di ricezione.',
+        roleImpact: `Per il ruolo “${role}” questo crea contestazioni su diffide e notifiche.`,
+        recommendation: 'Specificare il canale di notifica e il momento in cui la comunicazione si considera ricevuta.',
       },
     ],
     disputedClauses: (role) => [
       {
-        whyDisputed: `Il recesso per convenienza è asimmetrico e penalizza il ruolo “${role}”.`,
-        suggestedRewrite: 'Rendere simmetrici i diritti di recesso e applicare lo stesso preavviso a entrambe le parti.',
+        fragment: 'Una parte può recedere in qualsiasi momento senza limitazioni.',
+        issue: 'I diritti di recesso sono asimmetrici e sbilanciati.',
+        recommendation: 'Rendere reciproco il diritto di recesso e fissare lo stesso preavviso.',
+        whyDisputed: `La formulazione attuale dà all’altra parte una leva troppo forte contro il ruolo “${role}”.`,
+        suggestedRewrite: 'Ciascuna parte può recedere con preavviso scritto di almeno 30 giorni di calendario.',
       },
       {
-        whyDisputed: `Il flusso per lavori extra non definisce chi approva ambito e prezzo, con rischio per il ruolo “${role}”.`,
-        suggestedRewrite: 'Richiedere approvazione scritta di ambito, prezzo e termine prima dell’avvio di attività extra.',
+        fragment: 'Le attività aggiuntive possono essere concordate verbalmente.',
+        issue: 'Manca un meccanismo trasparente per confermare ambito e prezzo.',
+        recommendation: 'Richiedere approvazione scritta di ambito, prezzo e tempi prima dell’avvio.',
+        whyDisputed: `Per il ruolo “${role}” questo crea controversie su ciò che è stato concordato.`,
+        suggestedRewrite: 'Le attività aggiuntive sono eseguite solo dopo approvazione scritta di ambito, prezzo e tempi da parte di entrambe le parti.',
       },
     ],
   },
@@ -190,98 +249,149 @@ const localizedTemplates: Record<SupportedLanguage, LocalizedTemplate> = {
     reportTitle: (fileName) => `Revue du contrat : ${fileName}`,
     contractType: 'Contrat de services',
     shortDescription: (role) =>
-      `Le document décrit le périmètre des services, l’acceptation, le paiement et la responsabilité. Le rapport priorise les obligations et risques pour le rôle « ${role} ».`,
+      `Le document définit le périmètre, le paiement, l’acceptation, la responsabilité et la résiliation. Le rapport priorise obligations et risques pour le rôle « ${role} ».`,
+    summaryText: (role) =>
+      `Le rapport est généré pour le rôle « ${role} » et met l’accent sur responsabilité, acceptation, paiement et résiliation.`,
+    obligationsForRole: (role) => [
+      `Vérifier le moment où le rôle « ${role} » acquiert le droit de facturer et d’être payé.`,
+      'Confirmer que l’acceptation ne permet pas des retards illimités de validation.',
+      `Examiner pénalités, retenues et déclencheurs de résiliation unilatérale affectant le rôle « ${role} ».`,
+    ],
     obligations: (role) => [
-      `Vérifier les délais de paiement et la mécanique d’acceptation si le rôle « ${role} » dépend de documents signés.`,
-      `Contrôler pénalités, retenues et droits de modification unilatérale qui touchent directement le rôle « ${role} ».`,
-      `Examiner résiliation et préavis pouvant créer une pression opérationnelle sur le rôle « ${role} ».`,
+      { subject: role, action: 'Exécuter le périmètre convenu', dueCondition: 'Dans les délais prévus par le calendrier contractuel' },
+      { subject: role, action: 'Remettre le résultat selon la procédure d’acceptation', dueCondition: 'Après exécution et avant la facture finale' },
     ],
     risks: (role) => [
       {
         severity: 'high',
         title: 'Responsabilité sans plafond',
-        description: `Le contrat ne limite pas les pertes et expose le rôle « ${role} » à des réclamations ouvertes.`,
-        recommendation: 'Ajouter un plafond global de responsabilité lié à la valeur du contrat.',
+        description: 'Le contrat ne limite pas les pertes et laisse la partie exposée à des réclamations ouvertes.',
+        roleImpact: `Pour le rôle « ${role} », cela crée une exposition financière supérieure à la valeur du contrat.`,
+        recommendation: 'Introduire un plafond global de responsabilité et définir les dommages exclus.',
       },
       {
         severity: 'medium',
-        title: 'Procédure d’acceptation ambiguë',
-        description: `Les critères d’acceptation restent vagues et le rôle « ${role} » peut subir un cycle d’approbation long.`,
-        recommendation: 'Définir des critères mesurables d’acceptation et un délai de réponse aux remarques.',
+        title: 'Acceptation ambiguë',
+        description: 'Les critères d’acceptation restent larges et permettent des cycles longs de validation.',
+        roleImpact: `Pour le rôle « ${role} », cela retarde paiement et clôture formelle.`,
+        recommendation: 'Définir des critères mesurables d’acceptation et un délai pour les remarques.',
       },
       {
         severity: 'low',
-        title: 'Canal de notification faible',
-        description: `Le canal de notification n’est pas formalisé, ce qui fragilise les messages importants pour le rôle « ${role} ».`,
-        recommendation: 'Préciser le canal officiel de notification et le moment où un avis est réputé reçu.',
+        title: 'Canal de notification non défini',
+        description: 'Le contrat ne précise ni canal officiel de notification ni moment de réception.',
+        roleImpact: `Pour le rôle « ${role} », cela crée des litiges sur mises en demeure et notifications.`,
+        recommendation: 'Préciser le canal de notification et le moment où la notification est réputée reçue.',
       },
     ],
     disputedClauses: (role) => [
       {
-        whyDisputed: `La résiliation pour convenance est rédigée de façon asymétrique et défavorise le rôle « ${role} ».`,
-        suggestedRewrite: 'Rendre les droits de résiliation symétriques avec le même préavis pour les deux parties.',
+        fragment: 'Une partie peut résilier à tout moment sans limitation.',
+        issue: 'Les droits de résiliation sont asymétriques et déséquilibrés.',
+        recommendation: 'Rendre la résiliation réciproque avec le même préavis.',
+        whyDisputed: `La formulation actuelle donne à l’autre partie un levier trop fort contre le rôle « ${role} ».`,
+        suggestedRewrite: 'Chaque partie peut résilier avec un préavis écrit d’au moins 30 jours calendaires.',
       },
       {
-        whyDisputed: `Le flux de travaux supplémentaires ne précise pas qui valide le périmètre et le prix, ce qui crée un risque pour le rôle « ${role} ».`,
-        suggestedRewrite: 'Imposer une validation écrite du périmètre, du prix et du délai avant le début des travaux supplémentaires.',
+        fragment: 'Les travaux supplémentaires peuvent être convenus oralement.',
+        issue: 'Aucun mécanisme transparent ne confirme périmètre et prix.',
+        recommendation: 'Exiger une validation écrite du périmètre, du prix et du calendrier avant démarrage.',
+        whyDisputed: `Pour le rôle « ${role} », cela crée un litige sur ce qui a réellement été approuvé.`,
+        suggestedRewrite: 'Les travaux supplémentaires sont exécutés uniquement après validation écrite du périmètre, du prix et du calendrier par les deux parties.',
       },
     ],
   },
 };
 
-const buildReport = (entity: StoredAnalysis, roleOverride?: string): AnalysisReport => {
-  const role = roleOverride ?? entity.selectedRole;
+const toLifecycleStatus = (statusIndex: number): AnalysisLifecycleStatus => lifecycle[Math.min(statusIndex, lifecycle.length - 1)];
+const toPipelineStatus = (statusIndex: number): PipelineStatus => pipelineLifecycle[Math.min(statusIndex, pipelineLifecycle.length - 1)];
+
+const buildUploadResponse = (entity: StoredAnalysis): UploadContractResponse => ({
+  contractId: entity.contractId,
+  analysisId: entity.analysisId,
+  status: 'queued',
+  pipelineStatus: 'uploaded',
+  locale: entity.language,
+  selectedRole: entity.selectedRole,
+  progress: 15,
+  originalFileName: entity.fileName,
+  uploadedAt: entity.createdAt,
+});
+
+const buildAnalyzeResponse = (entity: StoredAnalysis): AnalyzeContractResponse => ({
+  contractId: entity.contractId,
+  analysisId: entity.analysisId,
+  status: toLifecycleStatus(entity.statusIndex),
+  pipelineStatus: toPipelineStatus(entity.statusIndex),
+  locale: entity.language,
+  selectedRole: entity.selectedRole,
+  progress: progressByStatusIndex(entity.statusIndex),
+  message: 'Analysis accepted for execution.',
+});
+
+const buildStatus = (entity: StoredAnalysis): AnalysisStatus => ({
+  contractId: entity.contractId,
+  analysisId: entity.analysisId,
+  status: toLifecycleStatus(entity.statusIndex),
+  pipelineStatus: toPipelineStatus(entity.statusIndex),
+  locale: entity.language,
+  progress: progressByStatusIndex(entity.statusIndex),
+  selectedRole: entity.selectedRole,
+  allowedTransitions: ['preprocessing', 'analyzing', 'report_ready', 'failed'],
+  updatedAt: entity.updatedAt,
+});
+
+const buildHistoryItem = (entity: StoredAnalysis): HistoryItem => ({
+  contractId: entity.contractId,
+  analysisId: entity.analysisId,
+  role: entity.selectedRole,
+  selectedRole: entity.selectedRole,
+  locale: entity.language,
+  status: toLifecycleStatus(entity.statusIndex),
+  pipelineStatus: toPipelineStatus(entity.statusIndex),
+  originalFileName: entity.fileName,
+  fileName: entity.fileName,
+  uploadedAt: entity.createdAt,
+  createdAt: entity.createdAt,
+  updatedAt: entity.updatedAt,
+});
+
+const buildReport = (entity: StoredAnalysis, selectedRole?: string): AnalysisReport => {
+  const role = selectedRole ?? entity.selectedRole;
   const template = localizedTemplates[entity.language] ?? localizedTemplates[defaultLanguage];
 
   return {
+    contractId: entity.contractId,
     analysisId: entity.analysisId,
+    locale: entity.language,
+    roleFocus: role,
     selectedRole: role,
-    generatedAt: nowIso(),
     summary: {
       title: template.reportTitle(entity.fileName),
       contractType: template.contractType,
       shortDescription: template.shortDescription(role),
-      obligationsForSelectedRole: template.obligations(role),
+      obligationsForSelectedRole: template.obligationsForRole(role),
     },
+    summaryText: template.summaryText(role),
+    obligations: template.obligations(role),
     risks: template.risks(role).map((risk, index) => ({
       id: `${entity.analysisId}-risk-${index + 1}`,
-      clauseRef: index === 0 ? 'Раздел 7.2' : index === 1 ? 'Раздел 4.1' : 'Раздел 2.4',
+      clauseRef: index === 0 ? '7.2' : index === 1 ? '4.1' : '2.4',
       ...risk,
     })),
-    disputedClauses: template.disputedClauses(role).map((clause, index) => ({
+    disputedClauses: template.disputedClauses(role).map((item, index) => ({
       id: `${entity.analysisId}-dc-${index + 1}`,
-      clauseRef: index === 0 ? 'Раздел 9.4' : 'Раздел 3.3',
-      ...clause,
+      clauseRef: index === 0 ? '9.4' : '3.3',
+      ...item,
     })),
-  };
-};
-
-const toStatus = (entity: StoredAnalysis): AnalysisStatus => {
-  const status = lifecycle[Math.min(entity.statusIndex, lifecycle.length - 1)];
-  return {
-    analysisId: entity.analysisId,
-    selectedRole: entity.selectedRole,
-    status,
-    progress: progressByStatus(status),
-    updatedAt: entity.updatedAt,
-  };
-};
-
-const toHistory = (entity: StoredAnalysis): HistoryItem => {
-  const status = lifecycle[Math.min(entity.statusIndex, lifecycle.length - 1)];
-  return {
-    analysisId: entity.analysisId,
-    fileName: entity.fileName,
-    selectedRole: entity.selectedRole,
-    status,
-    createdAt: entity.createdAt,
-    updatedAt: entity.updatedAt,
+    generatedAt: nowIso(),
+    generationNotes: null,
   };
 };
 
 export const createStubApiClient = (config: StubClientConfig = {}): ContractRiskScannerApi => ({
   async signIn(payload: SignInRequest, meta?: RequestMeta): Promise<UserSession> {
-    await delay(250);
+    await delay(200);
     const requestContext = prepareRequestContext(meta, config.getLanguage);
     const requestLanguage = payload.language ?? requestContext.language ?? defaultLanguage;
 
@@ -297,19 +407,14 @@ export const createStubApiClient = (config: StubClientConfig = {}): ContractRisk
     };
   },
 
-  async uploadContract(
-    payload: UploadContractRequest,
-    meta?: RequestMeta,
-  ): Promise<{ analysisId: string; status: AnalysisStatus }> {
-    await delay(300);
+  async uploadContract(payload: UploadContractRequest, meta?: RequestMeta): Promise<UploadContractResponse> {
+    await delay(250);
     const requestContext = prepareRequestContext(meta, config.getLanguage);
     const language = payload.language ?? requestContext.language ?? defaultLanguage;
-
-    const analysisId = `analysis_${Date.now()}`;
     const now = nowIso();
-
     const entity: StoredAnalysis = {
-      analysisId,
+      contractId: buildContractId(),
+      analysisId: buildAnalysisId(),
       fileName: payload.fileName,
       selectedRole: payload.selectedRole,
       statusIndex: 0,
@@ -318,42 +423,72 @@ export const createStubApiClient = (config: StubClientConfig = {}): ContractRisk
       language,
     };
 
-    storage.set(analysisId, entity);
-    return { analysisId, status: toStatus(entity) };
+    storage.set(entity.contractId, entity);
+    return buildUploadResponse(entity);
   },
 
-  async getAnalysisStatus(analysisId: string, meta?: RequestMeta): Promise<AnalysisStatus> {
-    await delay(400);
-    prepareRequestContext(meta, config.getLanguage);
+  async analyzeContract(payload: AnalyzeContractRequest): Promise<AnalyzeContractResponse> {
+    await delay(220);
+    const entity = storage.get(payload.contractId);
 
-    const entity = storage.get(analysisId);
+    if (!entity) {
+      const fallbackEntity: StoredAnalysis = {
+        contractId: payload.contractId,
+        analysisId: payload.analysisId ?? buildAnalysisId(),
+        fileName: 'offline-contract.pdf',
+        selectedRole: payload.selectedRole,
+        statusIndex: 1,
+        createdAt: nowIso(),
+        updatedAt: nowIso(),
+        language: defaultLanguage,
+      };
+      storage.set(fallbackEntity.contractId, fallbackEntity);
+      return buildAnalyzeResponse(fallbackEntity);
+    }
+
+    entity.statusIndex = Math.max(entity.statusIndex, 1);
+    entity.updatedAt = nowIso();
+    storage.set(entity.contractId, entity);
+    return buildAnalyzeResponse(entity);
+  },
+
+  async getAnalysisStatus(input): Promise<AnalysisStatus> {
+    await delay(260);
+    const entity = storage.get(input.contractId);
+
     if (!entity) {
       return {
-        analysisId,
-        selectedRole: 'Unknown',
+        contractId: input.contractId,
+        analysisId: input.analysisId ?? buildAnalysisId(),
         status: 'failed',
+        pipelineStatus: 'failed',
+        locale: defaultLanguage,
         progress: 0,
+        selectedRole: 'Unknown',
+        allowedTransitions: ['failed'],
         updatedAt: nowIso(),
+        errorCode: 'LOCAL_STUB_NOT_FOUND',
+        errorMessage: 'No local analysis session was found for this contract.',
       };
     }
 
     if (entity.statusIndex < lifecycle.length - 1) {
       entity.statusIndex += 1;
       entity.updatedAt = nowIso();
-      storage.set(entity.analysisId, entity);
+      storage.set(entity.contractId, entity);
     }
 
-    return toStatus(entity);
+    return buildStatus(entity);
   },
 
-  async getReport(input: { analysisId: string; selectedRole?: string }, meta?: RequestMeta): Promise<AnalysisReport> {
-    await delay(450);
+  async getReport(input, meta?: RequestMeta): Promise<AnalysisReport> {
+    await delay(240);
     const requestContext = prepareRequestContext(meta, config.getLanguage);
-
-    const entity = storage.get(input.analysisId) ?? {
-      analysisId: input.analysisId,
-      fileName: 'contract-draft.pdf',
-      selectedRole: input.selectedRole ?? 'Contractor',
+    const entity = storage.get(input.contractId) ?? {
+      contractId: input.contractId,
+      analysisId: input.analysisId ?? buildAnalysisId(),
+      fileName: 'offline-contract.pdf',
+      selectedRole: input.selectedRole ?? 'contractor',
       statusIndex: lifecycle.length - 1,
       createdAt: nowIso(),
       updatedAt: nowIso(),
@@ -363,9 +498,8 @@ export const createStubApiClient = (config: StubClientConfig = {}): ContractRisk
     return buildReport(entity, input.selectedRole);
   },
 
-  async listHistory(meta?: RequestMeta): Promise<HistoryItem[]> {
-    await delay(200);
-    prepareRequestContext(meta, config.getLanguage);
-    return [...storage.values()].sort((a, b) => (a.createdAt < b.createdAt ? 1 : -1)).map((entry) => toHistory(entry));
+  async listHistory(): Promise<HistoryItem[]> {
+    await delay(160);
+    return [...storage.values()].sort((a, b) => (a.createdAt < b.createdAt ? 1 : -1)).map((item) => buildHistoryItem(item));
   },
 });

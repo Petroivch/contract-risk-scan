@@ -1,60 +1,68 @@
-﻿# Frontend Setup (React Native / Expo)
+# Настройка frontend (React Native / Expo)
 
-## Working Directory
-- `C:\Users\user\Documents\Codex\вайбкод\contract-risk-scan\apps\mobile`
+## Рабочая директория
+- `C:\Users\user\Documents\Codex\вайбкод\contract-risk-scan-worktrees\agent-frontend\apps\mobile`
 
-## Runtime Rule (No Post-Install Downloads)
-- User installs only the final release app package.
-- After installation, app must work without downloading additional modules/assets/features.
-- MVP bundle must include all UI assets, dictionaries (`ru/en/it/fr`) and local data schema migrations.
+## Базовое правило runtime
+- Пользователь ставит только готовое мобильное приложение.
+- После установки нельзя требовать дополнительную загрузку модулей, словарей, UI-ассетов или локальных схем БД.
+- Все словари `ru/en/it/fr`, migration-скрипты SQLite и основной UI bundle должны входить в сборку.
 
-## Prerequisites (Developer)
+## Что нужно разработчику
 - Node.js 20 LTS
 - npm 10+
 - VS Code
-- Android Studio (Android emulator)
-- Xcode (iOS simulator on macOS)
+- Android Studio для Android emulator / native build
+- Xcode для iOS simulator и native build на macOS
 
-## Install and Run
-1. Open terminal in `apps/mobile`.
-2. Install dependencies: `npm install`
-3. Start app: `npm run start`
-4. Launch platform:
+## Быстрый старт
+1. Открыть терминал в `apps/mobile`.
+2. Установить зависимости: `npm install`
+3. Запустить Metro: `npm run start`
+4. Запустить платформу:
    - Android: `npm run android`
    - iOS: `npm run ios`
 
-## i18n Configuration
-- Default language: `ru`
-- Supported languages: `ru`, `en`, `it`, `fr`
-- Fallback language: `ru`
-- Translation resources: `apps/mobile/src/i18n/resources/*.ts`
-- Language persistence: AsyncStorage key from runtime config (`LANGUAGE_PREFERENCE_KEY`)
+## Проверки качества
+- `npm run lint`
+- `npm run typecheck`
+- `npm run format`
 
-## Local-First
-- Local DB/cache is mandatory for MVP.
-- Current frontend architecture includes:
-  - SQLite cache storage (status/report/history)
-  - file cache helper
-  - local-first API adapter with fallback to SQLite when remote request fails
-- Details: `docs/frontend/local-first-architecture.md`
+## Конфигурация i18n
+- Язык по умолчанию: `ru`
+- Поддерживаемые языки: `ru`, `en`, `it`, `fr`
+- Fallback язык: `ru`
+- Ресурсы перевода лежат в `apps/mobile/src/i18n/resources/*.ts`
+- Сохранение выбранного языка: ключ `LANGUAGE_PREFERENCE_KEY`
 
-## Quality and Architecture Standards
-- No hardcoded runtime-critical values in UI components.
-- Endpoints, limits, timeouts, role presets and feature flags are read from config (`app.json` `expo.extra` + env overrides).
-- UI text is only from i18n dictionaries.
+## Конфигурация API и mobile flow
+- Базовый dev URL API: `http://localhost:3000/api/v1`
+- Транспорт по умолчанию: `http`
+- Если backend недоступен, frontend автоматически переключается на local-first fallback через локальный stub-клиент.
+- Рабочий пользовательский путь:
+  1. выбор роли;
+  2. выбор файла;
+  3. `POST /contracts/upload`;
+  4. `POST /contracts/:id/analyze`;
+  5. `GET /contracts/:id/status`;
+  6. `GET /contracts/:id/report`;
+  7. история в `GET /contracts/history`.
 
-## Release Size Budget
-- Global project budget: `228 MB` (total final release size).
-- Frontend mobile target share and optimization checklist: `docs/frontend/package-size-optimization.md`
+## Android runtime
+- В `apps/mobile/android/app/build.gradle` debug APK настроен так, чтобы JS bundle вшивался в APK.
+- Это убирает зависимость debug APK от внешнего Metro bundler на устройстве.
 
-## Recommended VS Code Extensions
-- `dbaeumer.vscode-eslint`
-- `esbenp.prettier-vscode`
-- `msjsdiag.vscode-react-native`
-- `expo.vscode-expo-tools`
-- `christian-kohler.path-intellisense`
-- `usernamehw.errorlens`
-- `eamodio.gitlens`
+## Local-first
+- SQLite обязателен для MVP.
+- На frontend уже есть:
+  - кэш статусов;
+  - кэш отчетов;
+  - история;
+  - очередь загрузок;
+  - fallback на локальный stub-анализ, если backend недоступен.
+- Подробности: `docs/frontend/local-first-architecture.md`
 
-## Visual Implementation
-- Theme tokens and visual shell notes: docs/frontend/visual-implementation-notes.md`n
+## Стандарты
+- Никакого runtime-hardcode в UI-компонентах.
+- Лимиты, таймауты, transport, role presets и feature flags читаются из config layer.
+- Все тексты UI идут только через i18n.

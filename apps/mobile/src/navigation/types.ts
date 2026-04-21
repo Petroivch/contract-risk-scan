@@ -1,12 +1,14 @@
-﻿export type RootStackParamList = {
+export type RootStackParamList = {
   Auth: undefined;
   UploadWithRole: undefined;
   AnalysisStatus: {
+    contractId: string;
     analysisId: string;
     selectedRole: string;
   };
   Report: {
-    analysisId: string;
+    contractId: string;
+    analysisId?: string;
     selectedRole?: string;
   };
   History: undefined;

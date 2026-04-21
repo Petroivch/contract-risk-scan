@@ -7,6 +7,7 @@
     "userInterfaceStyle": "light",
     "assetBundlePatterns": ["**/*"],
     "ios": {
+      "bundleIdentifier": "com.contractriskscanner.mobile",
       "supportsTablet": true
     },
     "android": {
@@ -17,7 +18,7 @@
     },
     "extra": {
       "API_BASE_URL": "http://localhost:3000/api/v1",
-      "API_TRANSPORT": "stub",
+      "API_TRANSPORT": "http",
       "API_TIMEOUT_MS": 15000,
       "STATUS_POLL_INTERVAL_MS": 2000,
       "ENABLE_LOCAL_FIRST_CACHE": true,
