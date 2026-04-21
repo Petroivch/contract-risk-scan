@@ -1,7 +1,8 @@
-﻿import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 
 import type { DisputedClause } from '../../api/types';
+import { StatusChip } from '../ui/StatusChip';
 import { colors, radius, shadow, spacing, typography } from '../../theme/tokens';
 
 interface DisputedCardProps {
@@ -13,7 +14,10 @@ export const DisputedCard = ({ item }: DisputedCardProps): JSX.Element => {
 
   return (
     <View style={styles.card}>
-      <Text style={styles.title}>{t('report.clause', { value: item.clauseRef })}</Text>
+      <View style={styles.header}>
+        <Text style={styles.title}>{t('report.clause', { value: item.clauseRef })}</Text>
+        <StatusChip label={t('report.disputedBadge')} tone="warning" />
+      </View>
       <Text style={styles.description}>{item.whyDisputed}</Text>
       <View style={styles.rewriteBox}>
         <Text style={styles.rewrite}>{t('report.rewrite', { text: item.suggestedRewrite })}</Text>
@@ -24,7 +28,7 @@ export const DisputedCard = ({ item }: DisputedCardProps): JSX.Element => {
 
 const styles = StyleSheet.create({
   card: {
-    borderRadius: radius.lg,
+    borderRadius: radius.xl,
     backgroundColor: colors.surface,
     borderWidth: 1,
     borderColor: colors.border,
@@ -32,7 +36,14 @@ const styles = StyleSheet.create({
     gap: spacing.sm,
     ...shadow.card,
   },
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start',
+    gap: spacing.sm,
+  },
   title: {
+    flex: 1,
     color: colors.textPrimary,
     fontSize: typography.size.subtitle,
     lineHeight: typography.lineHeight.subtitle,

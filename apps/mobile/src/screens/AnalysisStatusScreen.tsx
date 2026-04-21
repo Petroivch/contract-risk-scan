@@ -1,18 +1,22 @@
-﻿import type { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { useCallback, useEffect, useState } from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import type { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 
 import { useApiClient } from '../api/ApiClientProvider';
 import type { AnalysisStatus as AnalysisStatusType } from '../api/types';
 import { RoleBadge } from '../components/RoleBadge';
 import { ScreenShell } from '../components/layout/ScreenShell';
+import { ActionButton } from '../components/ui/ActionButton';
+import { Panel } from '../components/ui/Panel';
+import { StatusChip } from '../components/ui/StatusChip';
 import { appConfig } from '../config/appConfig';
 import { useAppLanguage } from '../i18n/LanguageProvider';
 import type { RootStackParamList } from '../navigation/types';
-import { colors, radius, shadow, spacing, typography } from '../theme/tokens';
+import { colors, radius, spacing, typography } from '../theme/tokens';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'AnalysisStatus'>;
+type TimelineState = 'done' | 'active' | 'pending' | 'failed';
 
 export const AnalysisStatusScreen = ({ navigation, route }: Props): JSX.Element => {
   const { t } = useTranslation();
@@ -42,6 +46,41 @@ export const AnalysisStatusScreen = ({ navigation, route }: Props): JSX.Element 
     return () => clearInterval(timer);
   }, [refreshStatus, status?.status]);
 
+  const timeline = useMemo(() => {
+    const currentStatus = status?.status ?? 'queued';
+    const base = [
+      { key: 'received', label: t('analysis.stageReceived') },
+      { key: 'extracting', label: t('analysis.stageExtracting') },
+      { key: 'scanning', label: t('analysis.stageScanning') },
+      { key: 'scoring', label: t('analysis.stageScoring') },
+      { key: 'report', label: t('analysis.stageReport') },
+    ];
+
+    return base.map((item, index) => {
+      let state: TimelineState = 'pending';
+
+      if (currentStatus === 'queued') {
+        state = index === 0 ? 'active' : 'pending';
+      } else if (currentStatus === 'processing') {
+        if (index < 2) {
+          state = 'done';
+        } else if (index === 2) {
+          state = 'active';
+        }
+      } else if (currentStatus === 'completed') {
+        state = 'done';
+      } else if (currentStatus === 'failed') {
+        if (index < 2) {
+          state = 'done';
+        } else if (index === 2) {
+          state = 'failed';
+        }
+      }
+
+      return { ...item, state };
+    });
+  }, [status?.status, t]);
+
   const openReport = (): void => {
     navigation.navigate('Report', {
       analysisId,
@@ -49,86 +88,113 @@ export const AnalysisStatusScreen = ({ navigation, route }: Props): JSX.Element 
     });
   };
 
+  const statusTone = status?.status === 'completed'
+    ? 'success'
+    : status?.status === 'failed'
+      ? 'danger'
+      : status?.status === 'processing'
+        ? 'info'
+        : 'warning';
+
   return (
-    <ScreenShell title={t('analysis.title')} subtitle={t('analysis.analysisId', { analysisId })}>
-      <View style={styles.statusCard}>
-        <RoleBadge role={selectedRole} />
-        <Text style={styles.statusLabel}>{t('analysis.status')}</Text>
-        <Text style={styles.statusValue}>{t(`status.${status?.status ?? 'queued'}`)}</Text>
-        <Text style={styles.statusProgress}>{t('analysis.progress', { progress: status?.progress ?? 0 })}</Text>
-      </View>
-
-      <Pressable style={styles.secondaryButton} onPress={refreshStatus}>
-        <Text style={styles.secondaryButtonText}>{t('analysis.refreshNow')}</Text>
-      </Pressable>
-
-      <Pressable
-        style={[styles.primaryButton, status?.status !== 'completed' && styles.disabled]}
-        onPress={openReport}
-        disabled={status?.status !== 'completed'}
+    <ScreenShell title={t('analysis.title')} subtitle={t('analysis.analysisId', { analysisId })} scroll>
+      <Panel
+        eyebrow={t('analysis.timelineEyebrow')}
+        title={t('analysis.timelineTitle')}
+        description={t('analysis.timelineDescription')}
+        rightSlot={<RoleBadge role={selectedRole} size="compact" />}
       >
-        <Text style={styles.primaryButtonText}>{t('analysis.openReport')}</Text>
-      </Pressable>
+        <View style={styles.statusSummaryRow}>
+          <StatusChip label={t(`status.${status?.status ?? 'queued'}`)} tone={statusTone} />
+          <StatusChip label={t('analysis.progress', { progress: status?.progress ?? 0 })} tone="neutral" />
+        </View>
+
+        <View style={styles.timelineList}>
+          {timeline.map((item) => (
+            <View key={item.key} style={styles.timelineRow}>
+              <View
+                style={[
+                  styles.timelineMarker,
+                  item.state === 'done' ? styles.timelineDone : null,
+                  item.state === 'active' ? styles.timelineActive : null,
+                  item.state === 'failed' ? styles.timelineFailed : null,
+                ]}
+              />
+              <Text style={[styles.timelineText, item.state === 'active' ? styles.timelineTextActive : null]}>
+                {item.label}
+              </Text>
+            </View>
+          ))}
+        </View>
+
+        <Text style={styles.helperText}>
+          {status?.status === 'completed'
+            ? t('analysis.completedHint')
+            : status?.status === 'failed'
+              ? t('analysis.failedHint')
+              : t('analysis.pollingHint')}
+        </Text>
+      </Panel>
+
+      <View style={styles.actionStack}>
+        <ActionButton label={t('analysis.refreshNow')} onPress={refreshStatus} variant="secondary" />
+        <ActionButton label={t('analysis.openReport')} onPress={openReport} disabled={status?.status !== 'completed'} />
+        <ActionButton label={t('common.openHistory')} onPress={() => navigation.navigate('History')} variant="ghost" />
+      </View>
     </ScreenShell>
   );
 };
 
 const styles = StyleSheet.create({
-  statusCard: {
-    borderRadius: radius.lg,
-    backgroundColor: colors.surface,
-    borderColor: colors.border,
-    borderWidth: 1,
-    padding: spacing.md,
+  statusSummaryRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
     gap: spacing.sm,
-    ...shadow.card,
   },
-  statusLabel: {
-    color: colors.textSecondary,
-    fontSize: typography.size.caption,
-    lineHeight: typography.lineHeight.caption,
-    textTransform: 'uppercase',
-    letterSpacing: 0.6,
+  timelineList: {
+    gap: spacing.sm,
   },
-  statusValue: {
-    color: colors.textPrimary,
-    fontSize: typography.size.title,
-    lineHeight: typography.lineHeight.title,
-    fontWeight: typography.weight.bold,
+  timelineRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.sm,
+    paddingVertical: spacing.xs,
   },
-  statusProgress: {
+  timelineMarker: {
+    width: 14,
+    height: 14,
+    borderRadius: radius.pill,
+    backgroundColor: colors.surfaceElevated,
+    borderWidth: 2,
+    borderColor: colors.divider,
+  },
+  timelineDone: {
+    backgroundColor: colors.success,
+    borderColor: colors.success,
+  },
+  timelineActive: {
+    backgroundColor: colors.accent,
+    borderColor: colors.accent,
+  },
+  timelineFailed: {
+    backgroundColor: colors.danger,
+    borderColor: colors.danger,
+  },
+  timelineText: {
     color: colors.textSecondary,
     fontSize: typography.size.body,
     lineHeight: typography.lineHeight.body,
   },
-  primaryButton: {
-    minHeight: 54,
-    borderRadius: radius.lg,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: colors.accent,
-    ...shadow.raised,
-  },
-  secondaryButton: {
-    minHeight: 50,
-    borderRadius: radius.lg,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: colors.accentSoft,
-    borderWidth: 1,
-    borderColor: colors.border,
-  },
-  secondaryButtonText: {
-    color: colors.accentStrong,
+  timelineTextActive: {
+    color: colors.textPrimary,
     fontWeight: typography.weight.bold,
-    fontSize: typography.size.body,
   },
-  disabled: {
-    opacity: 0.45,
+  helperText: {
+    color: colors.textSecondary,
+    fontSize: typography.size.bodySm,
+    lineHeight: typography.lineHeight.bodySm,
   },
-  primaryButtonText: {
-    color: colors.textOnAccent,
-    fontWeight: typography.weight.bold,
-    fontSize: typography.size.body,
+  actionStack: {
+    gap: spacing.sm,
   },
 });
