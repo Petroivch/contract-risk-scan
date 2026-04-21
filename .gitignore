@@ -10,3 +10,8 @@ services/analysis-engine/**/__pycache__/
 builds/
 
 apps/mobile/*build-agent.log
+
+apps/mobile/expo-prebuild-local-cli.log
+SESSION_HANDOFF_RU.md
+
+apps/mobile/android/app/debug.keystore
