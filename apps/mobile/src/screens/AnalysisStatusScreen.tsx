@@ -1,5 +1,5 @@
-import type { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+﻿import type { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 
@@ -43,6 +43,7 @@ export const AnalysisStatusScreen = ({ navigation, route }: Props): JSX.Element 
   const api = useApiClient();
   const { analysisId, selectedRole } = route.params;
   const [status, setStatus] = useState<AnalysisStatusType | null>(null);
+  const didNavigateToReport = useRef(false);
 
   const refreshStatus = useCallback(async () => {
     const nextStatus = await api.getAnalysisStatus(analysisId, { language });
@@ -65,9 +66,21 @@ export const AnalysisStatusScreen = ({ navigation, route }: Props): JSX.Element 
     return () => clearInterval(timer);
   }, [refreshStatus, status?.status]);
 
+  useEffect(() => {
+    if (status?.status !== 'completed' || didNavigateToReport.current) {
+      return;
+    }
+
+    didNavigateToReport.current = true;
+    navigation.replace('Report', {
+      analysisId,
+      selectedRole,
+    });
+  }, [analysisId, navigation, selectedRole, status?.status]);
+
   const updatedAtLabel = useMemo(() => {
     if (!status?.updatedAt) {
-      return '�';
+      return '—';
     }
 
     const parsedDate = new Date(status.updatedAt);
@@ -116,7 +129,7 @@ export const AnalysisStatusScreen = ({ navigation, route }: Props): JSX.Element 
   }, [status?.status, t]);
 
   const openReport = (): void => {
-    navigation.navigate('Report', {
+    navigation.replace('Report', {
       analysisId,
       selectedRole,
     });
@@ -184,7 +197,11 @@ export const AnalysisStatusScreen = ({ navigation, route }: Props): JSX.Element 
         </Pressable>
       </View>
 
-      <Pressable style={[styles.primaryButton, status?.status !== 'completed' && styles.disabled]} onPress={openReport} disabled={status?.status !== 'completed'}>
+      <Pressable
+        style={[styles.primaryButton, status?.status !== 'completed' && styles.disabled]}
+        onPress={openReport}
+        disabled={status?.status !== 'completed'}
+      >
         <Text style={styles.primaryButtonText}>{t('analysis.openReport')}</Text>
       </Pressable>
     </ScreenShell>

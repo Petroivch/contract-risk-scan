@@ -52,6 +52,8 @@
     localCopyLabel: 'Copie locale',
     localCopyText: 'Le fichier est stocke localement, donc l analyse peut etre relancee sans nouveau chargement.',
     submitting: 'Demarrage de l analyse...',
+    startFailedTitle: 'Impossible de lancer l analyse',
+    startFailedMessage: 'Essayez de selectionner a nouveau le fichier. Si l erreur persiste, indiquez le type de fichier pour le diagnostic.',
   },
   analysis: {
     title: 'Statut de l analyse',

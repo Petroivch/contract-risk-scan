@@ -52,6 +52,8 @@
     localCopyLabel: 'Copia locale',
     localCopyText: 'Il file e salvato in locale, quindi l analisi puo essere ripetuta senza nuovo upload.',
     submitting: 'Avvio analisi...',
+    startFailedTitle: 'Impossibile avviare l analisi',
+    startFailedMessage: 'Prova a selezionare di nuovo il file. Se l errore resta, indica il tipo di file per la diagnosi.',
   },
   analysis: {
     title: 'Stato analisi',

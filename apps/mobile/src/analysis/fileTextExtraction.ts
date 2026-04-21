@@ -137,12 +137,14 @@ export const extractContractText = async (
   payload: Pick<UploadContractRequest, 'localFileUri' | 'mimeType' | 'rawText' | 'fileName'>,
   language: SupportedLanguage,
 ): Promise<ExtractedContractText> => {
+  const warningsDictionary = resolveLanguageWarnings(language);
+
   if (payload.rawText?.trim()) {
     return { text: normalizeText(payload.rawText), warnings: [] };
   }
 
   if (!payload.localFileUri) {
-    return { text: '', warnings: [resolveLanguageWarnings(language).emptyText] };
+    return { text: '', warnings: [warningsDictionary.emptyText] };
   }
 
   const fileName = payload.fileName.toLowerCase();
@@ -150,36 +152,50 @@ export const extractContractText = async (
   const warnings: string[] = [];
 
   if (mimeType === 'text/plain' || fileName.endsWith('.txt')) {
-    const text = normalizeText(await FileSystem.readAsStringAsync(payload.localFileUri));
-    return {
-      text,
-      warnings: text ? [] : [resolveLanguageWarnings(language).emptyText],
-    };
+    try {
+      const text = normalizeText(await FileSystem.readAsStringAsync(payload.localFileUri));
+      return {
+        text,
+        warnings: text ? [] : [warningsDictionary.emptyText],
+      };
+    } catch {
+      return { text: '', warnings: [warningsDictionary.emptyText] };
+    }
   }
 
   if (
     mimeType === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' ||
     fileName.endsWith('.docx')
   ) {
-    const text = await extractDocxText(payload.localFileUri);
-    return {
-      text,
-      warnings: text ? [] : [resolveLanguageWarnings(language).emptyText],
-    };
+    try {
+      const text = await extractDocxText(payload.localFileUri);
+      return {
+        text,
+        warnings: text ? [] : [warningsDictionary.emptyText],
+      };
+    } catch {
+      return { text: '', warnings: [warningsDictionary.emptyText] };
+    }
   }
 
   if (mimeType === 'application/pdf' || fileName.endsWith('.pdf')) {
-    const base64 = await FileSystem.readAsStringAsync(payload.localFileUri, {
-      encoding: FileSystem.EncodingType.Base64,
-    });
-    const text = extractPdfText(decodeBase64ToBinary(base64));
+    let text = '';
+    try {
+      const base64 = await FileSystem.readAsStringAsync(payload.localFileUri, {
+        encoding: FileSystem.EncodingType.Base64,
+      });
+      text = extractPdfText(decodeBase64ToBinary(base64));
+    } catch {
+      warnings.push(warningsDictionary.emptyText);
+      return { text: '', warnings };
+    }
 
     if (text.length < MIN_EXTRACTED_TEXT_LENGTH) {
-      warnings.push(resolveLanguageWarnings(language).limitedPdf);
+      warnings.push(warningsDictionary.limitedPdf);
     }
 
     if (!text) {
-      warnings.push(resolveLanguageWarnings(language).emptyText);
+      warnings.push(warningsDictionary.emptyText);
     }
 
     return { text, warnings };
@@ -188,6 +204,6 @@ export const extractContractText = async (
   const fallbackText = normalizeText(await FileSystem.readAsStringAsync(payload.localFileUri).catch(() => ''));
   return {
     text: fallbackText,
-    warnings: fallbackText ? [] : [resolveLanguageWarnings(language).emptyText],
+    warnings: fallbackText ? [] : [warningsDictionary.emptyText],
   };
 };

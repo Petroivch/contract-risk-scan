@@ -1,7 +1,7 @@
 ﻿import * as DocumentPicker from 'expo-document-picker';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { useMemo, useState } from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { Alert, Pressable, StyleSheet, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 
 import { useApiClient } from '../api/ApiClientProvider';
@@ -22,6 +22,7 @@ interface SelectedFileState {
   mimeType: string;
   fileSizeBytes?: number;
   localFileUri?: string;
+  sourceFileUri?: string;
 }
 
 const formatFileType = (mimeType: string): string => {
@@ -68,7 +69,7 @@ export const UploadWithRoleScreen = ({ navigation }: Props): JSX.Element => {
   const chooseFile = async (): Promise<void> => {
     const result = await DocumentPicker.getDocumentAsync({
       multiple: false,
-      copyToCacheDirectory: false,
+      copyToCacheDirectory: true,
       type: [
         'application/pdf',
         'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
@@ -85,14 +86,22 @@ export const UploadWithRoleScreen = ({ navigation }: Props): JSX.Element => {
       return;
     }
 
-    const cacheId = `upload_${Date.now()}`;
-    const cachedUri = asset.uri ? await fileCache.cacheFile(cacheId, asset.uri) : undefined;
+    let cachedUri = asset.uri;
+    if (asset.uri) {
+      try {
+        const cacheId = `upload_${Date.now()}`;
+        cachedUri = await fileCache.cacheFile(cacheId, asset.uri);
+      } catch {
+        cachedUri = asset.uri;
+      }
+    }
 
     setSelectedFile({
       fileName: asset.name ?? appConfig.defaults.stubContractFileName,
       mimeType: asset.mimeType ?? 'application/octet-stream',
       fileSizeBytes: asset.size,
       localFileUri: cachedUri,
+      sourceFileUri: asset.uri,
     });
   };
 
@@ -107,7 +116,7 @@ export const UploadWithRoleScreen = ({ navigation }: Props): JSX.Element => {
         {
           fileName: selectedFile.fileName,
           mimeType: selectedFile.mimeType,
-          localFileUri: selectedFile.localFileUri,
+          localFileUri: selectedFile.localFileUri ?? selectedFile.sourceFileUri,
           selectedRole,
           language,
         },
@@ -118,6 +127,8 @@ export const UploadWithRoleScreen = ({ navigation }: Props): JSX.Element => {
         analysisId,
         selectedRole,
       });
+    } catch {
+      Alert.alert(t('upload.startFailedTitle'), t('upload.startFailedMessage'));
     } finally {
       setSubmitting(false);
     }
@@ -172,7 +183,10 @@ export const UploadWithRoleScreen = ({ navigation }: Props): JSX.Element => {
                 {selectedFile ? selectedFile.fileName : t('upload.filePlaceholder')}
               </Text>
             </View>
-            <StatusChip label={selectedFile ? fileType : t('upload.fileTypeFallback')} tone={selectedFile ? 'soft' : 'neutral'} />
+            <StatusChip
+              label={selectedFile ? fileType : t('upload.fileTypeFallback')}
+              tone={selectedFile ? 'soft' : 'neutral'}
+            />
           </View>
 
           <View style={styles.fileMetaGrid}>
@@ -199,7 +213,11 @@ export const UploadWithRoleScreen = ({ navigation }: Props): JSX.Element => {
         ) : null}
       </View>
 
-      <Pressable style={[styles.primaryButton, (!selectedFile || !selectedRole || submitting) && styles.disabled]} onPress={startAnalysis} disabled={!selectedFile || !selectedRole || submitting}>
+      <Pressable
+        style={[styles.primaryButton, (!selectedFile || !selectedRole || submitting) && styles.disabled]}
+        onPress={startAnalysis}
+        disabled={!selectedFile || !selectedRole || submitting}
+      >
         <Text style={styles.primaryButtonText}>{submitting ? t('upload.submitting') : t('common.startAnalysis')}</Text>
       </Pressable>
     </ScreenShell>

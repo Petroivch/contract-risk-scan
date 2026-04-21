@@ -52,6 +52,8 @@
     localCopyLabel: 'Local copy',
     localCopyText: 'The file is stored locally, so the analysis can be repeated without uploading it again.',
     submitting: 'Starting analysis...',
+    startFailedTitle: 'Unable to start analysis',
+    startFailedMessage: 'Try selecting the file again. If it still fails, share the file type so the issue can be diagnosed.',
   },
   analysis: {
     title: 'Analysis status',

@@ -14,6 +14,13 @@ interface LocalFirstAdapterConfig {
 const shouldUseFallback = (enabled: boolean): boolean => enabled;
 const nowIso = (): string => new Date().toISOString();
 const buildQueuedAnalysisId = (): string => `queued_${Date.now()}`;
+const ignoreCacheError = async (operation: () => Promise<void>): Promise<void> => {
+  try {
+    await operation();
+  } catch {
+    // Local cache must not break the user-visible analysis flow.
+  }
+};
 
 const buildHistoryItem = (
   analysisId: string,
@@ -62,8 +69,10 @@ export const createLocalFirstAdapter = (
         const response = await remoteClient.uploadContract(payload, meta);
 
         if (config.enableLocalFirst) {
-          await localCache.saveStatus(response.status);
-          await localCache.upsertHistoryItem(buildHistoryItem(response.analysisId, payload, response.status.status));
+          await ignoreCacheError(() => localCache.saveStatus(response.status));
+          await ignoreCacheError(() =>
+            localCache.upsertHistoryItem(buildHistoryItem(response.analysisId, payload, response.status.status)),
+          );
         }
 
         return response;
@@ -78,9 +87,9 @@ export const createLocalFirstAdapter = (
             updatedAt: nowIso(),
           };
 
-          await localCache.saveQueuedUpload(buildQueuedUpload(analysisId, payload, meta));
-          await localCache.saveStatus(status);
-          await localCache.upsertHistoryItem(buildHistoryItem(analysisId, payload, 'queued'));
+          await ignoreCacheError(() => localCache.saveQueuedUpload(buildQueuedUpload(analysisId, payload, meta)));
+          await ignoreCacheError(() => localCache.saveStatus(status));
+          await ignoreCacheError(() => localCache.upsertHistoryItem(buildHistoryItem(analysisId, payload, 'queued')));
 
           return { analysisId, status };
         }
@@ -94,10 +103,10 @@ export const createLocalFirstAdapter = (
         const status = await remoteClient.getAnalysisStatus(analysisId, meta);
 
         if (config.enableLocalFirst) {
-          await localCache.saveStatus(status);
+          await ignoreCacheError(() => localCache.saveStatus(status));
           if (status.status === 'completed') {
             const report = await remoteClient.getReport({ analysisId, selectedRole: status.selectedRole }, meta);
-            await localCache.saveReport(report);
+            await ignoreCacheError(() => localCache.saveReport(report));
           }
         }
 
@@ -119,7 +128,7 @@ export const createLocalFirstAdapter = (
         const report = await remoteClient.getReport(input, meta);
 
         if (config.enableLocalFirst) {
-          await localCache.saveReport(report);
+          await ignoreCacheError(() => localCache.saveReport(report));
         }
 
         return report;
@@ -145,7 +154,7 @@ export const createLocalFirstAdapter = (
             return cachedHistory;
           }
 
-          await localCache.replaceHistory(history);
+          await ignoreCacheError(() => localCache.replaceHistory(history));
         }
 
         return history;
