@@ -140,7 +140,7 @@ export const AnalysisStatusScreen = ({ navigation, route }: Props): JSX.Element 
   };
 
   return (
-    <ScreenShell title={t('analysis.title')} subtitle={t('analysis.analysisId', { analysisId })}>
+    <ScreenShell title={t('analysis.title')} subtitle={t('analysis.analysisId', { analysisId })} scroll>
       <View style={styles.heroCard}>
         <View style={styles.heroHeader}>
           <View style={styles.heroCopy}>
@@ -219,8 +219,7 @@ const styles = StyleSheet.create({
     ...shadow.raised,
   },
   heroHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: 'column',
     gap: spacing.md,
     alignItems: 'flex-start',
   },
@@ -249,10 +248,12 @@ const styles = StyleSheet.create({
   },
   metricRow: {
     flexDirection: 'row',
+    flexWrap: 'wrap',
     gap: spacing.sm,
   },
   metricBlock: {
     flex: 1,
+    minWidth: 132,
     borderRadius: radius.lg,
     borderWidth: 1,
     borderColor: colors.divider,
@@ -284,9 +285,8 @@ const styles = StyleSheet.create({
     ...shadow.card,
   },
   sectionHeader: {
-    flexDirection: 'row',
+    flexDirection: 'column',
     alignItems: 'flex-start',
-    justifyContent: 'space-between',
     gap: spacing.sm,
   },
   sectionTitle: {
@@ -352,10 +352,12 @@ const styles = StyleSheet.create({
   },
   actionRow: {
     flexDirection: 'row',
+    flexWrap: 'wrap',
     gap: spacing.sm,
   },
   secondaryButton: {
     flex: 1,
+    minWidth: 148,
     minHeight: 48,
     borderRadius: radius.lg,
     alignItems: 'center',

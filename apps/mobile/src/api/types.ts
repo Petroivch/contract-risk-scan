@@ -33,6 +33,10 @@ export interface RiskItem {
   id: string;
   severity: 'low' | 'medium' | 'high';
   clauseRef: string;
+  clauseRefs?: string[];
+  occurrences?: number;
+  evidence?: string[];
+  groupId?: string;
   title: string;
   description: string;
   recommendation: string;
@@ -41,6 +45,7 @@ export interface RiskItem {
 export interface DisputedClause {
   id: string;
   clauseRef: string;
+  clauseText?: string;
   whyDisputed: string;
   suggestedRewrite: string;
 }
@@ -50,6 +55,7 @@ export interface ContractSummary {
   contractType: string;
   shortDescription: string;
   obligationsForSelectedRole: string[];
+  roleFound?: boolean;
 }
 
 export interface AnalysisReport {

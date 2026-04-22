@@ -17,6 +17,11 @@ const severityToneMap = {
 
 export const RiskCard = ({ item }: RiskCardProps): JSX.Element => {
   const { t } = useTranslation();
+  const occurrences = item.occurrences ?? 1;
+  const clauseLabel =
+    item.clauseRefs && item.clauseRefs.length > 1
+      ? t('report.clauses', { value: item.clauseRef })
+      : t('report.clause', { value: item.clauseRef });
 
   return (
     <View style={[styles.card, styles[`severity_${item.severity}`]]}>
@@ -28,7 +33,8 @@ export const RiskCard = ({ item }: RiskCardProps): JSX.Element => {
         <StatusChip label={t(`severity.${item.severity}`)} tone={severityToneMap[item.severity]} />
       </View>
 
-      <Text style={styles.meta}>{t('report.clause', { value: item.clauseRef })}</Text>
+      <Text style={styles.meta}>{clauseLabel}</Text>
+      {occurrences > 1 ? <Text style={styles.meta}>{t('report.riskOccurrences', { count: occurrences })}</Text> : null}
       <Text style={styles.description}>{item.description}</Text>
 
       <View style={styles.recommendationBox}>

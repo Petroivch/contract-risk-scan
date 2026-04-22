@@ -1,5 +1,5 @@
 ﻿import type { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { useEffect, useMemo, useState } from 'react';
+import { Fragment, useEffect, useMemo, useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 
@@ -48,7 +48,13 @@ export const ReportScreen = ({ route }: Props): JSX.Element => {
   ];
 
   const sortedRisks = useMemo(() => {
-    return [...(report?.risks ?? [])].sort((left, right) => riskRank[left.severity] - riskRank[right.severity]);
+    return [...(report?.risks ?? [])].sort((left, right) => {
+      if (riskRank[left.severity] !== riskRank[right.severity]) {
+        return riskRank[left.severity] - riskRank[right.severity];
+      }
+
+      return (right.occurrences ?? 1) - (left.occurrences ?? 1);
+    });
   }, [report?.risks]);
 
   const generatedAtLabel = useMemo(() => {
@@ -70,6 +76,25 @@ export const ReportScreen = ({ route }: Props): JSX.Element => {
   const obligationsCount = report?.summary.obligationsForSelectedRole.length ?? 0;
   const risksCount = report?.risks.length ?? 0;
   const disputedCount = report?.disputedClauses.length ?? 0;
+  const summaryRole = report?.selectedRole ?? selectedRole ?? '';
+
+  const renderHighlightedSummaryText = (value: string): JSX.Element => {
+    if (!value || !summaryRole || !value.includes(summaryRole)) {
+      return <Text style={styles.summaryText}>{value}</Text>;
+    }
+
+    const parts = value.split(summaryRole);
+    return (
+      <Text style={styles.summaryText}>
+        {parts.map((part, index) => (
+          <Fragment key={`${part}-${index}`}>
+            {part}
+            {index < parts.length - 1 ? <Text style={styles.summaryRoleStrong}>{summaryRole}</Text> : null}
+          </Fragment>
+        ))}
+      </Text>
+    );
+  };
 
   return (
     <ScreenShell title={t('report.title')} subtitle={t('report.analysisId', { analysisId })} scroll>
@@ -78,7 +103,7 @@ export const ReportScreen = ({ route }: Props): JSX.Element => {
           <View style={styles.summaryCopy}>
             <Text style={styles.summaryKicker}>{t('report.summaryKicker')}</Text>
             <Text style={styles.summaryTitle}>{report?.summary.title ?? t('common.loading')}</Text>
-            <Text style={styles.summaryText}>{report?.summary.shortDescription ?? ''}</Text>
+            {renderHighlightedSummaryText(report?.summary.shortDescription ?? '')}
           </View>
           <StatusChip label={t('report.summaryTone')} tone="brand" style={styles.summaryToneChip} />
         </View>
@@ -200,6 +225,10 @@ const styles = StyleSheet.create({
     color: colors.textSecondary,
     fontSize: typography.size.body,
     lineHeight: typography.lineHeight.body,
+  },
+  summaryRoleStrong: {
+    color: colors.textPrimary,
+    fontWeight: typography.weight.bold,
   },
   summaryMetaRow: {
     flexDirection: 'row',

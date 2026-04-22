@@ -1,4 +1,4 @@
-import type { AnalysisReport, DisputedClause, RiskItem } from '../api/types';
+﻿import type { AnalysisReport, DisputedClause, RiskItem } from '../api/types';
 import type { SupportedLanguage } from '../i18n/types';
 import { defaultLanguage } from '../i18n/types';
 
@@ -6,6 +6,7 @@ import { normalizeExtractedText, normalizeSearchText, uniqueStrings } from './te
 
 export interface ClauseSegment {
   clauseId: string;
+  clauseRef: string;
   text: string;
 }
 
@@ -57,31 +58,32 @@ interface AnalysisArtifacts {
 const clauseIdPrefix = 'clause-';
 const maxSummaryItems = 4;
 const maxClauseExcerptLength = 240;
+const maxRiskEvidenceItems = 2;
 
 const localizedStrings: Record<SupportedLanguage, AnalysisLocalization> = {
   ru: {
     contractTypes: {
-      services: 'Договор оказания услуг',
-      employment: 'Трудовой договор',
-      nda: 'Соглашение о конфиденциальности',
-      supply: 'Договор поставки',
-      contractWork: 'Договор подряда',
+      services: 'Р”РѕРіРѕРІРѕСЂ РѕРєР°Р·Р°РЅРёСЏ СѓСЃР»СѓРі',
+      employment: 'РўСЂСѓРґРѕРІРѕР№ РґРѕРіРѕРІРѕСЂ',
+      nda: 'РЎРѕРіР»Р°С€РµРЅРёРµ Рѕ РєРѕРЅС„РёРґРµРЅС†РёР°Р»СЊРЅРѕСЃС‚Рё',
+      supply: 'Р”РѕРіРѕРІРѕСЂ РїРѕСЃС‚Р°РІРєРё',
+      contractWork: 'Р”РѕРіРѕРІРѕСЂ РїРѕРґСЂСЏРґР°',
     },
-    unknownContractType: 'Договор общего типа',
-    reportTitle: 'Анализ договора',
+    unknownContractType: 'Р”РѕРіРѕРІРѕСЂ РѕР±С‰РµРіРѕ С‚РёРїР°',
+    reportTitle: 'РђРЅР°Р»РёР· РґРѕРіРѕРІРѕСЂР°',
     shortDescription:
-      'Документ содержит {clausesCount} пунктов. Для роли "{role}" в фокусе обязательства, сроки, платежи и условия с повышенным риском.',
+      'Р”РѕРєСѓРјРµРЅС‚ СЃРѕРґРµСЂР¶РёС‚ {clausesCount} РїСѓРЅРєС‚РѕРІ. Р”Р»СЏ СЂРѕР»Рё "{role}" РІ С„РѕРєСѓСЃРµ РѕР±СЏР·Р°С‚РµР»СЊСЃС‚РІР°, СЃСЂРѕРєРё, РїР»Р°С‚РµР¶Рё Рё СѓСЃР»РѕРІРёСЏ СЃ РїРѕРІС‹С€РµРЅРЅС‹Рј СЂРёСЃРєРѕРј.',
     obligationsFallback:
-      'Явные обязательства для выбранной роли не найдены, нужен ручной просмотр разделов со сроками, оплатой и ответственностью.',
+      'РЇРІРЅС‹Рµ РѕР±СЏР·Р°С‚РµР»СЊСЃС‚РІР° РґР»СЏ РІС‹Р±СЂР°РЅРЅРѕР№ СЂРѕР»Рё РЅРµ РЅР°Р№РґРµРЅС‹, РЅСѓР¶РµРЅ СЂСѓС‡РЅРѕР№ РїСЂРѕСЃРјРѕС‚СЂ СЂР°Р·РґРµР»РѕРІ СЃРѕ СЃСЂРѕРєР°РјРё, РѕРїР»Р°С‚РѕР№ Рё РѕС‚РІРµС‚СЃС‚РІРµРЅРЅРѕСЃС‚СЊСЋ.',
     disputedFallback:
-      'Явные спорные формулировки не найдены, но договор все равно требует ручной юридической проверки.',
-    disputedFallbackSuggestion: 'Проверьте разделы об ответственности, приемке, изменении условий и расторжении.',
-    lowSignalRiskTitle: 'Низкий сигнал риска',
-    lowSignalRiskDescription: 'Явные маркеры высокого риска не найдены, но документ требует ручной проверки общих условий.',
+      'РЇРІРЅС‹Рµ СЃРїРѕСЂРЅС‹Рµ С„РѕСЂРјСѓР»РёСЂРѕРІРєРё РЅРµ РЅР°Р№РґРµРЅС‹, РЅРѕ РґРѕРіРѕРІРѕСЂ РІСЃРµ СЂР°РІРЅРѕ С‚СЂРµР±СѓРµС‚ СЂСѓС‡РЅРѕР№ СЋСЂРёРґРёС‡РµСЃРєРѕР№ РїСЂРѕРІРµСЂРєРё.',
+    disputedFallbackSuggestion: 'РџСЂРѕРІРµСЂСЊС‚Рµ СЂР°Р·РґРµР»С‹ РѕР± РѕС‚РІРµС‚СЃС‚РІРµРЅРЅРѕСЃС‚Рё, РїСЂРёРµРјРєРµ, РёР·РјРµРЅРµРЅРёРё СѓСЃР»РѕРІРёР№ Рё СЂР°СЃС‚РѕСЂР¶РµРЅРёРё.',
+    lowSignalRiskTitle: 'РќРёР·РєРёР№ СЃРёРіРЅР°Р» СЂРёСЃРєР°',
+    lowSignalRiskDescription: 'РЇРІРЅС‹Рµ РјР°СЂРєРµСЂС‹ РІС‹СЃРѕРєРѕРіРѕ СЂРёСЃРєР° РЅРµ РЅР°Р№РґРµРЅС‹, РЅРѕ РґРѕРєСѓРјРµРЅС‚ С‚СЂРµР±СѓРµС‚ СЂСѓС‡РЅРѕР№ РїСЂРѕРІРµСЂРєРё РѕР±С‰РёС… СѓСЃР»РѕРІРёР№.',
     lowSignalRiskRecommendation:
-      'Проверьте лимиты ответственности, порядок приемки, оплату и право односторонних действий.',
-    extractionRiskTitle: 'Ограниченное качество извлечения текста',
-    extractionRiskRecommendation: 'Для более точного офлайн-анализа используйте текстовый PDF, DOCX или TXT-файл.',
+      'РџСЂРѕРІРµСЂСЊС‚Рµ Р»РёРјРёС‚С‹ РѕС‚РІРµС‚СЃС‚РІРµРЅРЅРѕСЃС‚Рё, РїРѕСЂСЏРґРѕРє РїСЂРёРµРјРєРё, РѕРїР»Р°С‚Сѓ Рё РїСЂР°РІРѕ РѕРґРЅРѕСЃС‚РѕСЂРѕРЅРЅРёС… РґРµР№СЃС‚РІРёР№.',
+    extractionRiskTitle: 'РћРіСЂР°РЅРёС‡РµРЅРЅРѕРµ РєР°С‡РµСЃС‚РІРѕ РёР·РІР»РµС‡РµРЅРёСЏ С‚РµРєСЃС‚Р°',
+    extractionRiskRecommendation: 'Р”Р»СЏ Р±РѕР»РµРµ С‚РѕС‡РЅРѕРіРѕ РѕС„Р»Р°Р№РЅ-Р°РЅР°Р»РёР·Р° РёСЃРїРѕР»СЊР·СѓР№С‚Рµ С‚РµРєСЃС‚РѕРІС‹Р№ PDF, DOCX РёР»Рё TXT-С„Р°Р№Р».',
   },
   en: {
     contractTypes: {
@@ -157,9 +159,9 @@ const localizedStrings: Record<SupportedLanguage, AnalysisLocalization> = {
 
 const summaryMarkers = {
   obligations: [
-    'обязан',
-    'должен',
-    'обязуется',
+    'РѕР±СЏР·Р°РЅ',
+    'РґРѕР»Р¶РµРЅ',
+    'РѕР±СЏР·СѓРµС‚СЃСЏ',
     'shall',
     'must',
     'undertakes',
@@ -174,9 +176,9 @@ const summaryMarkers = {
     'est tenu',
   ],
   payment: [
-    'оплат',
-    'вознагражд',
-    'цена',
+    'РѕРїР»Р°С‚',
+    'РІРѕР·РЅР°РіСЂР°Р¶Рґ',
+    'С†РµРЅР°',
     'payment',
     'payments',
     'price',
@@ -192,9 +194,9 @@ const summaryMarkers = {
     'prix',
   ],
   deadlines: [
-    'срок',
-    'дней',
-    'рабочих дней',
+    'СЃСЂРѕРє',
+    'РґРЅРµР№',
+    'СЂР°Р±РѕС‡РёС… РґРЅРµР№',
     'deadline',
     'deadlines',
     'within',
@@ -207,10 +209,10 @@ const summaryMarkers = {
     'no later than',
   ],
   liability: [
-    'ответствен',
-    'убыт',
-    'штраф',
-    'неустойк',
+    'РѕС‚РІРµС‚СЃС‚РІРµРЅ',
+    'СѓР±С‹С‚',
+    'С€С‚СЂР°С„',
+    'РЅРµСѓСЃС‚РѕР№Рє',
     'liability',
     'penalty',
     'penalties',
@@ -226,20 +228,20 @@ const summaryMarkers = {
 
 const roleAliasGroups: Array<{ markers: string[]; aliases: string[] }> = [
   {
-    markers: ['customer', 'client', 'buyer', 'purchaser', 'заказчик', 'committente', 'cliente', 'acheteur'],
-    aliases: ['customer', 'client', 'buyer', 'purchaser', 'заказчик', 'committente', 'cliente', 'acheteur'],
+    markers: ['customer', 'client', 'buyer', 'purchaser', 'Р·Р°РєР°Р·С‡РёРє', 'committente', 'cliente', 'acheteur'],
+    aliases: ['customer', 'client', 'buyer', 'purchaser', 'Р·Р°РєР°Р·С‡РёРє', 'committente', 'cliente', 'acheteur'],
   },
   {
-    markers: ['provider', 'vendor', 'supplier', 'contractor', 'исполнитель', 'подрядчик', 'fornitore', 'prestataire'],
-    aliases: ['provider', 'vendor', 'supplier', 'contractor', 'исполнитель', 'подрядчик', 'fornitore', 'prestataire'],
+    markers: ['provider', 'vendor', 'supplier', 'contractor', 'РёСЃРїРѕР»РЅРёС‚РµР»СЊ', 'РїРѕРґСЂСЏРґС‡РёРє', 'fornitore', 'prestataire'],
+    aliases: ['provider', 'vendor', 'supplier', 'contractor', 'РёСЃРїРѕР»РЅРёС‚РµР»СЊ', 'РїРѕРґСЂСЏРґС‡РёРє', 'fornitore', 'prestataire'],
   },
   {
-    markers: ['employee', 'employer', 'worker', 'работник', 'работодатель', 'dipendente', 'datore'],
-    aliases: ['employee', 'employer', 'worker', 'работник', 'работодатель', 'dipendente', 'datore'],
+    markers: ['employee', 'employer', 'worker', 'СЂР°Р±РѕС‚РЅРёРє', 'СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЊ', 'dipendente', 'datore'],
+    aliases: ['employee', 'employer', 'worker', 'СЂР°Р±РѕС‚РЅРёРє', 'СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЊ', 'dipendente', 'datore'],
   },
   {
-    markers: ['licensor', 'licensee', 'licenziante', 'licenziatario', 'лицензиар', 'лицензиат'],
-    aliases: ['licensor', 'licensee', 'licenziante', 'licenziatario', 'лицензиар', 'лицензиат'],
+    markers: ['licensor', 'licensee', 'licenziante', 'licenziatario', 'Р»РёС†РµРЅР·РёР°СЂ', 'Р»РёС†РµРЅР·РёР°С‚'],
+    aliases: ['licensor', 'licensee', 'licenziante', 'licenziatario', 'Р»РёС†РµРЅР·РёР°СЂ', 'Р»РёС†РµРЅР·РёР°С‚'],
   },
 ];
 
@@ -248,7 +250,7 @@ const riskRules: RiskRule[] = [
     id: 'unilateral',
     severity: 'high',
     keywords: [
-      'односторон',
+      'РѕРґРЅРѕСЃС‚РѕСЂРѕРЅ',
       'unilateral',
       'sole discretion',
       'at its discretion',
@@ -261,19 +263,19 @@ const riskRules: RiskRule[] = [
       'ad sua discrezione',
     ],
     title: {
-      ru: 'Одностороннее изменение или расторжение',
+      ru: 'РћРґРЅРѕСЃС‚РѕСЂРѕРЅРЅРµРµ РёР·РјРµРЅРµРЅРёРµ РёР»Рё СЂР°СЃС‚РѕСЂР¶РµРЅРёРµ',
       en: 'Unilateral change or termination',
       it: 'Modifica o risoluzione unilaterale',
       fr: 'Modification ou resiliation unilaterale',
     },
     description: {
-      ru: 'Найдена формулировка, позволяющая одной стороне менять условия или прекращать договор без симметричных гарантий.',
+      ru: 'РќР°Р№РґРµРЅР° С„РѕСЂРјСѓР»РёСЂРѕРІРєР°, РїРѕР·РІРѕР»СЏСЋС‰Р°СЏ РѕРґРЅРѕР№ СЃС‚РѕСЂРѕРЅРµ РјРµРЅСЏС‚СЊ СѓСЃР»РѕРІРёСЏ РёР»Рё РїСЂРµРєСЂР°С‰Р°С‚СЊ РґРѕРіРѕРІРѕСЂ Р±РµР· СЃРёРјРјРµС‚СЂРёС‡РЅС‹С… РіР°СЂР°РЅС‚РёР№.',
       en: 'A clause allows one party to change terms or terminate the contract without symmetric safeguards.',
       it: 'Una clausola consente a una parte di modificare termini o risolvere il contratto senza garanzie simmetriche.',
       fr: 'Une clause permet a une partie de modifier les conditions ou de resilier sans garanties symetriques.',
     },
     recommendation: {
-      ru: 'Закрепите двустороннее согласование существенных изменений и одинаковый срок уведомления для обеих сторон.',
+      ru: 'Р—Р°РєСЂРµРїРёС‚Рµ РґРІСѓСЃС‚РѕСЂРѕРЅРЅРµРµ СЃРѕРіР»Р°СЃРѕРІР°РЅРёРµ СЃСѓС‰РµСЃС‚РІРµРЅРЅС‹С… РёР·РјРµРЅРµРЅРёР№ Рё РѕРґРёРЅР°РєРѕРІС‹Р№ СЃСЂРѕРє СѓРІРµРґРѕРјР»РµРЅРёСЏ РґР»СЏ РѕР±РµРёС… СЃС‚РѕСЂРѕРЅ.',
       en: 'Require bilateral approval for material changes and the same notice period for both parties.',
       it: 'Richiedere approvazione bilaterale per modifiche rilevanti e lo stesso preavviso per entrambe le parti.',
       fr: 'Exiger un accord bilaterale pour les changements materiels et le meme preavis pour les deux parties.',
@@ -283,8 +285,8 @@ const riskRules: RiskRule[] = [
     id: 'penalties',
     severity: 'high',
     keywords: [
-      'штраф',
-      'неустойк',
+      'С€С‚СЂР°С„',
+      'РЅРµСѓСЃС‚РѕР№Рє',
       'penalty',
       'liquidated damages',
       'sanction',
@@ -294,19 +296,19 @@ const riskRules: RiskRule[] = [
       'moratory',
     ],
     title: {
-      ru: 'Штрафы и санкции',
+      ru: 'РЁС‚СЂР°С„С‹ Рё СЃР°РЅРєС†РёРё',
       en: 'Penalties and sanctions',
       it: 'Penali e sanzioni',
       fr: 'Penalites et sanctions',
     },
     description: {
-      ru: 'Обнаружено условие о штрафах, неустойке или иных санкциях.',
+      ru: 'РћР±РЅР°СЂСѓР¶РµРЅРѕ СѓСЃР»РѕРІРёРµ Рѕ С€С‚СЂР°С„Р°С…, РЅРµСѓСЃС‚РѕР№РєРµ РёР»Рё РёРЅС‹С… СЃР°РЅРєС†РёСЏС….',
       en: 'A penalty, liquidated damages, or similar sanction clause was detected.',
       it: 'E stata rilevata una clausola su penali, danni liquidati o sanzioni simili.',
       fr: 'Une clause de penalite, dommages forfaitaires ou sanction similaire a ete detectee.',
     },
     recommendation: {
-      ru: 'Проверьте лимиты, основания начисления и соразмерность санкций.',
+      ru: 'РџСЂРѕРІРµСЂСЊС‚Рµ Р»РёРјРёС‚С‹, РѕСЃРЅРѕРІР°РЅРёСЏ РЅР°С‡РёСЃР»РµРЅРёСЏ Рё СЃРѕСЂР°Р·РјРµСЂРЅРѕСЃС‚СЊ СЃР°РЅРєС†РёР№.',
       en: 'Review caps, trigger conditions, and proportionality of penalties.',
       it: 'Verificare limiti, condizioni di applicazione e proporzionalita delle penali.',
       fr: 'Verifier plafonds, conditions de declenchement et proportionnalite des penalites.',
@@ -316,10 +318,10 @@ const riskRules: RiskRule[] = [
     id: 'liability',
     severity: 'medium',
     keywords: [
-      'ответствен',
+      'РѕС‚РІРµС‚СЃС‚РІРµРЅ',
       'liability',
       'indemn',
-      'возмещен',
+      'РІРѕР·РјРµС‰РµРЅ',
       'manleva',
       'responsabil',
       'indemni',
@@ -328,19 +330,19 @@ const riskRules: RiskRule[] = [
       'dommages',
     ],
     title: {
-      ru: 'Ответственность и возмещение убытков',
+      ru: 'РћС‚РІРµС‚СЃС‚РІРµРЅРЅРѕСЃС‚СЊ Рё РІРѕР·РјРµС‰РµРЅРёРµ СѓР±С‹С‚РєРѕРІ',
       en: 'Liability and indemnification',
       it: 'Responsabilita e manleva',
       fr: 'Responsabilite et indemnisation',
     },
     description: {
-      ru: 'В договоре есть условия об ответственности, убытках или возмещении.',
+      ru: 'Р’ РґРѕРіРѕРІРѕСЂРµ РµСЃС‚СЊ СѓСЃР»РѕРІРёСЏ РѕР± РѕС‚РІРµС‚СЃС‚РІРµРЅРЅРѕСЃС‚Рё, СѓР±С‹С‚РєР°С… РёР»Рё РІРѕР·РјРµС‰РµРЅРёРё.',
       en: 'The contract contains liability, damages, or indemnification language.',
       it: 'Il contratto contiene clausole su responsabilita, danni o manleva.',
       fr: 'Le contrat contient des clauses sur la responsabilite, les dommages ou l indemnisation.',
     },
     recommendation: {
-      ru: 'Уточните лимиты ответственности, исключения и события, запускающие компенсацию.',
+      ru: 'РЈС‚РѕС‡РЅРёС‚Рµ Р»РёРјРёС‚С‹ РѕС‚РІРµС‚СЃС‚РІРµРЅРЅРѕСЃС‚Рё, РёСЃРєР»СЋС‡РµРЅРёСЏ Рё СЃРѕР±С‹С‚РёСЏ, Р·Р°РїСѓСЃРєР°СЋС‰РёРµ РєРѕРјРїРµРЅСЃР°С†РёСЋ.',
       en: 'Clarify liability caps, exclusions, and triggering events for compensation.',
       it: 'Chiarire limiti di responsabilita, esclusioni ed eventi che attivano la compensazione.',
       fr: 'Preciser les plafonds de responsabilite, exclusions et evenements declencheurs.',
@@ -349,21 +351,21 @@ const riskRules: RiskRule[] = [
   {
     id: 'acceptance',
     severity: 'medium',
-    keywords: ['приемк', 'акт', 'acceptance', 'sign-off', 'collaudo', 'acceptation', 'recette'],
+    keywords: ['РїСЂРёРµРјРє', 'Р°РєС‚', 'acceptance', 'sign-off', 'collaudo', 'acceptation', 'recette'],
     title: {
-      ru: 'Неясная приемка результата',
+      ru: 'РќРµСЏСЃРЅР°СЏ РїСЂРёРµРјРєР° СЂРµР·СѓР»СЊС‚Р°С‚Р°',
       en: 'Unclear acceptance process',
       it: 'Procedura di accettazione poco chiara',
       fr: 'Procedure d acceptation peu claire',
     },
     description: {
-      ru: 'Нашлись формулировки о приемке, подтверждении результата или подписании актов.',
+      ru: 'РќР°С€Р»РёСЃСЊ С„РѕСЂРјСѓР»РёСЂРѕРІРєРё Рѕ РїСЂРёРµРјРєРµ, РїРѕРґС‚РІРµСЂР¶РґРµРЅРёРё СЂРµР·СѓР»СЊС‚Р°С‚Р° РёР»Рё РїРѕРґРїРёСЃР°РЅРёРё Р°РєС‚РѕРІ.',
       en: 'Acceptance, sign-off, or completion confirmation language was detected.',
       it: 'Sono state rilevate formule su accettazione, collaudo o conferma del risultato.',
       fr: 'Des formulations sur l acceptation, la recette ou la confirmation du resultat ont ete detectees.',
     },
     recommendation: {
-      ru: 'Добавьте измеримые критерии приемки и срок ответа на замечания.',
+      ru: 'Р”РѕР±Р°РІСЊС‚Рµ РёР·РјРµСЂРёРјС‹Рµ РєСЂРёС‚РµСЂРёРё РїСЂРёРµРјРєРё Рё СЃСЂРѕРє РѕС‚РІРµС‚Р° РЅР° Р·Р°РјРµС‡Р°РЅРёСЏ.',
       en: 'Define measurable acceptance criteria and a deadline for comments.',
       it: 'Definire criteri misurabili di accettazione e un termine per le osservazioni.',
       fr: 'Definir des criteres d acceptation mesurables et un delai de reponse aux remarques.',
@@ -383,19 +385,19 @@ const riskRules: RiskRule[] = [
       'renewed automatically',
     ],
     title: {
-      ru: 'Автоматическое продление',
+      ru: 'РђРІС‚РѕРјР°С‚РёС‡РµСЃРєРѕРµ РїСЂРѕРґР»РµРЅРёРµ',
       en: 'Automatic renewal',
       it: 'Rinnovo automatico',
       fr: 'Renouvellement automatique',
     },
     description: {
-      ru: 'Обнаружено условие об автоматическом продлении или пролонгации.',
+      ru: 'РћР±РЅР°СЂСѓР¶РµРЅРѕ СѓСЃР»РѕРІРёРµ РѕР± Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРѕРј РїСЂРѕРґР»РµРЅРёРё РёР»Рё РїСЂРѕР»РѕРЅРіР°С†РёРё.',
       en: 'An automatic renewal or rollover clause was detected.',
       it: 'E stata rilevata una clausola di rinnovo o proroga automatica.',
       fr: 'Une clause de renouvellement ou prorogation automatique a ete detectee.',
     },
     recommendation: {
-      ru: 'Зафиксируйте срок уведомления об отказе от продления и последствия молчания.',
+      ru: 'Р—Р°С„РёРєСЃРёСЂСѓР№С‚Рµ СЃСЂРѕРє СѓРІРµРґРѕРјР»РµРЅРёСЏ РѕР± РѕС‚РєР°Р·Рµ РѕС‚ РїСЂРѕРґР»РµРЅРёСЏ Рё РїРѕСЃР»РµРґСЃС‚РІРёСЏ РјРѕР»С‡Р°РЅРёСЏ.',
       en: 'Specify the opt-out notice period and the consequences of silence.',
       it: 'Specificare il preavviso di disdetta e le conseguenze del silenzio.',
       fr: 'Preciser le preavis de non-renouvellement et les consequences du silence.',
@@ -407,7 +409,7 @@ const disputeMarkers: DisputeMarker[] = [
   {
     id: 'future-agreement',
     markers: [
-      'по соглашению сторон',
+      'РїРѕ СЃРѕРіР»Р°С€РµРЅРёСЋ СЃС‚РѕСЂРѕРЅ',
       'by agreement of the parties',
       'mutual agreement',
       'di comune accordo',
@@ -416,13 +418,13 @@ const disputeMarkers: DisputeMarker[] = [
       'a common accord',
     ],
     reason: {
-      ru: 'Условие зависит от будущего соглашения сторон и не фиксирует четкий порядок исполнения.',
+      ru: 'РЈСЃР»РѕРІРёРµ Р·Р°РІРёСЃРёС‚ РѕС‚ Р±СѓРґСѓС‰РµРіРѕ СЃРѕРіР»Р°С€РµРЅРёСЏ СЃС‚РѕСЂРѕРЅ Рё РЅРµ С„РёРєСЃРёСЂСѓРµС‚ С‡РµС‚РєРёР№ РїРѕСЂСЏРґРѕРє РёСЃРїРѕР»РЅРµРЅРёСЏ.',
       en: 'The clause depends on future agreement between the parties and leaves execution mechanics undefined.',
       it: 'La clausola dipende da un accordo futuro tra le parti e non fissa una procedura chiara.',
       fr: 'La clause depend d un accord futur des parties et ne fixe pas de mecanisme d execution clair.',
     },
     suggestion: {
-      ru: 'Закрепите точный порядок, сроки и ответственных лиц прямо в тексте договора.',
+      ru: 'Р—Р°РєСЂРµРїРёС‚Рµ С‚РѕС‡РЅС‹Р№ РїРѕСЂСЏРґРѕРє, СЃСЂРѕРєРё Рё РѕС‚РІРµС‚СЃС‚РІРµРЅРЅС‹С… Р»РёС† РїСЂСЏРјРѕ РІ С‚РµРєСЃС‚Рµ РґРѕРіРѕРІРѕСЂР°.',
       en: 'Specify the exact workflow, deadlines, and responsible persons directly in the contract.',
       it: 'Specificare nel contratto procedura, termini e soggetti responsabili.',
       fr: 'Preciser dans le contrat la procedure, les delais et les responsables.',
@@ -431,7 +433,7 @@ const disputeMarkers: DisputeMarker[] = [
   {
     id: 'reasonable-time',
     markers: [
-      'разумный срок',
+      'СЂР°Р·СѓРјРЅС‹Р№ СЃСЂРѕРє',
       'reasonable time',
       'reasonable efforts',
       'termine ragionevole',
@@ -440,13 +442,13 @@ const disputeMarkers: DisputeMarker[] = [
       'dans les meilleurs delais',
     ],
     reason: {
-      ru: 'Указан субъективный срок без точной границы.',
+      ru: 'РЈРєР°Р·Р°РЅ СЃСѓР±СЉРµРєС‚РёРІРЅС‹Р№ СЃСЂРѕРє Р±РµР· С‚РѕС‡РЅРѕР№ РіСЂР°РЅРёС†С‹.',
       en: 'A subjective timeline is used without a precise limit.',
       it: 'Viene usato un termine soggettivo senza limite preciso.',
       fr: 'Un delai subjectif est utilise sans limite precise.',
     },
     suggestion: {
-      ru: 'Замените формулировку на конкретное число рабочих или календарных дней.',
+      ru: 'Р—Р°РјРµРЅРёС‚Рµ С„РѕСЂРјСѓР»РёСЂРѕРІРєСѓ РЅР° РєРѕРЅРєСЂРµС‚РЅРѕРµ С‡РёСЃР»Рѕ СЂР°Р±РѕС‡РёС… РёР»Рё РєР°Р»РµРЅРґР°СЂРЅС‹С… РґРЅРµР№.',
       en: 'Replace the wording with a concrete number of business or calendar days.',
       it: 'Sostituire la formula con un numero preciso di giorni lavorativi o di calendario.',
       fr: 'Remplacer la formule par un nombre precis de jours ouvrables ou calendaires.',
@@ -455,7 +457,7 @@ const disputeMarkers: DisputeMarker[] = [
   {
     id: 'discretionary-right',
     markers: [
-      'вправе',
+      'РІРїСЂР°РІРµ',
       'may at its discretion',
       'sole discretion',
       'at its sole discretion',
@@ -465,13 +467,13 @@ const disputeMarkers: DisputeMarker[] = [
       'est autorise',
     ],
     reason: {
-      ru: 'Одна из сторон получила дискреционное право без достаточных ограничений.',
+      ru: 'РћРґРЅР° РёР· СЃС‚РѕСЂРѕРЅ РїРѕР»СѓС‡РёР»Р° РґРёСЃРєСЂРµС†РёРѕРЅРЅРѕРµ РїСЂР°РІРѕ Р±РµР· РґРѕСЃС‚Р°С‚РѕС‡РЅС‹С… РѕРіСЂР°РЅРёС‡РµРЅРёР№.',
       en: 'One party received a discretionary right without sufficient boundaries.',
       it: 'Una delle parti ha ottenuto un diritto discrezionale senza limiti sufficienti.',
       fr: 'Une partie dispose d un droit discretionnaire sans limites suffisantes.',
     },
     suggestion: {
-      ru: 'Ограничьте такое право критериями, сроками и обязательным уведомлением другой стороны.',
+      ru: 'РћРіСЂР°РЅРёС‡СЊС‚Рµ С‚Р°РєРѕРµ РїСЂР°РІРѕ РєСЂРёС‚РµСЂРёСЏРјРё, СЃСЂРѕРєР°РјРё Рё РѕР±СЏР·Р°С‚РµР»СЊРЅС‹Рј СѓРІРµРґРѕРјР»РµРЅРёРµРј РґСЂСѓРіРѕР№ СЃС‚РѕСЂРѕРЅС‹.',
       en: 'Limit the right with objective criteria, deadlines, and mandatory notice to the counterparty.',
       it: 'Limitare tale diritto con criteri oggettivi, termini e notifica obbligatoria alla controparte.',
       fr: 'Encadrer ce droit par des criteres objectifs, des delais et une notification obligatoire.',
@@ -481,7 +483,7 @@ const disputeMarkers: DisputeMarker[] = [
 
 const contractTypeDetectors: Record<string, string[]> = {
   services: [
-    'услуг',
+    'СѓСЃР»СѓРі',
     'service agreement',
     'services agreement',
     'statement of work',
@@ -491,8 +493,8 @@ const contractTypeDetectors: Record<string, string[]> = {
     'fornitura servizi',
   ],
   employment: [
-    'трудов',
-    'работодател',
+    'С‚СЂСѓРґРѕРІ',
+    'СЂР°Р±РѕС‚РѕРґР°С‚РµР»',
     'employee',
     'employment',
     'lavoro subordinato',
@@ -500,7 +502,7 @@ const contractTypeDetectors: Record<string, string[]> = {
     'contratto di lavoro',
   ],
   nda: [
-    'конфиден',
+    'РєРѕРЅС„РёРґРµРЅ',
     'non-disclosure',
     'non disclosure',
     'nda',
@@ -509,7 +511,7 @@ const contractTypeDetectors: Record<string, string[]> = {
     'confidentiality',
   ],
   supply: [
-    'поставк',
+    'РїРѕСЃС‚Р°РІРє',
     'supply',
     'delivery',
     'fornitura',
@@ -518,7 +520,7 @@ const contractTypeDetectors: Record<string, string[]> = {
     'purchase agreement',
   ],
   contractWork: [
-    'подряд',
+    'РїРѕРґСЂСЏРґ',
     'work result',
     'contract work',
     'appalto',
@@ -535,7 +537,7 @@ const normalizeLanguage = (language?: SupportedLanguage): SupportedLanguage => {
 const tokenizeSearchText = (input: string): string[] => {
   return uniqueStrings(
     normalizeSearchText(input)
-      .split(/[^0-9a-zа-я]+/giu)
+      .split(/[^0-9a-zР°-СЏ]+/giu)
       .map((token) => token.trim())
       .filter(Boolean),
   );
@@ -582,13 +584,34 @@ const extractRoleTerms = (selectedRole: string): string[] => {
   }
 
   if (normalizedRole.includes('contractor') || normalizedRole.includes('provider') || normalizedRole.includes('supplier')) {
-    ['party', 'counterparty', 'vendor', 'client', 'customer', 'исполнитель', 'заказчик'].forEach((term) =>
+    ['party', 'counterparty', 'vendor', 'client', 'customer', 'РёСЃРїРѕР»РЅРёС‚РµР»СЊ', 'Р·Р°РєР°Р·С‡РёРє'].forEach((term) =>
       terms.add(normalizeSearchText(term)),
     );
   }
 
   if (normalizedRole.includes('employee') || normalizedRole.includes('employer')) {
-    ['employee', 'employer', 'worker', 'работник', 'работодатель'].forEach((term) => terms.add(normalizeSearchText(term)));
+    ['employee', 'employer', 'worker', 'СЂР°Р±РѕС‚РЅРёРє', 'СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЊ'].forEach((term) => terms.add(normalizeSearchText(term)));
+  }
+
+  return uniqueStrings(Array.from(terms).map((term) => normalizeSearchText(term))).filter(Boolean);
+};
+
+const extractStrictRoleTerms = (selectedRole: string): string[] => {
+  const normalizedRole = normalizeSearchText(selectedRole);
+  const tokens = tokenizeSearchText(selectedRole);
+  const terms = new Set<string>(tokens);
+
+  for (const group of roleAliasGroups) {
+    if (!group.markers.some((marker) => normalizedRole.includes(normalizeSearchText(marker)))) {
+      continue;
+    }
+
+    for (const alias of group.aliases) {
+      const normalizedAlias = normalizeSearchText(alias);
+      if (normalizedAlias) {
+        terms.add(normalizedAlias);
+      }
+    }
   }
 
   return uniqueStrings(Array.from(terms).map((term) => normalizeSearchText(term))).filter(Boolean);
@@ -597,13 +620,14 @@ const extractRoleTerms = (selectedRole: string): string[] => {
 export const segmentClauses = (text: string): ClauseSegment[] => {
   const normalizedText = normalizeExtractedText(text);
   const rawClauses = normalizedText
-    .split(/\n{2,}|(?=\n\s*(?:\d+(?:\.\d+)*[.)]|[•*-]))/u)
+    .split(/\n{2,}|(?=\n\s*(?:\d+(?:\.\d+)*[.)]|[вЂў*-]))/u)
     .map((clause) => clause.trim())
     .filter(Boolean);
 
   const clauses = rawClauses.length > 0 ? rawClauses : normalizedText.split('\n').map((clause) => clause.trim()).filter(Boolean);
   return clauses.map((clause, index) => ({
     clauseId: `${clauseIdPrefix}${index + 1}`,
+    clauseRef: buildClauseReference(clause, index),
     text: clause,
   }));
 };
@@ -613,7 +637,7 @@ export const collectCandidateLines = (text: string, clauses: ClauseSegment[]): s
   const lines: string[] = [];
 
   for (const source of [text, ...clauses.map((item) => item.text)]) {
-    const parts = source.replace(/\r/g, '\n').split(/[\n;•]+/u);
+    const parts = source.replace(/\r/g, '\n').split(/[\n;вЂў]+/u);
     for (const part of parts) {
       const line = normalizeExtractedText(part);
       if (!line) {
@@ -661,8 +685,184 @@ export const collectLines = (
   return scored.map((item) => item.line).slice(0, maxItems);
 };
 
+const collectRoleObligations = (
+  clauses: ClauseSegment[],
+  roleTerms: string[],
+  maxItems: number,
+): { roleFound: boolean; items: string[] } => {
+  const scored = clauses
+    .map((clause, index) => {
+      const normalized = normalizeSearchText(clause.text);
+      const roleHits = countMatches(normalized, roleTerms);
+      const obligationHits = countMatches(normalized, summaryMarkers.obligations);
+      const excerpt = buildExcerpt(clause.text, 280);
+
+      return {
+        index,
+        roleHits,
+        obligationHits,
+        score: roleHits * 4 + obligationHits * 3,
+        excerpt,
+      };
+    })
+    .filter((item) => item.roleHits > 0);
+
+  const roleFound = scored.length > 0;
+  const items = scored
+    .filter((item) => item.score > 0 && item.excerpt)
+    .sort((left, right) => {
+      if (right.score !== left.score) {
+        return right.score - left.score;
+      }
+
+      return left.index - right.index;
+    })
+    .map((item) => item.excerpt)
+    .slice(0, maxItems);
+
+  return {
+    roleFound,
+    items: uniqueStrings(items),
+  };
+};
+
 export const buildRolePrioritizedTerms = (selectedRole: string): string[] => {
   return extractRoleTerms(selectedRole);
+};
+
+export const buildStrictRoleTerms = (selectedRole: string): string[] => {
+  return extractStrictRoleTerms(selectedRole);
+};
+
+const buildClauseReference = (text: string, index: number): string => {
+  const normalized = normalizeExtractedText(text);
+  const numberedMatch = normalized.match(/^\s*(\d+(?:\.\d+){0,5})[.)]?(?:\s|$)/u);
+  if (numberedMatch?.[1]) {
+    return numberedMatch[1];
+  }
+
+  const labeledMatch = normalized.match(/^\s*(?:clause|section|article|РїСѓРЅРєС‚|СЂР°Р·РґРµР»)\s+(\d+(?:\.\d+){0,5})/iu);
+  if (labeledMatch?.[1]) {
+    return labeledMatch[1];
+  }
+
+  return String(index + 1);
+};
+
+const isHeadingLike = (text: string): boolean => {
+  const compact = normalizeExtractedText(text);
+  if (!compact) {
+    return true;
+  }
+
+  if (compact.endsWith(':')) {
+    return true;
+  }
+
+  const letters = compact.match(/[\p{L}]/gu) ?? [];
+  const upperCaseLetters = compact.match(/[\p{Lu}]/gu) ?? [];
+  return letters.length > 0 && upperCaseLetters.length / letters.length > 0.72;
+};
+
+const trimClauseLead = (text: string): string => {
+  return normalizeExtractedText(text)
+    .replace(/^\s*(?:clause|section|article|РїСѓРЅРєС‚|СЂР°Р·РґРµР»)\s+\d+(?:\.\d+){0,5}[.)]?\s*/iu, '')
+    .replace(/^\s*\d+(?:\.\d+){0,5}[.)]?\s*/u, '')
+    .trim();
+};
+
+const buildExcerpt = (text: string, maxLength = maxClauseExcerptLength): string => {
+  const trimmed = trimClauseLead(text);
+  if (!trimmed || isHeadingLike(trimmed)) {
+    return '';
+  }
+
+  if (trimmed.length <= maxLength) {
+    return trimmed;
+  }
+
+  const candidate = trimmed.slice(0, maxLength);
+  const sentenceEnd = Math.max(candidate.lastIndexOf('. '), candidate.lastIndexOf('! '), candidate.lastIndexOf('? '));
+  if (sentenceEnd >= 60) {
+    return candidate.slice(0, sentenceEnd + 1).trim();
+  }
+
+  return `${candidate.trimEnd()}...`;
+};
+
+const formatRoleNotFoundMessage = (selectedRole: string, language: SupportedLanguage): string => {
+  switch (normalizeLanguage(language)) {
+    case 'ru':
+      return `Р РѕР»СЊ "${selectedRole}" РЅРµ РЅР°Р№РґРµРЅР° РІ С‚РµРєСЃС‚Рµ РґРѕРіРѕРІРѕСЂР°. РЈС‚РѕС‡РЅРёС‚Рµ С„РѕСЂРјСѓР»РёСЂРѕРІРєСѓ СЂРѕР»Рё РёР»Рё РІС‹Р±РµСЂРёС‚Рµ СЃС‚РѕСЂРѕРЅСѓ, РєРѕС‚РѕСЂР°СЏ РїСЂСЏРјРѕ СѓРєР°Р·Р°РЅР° РІ РґРѕРєСѓРјРµРЅС‚Рµ.`;
+    case 'it':
+      return `Il ruolo "${selectedRole}" non e stato trovato nel testo del contratto. Verificare il nome del ruolo o scegliere una parte indicata esplicitamente nel documento.`;
+    case 'fr':
+      return `Le role "${selectedRole}" n a pas ete trouve dans le texte du contrat. Verifiez l intitule du role ou choisissez une partie explicitement indiquee dans le document.`;
+    case 'en':
+    default:
+      return `The role "${selectedRole}" was not found in the contract text. Verify the role wording or choose a party explicitly named in the document.`;
+  }
+};
+
+const formatRoleNotFoundRecommendation = (language: SupportedLanguage): string => {
+  switch (normalizeLanguage(language)) {
+    case 'ru':
+      return 'РџСЂРѕРІРµСЂСЊС‚Рµ РЅР°Р·РІР°РЅРёРµ СЂРѕР»Рё РІ РІС‹РїР°РґР°СЋС‰РµРј СЃРїРёСЃРєРµ Рё РІС‹Р±РµСЂРёС‚Рµ СЃС‚РѕСЂРѕРЅСѓ, РєРѕС‚РѕСЂР°СЏ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ СѓРєР°Р·Р°РЅР° РІ РґРѕРіРѕРІРѕСЂРµ.';
+    case 'it':
+      return 'Verificare il nome del ruolo scelto e selezionare una parte realmente indicata nel contratto.';
+    case 'fr':
+      return 'Verifiez le nom du role choisi et selectionnez une partie effectivement mentionnee dans le contrat.';
+    case 'en':
+    default:
+      return 'Verify the chosen role name and select a party that is explicitly mentioned in the contract.';
+  }
+};
+
+const formatRiskEvidence = (
+  matches: Array<{ clauseRef: string; excerpt: string }>,
+  language: SupportedLanguage,
+): string => {
+  const visibleMatches = matches.filter((item) => item.excerpt).slice(0, maxRiskEvidenceItems);
+  if (visibleMatches.length === 0) {
+    return '';
+  }
+
+  const joined = visibleMatches.map((item) => `${item.clauseRef}: ${item.excerpt}`).join(' ');
+  switch (normalizeLanguage(language)) {
+    case 'ru':
+      return visibleMatches.length === 1
+        ? ` Р’С‹СЏРІР»РµРЅРѕ РІ РїСѓРЅРєС‚Рµ ${joined}`
+        : ` Р’С‹СЏРІР»РµРЅРѕ РІ ${matches.length} РїСѓРЅРєС‚Р°С…: ${joined}`;
+    case 'it':
+      return visibleMatches.length === 1
+        ? ` Rilevato nella clausola ${joined}`
+        : ` Rilevato in ${matches.length} clausole: ${joined}`;
+    case 'fr':
+      return visibleMatches.length === 1
+        ? ` Detecte dans la clause ${joined}`
+        : ` Detecte dans ${matches.length} clauses: ${joined}`;
+    case 'en':
+    default:
+      return visibleMatches.length === 1
+        ? ` Detected in clause ${joined}`
+        : ` Detected in ${matches.length} clauses: ${joined}`;
+  }
+};
+
+const elevateSeverity = (severity: RiskItem['severity'], occurrences: number): RiskItem['severity'] => {
+  if (occurrences < 2) {
+    return severity;
+  }
+
+  if (severity === 'low') {
+    return 'medium';
+  }
+
+  if (severity === 'medium') {
+    return 'high';
+  }
+
+  return severity;
 };
 
 export const detectContractType = (text: string, language: SupportedLanguage): string => {
@@ -685,8 +885,14 @@ export const buildRiskItems = (
   warnings: string[],
 ): RiskItem[] => {
   const results: RiskItem[] = [];
-  const seen = new Set<string>();
   const normalizedLanguage = normalizeLanguage(language);
+  const groupedResults = new Map<
+    string,
+    {
+      rule: RiskRule;
+      matches: Array<{ clauseRef: string; excerpt: string }>;
+    }
+  >();
 
   for (const clause of clauses) {
     const normalized = normalizeSearchText(clause.text);
@@ -695,29 +901,52 @@ export const buildRiskItems = (
         continue;
       }
 
-      const dedupeKey = `${rule.id}:${clause.clauseId}`;
-      if (seen.has(dedupeKey)) {
-        continue;
-      }
-      seen.add(dedupeKey);
+      const existing = groupedResults.get(rule.id);
+      const nextMatch = {
+        clauseRef: clause.clauseRef,
+        excerpt: buildExcerpt(clause.text, 200),
+      };
 
-      results.push({
-        id: `risk-${results.length + 1}`,
-        severity: rule.severity,
-        clauseRef: clause.clauseId,
-        title: rule.title[normalizedLanguage],
-        description: rule.description[normalizedLanguage],
-        recommendation: rule.recommendation[normalizedLanguage],
-      });
+      if (existing) {
+        if (!existing.matches.some((item) => item.clauseRef === nextMatch.clauseRef)) {
+          existing.matches.push(nextMatch);
+        }
+      } else {
+        groupedResults.set(rule.id, {
+          rule,
+          matches: [nextMatch],
+        });
+      }
     }
+  }
+
+  for (const { rule, matches } of groupedResults.values()) {
+    const clauseRefs = matches.map((item) => item.clauseRef);
+    const occurrences = clauseRefs.length;
+
+    results.push({
+      id: `risk-${results.length + 1}`,
+      groupId: rule.id,
+      severity: elevateSeverity(rule.severity, occurrences),
+      clauseRef: clauseRefs.join(', '),
+      clauseRefs,
+      occurrences,
+      evidence: matches.map((item) => item.excerpt).filter(Boolean),
+      title: rule.title[normalizedLanguage],
+      description: `${rule.description[normalizedLanguage]}${formatRiskEvidence(matches, normalizedLanguage)}`,
+      recommendation: rule.recommendation[normalizedLanguage],
+    });
   }
 
   if (warnings.length > 0) {
     const strings = localizedStrings[normalizedLanguage];
     results.unshift({
       id: 'risk-warning-1',
+      groupId: 'extraction-quality',
       severity: 'medium',
       clauseRef: 'system',
+      clauseRefs: ['system'],
+      occurrences: warnings.length,
       title: strings.extractionRiskTitle,
       description: warnings.join(' '),
       recommendation: strings.extractionRiskRecommendation,
@@ -728,8 +957,11 @@ export const buildRiskItems = (
     const strings = localizedStrings[normalizedLanguage];
     results.push({
       id: 'risk-1',
+      groupId: 'low-signal',
       severity: 'low',
       clauseRef: role ? role : 'overview',
+      clauseRefs: [role ? role : 'overview'],
+      occurrences: 1,
       title: strings.lowSignalRiskTitle,
       description: strings.lowSignalRiskDescription,
       recommendation: strings.lowSignalRiskRecommendation,
@@ -739,7 +971,11 @@ export const buildRiskItems = (
   return results
     .sort((left, right) => {
       const rank = { high: 3, medium: 2, low: 1 };
-      return rank[right.severity] - rank[left.severity];
+      if (rank[right.severity] !== rank[left.severity]) {
+        return rank[right.severity] - rank[left.severity];
+      }
+
+      return (right.occurrences ?? 1) - (left.occurrences ?? 1);
     })
     .map((item, index) => ({ ...item, id: `risk-${index + 1}` }));
 };
@@ -758,8 +994,12 @@ export const buildDisputedClauses = (clauses: ClauseSegment[], language: Support
 
       results.push({
         id: `disputed-${results.length + 1}`,
-        clauseRef: clause.clauseId,
-        whyDisputed: marker.reason[normalizedLanguage],
+        clauseRef: clause.clauseRef,
+        clauseText: buildExcerpt(clause.text, 200),
+        whyDisputed: `${marker.reason[normalizedLanguage]}${formatRiskEvidence(
+          [{ clauseRef: clause.clauseRef, excerpt: buildExcerpt(clause.text, 200) }],
+          normalizedLanguage,
+        )}`,
         suggestedRewrite: marker.suggestion[normalizedLanguage],
       });
       break;
@@ -794,31 +1034,66 @@ export const buildAnalysisArtifacts = ({
   const normalizedText = normalizeExtractedText(text);
   const clauses = segmentClauses(normalizedText);
   const candidates = collectCandidateLines(normalizedText, clauses);
+  const strictRoleTerms = buildStrictRoleTerms(selectedRole);
   const prioritizedTerms = buildRolePrioritizedTerms(selectedRole);
-
-  const obligations = collectLines(candidates, summaryMarkers.obligations, prioritizedTerms, maxSummaryItems);
+  const roleObligations = collectRoleObligations(clauses, strictRoleTerms, maxSummaryItems);
   const paymentTerms = collectLines(candidates, summaryMarkers.payment, prioritizedTerms, 2);
   const deadlines = collectLines(candidates, summaryMarkers.deadlines, prioritizedTerms, 2);
   const liabilityItems = collectLines(candidates, summaryMarkers.liability, prioritizedTerms, 2);
 
-  const summaryItems = uniqueStrings([
-    ...obligations,
+  const fallbackSummaryItems = uniqueStrings([
     ...paymentTerms,
     ...deadlines,
     ...liabilityItems,
-  ]).slice(0, maxSummaryItems);
+  ])
+    .map((item) => buildExcerpt(item, 240))
+    .filter(Boolean)
+    .slice(0, maxSummaryItems);
+
+  const roleFound = roleObligations.roleFound;
+  const summaryItems = roleFound
+    ? roleObligations.items.length > 0
+      ? roleObligations.items
+      : fallbackSummaryItems
+    : [formatRoleNotFoundMessage(selectedRole, normalizedLanguage)];
+
+  const risks = buildRiskItems(clauses, selectedRole, normalizedLanguage, warnings);
+  if (!roleFound) {
+    risks.unshift({
+      id: 'risk-role-missing',
+      groupId: 'role-missing',
+      severity: 'medium',
+      clauseRef: 'overview',
+      clauseRefs: ['overview'],
+      occurrences: 1,
+      title:
+        normalizedLanguage === 'ru'
+          ? 'Р’С‹Р±СЂР°РЅРЅР°СЏ СЂРѕР»СЊ РЅРµ РЅР°Р№РґРµРЅР°'
+          : normalizedLanguage === 'it'
+            ? 'Ruolo selezionato non trovato'
+            : normalizedLanguage === 'fr'
+              ? 'Role selectionne introuvable'
+              : 'Selected role not found',
+      description: formatRoleNotFoundMessage(selectedRole, normalizedLanguage),
+      recommendation: formatRoleNotFoundRecommendation(normalizedLanguage),
+    });
+  }
 
   return {
     summary: {
       title: `${strings.reportTitle}: ${fileName}`,
       contractType: detectContractType(normalizedText, normalizedLanguage),
-      shortDescription: formatTemplate(strings.shortDescription, {
-        clausesCount: clauses.length,
-        role: selectedRole,
-      }),
+      shortDescription: roleFound
+        ? formatTemplate(strings.shortDescription, {
+            clausesCount: clauses.length,
+            role: selectedRole,
+          })
+        : formatRoleNotFoundMessage(selectedRole, normalizedLanguage),
       obligationsForSelectedRole: summaryItems.length > 0 ? summaryItems : [strings.obligationsFallback],
+      roleFound,
     },
-    risks: buildRiskItems(clauses, selectedRole, normalizedLanguage, warnings),
+    risks,
     disputedClauses: buildDisputedClauses(clauses, normalizedLanguage),
   };
 };
+

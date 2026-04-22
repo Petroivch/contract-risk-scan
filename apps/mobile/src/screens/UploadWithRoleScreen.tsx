@@ -146,7 +146,7 @@ export const UploadWithRoleScreen = ({ navigation }: Props): JSX.Element => {
             <Text style={styles.cardTitle}>{t('upload.roleStepTitle')}</Text>
             <Text style={styles.cardSubtitle}>{t('upload.roleStepSubtitle')}</Text>
           </View>
-          <StatusChip label={selectedRole ? selectedRole : t('upload.selectRole')} tone="brand" />
+          <StatusChip label={t('upload.roleSelectionChip')} tone="brand" />
         </View>
 
         <RoleBadge role={selectedRole} />
