@@ -2,7 +2,7 @@
 import type { SupportedLanguage } from '../i18n/types';
 import { defaultLanguage } from '../i18n/types';
 
-import { normalizeExtractedText, normalizeSearchText, uniqueStrings } from './textNormalization';
+import { normalizeExtractedText, normalizeSearchText, repairMojibakeText, uniqueStrings } from './textNormalization';
 
 export interface ClauseSegment {
   clauseId: string;
@@ -59,8 +59,56 @@ const clauseIdPrefix = 'clause-';
 const maxSummaryItems = 4;
 const maxClauseExcerptLength = 240;
 const maxRiskEvidenceItems = 2;
+const shortMojibakeTokenFixes: Record<string, string> = {
+  'Р°': 'а',
+  'Рђ': 'А',
+  'РІ': 'в',
+  'Р’': 'В',
+  'Рё': 'и',
+  'Р': 'И',
+  'СЃ': 'с',
+  'РЎ': 'С',
+  'Рє': 'к',
+  'Рљ': 'К',
+  'Рѕ': 'о',
+  'Рћ': 'О',
+  'Сѓ': 'у',
+  'РЈ': 'У',
+};
 
-const localizedStrings: Record<SupportedLanguage, AnalysisLocalization> = {
+const repairStaticString = (value: string): string => {
+  const repaired = repairMojibakeText(value);
+
+  return repaired.replace(/\S+/gu, (token) => {
+    const match = token.match(/^([^\p{L}\p{N}]*)((?:[\p{L}\p{N}]|_)+)([^\p{L}\p{N}]*)$/u);
+    if (!match) {
+      return shortMojibakeTokenFixes[token] ?? token;
+    }
+
+    const [, prefix, core, suffix] = match;
+    return `${prefix}${shortMojibakeTokenFixes[core] ?? core}${suffix}`;
+  });
+};
+
+const repairDeepStrings = <T>(value: T): T => {
+  if (typeof value === 'string') {
+    return repairStaticString(value) as T;
+  }
+
+  if (Array.isArray(value)) {
+    return value.map((item) => repairDeepStrings(item)) as T;
+  }
+
+  if (value && typeof value === 'object') {
+    return Object.fromEntries(
+      Object.entries(value).map(([key, item]) => [key, repairDeepStrings(item)]),
+    ) as T;
+  }
+
+  return value;
+};
+
+const localizedStrings: Record<SupportedLanguage, AnalysisLocalization> = repairDeepStrings({
   ru: {
     contractTypes: {
       services: 'Р”РѕРіРѕРІРѕСЂ РѕРєР°Р·Р°РЅРёСЏ СѓСЃР»СѓРі',
@@ -155,9 +203,9 @@ const localizedStrings: Record<SupportedLanguage, AnalysisLocalization> = {
     extractionRiskTitle: 'Qualite limitee de l extraction de texte',
     extractionRiskRecommendation: 'Pour une analyse hors ligne plus fiable, utilisez un PDF texte, DOCX ou TXT.',
   },
-};
+});
 
-const summaryMarkers = {
+const summaryMarkers = repairDeepStrings({
   obligations: [
     'РѕР±СЏР·Р°РЅ',
     'РґРѕР»Р¶РµРЅ',
@@ -224,9 +272,9 @@ const summaryMarkers = {
     'danni',
     'dommages',
   ],
-};
+});
 
-const roleAliasGroups: Array<{ markers: string[]; aliases: string[] }> = [
+const roleAliasGroups: Array<{ markers: string[]; aliases: string[] }> = repairDeepStrings([
   {
     markers: ['customer', 'client', 'buyer', 'purchaser', 'Р·Р°РєР°Р·С‡РёРє', 'committente', 'cliente', 'acheteur'],
     aliases: ['customer', 'client', 'buyer', 'purchaser', 'Р·Р°РєР°Р·С‡РёРє', 'committente', 'cliente', 'acheteur'],
@@ -243,9 +291,9 @@ const roleAliasGroups: Array<{ markers: string[]; aliases: string[] }> = [
     markers: ['licensor', 'licensee', 'licenziante', 'licenziatario', 'Р»РёС†РµРЅР·РёР°СЂ', 'Р»РёС†РµРЅР·РёР°С‚'],
     aliases: ['licensor', 'licensee', 'licenziante', 'licenziatario', 'Р»РёС†РµРЅР·РёР°СЂ', 'Р»РёС†РµРЅР·РёР°С‚'],
   },
-];
+]);
 
-const riskRules: RiskRule[] = [
+const riskRules: RiskRule[] = repairDeepStrings([
   {
     id: 'unilateral',
     severity: 'high',
@@ -403,9 +451,9 @@ const riskRules: RiskRule[] = [
       fr: 'Preciser le preavis de non-renouvellement et les consequences du silence.',
     },
   },
-];
+]);
 
-const disputeMarkers: DisputeMarker[] = [
+const disputeMarkers: DisputeMarker[] = repairDeepStrings([
   {
     id: 'future-agreement',
     markers: [
@@ -479,9 +527,9 @@ const disputeMarkers: DisputeMarker[] = [
       fr: 'Encadrer ce droit par des criteres objectifs, des delais et une notification obligatoire.',
     },
   },
-];
+]);
 
-const contractTypeDetectors: Record<string, string[]> = {
+const contractTypeDetectors: Record<string, string[]> = repairDeepStrings({
   services: [
     'СѓСЃР»СѓРі',
     'service agreement',
@@ -528,7 +576,7 @@ const contractTypeDetectors: Record<string, string[]> = {
     'contratto d opera',
     'contrat d entreprise',
   ],
-};
+});
 
 const normalizeLanguage = (language?: SupportedLanguage): SupportedLanguage => {
   return language && localizedStrings[language] ? language : defaultLanguage;
@@ -537,7 +585,7 @@ const normalizeLanguage = (language?: SupportedLanguage): SupportedLanguage => {
 const tokenizeSearchText = (input: string): string[] => {
   return uniqueStrings(
     normalizeSearchText(input)
-      .split(/[^0-9a-zР°-СЏ]+/giu)
+      .split(/[^\p{L}\p{N}]+/gu)
       .map((token) => token.trim())
       .filter(Boolean),
   );
@@ -584,13 +632,13 @@ const extractRoleTerms = (selectedRole: string): string[] => {
   }
 
   if (normalizedRole.includes('contractor') || normalizedRole.includes('provider') || normalizedRole.includes('supplier')) {
-    ['party', 'counterparty', 'vendor', 'client', 'customer', 'РёСЃРїРѕР»РЅРёС‚РµР»СЊ', 'Р·Р°РєР°Р·С‡РёРє'].forEach((term) =>
+    ['party', 'counterparty', 'vendor', 'client', 'customer', 'Исполнитель', 'Заказчик'].forEach((term) =>
       terms.add(normalizeSearchText(term)),
     );
   }
 
   if (normalizedRole.includes('employee') || normalizedRole.includes('employer')) {
-    ['employee', 'employer', 'worker', 'СЂР°Р±РѕС‚РЅРёРє', 'СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЊ'].forEach((term) => terms.add(normalizeSearchText(term)));
+    ['employee', 'employer', 'worker', 'Работник', 'Работодатель'].forEach((term) => terms.add(normalizeSearchText(term)));
   }
 
   return uniqueStrings(Array.from(terms).map((term) => normalizeSearchText(term))).filter(Boolean);
@@ -620,7 +668,7 @@ const extractStrictRoleTerms = (selectedRole: string): string[] => {
 export const segmentClauses = (text: string): ClauseSegment[] => {
   const normalizedText = normalizeExtractedText(text);
   const rawClauses = normalizedText
-    .split(/\n{2,}|(?=\n\s*(?:\d+(?:\.\d+)*[.)]|[вЂў*-]))/u)
+    .split(/\n{2,}|(?=\n\s*(?:\d+(?:\.\d+)*[.)]|[\u2022*-]))/u)
     .map((clause) => clause.trim())
     .filter(Boolean);
 
@@ -637,7 +685,7 @@ export const collectCandidateLines = (text: string, clauses: ClauseSegment[]): s
   const lines: string[] = [];
 
   for (const source of [text, ...clauses.map((item) => item.text)]) {
-    const parts = source.replace(/\r/g, '\n').split(/[\n;вЂў]+/u);
+    const parts = source.replace(/\r/g, '\n').split(/[\n;\u2022]+/u);
     for (const part of parts) {
       const line = normalizeExtractedText(part);
       if (!line) {
@@ -741,7 +789,7 @@ const buildClauseReference = (text: string, index: number): string => {
     return numberedMatch[1];
   }
 
-  const labeledMatch = normalized.match(/^\s*(?:clause|section|article|РїСѓРЅРєС‚|СЂР°Р·РґРµР»)\s+(\d+(?:\.\d+){0,5})/iu);
+  const labeledMatch = normalized.match(/^\s*(?:clause|section|article|пункт|раздел)\s+(\d+(?:\.\d+){0,5})/iu);
   if (labeledMatch?.[1]) {
     return labeledMatch[1];
   }
@@ -766,7 +814,7 @@ const isHeadingLike = (text: string): boolean => {
 
 const trimClauseLead = (text: string): string => {
   return normalizeExtractedText(text)
-    .replace(/^\s*(?:clause|section|article|РїСѓРЅРєС‚|СЂР°Р·РґРµР»)\s+\d+(?:\.\d+){0,5}[.)]?\s*/iu, '')
+    .replace(/^\s*(?:clause|section|article|пункт|раздел)\s+\d+(?:\.\d+){0,5}[.)]?\s*/iu, '')
     .replace(/^\s*\d+(?:\.\d+){0,5}[.)]?\s*/u, '')
     .trim();
 };
@@ -793,7 +841,7 @@ const buildExcerpt = (text: string, maxLength = maxClauseExcerptLength): string 
 const formatRoleNotFoundMessage = (selectedRole: string, language: SupportedLanguage): string => {
   switch (normalizeLanguage(language)) {
     case 'ru':
-      return `Р РѕР»СЊ "${selectedRole}" РЅРµ РЅР°Р№РґРµРЅР° РІ С‚РµРєСЃС‚Рµ РґРѕРіРѕРІРѕСЂР°. РЈС‚РѕС‡РЅРёС‚Рµ С„РѕСЂРјСѓР»РёСЂРѕРІРєСѓ СЂРѕР»Рё РёР»Рё РІС‹Р±РµСЂРёС‚Рµ СЃС‚РѕСЂРѕРЅСѓ, РєРѕС‚РѕСЂР°СЏ РїСЂСЏРјРѕ СѓРєР°Р·Р°РЅР° РІ РґРѕРєСѓРјРµРЅС‚Рµ.`;
+      return `Роль "${selectedRole}" не найдена в тексте договора. Уточните формулировку роли или выберите сторону, которая прямо указана в документе.`;
     case 'it':
       return `Il ruolo "${selectedRole}" non e stato trovato nel testo del contratto. Verificare il nome del ruolo o scegliere una parte indicata esplicitamente nel documento.`;
     case 'fr':
@@ -807,7 +855,7 @@ const formatRoleNotFoundMessage = (selectedRole: string, language: SupportedLang
 const formatRoleNotFoundRecommendation = (language: SupportedLanguage): string => {
   switch (normalizeLanguage(language)) {
     case 'ru':
-      return 'РџСЂРѕРІРµСЂСЊС‚Рµ РЅР°Р·РІР°РЅРёРµ СЂРѕР»Рё РІ РІС‹РїР°РґР°СЋС‰РµРј СЃРїРёСЃРєРµ Рё РІС‹Р±РµСЂРёС‚Рµ СЃС‚РѕСЂРѕРЅСѓ, РєРѕС‚РѕСЂР°СЏ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ СѓРєР°Р·Р°РЅР° РІ РґРѕРіРѕРІРѕСЂРµ.';
+      return 'Проверьте название роли в выпадающем списке и выберите сторону, которая действительно указана в договоре.';
     case 'it':
       return 'Verificare il nome del ruolo scelto e selezionare una parte realmente indicata nel contratto.';
     case 'fr':
@@ -831,8 +879,8 @@ const formatRiskEvidence = (
   switch (normalizeLanguage(language)) {
     case 'ru':
       return visibleMatches.length === 1
-        ? ` Р’С‹СЏРІР»РµРЅРѕ РІ РїСѓРЅРєС‚Рµ ${joined}`
-        : ` Р’С‹СЏРІР»РµРЅРѕ РІ ${matches.length} РїСѓРЅРєС‚Р°С…: ${joined}`;
+        ? ` Выявлено в пункте ${joined}`
+        : ` Выявлено в ${matches.length} пунктах: ${joined}`;
     case 'it':
       return visibleMatches.length === 1
         ? ` Rilevato nella clausola ${joined}`
@@ -1068,7 +1116,7 @@ export const buildAnalysisArtifacts = ({
       occurrences: 1,
       title:
         normalizedLanguage === 'ru'
-          ? 'Р’С‹Р±СЂР°РЅРЅР°СЏ СЂРѕР»СЊ РЅРµ РЅР°Р№РґРµРЅР°'
+          ? 'Выбранная роль не найдена'
           : normalizedLanguage === 'it'
             ? 'Ruolo selezionato non trovato'
             : normalizedLanguage === 'fr'

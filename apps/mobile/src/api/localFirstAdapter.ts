@@ -1,11 +1,13 @@
 import type {
   ContractRiskScannerApi,
   HistoryItem,
+  AnalysisReport,
   QueuedUploadItem,
   RequestMeta,
   UploadContractRequest,
 } from './types';
 import type { LocalCacheStore } from '../data/local/types';
+import { repairMojibakeText } from '../analysis/textNormalization';
 
 interface LocalFirstAdapterConfig {
   enableLocalFirst: boolean;
@@ -14,6 +16,24 @@ interface LocalFirstAdapterConfig {
 const shouldUseFallback = (enabled: boolean): boolean => enabled;
 const nowIso = (): string => new Date().toISOString();
 const buildQueuedAnalysisId = (): string => `queued_${Date.now()}`;
+const repairDeepReportText = <T>(value: T): T => {
+  if (typeof value === 'string') {
+    return repairMojibakeText(value) as T;
+  }
+
+  if (Array.isArray(value)) {
+    return value.map((item) => repairDeepReportText(item)) as T;
+  }
+
+  if (value && typeof value === 'object') {
+    return Object.fromEntries(
+      Object.entries(value).map(([key, item]) => [key, repairDeepReportText(item)]),
+    ) as T;
+  }
+
+  return value;
+};
+const sanitizeReport = (report: AnalysisReport): AnalysisReport => repairDeepReportText(report);
 const ignoreCacheError = async (operation: () => Promise<void>): Promise<void> => {
   try {
     await operation();
@@ -105,7 +125,9 @@ export const createLocalFirstAdapter = (
         if (config.enableLocalFirst) {
           await ignoreCacheError(() => localCache.saveStatus(status));
           if (status.status === 'completed') {
-            const report = await remoteClient.getReport({ analysisId, selectedRole: status.selectedRole }, meta);
+            const report = sanitizeReport(
+              await remoteClient.getReport({ analysisId, selectedRole: status.selectedRole }, meta),
+            );
             await ignoreCacheError(() => localCache.saveReport(report));
           }
         }
@@ -125,7 +147,7 @@ export const createLocalFirstAdapter = (
 
     getReport: async (input, meta?: RequestMeta) => {
       try {
-        const report = await remoteClient.getReport(input, meta);
+        const report = sanitizeReport(await remoteClient.getReport(input, meta));
 
         if (config.enableLocalFirst) {
           await ignoreCacheError(() => localCache.saveReport(report));
@@ -136,7 +158,7 @@ export const createLocalFirstAdapter = (
         if (shouldUseFallback(config.enableLocalFirst)) {
           const cached = await localCache.getReport(input.analysisId);
           if (cached) {
-            return cached;
+            return sanitizeReport(cached);
           }
         }
 
