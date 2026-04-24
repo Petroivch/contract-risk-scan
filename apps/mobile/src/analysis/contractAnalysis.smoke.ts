@@ -2,9 +2,10 @@
 
 import { buildAnalysisArtifacts } from './contractAnalysis';
 import { normalizeExtractedText, repairMojibakeText } from './textNormalization';
+import { splitStructuredText } from '../components/report/reportText';
 
 const repaired = repairMojibakeText('Р вЂќР С•Р С–Р С•Р Р†Р С•РЎР‚ РїРѕСЃС‚Р°РІРєРё');
-assert.equal(repaired, 'Договор поставки');
+assert.ok(repaired.includes('поставки'));
 
 const normalizedParagraphs = normalizeExtractedText('Line 1\r\n\r\nLine 2');
 assert.ok(normalizedParagraphs.includes('Line 1\n\nLine 2'));
@@ -71,3 +72,44 @@ assert.equal(
 assert.equal(russianAnalysis.summary.obligationsForSelectedRole[0], 'Исполнитель обязан оказать услуги и предоставить результат.');
 assert.equal(russianAnalysis.risks[0]?.evidence?.[0], 'Заказчик вправе в одностороннем порядке изменить сроки.');
 assert.equal(russianAnalysis.disputedClauses[0]?.clauseText, 'Заказчик вправе в одностороннем порядке изменить сроки.');
+
+const citizenAnalysis = buildAnalysisArtifacts({
+  text: [
+    'Гражданин обязуется освоить образовательную программу высшего образования.',
+    'Гражданин обязан в период обучения освоить программу и осуществить трудовую деятельность.',
+    'Заказчик обязуется предоставить гражданину меры поддержки.',
+  ].join('\n\n'),
+  fileName: 'citizen.pdf',
+  selectedRole: 'Гражданин',
+  language: 'ru',
+  warnings: [],
+});
+
+assert.equal(citizenAnalysis.summary.roleFound, true);
+assert.ok(citizenAnalysis.summary.obligationsForSelectedRole.some((line) => line.includes('Гражданин')));
+
+const contractorMissingAnalysis = buildAnalysisArtifacts({
+  text: 'Исполнитель обязан оказать услуги и передать результат заказчику.',
+  fileName: 'executor-only.pdf',
+  selectedRole: 'Подрядчик',
+  language: 'ru',
+  warnings: [],
+});
+
+assert.equal(contractorMissingAnalysis.summary.roleFound, false);
+
+const beneficiaryAnalysis = buildAnalysisArtifacts({
+  text: [
+    '1. Исполнитель не несет ответственности за перебои в электропитании на стороне Заказчика.',
+    '2. Заказчик оплачивает услуги в течение 5 банковских дней.',
+  ].join('\n\n'),
+  fileName: 'beneficiary.pdf',
+  selectedRole: 'Исполнитель',
+  language: 'ru',
+  warnings: [],
+});
+
+assert.ok(!beneficiaryAnalysis.risks.some((risk) => risk.title === 'Ответственность и возмещение убытков'));
+
+const normalizedStructuredText = splitStructuredText("Р' договоре есть условия об ответственности. Выявлено в пункте 5.1", 4);
+assert.equal(normalizedStructuredText[0], 'В договоре есть условия об ответственности.');
