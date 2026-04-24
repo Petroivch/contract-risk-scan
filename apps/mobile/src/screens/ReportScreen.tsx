@@ -90,7 +90,7 @@ export const ReportScreen = ({ route }: Props): JSX.Element => {
 
   const generatedAtLabel = useMemo(() => {
     if (!report?.generatedAt) {
-      return '—';
+      return '\u2014';
     }
 
     const parsedDate = new Date(report.generatedAt);
@@ -119,10 +119,10 @@ export const ReportScreen = ({ route }: Props): JSX.Element => {
     switch (language) {
       case 'ru':
         return {
-          loadingTitle: 'Готовим отчет',
-          loadingText: 'Подтягиваем результат анализа и собираем карточки риска.',
-          errorTitle: 'Отчет пока недоступен',
-          errorText: 'Не удалось загрузить сохраненный результат анализа. Повторите запуск анализа для этого договора.',
+          loadingTitle: '\u0413\u043e\u0442\u043e\u0432\u0438\u043c \u043e\u0442\u0447\u0435\u0442',
+          loadingText: '\u041f\u043e\u0434\u0442\u044f\u0433\u0438\u0432\u0430\u0435\u043c \u0440\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442 \u0430\u043d\u0430\u043b\u0438\u0437\u0430 \u0438 \u0441\u043e\u0431\u0438\u0440\u0430\u0435\u043c \u043a\u0430\u0440\u0442\u043e\u0447\u043a\u0438 \u0440\u0438\u0441\u043a\u0430.',
+          errorTitle: '\u041e\u0442\u0447\u0435\u0442 \u043f\u043e\u043a\u0430 \u043d\u0435\u0434\u043e\u0441\u0442\u0443\u043f\u0435\u043d',
+          errorText: '\u041d\u0435 \u0443\u0434\u0430\u043b\u043e\u0441\u044c \u0437\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044c \u0441\u043e\u0445\u0440\u0430\u043d\u0435\u043d\u043d\u044b\u0439 \u0440\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442 \u0430\u043d\u0430\u043b\u0438\u0437\u0430. \u041f\u043e\u0432\u0442\u043e\u0440\u0438\u0442\u0435 \u0437\u0430\u043f\u0443\u0441\u043a \u0430\u043d\u0430\u043b\u0438\u0437\u0430 \u0434\u043b\u044f \u044d\u0442\u043e\u0433\u043e \u0434\u043e\u0433\u043e\u0432\u043e\u0440\u0430.',
         };
       case 'it':
         return {
@@ -280,14 +280,14 @@ export const ReportScreen = ({ route }: Props): JSX.Element => {
 
   if (isLoading || loadFailed || !report) {
     return (
-      <ScreenShell title={t('report.title')} subtitle={t('report.analysisId', { analysisId })} fillBody>
+      <ScreenShell title={t('report.title')} subtitle={t('report.analysisId', { analysisId })} scroll>
         {renderLoadState()}
       </ScreenShell>
     );
   }
 
   return (
-    <ScreenShell title={t('report.title')} subtitle={t('report.analysisId', { analysisId })} fillBody>
+    <ScreenShell title={t('report.title')} subtitle={t('report.analysisId', { analysisId })} scroll>
       <View style={styles.screenContent}>
         <View style={styles.summaryStrip}>
           <View style={styles.summaryHeader}>
@@ -354,7 +354,6 @@ export const ReportScreen = ({ route }: Props): JSX.Element => {
 
 const styles = StyleSheet.create({
   screenContent: {
-    flex: 1,
     gap: spacing.md,
   },
   loadStateCard: {
@@ -486,11 +485,10 @@ const styles = StyleSheet.create({
     color: colors.textOnAccent,
   },
   tabPane: {
-    flex: 1,
-    minHeight: 0,
+    gap: spacing.md,
   },
   tabContent: {
-    flex: 1,
+    width: '100%',
   },
   tabContentBody: {
     gap: spacing.md,
@@ -572,3 +570,4 @@ const styles = StyleSheet.create({
     paddingVertical: spacing.sm,
   },
 });
+

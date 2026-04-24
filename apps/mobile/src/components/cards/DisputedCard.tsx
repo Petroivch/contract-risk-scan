@@ -56,7 +56,7 @@ export const DisputedCard = ({ item }: DisputedCardProps): JSX.Element => {
           <Text style={styles.sectionLabel}>{t('report.sections.disputedPoints')}</Text>
           {disputedItems.map((value, index) => (
             <Text key={`disputed-${index}`} style={styles.listItem}>
-              • {value}
+              - {value}
             </Text>
           ))}
         </View>
@@ -66,7 +66,7 @@ export const DisputedCard = ({ item }: DisputedCardProps): JSX.Element => {
             <Text style={styles.sectionLabel}>{t('report.sections.contractFragment')}</Text>
             {fragmentItems.map((value, index) => (
               <Text key={`fragment-${index}`} style={styles.listItem}>
-                • {value}
+                - {value}
               </Text>
             ))}
           </View>
@@ -76,7 +76,7 @@ export const DisputedCard = ({ item }: DisputedCardProps): JSX.Element => {
           <Text style={styles.rewriteLabel}>{t('report.sections.rewriteSteps')}</Text>
           {rewriteItems.map((value, index) => (
             <Text key={`rewrite-${index}`} style={styles.rewrite}>
-              • {value}
+              - {value}
             </Text>
           ))}
         </View>
@@ -189,3 +189,4 @@ const styles = StyleSheet.create({
     fontWeight: typography.weight.semibold,
   },
 });
+

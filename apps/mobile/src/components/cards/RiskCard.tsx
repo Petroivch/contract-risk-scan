@@ -79,7 +79,7 @@ export const RiskCard = ({ item }: RiskCardProps): JSX.Element => {
           <Text style={styles.sectionLabel}>{t('report.sections.whereFound')}</Text>
           {clauseItems.map((value, index) => (
             <Text key={`clause-${index}`} style={styles.listItem}>
-              • {value}
+              - {value}
             </Text>
           ))}
         </View>
@@ -88,7 +88,7 @@ export const RiskCard = ({ item }: RiskCardProps): JSX.Element => {
           <Text style={styles.sectionLabel}>{t('report.sections.riskPoints')}</Text>
           {findingItems.map((value, index) => (
             <Text key={`finding-${index}`} style={styles.listItem}>
-              • {value}
+              - {value}
             </Text>
           ))}
         </View>
@@ -97,7 +97,7 @@ export const RiskCard = ({ item }: RiskCardProps): JSX.Element => {
           <Text style={styles.recommendationLabel}>{t('report.sections.recommendationSteps')}</Text>
           {recommendationItems.map((value, index) => (
             <Text key={`recommendation-${index}`} style={styles.recommendation}>
-              • {value}
+              - {value}
             </Text>
           ))}
         </View>
@@ -225,3 +225,4 @@ const styles = StyleSheet.create({
     fontWeight: typography.weight.semibold,
   },
 });
+
