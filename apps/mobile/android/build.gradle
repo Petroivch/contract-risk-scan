@@ -1,5 +1,23 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
+def repoRoot = rootDir.getAbsoluteFile().getParentFile().getParentFile().getParentFile().getAbsolutePath()
+
+def resolveNodeExecutable() {
+    def envNode = providers.environmentVariable("CONTRACT_RISK_NODE").orNull
+    if (envNode != null && !envNode.trim().isEmpty()) {
+        return envNode
+    }
+
+    def bundledNode = new File(repoRoot, "builds/tools/node-v20.20.2-win-x64/node.exe")
+    if (bundledNode.exists()) {
+        return bundledNode.getAbsolutePath()
+    }
+
+    return "node"
+}
+
+def nodeExecutable = resolveNodeExecutable()
+
 buildscript {
     ext {
         buildToolsVersion = findProperty('android.buildToolsVersion') ?: '34.0.0'
@@ -27,11 +45,11 @@ allprojects {
     repositories {
         maven {
             // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
-            url(new File(['node', '--print', "require.resolve('react-native/package.json')"].execute(null, rootDir).text.trim(), '../android'))
+            url(new File([nodeExecutable, '--print', "require.resolve('react-native/package.json')"].execute(null, rootDir).text.trim(), '../android'))
         }
         maven {
             // Android JSC is installed from npm
-            url(new File(['node', '--print', "require.resolve('jsc-android/package.json', { paths: [require.resolve('react-native/package.json')] })"].execute(null, rootDir).text.trim(), '../dist'))
+            url(new File([nodeExecutable, '--print', "require.resolve('jsc-android/package.json', { paths: [require.resolve('react-native/package.json')] })"].execute(null, rootDir).text.trim(), '../dist'))
         }
 
         google()

@@ -2,6 +2,11 @@
 
 import base64
 from dataclasses import dataclass
+from io import BytesIO
+from xml.etree import ElementTree as ET
+from zipfile import BadZipFile, ZipFile
+
+from pypdf import PdfReader
 
 from app.config.runtime import get_runtime_config
 from app.localization import resolve_localized_text
@@ -34,8 +39,11 @@ class IngestionService:
         if request.document_text:
             normalized_text = request.document_text.strip()
         else:
-            decoded = self._decode_base64_payload(request.document_base64 or "").decode("utf-8", errors="ignore")
-            normalized_text = decoded.strip()
+            normalized_text = self._extract_text_from_binary_payload(
+                payload=self._decode_base64_payload(request.document_base64 or ''),
+                mime_type=request.mime_type,
+                document_name=request.document_name,
+            ).strip()
 
         if not normalized_text:
             normalized_text = resolve_localized_text(
@@ -56,3 +64,64 @@ class IngestionService:
             normalized_payload = f"{normalized_payload}{'=' * padding}"
 
         return base64.b64decode(normalized_payload)
+
+    def _extract_text_from_binary_payload(
+        self,
+        payload: bytes,
+        mime_type: str | None,
+        document_name: str,
+    ) -> str:
+        normalized_mime_type = (mime_type or '').strip().lower()
+        normalized_name = document_name.strip().lower()
+
+        if (
+            normalized_mime_type == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+            or normalized_name.endswith('.docx')
+        ):
+            return self._extract_docx_text(payload)
+
+        if normalized_mime_type == 'application/pdf' or normalized_name.endswith('.pdf'):
+            return self._extract_pdf_text(payload)
+
+        return payload.decode('utf-8', errors='ignore')
+
+    def _extract_docx_text(self, payload: bytes) -> str:
+        try:
+            with ZipFile(BytesIO(payload)) as archive:
+                document_xml = archive.read('word/document.xml')
+        except (BadZipFile, KeyError, ValueError):
+            return ''
+
+        try:
+            root = ET.fromstring(document_xml)
+        except ET.ParseError:
+            return ''
+
+        namespace = {'w': 'http://schemas.openxmlformats.org/wordprocessingml/2006/main'}
+        paragraphs: list[str] = []
+
+        for paragraph in root.findall('.//w:p', namespace):
+            text_chunks = [node.text or '' for node in paragraph.findall('.//w:t', namespace)]
+            merged = ''.join(text_chunks).strip()
+            if merged:
+                paragraphs.append(merged)
+
+        return '\n'.join(paragraphs)
+
+    def _extract_pdf_text(self, payload: bytes) -> str:
+        try:
+            reader = PdfReader(BytesIO(payload))
+        except Exception:
+            return ''
+
+        text_chunks: list[str] = []
+        for page in reader.pages:
+            try:
+                page_text = (page.extract_text() or '').strip()
+            except Exception:
+                page_text = ''
+
+            if page_text:
+                text_chunks.append(page_text)
+
+        return '\n'.join(text_chunks)

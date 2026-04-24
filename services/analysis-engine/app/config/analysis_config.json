@@ -25,6 +25,11 @@
     "ocr": {
       "source_label": "stub-ocr"
     },
+    "nlp_options": {
+      "use_lemmatization_for_roles": true,
+      "semantic_matching_enabled": true,
+      "semantic_similarity_threshold": 0.75
+    },
     "ingestion": {
       "empty_text_placeholder": {
         "ru": "Текст документа пуст после этапа ingestion.",

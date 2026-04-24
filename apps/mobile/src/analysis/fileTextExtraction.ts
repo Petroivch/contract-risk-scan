@@ -21,7 +21,7 @@ const localizedWarnings: Record<SupportedLanguage, { emptyText: string; limitedP
     emptyText:
       'Не удалось извлечь читаемый текст из файла. Для офлайн-анализа лучше использовать текстовый PDF, DOCX или TXT.',
     limitedPdf:
-      'PDF обработан в офлайн-режиме с ограниченным текстовым извлечением. Для сканов качество анализа может быть ниже.',
+      'PDF обработан в офлайн-режиме с ограниченным извлечением текста. Для сканов качество анализа может быть ниже.',
   },
   en: {
     emptyText:
@@ -207,3 +207,4 @@ export const extractContractText = async (
     warnings: fallbackText ? [] : [warningsDictionary.emptyText],
   };
 };
+

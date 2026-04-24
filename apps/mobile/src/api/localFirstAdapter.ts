@@ -2,11 +2,13 @@ import type {
   ContractRiskScannerApi,
   HistoryItem,
   AnalysisReport,
+  AnalysisStatus,
   QueuedUploadItem,
   RequestMeta,
   UploadContractRequest,
 } from './types';
 import type { LocalCacheStore } from '../data/local/types';
+import { analyzeContractLocally } from '../analysis/localContractAnalyzer';
 import { repairMojibakeText } from '../analysis/textNormalization';
 
 interface LocalFirstAdapterConfig {
@@ -16,6 +18,13 @@ interface LocalFirstAdapterConfig {
 const shouldUseFallback = (enabled: boolean): boolean => enabled;
 const nowIso = (): string => new Date().toISOString();
 const buildQueuedAnalysisId = (): string => `queued_${Date.now()}`;
+const buildCompletedStatus = (analysisId: string, selectedRole: string): AnalysisStatus => ({
+  analysisId,
+  status: 'completed',
+  progress: 100,
+  selectedRole,
+  updatedAt: nowIso(),
+});
 const repairDeepReportText = <T>(value: T): T => {
   if (typeof value === 'string') {
     return repairMojibakeText(value) as T;
@@ -78,17 +87,51 @@ const buildQueuedUpload = (
   };
 };
 
+const buildUploadPayloadFromQueue = (
+  queuedUpload: QueuedUploadItem,
+  overrides?: Partial<Pick<UploadContractRequest, 'selectedRole' | 'language'>>,
+): UploadContractRequest => ({
+  fileName: queuedUpload.fileName,
+  mimeType: queuedUpload.mimeType,
+  localFileUri: queuedUpload.localFileUri,
+  selectedRole: overrides?.selectedRole ?? queuedUpload.selectedRole,
+  language: overrides?.language ?? queuedUpload.language,
+});
+
 export const createLocalFirstAdapter = (
   remoteClient: ContractRiskScannerApi,
   localCache: LocalCacheStore,
   config: LocalFirstAdapterConfig,
 ): ContractRiskScannerApi => {
+  const runCompletedLocalAnalysis = async (
+    analysisId: string,
+    payload: UploadContractRequest,
+    meta?: RequestMeta,
+  ): Promise<{ report: AnalysisReport; status: AnalysisStatus }> => {
+    const report = sanitizeReport(await analyzeContractLocally(payload, meta?.language ?? payload.language));
+    const completedReport: AnalysisReport = {
+      ...report,
+      analysisId,
+      selectedRole: payload.selectedRole,
+      generatedAt: nowIso(),
+    };
+    const status = buildCompletedStatus(analysisId, payload.selectedRole);
+
+    await ignoreCacheError(() => localCache.saveQueuedUpload(buildQueuedUpload(analysisId, payload, meta)));
+    await ignoreCacheError(() => localCache.saveReport(completedReport));
+    await ignoreCacheError(() => localCache.saveStatus(status));
+    await ignoreCacheError(() => localCache.upsertHistoryItem(buildHistoryItem(analysisId, payload, 'completed')));
+
+    return { report: completedReport, status };
+  };
+
   return {
     uploadContract: async (payload: UploadContractRequest, meta?: RequestMeta) => {
       try {
         const response = await remoteClient.uploadContract(payload, meta);
 
         if (config.enableLocalFirst) {
+          await ignoreCacheError(() => localCache.saveQueuedUpload(buildQueuedUpload(response.analysisId, payload, meta)));
           await ignoreCacheError(() => localCache.saveStatus(response.status));
           await ignoreCacheError(() =>
             localCache.upsertHistoryItem(buildHistoryItem(response.analysisId, payload, response.status.status)),
@@ -99,18 +142,7 @@ export const createLocalFirstAdapter = (
       } catch (error) {
         if (shouldUseFallback(config.enableLocalFirst) && payload.localFileUri) {
           const analysisId = buildQueuedAnalysisId();
-          const status = {
-            analysisId,
-            status: 'queued' as const,
-            progress: 0,
-            selectedRole: payload.selectedRole,
-            updatedAt: nowIso(),
-          };
-
-          await ignoreCacheError(() => localCache.saveQueuedUpload(buildQueuedUpload(analysisId, payload, meta)));
-          await ignoreCacheError(() => localCache.saveStatus(status));
-          await ignoreCacheError(() => localCache.upsertHistoryItem(buildHistoryItem(analysisId, payload, 'queued')));
-
+          const { status } = await runCompletedLocalAnalysis(analysisId, payload, meta);
           return { analysisId, status };
         }
 
@@ -137,6 +169,20 @@ export const createLocalFirstAdapter = (
         if (shouldUseFallback(config.enableLocalFirst)) {
           const cached = await localCache.getStatus(analysisId);
           if (cached) {
+            if (cached.status === 'queued') {
+              const queuedUpload = await localCache.getQueuedUpload(analysisId);
+              if (queuedUpload?.localFileUri) {
+                const { status } = await runCompletedLocalAnalysis(
+                  analysisId,
+                  buildUploadPayloadFromQueue(queuedUpload, {
+                    language: meta?.language ?? queuedUpload.language,
+                  }),
+                  { ...meta, language: meta?.language ?? queuedUpload.language },
+                );
+
+                return status;
+              }
+            }
             return cached;
           }
         }
@@ -146,6 +192,27 @@ export const createLocalFirstAdapter = (
     },
 
     getReport: async (input, meta?: RequestMeta) => {
+      const queuedUpload = config.enableLocalFirst ? await localCache.getQueuedUpload(input.analysisId) : null;
+      const requestedLanguage = meta?.language ?? queuedUpload?.language;
+      const requestedRole = input.selectedRole ?? queuedUpload?.selectedRole;
+
+      if (
+        queuedUpload &&
+        ((requestedLanguage && requestedLanguage !== queuedUpload.language) ||
+          (requestedRole && requestedRole !== queuedUpload.selectedRole))
+      ) {
+        const { report } = await runCompletedLocalAnalysis(
+          input.analysisId,
+          buildUploadPayloadFromQueue(queuedUpload, {
+            selectedRole: requestedRole,
+            language: requestedLanguage,
+          }),
+          { ...meta, language: requestedLanguage },
+        );
+
+        return report;
+      }
+
       try {
         const report = sanitizeReport(await remoteClient.getReport(input, meta));
 
