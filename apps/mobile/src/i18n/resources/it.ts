@@ -11,6 +11,8 @@
     openReport: 'Apri report',
     loading: 'Caricamento...',
     backToUpload: 'Torna al caricamento',
+    details: 'Dettagli',
+    close: 'Chiudi',
   },
   language: {
     label: 'Lingua',
@@ -107,6 +109,15 @@
     recommendation: 'Raccomandazione: {{text}}',
     rewrite: 'Riscrittura suggerita: {{text}}',
     clause: 'Clausola: {{value}}',
+    sections: {
+      summaryOverview: 'Punti chiave',
+      whereFound: 'Dove si trova',
+      riskPoints: 'Cosa preoccupa',
+      recommendationSteps: 'Cosa fare',
+      disputedPoints: 'Perche la clausola e controversa',
+      contractFragment: 'Estratto del contratto',
+      rewriteSteps: 'Come riscriverla',
+    },
     tabs: {
       summary: 'Sintesi',
       risks: 'Rischi',

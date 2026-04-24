@@ -1,6 +1,6 @@
-﻿import type { NativeStackScreenProps } from '@react-navigation/native-stack';
+import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { Fragment, useEffect, useMemo, useState } from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 
 import { useApiClient } from '../api/ApiClientProvider';
@@ -10,6 +10,8 @@ import { RiskCard } from '../components/cards/RiskCard';
 import { RoleBadge } from '../components/RoleBadge';
 import { StatusChip } from '../components/StatusChip';
 import { ScreenShell } from '../components/layout/ScreenShell';
+import { ReportDetailModal, type ReportDetailSection } from '../components/report/ReportDetailModal';
+import { splitStructuredText } from '../components/report/reportText';
 import { useAppLanguage } from '../i18n/LanguageProvider';
 import type { RootStackParamList } from '../navigation/types';
 import { colors, radius, shadow, spacing, typography } from '../theme/tokens';
@@ -33,6 +35,11 @@ export const ReportScreen = ({ route }: Props): JSX.Element => {
   const [report, setReport] = useState<AnalysisReport | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [loadFailed, setLoadFailed] = useState(false);
+  const [summaryDetail, setSummaryDetail] = useState<{
+    title: string;
+    subtitle?: string;
+    sections: ReportDetailSection[];
+  } | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -102,6 +109,12 @@ export const ReportScreen = ({ route }: Props): JSX.Element => {
   const disputedCount = report?.disputedClauses.length ?? 0;
   const summaryRole = report?.selectedRole ?? selectedRole ?? '';
 
+  const summaryOverviewItems = useMemo(() => splitStructuredText(report?.summary.shortDescription ?? '', 6), [report?.summary.shortDescription]);
+  const summaryObligationItems = useMemo(
+    () => (report?.summary.obligationsForSelectedRole ?? []).flatMap((item) => splitStructuredText(item, 3)),
+    [report?.summary.obligationsForSelectedRole],
+  );
+
   const loadStateCopy = useMemo(() => {
     switch (language) {
       case 'ru':
@@ -154,118 +167,196 @@ export const ReportScreen = ({ route }: Props): JSX.Element => {
     );
   };
 
-  if (isLoading) {
-    return (
-      <ScreenShell title={t('report.title')} subtitle={t('report.analysisId', { analysisId })} scroll>
-        <View style={styles.loadStateCard}>
-          <Text style={styles.loadStateTitle}>{loadStateCopy.loadingTitle}</Text>
-          <Text style={styles.loadStateText}>{loadStateCopy.loadingText}</Text>
-        </View>
-      </ScreenShell>
-    );
-  }
+  const openSummaryDetail = (title: string, items: string[], subtitle?: string): void => {
+    setSummaryDetail({
+      title,
+      subtitle,
+      sections: [{ title, items }],
+    });
+  };
 
-  if (loadFailed || !report) {
+  const renderLoadState = (): JSX.Element => (
+    <View style={styles.loadStateCard}>
+      <Text style={styles.loadStateTitle}>{isLoading ? loadStateCopy.loadingTitle : loadStateCopy.errorTitle}</Text>
+      <Text style={styles.loadStateText}>{isLoading ? loadStateCopy.loadingText : loadStateCopy.errorText}</Text>
+    </View>
+  );
+
+  const renderSummaryTab = (): JSX.Element => (
+    <ScrollView
+      style={styles.tabContent}
+      contentContainerStyle={styles.tabContentBody}
+      nestedScrollEnabled
+      showsVerticalScrollIndicator={false}
+    >
+      <View style={styles.sectionNote}>
+        <Text style={styles.sectionTitle}>{t('report.tabs.summary')}</Text>
+        <Text style={styles.sectionIntro}>{t('report.summaryIntro')}</Text>
+      </View>
+
+      <View style={styles.sectionCard}>
+        <Text style={styles.sectionTitle}>{t('report.sections.summaryOverview')}</Text>
+        <ScrollView
+          style={styles.innerSectionScroll}
+          contentContainerStyle={styles.innerSectionContent}
+          nestedScrollEnabled
+          showsVerticalScrollIndicator={false}
+        >
+          {summaryOverviewItems.map((item, index) => (
+            <View key={`overview-${index}`} style={styles.bulletRow}>
+              <View style={styles.bulletDot} />
+              <Text style={styles.bulletItem}>{item}</Text>
+            </View>
+          ))}
+        </ScrollView>
+        <Pressable
+          style={styles.detailsButton}
+          onPress={() => openSummaryDetail(t('report.sections.summaryOverview'), summaryOverviewItems, report?.summary.contractType)}
+        >
+          <Text style={styles.detailsButtonText}>{t('common.details')}</Text>
+        </Pressable>
+      </View>
+
+      <View style={styles.sectionCard}>
+        <Text style={styles.sectionTitle}>{t('report.obligationsTitle')}</Text>
+        <ScrollView
+          style={styles.innerSectionScroll}
+          contentContainerStyle={styles.innerSectionContent}
+          nestedScrollEnabled
+          showsVerticalScrollIndicator={false}
+        >
+          {summaryObligationItems.map((item, index) => (
+            <View key={`obligation-${index}`} style={styles.bulletRow}>
+              <View style={styles.bulletDot} />
+              <Text style={styles.bulletItem}>{item}</Text>
+            </View>
+          ))}
+        </ScrollView>
+        <Pressable
+          style={styles.detailsButton}
+          onPress={() => openSummaryDetail(t('report.obligationsTitle'), summaryObligationItems, report?.selectedRole)}
+        >
+          <Text style={styles.detailsButtonText}>{t('common.details')}</Text>
+        </Pressable>
+      </View>
+    </ScrollView>
+  );
+
+  const renderRisksTab = (): JSX.Element => (
+    <ScrollView
+      style={styles.tabContent}
+      contentContainerStyle={styles.tabContentBody}
+      nestedScrollEnabled
+      showsVerticalScrollIndicator={false}
+    >
+      <View style={styles.sectionNote}>
+        <Text style={styles.sectionTitle}>{t('report.risksTitle')}</Text>
+        <Text style={styles.sectionIntro}>{t('report.risksIntro')}</Text>
+      </View>
+      {sortedRisks.length === 0 ? <Text style={styles.emptyState}>{t('report.risksEmpty')}</Text> : null}
+      {sortedRisks.map((risk) => (
+        <RiskCard key={risk.id} item={risk} />
+      ))}
+    </ScrollView>
+  );
+
+  const renderDisputedTab = (): JSX.Element => (
+    <ScrollView
+      style={styles.tabContent}
+      contentContainerStyle={styles.tabContentBody}
+      nestedScrollEnabled
+      showsVerticalScrollIndicator={false}
+    >
+      <View style={styles.sectionNote}>
+        <Text style={styles.sectionTitle}>{t('report.disputedTitle')}</Text>
+        <Text style={styles.sectionIntro}>{t('report.disputedIntro')}</Text>
+      </View>
+      {report?.disputedClauses.length === 0 ? <Text style={styles.emptyState}>{t('report.disputedEmpty')}</Text> : null}
+      {report?.disputedClauses.map((clause) => (
+        <DisputedCard key={clause.id} item={clause} />
+      ))}
+    </ScrollView>
+  );
+
+  if (isLoading || loadFailed || !report) {
     return (
-      <ScreenShell title={t('report.title')} subtitle={t('report.analysisId', { analysisId })} scroll>
-        <View style={styles.loadStateCard}>
-          <Text style={styles.loadStateTitle}>{loadStateCopy.errorTitle}</Text>
-          <Text style={styles.loadStateText}>{loadStateCopy.errorText}</Text>
-        </View>
+      <ScreenShell title={t('report.title')} subtitle={t('report.analysisId', { analysisId })} fillBody>
+        {renderLoadState()}
       </ScreenShell>
     );
   }
 
   return (
-    <ScreenShell title={t('report.title')} subtitle={t('report.analysisId', { analysisId })} scroll>
-      <View style={styles.summaryStrip}>
-        <View style={styles.summaryHeader}>
-          <View style={styles.summaryCopy}>
-            <Text style={styles.summaryKicker}>{t('report.summaryKicker')}</Text>
-            <Text style={styles.summaryTitle}>{report.summary.title}</Text>
-            {renderHighlightedSummaryText(report.summary.shortDescription)}
-          </View>
-          <StatusChip label={t('report.summaryTone')} tone="brand" style={styles.summaryToneChip} />
-        </View>
-
-        <View style={styles.summaryMetaRow}>
-          <StatusChip label={report.summary.contractType || t('report.contractTypeFallback')} tone="soft" />
-          <StatusChip label={t('report.generatedAtLabel', { value: generatedAtLabel })} tone="neutral" />
-        </View>
-
-        <RoleBadge role={report.selectedRole} />
-      </View>
-
-      <View style={styles.statsRow}>
-        <View style={styles.statCard}>
-          <Text style={styles.statLabel}>{t('report.obligationsCountLabel')}</Text>
-          <Text style={styles.statValue}>{obligationsCount}</Text>
-        </View>
-        <View style={styles.statCard}>
-          <Text style={styles.statLabel}>{t('report.risksCountLabel')}</Text>
-          <Text style={styles.statValue}>{risksCount}</Text>
-        </View>
-        <View style={styles.statCard}>
-          <Text style={styles.statLabel}>{t('report.disputedCountLabel')}</Text>
-          <Text style={styles.statValue}>{disputedCount}</Text>
-        </View>
-      </View>
-
-      <View style={styles.tabBar}>
-        {tabs.map((tab) => (
-          <Pressable
-            key={tab.id}
-            style={[styles.tabItem, activeTab === tab.id && styles.tabItemActive]}
-            onPress={() => setActiveTab(tab.id)}
-          >
-            <Text style={[styles.tabText, activeTab === tab.id && styles.tabTextActive]}>{tab.label}</Text>
-          </Pressable>
-        ))}
-      </View>
-
-      {activeTab === 'summary' ? (
-        <View style={styles.sectionCard}>
-          <Text style={styles.sectionIntro}>{t('report.summaryIntro')}</Text>
-          <Text style={styles.sectionTitle}>{t('report.obligationsTitle')}</Text>
-          {report.summary.obligationsForSelectedRole.map((item) => (
-            <View key={item} style={styles.bulletRow}>
-              <View style={styles.bulletDot} />
-              <Text style={styles.bulletItem}>{item}</Text>
+    <ScreenShell title={t('report.title')} subtitle={t('report.analysisId', { analysisId })} fillBody>
+      <View style={styles.screenContent}>
+        <View style={styles.summaryStrip}>
+          <View style={styles.summaryHeader}>
+            <View style={styles.summaryCopy}>
+              <Text style={styles.summaryKicker}>{t('report.summaryKicker')}</Text>
+              <Text style={styles.summaryTitle}>{report.summary.title}</Text>
+              {renderHighlightedSummaryText(report.summary.shortDescription)}
             </View>
-          ))}
-        </View>
-      ) : null}
-
-      {activeTab === 'risks' ? (
-        <View style={styles.sectionStack}>
-          <View style={styles.sectionNote}>
-            <Text style={styles.sectionTitle}>{t('report.risksTitle')}</Text>
-            <Text style={styles.sectionIntro}>{t('report.risksIntro')}</Text>
+            <StatusChip label={t('report.summaryTone')} tone="brand" style={styles.summaryToneChip} />
           </View>
-          {sortedRisks.length === 0 ? <Text style={styles.emptyState}>{t('report.risksEmpty')}</Text> : null}
-          {sortedRisks.map((risk) => (
-            <RiskCard key={risk.id} item={risk} />
-          ))}
-        </View>
-      ) : null}
 
-      {activeTab === 'disputed' ? (
-        <View style={styles.sectionStack}>
-          <View style={styles.sectionNote}>
-            <Text style={styles.sectionTitle}>{t('report.disputedTitle')}</Text>
-            <Text style={styles.sectionIntro}>{t('report.disputedIntro')}</Text>
+          <View style={styles.summaryMetaRow}>
+            <StatusChip label={report.summary.contractType || t('report.contractTypeFallback')} tone="soft" />
+            <StatusChip label={t('report.generatedAtLabel', { value: generatedAtLabel })} tone="neutral" />
           </View>
-          {report.disputedClauses.length === 0 ? <Text style={styles.emptyState}>{t('report.disputedEmpty')}</Text> : null}
-          {report.disputedClauses.map((clause) => (
-            <DisputedCard key={clause.id} item={clause} />
+
+          <RoleBadge role={report.selectedRole} />
+        </View>
+
+        <View style={styles.statsRow}>
+          <View style={styles.statCard}>
+            <Text style={styles.statLabel}>{t('report.obligationsCountLabel')}</Text>
+            <Text style={styles.statValue}>{obligationsCount}</Text>
+          </View>
+          <View style={styles.statCard}>
+            <Text style={styles.statLabel}>{t('report.risksCountLabel')}</Text>
+            <Text style={styles.statValue}>{risksCount}</Text>
+          </View>
+          <View style={styles.statCard}>
+            <Text style={styles.statLabel}>{t('report.disputedCountLabel')}</Text>
+            <Text style={styles.statValue}>{disputedCount}</Text>
+          </View>
+        </View>
+
+        <View style={styles.tabBar}>
+          {tabs.map((tab) => (
+            <Pressable
+              key={tab.id}
+              style={[styles.tabItem, activeTab === tab.id && styles.tabItemActive]}
+              onPress={() => setActiveTab(tab.id)}
+            >
+              <Text style={[styles.tabText, activeTab === tab.id && styles.tabTextActive]}>{tab.label}</Text>
+            </Pressable>
           ))}
         </View>
-      ) : null}
+
+        <View style={styles.tabPane}>
+          {activeTab === 'summary' ? renderSummaryTab() : null}
+          {activeTab === 'risks' ? renderRisksTab() : null}
+          {activeTab === 'disputed' ? renderDisputedTab() : null}
+        </View>
+      </View>
+
+      <ReportDetailModal
+        visible={summaryDetail !== null}
+        title={summaryDetail?.title ?? ''}
+        subtitle={summaryDetail?.subtitle}
+        sections={summaryDetail?.sections ?? []}
+        onClose={() => setSummaryDetail(null)}
+      />
     </ScreenShell>
   );
 };
 
 const styles = StyleSheet.create({
+  screenContent: {
+    flex: 1,
+    gap: spacing.md,
+  },
   loadStateCard: {
     borderRadius: radius.xl,
     backgroundColor: colors.surface,
@@ -394,6 +485,17 @@ const styles = StyleSheet.create({
   tabTextActive: {
     color: colors.textOnAccent,
   },
+  tabPane: {
+    flex: 1,
+    minHeight: 0,
+  },
+  tabContent: {
+    flex: 1,
+  },
+  tabContentBody: {
+    gap: spacing.md,
+    paddingBottom: spacing.md,
+  },
   sectionCard: {
     borderRadius: radius.xl,
     backgroundColor: colors.surface,
@@ -402,9 +504,6 @@ const styles = StyleSheet.create({
     padding: spacing.md,
     gap: spacing.sm,
     ...shadow.card,
-  },
-  sectionStack: {
-    gap: spacing.md,
   },
   sectionNote: {
     borderRadius: radius.xl,
@@ -426,6 +525,13 @@ const styles = StyleSheet.create({
     fontSize: typography.size.body,
     lineHeight: typography.lineHeight.body,
   },
+  innerSectionScroll: {
+    maxHeight: 260,
+  },
+  innerSectionContent: {
+    gap: spacing.sm,
+    paddingRight: spacing.xxs,
+  },
   bulletRow: {
     flexDirection: 'row',
     gap: spacing.sm,
@@ -443,6 +549,20 @@ const styles = StyleSheet.create({
     color: colors.textSecondary,
     fontSize: typography.size.body,
     lineHeight: typography.lineHeight.body,
+  },
+  detailsButton: {
+    alignSelf: 'flex-start',
+    borderRadius: radius.md,
+    borderWidth: 1,
+    borderColor: colors.border,
+    backgroundColor: colors.accentSoft,
+    paddingHorizontal: spacing.sm,
+    paddingVertical: spacing.xs,
+  },
+  detailsButtonText: {
+    color: colors.textPrimary,
+    fontSize: typography.size.bodySm,
+    fontWeight: typography.weight.semibold,
   },
   emptyState: {
     color: colors.textMuted,

@@ -11,6 +11,8 @@
     openReport: 'Открыть отчет',
     loading: 'Загрузка...',
     backToUpload: 'К загрузке',
+    details: 'Подробнее',
+    close: 'Закрыть',
   },
   language: {
     label: 'Язык',
@@ -107,6 +109,15 @@
     recommendation: 'Рекомендация: {{text}}',
     rewrite: 'Предложение правки: {{text}}',
     clause: 'Пункт: {{value}}',
+    sections: {
+      summaryOverview: 'Ключевые акценты',
+      whereFound: 'Где найдено',
+      riskPoints: 'Что настораживает',
+      recommendationSteps: 'Что сделать',
+      disputedPoints: 'Почему пункт спорный',
+      contractFragment: 'Фрагмент договора',
+      rewriteSteps: 'Как переписать',
+    },
     tabs: {
       summary: 'Сводка',
       risks: 'Риски',

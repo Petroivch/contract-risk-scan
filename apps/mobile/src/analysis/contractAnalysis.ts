@@ -58,7 +58,6 @@ interface AnalysisArtifacts {
 const clauseIdPrefix = 'clause-';
 const maxSummaryItems = 4;
 const maxClauseExcerptLength = 240;
-const maxRiskEvidenceItems = 2;
 const shortMojibakeTokenFixes: Record<string, string> = {
   'Р°': 'а',
   'Рђ': 'А',
@@ -919,37 +918,6 @@ const formatRoleNotFoundRecommendation = (language: SupportedLanguage): string =
   }
 };
 
-const formatRiskEvidence = (
-  matches: Array<{ clauseRef: string; excerpt: string }>,
-  language: SupportedLanguage,
-): string => {
-  const visibleMatches = matches.filter((item) => item.excerpt).slice(0, maxRiskEvidenceItems);
-  if (visibleMatches.length === 0) {
-    return '';
-  }
-
-  const joined = visibleMatches.map((item) => `${item.clauseRef}: ${item.excerpt}`).join(' ');
-  switch (normalizeLanguage(language)) {
-    case 'ru':
-      return visibleMatches.length === 1
-        ? ` Выявлено в пункте ${joined}`
-        : ` Выявлено в ${matches.length} пунктах: ${joined}`;
-    case 'it':
-      return visibleMatches.length === 1
-        ? ` Rilevato nella clausola ${joined}`
-        : ` Rilevato in ${matches.length} clausole: ${joined}`;
-    case 'fr':
-      return visibleMatches.length === 1
-        ? ` Detecte dans la clause ${joined}`
-        : ` Detecte dans ${matches.length} clauses: ${joined}`;
-    case 'en':
-    default:
-      return visibleMatches.length === 1
-        ? ` Detected in clause ${joined}`
-        : ` Detected in ${matches.length} clauses: ${joined}`;
-  }
-};
-
 const elevateSeverity = (severity: RiskItem['severity'], occurrences: number): RiskItem['severity'] => {
   if (occurrences < 2) {
     return severity;
@@ -1034,7 +1002,7 @@ export const buildRiskItems = (
       occurrences,
       evidence: matches.map((item) => item.excerpt).filter(Boolean),
       title: rule.title[normalizedLanguage],
-      description: `${rule.description[normalizedLanguage]}${formatRiskEvidence(matches, normalizedLanguage)}`,
+      description: rule.description[normalizedLanguage],
       recommendation: rule.recommendation[normalizedLanguage],
     });
   }
@@ -1097,10 +1065,7 @@ export const buildDisputedClauses = (clauses: ClauseSegment[], language: Support
         id: `disputed-${results.length + 1}`,
         clauseRef: clause.clauseRef,
         clauseText: buildExcerpt(clause.text, 200),
-        whyDisputed: `${marker.reason[normalizedLanguage]}${formatRiskEvidence(
-          [{ clauseRef: clause.clauseRef, excerpt: buildExcerpt(clause.text, 200) }],
-          normalizedLanguage,
-        )}`,
+        whyDisputed: marker.reason[normalizedLanguage],
         suggestedRewrite: marker.suggestion[normalizedLanguage],
       });
       break;

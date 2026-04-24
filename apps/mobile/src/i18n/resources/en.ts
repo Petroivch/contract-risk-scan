@@ -11,6 +11,8 @@
     openReport: 'Open report',
     loading: 'Loading...',
     backToUpload: 'Back to upload',
+    details: 'Details',
+    close: 'Close',
   },
   language: {
     label: 'Language',
@@ -107,6 +109,15 @@
     recommendation: 'Recommendation: {{text}}',
     rewrite: 'Suggested rewrite: {{text}}',
     clause: 'Clause: {{value}}',
+    sections: {
+      summaryOverview: 'Key highlights',
+      whereFound: 'Where found',
+      riskPoints: 'What looks risky',
+      recommendationSteps: 'What to do',
+      disputedPoints: 'Why the clause is disputed',
+      contractFragment: 'Contract fragment',
+      rewriteSteps: 'How to rewrite it',
+    },
     tabs: {
       summary: 'Summary',
       risks: 'Risks',

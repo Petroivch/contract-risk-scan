@@ -1,9 +1,13 @@
-﻿import { StyleSheet, Text, View } from 'react-native';
+import { useMemo, useState } from 'react';
+import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 
 import type { RiskItem } from '../../api/types';
-import { StatusChip } from '../StatusChip';
+import { useAppLanguage } from '../../i18n/LanguageProvider';
 import { colors, radius, shadow, spacing, typography } from '../../theme/tokens';
+import { StatusChip } from '../StatusChip';
+import { ReportDetailModal, type ReportDetailSection } from '../report/ReportDetailModal';
+import { buildClauseItems, splitInlineEvidence, splitStructuredText } from '../report/reportText';
 
 interface RiskCardProps {
   item: RiskItem;
@@ -17,11 +21,40 @@ const severityToneMap = {
 
 export const RiskCard = ({ item }: RiskCardProps): JSX.Element => {
   const { t } = useTranslation();
+  const { language } = useAppLanguage();
+  const [isDetailOpen, setIsDetailOpen] = useState(false);
+
   const occurrences = item.occurrences ?? 1;
   const clauseLabel =
     item.clauseRefs && item.clauseRefs.length > 1
       ? t('report.clauses', { value: item.clauseRef })
       : t('report.clause', { value: item.clauseRef });
+
+  const { primaryText, evidenceItems: inlineEvidenceItems } = useMemo(
+    () => splitInlineEvidence(item.description, language),
+    [item.description, language],
+  );
+
+  const clauseItems = useMemo(() => buildClauseItems(item.clauseRefs, item.clauseRef, t), [item.clauseRef, item.clauseRefs, t]);
+  const findingItems = useMemo(
+    () =>
+      [
+        ...splitStructuredText(primaryText || item.description, 4),
+        ...splitStructuredText(inlineEvidenceItems.join(' '), 2),
+        ...(item.evidence ?? []).map((entry) => entry.trim()).filter(Boolean),
+      ],
+    [inlineEvidenceItems, item.description, item.evidence, primaryText],
+  );
+  const recommendationItems = useMemo(() => splitStructuredText(item.recommendation, 4), [item.recommendation]);
+
+  const detailSections: ReportDetailSection[] = useMemo(
+    () => [
+      { title: t('report.sections.whereFound'), items: clauseItems },
+      { title: t('report.sections.riskPoints'), items: findingItems },
+      { title: t('report.sections.recommendationSteps'), items: recommendationItems },
+    ],
+    [clauseItems, findingItems, recommendationItems, t],
+  );
 
   return (
     <View style={[styles.card, styles[`severity_${item.severity}`]]}>
@@ -35,12 +68,52 @@ export const RiskCard = ({ item }: RiskCardProps): JSX.Element => {
 
       <Text style={styles.meta}>{clauseLabel}</Text>
       {occurrences > 1 ? <Text style={styles.meta}>{t('report.riskOccurrences', { count: occurrences })}</Text> : null}
-      <Text style={styles.description}>{item.description}</Text>
 
-      <View style={styles.recommendationBox}>
-        <Text style={styles.recommendationLabel}>{t('report.recommendationLabel')}</Text>
-        <Text style={styles.recommendation}>{item.recommendation}</Text>
-      </View>
+      <ScrollView
+        style={styles.contentScroll}
+        contentContainerStyle={styles.contentScrollBody}
+        nestedScrollEnabled
+        showsVerticalScrollIndicator={false}
+      >
+        <View style={styles.sectionBox}>
+          <Text style={styles.sectionLabel}>{t('report.sections.whereFound')}</Text>
+          {clauseItems.map((value, index) => (
+            <Text key={`clause-${index}`} style={styles.listItem}>
+              • {value}
+            </Text>
+          ))}
+        </View>
+
+        <View style={styles.sectionBox}>
+          <Text style={styles.sectionLabel}>{t('report.sections.riskPoints')}</Text>
+          {findingItems.map((value, index) => (
+            <Text key={`finding-${index}`} style={styles.listItem}>
+              • {value}
+            </Text>
+          ))}
+        </View>
+
+        <View style={styles.recommendationBox}>
+          <Text style={styles.recommendationLabel}>{t('report.sections.recommendationSteps')}</Text>
+          {recommendationItems.map((value, index) => (
+            <Text key={`recommendation-${index}`} style={styles.recommendation}>
+              • {value}
+            </Text>
+          ))}
+        </View>
+      </ScrollView>
+
+      <Pressable style={styles.detailsButton} onPress={() => setIsDetailOpen(true)}>
+        <Text style={styles.detailsButtonText}>{t('common.details')}</Text>
+      </Pressable>
+
+      <ReportDetailModal
+        visible={isDetailOpen}
+        title={item.title}
+        subtitle={clauseLabel}
+        sections={detailSections}
+        onClose={() => setIsDetailOpen(false)}
+      />
     </View>
   );
 };
@@ -94,7 +167,23 @@ const styles = StyleSheet.create({
     lineHeight: typography.lineHeight.caption,
     fontWeight: typography.weight.medium,
   },
-  description: {
+  contentScroll: {
+    maxHeight: 240,
+  },
+  contentScrollBody: {
+    gap: spacing.sm,
+    paddingRight: spacing.xxs,
+  },
+  sectionBox: {
+    gap: spacing.xs,
+  },
+  sectionLabel: {
+    color: colors.textPrimary,
+    fontSize: typography.size.bodySm,
+    lineHeight: typography.lineHeight.bodySm,
+    fontWeight: typography.weight.bold,
+  },
+  listItem: {
     color: colors.textSecondary,
     fontSize: typography.size.body,
     lineHeight: typography.lineHeight.body,
@@ -116,6 +205,20 @@ const styles = StyleSheet.create({
     letterSpacing: 0.5,
   },
   recommendation: {
+    color: colors.textPrimary,
+    fontSize: typography.size.body,
+    lineHeight: typography.lineHeight.body,
+  },
+  detailsButton: {
+    alignSelf: 'flex-start',
+    borderRadius: radius.md,
+    borderWidth: 1,
+    borderColor: colors.border,
+    backgroundColor: colors.accentSoft,
+    paddingHorizontal: spacing.sm,
+    paddingVertical: spacing.xs,
+  },
+  detailsButtonText: {
     color: colors.textPrimary,
     fontSize: typography.size.bodySm,
     lineHeight: typography.lineHeight.bodySm,

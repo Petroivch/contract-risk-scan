@@ -11,6 +11,8 @@
     openReport: 'Ouvrir le rapport',
     loading: 'Chargement...',
     backToUpload: 'Retour au chargement',
+    details: 'Details',
+    close: 'Fermer',
   },
   language: {
     label: 'Langue',
@@ -107,6 +109,15 @@
     recommendation: 'Recommandation: {{text}}',
     rewrite: 'Reecriture suggeree: {{text}}',
     clause: 'Clause: {{value}}',
+    sections: {
+      summaryOverview: 'Points cles',
+      whereFound: 'Ou trouve',
+      riskPoints: 'Ce qui pose probleme',
+      recommendationSteps: 'Que faire',
+      disputedPoints: 'Pourquoi la clause est litigieuse',
+      contractFragment: 'Extrait du contrat',
+      rewriteSteps: 'Comment la reecrire',
+    },
     tabs: {
       summary: 'Resume',
       risks: 'Risques',

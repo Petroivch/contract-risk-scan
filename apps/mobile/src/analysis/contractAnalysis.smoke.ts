@@ -69,5 +69,5 @@ assert.equal(
   'Документ содержит 4 пунктов. Для роли "Исполнитель" в фокусе обязательства, сроки, платежи и условия с повышенным риском.',
 );
 assert.equal(russianAnalysis.summary.obligationsForSelectedRole[0], 'Исполнитель обязан оказать услуги и предоставить результат.');
-assert.ok(russianAnalysis.risks[0]?.description.includes('Выявлено в пункте 4.3'));
-assert.ok(russianAnalysis.disputedClauses[0]?.whyDisputed.includes('Выявлено в пункте 4.3'));
+assert.equal(russianAnalysis.risks[0]?.evidence?.[0], 'Заказчик вправе в одностороннем порядке изменить сроки.');
+assert.equal(russianAnalysis.disputedClauses[0]?.clauseText, 'Заказчик вправе в одностороннем порядке изменить сроки.');

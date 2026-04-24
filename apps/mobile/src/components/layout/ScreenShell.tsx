@@ -10,6 +10,7 @@ interface ScreenShellProps extends PropsWithChildren {
   title: string;
   subtitle?: string;
   scroll?: boolean;
+  fillBody?: boolean;
 }
 
 const Header = ({ title, subtitle }: { title: string; subtitle?: string }): JSX.Element => {
@@ -25,7 +26,13 @@ const Header = ({ title, subtitle }: { title: string; subtitle?: string }): JSX.
   );
 };
 
-export const ScreenShell = ({ title, subtitle, scroll = false, children }: ScreenShellProps): JSX.Element => {
+export const ScreenShell = ({
+  title,
+  subtitle,
+  scroll = false,
+  fillBody = false,
+  children,
+}: ScreenShellProps): JSX.Element => {
   return (
     <SafeAreaView style={styles.root} edges={['top', 'bottom']}>
       <View style={styles.decorativeBlobA} />
@@ -34,12 +41,12 @@ export const ScreenShell = ({ title, subtitle, scroll = false, children }: Scree
       {scroll ? (
         <ScrollView contentContainerStyle={styles.scrollContent} style={styles.contentWrap}>
           <Header title={title} subtitle={subtitle} />
-          <View style={styles.body}>{children}</View>
+          <View style={[styles.body, fillBody && styles.bodyFill]}>{children}</View>
         </ScrollView>
       ) : (
         <View style={styles.contentWrap}>
           <Header title={title} subtitle={subtitle} />
-          <View style={styles.body}>{children}</View>
+          <View style={[styles.body, fillBody && styles.bodyFill]}>{children}</View>
         </View>
       )}
     </SafeAreaView>
@@ -112,5 +119,8 @@ const styles = StyleSheet.create({
     marginHorizontal: spacing.lg,
     gap: spacing.md,
     paddingBottom: spacing.lg,
+  },
+  bodyFill: {
+    flex: 1,
   },
 });
