@@ -13,6 +13,7 @@ export interface ExtractedContractText {
 
 const PDF_TEXT_OBJECT_PATTERN = /\(([^()]*(?:\\.[^()]*)*)\)\s*Tj/g;
 const PDF_TEXT_ARRAY_PATTERN = /\[(.*?)\]\s*TJ/g;
+const PDF_HEX_TEXT_OBJECT_PATTERN = /<([0-9A-Fa-f\s]+)>\s*Tj/g;
 const XML_TAG_PATTERN = /<[^>]+>/g;
 const MIN_EXTRACTED_TEXT_LENGTH = 160;
 
@@ -84,7 +85,38 @@ const decodePdfString = (value: string): string => {
     .replace(/\\r/g, ' ')
     .replace(/\\n/g, ' ')
     .replace(/\\t/g, ' ')
-    .replace(/\\\d{3}/g, ' ');
+    .replace(/\\([0-7]{3})/g, (_, octal: string) => String.fromCharCode(Number.parseInt(octal, 8)));
+};
+
+const decodePdfHexString = (value: string): string => {
+  const sanitized = value.replace(/\s+/g, '');
+  if (!sanitized) {
+    return '';
+  }
+
+  const bytes: number[] = [];
+  for (let index = 0; index < sanitized.length; index += 2) {
+    const chunk = sanitized.slice(index, index + 2);
+    if (chunk.length < 2) {
+      continue;
+    }
+
+    const nextByte = Number.parseInt(chunk, 16);
+    if (!Number.isNaN(nextByte)) {
+      bytes.push(nextByte);
+    }
+  }
+
+  if (bytes.length >= 2 && bytes[0] === 0xfe && bytes[1] === 0xff) {
+    const codeUnits: number[] = [];
+    for (let index = 2; index + 1 < bytes.length; index += 2) {
+      codeUnits.push((bytes[index] << 8) | bytes[index + 1]);
+    }
+
+    return String.fromCharCode(...codeUnits);
+  }
+
+  return String.fromCharCode(...bytes);
 };
 
 const extractPdfText = (binary: string): string => {
@@ -98,9 +130,22 @@ const extractPdfText = (binary: string): string => {
     }
   }
 
+  while ((match = PDF_HEX_TEXT_OBJECT_PATTERN.exec(binary)) !== null) {
+    const decoded = normalizeText(decodePdfHexString(match[1] ?? ''));
+    if (decoded) {
+      textChunks.push(decoded);
+    }
+  }
+
   while ((match = PDF_TEXT_ARRAY_PATTERN.exec(binary)) !== null) {
-    const rawItems = (match[1] ?? '').match(/\(([^()]*(?:\\.[^()]*)*)\)/g) ?? [];
-    const decoded = normalizeText(rawItems.map((item) => decodePdfString(item.slice(1, -1))).join(' '));
+    const rawItems = (match[1] ?? '').match(/\(([^()]*(?:\\.[^()]*)*)\)|<([0-9A-Fa-f\s]+)>/g) ?? [];
+    const decoded = normalizeText(
+      rawItems
+        .map((item) =>
+          item.startsWith('<') ? decodePdfHexString(item.slice(1, -1)) : decodePdfString(item.slice(1, -1)),
+        )
+        .join(' '),
+    );
     if (decoded) {
       textChunks.push(decoded);
     }
@@ -207,4 +252,3 @@ export const extractContractText = async (
     warnings: fallbackText ? [] : [warningsDictionary.emptyText],
   };
 };
-

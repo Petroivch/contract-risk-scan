@@ -130,7 +130,7 @@ const localizedStrings: Record<SupportedLanguage, AnalysisLocalization> = repair
     lowSignalRiskRecommendation:
       'РџСЂРѕРІРµСЂСЊС‚Рµ Р»РёРјРёС‚С‹ РѕС‚РІРµС‚СЃС‚РІРµРЅРЅРѕСЃС‚Рё, РїРѕСЂСЏРґРѕРє РїСЂРёРµРјРєРё, РѕРїР»Р°С‚Сѓ Рё РїСЂР°РІРѕ РѕРґРЅРѕСЃС‚РѕСЂРѕРЅРЅРёС… РґРµР№СЃС‚РІРёР№.',
     extractionRiskTitle: 'РћРіСЂР°РЅРёС‡РµРЅРЅРѕРµ РєР°С‡РµСЃС‚РІРѕ РёР·РІР»РµС‡РµРЅРёСЏ С‚РµРєСЃС‚Р°',
-    extractionRiskRecommendation: 'Р”Р»СЏ Р±РѕР»РµРµ С‚РѕС‡РЅРѕРіРѕ РѕС„Р»Р°Р№РЅ-Р°РЅР°Р»РёР·Р° РёСЃРїРѕР»СЊР·СѓР№С‚Рµ С‚РµРєСЃС‚РѕРІС‹Р№ PDF, DOCX РёР»Рё TXT-С„Р°Р№Р».',
+    extractionRiskRecommendation: 'Для более точного офлайн-анализа используйте текстовый PDF, DOCX или TXT-файл.',
   },
   en: {
     contractTypes: {
@@ -272,114 +272,6 @@ const summaryMarkers = repairDeepStrings({
     'dommages',
   ],
 });
-
-const roleAliasGroups: Array<{ markers: string[]; aliases: string[] }> = repairDeepStrings([
-  {
-    markers: ['customer', 'client', 'buyer', 'purchaser', 'заказчик', 'committente', 'cliente', 'acheteur'],
-    aliases: [
-      'customer',
-      'client',
-      'buyer',
-      'purchaser',
-      'заказчик',
-      'committente',
-      'cliente',
-      'acheteur',
-    ],
-  },
-  {
-    markers: [
-      'provider',
-      'vendor',
-      'supplier',
-      'contractor',
-      'исполнитель',
-      'подрядчик',
-      'fornitore',
-      'prestataire',
-      'executant',
-      'esecutore',
-      'contraente',
-    ],
-    aliases: [
-      'provider',
-      'vendor',
-      'supplier',
-      'contractor',
-      'исполнитель',
-      'подрядчик',
-      'fornitore',
-      'prestataire',
-      'executant',
-      'esecutore',
-      'contraente',
-    ],
-  },
-  {
-    markers: [
-      'employee',
-      'employer',
-      'worker',
-      'работник',
-      'работодатель',
-      'dipendente',
-      'datore',
-      'datore di lavoro',
-      'employeur',
-    ],
-    aliases: [
-      'employee',
-      'employer',
-      'worker',
-      'работник',
-      'работодатель',
-      'dipendente',
-      'datore',
-      'datore di lavoro',
-      'employeur',
-    ],
-  },
-  {
-    markers: ['licensor', 'licensee', 'licenziante', 'licenziatario', 'Р»РёС†РµРЅР·РёР°СЂ', 'Р»РёС†РµРЅР·РёР°С‚'],
-    aliases: ['licensor', 'licensee', 'licenziante', 'licenziatario', 'Р»РёС†РµРЅР·РёР°СЂ', 'Р»РёС†РµРЅР·РёР°С‚'],
-  },
-  {
-    markers: [
-      'citizen',
-      'individual',
-      'consumer',
-      'student',
-      'citoyen',
-      'cittadino',
-      'гражданин',
-      'гражданина',
-      'гражданином',
-      'гражданину',
-      'гражданине',
-      'гражданка',
-      'обучающийся',
-      'обучающегося',
-      'слушатель',
-    ],
-    aliases: [
-      'citizen',
-      'individual',
-      'consumer',
-      'student',
-      'citoyen',
-      'cittadino',
-      'гражданин',
-      'гражданина',
-      'гражданином',
-      'гражданину',
-      'гражданине',
-      'гражданка',
-      'обучающийся',
-      'обучающегося',
-      'слушатель',
-    ],
-  },
-]);
 
 const riskRules: RiskRule[] = repairDeepStrings([
   {
@@ -701,56 +593,69 @@ const scoreLine = (line: string, markers: string[], prioritizedTerms: string[]):
   return markerScore + prioritizedScore;
 };
 
-const extractRoleTerms = (selectedRole: string): string[] => {
+const buildRussianRoleForms = (token: string): string[] => {
+  if (!/^[а-яё-]+$/iu.test(token)) {
+    return [token];
+  }
+
+  if (token.endsWith('ин')) {
+    const root = token.slice(0, -2);
+    return [token, `${root}ина`, `${root}ину`, `${root}ином`, `${root}ине`];
+  }
+
+  if (token.endsWith('тель')) {
+    const root = token.slice(0, -4);
+    return [token, `${root}теля`, `${root}телю`, `${root}телем`, `${root}теле`];
+  }
+
+  if (token.endsWith('чик')) {
+    const root = token.slice(0, -3);
+    return [token, `${root}чика`, `${root}чику`, `${root}чиком`, `${root}чике`];
+  }
+
+  if (token.endsWith('ник')) {
+    const root = token.slice(0, -3);
+    return [token, `${root}ника`, `${root}нику`, `${root}ником`, `${root}нике`];
+  }
+
+  if (token.endsWith('ец')) {
+    const root = token.slice(0, -2);
+    return [token, `${root}ца`, `${root}цу`, `${root}цом`, `${root}це`];
+  }
+
+  if (token.endsWith('ка')) {
+    const root = token.slice(0, -2);
+    return [token, `${root}ки`, `${root}ке`, `${root}ку`, `${root}кой`];
+  }
+
+  return [token];
+};
+
+const buildSelectedRoleTerms = (selectedRole: string): string[] => {
   const normalizedRole = normalizeSearchText(selectedRole);
   const tokens = tokenizeSearchText(selectedRole);
-  const terms = new Set<string>(tokens);
+  const terms = new Set<string>();
 
-  for (const group of roleAliasGroups) {
-    if (!group.markers.some((marker) => normalizedRole.includes(normalizeSearchText(marker)))) {
-      continue;
-    }
-
-    for (const alias of group.aliases) {
-      const normalizedAlias = normalizeSearchText(alias);
-      if (normalizedAlias) {
-        terms.add(normalizedAlias);
-      }
-    }
+  if (normalizedRole) {
+    terms.add(normalizedRole);
   }
 
-  if (normalizedRole.includes('contractor') || normalizedRole.includes('provider') || normalizedRole.includes('supplier')) {
-    ['party', 'counterparty', 'vendor', 'client', 'customer', 'Исполнитель', 'Заказчик'].forEach((term) =>
-      terms.add(normalizeSearchText(term)),
-    );
-  }
-
-  if (normalizedRole.includes('employee') || normalizedRole.includes('employer')) {
-    ['employee', 'employer', 'worker', 'Работник', 'Работодатель'].forEach((term) => terms.add(normalizeSearchText(term)));
+  for (const token of tokens) {
+    terms.add(token);
+    for (const variant of buildRussianRoleForms(token)) {
+      terms.add(normalizeSearchText(variant));
+    }
   }
 
   return uniqueStrings(Array.from(terms).map((term) => normalizeSearchText(term))).filter(Boolean);
 };
 
+const extractRoleTerms = (selectedRole: string): string[] => {
+  return buildSelectedRoleTerms(selectedRole);
+};
+
 const extractStrictRoleTerms = (selectedRole: string): string[] => {
-  const normalizedRole = normalizeSearchText(selectedRole);
-  const tokens = tokenizeSearchText(selectedRole);
-  const terms = new Set<string>(tokens);
-
-  for (const group of roleAliasGroups) {
-    if (!group.markers.some((marker) => normalizedRole.includes(normalizeSearchText(marker)))) {
-      continue;
-    }
-
-    for (const alias of group.aliases) {
-      const normalizedAlias = normalizeSearchText(alias);
-      if (normalizedAlias) {
-        terms.add(normalizedAlias);
-      }
-    }
-  }
-
-  return uniqueStrings(Array.from(terms).map((term) => normalizeSearchText(term))).filter(Boolean);
+  return buildSelectedRoleTerms(selectedRole);
 };
 
 export const segmentClauses = (text: string): ClauseSegment[] => {
