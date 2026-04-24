@@ -1,6 +1,6 @@
 ﻿import * as assert from 'node:assert/strict';
 
-import { buildAnalysisArtifacts } from './contractAnalysis';
+import { buildAnalysisArtifacts, buildDisputedClauses, segmentClauses } from './contractAnalysis';
 import { normalizeExtractedText, repairMojibakeText } from './textNormalization';
 import { splitStructuredText } from '../components/report/reportText';
 
@@ -70,8 +70,10 @@ assert.equal(
   'Документ содержит 4 пунктов. Для роли "Исполнитель" в фокусе обязательства, сроки, платежи и условия с повышенным риском.',
 );
 assert.equal(russianAnalysis.summary.obligationsForSelectedRole[0], 'Исполнитель обязан оказать услуги и предоставить результат.');
-assert.equal(russianAnalysis.risks[0]?.evidence?.[0], 'Заказчик вправе в одностороннем порядке изменить сроки.');
-assert.equal(russianAnalysis.disputedClauses[0]?.clauseText, 'Заказчик вправе в одностороннем порядке изменить сроки.');
+assert.ok(
+  russianAnalysis.risks.some((risk) => risk.evidence?.some((line) => line.includes('Заказчик вправе в одностороннем порядке изменить сроки.'))),
+);
+assert.equal(russianAnalysis.disputedClauses[0]?.clauseRef, 'overview');
 
 const citizenAnalysis = buildAnalysisArtifacts({
   text: [
@@ -110,6 +112,44 @@ const beneficiaryAnalysis = buildAnalysisArtifacts({
 });
 
 assert.ok(!beneficiaryAnalysis.risks.some((risk) => risk.title === 'Ответственность и возмещение убытков'));
+assert.ok(
+  !beneficiaryAnalysis.summary.obligationsForSelectedRole.some((line) => line.includes('не несет ответственности')),
+);
+
+const explicitDeadlineDispute = buildDisputedClauses(
+  segmentClauses('4.1. Сторона вправе направить уведомление. Срок реализации Этапа 1 составляет 30 календарных дней (1 месяц).'),
+  'ru',
+);
+assert.equal(explicitDeadlineDispute[0]?.clauseRef, 'overview');
+
+const penaltyEvidenceAnalysis = buildAnalysisArtifacts({
+  text: [
+    '4. Гражданин вправе запросить изменение условий обучения.',
+    '4.1. За нарушение срока выхода на работу гражданин уплачивает штраф в размере 50 000 рублей.',
+  ].join('\n\n'),
+  fileName: 'penalty.pdf',
+  selectedRole: 'Гражданин',
+  language: 'ru',
+  warnings: [],
+});
+
+const penaltyRisk = penaltyEvidenceAnalysis.risks.find((risk) => risk.title === 'Штрафы и санкции');
+assert.ok(penaltyRisk);
+assert.ok(penaltyRisk?.evidence?.some((line) => line.includes('штраф')));
+
+const educationAnalysis = buildAnalysisArtifacts({
+  text: [
+    'Гражданин обязуется освоить образовательную программу высшего образования.',
+    'Программа определяется разделом II настоящего договора (далее - характеристики обучения).',
+    'Требования к успеваемости гражданина не устанавливаются.',
+  ].join('\n\n'),
+  fileName: 'education.pdf',
+  selectedRole: 'Гражданин',
+  language: 'ru',
+  warnings: [],
+});
+
+assert.ok(!educationAnalysis.risks.some((risk) => risk.title === 'Неясная приемка результата'));
 
 const normalizedStructuredText = splitStructuredText("Р' договоре есть условия об ответственности. Выявлено в пункте 5.1", 4);
 assert.equal(normalizedStructuredText[0], 'В договоре есть условия об ответственности.');

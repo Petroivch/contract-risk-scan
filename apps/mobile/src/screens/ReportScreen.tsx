@@ -104,10 +104,7 @@ export const ReportScreen = ({ navigation, route }: Props): JSX.Element => {
   const summaryRole = report?.selectedRole ?? selectedRole ?? '';
 
   const summaryOverviewItems = useMemo(() => splitStructuredText(report?.summary.shortDescription ?? '', 6), [report?.summary.shortDescription]);
-  const summaryObligationItems = useMemo(
-    () => (report?.summary.obligationsForSelectedRole ?? []).flatMap((item) => splitStructuredText(item, 3)),
-    [report?.summary.obligationsForSelectedRole],
-  );
+  const summaryObligationItems = useMemo(() => report?.summary.obligationsForSelectedRole ?? [], [report?.summary.obligationsForSelectedRole]);
 
   const loadStateCopy = useMemo(() => {
     switch (language) {

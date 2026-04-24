@@ -16,12 +16,13 @@ const sanitizeReportText = (value: string): string => {
   return collapseWhitespace(value)
     .replace(/(^|[\s(])(?:Р['’`]|Р’|Р)\s+договоре/giu, '$1В договоре')
     .replace(/(^|[\s(])(?:р['’`]|р’|р)\s+договоре/gu, '$1в договоре')
+    .replace(/TXT-[^\p{L}\p{N}]*файл/giu, 'TXT-файл')
     .trim();
 };
 
 const normalizePoint = (value: string): string => {
   return sanitizeReportText(value)
-    .replace(/^[•*-]\s*/u, '')
+    .replace(/^[•▪‣◦*-]\s*/u, '')
     .replace(/^\d+(?:\.\d+)*[.)]\s*/u, '')
     .trim();
 };

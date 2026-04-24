@@ -56,7 +56,7 @@ interface AnalysisArtifacts {
 }
 
 const clauseIdPrefix = 'clause-';
-const maxSummaryItems = 4;
+const maxSummaryItems = 8;
 const maxClauseExcerptLength = 240;
 const shortMojibakeTokenFixes: Record<string, string> = {
   'Р°': 'а',
@@ -426,7 +426,20 @@ const riskRules: RiskRule[] = repairDeepStrings([
   {
     id: 'acceptance',
     severity: 'medium',
-    keywords: ['РїСЂРёРµРјРє', 'Р°РєС‚', 'acceptance', 'sign-off', 'collaudo', 'acceptation', 'recette'],
+    keywords: [
+      'РїСЂРёРµРјРє',
+      'Р°РєС‚ РїСЂРёРµРј',
+      'Р°РєС‚ СЃРґР°С‡',
+      'Р°РєС‚ РѕРєР°Р·Р°РЅ',
+      'РїРѕРґРїРёСЃР°РЅРё Р°РєС‚',
+      'РїРѕРґС‚РІРµСЂР¶РґРµРЅРё РСЂРµР·СѓР»СЊС‚Р°С‚',
+      'acceptance',
+      'sign-off',
+      'sign off',
+      'collaudo',
+      'acceptation',
+      'recette',
+    ],
     title: {
       ru: 'РќРµСЏСЃРЅР°СЏ РїСЂРёРµРјРєР° СЂРµР·СѓР»СЊС‚Р°С‚Р°',
       en: 'Unclear acceptance process',
@@ -532,14 +545,14 @@ const disputeMarkers: DisputeMarker[] = repairDeepStrings([
   {
     id: 'discretionary-right',
     markers: [
-      'РІРїСЂР°РІРµ',
+      'РїРѕ СЃРІРѕРµРјСѓ СѓСЃРјРѕС‚СЂРµРЅРёСЋ',
+      'РїРѕ СЃРѕР±СЃС‚РІРµРЅРЅРѕРјСѓ СѓСЃРјРѕС‚СЂРµРЅРёСЋ',
+      'РЅР° СЃРІРѕРµ СѓСЃРјРѕС‚СЂРµРЅРёРµ',
       'may at its discretion',
       'sole discretion',
       'at its sole discretion',
-      'ha facolta',
       'a sua discrezione',
       'a son unique discretion',
-      'est autorise',
     ],
     reason: {
       ru: 'РћРґРЅР° РёР· СЃС‚РѕСЂРѕРЅ РїРѕР»СѓС‡РёР»Р° РґРёСЃРєСЂРµС†РёРѕРЅРЅРѕРµ РїСЂР°РІРѕ Р±РµР· РґРѕСЃС‚Р°С‚РѕС‡РЅС‹С… РѕРіСЂР°РЅРёС‡РµРЅРёР№.',
@@ -714,6 +727,11 @@ const splitClauseIntoFragments = (text: string): string[] => {
     .filter(Boolean);
 };
 
+const getClauseFragments = (text: string): string[] => {
+  const fragments = splitClauseIntoFragments(text);
+  return fragments.length > 0 ? fragments : [normalizeExtractedText(text)].filter(Boolean);
+};
+
 const scoreLine = (line: string, markers: string[], prioritizedTerms: string[]): number => {
   const normalized = normalizeSearchText(line);
   const markerScore = countMatches(normalized, markers) * 3;
@@ -861,27 +879,23 @@ const collectRoleObligations = (
 ): { roleFound: boolean; items: string[] } => {
   const roleFound = clauses.some((clause) => countMatches(normalizeSearchText(clause.text), roleTerms) > 0);
   const scored = clauses
-    .flatMap((clause, clauseIndex) =>
-      splitClauseIntoFragments(clause.text).map((fragment, fragmentIndex) => {
-        const normalized = normalizeSearchText(fragment);
+    .map((clause, clauseIndex) => {
+      const normalized = normalizeSearchText(clause.text);
         const roleHits = countMatches(normalized, roleTerms);
         const obligationHits = countMatches(normalized, summaryMarkers.obligations);
         const paymentHits = countMatches(normalized, summaryMarkers.payment);
         const deadlineHits = countMatches(normalized, summaryMarkers.deadlines);
-        const liabilityHits = countMatches(normalized, summaryMarkers.liability);
-        const signalHits = obligationHits + paymentHits + deadlineHits + liabilityHits;
-        const excerpt = buildExcerpt(fragment, 280);
+        const signalHits = obligationHits + paymentHits + deadlineHits;
+        const excerpt = buildExcerpt(clause.text, 520);
 
         return {
           clauseIndex,
-          fragmentIndex,
           roleHits,
           signalHits,
-          score: roleHits * 5 + obligationHits * 4 + (paymentHits + deadlineHits + liabilityHits) * 2,
+          score: roleHits * 6 + obligationHits * 4 + (paymentHits + deadlineHits) * 2,
           excerpt,
         };
-      }),
-    )
+      })
     .filter((item) => item.roleHits > 0 && item.signalHits > 0 && item.excerpt);
 
   const items = scored
@@ -893,8 +907,8 @@ const collectRoleObligations = (
       if (left.clauseIndex !== right.clauseIndex) {
         return left.clauseIndex - right.clauseIndex;
       }
-
-      return left.fragmentIndex - right.fragmentIndex;
+ 
+      return 0;
     })
     .map((item) => item.excerpt)
     .slice(0, maxItems);
@@ -1095,38 +1109,45 @@ export const buildRiskItems = (
   >();
 
   for (const clause of clauses) {
-    const normalized = normalizeSearchText(clause.text);
-    for (const rule of riskRules) {
-      if (!containsAny(normalized, rule.keywords)) {
+    for (const fragment of getClauseFragments(clause.text)) {
+      const normalized = normalizeSearchText(fragment);
+      const excerpt = buildExcerpt(fragment, 220);
+      if (!excerpt) {
         continue;
       }
 
-      if (isBeneficialRiskMatch(rule.id, normalized, roleTerms)) {
-        continue;
-      }
-
-      const existing = groupedResults.get(rule.id);
-      const nextMatch = {
-        clauseRef: clause.clauseRef,
-        excerpt: buildExcerpt(clause.text, 200),
-      };
-
-      if (existing) {
-        if (!existing.matches.some((item) => item.clauseRef === nextMatch.clauseRef)) {
-          existing.matches.push(nextMatch);
+      for (const rule of riskRules) {
+        if (!containsAny(normalized, rule.keywords)) {
+          continue;
         }
-      } else {
-        groupedResults.set(rule.id, {
-          rule,
-          matches: [nextMatch],
-        });
+
+        if (isBeneficialRiskMatch(rule.id, normalized, roleTerms)) {
+          continue;
+        }
+
+        const existing = groupedResults.get(rule.id);
+        const nextMatch = {
+          clauseRef: clause.clauseRef,
+          excerpt,
+        };
+
+        if (existing) {
+          if (!existing.matches.some((item) => item.clauseRef === nextMatch.clauseRef && item.excerpt === nextMatch.excerpt)) {
+            existing.matches.push(nextMatch);
+          }
+        } else {
+          groupedResults.set(rule.id, {
+            rule,
+            matches: [nextMatch],
+          });
+        }
       }
     }
   }
 
   for (const { rule, matches } of groupedResults.values()) {
-    const clauseRefs = matches.map((item) => item.clauseRef);
-    const occurrences = clauseRefs.length;
+    const clauseRefs = uniqueStrings(matches.map((item) => item.clauseRef));
+    const occurrences = matches.length;
 
     results.push({
       id: `risk-${results.length + 1}`,
@@ -1188,22 +1209,36 @@ export const buildDisputedClauses = (clauses: ClauseSegment[], language: Support
   const results: DisputedClause[] = [];
   const normalizedLanguage = normalizeLanguage(language);
   const strings = localizedStrings[normalizedLanguage];
+  const seen = new Set<string>();
 
   for (const clause of clauses) {
-    const normalized = normalizeSearchText(clause.text);
-    for (const marker of disputeMarkers) {
-      if (!containsAny(normalized, marker.markers)) {
+    for (const fragment of getClauseFragments(clause.text)) {
+      const normalized = normalizeSearchText(fragment);
+      const excerpt = buildExcerpt(fragment, 220);
+      if (!excerpt) {
         continue;
       }
 
-      results.push({
-        id: `disputed-${results.length + 1}`,
-        clauseRef: clause.clauseRef,
-        clauseText: buildExcerpt(clause.text, 200),
-        whyDisputed: marker.reason[normalizedLanguage],
-        suggestedRewrite: marker.suggestion[normalizedLanguage],
-      });
-      break;
+      for (const marker of disputeMarkers) {
+        if (!containsAny(normalized, marker.markers)) {
+          continue;
+        }
+
+        const key = `${clause.clauseRef}:${marker.id}:${excerpt}`;
+        if (seen.has(key)) {
+          continue;
+        }
+
+        seen.add(key);
+        results.push({
+          id: `disputed-${results.length + 1}`,
+          clauseRef: clause.clauseRef,
+          clauseText: excerpt,
+          whyDisputed: marker.reason[normalizedLanguage],
+          suggestedRewrite: marker.suggestion[normalizedLanguage],
+        });
+        break;
+      }
     }
   }
 

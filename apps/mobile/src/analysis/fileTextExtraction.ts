@@ -29,7 +29,7 @@ const PDF_LENGTH_PATTERN = /\/Length\s+(\d+)/;
 const PDF_OBJECT_PATTERN = /(\d+)\s+(\d+)\s+obj([\s\S]*?)endobj/g;
 const PDF_STREAM_HINT_PATTERN = /\b(?:BT|ET|Tf|Tj|TJ|Tm|Td|TD)\b|['"]/;
 const PDF_STREAM_START_PATTERN = /\bstream(?:\r\n|\n|\r)/;
-const PDF_TEXT_ARRAY_ITEM_PATTERN = /\(([^()]*(?:\\.[^()]*)*)\)|<([0-9A-Fa-f\s]+)>/g;
+const PDF_TEXT_ARRAY_ITEM_PATTERN = /\(([^()]*(?:\\.[^()]*)*)\)|<([0-9A-Fa-f\s]+)>|(-?\d*\.?\d+)/g;
 const PDF_TEXT_ARRAY_PATTERN = /\[(.*?)\]\s*TJ/gs;
 const PDF_TEXT_OBJECT_PATTERN = /\(([^()]*(?:\\.[^()]*)*)\)\s*(?:Tj|'|")/g;
 const XML_TAG_PATTERN = /<[^>]+>/g;
@@ -257,6 +257,42 @@ const sanitizePdfTextCandidate = (value: string): string => {
   return normalizeText(value.replace(/[\r\n\t]+/g, ' '));
 };
 
+const PDF_ARRAY_SPACE_GAP = -140;
+const PDF_ARRAY_LINE_GAP = -900;
+const CYRILLIC_LETTER_PATTERN = /[А-Яа-яЁё]/;
+
+const isWordLikeCharacter = (value: string | undefined): boolean => {
+  return Boolean(value && /[0-9A-Za-zА-Яа-яЁё]/.test(value));
+};
+
+const isOpeningPunctuation = (value: string | undefined): boolean => {
+  return Boolean(value && /[([{"'«„]/.test(value));
+};
+
+const isClosingPunctuation = (value: string | undefined): boolean => {
+  return Boolean(value && /[)\]},"'»“.!?:;%]/.test(value));
+};
+
+const collapseSpacedRussianLetters = (value: string): string => {
+  return value.replace(
+    /(^|[^0-9A-Za-zА-Яа-яЁё])([А-Яа-яЁё](?:\s+[А-Яа-яЁё]){2,})(?=[^0-9A-Za-zА-Яа-яЁё]|$)/g,
+    (_fullMatch, prefix: string, letters: string) => `${prefix}${letters.replace(/\s+/g, '')}`,
+  );
+};
+
+const repairPdfTextLayout = (value: string): string => {
+  return value
+    .replace(/([0-9A-Za-zА-Яа-яЁё])-\s*\n\s*(?=[0-9A-Za-zА-Яа-яЁё])/g, '$1')
+    .replace(/([^\n])\n(?=\s*(?:[-*•▪‣◦]|\d+[.)]|[A-Za-zА-Яа-яЁё][.)])\s+)/g, '$1\n')
+    .split('\n')
+    .map((line) => collapseSpacedRussianLetters(line))
+    .join('\n');
+};
+
+const normalizePdfText = (value: string): string => {
+  return normalizeText(repairPdfTextLayout(value));
+};
+
 const scorePdfTextCandidate = (value: string): number => {
   let score = 0;
 
@@ -291,7 +327,7 @@ const scorePdfTextCandidate = (value: string): number => {
 };
 
 const appendUniqueTextChunk = (target: string[], seen: Set<string>, value: string): void => {
-  const normalized = normalizeText(value);
+  const normalized = normalizePdfText(value);
   if (!normalized || seen.has(normalized)) {
     return;
   }
@@ -474,6 +510,87 @@ const decodePdfString = (value: string, unicodeMaps: PdfUnicodeMap[]): string =>
 
 const decodePdfHexString = (value: string, unicodeMaps: PdfUnicodeMap[]): string => {
   return decodePdfTextBytes(decodePdfHexToBytes(value), unicodeMaps);
+};
+
+const shouldInsertArraySeparator = (
+  currentOutput: string,
+  nextChunk: string,
+  pendingGap: number | null,
+): '' | ' ' | '\n' => {
+  if (!currentOutput) {
+    return '';
+  }
+
+  const previousCharacter = currentOutput[currentOutput.length - 1];
+  const nextCharacter = nextChunk[0];
+
+  if (!previousCharacter || !nextCharacter) {
+    return '';
+  }
+
+  if (/\s/.test(previousCharacter) || /\s/.test(nextCharacter)) {
+    return '';
+  }
+
+  if (pendingGap !== null) {
+    if (pendingGap <= PDF_ARRAY_LINE_GAP) {
+      return '\n';
+    }
+
+    if (pendingGap <= PDF_ARRAY_SPACE_GAP) {
+      return ' ';
+    }
+  }
+
+  if (isOpeningPunctuation(nextCharacter) || isClosingPunctuation(previousCharacter)) {
+    return '';
+  }
+
+  if (isClosingPunctuation(nextCharacter)) {
+    return '';
+  }
+
+  if (isOpeningPunctuation(previousCharacter)) {
+    return '';
+  }
+
+  if (isWordLikeCharacter(previousCharacter) && isWordLikeCharacter(nextCharacter)) {
+    if (CYRILLIC_LETTER_PATTERN.test(previousCharacter) && CYRILLIC_LETTER_PATTERN.test(nextCharacter)) {
+      return '';
+    }
+
+    return pendingGap !== null && pendingGap <= PDF_ARRAY_SPACE_GAP / 2 ? ' ' : '';
+  }
+
+  return '';
+};
+
+const decodePdfTextArray = (value: string, unicodeMaps: PdfUnicodeMap[]): string => {
+  let output = '';
+  let pendingGap: number | null = null;
+
+  for (const item of value.matchAll(PDF_TEXT_ARRAY_ITEM_PATTERN)) {
+    if (item[3]) {
+      const numericGap = Number.parseFloat(item[3]);
+      pendingGap = Number.isFinite(numericGap) ? numericGap : pendingGap;
+      continue;
+    }
+
+    const decoded = item[1]
+      ? decodePdfString(item[1], unicodeMaps)
+      : item[2]
+        ? decodePdfHexString(item[2], unicodeMaps)
+        : '';
+
+    if (!decoded) {
+      continue;
+    }
+
+    output += `${shouldInsertArraySeparator(output, decoded, pendingGap)}${decoded}`;
+    pendingGap = null;
+  }
+
+  return output;
 };
 
 const normalizePdfFilterName = (value: string): string => {
@@ -667,26 +784,12 @@ const extractPdfText = (binary: string, unicodeMaps: PdfUnicodeMap[]): string =>
   }
 
   for (const match of binary.matchAll(PDF_TEXT_ARRAY_PATTERN)) {
-    const rawItems = Array.from((match[1] ?? '').matchAll(PDF_TEXT_ARRAY_ITEM_PATTERN));
-    const decoded = rawItems
-      .map((item) => {
-        if (item[1]) {
-          return decodePdfString(item[1], unicodeMaps);
-        }
-
-        if (item[2]) {
-          return decodePdfHexString(item[2], unicodeMaps);
-        }
-
-        return '';
-      })
-      .filter(Boolean)
-      .join(' ');
+    const decoded = decodePdfTextArray(match[1] ?? '', unicodeMaps);
 
     appendUniqueTextChunk(textChunks, seen, decoded);
   }
 
-  return normalizeText(textChunks.join('\n'));
+  return normalizePdfText(textChunks.join('\n'));
 };
 
 const extractPdfDocumentText = (binary: string): string => {
@@ -707,7 +810,7 @@ const extractPdfDocumentText = (binary: string): string => {
     appendUniqueTextChunk(textChunks, seen, extractPdfText(stream, unicodeMaps));
   }
 
-  return normalizeText(textChunks.join('\n'));
+  return normalizePdfText(textChunks.join('\n'));
 };
 
 const extractDocxText = async (uri: string): Promise<string> => {
