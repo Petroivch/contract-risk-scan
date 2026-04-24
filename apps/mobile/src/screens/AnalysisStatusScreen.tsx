@@ -1,6 +1,6 @@
 ﻿import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 
 import { useApiClient } from '../api/ApiClientProvider';
@@ -43,6 +43,7 @@ export const AnalysisStatusScreen = ({ navigation, route }: Props): JSX.Element 
   const api = useApiClient();
   const { analysisId, selectedRole } = route.params;
   const [status, setStatus] = useState<AnalysisStatusType | null>(null);
+  const [reportPrefetchFailed, setReportPrefetchFailed] = useState(false);
   const didNavigateToReport = useRef(false);
 
   const refreshStatus = useCallback(async () => {
@@ -71,12 +72,38 @@ export const AnalysisStatusScreen = ({ navigation, route }: Props): JSX.Element 
       return;
     }
 
-    didNavigateToReport.current = true;
-    navigation.replace('Report', {
-      analysisId,
-      selectedRole,
-    });
-  }, [analysisId, navigation, selectedRole, status?.status]);
+    let cancelled = false;
+
+    const openReadyReport = async (): Promise<void> => {
+      try {
+        await api.getReport({ analysisId, selectedRole }, { language });
+        if (cancelled) {
+          return;
+        }
+
+        didNavigateToReport.current = true;
+        navigation.replace('Report', {
+          analysisId,
+          selectedRole,
+        });
+      } catch {
+        if (!cancelled) {
+          setReportPrefetchFailed(true);
+          setTimeout(() => {
+            if (!cancelled) {
+              void openReadyReport();
+            }
+          }, Math.min(appConfig.api.statusPollIntervalMs, 1500));
+        }
+      }
+    };
+
+    void openReadyReport();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [analysisId, api, language, navigation, selectedRole, status?.status]);
 
   const updatedAtLabel = useMemo(() => {
     if (!status?.updatedAt) {
@@ -128,17 +155,6 @@ export const AnalysisStatusScreen = ({ navigation, route }: Props): JSX.Element 
     ];
   }, [status?.status, t]);
 
-  const openReport = (): void => {
-    navigation.replace('Report', {
-      analysisId,
-      selectedRole,
-    });
-  };
-
-  const goBackToUpload = (): void => {
-    navigation.navigate('UploadWithRole');
-  };
-
   return (
     <ScreenShell title={t('analysis.title')} subtitle={t('analysis.analysisId', { analysisId })} scroll>
       <View style={styles.heroCard}>
@@ -187,23 +203,19 @@ export const AnalysisStatusScreen = ({ navigation, route }: Props): JSX.Element 
           ))}
         </View>
       </View>
-
-      <View style={styles.actionRow}>
-        <Pressable style={styles.secondaryButton} onPress={refreshStatus}>
-          <Text style={styles.secondaryButtonText}>{t('analysis.refreshNow')}</Text>
-        </Pressable>
-        <Pressable style={styles.secondaryButton} onPress={goBackToUpload}>
-          <Text style={styles.secondaryButtonText}>{t('common.backToUpload')}</Text>
-        </Pressable>
-      </View>
-
-      <Pressable
-        style={[styles.primaryButton, status?.status !== 'completed' && styles.disabled]}
-        onPress={openReport}
-        disabled={status?.status !== 'completed'}
-      >
-        <Text style={styles.primaryButtonText}>{t('analysis.openReport')}</Text>
-      </Pressable>
+      {reportPrefetchFailed ? (
+        <View style={styles.inlineNotice}>
+          <Text style={styles.inlineNoticeText}>
+            {language === 'ru'
+              ? 'Не удалось подготовить отчет с первого раза. Пробуем восстановить данные автоматически.'
+              : language === 'it'
+                ? 'Non e stato possibile preparare subito il report. Proviamo a ripristinare i dati automaticamente.'
+                : language === 'fr'
+                  ? 'Le rapport n a pas pu etre prepare du premier coup. Nous tentons de restaurer les donnees automatiquement.'
+                  : 'The report could not be prepared on the first attempt. We are trying to restore the data automatically.'}
+          </Text>
+        </View>
+      ) : null}
     </ScreenShell>
   );
 };
@@ -350,41 +362,18 @@ const styles = StyleSheet.create({
     lineHeight: typography.lineHeight.body,
     fontWeight: typography.weight.semibold,
   },
-  actionRow: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: spacing.sm,
-  },
-  secondaryButton: {
-    flex: 1,
-    minWidth: 148,
-    minHeight: 48,
+  inlineNotice: {
     borderRadius: radius.lg,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: colors.accentSoft,
     borderWidth: 1,
     borderColor: colors.border,
+    backgroundColor: colors.surface,
+    padding: spacing.md,
+    ...shadow.card,
   },
-  secondaryButtonText: {
-    color: colors.accentStrong,
-    fontWeight: typography.weight.bold,
+  inlineNoticeText: {
+    color: colors.textSecondary,
+    fontWeight: typography.weight.semibold,
     fontSize: typography.size.bodySm,
-  },
-  disabled: {
-    opacity: 0.45,
-  },
-  primaryButton: {
-    minHeight: 56,
-    borderRadius: radius.lg,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: colors.accent,
-    ...shadow.raised,
-  },
-  primaryButtonText: {
-    color: colors.textOnAccent,
-    fontWeight: typography.weight.bold,
-    fontSize: typography.size.body,
+    lineHeight: typography.lineHeight.bodySm,
   },
 });

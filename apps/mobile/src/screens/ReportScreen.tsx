@@ -29,16 +29,40 @@ export const ReportScreen = ({ route }: Props): JSX.Element => {
   const api = useApiClient();
 
   const { analysisId, selectedRole } = route.params;
-  const [activeTab, setActiveTab] = useState<ReportTab>('summary');
+  const [activeTab, setActiveTab] = useState<ReportTab>('risks');
   const [report, setReport] = useState<AnalysisReport | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [loadFailed, setLoadFailed] = useState(false);
 
   useEffect(() => {
+    let cancelled = false;
+
     const load = async (): Promise<void> => {
-      const nextReport = await api.getReport({ analysisId, selectedRole }, { language });
-      setReport(nextReport);
+      setIsLoading(true);
+      setLoadFailed(false);
+
+      try {
+        const nextReport = await api.getReport({ analysisId, selectedRole }, { language });
+        if (!cancelled) {
+          setReport(nextReport);
+        }
+      } catch {
+        if (!cancelled) {
+          setReport(null);
+          setLoadFailed(true);
+        }
+      } finally {
+        if (!cancelled) {
+          setIsLoading(false);
+        }
+      }
     };
 
-    load();
+    void load();
+
+    return () => {
+      cancelled = true;
+    };
   }, [analysisId, api, language, selectedRole]);
 
   const tabs: { id: ReportTab; label: string }[] = [
@@ -78,6 +102,40 @@ export const ReportScreen = ({ route }: Props): JSX.Element => {
   const disputedCount = report?.disputedClauses.length ?? 0;
   const summaryRole = report?.selectedRole ?? selectedRole ?? '';
 
+  const loadStateCopy = useMemo(() => {
+    switch (language) {
+      case 'ru':
+        return {
+          loadingTitle: 'Готовим отчет',
+          loadingText: 'Подтягиваем результат анализа и собираем карточки риска.',
+          errorTitle: 'Отчет пока недоступен',
+          errorText: 'Не удалось загрузить сохраненный результат анализа. Повторите запуск анализа для этого договора.',
+        };
+      case 'it':
+        return {
+          loadingTitle: 'Preparazione del report',
+          loadingText: 'Stiamo caricando il risultato dell analisi e compilando le schede di rischio.',
+          errorTitle: 'Report non disponibile',
+          errorText: 'Non e stato possibile caricare il risultato salvato. Ripetere l analisi per questo contratto.',
+        };
+      case 'fr':
+        return {
+          loadingTitle: 'Preparation du rapport',
+          loadingText: 'Nous chargeons le resultat de l analyse et compilons les fiches de risque.',
+          errorTitle: 'Rapport indisponible',
+          errorText: 'Impossible de charger le resultat enregistre. Relancez l analyse pour ce contrat.',
+        };
+      case 'en':
+      default:
+        return {
+          loadingTitle: 'Preparing the report',
+          loadingText: 'Loading the analysis result and building the risk cards.',
+          errorTitle: 'Report unavailable',
+          errorText: 'The saved analysis result could not be loaded. Run the analysis again for this contract.',
+        };
+    }
+  }, [language]);
+
   const renderHighlightedSummaryText = (value: string): JSX.Element => {
     if (!value || !summaryRole || !value.includes(summaryRole)) {
       return <Text style={styles.summaryText}>{value}</Text>;
@@ -96,24 +154,46 @@ export const ReportScreen = ({ route }: Props): JSX.Element => {
     );
   };
 
+  if (isLoading) {
+    return (
+      <ScreenShell title={t('report.title')} subtitle={t('report.analysisId', { analysisId })} scroll>
+        <View style={styles.loadStateCard}>
+          <Text style={styles.loadStateTitle}>{loadStateCopy.loadingTitle}</Text>
+          <Text style={styles.loadStateText}>{loadStateCopy.loadingText}</Text>
+        </View>
+      </ScreenShell>
+    );
+  }
+
+  if (loadFailed || !report) {
+    return (
+      <ScreenShell title={t('report.title')} subtitle={t('report.analysisId', { analysisId })} scroll>
+        <View style={styles.loadStateCard}>
+          <Text style={styles.loadStateTitle}>{loadStateCopy.errorTitle}</Text>
+          <Text style={styles.loadStateText}>{loadStateCopy.errorText}</Text>
+        </View>
+      </ScreenShell>
+    );
+  }
+
   return (
     <ScreenShell title={t('report.title')} subtitle={t('report.analysisId', { analysisId })} scroll>
       <View style={styles.summaryStrip}>
         <View style={styles.summaryHeader}>
           <View style={styles.summaryCopy}>
             <Text style={styles.summaryKicker}>{t('report.summaryKicker')}</Text>
-            <Text style={styles.summaryTitle}>{report?.summary.title ?? t('common.loading')}</Text>
-            {renderHighlightedSummaryText(report?.summary.shortDescription ?? '')}
+            <Text style={styles.summaryTitle}>{report.summary.title}</Text>
+            {renderHighlightedSummaryText(report.summary.shortDescription)}
           </View>
           <StatusChip label={t('report.summaryTone')} tone="brand" style={styles.summaryToneChip} />
         </View>
 
         <View style={styles.summaryMetaRow}>
-          <StatusChip label={report?.summary.contractType ?? t('report.contractTypeFallback')} tone="soft" />
+          <StatusChip label={report.summary.contractType || t('report.contractTypeFallback')} tone="soft" />
           <StatusChip label={t('report.generatedAtLabel', { value: generatedAtLabel })} tone="neutral" />
         </View>
 
-        <RoleBadge role={report?.selectedRole ?? selectedRole ?? ''} />
+        <RoleBadge role={report.selectedRole} />
       </View>
 
       <View style={styles.statsRow}>
@@ -147,7 +227,7 @@ export const ReportScreen = ({ route }: Props): JSX.Element => {
         <View style={styles.sectionCard}>
           <Text style={styles.sectionIntro}>{t('report.summaryIntro')}</Text>
           <Text style={styles.sectionTitle}>{t('report.obligationsTitle')}</Text>
-          {(report?.summary.obligationsForSelectedRole ?? []).map((item) => (
+          {report.summary.obligationsForSelectedRole.map((item) => (
             <View key={item} style={styles.bulletRow}>
               <View style={styles.bulletDot} />
               <Text style={styles.bulletItem}>{item}</Text>
@@ -175,8 +255,8 @@ export const ReportScreen = ({ route }: Props): JSX.Element => {
             <Text style={styles.sectionTitle}>{t('report.disputedTitle')}</Text>
             <Text style={styles.sectionIntro}>{t('report.disputedIntro')}</Text>
           </View>
-          {(report?.disputedClauses ?? []).length === 0 ? <Text style={styles.emptyState}>{t('report.disputedEmpty')}</Text> : null}
-          {(report?.disputedClauses ?? []).map((clause) => (
+          {report.disputedClauses.length === 0 ? <Text style={styles.emptyState}>{t('report.disputedEmpty')}</Text> : null}
+          {report.disputedClauses.map((clause) => (
             <DisputedCard key={clause.id} item={clause} />
           ))}
         </View>
@@ -186,6 +266,26 @@ export const ReportScreen = ({ route }: Props): JSX.Element => {
 };
 
 const styles = StyleSheet.create({
+  loadStateCard: {
+    borderRadius: radius.xl,
+    backgroundColor: colors.surface,
+    borderWidth: 1,
+    borderColor: colors.border,
+    padding: spacing.lg,
+    gap: spacing.sm,
+    ...shadow.card,
+  },
+  loadStateTitle: {
+    color: colors.textPrimary,
+    fontSize: typography.size.subtitle,
+    lineHeight: typography.lineHeight.subtitle,
+    fontWeight: typography.weight.bold,
+  },
+  loadStateText: {
+    color: colors.textSecondary,
+    fontSize: typography.size.body,
+    lineHeight: typography.lineHeight.body,
+  },
   summaryStrip: {
     borderRadius: radius.xl,
     backgroundColor: colors.surface,

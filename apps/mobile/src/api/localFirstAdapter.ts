@@ -136,6 +136,18 @@ export const createLocalFirstAdapter = (
           await ignoreCacheError(() =>
             localCache.upsertHistoryItem(buildHistoryItem(response.analysisId, payload, response.status.status)),
           );
+          await ignoreCacheError(async () => {
+            const eagerReport = sanitizeReport(
+              await remoteClient.getReport(
+                {
+                  analysisId: response.analysisId,
+                  selectedRole: payload.selectedRole,
+                },
+                meta,
+              ),
+            );
+            await localCache.saveReport(eagerReport);
+          });
         }
 
         return response;
@@ -192,26 +204,17 @@ export const createLocalFirstAdapter = (
     },
 
     getReport: async (input, meta?: RequestMeta) => {
-      const queuedUpload = config.enableLocalFirst ? await localCache.getQueuedUpload(input.analysisId) : null;
+      const queuedUpload = config.enableLocalFirst
+        ? await (async (): Promise<QueuedUploadItem | null> => {
+            try {
+              return await localCache.getQueuedUpload(input.analysisId);
+            } catch {
+              return null;
+            }
+          })()
+        : null;
       const requestedLanguage = meta?.language ?? queuedUpload?.language;
       const requestedRole = input.selectedRole ?? queuedUpload?.selectedRole;
-
-      if (
-        queuedUpload &&
-        ((requestedLanguage && requestedLanguage !== queuedUpload.language) ||
-          (requestedRole && requestedRole !== queuedUpload.selectedRole))
-      ) {
-        const { report } = await runCompletedLocalAnalysis(
-          input.analysisId,
-          buildUploadPayloadFromQueue(queuedUpload, {
-            selectedRole: requestedRole,
-            language: requestedLanguage,
-          }),
-          { ...meta, language: requestedLanguage },
-        );
-
-        return report;
-      }
 
       try {
         const report = sanitizeReport(await remoteClient.getReport(input, meta));
@@ -220,12 +223,48 @@ export const createLocalFirstAdapter = (
           await ignoreCacheError(() => localCache.saveReport(report));
         }
 
+        if (
+          queuedUpload &&
+          ((requestedLanguage && requestedLanguage !== queuedUpload.language) ||
+            (requestedRole && requestedRole !== queuedUpload.selectedRole))
+        ) {
+          const { report: regeneratedReport } = await runCompletedLocalAnalysis(
+            input.analysisId,
+            buildUploadPayloadFromQueue(queuedUpload, {
+              selectedRole: requestedRole,
+              language: requestedLanguage,
+            }),
+            { ...meta, language: requestedLanguage },
+          );
+
+          return regeneratedReport;
+        }
+
         return report;
       } catch (error) {
         if (shouldUseFallback(config.enableLocalFirst)) {
-          const cached = await localCache.getReport(input.analysisId);
+          let cached: AnalysisReport | null = null;
+          try {
+            cached = await localCache.getReport(input.analysisId);
+          } catch {
+            cached = null;
+          }
+
           if (cached) {
             return sanitizeReport(cached);
+          }
+
+          if (queuedUpload?.localFileUri) {
+            const { report } = await runCompletedLocalAnalysis(
+              input.analysisId,
+              buildUploadPayloadFromQueue(queuedUpload, {
+                selectedRole: requestedRole,
+                language: requestedLanguage,
+              }),
+              { ...meta, language: requestedLanguage },
+            );
+
+            return report;
           }
         }
 
