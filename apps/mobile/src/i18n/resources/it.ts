@@ -11,6 +11,7 @@
     openReport: 'Apri report',
     loading: 'Caricamento...',
     backToUpload: 'Torna al caricamento',
+    back: 'Indietro',
     details: 'Dettagli',
     close: 'Chiudi',
   },

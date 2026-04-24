@@ -11,6 +11,7 @@
     openReport: 'Ouvrir le rapport',
     loading: 'Chargement...',
     backToUpload: 'Retour au chargement',
+    back: 'Retour',
     details: 'Details',
     close: 'Fermer',
   },

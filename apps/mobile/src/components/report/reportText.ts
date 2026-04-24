@@ -12,16 +12,22 @@ const evidencePrefixes: Record<SupportedLanguage, string[]> = {
   fr: ['detecte dans la clause', 'detecte dans'],
 };
 
-const normalizePoint = (value: string): string => {
+const sanitizeReportText = (value: string): string => {
   return collapseWhitespace(value)
+    .replace(/(^|[\s(])(?:Р['’`]|Р’|Р)\s+договоре/giu, '$1В договоре')
+    .replace(/(^|[\s(])(?:р['’`]|р’|р)\s+договоре/gu, '$1в договоре')
+    .trim();
+};
+
+const normalizePoint = (value: string): string => {
+  return sanitizeReportText(value)
     .replace(/^[•*-]\s*/u, '')
     .replace(/^\d+(?:\.\d+)*[.)]\s*/u, '')
-    .replace(/\bР['’`]\s+договоре/giu, 'В договоре')
     .trim();
 };
 
 export const splitStructuredText = (value: string, maxItems = 8): string[] => {
-  const normalized = collapseWhitespace(value);
+  const normalized = sanitizeReportText(value);
   if (!normalized) {
     return [];
   }
@@ -40,7 +46,7 @@ export const splitInlineEvidence = (
   value: string,
   language: SupportedLanguage,
 ): { primaryText: string; evidenceItems: string[] } => {
-  const normalized = collapseWhitespace(value);
+  const normalized = sanitizeReportText(value);
   if (!normalized) {
     return { primaryText: '', evidenceItems: [] };
   }

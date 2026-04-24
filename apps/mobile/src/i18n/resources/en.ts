@@ -11,6 +11,7 @@
     openReport: 'Open report',
     loading: 'Loading...',
     backToUpload: 'Back to upload',
+    back: 'Back',
     details: 'Details',
     close: 'Close',
   },

@@ -1,12 +1,14 @@
-import { useMemo, useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
+import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { useMemo } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 
 import type { DisputedClause } from '../../api/types';
 import { useAppLanguage } from '../../i18n/LanguageProvider';
+import type { RootStackParamList } from '../../navigation/types';
 import { colors, radius, shadow, spacing, typography } from '../../theme/tokens';
 import { StatusChip } from '../StatusChip';
-import { ReportDetailModal, type ReportDetailSection } from '../report/ReportDetailModal';
 import { splitInlineEvidence, splitStructuredText } from '../report/reportText';
 
 interface DisputedCardProps {
@@ -14,9 +16,9 @@ interface DisputedCardProps {
 }
 
 export const DisputedCard = ({ item }: DisputedCardProps): JSX.Element => {
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { t } = useTranslation();
   const { language } = useAppLanguage();
-  const [isDetailOpen, setIsDetailOpen] = useState(false);
 
   const { primaryText, evidenceItems } = useMemo(() => splitInlineEvidence(item.whyDisputed, language), [item.whyDisputed, language]);
   const disputedItems = useMemo(
@@ -26,7 +28,7 @@ export const DisputedCard = ({ item }: DisputedCardProps): JSX.Element => {
   const fragmentItems = useMemo(() => splitStructuredText(item.clauseText ?? '', 4), [item.clauseText]);
   const rewriteItems = useMemo(() => splitStructuredText(item.suggestedRewrite, 4), [item.suggestedRewrite]);
 
-  const detailSections: ReportDetailSection[] = useMemo(
+  const detailSections = useMemo(
     () => [
       { title: t('report.sections.whereFound'), items: [t('report.clause', { value: item.clauseRef })] },
       { title: t('report.sections.disputedPoints'), items: disputedItems },
@@ -82,16 +84,17 @@ export const DisputedCard = ({ item }: DisputedCardProps): JSX.Element => {
         </View>
       </ScrollView>
 
-      <Pressable style={styles.detailsButton} onPress={() => setIsDetailOpen(true)}>
+      <Pressable
+        style={styles.detailsButton}
+        onPress={() =>
+          navigation.navigate('ReportItemDetail', {
+            title: t('report.clause', { value: item.clauseRef }),
+            sections: detailSections,
+          })
+        }
+      >
         <Text style={styles.detailsButtonText}>{t('common.details')}</Text>
       </Pressable>
-
-      <ReportDetailModal
-        visible={isDetailOpen}
-        title={t('report.clause', { value: item.clauseRef })}
-        sections={detailSections}
-        onClose={() => setIsDetailOpen(false)}
-      />
     </View>
   );
 };

@@ -10,7 +10,6 @@ import { RiskCard } from '../components/cards/RiskCard';
 import { RoleBadge } from '../components/RoleBadge';
 import { StatusChip } from '../components/StatusChip';
 import { ScreenShell } from '../components/layout/ScreenShell';
-import { ReportDetailModal, type ReportDetailSection } from '../components/report/ReportDetailModal';
 import { splitStructuredText } from '../components/report/reportText';
 import { useAppLanguage } from '../i18n/LanguageProvider';
 import type { RootStackParamList } from '../navigation/types';
@@ -25,7 +24,7 @@ const riskRank: Record<'low' | 'medium' | 'high', number> = {
   low: 2,
 };
 
-export const ReportScreen = ({ route }: Props): JSX.Element => {
+export const ReportScreen = ({ navigation, route }: Props): JSX.Element => {
   const { t } = useTranslation();
   const { language } = useAppLanguage();
   const api = useApiClient();
@@ -35,11 +34,6 @@ export const ReportScreen = ({ route }: Props): JSX.Element => {
   const [report, setReport] = useState<AnalysisReport | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [loadFailed, setLoadFailed] = useState(false);
-  const [summaryDetail, setSummaryDetail] = useState<{
-    title: string;
-    subtitle?: string;
-    sections: ReportDetailSection[];
-  } | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -168,7 +162,7 @@ export const ReportScreen = ({ route }: Props): JSX.Element => {
   };
 
   const openSummaryDetail = (title: string, items: string[], subtitle?: string): void => {
-    setSummaryDetail({
+    navigation.navigate('ReportItemDetail', {
       title,
       subtitle,
       sections: [{ title, items }],
@@ -183,12 +177,7 @@ export const ReportScreen = ({ route }: Props): JSX.Element => {
   );
 
   const renderSummaryTab = (): JSX.Element => (
-    <ScrollView
-      style={styles.tabContent}
-      contentContainerStyle={styles.tabContentBody}
-      nestedScrollEnabled
-      showsVerticalScrollIndicator={false}
-    >
+    <View style={styles.tabContent}>
       <View style={styles.sectionNote}>
         <Text style={styles.sectionTitle}>{t('report.tabs.summary')}</Text>
         <Text style={styles.sectionIntro}>{t('report.summaryIntro')}</Text>
@@ -239,16 +228,11 @@ export const ReportScreen = ({ route }: Props): JSX.Element => {
           <Text style={styles.detailsButtonText}>{t('common.details')}</Text>
         </Pressable>
       </View>
-    </ScrollView>
+    </View>
   );
 
   const renderRisksTab = (): JSX.Element => (
-    <ScrollView
-      style={styles.tabContent}
-      contentContainerStyle={styles.tabContentBody}
-      nestedScrollEnabled
-      showsVerticalScrollIndicator={false}
-    >
+    <View style={styles.tabContent}>
       <View style={styles.sectionNote}>
         <Text style={styles.sectionTitle}>{t('report.risksTitle')}</Text>
         <Text style={styles.sectionIntro}>{t('report.risksIntro')}</Text>
@@ -257,16 +241,11 @@ export const ReportScreen = ({ route }: Props): JSX.Element => {
       {sortedRisks.map((risk) => (
         <RiskCard key={risk.id} item={risk} />
       ))}
-    </ScrollView>
+    </View>
   );
 
   const renderDisputedTab = (): JSX.Element => (
-    <ScrollView
-      style={styles.tabContent}
-      contentContainerStyle={styles.tabContentBody}
-      nestedScrollEnabled
-      showsVerticalScrollIndicator={false}
-    >
+    <View style={styles.tabContent}>
       <View style={styles.sectionNote}>
         <Text style={styles.sectionTitle}>{t('report.disputedTitle')}</Text>
         <Text style={styles.sectionIntro}>{t('report.disputedIntro')}</Text>
@@ -275,7 +254,7 @@ export const ReportScreen = ({ route }: Props): JSX.Element => {
       {report?.disputedClauses.map((clause) => (
         <DisputedCard key={clause.id} item={clause} />
       ))}
-    </ScrollView>
+    </View>
   );
 
   if (isLoading || loadFailed || !report) {
@@ -340,14 +319,6 @@ export const ReportScreen = ({ route }: Props): JSX.Element => {
           {activeTab === 'disputed' ? renderDisputedTab() : null}
         </View>
       </View>
-
-      <ReportDetailModal
-        visible={summaryDetail !== null}
-        title={summaryDetail?.title ?? ''}
-        subtitle={summaryDetail?.subtitle}
-        sections={summaryDetail?.sections ?? []}
-        onClose={() => setSummaryDetail(null)}
-      />
     </ScreenShell>
   );
 };
@@ -488,11 +459,7 @@ const styles = StyleSheet.create({
     gap: spacing.md,
   },
   tabContent: {
-    width: '100%',
-  },
-  tabContentBody: {
     gap: spacing.md,
-    paddingBottom: spacing.md,
   },
   sectionCard: {
     borderRadius: radius.xl,

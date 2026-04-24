@@ -1,12 +1,14 @@
-import { useMemo, useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
+import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { useMemo } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 
 import type { RiskItem } from '../../api/types';
 import { useAppLanguage } from '../../i18n/LanguageProvider';
+import type { RootStackParamList } from '../../navigation/types';
 import { colors, radius, shadow, spacing, typography } from '../../theme/tokens';
 import { StatusChip } from '../StatusChip';
-import { ReportDetailModal, type ReportDetailSection } from '../report/ReportDetailModal';
 import { buildClauseItems, splitInlineEvidence, splitStructuredText } from '../report/reportText';
 
 interface RiskCardProps {
@@ -20,9 +22,9 @@ const severityToneMap = {
 } as const;
 
 export const RiskCard = ({ item }: RiskCardProps): JSX.Element => {
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { t } = useTranslation();
   const { language } = useAppLanguage();
-  const [isDetailOpen, setIsDetailOpen] = useState(false);
 
   const occurrences = item.occurrences ?? 1;
   const clauseLabel =
@@ -47,7 +49,7 @@ export const RiskCard = ({ item }: RiskCardProps): JSX.Element => {
   );
   const recommendationItems = useMemo(() => splitStructuredText(item.recommendation, 4), [item.recommendation]);
 
-  const detailSections: ReportDetailSection[] = useMemo(
+  const detailSections = useMemo(
     () => [
       { title: t('report.sections.whereFound'), items: clauseItems },
       { title: t('report.sections.riskPoints'), items: findingItems },
@@ -103,17 +105,18 @@ export const RiskCard = ({ item }: RiskCardProps): JSX.Element => {
         </View>
       </ScrollView>
 
-      <Pressable style={styles.detailsButton} onPress={() => setIsDetailOpen(true)}>
+      <Pressable
+        style={styles.detailsButton}
+        onPress={() =>
+          navigation.navigate('ReportItemDetail', {
+            title: item.title,
+            subtitle: clauseLabel,
+            sections: detailSections,
+          })
+        }
+      >
         <Text style={styles.detailsButtonText}>{t('common.details')}</Text>
       </Pressable>
-
-      <ReportDetailModal
-        visible={isDetailOpen}
-        title={item.title}
-        subtitle={clauseLabel}
-        sections={detailSections}
-        onClose={() => setIsDetailOpen(false)}
-      />
     </View>
   );
 };

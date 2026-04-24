@@ -11,6 +11,7 @@
     openReport: 'Открыть отчет',
     loading: 'Загрузка...',
     backToUpload: 'К загрузке',
+    back: 'Назад',
     details: 'Подробнее',
     close: 'Закрыть',
   },

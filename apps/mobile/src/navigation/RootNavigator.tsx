@@ -2,6 +2,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { AnalysisStatusScreen } from '../screens/AnalysisStatusScreen';
+import { ReportItemDetailScreen } from '../screens/ReportItemDetailScreen';
 import { ReportScreen } from '../screens/ReportScreen';
 import { UploadWithRoleScreen } from '../screens/UploadWithRoleScreen';
 import { colors } from '../theme/tokens';
@@ -22,6 +23,7 @@ export const RootNavigator = (): JSX.Element => {
         <Stack.Screen name="UploadWithRole" component={UploadWithRoleScreen} />
         <Stack.Screen name="AnalysisStatus" component={AnalysisStatusScreen} />
         <Stack.Screen name="Report" component={ReportScreen} />
+        <Stack.Screen name="ReportItemDetail" component={ReportItemDetailScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -1,3 +1,8 @@
+export interface ReportDetailSectionParam {
+  title: string;
+  items: string[];
+}
+
 export type RootStackParamList = {
   UploadWithRole: undefined;
   AnalysisStatus: {
@@ -7,5 +12,10 @@ export type RootStackParamList = {
   Report: {
     analysisId: string;
     selectedRole?: string;
+  };
+  ReportItemDetail: {
+    title: string;
+    subtitle?: string;
+    sections: ReportDetailSectionParam[];
   };
 };
