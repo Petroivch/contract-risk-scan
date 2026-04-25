@@ -5,13 +5,12 @@ apply plugin: "com.facebook.react"
 def projectRoot = rootDir.getAbsoluteFile().getParentFile().getAbsolutePath()
 def repoRoot = new File(projectRoot).getParentFile().getParentFile().getAbsolutePath()
 
-def resolveNodeExecutable() {
+def resolveNodeExecutable = {
   def envNode = providers.environmentVariable("CONTRACT_RISK_NODE").orNull
   if (envNode != null && !envNode.trim().isEmpty()) {
     return envNode
   }
 
-  def repoRoot = new File(projectRoot).getParentFile().getParentFile()
   def bundledNode = new File(repoRoot, "builds/tools/node-v20.20.2-win-x64/node.exe")
   if (bundledNode.exists()) {
     return bundledNode.getAbsolutePath()

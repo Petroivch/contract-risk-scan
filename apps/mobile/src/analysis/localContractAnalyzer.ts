@@ -1,12 +1,12 @@
 import type { AnalysisReport, UploadContractRequest } from '../api/types';
 import type { SupportedLanguage } from '../i18n/types';
-import { defaultLanguage } from '../i18n/types';
+import { defaultLanguage, isSupportedLanguage } from '../i18n/types';
 
 import { buildAnalysisArtifacts } from './contractAnalysis';
 import { extractContractText } from './fileTextExtraction';
 
-const normalizeLanguage = (language?: SupportedLanguage): SupportedLanguage =>
-  language ?? defaultLanguage;
+const normalizeLanguage = (language?: SupportedLanguage | string): SupportedLanguage =>
+  language && isSupportedLanguage(language) ? language : defaultLanguage;
 
 const unexpectedExtractionWarnings: Record<SupportedLanguage, string> = {
   ru: 'Не удалось полностью разобрать файл локально. Отчет сформирован по доступному тексту и служебным признакам документа.',
@@ -93,7 +93,8 @@ export const analyzeContractLocally = async (
       language,
       warnings: extractionWarnings,
     });
-  } catch {
+  } catch (error) {
+    console.warn('Local contract analysis failed', error);
     return buildSafeFallbackReport(analysisId, payload, language, extractionWarnings);
   }
 

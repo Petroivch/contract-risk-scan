@@ -1,5 +1,9 @@
 apps/mobile/.expo/
 apps/mobile/.analysis-tmp/
+apps/mobile/.tmp-corpus-check/
+apps/mobile/.tmp-real-smoke/
+apps/mobile/.tmp-smoke/
+apps/mobile/tmp-doc-tools/
 apps/mobile/node_modules/
 apps/mobile/expo-dev.log
 apps/mobile/expo-web.log

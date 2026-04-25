@@ -2,7 +2,12 @@
 import type { SupportedLanguage } from '../i18n/types';
 import { defaultLanguage } from '../i18n/types';
 
-import { normalizeExtractedText, normalizeSearchText, repairMojibakeText, uniqueStrings } from './textNormalization';
+import {
+  normalizeExtractedText,
+  normalizeSearchText,
+  repairMojibakeText,
+  uniqueStrings,
+} from './textNormalization';
 
 export interface ClauseSegment {
   clauseId: string;
@@ -88,19 +93,19 @@ const maxSummaryItems = 12;
 const maxClauseExcerptLength = 240;
 const shortMojibakeTokenFixes: Record<string, string> = {
   'Р°': 'а',
-  'Рђ': 'А',
-  'РІ': 'в',
+  Рђ: 'А',
+  РІ: 'в',
   'Р’': 'В',
-  'Рё': 'и',
+  Рё: 'и',
   'Р': 'И',
-  'СЃ': 'с',
-  'РЎ': 'С',
-  'Рє': 'к',
-  'Рљ': 'К',
-  'Рѕ': 'о',
-  'Рћ': 'О',
-  'Сѓ': 'у',
-  'РЈ': 'У',
+  СЃ: 'с',
+  РЎ: 'С',
+  Рє: 'к',
+  Рљ: 'К',
+  Рѕ: 'о',
+  Рћ: 'О',
+  Сѓ: 'у',
+  РЈ: 'У',
 };
 
 const repairStaticString = (value: string): string => {
@@ -135,6 +140,19 @@ const repairDeepStrings = <T>(value: T): T => {
   return value;
 };
 
+const appendMappedItems = <TInput, TOutput>(
+  source: TInput[],
+  mapper: (item: TInput, index: number) => TOutput[],
+): TOutput[] => {
+  const output: TOutput[] = [];
+
+  for (let index = 0; index < source.length; index += 1) {
+    output.push(...mapper(source[index], index));
+  }
+
+  return output;
+};
+
 const localizedStrings: Record<SupportedLanguage, AnalysisLocalization> = repairDeepStrings({
   ru: {
     contractTypes: {
@@ -156,13 +174,17 @@ const localizedStrings: Record<SupportedLanguage, AnalysisLocalization> = repair
       'РЇРІРЅС‹Рµ РѕР±СЏР·Р°С‚РµР»СЊСЃС‚РІР° РґР»СЏ РІС‹Р±СЂР°РЅРЅРѕР№ СЂРѕР»Рё РЅРµ РЅР°Р№РґРµРЅС‹, РЅСѓР¶РµРЅ СЂСѓС‡РЅРѕР№ РїСЂРѕСЃРјРѕС‚СЂ СЂР°Р·РґРµР»РѕРІ СЃРѕ СЃСЂРѕРєР°РјРё, РѕРїР»Р°С‚РѕР№ Рё РѕС‚РІРµС‚СЃС‚РІРµРЅРЅРѕСЃС‚СЊСЋ.',
     disputedFallback:
       'РЇРІРЅС‹Рµ СЃРїРѕСЂРЅС‹Рµ С„РѕСЂРјСѓР»РёСЂРѕРІРєРё РЅРµ РЅР°Р№РґРµРЅС‹, РЅРѕ РґРѕРіРѕРІРѕСЂ РІСЃРµ СЂР°РІРЅРѕ С‚СЂРµР±СѓРµС‚ СЂСѓС‡РЅРѕР№ СЋСЂРёРґРёС‡РµСЃРєРѕР№ РїСЂРѕРІРµСЂРєРё.',
-    disputedFallbackSuggestion: 'РџСЂРѕРІРµСЂСЊС‚Рµ СЂР°Р·РґРµР»С‹ РѕР± РѕС‚РІРµС‚СЃС‚РІРµРЅРЅРѕСЃС‚Рё, РїСЂРёРµРјРєРµ, РёР·РјРµРЅРµРЅРёРё СѓСЃР»РѕРІРёР№ Рё СЂР°СЃС‚РѕСЂР¶РµРЅРёРё.',
+    disputedFallbackSuggestion:
+      'РџСЂРѕРІРµСЂСЊС‚Рµ СЂР°Р·РґРµР»С‹ РѕР± РѕС‚РІРµС‚СЃС‚РІРµРЅРЅРѕСЃС‚Рё, РїСЂРёРµРјРєРµ, РёР·РјРµРЅРµРЅРёРё СѓСЃР»РѕРІРёР№ Рё СЂР°СЃС‚РѕСЂР¶РµРЅРёРё.',
     lowSignalRiskTitle: 'РќРёР·РєРёР№ СЃРёРіРЅР°Р» СЂРёСЃРєР°',
-    lowSignalRiskDescription: 'РЇРІРЅС‹Рµ РјР°СЂРєРµСЂС‹ РІС‹СЃРѕРєРѕРіРѕ СЂРёСЃРєР° РЅРµ РЅР°Р№РґРµРЅС‹, РЅРѕ РґРѕРєСѓРјРµРЅС‚ С‚СЂРµР±СѓРµС‚ СЂСѓС‡РЅРѕР№ РїСЂРѕРІРµСЂРєРё РѕР±С‰РёС… СѓСЃР»РѕРІРёР№.',
+    lowSignalRiskDescription:
+      'РЇРІРЅС‹Рµ РјР°СЂРєРµСЂС‹ РІС‹СЃРѕРєРѕРіРѕ СЂРёСЃРєР° РЅРµ РЅР°Р№РґРµРЅС‹, РЅРѕ РґРѕРєСѓРјРµРЅС‚ С‚СЂРµР±СѓРµС‚ СЂСѓС‡РЅРѕР№ РїСЂРѕРІРµСЂРєРё РѕР±С‰РёС… СѓСЃР»РѕРІРёР№.',
     lowSignalRiskRecommendation:
       'РџСЂРѕРІРµСЂСЊС‚Рµ Р»РёРјРёС‚С‹ РѕС‚РІРµС‚СЃС‚РІРµРЅРЅРѕСЃС‚Рё, РїРѕСЂСЏРґРѕРє РїСЂРёРµРјРєРё, РѕРїР»Р°С‚Сѓ Рё РїСЂР°РІРѕ РѕРґРЅРѕСЃС‚РѕСЂРѕРЅРЅРёС… РґРµР№СЃС‚РІРёР№.',
-    extractionRiskTitle: 'РћРіСЂР°РЅРёС‡РµРЅРЅРѕРµ РєР°С‡РµСЃС‚РІРѕ РёР·РІР»РµС‡РµРЅРёСЏ С‚РµРєСЃС‚Р°',
-    extractionRiskRecommendation: 'Для более точного офлайн-анализа используйте текстовый PDF, DOCX или TXT-файл.',
+    extractionRiskTitle:
+      'РћРіСЂР°РЅРёС‡РµРЅРЅРѕРµ РєР°С‡РµСЃС‚РІРѕ РёР·РІР»РµС‡РµРЅРёСЏ С‚РµРєСЃС‚Р°',
+    extractionRiskRecommendation:
+      'Для более точного офлайн-анализа используйте текстовый PDF, DOCX или TXT-файл.',
   },
   en: {
     contractTypes: {
@@ -182,13 +204,18 @@ const localizedStrings: Record<SupportedLanguage, AnalysisLocalization> = repair
       'The document contains {clausesCount} clauses. For the "{role}" role, the analysis prioritizes obligations, deadlines, payment terms, and elevated-risk conditions.',
     obligationsFallback:
       'No explicit obligations were found for the selected role. Review deadlines, payment, and liability sections manually.',
-    disputedFallback: 'No explicit disputed wording was found, but the contract still requires legal review.',
-    disputedFallbackSuggestion: 'Review liability, acceptance, change control, and termination sections.',
+    disputedFallback:
+      'No explicit disputed wording was found, but the contract still requires legal review.',
+    disputedFallbackSuggestion:
+      'Review liability, acceptance, change control, and termination sections.',
     lowSignalRiskTitle: 'Low-signal risk',
-    lowSignalRiskDescription: 'No explicit high-risk markers were detected, but the document still needs manual review.',
-    lowSignalRiskRecommendation: 'Check liability caps, acceptance mechanics, payment terms, and unilateral rights.',
+    lowSignalRiskDescription:
+      'No explicit high-risk markers were detected, but the document still needs manual review.',
+    lowSignalRiskRecommendation:
+      'Check liability caps, acceptance mechanics, payment terms, and unilateral rights.',
     extractionRiskTitle: 'Limited text extraction quality',
-    extractionRiskRecommendation: 'For more accurate offline analysis, use a text-based PDF, DOCX, or TXT file.',
+    extractionRiskRecommendation:
+      'For more accurate offline analysis, use a text-based PDF, DOCX, or TXT file.',
   },
   it: {
     contractTypes: {
@@ -210,13 +237,16 @@ const localizedStrings: Record<SupportedLanguage, AnalysisLocalization> = repair
       'Non sono stati trovati obblighi espliciti per il ruolo selezionato. Verificare manualmente termini, pagamenti e responsabilita.',
     disputedFallback:
       'Non sono state trovate formule chiaramente controverse, ma il contratto richiede comunque revisione legale.',
-    disputedFallbackSuggestion: 'Controllare responsabilita, accettazione, variazioni contrattuali e risoluzione.',
+    disputedFallbackSuggestion:
+      'Controllare responsabilita, accettazione, variazioni contrattuali e risoluzione.',
     lowSignalRiskTitle: 'Rischio a basso segnale',
     lowSignalRiskDescription:
       'Non sono stati rilevati marcatori di rischio elevato, ma il documento richiede comunque verifica manuale.',
-    lowSignalRiskRecommendation: 'Controllare limiti di responsabilita, accettazione, pagamento e diritti unilaterali.',
+    lowSignalRiskRecommendation:
+      'Controllare limiti di responsabilita, accettazione, pagamento e diritti unilaterali.',
     extractionRiskTitle: 'Qualita limitata di estrazione del testo',
-    extractionRiskRecommendation: 'Per un analisi offline piu precisa usare PDF testuale, DOCX o TXT.',
+    extractionRiskRecommendation:
+      'Per un analisi offline piu precisa usare PDF testuale, DOCX o TXT.',
   },
   fr: {
     contractTypes: {
@@ -238,13 +268,16 @@ const localizedStrings: Record<SupportedLanguage, AnalysisLocalization> = repair
       'Aucune obligation explicite n a ete detectee pour le role choisi. Verifiez manuellement les delais, paiements et responsabilites.',
     disputedFallback:
       'Aucune formulation manifestement litigieuse n a ete detectee, mais le contrat exige quand meme une revue juridique.',
-    disputedFallbackSuggestion: 'Verifier les sections responsabilite, acceptation, modification contractuelle et resiliation.',
+    disputedFallbackSuggestion:
+      'Verifier les sections responsabilite, acceptation, modification contractuelle et resiliation.',
     lowSignalRiskTitle: 'Risque a faible signal',
     lowSignalRiskDescription:
       'Aucun marqueur de risque eleve n a ete detecte, mais le document necessite une verification manuelle.',
-    lowSignalRiskRecommendation: 'Verifier plafonds de responsabilite, acceptation, paiement et droits unilateraux.',
+    lowSignalRiskRecommendation:
+      'Verifier plafonds de responsabilite, acceptation, paiement et droits unilateraux.',
     extractionRiskTitle: 'Qualite limitee de l extraction de texte',
-    extractionRiskRecommendation: 'Pour une analyse hors ligne plus fiable, utilisez un PDF texte, DOCX ou TXT.',
+    extractionRiskRecommendation:
+      'Pour une analyse hors ligne plus fiable, utilisez un PDF texte, DOCX ou TXT.',
   },
 });
 
@@ -655,14 +688,7 @@ const hybridSignals = repairDeepStrings({
     'damages',
     'responsabil',
   ],
-  liabilityHard: [
-    'убыт',
-    'возмещ',
-    'компенсац',
-    'ущерб',
-    'indemn',
-    'damages',
-  ],
+  liabilityHard: ['убыт', 'возмещ', 'компенсац', 'ущерб', 'indemn', 'damages'],
   unilateralSupport: [
     'односторон',
     'sole discretion',
@@ -1198,15 +1224,7 @@ const contractTypeDetectors: Record<string, string[]> = repairDeepStrings({
     'confidentialite',
     'confidentiality',
   ],
-  loan: [
-    'займ',
-    'заем',
-    'заимодав',
-    'заемщик',
-    'loan agreement',
-    'borrower',
-    'lender',
-  ],
+  loan: ['займ', 'заем', 'заимодав', 'заемщик', 'loan agreement', 'borrower', 'lender'],
   cession: [
     'цесс',
     'уступк',
@@ -1344,7 +1362,10 @@ const hasLeadingRoleMarker = (
   }
 
   return markerPositions.some((markerPosition) =>
-    rolePositions.some((rolePosition) => rolePosition <= markerPosition && markerPosition - rolePosition <= maxDistance),
+    rolePositions.some(
+      (rolePosition) =>
+        rolePosition <= markerPosition && markerPosition - rolePosition <= maxDistance,
+    ),
   );
 };
 
@@ -1360,13 +1381,19 @@ const splitClauseIntoFragments = (text: string): string[] => {
       '$1:\n',
     )
     .replace(/([:.;])(?=(?:\d+(?:\.\d+){1,5}[.)]?)(?:\s|\p{Lu}))/gu, '$1\n')
-    .replace(/((?:(?:clause|section|article|пункт|раздел)\s+)?\d+(?:\.\d+){1,5}[.)]?)(?=\p{Lu})/giu, '$1\n')
+    .replace(
+      /((?:(?:clause|section|article|пункт|раздел)\s+)?\d+(?:\.\d+){1,5}[.)]?)(?=\p{Lu})/giu,
+      '$1\n',
+    )
     .replace(/([.!?])\s+(?=\p{Lu})/gu, '$1\n')
     .replace(
       /([.!?])\s+((?:(?:clause|section|article|пункт|раздел)\s+)?\d+(?:\.\d+){0,5}[.)]?)(?=\s+\p{Lu})/gu,
       '$1\n$2',
     )
-    .replace(/\s+((?:(?:clause|section|article|пункт|раздел)\s+)?\d+(?:\.\d+){0,5}[.)]?)(?=\s+\p{Lu})/gu, '\n$1');
+    .replace(
+      /\s+((?:(?:clause|section|article|пункт|раздел)\s+)?\d+(?:\.\d+){0,5}[.)]?)(?=\s+\p{Lu})/gu,
+      '\n$1',
+    );
 
   return prepared
     .split(/\n+|[;\u2022]+/u)
@@ -1384,10 +1411,17 @@ const isContinuationListFragment = (fragment: string): boolean => {
 };
 
 const isActionLikeContinuation = (fragment: string, normalizedText: string): boolean => {
-  return isContinuationListFragment(fragment) || countMatches(normalizedText, summaryMarkers.obligations) > 0;
+  return (
+    isContinuationListFragment(fragment) ||
+    countMatches(normalizedText, summaryMarkers.obligations) > 0
+  );
 };
 
-const isForeignRoleLeadFragment = (fragment: string, normalizedText: string, roleTerms: string[]): boolean => {
+const isForeignRoleLeadFragment = (
+  fragment: string,
+  normalizedText: string,
+  roleTerms: string[],
+): boolean => {
   if (countMatches(normalizedText, roleTerms) > 0 && hasRoleActionLead(normalizedText, roleTerms)) {
     return false;
   }
@@ -1423,11 +1457,17 @@ const hasRoleActionLead = (normalizedText: string, roleTerms: string[]): boolean
       return false;
     }
 
-    return actionPositions.some((actionPosition) => actionPosition >= rolePosition && actionPosition - rolePosition <= 96);
+    return actionPositions.some(
+      (actionPosition) => actionPosition >= rolePosition && actionPosition - rolePosition <= 96,
+    );
   });
 };
 
-const isRoleLeadFragment = (fragment: string, normalizedText: string, roleTerms: string[]): boolean => {
+const isRoleLeadFragment = (
+  fragment: string,
+  normalizedText: string,
+  roleTerms: string[],
+): boolean => {
   if (countMatches(normalizedText, roleTerms) <= 0) {
     return false;
   }
@@ -1463,9 +1503,16 @@ const scoreLine = (line: string, markers: string[], prioritizedTerms: string[]):
 const hasExplicitNumericSignal = (text: string): boolean => /\b\d+(?:[.,]\d+)?\b/u.test(text);
 
 const hasMonetarySignal = (text: string): boolean =>
-  /(?:\b\d[\d\s.,]*\s*(?:руб|рубл|₽|%|percent|eur|usd|€|\$)\b)|(?:\b\d[\d\s.,]*\s*(?:тыс|млн)\b)/iu.test(text);
+  /(?:\b\d[\d\s.,]*\s*(?:руб|рубл|₽|%|percent|eur|usd|€|\$)\b)|(?:\b\d[\d\s.,]*\s*(?:тыс|млн)\b)/iu.test(
+    text,
+  );
 
-const scoreRiskContext = (ruleId: string, normalizedText: string, excerpt: string, roleTerms: string[]): number => {
+const scoreRiskContext = (
+  ruleId: string,
+  normalizedText: string,
+  excerpt: string,
+  roleTerms: string[],
+): number => {
   const roleHits = countMatches(normalizedText, roleTerms);
   const actionHits = countMatches(normalizedText, hybridSignals.roleAction);
   const roleActsAsSubject = roleHits > 0 && hasRoleActionLead(normalizedText, roleTerms);
@@ -1490,7 +1537,13 @@ const scoreRiskContext = (ruleId: string, normalizedText: string, excerpt: strin
     case 'penalties': {
       const supportHits = countMatches(normalizedText, hybridSignals.penaltySupport);
       const triggerHits = countMatches(normalizedText, hybridSignals.penaltyTrigger);
-      const roleScore = roleActsAsSubject ? roleHits : roleHits > 0 ? -Math.min(roleHits * 2, 4) : actionHits > 0 ? -6 : 0;
+      const roleScore = roleActsAsSubject
+        ? roleHits
+        : roleHits > 0
+          ? -Math.min(roleHits * 2, 4)
+          : actionHits > 0
+            ? -6
+            : 0;
       return (
         supportHits * 4 +
         triggerHits * 3 +
@@ -1504,7 +1557,13 @@ const scoreRiskContext = (ruleId: string, normalizedText: string, excerpt: strin
       const aggravatingHits = countMatches(normalizedText, hybridSignals.liabilityAggravating);
       const hardHits = countMatches(normalizedText, hybridSignals.liabilityHard);
       const neutralHits = countMatches(normalizedText, hybridSignals.liabilityNeutral);
-      const roleScore = roleActsAsSubject ? roleHits : roleHits > 0 ? -Math.min(roleHits * 2, 4) : actionHits > 0 ? -5 : 0;
+      const roleScore = roleActsAsSubject
+        ? roleHits
+        : roleHits > 0
+          ? -Math.min(roleHits * 2, 4)
+          : actionHits > 0
+            ? -5
+            : 0;
       return (
         supportHits * 2 +
         aggravatingHits * 5 +
@@ -1520,7 +1579,14 @@ const scoreRiskContext = (ruleId: string, normalizedText: string, excerpt: strin
       const changeHits = countMatches(normalizedText, hybridSignals.unilateralChange);
       const remedialHits = countMatches(normalizedText, hybridSignals.unilateralRemedial);
       const negativeHits = countMatches(normalizedText, hybridSignals.unilateralNegative);
-      return supportHits * 4 + changeHits * 4 + roleHits + actionHits - remedialHits * 6 - negativeHits * 8;
+      return (
+        supportHits * 4 +
+        changeHits * 4 +
+        roleHits +
+        actionHits -
+        remedialHits * 6 -
+        negativeHits * 8
+      );
     }
     case 'auto-renewal': {
       const supportHits = countMatches(normalizedText, hybridSignals.autoRenewalSupport);
@@ -1531,7 +1597,11 @@ const scoreRiskContext = (ruleId: string, normalizedText: string, excerpt: strin
   }
 };
 
-const meetsRiskThreshold = (ruleId: string, totalScore: number, normalizedText: string): boolean => {
+const meetsRiskThreshold = (
+  ruleId: string,
+  totalScore: number,
+  normalizedText: string,
+): boolean => {
   switch (ruleId) {
     case 'acceptance':
       return (
@@ -1544,7 +1614,8 @@ const meetsRiskThreshold = (ruleId: string, totalScore: number, normalizedText: 
       return (
         totalScore >= 8 &&
         countMatches(normalizedText, hybridSignals.penaltySupport) >= 1 &&
-        (countMatches(normalizedText, hybridSignals.penaltyTrigger) > 0 || hasMonetarySignal(normalizedText))
+        (countMatches(normalizedText, hybridSignals.penaltyTrigger) > 0 ||
+          hasMonetarySignal(normalizedText))
       );
     case 'liability':
       return (
@@ -1587,14 +1658,21 @@ const scoreDisputeContext = (markerId: string, normalizedText: string, excerpt: 
     }
     case 'discretionary-right': {
       const remedialHits = countMatches(normalizedText, hybridSignals.unilateralRemedial);
-      return (countMatches(normalizedText, hybridSignals.unilateralSupport) > 0 ? 3 : 0) - remedialHits * 4;
+      return (
+        (countMatches(normalizedText, hybridSignals.unilateralSupport) > 0 ? 3 : 0) -
+        remedialHits * 4
+      );
     }
     default:
       return hasExplicitNumericSignal(excerpt) ? 1 : 0;
   }
 };
 
-const meetsDisputeThreshold = (markerId: string, totalScore: number, normalizedText: string): boolean => {
+const meetsDisputeThreshold = (
+  markerId: string,
+  totalScore: number,
+  normalizedText: string,
+): boolean => {
   switch (markerId) {
     case 'reasonable-time':
       return totalScore >= 3 && countMatches(normalizedText, hybridSignals.preciseTimeline) === 0;
@@ -1607,7 +1685,9 @@ const meetsDisputeThreshold = (markerId: string, totalScore: number, normalizedT
         countMatches(normalizedText, hybridSignals.futureAgreementRoutine) === 0
       );
     case 'discretionary-right':
-      return totalScore >= 4 && countMatches(normalizedText, hybridSignals.unilateralRemedial) === 0;
+      return (
+        totalScore >= 4 && countMatches(normalizedText, hybridSignals.unilateralRemedial) === 0
+      );
     default:
       return totalScore >= 3;
   }
@@ -1630,7 +1710,9 @@ const countNearbyMarkerPairs = (
   }
 
   return sourcePositions.reduce((total, sourcePosition) => {
-    const hasNearbyTarget = targetPositions.some((targetPosition) => Math.abs(sourcePosition - targetPosition) <= maxDistance);
+    const hasNearbyTarget = targetPositions.some(
+      (targetPosition) => Math.abs(sourcePosition - targetPosition) <= maxDistance,
+    );
     return total + (hasNearbyTarget ? 1 : 0);
   }, 0);
 };
@@ -1721,7 +1803,8 @@ const buildRiskCandidates = (clauses: ClauseSegment[], roleTerms: string[]): Ris
 
         if (
           rule.id === 'acceptance' &&
-          (isHeadingLike(fragment) || countMatches(normalizedText, hybridSignals.acceptanceNegative) >= 2)
+          (isHeadingLike(fragment) ||
+            countMatches(normalizedText, hybridSignals.acceptanceNegative) >= 2)
         ) {
           continue;
         }
@@ -1758,14 +1841,30 @@ const buildRiskCandidates = (clauses: ClauseSegment[], roleTerms: string[]): Ris
   return candidates;
 };
 
-const rerankRiskCandidates = (candidates: RiskCandidate[], roleTerms: string[]): RiskCandidate[] => {
+const rerankRiskCandidates = (
+  candidates: RiskCandidate[],
+  roleTerms: string[],
+): RiskCandidate[] => {
   return candidates.map((candidate) => {
-    const fragmentContextScore = scoreRiskContext(candidate.rule.id, candidate.normalizedText, candidate.excerpt, roleTerms);
+    const fragmentContextScore = scoreRiskContext(
+      candidate.rule.id,
+      candidate.normalizedText,
+      candidate.excerpt,
+      roleTerms,
+    );
     const clauseContextScore = Math.trunc(
-      scoreRiskContext(candidate.rule.id, candidate.normalizedClauseText, candidate.excerpt, roleTerms) / 2,
+      scoreRiskContext(
+        candidate.rule.id,
+        candidate.normalizedClauseText,
+        candidate.excerpt,
+        roleTerms,
+      ) / 2,
     );
     const roleProximityScore =
-      roleTerms.length > 0 ? countNearbyMarkerPairs(candidate.normalizedText, roleTerms, candidate.rule.keywords, 88) * 2 : 0;
+      roleTerms.length > 0
+        ? countNearbyMarkerPairs(candidate.normalizedText, roleTerms, candidate.rule.keywords, 88) *
+          2
+        : 0;
     const actionProximityScore = countNearbyMarkerPairs(
       candidate.normalizedText,
       candidate.rule.keywords,
@@ -1787,7 +1886,9 @@ const rerankRiskCandidates = (candidates: RiskCandidate[], roleTerms: string[]):
   });
 };
 
-const selectRiskMatches = (candidates: RiskCandidate[]): Map<string, { rule: RiskRule; matches: RiskCandidate[] }> => {
+const selectRiskMatches = (
+  candidates: RiskCandidate[],
+): Map<string, { rule: RiskRule; matches: RiskCandidate[] }> => {
   const groupedResults = new Map<string, { rule: RiskRule; matches: RiskCandidate[] }>();
 
   for (const candidate of candidates.sort(compareRiskCandidates)) {
@@ -1797,7 +1898,11 @@ const selectRiskMatches = (candidates: RiskCandidate[]): Map<string, { rule: Ris
 
     const existing = groupedResults.get(candidate.rule.id);
     if (existing) {
-      if (!existing.matches.some((item) => item.clauseRef === candidate.clauseRef && item.excerpt === candidate.excerpt)) {
+      if (
+        !existing.matches.some(
+          (item) => item.clauseRef === candidate.clauseRef && item.excerpt === candidate.excerpt,
+        )
+      ) {
         existing.matches.push(candidate);
       }
     } else {
@@ -1852,9 +1957,14 @@ const buildDisputeCandidates = (clauses: ClauseSegment[]): DisputeCandidate[] =>
 
 const rerankDisputeCandidates = (candidates: DisputeCandidate[]): DisputeCandidate[] => {
   return candidates.map((candidate) => {
-    const fragmentContextScore = scoreDisputeContext(candidate.marker.id, candidate.normalizedText, candidate.excerpt);
+    const fragmentContextScore = scoreDisputeContext(
+      candidate.marker.id,
+      candidate.normalizedText,
+      candidate.excerpt,
+    );
     const clauseContextScore = Math.trunc(
-      scoreDisputeContext(candidate.marker.id, candidate.normalizedClauseText, candidate.excerpt) / 2,
+      scoreDisputeContext(candidate.marker.id, candidate.normalizedClauseText, candidate.excerpt) /
+        2,
     );
     const actionProximityScore = countNearbyMarkerPairs(
       candidate.normalizedText,
@@ -1862,7 +1972,11 @@ const rerankDisputeCandidates = (candidates: DisputeCandidate[]): DisputeCandida
       hybridSignals.roleAction,
       96,
     );
-    const contextualScore = fragmentContextScore + clauseContextScore + actionProximityScore + scoreExcerptFocus(candidate.excerpt);
+    const contextualScore =
+      fragmentContextScore +
+      clauseContextScore +
+      actionProximityScore +
+      scoreExcerptFocus(candidate.excerpt);
 
     return {
       ...candidate,
@@ -1876,7 +1990,9 @@ const selectDisputeCandidates = (candidates: DisputeCandidate[]): DisputeCandida
   const bestByClauseExcerpt = new Map<string, DisputeCandidate>();
 
   for (const candidate of candidates.sort(compareDisputeCandidates)) {
-    if (!meetsDisputeThreshold(candidate.marker.id, candidate.totalScore, candidate.normalizedText)) {
+    if (
+      !meetsDisputeThreshold(candidate.marker.id, candidate.totalScore, candidate.normalizedText)
+    ) {
       continue;
     }
 
@@ -1962,7 +2078,13 @@ export const segmentClauses = (text: string): ClauseSegment[] => {
     .map((clause) => clause.trim())
     .filter(Boolean);
 
-  const clauses = rawClauses.length > 0 ? rawClauses : normalizedText.split('\n').map((clause) => clause.trim()).filter(Boolean);
+  const clauses =
+    rawClauses.length > 0
+      ? rawClauses
+      : normalizedText
+          .split('\n')
+          .map((clause) => clause.trim())
+          .filter(Boolean);
   return clauses.map((clause, index) => ({
     clauseId: `${clauseIdPrefix}${index + 1}`,
     clauseRef: buildClauseReference(clause, index),
@@ -2023,8 +2145,14 @@ export const collectLines = (
   return scored.map((item) => item.line).slice(0, maxItems);
 };
 
-const collectRoleLedBlockItems = (clauses: ClauseSegment[], roleTerms: string[], maxItems: number): string[] => {
-  const filteredRoleTerms = uniqueStrings(roleTerms).filter(Boolean).sort((left, right) => right.length - left.length);
+const collectRoleLedBlockItems = (
+  clauses: ClauseSegment[],
+  roleTerms: string[],
+  maxItems: number,
+): string[] => {
+  const filteredRoleTerms = uniqueStrings(roleTerms)
+    .filter(Boolean)
+    .sort((left, right) => right.length - left.length);
   if (filteredRoleTerms.length === 0) {
     return [];
   }
@@ -2047,7 +2175,10 @@ const collectRoleLedBlockItems = (clauses: ClauseSegment[], roleTerms: string[],
   );
   let match: RegExpExecArray | null;
   while ((match = blockStartPattern.exec(source)) !== null) {
-    const rawBlock = source.slice(match.index + match[0].length, match.index + match[0].length + 12000);
+    const rawBlock = source.slice(
+      match.index + match[0].length,
+      match.index + match[0].length + 12000,
+    );
     const stopMatch = rawBlock.match(blockStopPattern);
     const headerClauseRef = match[1]?.replace(/[.)]$/u, '').trim();
     const siblingStopPattern = (() => {
@@ -2061,28 +2192,38 @@ const collectRoleLedBlockItems = (clauses: ClauseSegment[], roleTerms: string[],
       }
 
       if (parts.length === 1) {
-        return new RegExp(String.raw`\n\s*(?!${escapeRegExp(parts[0])}(?:[.)]|\b))\d+[.)]?\s+\p{Lu}`, 'u');
+        return new RegExp(
+          String.raw`\n\s*(?!${escapeRegExp(parts[0])}(?:[.)]|\b))\d+[.)]?\s+\p{Lu}`,
+          'u',
+        );
       }
 
-      const parentPath = parts.slice(0, -1).map((part) => escapeRegExp(part)).join('\\.');
+      const parentPath = parts
+        .slice(0, -1)
+        .map((part) => escapeRegExp(part))
+        .join('\\.');
       const currentLeaf = escapeRegExp(parts[parts.length - 1]);
-      return new RegExp(String.raw`\n\s*${parentPath}\.(?!${currentLeaf}(?:[.)]|\b))\d+[.)]?\s+\p{Lu}`, 'u');
+      return new RegExp(
+        String.raw`\n\s*${parentPath}\.(?!${currentLeaf}(?:[.)]|\b))\d+[.)]?\s+\p{Lu}`,
+        'u',
+      );
     })();
     const siblingStopMatch = siblingStopPattern ? rawBlock.match(siblingStopPattern) : null;
     const stopIndex = Math.min(
       stopMatch?.index ?? Number.POSITIVE_INFINITY,
       siblingStopMatch?.index ?? Number.POSITIVE_INFINITY,
     );
-    const block = normalizeExtractedText(Number.isFinite(stopIndex) ? rawBlock.slice(0, stopIndex) : rawBlock);
+    const block = normalizeExtractedText(
+      Number.isFinite(stopIndex) ? rawBlock.slice(0, stopIndex) : rawBlock,
+    );
     if (!block) {
       continue;
     }
 
     const blockItems: string[] = [];
-    for (const fragment of block
-      .split(/\n+|[;\u2022]+/u)
-      .flatMap((line) => splitClauseIntoFragments(line))
-    ) {
+    for (const fragment of appendMappedItems(block.split(/\n+|[;\u2022]+/u), (line) =>
+      splitClauseIntoFragments(line),
+    )) {
       const normalizedFragment = normalizeSearchText(fragment);
       if (isForeignRoleLeadFragment(fragment, normalizedFragment, roleTerms)) {
         break;
@@ -2119,8 +2260,10 @@ const collectRoleObligations = (
   roleTerms: string[],
   maxItems: number,
 ): { roleFound: boolean; items: string[] } => {
-  const roleFound = clauses.some((clause) => countMatches(normalizeSearchText(clause.text), roleTerms) > 0);
-  const scored = clauses.flatMap((clause, clauseIndex) => {
+  const roleFound = clauses.some(
+    (clause) => countMatches(normalizeSearchText(clause.text), roleTerms) > 0,
+  );
+  const scored = appendMappedItems(clauses, (clause, clauseIndex) => {
     const fragments = getClauseFragments(clause.text);
     const candidates: Array<{
       clauseIndex: number;
@@ -2143,7 +2286,11 @@ const collectRoleObligations = (
       const roleLead = isRoleLeadFragment(fragment, normalized, roleTerms);
       const foreignRoleLead = isForeignRoleLeadFragment(fragment, normalized, roleTerms);
       const continuationHits =
-        carryRole && !foreignRoleLead && roleHits === 0 && exclusionHits === 0 && isActionLikeContinuation(fragment, normalized)
+        carryRole &&
+        !foreignRoleLead &&
+        roleHits === 0 &&
+        exclusionHits === 0 &&
+        isActionLikeContinuation(fragment, normalized)
           ? 1
           : 0;
       const effectiveRoleHits = roleHits > 0 && roleActsAsSubject ? roleHits : continuationHits;
@@ -2157,7 +2304,11 @@ const collectRoleObligations = (
           fragmentIndex,
           roleHits: effectiveRoleHits,
           signalHits,
-          score: effectiveRoleHits * 6 + obligationHits * 4 + (paymentHits + deadlineHits) * 2 + continuationHits * 2,
+          score:
+            effectiveRoleHits * 6 +
+            obligationHits * 4 +
+            (paymentHits + deadlineHits) * 2 +
+            continuationHits * 2,
         });
       }
 
@@ -2201,7 +2352,9 @@ const collectRoleObligations = (
 
   const normalizedItems = uniqueStrings(items);
   const roleLedBlockItems = collectRoleLedBlockItems(clauses, roleTerms, maxItems);
-  const explicitRoleItems = normalizedItems.filter((item) => hasRoleActionLead(normalizeSearchText(item), roleTerms));
+  const explicitRoleItems = normalizedItems.filter((item) =>
+    hasRoleActionLead(normalizeSearchText(item), roleTerms),
+  );
   const mergedItems =
     roleLedBlockItems.length > 0
       ? uniqueStrings([...roleLedBlockItems, ...explicitRoleItems]).slice(0, maxItems)
@@ -2235,7 +2388,9 @@ const buildClauseReference = (text: string, index: number): string => {
     return numberedMatch[1];
   }
 
-  const labeledMatch = normalized.match(/^\s*(?:clause|section|article|пункт|раздел)\s+(\d+(?:\.\d+){0,5})/iu);
+  const labeledMatch = normalized.match(
+    /^\s*(?:clause|section|article|пункт|раздел)\s+(\d+(?:\.\d+){0,5})/iu,
+  );
   if (labeledMatch?.[1]) {
     return labeledMatch[1];
   }
@@ -2269,9 +2424,15 @@ const trimClauseLead = (text: string): string => {
 
 const findEmbeddedClauseBoundary = (text: string): number => {
   const match =
-    /[.!?]((?:(?:clause|section|article|пункт|раздел)\s+)?\d+(?:\.\d+){0,5}[.)]?)(?=\s*\p{Lu})/u.exec(text) ??
-    /[.!?]\s+((?:(?:clause|section|article|пункт|раздел)\s+)?\d+(?:\.\d+){0,5}[.)]?)(?=\s+\p{Lu})/u.exec(text) ??
-    /\s+((?:(?:clause|section|article|пункт|раздел)\s+)?\d+(?:\.\d+){0,5}[.)]?)(?=\s+\p{Lu})/u.exec(text);
+    /[.!?]((?:(?:clause|section|article|пункт|раздел)\s+)?\d+(?:\.\d+){0,5}[.)]?)(?=\s*\p{Lu})/u.exec(
+      text,
+    ) ??
+    /[.!?]\s+((?:(?:clause|section|article|пункт|раздел)\s+)?\d+(?:\.\d+){0,5}[.)]?)(?=\s+\p{Lu})/u.exec(
+      text,
+    ) ??
+    /\s+((?:(?:clause|section|article|пункт|раздел)\s+)?\d+(?:\.\d+){0,5}[.)]?)(?=\s+\p{Lu})/u.exec(
+      text,
+    );
   return match ? match.index + 1 : -1;
 };
 
@@ -2332,7 +2493,11 @@ const buildExcerpt = (text: string, maxLength = maxClauseExcerptLength): string 
     return '';
   }
 
-  const sentenceEnd = Math.max(candidate.lastIndexOf('. '), candidate.lastIndexOf('! '), candidate.lastIndexOf('? '));
+  const sentenceEnd = Math.max(
+    candidate.lastIndexOf('. '),
+    candidate.lastIndexOf('! '),
+    candidate.lastIndexOf('? '),
+  );
   if (sentenceEnd >= 60) {
     return stripTrailingLooseClauseMarker(candidate.slice(0, sentenceEnd + 1)).trim();
   }
@@ -2344,7 +2509,11 @@ const buildExcerpt = (text: string, maxLength = maxClauseExcerptLength): string 
   return `${candidate.trimEnd()}...`;
 };
 
-const isBeneficialRiskMatch = (ruleId: string, normalizedText: string, roleTerms: string[]): boolean => {
+const isBeneficialRiskMatch = (
+  ruleId: string,
+  normalizedText: string,
+  roleTerms: string[],
+): boolean => {
   switch (ruleId) {
     case 'liability':
       if (countMatches(normalizedText, genericBenefitMarkers.liability) > 0) {
@@ -2400,7 +2569,10 @@ const formatRoleNotFoundRecommendation = (language: SupportedLanguage): string =
   }
 };
 
-const elevateSeverity = (severity: RiskItem['severity'], occurrences: number): RiskItem['severity'] => {
+const elevateSeverity = (
+  severity: RiskItem['severity'],
+  occurrences: number,
+): RiskItem['severity'] => {
   if (occurrences < 2) {
     return severity;
   }
@@ -2419,7 +2591,17 @@ const elevateSeverity = (severity: RiskItem['severity'], occurrences: number): R
 export const detectContractType = (text: string, language: SupportedLanguage): string => {
   const normalizedHead = normalizeSearchText(normalizeExtractedText(text).slice(0, 4000));
   const localization = localizedStrings[normalizeLanguage(language)];
-  const priorityOrder = ['agency', 'loan', 'cession', 'employment', 'nda', 'contractWork', 'supply', 'rent', 'services'];
+  const priorityOrder = [
+    'agency',
+    'loan',
+    'cession',
+    'employment',
+    'nda',
+    'contractWork',
+    'supply',
+    'rent',
+    'services',
+  ];
   let bestKey = '';
   let bestScore = 0;
 
@@ -2440,7 +2622,9 @@ export const detectContractType = (text: string, language: SupportedLanguage): s
     }
   }
 
-  return bestKey ? localization.contractTypes[bestKey] ?? localization.unknownContractType : localization.unknownContractType;
+  return bestKey
+    ? (localization.contractTypes[bestKey] ?? localization.unknownContractType)
+    : localization.unknownContractType;
 };
 
 export const buildRiskItems = (
@@ -2452,7 +2636,9 @@ export const buildRiskItems = (
   const results: RiskItem[] = [];
   const normalizedLanguage = normalizeLanguage(language);
   const roleTerms = buildStrictRoleTerms(role);
-  const groupedResults = selectRiskMatches(rerankRiskCandidates(buildRiskCandidates(clauses, roleTerms), roleTerms));
+  const groupedResults = selectRiskMatches(
+    rerankRiskCandidates(buildRiskCandidates(clauses, roleTerms), roleTerms),
+  );
 
   for (const { rule, matches } of groupedResults.values()) {
     const directionFilteredMatches = matches.filter((item) => {
@@ -2462,7 +2648,8 @@ export const buildRiskItems = (
 
       return hasRoleActionLead(item.normalizedText, roleTerms);
     });
-    const effectiveMatches = directionFilteredMatches.length > 0 ? directionFilteredMatches : matches;
+    const effectiveMatches =
+      directionFilteredMatches.length > 0 ? directionFilteredMatches : matches;
     const rankedMatches = [...effectiveMatches].sort(compareRiskCandidates);
     const clauseRefs = uniqueStrings(rankedMatches.map((item) => item.clauseRef));
     const occurrences = rankedMatches.length;
@@ -2474,7 +2661,10 @@ export const buildRiskItems = (
       clauseRef: clauseRefs.join(', '),
       clauseRefs,
       occurrences,
-      evidence: rankedMatches.map((item) => item.excerpt).filter(Boolean).slice(0, 6),
+      evidence: rankedMatches
+        .map((item) => item.excerpt)
+        .filter(Boolean)
+        .slice(0, 6),
       title: rule.title[normalizedLanguage],
       description: rule.description[normalizedLanguage],
       recommendation: rule.recommendation[normalizedLanguage],
@@ -2523,10 +2713,15 @@ export const buildRiskItems = (
     .map((item, index) => ({ ...item, id: `risk-${index + 1}` }));
 };
 
-export const buildDisputedClauses = (clauses: ClauseSegment[], language: SupportedLanguage): DisputedClause[] => {
+export const buildDisputedClauses = (
+  clauses: ClauseSegment[],
+  language: SupportedLanguage,
+): DisputedClause[] => {
   const results: DisputedClause[] = [];
   const normalizedLanguage = normalizeLanguage(language);
-  const candidates = selectDisputeCandidates(rerankDisputeCandidates(buildDisputeCandidates(clauses)));
+  const candidates = selectDisputeCandidates(
+    rerankDisputeCandidates(buildDisputeCandidates(clauses)),
+  );
 
   for (const candidate of candidates) {
     results.push({
@@ -2545,7 +2740,10 @@ export const buildDisputedClauses = (clauses: ClauseSegment[], language: Support
   return results;
 };
 
-export const formatTemplate = (template: string, values: Record<string, string | number>): string => {
+export const formatTemplate = (
+  template: string,
+  values: Record<string, string | number>,
+): string => {
   return template.replace(/\{(\w+)\}/g, (_, key) => String(values[key] ?? ''));
 };
 
@@ -2602,11 +2800,11 @@ export const buildAnalysisArtifacts = ({
             role: selectedRole,
           })
         : formatRoleNotFoundMessage(selectedRole, normalizedLanguage),
-      obligationsForSelectedRole: summaryItems.length > 0 ? summaryItems : [strings.obligationsFallback],
+      obligationsForSelectedRole:
+        summaryItems.length > 0 ? summaryItems : [strings.obligationsFallback],
       roleFound,
     },
     risks,
     disputedClauses: buildDisputedClauses(clauses, normalizedLanguage),
   };
 };
-
