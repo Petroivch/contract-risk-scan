@@ -25,17 +25,27 @@ interface SelectedFileState {
   sourceFileUri?: string;
 }
 
-const formatFileType = (mimeType: string): string => {
-  if (mimeType === 'application/pdf') {
+const formatFileType = (mimeType: string, fileName?: string): string => {
+  const normalizedMimeType = mimeType.toLowerCase();
+  const normalizedFileName = (fileName ?? '').toLowerCase();
+
+  if (normalizedMimeType === 'application/pdf' || normalizedFileName.endsWith('.pdf')) {
     return 'PDF';
   }
-  if (mimeType === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document') {
+  if (
+    normalizedMimeType === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' ||
+    normalizedFileName.endsWith('.docx')
+  ) {
     return 'DOCX';
   }
-  if (mimeType === 'text/plain') {
+  if (normalizedMimeType === 'application/msword' || normalizedFileName.endsWith('.doc')) {
+    return 'DOC';
+  }
+  if (normalizedMimeType === 'text/plain' || normalizedFileName.endsWith('.txt')) {
     return 'TXT';
   }
-  return mimeType.split('/').pop()?.toUpperCase() ?? 'FILE';
+
+  return mimeType.split('/').pop()?.toUpperCase() || 'FILE';
 };
 
 const formatFileSize = (sizeInBytes?: number): string => {
@@ -72,6 +82,7 @@ export const UploadWithRoleScreen = ({ navigation }: Props): JSX.Element => {
       copyToCacheDirectory: true,
       type: [
         'application/pdf',
+        'application/msword',
         'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
         'text/plain',
       ],
@@ -90,7 +101,7 @@ export const UploadWithRoleScreen = ({ navigation }: Props): JSX.Element => {
     if (asset.uri) {
       try {
         const cacheId = `upload_${Date.now()}`;
-        cachedUri = await fileCache.cacheFile(cacheId, asset.uri);
+        cachedUri = await fileCache.cacheFile(cacheId, asset.uri, asset.name);
       } catch {
         cachedUri = asset.uri;
       }
@@ -134,7 +145,7 @@ export const UploadWithRoleScreen = ({ navigation }: Props): JSX.Element => {
     }
   };
 
-  const fileType = selectedFile ? formatFileType(selectedFile.mimeType) : '—';
+  const fileType = selectedFile ? formatFileType(selectedFile.mimeType, selectedFile.fileName) : '—';
   const fileSize = selectedFile ? formatFileSize(selectedFile.fileSizeBytes) : '—';
 
   return (

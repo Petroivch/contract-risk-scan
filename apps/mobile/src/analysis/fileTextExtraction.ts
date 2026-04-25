@@ -293,6 +293,128 @@ const looksLikeUtf16Be = (bytes: Uint8Array): boolean => {
   return zeroPairs >= Math.ceil(totalPairs / 3);
 };
 
+const decodeUtf16LeBytes = (bytes: Uint8Array, stripBom = false): string => {
+  if (bytes.length < 2) {
+    return '';
+  }
+
+  const offset = stripBom && bytes[0] === 0xff && bytes[1] === 0xfe ? 2 : 0;
+  let output = '';
+
+  for (let index = offset; index + 1 < bytes.length; index += 2) {
+    output += String.fromCharCode(bytes[index] | (bytes[index + 1] << 8));
+  }
+
+  return output;
+};
+
+const decodeUtf8Bytes = (bytes: Uint8Array): string => {
+  let output = '';
+  let index = 0;
+
+  while (index < bytes.length) {
+    const first = bytes[index] ?? 0;
+
+    if (first < 0x80) {
+      output += String.fromCharCode(first);
+      index += 1;
+      continue;
+    }
+
+    const second = bytes[index + 1] ?? 0;
+    if (first >= 0xc2 && first <= 0xdf && (second & 0xc0) === 0x80) {
+      output += String.fromCharCode(((first & 0x1f) << 6) | (second & 0x3f));
+      index += 2;
+      continue;
+    }
+
+    const third = bytes[index + 2] ?? 0;
+    if (first >= 0xe0 && first <= 0xef && (second & 0xc0) === 0x80 && (third & 0xc0) === 0x80) {
+      output += String.fromCharCode(((first & 0x0f) << 12) | ((second & 0x3f) << 6) | (third & 0x3f));
+      index += 3;
+      continue;
+    }
+
+    const fourth = bytes[index + 3] ?? 0;
+    if (
+      first >= 0xf0 &&
+      first <= 0xf4 &&
+      (second & 0xc0) === 0x80 &&
+      (third & 0xc0) === 0x80 &&
+      (fourth & 0xc0) === 0x80
+    ) {
+      const codePoint =
+        ((first & 0x07) << 18) | ((second & 0x3f) << 12) | ((third & 0x3f) << 6) | (fourth & 0x3f);
+      output += String.fromCodePoint(codePoint);
+      index += 4;
+      continue;
+    }
+
+    output += ' ';
+    index += 1;
+  }
+
+  return output;
+};
+
+const windows1251SpecialChars: Record<number, string> = {
+  0x80: 'Ђ',
+  0x81: 'Ѓ',
+  0x82: '‚',
+  0x83: 'ѓ',
+  0x84: '„',
+  0x85: '…',
+  0x86: '†',
+  0x87: '‡',
+  0x88: '€',
+  0x89: '‰',
+  0x8a: 'Љ',
+  0x8b: '‹',
+  0x8c: 'Њ',
+  0x8d: 'Ќ',
+  0x8e: 'Ћ',
+  0x8f: 'Џ',
+  0x90: 'ђ',
+  0x91: '‘',
+  0x92: '’',
+  0x93: '“',
+  0x94: '”',
+  0x95: '•',
+  0x96: '–',
+  0x97: '—',
+  0x99: '™',
+  0x9a: 'љ',
+  0x9b: '›',
+  0x9c: 'њ',
+  0x9d: 'ќ',
+  0x9e: 'ћ',
+  0x9f: 'џ',
+  0xa8: 'Ё',
+  0xb8: 'ё',
+};
+
+const decodeWindows1251Bytes = (bytes: Uint8Array): string => {
+  let output = '';
+
+  for (let index = 0; index < bytes.length; index += 1) {
+    const byte = bytes[index] ?? 0;
+
+    if (byte <= 0x7f) {
+      output += String.fromCharCode(byte);
+      continue;
+    }
+
+    if (byte >= 0xc0) {
+      output += String.fromCharCode(0x0410 + byte - 0xc0);
+      continue;
+    }
+
+    output += windows1251SpecialChars[byte] ?? ' ';
+  }
+
+  return output;
+};
+
 const decodePdfBytesAsLatin1 = (bytes: Uint8Array): string => {
   return bytesToBinaryString(bytes);
 };
@@ -921,6 +1043,124 @@ const extractHtmlText = (html: string): string => {
   return normalizeText(stripped);
 };
 
+const isZipBytes = (bytes: Uint8Array): boolean => bytes[0] === 0x50 && bytes[1] === 0x4b;
+const isOleCompoundBytes = (bytes: Uint8Array): boolean =>
+  bytes[0] === 0xd0 && bytes[1] === 0xcf && bytes[2] === 0x11 && bytes[3] === 0xe0;
+
+const readFileAsBase64 = async (uri: string): Promise<string> => {
+  const value = await FileSystem.readAsStringAsync(uri, { encoding: FileSystem.EncodingType.Base64 });
+  return value.replace(/^data:[^;]+;base64,/i, '');
+};
+
+const readFileBytes = async (uri: string): Promise<Uint8Array> => decodeBase64ToBytes(await readFileAsBase64(uri));
+
+const extractRtfText = (rtf: string): string => {
+  const decoded = rtf
+    .replace(/\\'([0-9a-f]{2})/gi, (_match, hex: string) =>
+      decodeWindows1251Bytes(Uint8Array.from([Number.parseInt(hex, 16)])),
+    )
+    .replace(/\\u(-?\d+)\??/g, (_match, code: string) => {
+      const value = Number.parseInt(code, 10);
+      const normalizedValue = value < 0 ? value + 65536 : value;
+      return Number.isFinite(normalizedValue) ? String.fromCharCode(normalizedValue) : ' ';
+    })
+    .replace(/\\(?:par|line)\b/g, '\n')
+    .replace(/\\tab\b/g, ' ')
+    .replace(/\\[a-zA-Z]+-?\d* ?/g, ' ')
+    .replace(/[{}]/g, ' ');
+
+  return normalizeText(decoded);
+};
+
+const normalizeBinaryTextCandidate = (value: string): string => {
+  return normalizeText(
+    value
+      .replace(/\u0000/g, '\n')
+      .replace(/[\u0001-\u0008\u000b\u000c\u000e-\u001f\u007f-\u009f]+/g, '\n')
+      .replace(/[^0-9A-Za-zÀ-ÖØ-öø-ÿА-Яа-яЁё\s.,:;!?()[\]{}"'`«»„“”%№/\-–—+=<>|]+/g, '\n'),
+  );
+};
+
+const countRepeatedNoise = (value: string): number => {
+  const matches = (value.match(/(.)\1{4,}/gu) ?? []) as string[];
+  return matches.reduce((total, item) => total + item.length, 0);
+};
+
+const scoreReadableText = (value: string): number => {
+  const normalized = normalizeBinaryTextCandidate(value);
+  const letters = (normalized.match(/[A-Za-zÀ-ÖØ-öø-ÿА-Яа-яЁё]/g) ?? []).length;
+  const cyrillic = (normalized.match(/[А-Яа-яЁё]/g) ?? []).length;
+  const digits = (normalized.match(/[0-9]/g) ?? []).length;
+  const spaces = (normalized.match(/\s/g) ?? []).length;
+  const strange = (normalized.match(/[^0-9A-Za-zÀ-ÖØ-öø-ÿА-Яа-яЁё\s.,:;!?()[\]{}"'`«»„“”%№/\-–—+=<>|]/g) ?? []).length;
+  const repeatedNoise = countRepeatedNoise(normalized);
+
+  return letters * 3 + cyrillic * 2 + digits + spaces * 0.2 - strange * 8 - repeatedNoise * 12;
+};
+
+const keepReadableLines = (value: string): string => {
+  const lines = normalizeBinaryTextCandidate(value)
+    .split(/\n+/)
+    .map((line) => normalizeText(line))
+    .filter((line) => {
+      const letters = (line.match(/[A-Za-zÀ-ÖØ-öø-ÿА-Яа-яЁё]/g) ?? []).length;
+      const digits = (line.match(/[0-9]/g) ?? []).length;
+      const strange = (line.match(/[^0-9A-Za-zÀ-ÖØ-öø-ÿА-Яа-яЁё\s.,:;!?()[\]{}"'`«»„“”%№/\-–—+=<>|]/g) ?? []).length;
+      const repeatedNoise = countRepeatedNoise(line);
+      const usefulLength = Math.max(line.replace(/\s+/g, '').length, 1);
+
+      return (
+        letters >= 4 &&
+        strange <= Math.max(2, Math.trunc((letters + digits) * 0.18)) &&
+        repeatedNoise / usefulLength < 0.2
+      );
+    });
+
+  return normalizeText(lines.join('\n'));
+};
+
+const extractReadableTextFromBytes = (bytes: Uint8Array): string => {
+  const candidates = isOleCompoundBytes(bytes)
+    ? [decodeUtf16LeBytes(bytes), decodeUtf16BeBytes(bytes)]
+    : [
+        decodeUtf8Bytes(bytes),
+        decodeWindows1251Bytes(bytes),
+        decodeUtf16LeBytes(bytes, bytes[0] === 0xff && bytes[1] === 0xfe),
+        decodeUtf16BeBytes(bytes, bytes[0] === 0xfe && bytes[1] === 0xff),
+      ];
+  let bestText = '';
+  let bestScore = Number.NEGATIVE_INFINITY;
+
+  for (const candidate of candidates) {
+    const normalizedCandidate = normalizeText(candidate);
+    const lowered = normalizedCandidate.slice(0, 4000).toLowerCase();
+    const extracted =
+      lowered.includes('<html') || lowered.includes('<body')
+        ? extractHtmlText(normalizedCandidate)
+        : lowered.includes('{\\rtf') || normalizedCandidate.startsWith('{\\rtf')
+          ? extractRtfText(normalizedCandidate)
+          : keepReadableLines(normalizedCandidate);
+    const score = scoreReadableText(extracted);
+
+    if (extracted && (score > bestScore || (score === bestScore && extracted.length > bestText.length))) {
+      bestText = extracted;
+      bestScore = score;
+    }
+  }
+
+  return normalizeText(bestText);
+};
+
+const extractLegacyWordText = async (uri: string): Promise<string> => {
+  const bytes = await readFileBytes(uri);
+
+  if (isZipBytes(bytes)) {
+    return extractDocxTextFromBytes(bytes);
+  }
+
+  return extractReadableTextFromBytes(bytes);
+};
+
 const extractXmlAttribute = (xml: string, pattern: RegExp): string => {
   const match = xml.match(pattern);
   return decodeXmlEntities((match?.[1] ?? match?.[2] ?? '').trim());
@@ -1281,9 +1521,8 @@ const pickDocxExtractionResult = (structuredText: string, flatText: string): str
   return structuredText.length >= Math.ceil(flatText.length * DOCX_MIN_STRUCTURED_RATIO) ? structuredText : flatText;
 };
 
-const extractDocxText = async (uri: string): Promise<string> => {
-  const base64 = await FileSystem.readAsStringAsync(uri, { encoding: FileSystem.EncodingType.Base64 });
-  const archive = await JSZip.loadAsync(base64, { base64: true });
+const extractDocxTextFromBytes = async (bytes: Uint8Array): Promise<string> => {
+  const archive = await JSZip.loadAsync(bytes);
   const documentXml = await archive.file('word/document.xml')?.async('string');
   const numberingXml = await archive.file('word/numbering.xml')?.async('string');
 
@@ -1295,6 +1534,11 @@ const extractDocxText = async (uri: string): Promise<string> => {
   const structuredText = extractStructuredDocxText(documentXml, parseDocxNumberingDefinition(numberingXml));
 
   return pickDocxExtractionResult(structuredText, flatText);
+};
+
+const extractPdfTextFromBytes = (bytes: Uint8Array): string => {
+  const parsedText = extractPdfDocumentText(bytesToBinaryString(bytes));
+  return parsedText || extractReadableTextFromBytes(bytes);
 };
 
 const resolveLanguageWarnings = (
@@ -1338,7 +1582,8 @@ export const extractContractText = async (
     fileName.endsWith('.docx')
   ) {
     try {
-      const text = await extractDocxText(payload.localFileUri);
+      const bytes = await readFileBytes(payload.localFileUri);
+      const text = (await extractDocxTextFromBytes(bytes)) || extractReadableTextFromBytes(bytes);
       return {
         text,
         warnings: text ? [] : [warningsDictionary.emptyText],
@@ -1362,17 +1607,23 @@ export const extractContractText = async (
   }
 
   if (mimeType === 'application/msword' || fileName.endsWith('.doc')) {
-    return { text: '', warnings: [warningsDictionary.legacyDoc] };
+    try {
+      const text = await extractLegacyWordText(payload.localFileUri);
+      return {
+        text,
+        warnings: text ? [] : [warningsDictionary.legacyDoc],
+      };
+    } catch {
+      return { text: '', warnings: [warningsDictionary.legacyDoc] };
+    }
   }
 
   if (mimeType === 'application/pdf' || fileName.endsWith('.pdf')) {
     let text = '';
 
     try {
-      const base64 = await FileSystem.readAsStringAsync(payload.localFileUri, {
-        encoding: FileSystem.EncodingType.Base64,
-      });
-      text = extractPdfDocumentText(bytesToBinaryString(decodeBase64ToBytes(base64)));
+      const bytes = await readFileBytes(payload.localFileUri);
+      text = extractPdfTextFromBytes(bytes);
     } catch {
       warnings.push(warningsDictionary.emptyText);
       return { text: '', warnings };
@@ -1389,7 +1640,16 @@ export const extractContractText = async (
     return { text, warnings };
   }
 
-  const fallbackText = normalizeText(await FileSystem.readAsStringAsync(payload.localFileUri).catch(() => ''));
+  const fallbackUri = payload.localFileUri;
+  const fallbackText = normalizeText(
+    (await FileSystem.readAsStringAsync(fallbackUri).catch(async () => {
+      try {
+        return extractReadableTextFromBytes(await readFileBytes(fallbackUri));
+      } catch {
+        return '';
+      }
+    })) ?? '',
+  );
   return {
     text: fallbackText,
     warnings: fallbackText ? [] : [warningsDictionary.emptyText],
