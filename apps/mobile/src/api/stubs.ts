@@ -22,7 +22,7 @@ interface StoredAnalysis {
   updatedAt: string;
   completedAt: string;
   language: SupportedLanguage;
-  report: AnalysisReport;
+  report?: AnalysisReport;
 }
 
 interface StubClientConfig {
@@ -30,6 +30,7 @@ interface StubClientConfig {
 }
 
 const storage = new Map<string, StoredAnalysis>();
+const processingTasks = new Map<string, Promise<void>>();
 const queuedPhaseMs = 900;
 const processingPhaseMs = 2200;
 
@@ -37,22 +38,7 @@ const delay = (ms: number): Promise<void> => new Promise((resolve) => setTimeout
 const nowIso = (): string => new Date().toISOString();
 
 const resolveStatus = (entity: StoredAnalysis): AnalysisLifecycleStatus => {
-  if (entity.status === 'failed') {
-    return 'failed';
-  }
-
-  const created = new Date(entity.createdAt).getTime();
-  const now = Date.now();
-
-  if (now - created < queuedPhaseMs) {
-    return 'queued';
-  }
-
-  if (now - created < processingPhaseMs) {
-    return 'processing';
-  }
-
-  return 'completed';
+  return entity.status;
 };
 
 const progressByStatus = (status: AnalysisLifecycleStatus, createdAt?: string, completedAt?: string): number => {
@@ -97,6 +83,46 @@ const toHistory = (entity: StoredAnalysis): HistoryItem => {
   };
 };
 
+const scheduleLocalAnalysis = (
+  entity: StoredAnalysis,
+  payload: UploadContractRequest,
+  language: SupportedLanguage,
+): void => {
+  if (processingTasks.has(entity.analysisId)) {
+    return;
+  }
+
+  const task = (async (): Promise<void> => {
+    try {
+      await delay(Math.min(queuedPhaseMs, 240));
+
+      entity.status = 'processing';
+      entity.updatedAt = nowIso();
+      entity.completedAt = new Date(Date.now() + processingPhaseMs).toISOString();
+
+      const report = await analyzeContractLocally(payload, language);
+      const completedAt = nowIso();
+
+      entity.report = {
+        ...report,
+        analysisId: entity.analysisId,
+      };
+      entity.status = 'completed';
+      entity.updatedAt = completedAt;
+      entity.completedAt = completedAt;
+    } catch {
+      const failedAt = nowIso();
+      entity.status = 'failed';
+      entity.updatedAt = failedAt;
+      entity.completedAt = failedAt;
+    } finally {
+      processingTasks.delete(entity.analysisId);
+    }
+  })();
+
+  processingTasks.set(entity.analysisId, task);
+};
+
 export const createStubApiClient = (config: StubClientConfig = {}): ContractRiskScannerApi => ({
   async uploadContract(
     payload: UploadContractRequest,
@@ -108,24 +134,20 @@ export const createStubApiClient = (config: StubClientConfig = {}): ContractRisk
 
     const analysisId = `analysis_${Date.now()}`;
     const now = nowIso();
-    const report = await analyzeContractLocally(payload, language);
 
     const entity: StoredAnalysis = {
       analysisId,
       fileName: payload.fileName,
       selectedRole: payload.selectedRole,
-      status: 'processing',
+      status: 'queued',
       createdAt: now,
       updatedAt: now,
       completedAt: new Date(Date.now() + processingPhaseMs).toISOString(),
       language,
-      report: {
-        ...report,
-        analysisId,
-      },
     };
 
     storage.set(analysisId, entity);
+    scheduleLocalAnalysis(entity, payload, language);
     return { analysisId, status: toStatus(entity) };
   },
 
@@ -148,6 +170,10 @@ export const createStubApiClient = (config: StubClientConfig = {}): ContractRisk
     const entity = storage.get(input.analysisId);
     if (!entity) {
       throw new Error(`Report ${input.analysisId} was not found in local runtime cache.`);
+    }
+
+    if (entity.status !== 'completed' || !entity.report) {
+      throw new Error(`Report ${input.analysisId} is not ready yet.`);
     }
 
     return {

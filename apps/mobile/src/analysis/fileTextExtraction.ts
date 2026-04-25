@@ -47,6 +47,7 @@ const DOCX_PARAGRAPH_PATTERN = /<w:p\b[\s\S]*?<\/w:p>/g;
 const DOCX_TABLE_CELL_PATTERN = /<w:tc\b[\s\S]*?<\/w:tc>/g;
 const DOCX_TABLE_ROW_PATTERN = /<w:tr\b[\s\S]*?<\/w:tr>/g;
 const MIN_EXTRACTED_TEXT_LENGTH = 160;
+const PDF_FAST_PATH_TEXT_LENGTH = 480;
 
 const localizedWarnings: Record<SupportedLanguage, { emptyText: string; limitedPdf: string; legacyDoc: string }> = {
   ru: {
@@ -875,6 +876,11 @@ const extractPdfText = (binary: string, unicodeMaps: PdfUnicodeMap[]): string =>
 };
 
 const extractPdfDocumentText = (binary: string): string => {
+  const directMainText = extractPdfText(binary, []);
+  if (isLikelyPdfTextChunk(directMainText) && directMainText.length >= PDF_FAST_PATH_TEXT_LENGTH) {
+    return normalizePdfText(directMainText);
+  }
+
   const decodedStreams = extractDecodedPdfStreams(binary);
   const unicodeMaps = decodedStreams
     .map((stream) => parsePdfUnicodeMap(stream))
@@ -882,7 +888,7 @@ const extractPdfDocumentText = (binary: string): string => {
   const textChunks: string[] = [];
   const seen = new Set<string>();
 
-  const mainText = extractPdfText(binary, unicodeMaps);
+  const mainText = unicodeMaps.length > 0 ? extractPdfText(binary, unicodeMaps) : directMainText;
   if (isLikelyPdfTextChunk(mainText)) {
     appendUniqueTextChunk(textChunks, seen, mainText);
   }
