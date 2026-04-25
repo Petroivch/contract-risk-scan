@@ -33,38 +33,81 @@ const PDF_TEXT_ARRAY_ITEM_PATTERN = /\(([^()]*(?:\\.[^()]*)*)\)|<([0-9A-Fa-f\s]+
 const PDF_TEXT_ARRAY_PATTERN = /\[(.*?)\]\s*TJ/gs;
 const PDF_TEXT_OBJECT_PATTERN = /\(([^()]*(?:\\.[^()]*)*)\)\s*(?:Tj|'|")/g;
 const XML_TAG_PATTERN = /<[^>]+>/g;
+const HTML_BREAK_TAG_PATTERN = /<(?:br|\/p|\/div|\/li|\/tr|\/h[1-6])\b[^>]*>/gi;
+const HTML_TAG_PATTERN = /<[^>]+>/g;
+const DOCX_ABSTRACT_NUM_PATTERN =
+  /<w:abstractNum\b[^>]*w:abstractNumId=(?:"([^"]+)"|'([^']+)')[\s\S]*?<\/w:abstractNum>/g;
+const DOCX_BLOCK_PATTERN = /<w:tbl\b[\s\S]*?<\/w:tbl>|<w:p\b[\s\S]*?<\/w:p>/g;
+const DOCX_BODY_PATTERN = /<w:body\b[^>]*>([\s\S]*?)<\/w:body>/i;
+const DOCX_LEVEL_PATTERN = /<w:lvl\b[^>]*w:ilvl=(?:"([^"]+)"|'([^']+)')[\s\S]*?<\/w:lvl>/g;
+const DOCX_MIN_STRUCTURED_RATIO = 0.6;
+const DOCX_NUM_PATTERN =
+  /<w:num\b[^>]*w:numId=(?:"([^"]+)"|'([^']+)')[\s\S]*?<w:abstractNumId\b[^>]*w:val=(?:"([^"]+)"|'([^']+)')/g;
+const DOCX_PARAGRAPH_PATTERN = /<w:p\b[\s\S]*?<\/w:p>/g;
+const DOCX_TABLE_CELL_PATTERN = /<w:tc\b[\s\S]*?<\/w:tc>/g;
+const DOCX_TABLE_ROW_PATTERN = /<w:tr\b[\s\S]*?<\/w:tr>/g;
 const MIN_EXTRACTED_TEXT_LENGTH = 160;
 
-const localizedWarnings: Record<SupportedLanguage, { emptyText: string; limitedPdf: string }> = {
+const localizedWarnings: Record<SupportedLanguage, { emptyText: string; limitedPdf: string; legacyDoc: string }> = {
   ru: {
     emptyText:
       'Не удалось извлечь читаемый текст из файла. Для офлайн-анализа лучше использовать текстовый PDF, DOCX или TXT.',
     limitedPdf:
       'PDF обработан в офлайн-режиме с ограниченным извлечением текста. Для сканов качество анализа может быть ниже.',
+    legacyDoc:
+      'Формат .doc пока не поддерживается локальным извлечением в мобильном приложении. Для точного анализа сохраните файл как DOCX, PDF с текстовым слоем или TXT.',
   },
   en: {
     emptyText:
       'Readable text could not be extracted from the file. For offline analysis, use a text-based PDF, DOCX, or TXT file.',
     limitedPdf:
       'The PDF was processed with limited offline text extraction. Scanned PDFs may produce lower-quality results.',
+    legacyDoc:
+      'The .doc format is not yet supported by local extraction in the mobile app. For accurate analysis, save the file as DOCX, a text-based PDF, or TXT.',
   },
   it: {
     emptyText:
       'Non e stato possibile estrarre testo leggibile dal file. Per l analisi offline usare PDF testuale, DOCX o TXT.',
     limitedPdf:
       'Il PDF e stato elaborato con estrazione testuale offline limitata. I PDF scansionati possono ridurre la qualita del risultato.',
+    legacyDoc:
+      'Il formato .doc non e ancora supportato dall estrazione locale nell app mobile. Per un analisi accurata salvare il file come DOCX, PDF testuale o TXT.',
   },
   fr: {
     emptyText:
       'Le texte lisible n a pas pu etre extrait du fichier. Pour l analyse hors ligne, utilisez un PDF texte, DOCX ou TXT.',
     limitedPdf:
       'Le PDF a ete traite avec une extraction de texte hors ligne limitee. Les PDF scannes peuvent reduire la qualite du resultat.',
+    legacyDoc:
+      'Le format .doc n est pas encore pris en charge par l extraction locale dans l application mobile. Pour une analyse fiable, enregistrez le fichier en DOCX, PDF texte ou TXT.',
   },
 };
 
 const normalizeText = (input: string): string => {
   return normalizeExtractedText(input);
 };
+
+interface DocxParagraphMeta {
+  text: string;
+  styleId: string;
+  numId: string;
+  ilvl: number;
+}
+
+interface DocxLevelDefinition {
+  numFmt: string;
+  lvlText: string;
+}
+
+interface DocxNumberingDefinition {
+  numToAbstract: Map<string, string>;
+  levelsByAbstract: Map<string, Map<number, DocxLevelDefinition>>;
+}
+
+interface DocxListMarker {
+  continuationIndent: string;
+  prefix: string;
+}
 
 const base64Alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
 
@@ -326,8 +369,47 @@ const scorePdfTextCandidate = (value: string): number => {
   return score;
 };
 
-const appendUniqueTextChunk = (target: string[], seen: Set<string>, value: string): void => {
+const isLikelyPdfTextChunk = (value: string): boolean => {
   const normalized = normalizePdfText(value);
+  if (normalized.length < 20) {
+    return false;
+  }
+
+  const alphaCount = (normalized.match(/\p{L}/gu) ?? []).length;
+  const digitCount = (normalized.match(/\p{N}/gu) ?? []).length;
+  const strangeCount = (normalized.match(/[^\p{L}\p{N}\s.,:;!?()[\]{}"'`«»„“”%№/\-–—]/gu) ?? []).length;
+
+  return alphaCount >= 12 && strangeCount <= Math.max(6, Math.trunc((alphaCount + digitCount) * 0.25));
+};
+
+const trimPdfNoiseLines = (value: string): string => {
+  const lines = normalizePdfText(value)
+    .split('\n')
+    .map((line) => line.trim())
+    .filter(Boolean);
+
+  if (lines.length === 0) {
+    return '';
+  }
+
+  let firstUsefulIndex = 0;
+  for (let index = 0; index < Math.min(lines.length, 6); index += 1) {
+    if (isLikelyPdfTextChunk(lines[index] ?? '')) {
+      firstUsefulIndex = index;
+      break;
+    }
+  }
+
+  return normalizePdfText(
+    lines
+      .slice(firstUsefulIndex)
+      .filter((line) => isLikelyPdfTextChunk(line) || /[\p{L}\p{N}]{3,}/u.test(line))
+      .join('\n'),
+  );
+};
+
+const appendUniqueTextChunk = (target: string[], seen: Set<string>, value: string): void => {
+  const normalized = trimPdfNoiseLines(value);
   if (!normalized || seen.has(normalized)) {
     return;
   }
@@ -800,31 +882,57 @@ const extractPdfDocumentText = (binary: string): string => {
   const textChunks: string[] = [];
   const seen = new Set<string>();
 
-  appendUniqueTextChunk(textChunks, seen, extractPdfText(binary, unicodeMaps));
+  const mainText = extractPdfText(binary, unicodeMaps);
+  if (isLikelyPdfTextChunk(mainText)) {
+    appendUniqueTextChunk(textChunks, seen, mainText);
+  }
 
   for (const stream of decodedStreams) {
     if (!PDF_STREAM_HINT_PATTERN.test(stream)) {
       continue;
     }
 
-    appendUniqueTextChunk(textChunks, seen, extractPdfText(stream, unicodeMaps));
+    const streamText = extractPdfText(stream, unicodeMaps);
+    if (!isLikelyPdfTextChunk(streamText)) {
+      continue;
+    }
+
+    appendUniqueTextChunk(textChunks, seen, streamText);
   }
 
   return normalizePdfText(textChunks.join('\n'));
 };
 
-const extractDocxText = async (uri: string): Promise<string> => {
-  const base64 = await FileSystem.readAsStringAsync(uri, { encoding: FileSystem.EncodingType.Base64 });
-  const archive = await JSZip.loadAsync(base64, { base64: true });
-  const documentXml = await archive.file('word/document.xml')?.async('string');
+const extractHtmlText = (html: string): string => {
+  const stripped = decodeXmlEntities(
+    html
+      .replace(/<script\b[\s\S]*?<\/script>/gi, ' ')
+      .replace(/<style\b[\s\S]*?<\/style>/gi, ' ')
+      .replace(HTML_BREAK_TAG_PATTERN, '\n')
+      .replace(HTML_TAG_PATTERN, ' '),
+  );
 
-  if (!documentXml) {
-    return '';
-  }
+  return normalizeText(stripped);
+};
 
-  const structuredXml = documentXml
+const extractXmlAttribute = (xml: string, pattern: RegExp): string => {
+  const match = xml.match(pattern);
+  return decodeXmlEntities((match?.[1] ?? match?.[2] ?? '').trim());
+};
+
+const stripDocxNonVisibleXml = (xml: string): string => {
+  return xml
+    .replace(/<w:del\b[\s\S]*?<\/w:del>/g, '')
+    .replace(/<w:delText\b[\s\S]*?<\/w:delText>/g, '')
+    .replace(/<w:instrText\b[\s\S]*?<\/w:instrText>/g, '')
+    .replace(/<w:(?:bookmark|commentRange)(?:Start|End)\b[^>]*\/>/g, '')
+    .replace(/<w:proofErr\b[^>]*\/>/g, '');
+};
+
+const extractFlatDocxText = (documentXml: string): string => {
+  const structuredXml = stripDocxNonVisibleXml(documentXml)
     .replace(/<w:tab\b[^>]*\/>/g, ' ')
-    .replace(/<w:br\b[^>]*\/>/g, '\n')
+    .replace(/<w:(?:br|cr)\b[^>]*\/>/g, '\n')
     .replace(/<\/w:p>/g, '\n')
     .replace(/<w:t\b[^>]*>/g, '')
     .replace(/<\/w:t>/g, '')
@@ -833,7 +941,359 @@ const extractDocxText = async (uri: string): Promise<string> => {
   return normalizeText(decodeXmlEntities(structuredXml));
 };
 
-const resolveLanguageWarnings = (language: SupportedLanguage): { emptyText: string; limitedPdf: string } => {
+const extractDocxInlineText = (xml: string): string => {
+  const inlineText = stripDocxNonVisibleXml(xml)
+    .replace(/<w:(?:tab|ptab)\b[^>]*\/>/g, '\t')
+    .replace(/<w:(?:br|cr)\b[^>]*\/>/g, '\n')
+    .replace(/<w:noBreakHyphen\b[^>]*\/>/g, '-')
+    .replace(/<w:softHyphen\b[^>]*\/>/g, '')
+    .replace(/<w:t\b[^>]*>/g, '')
+    .replace(/<\/w:t>/g, '')
+    .replace(XML_TAG_PATTERN, '');
+
+  return decodeXmlEntities(inlineText)
+    .replace(/\u00a0/g, ' ')
+    .replace(/\t+/g, ' ')
+    .replace(/[ ]*\n[ ]*/g, '\n');
+};
+
+const parseDocxNumberingDefinition = (numberingXml: string | undefined): DocxNumberingDefinition => {
+  const levelsByAbstract = new Map<string, Map<number, DocxLevelDefinition>>();
+  const numToAbstract = new Map<string, string>();
+
+  if (!numberingXml) {
+    return { levelsByAbstract, numToAbstract };
+  }
+
+  for (const abstractMatch of numberingXml.matchAll(DOCX_ABSTRACT_NUM_PATTERN)) {
+    const abstractXml = abstractMatch[0] ?? '';
+    const abstractNumId = abstractMatch[1] ?? abstractMatch[2] ?? '';
+
+    if (!abstractNumId) {
+      continue;
+    }
+
+    const levels = new Map<number, DocxLevelDefinition>();
+
+    for (const levelMatch of abstractXml.matchAll(DOCX_LEVEL_PATTERN)) {
+      const levelXml = levelMatch[0] ?? '';
+      const ilvl = Number.parseInt(levelMatch[1] ?? levelMatch[2] ?? '0', 10);
+
+      if (Number.isNaN(ilvl)) {
+        continue;
+      }
+
+      levels.set(ilvl, {
+        lvlText: extractXmlAttribute(levelXml, /<w:lvlText\b[^>]*w:val=(?:"([^"]+)"|'([^']+)')/i) || `%${ilvl + 1}.`,
+        numFmt: extractXmlAttribute(levelXml, /<w:numFmt\b[^>]*w:val=(?:"([^"]+)"|'([^']+)')/i) || 'decimal',
+      });
+    }
+
+    if (levels.size) {
+      levelsByAbstract.set(abstractNumId, levels);
+    }
+  }
+
+  for (const numMatch of numberingXml.matchAll(DOCX_NUM_PATTERN)) {
+    const numId = numMatch[1] ?? numMatch[2] ?? '';
+    const abstractNumId = numMatch[3] ?? numMatch[4] ?? '';
+
+    if (!numId || !abstractNumId) {
+      continue;
+    }
+
+    numToAbstract.set(numId, abstractNumId);
+  }
+
+  return { levelsByAbstract, numToAbstract };
+};
+
+const formatRomanNumeral = (value: number): string => {
+  if (value <= 0) {
+    return '0';
+  }
+
+  const romanValues: Array<[number, string]> = [
+    [1000, 'M'],
+    [900, 'CM'],
+    [500, 'D'],
+    [400, 'CD'],
+    [100, 'C'],
+    [90, 'XC'],
+    [50, 'L'],
+    [40, 'XL'],
+    [10, 'X'],
+    [9, 'IX'],
+    [5, 'V'],
+    [4, 'IV'],
+    [1, 'I'],
+  ];
+  let remaining = value;
+  let output = '';
+
+  for (const [numericValue, romanToken] of romanValues) {
+    while (remaining >= numericValue) {
+      output += romanToken;
+      remaining -= numericValue;
+    }
+  }
+
+  return output;
+};
+
+const formatAlphabeticCounter = (value: number): string => {
+  if (value <= 0) {
+    return '0';
+  }
+
+  let remaining = value;
+  let output = '';
+
+  while (remaining > 0) {
+    remaining -= 1;
+    output = String.fromCharCode(65 + (remaining % 26)) + output;
+    remaining = Math.floor(remaining / 26);
+  }
+
+  return output;
+};
+
+const formatDocxListCounter = (value: number, format: string): string => {
+  switch (format) {
+    case 'lowerLetter':
+      return formatAlphabeticCounter(value).toLowerCase();
+    case 'upperLetter':
+      return formatAlphabeticCounter(value);
+    case 'lowerRoman':
+      return formatRomanNumeral(value).toLowerCase();
+    case 'upperRoman':
+      return formatRomanNumeral(value);
+    case 'decimalZero':
+      return value.toString().padStart(2, '0');
+    default:
+      return value.toString();
+  }
+};
+
+const parseDocxParagraphMeta = (paragraphXml: string): DocxParagraphMeta => {
+  const text = normalizeText(extractDocxInlineText(paragraphXml));
+  const styleId = extractXmlAttribute(paragraphXml, /<w:pStyle\b[^>]*w:val=(?:"([^"]+)"|'([^']+)')/i);
+  const numPrMatch = paragraphXml.match(/<w:numPr\b[\s\S]*?<\/w:numPr>/);
+  const numPrXml = numPrMatch?.[0] ?? '';
+  const numId = extractXmlAttribute(numPrXml, /<w:numId\b[^>]*w:val=(?:"([^"]+)"|'([^']+)')/i);
+  const ilvl = Number.parseInt(
+    extractXmlAttribute(numPrXml, /<w:ilvl\b[^>]*w:val=(?:"([^"]+)"|'([^']+)')/i) || '0',
+    10,
+  );
+
+  return {
+    ilvl: Number.isNaN(ilvl) ? 0 : ilvl,
+    numId,
+    styleId,
+    text,
+  };
+};
+
+const getDocxHeadingLevel = (paragraphXml: string, styleId: string): number => {
+  const normalizedStyle = styleId.replace(/[\s_-]+/g, '').toLowerCase();
+  const headingMatch = normalizedStyle.match(/heading([1-6])/);
+
+  if (headingMatch?.[1]) {
+    return Number.parseInt(headingMatch[1], 10);
+  }
+
+  if (normalizedStyle === 'title') {
+    return 1;
+  }
+
+  if (normalizedStyle === 'subtitle') {
+    return 2;
+  }
+
+  const outlineLevel = Number.parseInt(
+    extractXmlAttribute(paragraphXml, /<w:outlineLvl\b[^>]*w:val=(?:"([^"]+)"|'([^']+)')/i),
+    10,
+  );
+
+  if (Number.isNaN(outlineLevel)) {
+    return 0;
+  }
+
+  return Math.min(Math.max(outlineLevel + 1, 1), 6);
+};
+
+const getDocxListMarker = (
+  paragraphMeta: DocxParagraphMeta,
+  numberingDefinition: DocxNumberingDefinition,
+  numberingState: Map<string, number[]>,
+): DocxListMarker | null => {
+  if (!paragraphMeta.numId) {
+    return null;
+  }
+
+  const abstractNumId = numberingDefinition.numToAbstract.get(paragraphMeta.numId);
+  const levels = abstractNumId ? numberingDefinition.levelsByAbstract.get(abstractNumId) : undefined;
+  const levelDefinition = levels?.get(paragraphMeta.ilvl);
+  const counters = numberingState.get(paragraphMeta.numId) ?? [];
+
+  while (counters.length <= paragraphMeta.ilvl) {
+    counters.push(0);
+  }
+
+  counters[paragraphMeta.ilvl] = (counters[paragraphMeta.ilvl] ?? 0) + 1;
+
+  for (let index = paragraphMeta.ilvl + 1; index < counters.length; index += 1) {
+    counters[index] = 0;
+  }
+
+  numberingState.set(paragraphMeta.numId, counters);
+
+  const indent = '  '.repeat(Math.min(paragraphMeta.ilvl, 8));
+
+  if (!levelDefinition || levelDefinition.numFmt === 'bullet') {
+    const bulletText = levelDefinition?.lvlText.replace(/%\d+/g, '').trim() || '•';
+
+    return {
+      continuationIndent: `${indent}  `,
+      prefix: `${indent}${bulletText.replace(/\s+/g, ' ')} `,
+    };
+  }
+
+  const marker = (levelDefinition.lvlText || `%${paragraphMeta.ilvl + 1}.`)
+    .replace(/%(\d+)/g, (_fullMatch, placeholderValue: string) => {
+      const placeholderLevel = Math.max(Number.parseInt(placeholderValue, 10) - 1, 0);
+      const counterValue = counters[placeholderLevel] && counters[placeholderLevel] > 0 ? counters[placeholderLevel] : 1;
+      const counterFormat = levels?.get(placeholderLevel)?.numFmt ?? levelDefinition.numFmt;
+
+      return formatDocxListCounter(counterValue, counterFormat);
+    })
+    .trim();
+
+  return {
+    continuationIndent: `${indent}  `,
+    prefix: `${indent}${marker || `${formatDocxListCounter(counters[paragraphMeta.ilvl] ?? 1, levelDefinition.numFmt)}.`} `,
+  };
+};
+
+const applyDocxPrefix = (text: string, prefix: string, continuationIndent = ''): string => {
+  const lines = text.split('\n');
+
+  return lines
+    .map((line, index) => {
+      if (index === 0) {
+        return `${prefix}${line}`;
+      }
+
+      return continuationIndent ? `${continuationIndent}${line}` : line;
+    })
+    .join('\n');
+};
+
+const extractDocxParagraphText = (
+  paragraphXml: string,
+  numberingDefinition: DocxNumberingDefinition,
+  numberingState: Map<string, number[]>,
+): string => {
+  const paragraphMeta = parseDocxParagraphMeta(paragraphXml);
+
+  if (!paragraphMeta.text) {
+    return '';
+  }
+
+  const headingLevel = getDocxHeadingLevel(paragraphXml, paragraphMeta.styleId);
+  if (headingLevel > 0) {
+    return applyDocxPrefix(paragraphMeta.text, `${'#'.repeat(headingLevel)} `);
+  }
+
+  const listMarker = getDocxListMarker(paragraphMeta, numberingDefinition, numberingState);
+  if (listMarker) {
+    return applyDocxPrefix(paragraphMeta.text, listMarker.prefix, listMarker.continuationIndent);
+  }
+
+  return paragraphMeta.text;
+};
+
+const extractDocxTableText = (
+  tableXml: string,
+  numberingDefinition: DocxNumberingDefinition,
+  numberingState: Map<string, number[]>,
+): string => {
+  const rows: string[] = [];
+
+  for (const rowMatch of tableXml.matchAll(DOCX_TABLE_ROW_PATTERN)) {
+    const rowXml = rowMatch[0] ?? '';
+    const cells: string[] = [];
+
+    for (const cellMatch of rowXml.matchAll(DOCX_TABLE_CELL_PATTERN)) {
+      const cellXml = cellMatch[0] ?? '';
+      const cellParagraphs = Array.from(cellXml.matchAll(DOCX_PARAGRAPH_PATTERN), (paragraphMatch) =>
+        extractDocxParagraphText(paragraphMatch[0] ?? '', numberingDefinition, numberingState),
+      ).filter((value) => Boolean(value));
+
+      cells.push(cellParagraphs.join('\n').trim().replace(/\n+/g, ' / '));
+    }
+
+    if (cells.some((cell) => Boolean(cell.trim()))) {
+      rows.push(`| ${cells.join(' | ')} |`);
+    }
+  }
+
+  return rows.join('\n');
+};
+
+const extractStructuredDocxText = (
+  documentXml: string,
+  numberingDefinition: DocxNumberingDefinition,
+): string => {
+  const bodyXml = DOCX_BODY_PATTERN.exec(documentXml)?.[1] ?? documentXml;
+  const numberingState = new Map<string, number[]>();
+  const blocks: string[] = [];
+
+  for (const blockMatch of bodyXml.matchAll(DOCX_BLOCK_PATTERN)) {
+    const blockXml = blockMatch[0] ?? '';
+    const blockText = blockXml.startsWith('<w:tbl')
+      ? extractDocxTableText(blockXml, numberingDefinition, numberingState)
+      : extractDocxParagraphText(blockXml, numberingDefinition, numberingState);
+
+    if (blockText) {
+      blocks.push(blockText);
+    }
+  }
+
+  return normalizeText(blocks.join('\n\n'));
+};
+
+const pickDocxExtractionResult = (structuredText: string, flatText: string): string => {
+  if (!structuredText) {
+    return flatText;
+  }
+
+  if (!flatText) {
+    return structuredText;
+  }
+
+  return structuredText.length >= Math.ceil(flatText.length * DOCX_MIN_STRUCTURED_RATIO) ? structuredText : flatText;
+};
+
+const extractDocxText = async (uri: string): Promise<string> => {
+  const base64 = await FileSystem.readAsStringAsync(uri, { encoding: FileSystem.EncodingType.Base64 });
+  const archive = await JSZip.loadAsync(base64, { base64: true });
+  const documentXml = await archive.file('word/document.xml')?.async('string');
+  const numberingXml = await archive.file('word/numbering.xml')?.async('string');
+
+  if (!documentXml) {
+    return '';
+  }
+
+  const flatText = extractFlatDocxText(documentXml);
+  const structuredText = extractStructuredDocxText(documentXml, parseDocxNumberingDefinition(numberingXml));
+
+  return pickDocxExtractionResult(structuredText, flatText);
+};
+
+const resolveLanguageWarnings = (
+  language: SupportedLanguage,
+): { emptyText: string; limitedPdf: string; legacyDoc: string } => {
   return localizedWarnings[language] ?? localizedWarnings.ru;
 };
 
@@ -851,8 +1311,8 @@ export const extractContractText = async (
     return { text: '', warnings: [warningsDictionary.emptyText] };
   }
 
-  const fileName = payload.fileName.toLowerCase();
-  const mimeType = payload.mimeType.toLowerCase();
+  const fileName = (payload.fileName ?? '').toLowerCase();
+  const mimeType = (payload.mimeType ?? '').toLowerCase();
   const warnings: string[] = [];
 
   if (mimeType === 'text/plain' || fileName.endsWith('.txt')) {
@@ -880,6 +1340,23 @@ export const extractContractText = async (
     } catch {
       return { text: '', warnings: [warningsDictionary.emptyText] };
     }
+  }
+
+  if (mimeType === 'text/html' || fileName.endsWith('.html') || fileName.endsWith('.htm')) {
+    try {
+      const html = await FileSystem.readAsStringAsync(payload.localFileUri);
+      const text = extractHtmlText(html);
+      return {
+        text,
+        warnings: text ? [] : [warningsDictionary.emptyText],
+      };
+    } catch {
+      return { text: '', warnings: [warningsDictionary.emptyText] };
+    }
+  }
+
+  if (mimeType === 'application/msword' || fileName.endsWith('.doc')) {
+    return { text: '', warnings: [warningsDictionary.legacyDoc] };
   }
 
   if (mimeType === 'application/pdf' || fileName.endsWith('.pdf')) {

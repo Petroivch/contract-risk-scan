@@ -1,4 +1,4 @@
-const XML_ENTITY_PATTERN = /&(?:amp|lt|gt|quot|apos);|&#(?:x[0-9A-Fa-f]+|\d+);/g;
+﻿const XML_ENTITY_PATTERN = /&(?:amp|lt|gt|quot|apos);|&#(?:x[0-9A-Fa-f]+|\d+);/g;
 
 const CP1251_DECODE_TABLE = [
   'Ђ',
@@ -25,7 +25,7 @@ const CP1251_DECODE_TABLE = [
   '•',
   '–',
   '—',
-  '˜',
+  '',
   '™',
   'љ',
   '›',
@@ -33,7 +33,7 @@ const CP1251_DECODE_TABLE = [
   'ќ',
   'ћ',
   'џ',
-  '\u00a0',
+  ' ',
   'Ў',
   'ў',
   'Ј',
@@ -46,7 +46,7 @@ const CP1251_DECODE_TABLE = [
   'Є',
   '«',
   '¬',
-  '\u00ad',
+  '­',
   '®',
   'Ї',
   '°',
@@ -135,7 +135,29 @@ const CP1251_CHAR_TO_BYTE = new Map<string, number>(
   CP1251_DECODE_TABLE.map((character, index) => [character, index + 0x80]),
 );
 
-const UTF8_MOJIBAKE_MARKERS = /[РСЂЃЄЁІЇЈЉЊЋЌЏЎўјѕїћџ]|Ã|Â|Ð|Ñ/g;
+const SHORT_MOJIBAKE_TOKEN_FIXES: Record<string, string> = {
+  'Р В°': 'Р°',
+  'Р С’': 'Рђ',
+  'Р Р†': 'РІ',
+  'Р вЂ™': 'Р’',
+  'Р С‘': 'Рё',
+  'Р В': 'Р',
+  'РЎРѓ': 'СЃ',
+  'Р РЋ': 'РЎ',
+  'Р С”': 'Рє',
+  'Р С™': 'Рљ',
+  'Р С•': 'Рѕ',
+  'Р С›': 'Рћ',
+  'РЎС“': 'Сѓ',
+  'Р Р€': 'РЈ',
+};
+
+const UTF8_MOJIBAKE_MARKERS = /[Р РЎР‚РѓР„РЃР†Р‡Р€Р‰РЉР‹РЊРЏРЋСћСС•С—С›Сџ]|Гѓ|Г‚|Гђ|Г‘/g;
+
+const SPACED_LETTERS_PATTERN = /(?<!\p{L})(?:[\p{L}]\s+){3,}[\p{L}](?!\p{L})/gu;
+const NON_NEWLINE_CONTROL_CHARS_PATTERN = /[\u0000-\u0008\u000B-\u001F\u007F-\u009F\u200B-\u200D\u2060\uFEFF]/g;
+const LINE_WRAP_HYPHEN_PATTERN = /([\p{L}\p{N}])(?:[\u00AD\u2010\u2011-])[ \t]*\n[ \t]*(?=[\p{L}\p{N}])/gu;
+const INTRA_WORD_LINE_BREAK_PATTERN = /([\p{L}\p{N}]{2,})\n(?=[\p{Ll}\p{Nd}][\p{L}\p{N}]{1,})/gu;
 
 const decodeUtf8Bytes = (bytes: number[]): string => {
   try {
@@ -218,6 +240,10 @@ export const repairMojibakeText = (input: string): string => {
   return input
     .replace(/\u0000/g, '')
     .replace(/\S+/g, (token) => {
+      if (SHORT_MOJIBAKE_TOKEN_FIXES[token]) {
+        return SHORT_MOJIBAKE_TOKEN_FIXES[token];
+      }
+
       if (!isLikelyMojibakeToken(token)) {
         return token;
       }
@@ -231,9 +257,21 @@ export const repairMojibakeText = (input: string): string => {
     });
 };
 
+const stripControlCharacters = (input: string): string => {
+  return input.replace(NON_NEWLINE_CONTROL_CHARS_PATTERN, '');
+};
+
+const repairBrokenWords = (input: string): string => {
+  return input
+    .replace(SPACED_LETTERS_PATTERN, (match) => match.replace(/\s+/g, ''))
+    .replace(LINE_WRAP_HYPHEN_PATTERN, '$1')
+    .replace(INTRA_WORD_LINE_BREAK_PATTERN, '$1');
+};
+
 export const normalizeExtractedText = (input: string): string => {
-  return repairMojibakeText(input)
+  return repairBrokenWords(stripControlCharacters(repairMojibakeText(input)))
     .replace(/\u00a0/g, ' ')
+    .replace(/\u00ad/g, '')
     .replace(/\r\n?/g, '\n')
     .replace(/[ \t\f\v]+\n/g, '\n')
     .replace(/\n[ \t\f\v]+/g, '\n')
@@ -270,3 +308,5 @@ export const uniqueStrings = (values: string[]): string[] => {
 
   return result;
 };
+
+
