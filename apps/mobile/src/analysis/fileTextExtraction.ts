@@ -48,8 +48,15 @@ const DOCX_TABLE_CELL_PATTERN = /<w:tc\b[\s\S]*?<\/w:tc>/g;
 const DOCX_TABLE_ROW_PATTERN = /<w:tr\b[\s\S]*?<\/w:tr>/g;
 const MIN_EXTRACTED_TEXT_LENGTH = 160;
 const PDF_FAST_PATH_TEXT_LENGTH = 480;
+const PDF_BINARY_FALLBACK_MAX_BYTES = 2_000_000;
+const PDF_MAX_DECODED_STREAMS = 160;
+const PDF_MAX_STREAM_CHARS = 2_500_000;
+const STRING_CHUNK_SIZE = 0x8000;
 
-const localizedWarnings: Record<SupportedLanguage, { emptyText: string; limitedPdf: string; legacyDoc: string }> = {
+const localizedWarnings: Record<
+  SupportedLanguage,
+  { emptyText: string; limitedPdf: string; legacyDoc: string }
+> = {
   ru: {
     emptyText:
       'Не удалось извлечь читаемый текст из файла. Для офлайн-анализа лучше использовать текстовый PDF, DOCX или TXT.',
@@ -155,13 +162,13 @@ const binaryStringToBytes = (binary: string): Uint8Array => {
 };
 
 const bytesToBinaryString = (bytes: Uint8Array): string => {
-  let output = '';
+  const chunks: string[] = [];
 
-  for (let index = 0; index < bytes.length; index += 1) {
-    output += String.fromCharCode(bytes[index]);
+  for (let index = 0; index < bytes.length; index += STRING_CHUNK_SIZE) {
+    chunks.push(String.fromCharCode(...bytes.subarray(index, index + STRING_CHUNK_SIZE)));
   }
 
-  return output;
+  return chunks.join('');
 };
 
 const bytesToHex = (bytes: Uint8Array): string => {
@@ -330,7 +337,9 @@ const decodeUtf8Bytes = (bytes: Uint8Array): string => {
 
     const third = bytes[index + 2] ?? 0;
     if (first >= 0xe0 && first <= 0xef && (second & 0xc0) === 0x80 && (third & 0xc0) === 0x80) {
-      output += String.fromCharCode(((first & 0x0f) << 12) | ((second & 0x3f) << 6) | (third & 0x3f));
+      output += String.fromCharCode(
+        ((first & 0x0f) << 12) | ((second & 0x3f) << 6) | (third & 0x3f),
+      );
       index += 3;
       continue;
     }
@@ -500,9 +509,12 @@ const isLikelyPdfTextChunk = (value: string): boolean => {
 
   const alphaCount = (normalized.match(/\p{L}/gu) ?? []).length;
   const digitCount = (normalized.match(/\p{N}/gu) ?? []).length;
-  const strangeCount = (normalized.match(/[^\p{L}\p{N}\s.,:;!?()[\]{}"'`«»„“”%№/\-–—]/gu) ?? []).length;
+  const strangeCount = (normalized.match(/[^\p{L}\p{N}\s.,:;!?()[\]{}"'`«»„“”%№/\-–—]/gu) ?? [])
+    .length;
 
-  return alphaCount >= 12 && strangeCount <= Math.max(6, Math.trunc((alphaCount + digitCount) * 0.25));
+  return (
+    alphaCount >= 12 && strangeCount <= Math.max(6, Math.trunc((alphaCount + digitCount) * 0.25))
+  );
 };
 
 const trimPdfNoiseLines = (value: string): string => {
@@ -577,10 +589,15 @@ const parsePdfUnicodeMap = (content: string): PdfUnicodeMap | null => {
   for (const block of content.matchAll(/\d+\s+beginbfrange([\s\S]*?)endbfrange/g)) {
     const body = block[1] ?? '';
 
-    for (const entry of body.matchAll(/<([0-9A-Fa-f]+)>\s*<([0-9A-Fa-f]+)>\s*\[((?:\s*<[^>]+>\s*)+)\]/g)) {
+    for (const entry of body.matchAll(
+      /<([0-9A-Fa-f]+)>\s*<([0-9A-Fa-f]+)>\s*\[((?:\s*<[^>]+>\s*)+)\]/g,
+    )) {
       const start = Number.parseInt(entry[1] ?? '', 16);
       const end = Number.parseInt(entry[2] ?? '', 16);
-      const targets = Array.from((entry[3] ?? '').matchAll(/<([0-9A-Fa-f]+)>/g), (match) => match[1] ?? '');
+      const targets = Array.from(
+        (entry[3] ?? '').matchAll(/<([0-9A-Fa-f]+)>/g),
+        (match) => match[1] ?? '',
+      );
       const width = (entry[1] ?? '').length;
 
       if (Number.isNaN(start) || Number.isNaN(end) || !targets.length) {
@@ -760,7 +777,10 @@ const shouldInsertArraySeparator = (
   }
 
   if (isWordLikeCharacter(previousCharacter) && isWordLikeCharacter(nextCharacter)) {
-    if (CYRILLIC_LETTER_PATTERN.test(previousCharacter) && CYRILLIC_LETTER_PATTERN.test(nextCharacter)) {
+    if (
+      CYRILLIC_LETTER_PATTERN.test(previousCharacter) &&
+      CYRILLIC_LETTER_PATTERN.test(nextCharacter)
+    ) {
       return '';
     }
 
@@ -822,7 +842,9 @@ const extractPdfFilterNames = (dictionary: string): string[] => {
     return [];
   }
 
-  return Array.from(rawValue.matchAll(/\/([A-Za-z0-9.#]+)/g), (match) => normalizePdfFilterName(match[1] ?? ''));
+  return Array.from(rawValue.matchAll(/\/([A-Za-z0-9.#]+)/g), (match) =>
+    normalizePdfFilterName(match[1] ?? ''),
+  );
 };
 
 const decodeAsciiHexBytes = (value: string): Uint8Array => {
@@ -833,7 +855,10 @@ const decodeAscii85Bytes = (value: string): Uint8Array => {
   const trimmed = value.replace(/\s+/g, '');
   const withoutPrefix = trimmed.startsWith('<~') ? trimmed.slice(2) : trimmed;
   const endIndex = withoutPrefix.indexOf('~>');
-  const payload = (endIndex === -1 ? withoutPrefix : withoutPrefix.slice(0, endIndex)).replace(/\s+/g, '');
+  const payload = (endIndex === -1 ? withoutPrefix : withoutPrefix.slice(0, endIndex)).replace(
+    /\s+/g,
+    '',
+  );
   const bytes: number[] = [];
   const group: number[] = [];
 
@@ -859,7 +884,12 @@ const decodeAscii85Bytes = (value: string): Uint8Array => {
         value32 = value32 * 85 + digit;
       }
 
-      bytes.push((value32 >>> 24) & 0xff, (value32 >>> 16) & 0xff, (value32 >>> 8) & 0xff, value32 & 0xff);
+      bytes.push(
+        (value32 >>> 24) & 0xff,
+        (value32 >>> 16) & 0xff,
+        (value32 >>> 8) & 0xff,
+        value32 & 0xff,
+      );
       group.length = 0;
     }
   }
@@ -877,7 +907,12 @@ const decodeAscii85Bytes = (value: string): Uint8Array => {
       value32 = value32 * 85 + digit;
     }
 
-    const padded = [(value32 >>> 24) & 0xff, (value32 >>> 16) & 0xff, (value32 >>> 8) & 0xff, value32 & 0xff];
+    const padded = [
+      (value32 >>> 24) & 0xff,
+      (value32 >>> 16) & 0xff,
+      (value32 >>> 8) & 0xff,
+      value32 & 0xff,
+    ];
     bytes.push(...padded.slice(0, outputLength));
   }
 
@@ -926,6 +961,10 @@ const extractDecodedPdfStreams = (binary: string): string[] => {
   const streams: string[] = [];
 
   for (const pdfObject of binary.matchAll(PDF_OBJECT_PATTERN)) {
+    if (streams.length >= PDF_MAX_DECODED_STREAMS) {
+      break;
+    }
+
     const body = pdfObject[3] ?? '';
     const streamMatch = PDF_STREAM_START_PATTERN.exec(body);
 
@@ -967,6 +1006,10 @@ const extractDecodedPdfStreams = (binary: string): string[] => {
     const decodedBytes = decodePdfStreamData(rawStream, filters);
 
     if (!decodedBytes?.length) {
+      continue;
+    }
+
+    if (decodedBytes.length > PDF_MAX_STREAM_CHARS) {
       continue;
     }
 
@@ -1048,11 +1091,14 @@ const isOleCompoundBytes = (bytes: Uint8Array): boolean =>
   bytes[0] === 0xd0 && bytes[1] === 0xcf && bytes[2] === 0x11 && bytes[3] === 0xe0;
 
 const readFileAsBase64 = async (uri: string): Promise<string> => {
-  const value = await FileSystem.readAsStringAsync(uri, { encoding: FileSystem.EncodingType.Base64 });
+  const value = await FileSystem.readAsStringAsync(uri, {
+    encoding: FileSystem.EncodingType.Base64,
+  });
   return value.replace(/^data:[^;]+;base64,/i, '');
 };
 
-const readFileBytes = async (uri: string): Promise<Uint8Array> => decodeBase64ToBytes(await readFileAsBase64(uri));
+const readFileBytes = async (uri: string): Promise<Uint8Array> =>
+  decodeBase64ToBytes(await readFileAsBase64(uri));
 
 const extractRtfText = (rtf: string): string => {
   const decoded = rtf
@@ -1092,7 +1138,9 @@ const scoreReadableText = (value: string): number => {
   const cyrillic = (normalized.match(/[А-Яа-яЁё]/g) ?? []).length;
   const digits = (normalized.match(/[0-9]/g) ?? []).length;
   const spaces = (normalized.match(/\s/g) ?? []).length;
-  const strange = (normalized.match(/[^0-9A-Za-zÀ-ÖØ-öø-ÿА-Яа-яЁё\s.,:;!?()[\]{}"'`«»„“”%№/\-–—+=<>|]/g) ?? []).length;
+  const strange = (
+    normalized.match(/[^0-9A-Za-zÀ-ÖØ-öø-ÿА-Яа-яЁё\s.,:;!?()[\]{}"'`«»„“”%№/\-–—+=<>|]/g) ?? []
+  ).length;
   const repeatedNoise = countRepeatedNoise(normalized);
 
   return letters * 3 + cyrillic * 2 + digits + spaces * 0.2 - strange * 8 - repeatedNoise * 12;
@@ -1105,7 +1153,9 @@ const keepReadableLines = (value: string): string => {
     .filter((line) => {
       const letters = (line.match(/[A-Za-zÀ-ÖØ-öø-ÿА-Яа-яЁё]/g) ?? []).length;
       const digits = (line.match(/[0-9]/g) ?? []).length;
-      const strange = (line.match(/[^0-9A-Za-zÀ-ÖØ-öø-ÿА-Яа-яЁё\s.,:;!?()[\]{}"'`«»„“”%№/\-–—+=<>|]/g) ?? []).length;
+      const strange = (
+        line.match(/[^0-9A-Za-zÀ-ÖØ-öø-ÿА-Яа-яЁё\s.,:;!?()[\]{}"'`«»„“”%№/\-–—+=<>|]/g) ?? []
+      ).length;
       const repeatedNoise = countRepeatedNoise(line);
       const usefulLength = Math.max(line.replace(/\s+/g, '').length, 1);
 
@@ -1142,7 +1192,10 @@ const extractReadableTextFromBytes = (bytes: Uint8Array): string => {
           : keepReadableLines(normalizedCandidate);
     const score = scoreReadableText(extracted);
 
-    if (extracted && (score > bestScore || (score === bestScore && extracted.length > bestText.length))) {
+    if (
+      extracted &&
+      (score > bestScore || (score === bestScore && extracted.length > bestText.length))
+    ) {
       bestText = extracted;
       bestScore = score;
     }
@@ -1203,7 +1256,9 @@ const extractDocxInlineText = (xml: string): string => {
     .replace(/[ ]*\n[ ]*/g, '\n');
 };
 
-const parseDocxNumberingDefinition = (numberingXml: string | undefined): DocxNumberingDefinition => {
+const parseDocxNumberingDefinition = (
+  numberingXml: string | undefined,
+): DocxNumberingDefinition => {
   const levelsByAbstract = new Map<string, Map<number, DocxLevelDefinition>>();
   const numToAbstract = new Map<string, string>();
 
@@ -1230,8 +1285,12 @@ const parseDocxNumberingDefinition = (numberingXml: string | undefined): DocxNum
       }
 
       levels.set(ilvl, {
-        lvlText: extractXmlAttribute(levelXml, /<w:lvlText\b[^>]*w:val=(?:"([^"]+)"|'([^']+)')/i) || `%${ilvl + 1}.`,
-        numFmt: extractXmlAttribute(levelXml, /<w:numFmt\b[^>]*w:val=(?:"([^"]+)"|'([^']+)')/i) || 'decimal',
+        lvlText:
+          extractXmlAttribute(levelXml, /<w:lvlText\b[^>]*w:val=(?:"([^"]+)"|'([^']+)')/i) ||
+          `%${ilvl + 1}.`,
+        numFmt:
+          extractXmlAttribute(levelXml, /<w:numFmt\b[^>]*w:val=(?:"([^"]+)"|'([^']+)')/i) ||
+          'decimal',
       });
     }
 
@@ -1323,7 +1382,10 @@ const formatDocxListCounter = (value: number, format: string): string => {
 
 const parseDocxParagraphMeta = (paragraphXml: string): DocxParagraphMeta => {
   const text = normalizeText(extractDocxInlineText(paragraphXml));
-  const styleId = extractXmlAttribute(paragraphXml, /<w:pStyle\b[^>]*w:val=(?:"([^"]+)"|'([^']+)')/i);
+  const styleId = extractXmlAttribute(
+    paragraphXml,
+    /<w:pStyle\b[^>]*w:val=(?:"([^"]+)"|'([^']+)')/i,
+  );
   const numPrMatch = paragraphXml.match(/<w:numPr\b[\s\S]*?<\/w:numPr>/);
   const numPrXml = numPrMatch?.[0] ?? '';
   const numId = extractXmlAttribute(numPrXml, /<w:numId\b[^>]*w:val=(?:"([^"]+)"|'([^']+)')/i);
@@ -1378,7 +1440,9 @@ const getDocxListMarker = (
   }
 
   const abstractNumId = numberingDefinition.numToAbstract.get(paragraphMeta.numId);
-  const levels = abstractNumId ? numberingDefinition.levelsByAbstract.get(abstractNumId) : undefined;
+  const levels = abstractNumId
+    ? numberingDefinition.levelsByAbstract.get(abstractNumId)
+    : undefined;
   const levelDefinition = levels?.get(paragraphMeta.ilvl);
   const counters = numberingState.get(paragraphMeta.numId) ?? [];
 
@@ -1408,7 +1472,10 @@ const getDocxListMarker = (
   const marker = (levelDefinition.lvlText || `%${paragraphMeta.ilvl + 1}.`)
     .replace(/%(\d+)/g, (_fullMatch, placeholderValue: string) => {
       const placeholderLevel = Math.max(Number.parseInt(placeholderValue, 10) - 1, 0);
-      const counterValue = counters[placeholderLevel] && counters[placeholderLevel] > 0 ? counters[placeholderLevel] : 1;
+      const counterValue =
+        counters[placeholderLevel] && counters[placeholderLevel] > 0
+          ? counters[placeholderLevel]
+          : 1;
       const counterFormat = levels?.get(placeholderLevel)?.numFmt ?? levelDefinition.numFmt;
 
       return formatDocxListCounter(counterValue, counterFormat);
@@ -1472,8 +1539,10 @@ const extractDocxTableText = (
 
     for (const cellMatch of rowXml.matchAll(DOCX_TABLE_CELL_PATTERN)) {
       const cellXml = cellMatch[0] ?? '';
-      const cellParagraphs = Array.from(cellXml.matchAll(DOCX_PARAGRAPH_PATTERN), (paragraphMatch) =>
-        extractDocxParagraphText(paragraphMatch[0] ?? '', numberingDefinition, numberingState),
+      const cellParagraphs = Array.from(
+        cellXml.matchAll(DOCX_PARAGRAPH_PATTERN),
+        (paragraphMatch) =>
+          extractDocxParagraphText(paragraphMatch[0] ?? '', numberingDefinition, numberingState),
       ).filter((value) => Boolean(value));
 
       cells.push(cellParagraphs.join('\n').trim().replace(/\n+/g, ' / '));
@@ -1518,7 +1587,9 @@ const pickDocxExtractionResult = (structuredText: string, flatText: string): str
     return structuredText;
   }
 
-  return structuredText.length >= Math.ceil(flatText.length * DOCX_MIN_STRUCTURED_RATIO) ? structuredText : flatText;
+  return structuredText.length >= Math.ceil(flatText.length * DOCX_MIN_STRUCTURED_RATIO)
+    ? structuredText
+    : flatText;
 };
 
 const extractDocxTextFromBytes = async (bytes: Uint8Array): Promise<string> => {
@@ -1531,14 +1602,21 @@ const extractDocxTextFromBytes = async (bytes: Uint8Array): Promise<string> => {
   }
 
   const flatText = extractFlatDocxText(documentXml);
-  const structuredText = extractStructuredDocxText(documentXml, parseDocxNumberingDefinition(numberingXml));
+  const structuredText = extractStructuredDocxText(
+    documentXml,
+    parseDocxNumberingDefinition(numberingXml),
+  );
 
   return pickDocxExtractionResult(structuredText, flatText);
 };
 
 const extractPdfTextFromBytes = (bytes: Uint8Array): string => {
   const parsedText = extractPdfDocumentText(bytesToBinaryString(bytes));
-  return parsedText || extractReadableTextFromBytes(bytes);
+  if (parsedText || bytes.length > PDF_BINARY_FALLBACK_MAX_BYTES) {
+    return parsedText;
+  }
+
+  return extractReadableTextFromBytes(bytes);
 };
 
 const resolveLanguageWarnings = (
@@ -1655,4 +1733,3 @@ export const extractContractText = async (
     warnings: fallbackText ? [] : [warningsDictionary.emptyText],
   };
 };
-

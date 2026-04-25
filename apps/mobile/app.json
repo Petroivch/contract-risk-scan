@@ -33,7 +33,7 @@
       "SUPPORTED_LANGUAGES": "ru,en,it,fr",
       "DEFAULT_LANGUAGE": "ru",
       "ROLE_PRESETS": "roles.performer,roles.employer,roles.customer,roles.contractor",
-      "MAX_UPLOAD_FILE_MB": 25,
+      "MAX_UPLOAD_FILE_MB": 18,
       "TOTAL_RELEASE_BUDGET_MB": 228,
       "MOBILE_BUDGET_SHARE_MB": 120,
       "SQLITE_DB_NAME": "contract-risk-scanner.db",

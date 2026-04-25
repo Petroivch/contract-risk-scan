@@ -27,6 +27,7 @@ export interface AnalysisStatus {
   progress: number;
   selectedRole: string;
   updatedAt: string;
+  errorMessage?: string;
 }
 
 export interface RiskItem {
@@ -93,6 +94,9 @@ export interface ContractRiskScannerApi {
     meta?: RequestMeta,
   ): Promise<{ analysisId: string; status: AnalysisStatus }>;
   getAnalysisStatus(analysisId: string, meta?: RequestMeta): Promise<AnalysisStatus>;
-  getReport(input: { analysisId: string; selectedRole?: string }, meta?: RequestMeta): Promise<AnalysisReport>;
+  getReport(
+    input: { analysisId: string; selectedRole?: string },
+    meta?: RequestMeta,
+  ): Promise<AnalysisReport>;
   listHistory(meta?: RequestMeta): Promise<HistoryItem[]>;
 }

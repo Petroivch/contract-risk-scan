@@ -23,6 +23,7 @@ interface StoredAnalysis {
   completedAt: string;
   language: SupportedLanguage;
   report?: AnalysisReport;
+  errorMessage?: string;
 }
 
 interface StubClientConfig {
@@ -41,7 +42,11 @@ const resolveStatus = (entity: StoredAnalysis): AnalysisLifecycleStatus => {
   return entity.status;
 };
 
-const progressByStatus = (status: AnalysisLifecycleStatus, createdAt?: string, completedAt?: string): number => {
+const progressByStatus = (
+  status: AnalysisLifecycleStatus,
+  createdAt?: string,
+  completedAt?: string,
+): number => {
   if (status === 'failed') return 0;
   if (status === 'completed') return 100;
   if (!createdAt || !completedAt) return status === 'queued' ? 14 : 72;
@@ -68,6 +73,7 @@ const toStatus = (entity: StoredAnalysis): AnalysisStatus => {
     status,
     progress: progressByStatus(status, entity.createdAt, entity.completedAt),
     updatedAt: status === 'completed' ? entity.completedAt : entity.updatedAt,
+    errorMessage: entity.errorMessage,
   };
 };
 
@@ -110,11 +116,12 @@ const scheduleLocalAnalysis = (
       entity.status = 'completed';
       entity.updatedAt = completedAt;
       entity.completedAt = completedAt;
-    } catch {
+    } catch (error) {
       const failedAt = nowIso();
       entity.status = 'failed';
       entity.updatedAt = failedAt;
       entity.completedAt = failedAt;
+      entity.errorMessage = error instanceof Error ? error.message : 'Local analysis failed.';
     } finally {
       processingTasks.delete(entity.analysisId);
     }
@@ -163,7 +170,10 @@ export const createStubApiClient = (config: StubClientConfig = {}): ContractRisk
     return toStatus(entity);
   },
 
-  async getReport(input: { analysisId: string; selectedRole?: string }, meta?: RequestMeta): Promise<AnalysisReport> {
+  async getReport(
+    input: { analysisId: string; selectedRole?: string },
+    meta?: RequestMeta,
+  ): Promise<AnalysisReport> {
     await delay(180);
     prepareRequestContext(meta, config.getLanguage);
 
@@ -187,6 +197,8 @@ export const createStubApiClient = (config: StubClientConfig = {}): ContractRisk
   async listHistory(meta?: RequestMeta): Promise<HistoryItem[]> {
     await delay(120);
     prepareRequestContext(meta, config.getLanguage);
-    return [...storage.values()].sort((a, b) => (a.createdAt < b.createdAt ? 1 : -1)).map((entry) => toHistory(entry));
+    return [...storage.values()]
+      .sort((a, b) => (a.createdAt < b.createdAt ? 1 : -1))
+      .map((entry) => toHistory(entry));
   },
 });

@@ -30,12 +30,13 @@ const statusToneMap = {
   failed: 'danger',
 } as const;
 
-const stepStateToneMap: Record<StepState, 'brand' | 'success' | 'warning' | 'danger' | 'neutral'> = {
-  done: 'success',
-  active: 'brand',
-  pending: 'neutral',
-  error: 'danger',
-};
+const stepStateToneMap: Record<StepState, 'brand' | 'success' | 'warning' | 'danger' | 'neutral'> =
+  {
+    done: 'success',
+    active: 'brand',
+    pending: 'neutral',
+    error: 'danger',
+  };
 
 export const AnalysisStatusScreen = ({ navigation, route }: Props): JSX.Element => {
   const { t } = useTranslation();
@@ -89,11 +90,14 @@ export const AnalysisStatusScreen = ({ navigation, route }: Props): JSX.Element 
       } catch {
         if (!cancelled) {
           setReportPrefetchFailed(true);
-          setTimeout(() => {
-            if (!cancelled) {
-              void openReadyReport();
-            }
-          }, Math.min(appConfig.api.statusPollIntervalMs, 1500));
+          setTimeout(
+            () => {
+              if (!cancelled) {
+                void openReadyReport();
+              }
+            },
+            Math.min(appConfig.api.statusPollIntervalMs, 1500),
+          );
         }
       }
     };
@@ -126,37 +130,89 @@ export const AnalysisStatusScreen = ({ navigation, route }: Props): JSX.Element 
 
     if (activeStatus === 'failed') {
       return [
-        { title: t('analysis.timelineAccepted'), detail: t('analysis.stepStateCompleted'), state: 'done' },
-        { title: t('analysis.timelineProcessing'), detail: t('analysis.stepStateFailed'), state: 'error' },
-        { title: t('analysis.timelineReady'), detail: t('analysis.stepStatePending'), state: 'pending' },
+        {
+          title: t('analysis.timelineAccepted'),
+          detail: t('analysis.stepStateCompleted'),
+          state: 'done',
+        },
+        {
+          title: t('analysis.timelineProcessing'),
+          detail: t('analysis.stepStateFailed'),
+          state: 'error',
+        },
+        {
+          title: t('analysis.timelineReady'),
+          detail: t('analysis.stepStatePending'),
+          state: 'pending',
+        },
       ];
     }
 
     if (activeStatus === 'completed') {
       return [
-        { title: t('analysis.timelineAccepted'), detail: t('analysis.stepStateCompleted'), state: 'done' },
-        { title: t('analysis.timelineProcessing'), detail: t('analysis.stepStateCompleted'), state: 'done' },
-        { title: t('analysis.timelineReady'), detail: t('analysis.stepStateCompleted'), state: 'done' },
+        {
+          title: t('analysis.timelineAccepted'),
+          detail: t('analysis.stepStateCompleted'),
+          state: 'done',
+        },
+        {
+          title: t('analysis.timelineProcessing'),
+          detail: t('analysis.stepStateCompleted'),
+          state: 'done',
+        },
+        {
+          title: t('analysis.timelineReady'),
+          detail: t('analysis.stepStateCompleted'),
+          state: 'done',
+        },
       ];
     }
 
     if (activeStatus === 'processing') {
       return [
-        { title: t('analysis.timelineAccepted'), detail: t('analysis.stepStateCompleted'), state: 'done' },
-        { title: t('analysis.timelineProcessing'), detail: t('analysis.stepStateProcessing'), state: 'active' },
-        { title: t('analysis.timelineReady'), detail: t('analysis.stepStatePending'), state: 'pending' },
+        {
+          title: t('analysis.timelineAccepted'),
+          detail: t('analysis.stepStateCompleted'),
+          state: 'done',
+        },
+        {
+          title: t('analysis.timelineProcessing'),
+          detail: t('analysis.stepStateProcessing'),
+          state: 'active',
+        },
+        {
+          title: t('analysis.timelineReady'),
+          detail: t('analysis.stepStatePending'),
+          state: 'pending',
+        },
       ];
     }
 
     return [
-      { title: t('analysis.timelineAccepted'), detail: t('analysis.stepStateQueued'), state: 'active' },
-      { title: t('analysis.timelineProcessing'), detail: t('analysis.stepStatePending'), state: 'pending' },
-      { title: t('analysis.timelineReady'), detail: t('analysis.stepStatePending'), state: 'pending' },
+      {
+        title: t('analysis.timelineAccepted'),
+        detail: t('analysis.stepStateQueued'),
+        state: 'active',
+      },
+      {
+        title: t('analysis.timelineProcessing'),
+        detail: t('analysis.stepStatePending'),
+        state: 'pending',
+      },
+      {
+        title: t('analysis.timelineReady'),
+        detail: t('analysis.stepStatePending'),
+        state: 'pending',
+      },
     ];
   }, [status?.status, t]);
 
   return (
-    <ScreenShell title={t('analysis.title')} subtitle={t('analysis.analysisId', { analysisId })} scroll>
+    <ScreenShell
+      title={t('analysis.title')}
+      subtitle={t('analysis.analysisId', { analysisId })}
+      scroll
+    >
       <View style={styles.heroCard}>
         <View style={styles.heroHeader}>
           <View style={styles.heroCopy}>
@@ -164,7 +220,10 @@ export const AnalysisStatusScreen = ({ navigation, route }: Props): JSX.Element 
             <Text style={styles.heroTitle}>{t('analysis.panelTitle')}</Text>
             <Text style={styles.heroSubtitle}>{t('analysis.panelSubtitle')}</Text>
           </View>
-          <StatusChip label={t(`status.${status?.status ?? 'queued'}`)} tone={statusToneMap[status?.status ?? 'queued']} />
+          <StatusChip
+            label={t(`status.${status?.status ?? 'queued'}`)}
+            tone={statusToneMap[status?.status ?? 'queued']}
+          />
         </View>
 
         <View style={styles.metricRow}>
@@ -214,6 +273,11 @@ export const AnalysisStatusScreen = ({ navigation, route }: Props): JSX.Element 
                   ? 'Le rapport n a pas pu etre prepare du premier coup. Nous tentons de restaurer les donnees automatiquement.'
                   : 'The report could not be prepared on the first attempt. We are trying to restore the data automatically.'}
           </Text>
+        </View>
+      ) : null}
+      {status?.status === 'failed' && status.errorMessage ? (
+        <View style={styles.inlineNotice}>
+          <Text style={styles.inlineNoticeText}>{status.errorMessage}</Text>
         </View>
       ) : null}
     </ScreenShell>

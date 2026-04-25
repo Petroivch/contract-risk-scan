@@ -33,7 +33,8 @@ const formatFileType = (mimeType: string, fileName?: string): string => {
     return 'PDF';
   }
   if (
-    normalizedMimeType === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' ||
+    normalizedMimeType ===
+      'application/vnd.openxmlformats-officedocument.wordprocessingml.document' ||
     normalizedFileName.endsWith('.docx')
   ) {
     return 'DOCX';
@@ -97,6 +98,17 @@ export const UploadWithRoleScreen = ({ navigation }: Props): JSX.Element => {
       return;
     }
 
+    const maxFileSizeBytes = appConfig.limits.maxUploadFileMb * 1024 * 1024;
+    if (asset.size && asset.size > maxFileSizeBytes) {
+      Alert.alert(
+        t('upload.startFailedTitle'),
+        language === 'ru'
+          ? `Файл больше лимита ${appConfig.limits.maxUploadFileMb} MB. Сохраните договор в меньшем PDF/DOCX или разделите документ.`
+          : `The file is larger than the ${appConfig.limits.maxUploadFileMb} MB limit. Save a smaller PDF/DOCX or split the document.`,
+      );
+      return;
+    }
+
     let cachedUri = asset.uri;
     if (asset.uri) {
       try {
@@ -145,7 +157,9 @@ export const UploadWithRoleScreen = ({ navigation }: Props): JSX.Element => {
     }
   };
 
-  const fileType = selectedFile ? formatFileType(selectedFile.mimeType, selectedFile.fileName) : '—';
+  const fileType = selectedFile
+    ? formatFileType(selectedFile.mimeType, selectedFile.fileName)
+    : '—';
   const fileSize = selectedFile ? formatFileSize(selectedFile.fileSizeBytes) : '—';
 
   return (
@@ -225,11 +239,16 @@ export const UploadWithRoleScreen = ({ navigation }: Props): JSX.Element => {
       </View>
 
       <Pressable
-        style={[styles.primaryButton, (!selectedFile || !selectedRole || submitting) && styles.disabled]}
+        style={[
+          styles.primaryButton,
+          (!selectedFile || !selectedRole || submitting) && styles.disabled,
+        ]}
         onPress={startAnalysis}
         disabled={!selectedFile || !selectedRole || submitting}
       >
-        <Text style={styles.primaryButtonText}>{submitting ? t('upload.submitting') : t('common.startAnalysis')}</Text>
+        <Text style={styles.primaryButtonText}>
+          {submitting ? t('upload.submitting') : t('common.startAnalysis')}
+        </Text>
       </Pressable>
     </ScreenShell>
   );
