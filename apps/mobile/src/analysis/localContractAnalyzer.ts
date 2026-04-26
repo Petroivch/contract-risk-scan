@@ -27,8 +27,21 @@ const buildSafeFallbackReport = (
   payload: UploadContractRequest,
   language: SupportedLanguage,
   warnings: string[],
+  error?: unknown,
 ): AnalysisReport => {
   const warning = unexpectedAnalysisWarnings[language] ?? unexpectedAnalysisWarnings.ru;
+  const errorDetails =
+    error instanceof Error
+      ? `${error.name}: ${error.message}`
+      : error
+        ? String(error)
+        : '';
+  const diagnostic = errorDetails
+    ? language === 'ru'
+      ? `Диагностика: ${errorDetails}`
+      : `Diagnostic: ${errorDetails}`
+    : '';
+  const details = [warning, diagnostic, ...warnings].filter(Boolean).join(' ');
 
   return {
     analysisId,
@@ -40,8 +53,8 @@ const buildSafeFallbackReport = (
           ? `Анализ договора: ${payload.fileName}`
           : `Contract analysis: ${payload.fileName}`,
       contractType: language === 'ru' ? 'Договор общего типа' : 'General contract',
-      shortDescription: warning,
-      obligationsForSelectedRole: [warning],
+      shortDescription: details,
+      obligationsForSelectedRole: [details],
       roleFound: false,
     },
     risks: [
@@ -53,7 +66,7 @@ const buildSafeFallbackReport = (
         clauseRefs: ['system'],
         occurrences: Math.max(warnings.length, 1),
         title: language === 'ru' ? 'Требуется ручная проверка' : 'Manual review required',
-        description: [warning, ...warnings].join(' '),
+        description: details,
         recommendation:
           language === 'ru'
             ? 'Проверьте договор вручную или повторите анализ после сохранения файла в DOCX, TXT или текстовый PDF.'
@@ -95,7 +108,7 @@ export const analyzeContractLocally = async (
     });
   } catch (error) {
     console.warn('Local contract analysis failed', error);
-    return buildSafeFallbackReport(analysisId, payload, language, extractionWarnings);
+    return buildSafeFallbackReport(analysisId, payload, language, extractionWarnings, error);
   }
 
   return {

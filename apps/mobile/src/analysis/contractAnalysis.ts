@@ -60,6 +60,20 @@ interface AnalysisArtifacts {
   disputedClauses: DisputedClause[];
 }
 
+const runAnalysisStage = <T>(stage: string, operation: () => T): T => {
+  try {
+    return operation();
+  } catch (error) {
+    const details =
+      error instanceof Error
+        ? `${error.name}: ${error.message}`
+        : error
+          ? String(error)
+          : 'Unknown error';
+    throw new Error(`${stage}: ${details}`);
+  }
+};
+
 interface RiskCandidate {
   rule: RiskRule;
   clauseRef: string;
@@ -2758,10 +2772,14 @@ export const buildAnalysisArtifacts = ({
 }: BuildAnalysisArtifactsInput): AnalysisArtifacts => {
   const normalizedLanguage = normalizeLanguage(language);
   const strings = localizedStrings[normalizedLanguage];
-  const normalizedText = normalizeExtractedText(text);
-  const clauses = segmentClauses(normalizedText);
-  const strictRoleTerms = buildStrictRoleTerms(selectedRole);
-  const roleObligations = collectRoleObligations(clauses, strictRoleTerms, maxSummaryItems);
+  const normalizedText = runAnalysisStage('normalize-text', () => normalizeExtractedText(text));
+  const clauses = runAnalysisStage('segment-clauses', () => segmentClauses(normalizedText));
+  const strictRoleTerms = runAnalysisStage('role-terms', () =>
+    buildStrictRoleTerms(selectedRole),
+  );
+  const roleObligations = runAnalysisStage('role-obligations', () =>
+    collectRoleObligations(clauses, strictRoleTerms, maxSummaryItems),
+  );
 
   const roleFound = roleObligations.roleFound;
   const summaryItems = roleFound
@@ -2770,7 +2788,9 @@ export const buildAnalysisArtifacts = ({
       : [strings.obligationsFallback]
     : [formatRoleNotFoundMessage(selectedRole, normalizedLanguage)];
 
-  const risks = buildRiskItems(clauses, selectedRole, normalizedLanguage, warnings);
+  const risks = runAnalysisStage('risk-items', () =>
+    buildRiskItems(clauses, selectedRole, normalizedLanguage, warnings),
+  );
   if (!roleFound) {
     risks.unshift({
       id: 'risk-role-missing',
@@ -2795,7 +2815,9 @@ export const buildAnalysisArtifacts = ({
   return {
     summary: {
       title: `${strings.reportTitle}: ${fileName}`,
-      contractType: detectContractType(normalizedText, normalizedLanguage),
+      contractType: runAnalysisStage('contract-type', () =>
+        detectContractType(normalizedText, normalizedLanguage),
+      ),
       shortDescription: roleFound
         ? formatTemplate(strings.shortDescription, {
             clausesCount: clauses.length,
@@ -2807,6 +2829,8 @@ export const buildAnalysisArtifacts = ({
       roleFound,
     },
     risks,
-    disputedClauses: buildDisputedClauses(clauses, normalizedLanguage),
+    disputedClauses: runAnalysisStage('disputed-clauses', () =>
+      buildDisputedClauses(clauses, normalizedLanguage),
+    ),
   };
 };
