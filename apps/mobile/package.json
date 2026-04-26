@@ -7,6 +7,9 @@
     "start": "expo start",
     "android": "expo run:android",
     "ios": "expo run:ios",
+    "eas:build:ios:preview": "npx eas-cli@latest build --platform ios --profile preview",
+    "eas:build:ios:production": "npx eas-cli@latest build --platform ios --profile production",
+    "eas:submit:ios": "npx eas-cli@latest submit --platform ios --profile production",
     "lint": "eslint . --ext .ts,.tsx",
     "typecheck": "tsc --noEmit",
     "format": "prettier --write ."

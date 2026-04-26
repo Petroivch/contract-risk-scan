@@ -13,7 +13,9 @@
       "backgroundColor": "#0D2236"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.contractriskscanner.mobile",
+      "buildNumber": "1"
     },
     "android": {
       "package": "com.contractriskscanner.mobile",

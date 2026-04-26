@@ -279,6 +279,33 @@ assert.ok(
 const normalizedStructuredText = splitStructuredText("Р' договоре есть условия об ответственности. Выявлено в пункте 5.1", 4);
 assert.equal(normalizedStructuredText[0], 'В договоре есть условия об ответственности.');
 assert.equal(normalizeExtractedText('о с в о и т ь образовательную программу'), 'освоить образовательную программу');
+assert.equal(
+  normalizeExtractedText('Гражданин должен освоить основную образовательную программу непосредственно в\nобразовательной организации.'),
+  'Гражданин должен освоить основную образовательную программу непосредственно в образовательной организации.',
+);
+
+const wrappedSummaryAnalysis = buildAnalysisArtifacts({
+  text: [
+    'Гражданин обязуется освоить образовательную программу.',
+    'Гражданин обязан в период обучения по основной образовательной\nпрограмме освоить в полном объеме образовательную программу.',
+    'Гражданин должен освоить основную образовательную программу непосредственно в\nобразовательной организации.',
+  ].join('\n\n'),
+  fileName: 'wrapped-summary.pdf',
+  selectedRole: 'Гражданин',
+  language: 'ru',
+  warnings: [],
+});
+
+assert.ok(
+  wrappedSummaryAnalysis.summary.obligationsForSelectedRole.some((line) =>
+    line.includes('по основной образовательной программе освоить в полном объеме'),
+  ),
+);
+assert.ok(
+  wrappedSummaryAnalysis.summary.obligationsForSelectedRole.some((line) =>
+    line.includes('непосредственно в образовательной организации'),
+  ),
+);
 
 const stringNormalizeDescriptor = Object.getOwnPropertyDescriptor(String.prototype, 'normalize');
 try {

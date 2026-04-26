@@ -207,6 +207,26 @@ npm run ios
 - provisioning profile
 - archive/export через Xcode
 
+Облачный путь с Windows через EAS Build:
+
+```powershell
+cd apps\mobile
+npm install
+npx eas-cli@latest login
+npx eas-cli@latest init
+npm run eas:build:ios:preview
+```
+
+Для production/App Store:
+
+```powershell
+cd apps\mobile
+npm run eas:build:ios:production
+npm run eas:submit:ios
+```
+
+EAS-конфигурация лежит в `apps/mobile/eas.json`. Для iOS задан bundle identifier `com.contractriskscanner.mobile`.
+
 ## Ограничения и текущие блокеры
 
 Текущие известные ограничения:

@@ -26,6 +26,21 @@
 - `npm run typecheck`
 - `npm run format`
 
+## iOS через EAS Build
+Локальная `.ipa`-сборка на Windows невозможна, поэтому для iPhone подготовлен облачный путь через Expo EAS.
+
+Перед первой сборкой:
+1. Создать или войти в Expo account: `npx eas-cli@latest login`
+2. При необходимости связать проект с Expo: `npx eas-cli@latest init`
+3. Убедиться, что Apple Developer account доступен для signing/provisioning.
+
+Команды:
+- `npm run eas:build:ios:preview` - internal/ad hoc `.ipa` для тестирования на зарегистрированных устройствах.
+- `npm run eas:build:ios:production` - production build для App Store/TestFlight.
+- `npm run eas:submit:ios` - отправка production build в App Store Connect.
+
+EAS-конфигурация лежит в `eas.json`; iOS bundle identifier задан в `app.json` как `com.contractriskscanner.mobile`.
+
 ## Документация фронтенда
 - Настройка: `docs/frontend/setup.md`
 - Интеграция: `docs/frontend/integration-notes.md`
