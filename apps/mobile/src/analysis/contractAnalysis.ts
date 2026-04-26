@@ -2179,7 +2179,7 @@ const collectRoleLedBlockItems = (
     'giu',
   );
   const blockStopPattern = new RegExp(
-    String.raw`(?:(?:\d+(?:\.\d+)*[.)]?\s*)?[A-Za-zА-ЯЁ][A-Za-zА-Яа-яЁё-]{2,}(?:\s+[A-Za-zА-Яа-яЁё-]{2,}){0,2}\s+(?:обязан(?:а|ы)?|обязуется|должен(?:а|ы)?|вправе|может|shall|must|undertakes|may)\b)|(?:\n\s*\d+\.\s+\p{Lu})`,
+    String.raw`(?:(?:\d+(?:\.\d+)*[.)]?\s*)?[A-Za-zА-ЯЁ][A-Za-zА-Яа-яЁё-]{2,}(?:\s+[A-Za-zА-Яа-яЁё-]{2,}){0,2}\s+(?:обязан(?:а|ы)?|обязуется|должен(?:а|ы)?|вправе|может|shall|must|undertakes|may)\b)|(?:\n\s*\d+\.\s+[A-ZА-ЯЁ])`,
     'iu',
   );
 
@@ -2209,7 +2209,7 @@ const collectRoleLedBlockItems = (
 
       if (parts.length === 1) {
         return new RegExp(
-          String.raw`\n\s*(?!${escapeRegExp(parts[0])}(?:[.)]|\b))\d+[.)]?\s+\p{Lu}`,
+          String.raw`\n\s*(?!${escapeRegExp(parts[0])}(?:[.)]|\b))\d+[.)]?\s+[A-ZА-ЯЁ]`,
           'u',
         );
       }
@@ -2220,7 +2220,7 @@ const collectRoleLedBlockItems = (
         .join('\\.');
       const currentLeaf = escapeRegExp(parts[parts.length - 1]);
       return new RegExp(
-        String.raw`\n\s*${parentPath}\.(?!${currentLeaf}(?:[.)]|\b))\d+[.)]?\s+\p{Lu}`,
+        String.raw`\n\s*${parentPath}\.(?!${currentLeaf}(?:[.)]|\b))\d+[.)]?\s+[A-ZА-ЯЁ]`,
         'u',
       );
     })();

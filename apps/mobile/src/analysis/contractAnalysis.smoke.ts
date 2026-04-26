@@ -237,8 +237,8 @@ try {
     flags?: string,
   ): RegExp {
     const source = pattern instanceof originalRegExp ? pattern.source : String(pattern);
-    if (source.includes('(?<=')) {
-      throw new Error('lookbehind is unavailable');
+    if (source.includes('(?<=') || source.includes('\\p{')) {
+      throw new Error('RegExp feature is unavailable');
     }
 
     return new originalRegExp(pattern, flags);
