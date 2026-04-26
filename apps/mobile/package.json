@@ -10,8 +10,11 @@
     "eas:build:ios:preview": "npx eas-cli@latest build --platform ios --profile preview",
     "eas:build:ios:production": "npx eas-cli@latest build --platform ios --profile production",
     "eas:submit:ios": "npx eas-cli@latest submit --platform ios --profile production",
-    "lint": "eslint . --ext .ts,.tsx",
+    "lint": "eslint App.tsx src --ext .ts,.tsx",
     "typecheck": "tsc --noEmit",
+    "smoke:expo": "expo config --type public",
+    "smoke:analysis": "node scripts/run-analysis-smoke.cjs",
+    "smoke": "npm run smoke:expo && npm run smoke:analysis",
     "format": "prettier --write ."
   },
   "dependencies": {

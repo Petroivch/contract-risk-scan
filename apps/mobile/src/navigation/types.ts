@@ -5,6 +5,7 @@ export interface ReportDetailSectionParam {
 
 export type RootStackParamList = {
   UploadWithRole: undefined;
+  Settings: undefined;
   AnalysisStatus: {
     analysisId: string;
     selectedRole: string;

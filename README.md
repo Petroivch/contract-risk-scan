@@ -1,5 +1,38 @@
 # Contract Risk Scanner
 
+## Release readiness
+
+Mobile checks are automated in `.github/workflows/mobile-ci.yml`. The workflow runs from `apps/mobile` and executes:
+
+```powershell
+npm ci
+npm run typecheck
+npm run lint
+npm run smoke
+```
+
+Android release signing is explicit. `apps/mobile/android/app/build.gradle` no longer signs `release` with the debug keystore when release credentials are missing. Production `assembleRelease`/`bundleRelease` require:
+
+- `CONTRACT_RISK_RELEASE_STORE_FILE`
+- `CONTRACT_RISK_RELEASE_STORE_PASSWORD`
+- `CONTRACT_RISK_RELEASE_KEY_ALIAS`
+- `CONTRACT_RISK_RELEASE_KEY_PASSWORD`
+
+For a debug-signed internal Android package, use the separate internal build type:
+
+```powershell
+cd apps\mobile\android
+.\gradlew.bat assembleInternal
+```
+
+iOS release builds are prepared through Expo EAS in `apps/mobile/eas.json`. Commands are available in `apps/mobile/package.json`:
+
+- `npm run eas:build:ios:preview`
+- `npm run eas:build:ios:production`
+- `npm run eas:submit:ios`
+
+An installable iOS `.ipa` requires Apple Developer credentials and valid signing/provisioning. Without those credentials, EAS configuration can be checked, but a usable `.ipa` should not be promised.
+
 `Contract Risk Scanner` — мобильное приложение для Android и iPhone, которое принимает файл договора, анализирует его и возвращает:
 - риски
 - спорные пункты

@@ -200,4 +200,34 @@ export class SQLiteLocalCache implements LocalCacheStore {
 
     return parseJson<QueuedUploadItem>(row?.payload);
   };
+
+  public getQueuedUploads = async (): Promise<QueuedUploadItem[]> => {
+    await this.initialize();
+    const database = await this.getDatabase();
+
+    const rows = await database.getAllAsync<PayloadRow>(
+      'SELECT payload FROM analysis_upload_queue ORDER BY updated_at ASC;',
+    );
+
+    return rows
+      .map((row) => parseJson<QueuedUploadItem>(row.payload))
+      .filter((item): item is QueuedUploadItem => Boolean(item));
+  };
+
+  public clearAll = async (): Promise<void> => {
+    await this.initialize();
+    const database = await this.getDatabase();
+
+    await database.execAsync('BEGIN TRANSACTION;');
+    try {
+      await database.execAsync('DELETE FROM analysis_status_cache;');
+      await database.execAsync('DELETE FROM analysis_report_cache;');
+      await database.execAsync('DELETE FROM analysis_history_cache;');
+      await database.execAsync('DELETE FROM analysis_upload_queue;');
+      await database.execAsync('COMMIT;');
+    } catch (error) {
+      await database.execAsync('ROLLBACK;');
+      throw error;
+    }
+  };
 }

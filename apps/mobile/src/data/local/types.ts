@@ -11,4 +11,6 @@ export interface LocalCacheStore {
   getHistory(): Promise<HistoryItem[]>;
   saveQueuedUpload(item: QueuedUploadItem): Promise<void>;
   getQueuedUpload(analysisId: string): Promise<QueuedUploadItem | null>;
+  getQueuedUploads(): Promise<QueuedUploadItem[]>;
+  clearAll(): Promise<void>;
 }

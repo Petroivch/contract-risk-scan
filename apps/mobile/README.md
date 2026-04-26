@@ -24,19 +24,48 @@
 ## Скрипты качества
 - `npm run lint`
 - `npm run typecheck`
+- `npm run smoke`
 - `npm run format`
 
+CI запускает `npm ci`, затем `npm run typecheck`, `npm run lint` и `npm run smoke` из каталога `apps/mobile`.
+
+## Android release signing
+`release` APK/AAB должен быть подписан production keystore. Если signing env vars не заданы, `assembleRelease` и `bundleRelease` завершаются понятной ошибкой и не fallback-ятся на debug keystore.
+
+Обязательные env vars:
+- `CONTRACT_RISK_RELEASE_STORE_FILE` - путь к `.jks`/`.keystore` файлу.
+- `CONTRACT_RISK_RELEASE_STORE_PASSWORD` - пароль keystore.
+- `CONTRACT_RISK_RELEASE_KEY_ALIAS` - alias ключа.
+- `CONTRACT_RISK_RELEASE_KEY_PASSWORD` - пароль ключа.
+
+Локальная release-сборка:
+```powershell
+cd apps\mobile\android
+$env:CONTRACT_RISK_RELEASE_STORE_FILE="C:\secure\contract-risk-release.jks"
+$env:CONTRACT_RISK_RELEASE_STORE_PASSWORD="<store-password>"
+$env:CONTRACT_RISK_RELEASE_KEY_ALIAS="<key-alias>"
+$env:CONTRACT_RISK_RELEASE_KEY_PASSWORD="<key-password>"
+.\gradlew.bat assembleRelease
+```
+
+Для внутренней проверки без production keystore используйте отдельный debug-signed вариант:
+```powershell
+cd apps\mobile\android
+.\gradlew.bat assembleInternal
+```
+
 ## iOS через EAS Build
-Локальная `.ipa`-сборка на Windows невозможна, поэтому для iPhone подготовлен облачный путь через Expo EAS.
+Локальная `.ipa`-сборка на Windows невозможна, поэтому для iPhone подготовлен облачный путь через Expo EAS. EAS может собрать installable iOS artifact только при наличии Apple Developer credentials и корректного signing/provisioning. Без Apple credentials можно проверить конфигурацию, но нельзя обещать готовую `.ipa`.
 
 Перед первой сборкой:
 1. Создать или войти в Expo account: `npx eas-cli@latest login`
 2. При необходимости связать проект с Expo: `npx eas-cli@latest init`
 3. Убедиться, что Apple Developer account доступен для signing/provisioning.
+4. Проверить iOS bundle identifier в `app.json`: `com.contractriskscanner.mobile`.
 
 Команды:
-- `npm run eas:build:ios:preview` - internal/ad hoc `.ipa` для тестирования на зарегистрированных устройствах.
-- `npm run eas:build:ios:production` - production build для App Store/TestFlight.
+- `npm run eas:build:ios:preview` - internal/ad hoc build для тестирования на зарегистрированных устройствах при наличии Apple signing.
+- `npm run eas:build:ios:production` - production build для App Store/TestFlight при наличии Apple signing.
 - `npm run eas:submit:ios` - отправка production build в App Store Connect.
 
 EAS-конфигурация лежит в `eas.json`; iOS bundle identifier задан в `app.json` как `com.contractriskscanner.mobile`.

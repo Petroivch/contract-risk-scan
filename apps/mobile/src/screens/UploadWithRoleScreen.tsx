@@ -164,6 +164,22 @@ export const UploadWithRoleScreen = ({ navigation }: Props): JSX.Element => {
 
   return (
     <ScreenShell title={t('upload.title')} subtitle={t('upload.subtitle')} scroll>
+      <View style={styles.noticeCard}>
+        <View style={styles.noticeBlock}>
+          <Text style={styles.noticeKicker}>{t('privacy.noticeKicker')}</Text>
+          <Text style={styles.noticeTitle}>{t('privacy.storageTitle')}</Text>
+          <Text style={styles.noticeText}>{t('privacy.storageText')}</Text>
+        </View>
+        <View style={styles.noticeBlock}>
+          <Text style={styles.noticeKicker}>{t('legal.noticeKicker')}</Text>
+          <Text style={styles.noticeTitle}>{t('legal.disclaimerTitle')}</Text>
+          <Text style={styles.noticeText}>{t('legal.disclaimerText')}</Text>
+        </View>
+        <Pressable style={styles.secondaryButton} onPress={() => navigation.navigate('Settings')}>
+          <Text style={styles.secondaryButtonText}>{t('settings.openSettings')}</Text>
+        </Pressable>
+      </View>
+
       <View style={styles.roleCard}>
         <View style={styles.cardHeader}>
           <View style={styles.cardCopy}>
@@ -401,5 +417,50 @@ const styles = StyleSheet.create({
     fontWeight: typography.weight.bold,
     fontSize: typography.size.body,
     lineHeight: typography.lineHeight.body,
+  },
+  noticeCard: {
+    borderRadius: radius.xl,
+    borderWidth: 1,
+    borderColor: colors.border,
+    backgroundColor: colors.surface,
+    padding: spacing.md,
+    gap: spacing.sm,
+    ...shadow.card,
+  },
+  noticeBlock: {
+    gap: spacing.xxs,
+  },
+  noticeKicker: {
+    color: colors.textMuted,
+    fontSize: typography.size.caption,
+    lineHeight: typography.lineHeight.caption,
+    fontWeight: typography.weight.semibold,
+    textTransform: 'uppercase',
+    letterSpacing: 0.5,
+  },
+  noticeTitle: {
+    color: colors.textPrimary,
+    fontSize: typography.size.body,
+    lineHeight: typography.lineHeight.body,
+    fontWeight: typography.weight.bold,
+  },
+  noticeText: {
+    color: colors.textSecondary,
+    fontSize: typography.size.bodySm,
+    lineHeight: typography.lineHeight.bodySm,
+  },
+  secondaryButton: {
+    alignSelf: 'flex-start',
+    borderRadius: radius.md,
+    borderWidth: 1,
+    borderColor: colors.border,
+    backgroundColor: colors.accentSoft,
+    paddingHorizontal: spacing.sm,
+    paddingVertical: spacing.xs,
+  },
+  secondaryButtonText: {
+    color: colors.textPrimary,
+    fontSize: typography.size.bodySm,
+    fontWeight: typography.weight.semibold,
   },
 });

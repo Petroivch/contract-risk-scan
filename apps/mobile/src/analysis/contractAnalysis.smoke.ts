@@ -183,6 +183,58 @@ const clearAcceptanceAnalysis = buildAnalysisArtifacts({
 
 assert.ok(!clearAcceptanceAnalysis.risks.some((risk) => risk.title === 'Неясная приемка результата'));
 
+const legalCoreAnalysis = buildAnalysisArtifacts({
+  text: [
+    '1.1. Исполнитель обязан оказать услуги и не разглашать любую конфиденциальную информацию Заказчика без ограничения срока.',
+    '2.1. Заказчик вправе в одностороннем порядке изменить тарифы, сроки и объем услуг без согласования с Исполнителем.',
+    '3.1. Исполнитель уплачивает штраф 10% от цены договора за каждый день просрочки и возмещает все убытки в полном объеме.',
+    '4.1. Результат считается принятым, если Заказчик не направит замечания в течение 2 календарных дней.',
+    '5.1. Все споры подлежат исключительной подсудности арбитражного суда по месту нахождения Заказчика, претензия рассматривается 5 рабочих дней.',
+    '6.1. Исполнитель дает согласие на обработку персональных данных, включая передачу третьим лицам и трансграничную передачу без отдельного согласия.',
+    '7.1. Форс-мажором признаются любые обстоятельства, включая отсутствие денежных средств, изменение курса валют и санкции.',
+    '8.1. Договор автоматически продлевается на каждый следующий год, если ни одна из сторон не уведомит другую сторону за 90 дней.',
+    '9.1. В обеспечение обязательств Исполнитель предоставляет поручительство, поручитель отвечает солидарно в полном объеме.',
+  ].join('\n\n'),
+  fileName: 'legal-core.docx',
+  selectedRole: 'Исполнитель',
+  language: 'ru',
+  warnings: [],
+});
+
+const legalCoreRiskTitles = legalCoreAnalysis.risks.map((risk) => risk.title);
+assert.ok(legalCoreRiskTitles.includes('Конфиденциальность и коммерческая тайна'));
+assert.ok(legalCoreRiskTitles.includes('Одностороннее изменение или расторжение'));
+assert.ok(legalCoreRiskTitles.includes('Штрафы и санкции'));
+assert.ok(legalCoreRiskTitles.includes('Ответственность и возмещение убытков'));
+assert.ok(legalCoreRiskTitles.includes('Неясная приемка результата'));
+assert.ok(legalCoreRiskTitles.includes('Подсудность и претензионный порядок'));
+assert.ok(legalCoreRiskTitles.includes('Персональные данные'));
+assert.ok(legalCoreRiskTitles.includes('Форс-мажор'));
+assert.ok(legalCoreRiskTitles.includes('Автоматическое продление'));
+assert.ok(legalCoreRiskTitles.includes('Обеспечение и взыскание'));
+
+const referenceNoiseAnalysis = buildAnalysisArtifacts({
+  text: [
+    '1. Исполнитель обязан оказать услуги в срок 10 рабочих дней.',
+    '2. Заказчик оплачивает услуги в течение 5 банковских дней.',
+    'Справочно: пример условия о штрафе 10%, форс-мажоре, персональных данных и исключительной подсудности не является условием договора.',
+    'Учебный пример: поставщик вправе в одностороннем порядке изменить цену по своему усмотрению.',
+    'Reference only: all information is confidential indefinitely and this sample clause is not part of this agreement.',
+  ].join('\n\n'),
+  fileName: 'reference-noise.txt',
+  selectedRole: 'Исполнитель',
+  language: 'ru',
+  warnings: [],
+});
+
+const noisyGroups = new Set(referenceNoiseAnalysis.risks.map((risk) => risk.groupId));
+assert.ok(!noisyGroups.has('penalties'));
+assert.ok(!noisyGroups.has('force-majeure'));
+assert.ok(!noisyGroups.has('personal-data'));
+assert.ok(!noisyGroups.has('jurisdiction-claim'));
+assert.ok(!noisyGroups.has('unilateral'));
+assert.ok(!noisyGroups.has('confidentiality'));
+
 const pledgeAnalysis = buildAnalysisArtifacts({
   text: [
     'ДОГОВОР ЗАЛОГА АКЦИЙ.',

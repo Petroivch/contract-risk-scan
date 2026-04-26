@@ -19,6 +19,35 @@ const shouldUseFallback = (enabled: boolean): boolean => enabled;
 const nowIso = (): string => new Date().toISOString();
 const buildQueuedAnalysisId = (): string => `queued_${Date.now()}`;
 const localFallbackTasks = new Map<string, Promise<void>>();
+const localAnalysisTimeoutMs = 15 * 60 * 1000;
+const localAnalysisTimeoutMessage = 'Local analysis timed out. Please retry the upload.';
+
+const parseTimestampMs = (timestamp: string): number | null => {
+  const value = Date.parse(timestamp);
+  return Number.isNaN(value) ? null : value;
+};
+
+const isPendingStatus = (status: AnalysisStatus): boolean =>
+  status.status === 'queued' || status.status === 'processing';
+
+const isTimedOutPendingStatus = (status: AnalysisStatus): boolean => {
+  if (!isPendingStatus(status)) {
+    return false;
+  }
+
+  const updatedAtMs = parseTimestampMs(status.updatedAt);
+  return updatedAtMs !== null && Date.now() - updatedAtMs > localAnalysisTimeoutMs;
+};
+
+const buildTimedOutStatus = (status: AnalysisStatus): AnalysisStatus => ({
+  ...status,
+  status: 'failed',
+  progress: 0,
+  stage: undefined,
+  updatedAt: nowIso(),
+  errorMessage: localAnalysisTimeoutMessage,
+});
+
 const buildCompletedStatus = (analysisId: string, selectedRole: string): AnalysisStatus => ({
   analysisId,
   status: 'completed',
@@ -147,6 +176,39 @@ export const createLocalFirstAdapter = (
     return { report: completedReport, status };
   };
 
+  const getQueuedUploadSafely = async (analysisId: string): Promise<QueuedUploadItem | null> => {
+    try {
+      return await localCache.getQueuedUpload(analysisId);
+    } catch {
+      return null;
+    }
+  };
+
+  const markLocalAnalysisTimedOut = async (
+    status: AnalysisStatus,
+    queuedUpload?: QueuedUploadItem | null,
+  ): Promise<AnalysisStatus> => {
+    const failedStatus = buildTimedOutStatus(status);
+    await ignoreCacheError(() => localCache.saveStatus(failedStatus));
+
+    if (queuedUpload) {
+      await ignoreCacheError(() =>
+        localCache.upsertHistoryItem(buildHistoryItem(status.analysisId, queuedUpload, 'failed')),
+      );
+    }
+
+    return failedStatus;
+  };
+
+  const getCachedStatusWithTimeout = async (analysisId: string): Promise<AnalysisStatus | null> => {
+    const cached = await localCache.getStatus(analysisId);
+    if (!cached || !isTimedOutPendingStatus(cached)) {
+      return cached;
+    }
+
+    return markLocalAnalysisTimedOut(cached, await getQueuedUploadSafely(analysisId));
+  };
+
   const scheduleLocalFallbackAnalysis = (
     analysisId: string,
     payload: UploadContractRequest,
@@ -196,8 +258,47 @@ export const createLocalFirstAdapter = (
     localFallbackTasks.set(analysisId, task);
   };
 
+  let pendingRestorePromise: Promise<void> | null = null;
+  const restorePendingLocalAnalyses = (): Promise<void> => {
+    if (!config.enableLocalFirst) {
+      return Promise.resolve();
+    }
+
+    if (!pendingRestorePromise) {
+      pendingRestorePromise = (async (): Promise<void> => {
+        const queuedUploads = await localCache.getQueuedUploads();
+
+        for (const queuedUpload of queuedUploads) {
+          const cachedStatus = await getCachedStatusWithTimeout(queuedUpload.analysisId);
+          if (!cachedStatus || !isPendingStatus(cachedStatus)) {
+            continue;
+          }
+
+          if (!queuedUpload.localFileUri) {
+            continue;
+          }
+
+          scheduleLocalFallbackAnalysis(
+            queuedUpload.analysisId,
+            buildUploadPayloadFromQueue(queuedUpload),
+            { language: queuedUpload.language },
+          );
+        }
+      })().catch(() => {
+        pendingRestorePromise = null;
+        // Local recovery is best effort; foreground calls still fall back to cached status/report.
+      });
+    }
+
+    return pendingRestorePromise;
+  };
+
+  void restorePendingLocalAnalyses();
+
   return {
     uploadContract: async (payload: UploadContractRequest, meta?: RequestMeta) => {
+      await restorePendingLocalAnalyses();
+
       try {
         const response = await remoteClient.uploadContract(payload, meta);
 
@@ -238,6 +339,8 @@ export const createLocalFirstAdapter = (
     },
 
     getAnalysisStatus: async (analysisId: string, meta?: RequestMeta) => {
+      await restorePendingLocalAnalyses();
+
       try {
         const status = await remoteClient.getAnalysisStatus(analysisId, meta);
 
@@ -254,10 +357,10 @@ export const createLocalFirstAdapter = (
         return status;
       } catch (error) {
         if (shouldUseFallback(config.enableLocalFirst)) {
-          const cached = await localCache.getStatus(analysisId);
+          const cached = await getCachedStatusWithTimeout(analysisId);
           if (cached) {
-            if (cached.status === 'queued') {
-              const queuedUpload = await localCache.getQueuedUpload(analysisId);
+            if (isPendingStatus(cached)) {
+              const queuedUpload = await getQueuedUploadSafely(analysisId);
               if (queuedUpload?.localFileUri) {
                 scheduleLocalFallbackAnalysis(
                   analysisId,
@@ -277,6 +380,8 @@ export const createLocalFirstAdapter = (
     },
 
     getReport: async (input, meta?: RequestMeta) => {
+      await restorePendingLocalAnalyses();
+
       const queuedUpload = config.enableLocalFirst
         ? await (async (): Promise<QueuedUploadItem | null> => {
             try {
@@ -346,6 +451,8 @@ export const createLocalFirstAdapter = (
     },
 
     listHistory: async (meta?: RequestMeta) => {
+      await restorePendingLocalAnalyses();
+
       try {
         const history = await remoteClient.listHistory(meta);
         const cachedHistory = config.enableLocalFirst ? await localCache.getHistory() : [];

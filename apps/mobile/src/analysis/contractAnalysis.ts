@@ -126,7 +126,9 @@ const repairStaticString = (value: string): string => {
   const repaired = repairMojibakeText(value);
 
   return repaired.replace(/\S+/gu, (token) => {
-    const match = token.match(/^([^\p{L}\p{N}]*)((?:[\p{L}\p{N}]|_)+)([^\p{L}\p{N}]*)$/u);
+    const match = token.match(
+      /^([^0-9A-Za-zА-Яа-яЁёÀ-ÖØ-öø-ÿ]*)([0-9A-Za-zА-Яа-яЁёÀ-ÖØ-öø-ÿ_]+)([^0-9A-Za-zА-Яа-яЁёÀ-ÖØ-öø-ÿ]*)$/u,
+    );
     if (!match) {
       return shortMojibakeTokenFixes[token] ?? token;
     }
@@ -675,12 +677,17 @@ const hybridSignals = repairDeepStrings({
   acceptanceEscalation: [
     'одностороннем порядке',
     'имеет силу двустороннего',
+    'считается принятым',
+    'считается принятой',
+    'считается принятым без замечаний',
     'считаются сданными',
     'считаются выполненными',
     'подписанный исполнителем',
     'подписанным исполнителем',
     'при отсутствии мотивированного отказа',
     'если заказчик не представил',
+    'если заказчик не направит',
+    'если заказчик не подписал',
   ],
   acceptanceTransfer: [
     'товар',
@@ -809,14 +816,174 @@ const hybridSignals = repairDeepStrings({
     'renews automatically',
     'renewed automatically',
     'tacit renewal',
+    'unless either party gives notice',
     'автоматическ',
     'пролонгац',
+    'автоматически продлевается',
+    'автоматически пролонгируется',
+    'если ни одна из сторон не заявит',
+    'если ни одна из сторон не уведомит',
     'подлежит безусловной пролонгации',
     'подлежит пролонгации',
     'срок договора продлевается самостоятельно',
     'считается продленным',
     'считается возобновленным',
     'считается пролонгированным',
+  ],
+  jurisdictionSupport: [
+    'подсудн',
+    'арбитражн',
+    'суд',
+    'досудебн',
+    'претензионн',
+    'претензию',
+    'претензии',
+    'dispute resolution',
+    'jurisdiction',
+    'venue',
+    'arbitration',
+    'pre-trial claim',
+    'claim procedure',
+    'governing law',
+  ],
+  jurisdictionHard: [
+    'исключительной подсудности',
+    'исключительная подсудность',
+    'по месту нахождения',
+    'по месту регистрации',
+    'по выбору истца',
+    'обязательный претензионный порядок',
+    'претензия рассматривается',
+    'срок ответа на претензию',
+    'третейск',
+    'иностранн',
+    'exclusive jurisdiction',
+    'exclusive venue',
+    'at claimant option',
+    'mandatory arbitration',
+    'binding arbitration',
+    'foreign law',
+  ],
+  jurisdictionNeutral: [
+    'в соответствии с процессуальным законодательством',
+    'по общим правилам подсудности',
+    'по соглашению сторон передается',
+    'competent court under applicable law',
+  ],
+  confidentialitySupport: [
+    'конфиденциальн',
+    'коммерческ тайн',
+    'тайну',
+    'не разглаш',
+    'разглаш',
+    'confidential',
+    'confidentiality',
+    'non-disclosure',
+    'trade secret',
+    'nda',
+  ],
+  confidentialityHard: [
+    'бессрочн',
+    'без ограничения срока',
+    'любая информация',
+    'вся информация',
+    'по первому требованию уничтожить',
+    'без согласия',
+    'штраф за разглашение',
+    'confidential indefinitely',
+    'all information',
+    'any information',
+    'without consent',
+    'destroy upon request',
+  ],
+  confidentialityNeutral: [
+    'не является конфиденциальной',
+    'общедоступн',
+    'публичн',
+    'public domain',
+    'publicly available',
+    'not confidential',
+  ],
+  personalDataSupport: [
+    'персональн данн',
+    'обработк персональн',
+    'согласие на обработку',
+    'субъект персональных данных',
+    'оператор персональных данных',
+    'data processing',
+    'personal data',
+    'personal information',
+    'gdpr',
+    'processor',
+    'controller',
+  ],
+  personalDataHard: [
+    'передачу третьим лицам',
+    'трансграничн',
+    'без отдельного согласия',
+    'обработка специальных категорий',
+    'биометрическ',
+    'маркетингов',
+    'согласие действует',
+    'до отзыва согласия',
+    'third parties',
+    'cross-border',
+    'without separate consent',
+    'special categories',
+    'biometric',
+    'marketing purposes',
+  ],
+  forceMajeureSupport: [
+    'форс-мажор',
+    'форс мажор',
+    'непреодолимой силы',
+    'force majeure',
+    'acts of god',
+  ],
+  forceMajeureHard: [
+    'любые обстоятельства',
+    'иные обстоятельства',
+    'отсутствие денежных средств',
+    'изменение курса',
+    'действия контрагентов',
+    'запретительные меры',
+    'санкции',
+    'освобождается от ответственности',
+    'освобождаются от ответственности',
+    'any circumstances',
+    'including but not limited',
+    'currency fluctuation',
+    'lack of funds',
+    'acts of counterparties',
+    'sanctions',
+  ],
+  forceMajeureClarity: [
+    'уведомить',
+    'уведомляет',
+    'в течение',
+    'сертификат',
+    'торгово-промышленной палаты',
+    'подтверждающий документ',
+    'notice',
+    'notify',
+    'certificate',
+    'chamber of commerce',
+  ],
+  referenceNeutral: [
+    'справочно',
+    'для справки',
+    'пример',
+    'учебн',
+    'методическ',
+    'образец',
+    'не является условием договора',
+    'не является частью договора',
+    'reference only',
+    'example',
+    'sample clause',
+    'training example',
+    'educational',
+    'not part of this agreement',
   ],
   roleAction: [
     'обязан',
@@ -1170,6 +1337,9 @@ const riskRules: RiskRule[] = repairDeepStrings([
       'liability',
       'indemn',
       'РІРѕР·РјРµС‰РµРЅ',
+      'возмещ',
+      'убыт',
+      'ущерб',
       'manleva',
       'responsabil',
       'indemni',
@@ -1206,6 +1376,12 @@ const riskRules: RiskRule[] = repairDeepStrings([
       'Р°РєС‚ РѕРєР°Р·Р°РЅ',
       'РїРѕРґРїРёСЃР°РЅРё Р°РєС‚',
       'РїРѕРґС‚РІРµСЂР¶РґРµРЅРё РСЂРµР·СѓР»СЊС‚Р°С‚',
+      'приемк',
+      'акт прием',
+      'акт сдач',
+      'считается принятым',
+      'считается принятой',
+      'принят',
       'acceptance',
       'sign-off',
       'sign off',
@@ -1240,6 +1416,11 @@ const riskRules: RiskRule[] = repairDeepStrings([
       'auto-renewal',
       'renews automatically',
       'tacit renewal',
+      'автоматически продлевается',
+      'автоматически пролонгируется',
+      'считается продленным',
+      'считается пролонгированным',
+      'пролонгац',
       'renouvellement automatique',
       'rinnovo automatico',
       'proroga automatica',
@@ -1262,6 +1443,135 @@ const riskRules: RiskRule[] = repairDeepStrings([
       en: 'Specify the opt-out notice period and the consequences of silence.',
       it: 'Specificare il preavviso di disdetta e le conseguenze del silenzio.',
       fr: 'Preciser le preavis de non-renouvellement et les consequences du silence.',
+    },
+  },
+  {
+    id: 'jurisdiction-claim',
+    severity: 'medium',
+    keywords: [
+      'подсудн',
+      'арбитражн',
+      'досудебн',
+      'претензионн',
+      'претензия',
+      'dispute resolution',
+      'jurisdiction',
+      'venue',
+      'arbitration',
+      'claim procedure',
+      'governing law',
+    ],
+    title: {
+      ru: 'Подсудность и претензионный порядок',
+      en: 'Jurisdiction and claim procedure',
+      it: 'Foro competente e reclamo preliminare',
+      fr: 'Juridiction et procedure precontentieuse',
+    },
+    description: {
+      ru: 'Найдены условия о суде, применимом порядке разрешения споров или обязательной претензии до обращения в суд.',
+      en: 'The contract defines venue, dispute resolution mechanics, governing law, or a mandatory pre-court claim.',
+      it: 'Il contratto definisce foro, risoluzione delle controversie, legge applicabile o reclamo preliminare obbligatorio.',
+      fr: 'Le contrat fixe le for, le mecanisme de litige, la loi applicable ou une reclamation prealable obligatoire.',
+    },
+    recommendation: {
+      ru: 'Проверьте удобство суда, обязательность претензии, сроки ответа, арбитражную оговорку и применимое право.',
+      en: 'Check venue convenience, mandatory claim timing, arbitration wording, and governing law.',
+      it: 'Verificare foro, termini del reclamo obbligatorio, arbitrato e legge applicabile.',
+      fr: 'Verifier le for, les delais de reclamation obligatoire, l arbitrage et la loi applicable.',
+    },
+  },
+  {
+    id: 'confidentiality',
+    severity: 'medium',
+    keywords: [
+      'конфиденциальн',
+      'коммерческ тайн',
+      'не разглаш',
+      'разглаш',
+      'confidential',
+      'confidentiality',
+      'non-disclosure',
+      'trade secret',
+    ],
+    title: {
+      ru: 'Конфиденциальность и коммерческая тайна',
+      en: 'Confidentiality and trade secrets',
+      it: 'Riservatezza e segreti commerciali',
+      fr: 'Confidentialite et secret commercial',
+    },
+    description: {
+      ru: 'Обнаружены обязанности по сохранению конфиденциальности, режиму коммерческой тайны или запрету разглашения.',
+      en: 'The contract contains confidentiality, trade secret, or non-disclosure obligations.',
+      it: 'Il contratto contiene obblighi di riservatezza, segreto commerciale o non divulgazione.',
+      fr: 'Le contrat contient des obligations de confidentialite, secret commercial ou non-divulgation.',
+    },
+    recommendation: {
+      ru: 'Уточните состав конфиденциальной информации, исключения, срок действия, допустимое раскрытие и санкции.',
+      en: 'Define confidential information, exclusions, duration, permitted disclosures, and sanctions.',
+      it: 'Definire informazioni riservate, esclusioni, durata, divulgazioni consentite e sanzioni.',
+      fr: 'Definir informations confidentielles, exclusions, duree, divulgations autorisees et sanctions.',
+    },
+  },
+  {
+    id: 'personal-data',
+    severity: 'high',
+    keywords: [
+      'персональн данн',
+      'обработк персональн',
+      'согласие на обработку',
+      'data processing',
+      'personal data',
+      'personal information',
+      'gdpr',
+      'processor',
+      'controller',
+    ],
+    title: {
+      ru: 'Персональные данные',
+      en: 'Personal data processing',
+      it: 'Trattamento dei dati personali',
+      fr: 'Traitement des donnees personnelles',
+    },
+    description: {
+      ru: 'В договоре есть условия об обработке, передаче или согласии на использование персональных данных.',
+      en: 'The contract includes personal data processing, transfer, or consent wording.',
+      it: 'Il contratto include trattamento, trasferimento o consenso sui dati personali.',
+      fr: 'Le contrat inclut traitement, transfert ou consentement relatif aux donnees personnelles.',
+    },
+    recommendation: {
+      ru: 'Проверьте роли оператора/обработчика, цели, состав данных, передачу третьим лицам, срок хранения и отзыв согласия.',
+      en: 'Check controller/processor roles, purposes, data scope, third-party transfers, retention, and withdrawal.',
+      it: 'Verificare ruoli, finalita, categorie di dati, trasferimenti a terzi, conservazione e revoca.',
+      fr: 'Verifier roles, finalites, categories de donnees, transferts a des tiers, conservation et retrait.',
+    },
+  },
+  {
+    id: 'force-majeure',
+    severity: 'medium',
+    keywords: [
+      'форс-мажор',
+      'форс мажор',
+      'непреодолимой силы',
+      'force majeure',
+      'acts of god',
+    ],
+    title: {
+      ru: 'Форс-мажор',
+      en: 'Force majeure',
+      it: 'Forza maggiore',
+      fr: 'Force majeure',
+    },
+    description: {
+      ru: 'Найдены условия о форс-мажоре или обстоятельствах непреодолимой силы, которые могут расширять освобождение от ответственности.',
+      en: 'The contract contains force majeure wording that may broaden relief from liability.',
+      it: 'Il contratto contiene clausole di forza maggiore che possono ampliare l esonero da responsabilita.',
+      fr: 'Le contrat contient une clause de force majeure pouvant elargir l exoneration de responsabilite.',
+    },
+    recommendation: {
+      ru: 'Проверьте закрытость перечня событий, исключение денежных трудностей, срок уведомления, подтверждающие документы и право расторжения.',
+      en: 'Check event scope, exclusion of payment difficulty, notice period, proof documents, and termination rights.',
+      it: 'Verificare eventi, esclusione delle difficolta di pagamento, preavviso, prove e diritto di risoluzione.',
+      fr: 'Verifier les evenements, exclusion des difficultes de paiement, preavis, preuves et droit de resiliation.',
     },
   },
   {
@@ -1728,7 +2038,7 @@ const normalizeMarker = (marker: string): string => {
 const tokenizeSearchText = (input: string): string[] => {
   return uniqueStrings(
     normalizeSearchText(input)
-      .split(/[^\p{L}\p{N}]+/gu)
+      .split(/[^0-9A-Za-zА-Яа-яЁёÀ-ÖØ-öø-ÿ]+/gu)
       .map((token) => token.trim())
       .filter(Boolean),
   );
@@ -1820,25 +2130,25 @@ const splitClauseIntoFragments = (text: string): string[] => {
   const prepared = normalizeExtractedText(text)
     .replace(/\r/g, '\n')
     .replace(
-      /([\p{Lu}\s]{6,})(?=\p{Lu}\p{Ll}{2,}\s+(?:обязан|обязуется|вправе|должен|shall|must|undertakes|may)\b)/gu,
+      /([A-ZА-ЯЁÀ-ÖØ-Þ\s]{6,})(?=[A-ZА-ЯЁÀ-ÖØ-Þ][a-zа-яёß-öø-ÿ]{2,}\s+(?:обязан|обязуется|вправе|должен|shall|must|undertakes|may)\b)/gu,
       '$1\n',
     )
     .replace(
-      /((?:обязан(?:а|ы)?|обязуется|должен(?:а|ы)?|вправе|shall|must|undertakes|may)):\s*(?=[\p{L}\d])/giu,
+      /((?:обязан(?:а|ы)?|обязуется|должен(?:а|ы)?|вправе|shall|must|undertakes|may)):\s*(?=[0-9A-Za-zА-Яа-яЁёÀ-ÖØ-öø-ÿ])/giu,
       '$1:\n',
     )
-    .replace(/([:.;])(?=(?:\d+(?:\.\d+){1,5}[.)]?)(?:\s|\p{Lu}))/gu, '$1\n')
+    .replace(/([:.;])(?=(?:\d+(?:\.\d+){1,5}[.)]?)(?:\s|[A-ZА-ЯЁÀ-ÖØ-Þ]))/gu, '$1\n')
     .replace(
-      /((?:(?:clause|section|article|пункт|раздел)\s+)?\d+(?:\.\d+){1,5}[.)]?)(?=\p{Lu})/giu,
+      /((?:(?:clause|section|article|пункт|раздел)\s+)?\d+(?:\.\d+){1,5}[.)]?)(?=[A-ZА-ЯЁÀ-ÖØ-Þ])/giu,
       '$1\n',
     )
-    .replace(/([.!?])\s+(?=\p{Lu})/gu, '$1\n')
+    .replace(/([.!?])\s+(?=[A-ZА-ЯЁÀ-ÖØ-Þ])/gu, '$1\n')
     .replace(
-      /([.!?])\s+((?:(?:clause|section|article|пункт|раздел)\s+)?\d+(?:\.\d+){0,5}[.)]?)(?=\s+\p{Lu})/gu,
+      /([.!?])\s+((?:(?:clause|section|article|пункт|раздел)\s+)?\d+(?:\.\d+){0,5}[.)]?)(?=\s+[A-ZА-ЯЁÀ-ÖØ-Þ])/gu,
       '$1\n$2',
     )
     .replace(
-      /\s+((?:(?:clause|section|article|пункт|раздел)\s+)?\d+(?:\.\d+){0,5}[.)]?)(?=\s+\p{Lu})/gu,
+      /\s+((?:(?:clause|section|article|пункт|раздел)\s+)?\d+(?:\.\d+){0,5}[.)]?)(?=\s+[A-ZА-ЯЁÀ-ÖØ-Þ])/gu,
       '\n$1',
     );
 
@@ -1954,6 +2264,29 @@ const hasMonetarySignal = (text: string): boolean =>
     text,
   );
 
+const isReferenceLikeFragment = (normalizedText: string): boolean => {
+  if (countMatches(normalizedText, hybridSignals.referenceNeutral) === 0) {
+    return false;
+  }
+
+  return (
+    normalizedText.startsWith('справочно') ||
+    normalizedText.startsWith('для справки') ||
+    normalizedText.startsWith('пример') ||
+    normalizedText.startsWith('учеб') ||
+    normalizedText.startsWith('методическ') ||
+    normalizedText.startsWith('образец') ||
+    normalizedText.startsWith('reference only') ||
+    normalizedText.startsWith('example') ||
+    normalizedText.startsWith('sample clause') ||
+    normalizedText.startsWith('training example') ||
+    normalizedText.startsWith('educational') ||
+    normalizedText.includes('не является условием договора') ||
+    normalizedText.includes('не является частью договора') ||
+    normalizedText.includes('not part of this agreement')
+  );
+};
+
 const scoreRiskContext = (
   ruleId: string,
   normalizedText: string,
@@ -1971,13 +2304,14 @@ const scoreRiskContext = (
       const clarityHits = countMatches(normalizedText, hybridSignals.acceptanceClarity);
       const escalationHits = countMatches(normalizedText, hybridSignals.acceptanceEscalation);
       const transferHits = countMatches(normalizedText, hybridSignals.acceptanceTransfer);
+      const clarityPenalty = escalationHits > 0 ? clarityHits * 2 : clarityHits * 5;
       return (
         supportHits * 3 +
         escalationHits * 5 +
         actionHits +
         (hasExplicitNumericSignal(excerpt) ? 1 : 0) -
         negativeHits * 4 -
-        clarityHits * 5 -
+        clarityPenalty -
         transferHits * 3
       );
     }
@@ -2039,6 +2373,36 @@ const scoreRiskContext = (
       const supportHits = countMatches(normalizedText, hybridSignals.autoRenewalSupport);
       return supportHits * 4 + (hasExplicitNumericSignal(excerpt) ? 1 : 0);
     }
+    case 'jurisdiction-claim': {
+      const supportHits = countMatches(normalizedText, hybridSignals.jurisdictionSupport);
+      const hardHits = countMatches(normalizedText, hybridSignals.jurisdictionHard);
+      const neutralHits = countMatches(normalizedText, hybridSignals.jurisdictionNeutral);
+      return (
+        supportHits * 3 +
+        hardHits * 5 +
+        roleHits +
+        actionHits +
+        (hasExplicitNumericSignal(excerpt) ? 1 : 0) -
+        neutralHits * 6
+      );
+    }
+    case 'confidentiality': {
+      const supportHits = countMatches(normalizedText, hybridSignals.confidentialitySupport);
+      const hardHits = countMatches(normalizedText, hybridSignals.confidentialityHard);
+      const neutralHits = countMatches(normalizedText, hybridSignals.confidentialityNeutral);
+      return supportHits * 3 + hardHits * 4 + roleHits + actionHits - neutralHits * 6;
+    }
+    case 'personal-data': {
+      const supportHits = countMatches(normalizedText, hybridSignals.personalDataSupport);
+      const hardHits = countMatches(normalizedText, hybridSignals.personalDataHard);
+      return supportHits * 4 + hardHits * 4 + roleHits + actionHits;
+    }
+    case 'force-majeure': {
+      const supportHits = countMatches(normalizedText, hybridSignals.forceMajeureSupport);
+      const hardHits = countMatches(normalizedText, hybridSignals.forceMajeureHard);
+      const clarityHits = countMatches(normalizedText, hybridSignals.forceMajeureClarity);
+      return supportHits * 3 + hardHits * 5 + actionHits - clarityHits * 3;
+    }
     case 'collateral-enforcement': {
       const supportHits = countMatches(normalizedText, hybridSignals.collateralSupport);
       const hardHits = countMatches(normalizedText, hybridSignals.collateralHard);
@@ -2086,7 +2450,8 @@ const meetsRiskThreshold = (
       return (
         totalScore >= 7 &&
         countMatches(normalizedText, hybridSignals.acceptanceSupport) >= 1 &&
-        countMatches(normalizedText, hybridSignals.acceptanceClarity) < 2 &&
+        (countMatches(normalizedText, hybridSignals.acceptanceClarity) < 2 ||
+          countMatches(normalizedText, hybridSignals.acceptanceEscalation) > 0) &&
         countMatches(normalizedText, hybridSignals.acceptanceTransfer) < 3
       );
     case 'penalties':
@@ -2111,6 +2476,30 @@ const meetsRiskThreshold = (
       );
     case 'auto-renewal':
       return totalScore >= 7;
+    case 'jurisdiction-claim':
+      return (
+        totalScore >= 8 &&
+        countMatches(normalizedText, hybridSignals.jurisdictionSupport) >= 1 &&
+        countMatches(normalizedText, hybridSignals.jurisdictionHard) >= 1 &&
+        countMatches(normalizedText, hybridSignals.jurisdictionNeutral) === 0
+      );
+    case 'confidentiality':
+      return (
+        totalScore >= 8 &&
+        countMatches(normalizedText, hybridSignals.confidentialitySupport) >= 1 &&
+        countMatches(normalizedText, hybridSignals.confidentialityNeutral) === 0
+      );
+    case 'personal-data':
+      return (
+        totalScore >= 8 &&
+        countMatches(normalizedText, hybridSignals.personalDataSupport) >= 1
+      );
+    case 'force-majeure':
+      return (
+        totalScore >= 8 &&
+        countMatches(normalizedText, hybridSignals.forceMajeureSupport) >= 1 &&
+        countMatches(normalizedText, hybridSignals.forceMajeureHard) >= 1
+      );
     case 'collateral-enforcement':
       return (
         totalScore >= 8 &&
@@ -2288,7 +2677,7 @@ const buildRiskCandidates = (clauses: ClauseSegment[], roleTerms: string[]): Ris
     for (const [fragmentIndex, fragment] of getClauseFragments(clause.text).entries()) {
       const normalizedText = normalizeSearchText(fragment);
       const excerpt = buildExcerpt(fragment, 220);
-      if (!excerpt) {
+      if (!excerpt || isReferenceLikeFragment(normalizedText)) {
         continue;
       }
 
@@ -2431,7 +2820,7 @@ const buildDisputeCandidates = (clauses: ClauseSegment[]): DisputeCandidate[] =>
     for (const [fragmentIndex, fragment] of getClauseFragments(clause.text).entries()) {
       const normalizedText = normalizeSearchText(fragment);
       const excerpt = buildExcerpt(fragment, 220);
-      if (!excerpt) {
+      if (!excerpt || isReferenceLikeFragment(normalizedText)) {
         continue;
       }
 
@@ -2676,7 +3065,7 @@ const collectRoleLedBlockItems = (
   const items: string[] = [];
 
   const source = normalizeExtractedText(clauses.map((clause) => clause.text).join('\n')).replace(
-    /([\p{Lu}\s]{6,})(?=\p{Lu}\p{Ll}{2,}\s+(?:обязан|обязуется|должен|shall|must|undertakes)\b)/gu,
+    /([A-ZА-ЯЁÀ-ÖØ-Þ\s]{6,})(?=[A-ZА-ЯЁÀ-ÖØ-Þ][a-zа-яёß-öø-ÿ]{2,}\s+(?:обязан|обязуется|должен|shall|must|undertakes)\b)/gu,
     '$1\n',
   );
   let match: RegExpExecArray | null;
@@ -2914,8 +3303,8 @@ const isHeadingLike = (text: string): boolean => {
     return true;
   }
 
-  const letters = compact.match(/[\p{L}]/gu) ?? [];
-  const upperCaseLetters = compact.match(/[\p{Lu}]/gu) ?? [];
+  const letters = compact.match(/[A-Za-zА-Яа-яЁёÀ-ÖØ-öø-ÿ]/gu) ?? [];
+  const upperCaseLetters = compact.match(/[A-ZА-ЯЁÀ-ÖØ-Þ]/gu) ?? [];
   return letters.length > 0 && upperCaseLetters.length / letters.length > 0.72;
 };
 
@@ -2930,13 +3319,13 @@ const trimClauseLead = (text: string): string => {
 
 const findEmbeddedClauseBoundary = (text: string): number => {
   const match =
-    /[.!?]((?:(?:clause|section|article|пункт|раздел)\s+)?\d+(?:\.\d+){0,5}[.)]?)(?=\s*\p{Lu})/u.exec(
+    /[.!?]((?:(?:clause|section|article|пункт|раздел)\s+)?\d+(?:\.\d+){0,5}[.)]?)(?=\s*[A-ZА-ЯЁÀ-ÖØ-Þ])/u.exec(
       text,
     ) ??
-    /[.!?]\s+((?:(?:clause|section|article|пункт|раздел)\s+)?\d+(?:\.\d+){0,5}[.)]?)(?=\s+\p{Lu})/u.exec(
+    /[.!?]\s+((?:(?:clause|section|article|пункт|раздел)\s+)?\d+(?:\.\d+){0,5}[.)]?)(?=\s+[A-ZА-ЯЁÀ-ÖØ-Þ])/u.exec(
       text,
     ) ??
-    /\s+((?:(?:clause|section|article|пункт|раздел)\s+)?\d+(?:\.\d+){0,5}[.)]?)(?=\s+\p{Lu})/u.exec(
+    /\s+((?:(?:clause|section|article|пункт|раздел)\s+)?\d+(?:\.\d+){0,5}[.)]?)(?=\s+[A-ZА-ЯЁÀ-ÖØ-Þ])/u.exec(
       text,
     );
   return match ? match.index + 1 : -1;
@@ -2968,7 +3357,7 @@ const sanitizeSummaryItem = (value: string): string => {
 
   const cleaned = excerpt
     .replace(/:\s*\d+(?:[.,]\d+){0,5}[.)]?\s*$/u, '')
-    .replace(/^\p{L}[\p{L}\s-]{1,48}:\s*$/u, '')
+    .replace(/^[A-Za-zА-Яа-яЁёÀ-ÖØ-öø-ÿ][A-Za-zА-Яа-яЁёÀ-ÖØ-öø-ÿ\s-]{1,48}:\s*$/u, '')
     .trim();
 
   return cleaned;

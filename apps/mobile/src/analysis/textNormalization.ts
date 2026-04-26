@@ -154,10 +154,13 @@ const SHORT_MOJIBAKE_TOKEN_FIXES: Record<string, string> = {
 
 const UTF8_MOJIBAKE_MARKERS = /[Р РЎР‚РѓР„РЃР†Р‡Р€Р‰РЉР‹РЊРЏРЋСћСС•С—С›Сџ]|Гѓ|Г‚|Гђ|Г‘/g;
 
-const SPACED_LETTERS_PATTERN = /(^|[^\p{L}])((?:[\p{L}]\s+){3,}[\p{L}])(?=[^\p{L}]|$)/gu;
+const SPACED_LETTERS_PATTERN =
+  /(^|[^A-Za-zА-Яа-яЁёÀ-ÖØ-öø-ÿ])((?:[A-Za-zА-Яа-яЁёÀ-ÖØ-öø-ÿ]\s+){3,}[A-Za-zА-Яа-яЁёÀ-ÖØ-öø-ÿ])(?=[^A-Za-zА-Яа-яЁёÀ-ÖØ-öø-ÿ]|$)/gu;
 const NON_NEWLINE_CONTROL_CHARS_PATTERN = /[\u0000-\u0008\u000B-\u001F\u007F-\u009F\u200B-\u200D\u2060\uFEFF]/g;
-const LINE_WRAP_HYPHEN_PATTERN = /([\p{L}\p{N}])(?:[\u00AD\u2010\u2011-])[ \t]*\n[ \t]*(?=[\p{L}\p{N}])/gu;
-const SOFT_LINE_BREAK_PATTERN = /([\p{L}\p{N}])\n(?=[\p{Ll}\p{Nd}][\p{L}\p{N}]{1,})/gu;
+const LINE_WRAP_HYPHEN_PATTERN =
+  /([0-9A-Za-zА-Яа-яЁёÀ-ÖØ-öø-ÿ])(?:[\u00AD\u2010\u2011-])[ \t]*\n[ \t]*(?=[0-9A-Za-zА-Яа-яЁёÀ-ÖØ-öø-ÿ])/gu;
+const SOFT_LINE_BREAK_PATTERN =
+  /([0-9A-Za-zА-Яа-яЁёÀ-ÖØ-öø-ÿ])\n(?=[0-9a-zа-яёß-öø-ÿ][0-9A-Za-zА-Яа-яЁёÀ-ÖØ-öø-ÿ]{1,})/gu;
 
 const decodeUtf8Bytes = (bytes: number[]): string => {
   try {
