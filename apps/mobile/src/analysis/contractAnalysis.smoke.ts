@@ -203,3 +203,28 @@ assert.ok(
 const normalizedStructuredText = splitStructuredText("Р' договоре есть условия об ответственности. Выявлено в пункте 5.1", 4);
 assert.equal(normalizedStructuredText[0], 'В договоре есть условия об ответственности.');
 assert.equal(normalizeExtractedText('о с в о и т ь образовательную программу'), 'освоить образовательную программу');
+
+const stringNormalizeDescriptor = Object.getOwnPropertyDescriptor(String.prototype, 'normalize');
+try {
+  Object.defineProperty(String.prototype, 'normalize', {
+    configurable: true,
+    value: undefined,
+  });
+
+  const hermesCompatibilityAnalysis = buildAnalysisArtifacts({
+    text: [
+      '1. Исполнитель обязан оказать услуги в срок до 10 дней.',
+      '2. За просрочку Исполнитель уплачивает штраф 10% от цены договора.',
+    ].join('\n\n'),
+    fileName: 'hermes-compatibility.txt',
+    selectedRole: 'Исполнитель',
+    language: 'ru',
+    warnings: [],
+  });
+
+  assert.ok(hermesCompatibilityAnalysis.risks.some((risk) => risk.title === 'Штрафы и санкции'));
+} finally {
+  if (stringNormalizeDescriptor) {
+    Object.defineProperty(String.prototype, 'normalize', stringNormalizeDescriptor);
+  }
+}

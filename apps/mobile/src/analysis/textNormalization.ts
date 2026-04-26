@@ -285,7 +285,9 @@ export const collapseWhitespace = (input: string): string => {
 };
 
 export const stripDiacritics = (input: string): string => {
-  return input.normalize('NFKD').replace(/[\u0300-\u036f]/g, '');
+  const normalized =
+    typeof input.normalize === 'function' ? input.normalize('NFKD') : input;
+  return normalized.replace(/[\u0300-\u036f]/g, '');
 };
 
 export const normalizeSearchText = (input: string): string => {
