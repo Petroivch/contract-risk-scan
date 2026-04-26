@@ -35,9 +35,11 @@ const repairDeepReportText = <T>(value: T): T => {
   }
 
   if (value && typeof value === 'object') {
-    return Object.fromEntries(
-      Object.entries(value).map(([key, item]) => [key, repairDeepReportText(item)]),
-    ) as T;
+    const repaired: Record<string, unknown> = {};
+    for (const [key, item] of Object.entries(value)) {
+      repaired[key] = repairDeepReportText(item);
+    }
+    return repaired as T;
   }
 
   return value;

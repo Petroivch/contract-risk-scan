@@ -132,9 +132,11 @@ const repairDeepStrings = <T>(value: T): T => {
   }
 
   if (value && typeof value === 'object') {
-    return Object.fromEntries(
-      Object.entries(value).map(([key, item]) => [key, repairDeepStrings(item)]),
-    ) as T;
+    const repaired: Record<string, unknown> = {};
+    for (const [key, item] of Object.entries(value)) {
+      repaired[key] = repairDeepStrings(item);
+    }
+    return repaired as T;
   }
 
   return value;
@@ -1373,8 +1375,8 @@ const splitClauseIntoFragments = (text: string): string[] => {
   const prepared = normalizeExtractedText(text)
     .replace(/\r/g, '\n')
     .replace(
-      /(?<=[\p{Lu}\s]{6,})(?=\p{Lu}\p{Ll}{2,}\s+(?:обязан|обязуется|вправе|должен|shall|must|undertakes|may)\b)/gu,
-      '\n',
+      /([\p{Lu}\s]{6,})(?=\p{Lu}\p{Ll}{2,}\s+(?:обязан|обязуется|вправе|должен|shall|must|undertakes|may)\b)/gu,
+      '$1\n',
     )
     .replace(
       /((?:обязан(?:а|ы)?|обязуется|должен(?:а|ы)?|вправе|shall|must|undertakes|may)):\s*(?=[\p{L}\d])/giu,
@@ -2170,8 +2172,8 @@ const collectRoleLedBlockItems = (
   const items: string[] = [];
 
   const source = normalizeExtractedText(clauses.map((clause) => clause.text).join('\n')).replace(
-    /(?<=[\p{Lu}\s]{6,})(?=\p{Lu}\p{Ll}{2,}\s+(?:обязан|обязуется|должен|shall|must|undertakes)\b)/gu,
-    '\n',
+    /([\p{Lu}\s]{6,})(?=\p{Lu}\p{Ll}{2,}\s+(?:обязан|обязуется|должен|shall|must|undertakes)\b)/gu,
+    '$1\n',
   );
   let match: RegExpExecArray | null;
   while ((match = blockStartPattern.exec(source)) !== null) {

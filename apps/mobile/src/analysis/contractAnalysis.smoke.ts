@@ -228,3 +228,34 @@ try {
     Object.defineProperty(String.prototype, 'normalize', stringNormalizeDescriptor);
   }
 }
+
+const originalRegExp = RegExp;
+try {
+  // Hermes compatibility: the analyzer must not require RegExp lookbehind support.
+  globalThis.RegExp = function RegExpWithoutLookbehind(
+    pattern: string | RegExp,
+    flags?: string,
+  ): RegExp {
+    const source = pattern instanceof originalRegExp ? pattern.source : String(pattern);
+    if (source.includes('(?<=')) {
+      throw new Error('lookbehind is unavailable');
+    }
+
+    return new originalRegExp(pattern, flags);
+  } as RegExpConstructor;
+
+  const noLookbehindAnalysis = buildAnalysisArtifacts({
+    text: [
+      '1. Исполнитель обязан оказать услуги в срок до 10 дней.',
+      '2. За просрочку Исполнитель уплачивает штраф 10% от цены договора.',
+    ].join('\n\n'),
+    fileName: 'no-lookbehind.txt',
+    selectedRole: 'Исполнитель',
+    language: 'ru',
+    warnings: [],
+  });
+
+  assert.ok(noLookbehindAnalysis.risks.some((risk) => risk.title === 'Штрафы и санкции'));
+} finally {
+  globalThis.RegExp = originalRegExp;
+}

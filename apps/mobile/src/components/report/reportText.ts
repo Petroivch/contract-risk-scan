@@ -3,7 +3,7 @@ import type { TFunction } from 'i18next';
 import type { SupportedLanguage } from '../../i18n/types';
 import { collapseWhitespace, uniqueStrings } from '../../analysis/textNormalization';
 
-const splitPattern = /(?<=[.!?])\s+|[\n;]+/u;
+const sentenceBoundaryPattern = /([.!?])\s+/gu;
 
 const evidencePrefixes: Record<SupportedLanguage, string[]> = {
   ru: ['выявлено в пункте', 'выявлено в', 'обнаружено в пункте'],
@@ -27,6 +27,10 @@ const normalizePoint = (value: string): string => {
     .trim();
 };
 
+const splitReportPoints = (value: string): string[] => {
+  return value.replace(sentenceBoundaryPattern, '$1\n').split(/[\n;]+/u);
+};
+
 export const splitStructuredText = (value: string, maxItems = 8): string[] => {
   const normalized = sanitizeReportText(value);
   if (!normalized) {
@@ -34,8 +38,7 @@ export const splitStructuredText = (value: string, maxItems = 8): string[] => {
   }
 
   const items = uniqueStrings(
-    normalized
-      .split(splitPattern)
+    splitReportPoints(normalized)
       .map((item) => normalizePoint(item))
       .filter(Boolean),
   );
