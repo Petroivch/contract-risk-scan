@@ -22,6 +22,7 @@ interface StoredAnalysis {
   updatedAt: string;
   completedAt: string;
   language: SupportedLanguage;
+  stage?: AnalysisStatus['stage'];
   report?: AnalysisReport;
   errorMessage?: string;
 }
@@ -33,7 +34,7 @@ interface StubClientConfig {
 const storage = new Map<string, StoredAnalysis>();
 const processingTasks = new Map<string, Promise<void>>();
 const queuedPhaseMs = 900;
-const processingPhaseMs = 2200;
+const processingPhaseMs = 5200;
 
 const delay = (ms: number): Promise<void> => new Promise((resolve) => setTimeout(resolve, ms));
 const nowIso = (): string => new Date().toISOString();
@@ -44,12 +45,17 @@ const resolveStatus = (entity: StoredAnalysis): AnalysisLifecycleStatus => {
 
 const progressByStatus = (
   status: AnalysisLifecycleStatus,
+  stage?: AnalysisStatus['stage'],
   createdAt?: string,
   completedAt?: string,
 ): number => {
   if (status === 'failed') return 0;
   if (status === 'completed') return 100;
-  if (!createdAt || !completedAt) return status === 'queued' ? 14 : 72;
+  if (stage === 'queued') return 8;
+  if (stage === 'extracting') return 32;
+  if (stage === 'analyzing') return 68;
+  if (stage === 'finalizing') return 88;
+  if (!createdAt || !completedAt) return status === 'queued' ? 8 : 48;
 
   const created = new Date(createdAt).getTime();
   const completed = new Date(completedAt).getTime();
@@ -67,11 +73,13 @@ const progressByStatus = (
 
 const toStatus = (entity: StoredAnalysis): AnalysisStatus => {
   const status = resolveStatus(entity);
+  const stage = status === 'queued' || status === 'processing' ? entity.stage : undefined;
   return {
     analysisId: entity.analysisId,
     selectedRole: entity.selectedRole,
     status,
-    progress: progressByStatus(status, entity.createdAt, entity.completedAt),
+    progress: progressByStatus(status, stage, entity.createdAt, entity.completedAt),
+    stage,
     updatedAt: status === 'completed' ? entity.completedAt : entity.updatedAt,
     errorMessage: entity.errorMessage,
   };
@@ -103,17 +111,23 @@ const scheduleLocalAnalysis = (
       await delay(Math.min(queuedPhaseMs, 240));
 
       entity.status = 'processing';
+      entity.stage = 'extracting';
       entity.updatedAt = nowIso();
       entity.completedAt = new Date(Date.now() + processingPhaseMs).toISOString();
 
+      await delay(80);
+      entity.stage = 'analyzing';
+      entity.updatedAt = nowIso();
       const report = await analyzeContractLocally(payload, language);
       const completedAt = nowIso();
 
+      entity.stage = 'finalizing';
       entity.report = {
         ...report,
         analysisId: entity.analysisId,
       };
       entity.status = 'completed';
+      entity.stage = undefined;
       entity.updatedAt = completedAt;
       entity.completedAt = completedAt;
     } catch (error) {
@@ -147,6 +161,7 @@ export const createStubApiClient = (config: StubClientConfig = {}): ContractRisk
       fileName: payload.fileName,
       selectedRole: payload.selectedRole,
       status: 'queued',
+      stage: 'queued',
       createdAt: now,
       updatedAt: now,
       completedAt: new Date(Date.now() + processingPhaseMs).toISOString(),

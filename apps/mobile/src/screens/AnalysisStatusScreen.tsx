@@ -38,6 +38,45 @@ const stepStateToneMap: Record<StepState, 'brand' | 'success' | 'warning' | 'dan
     error: 'danger',
   };
 
+const stageLabels: Record<NonNullable<AnalysisStatusType['stage']>, Record<string, string>> = {
+  queued: {
+    ru: 'Ожидает локальной обработки',
+    it: 'In attesa dell elaborazione locale',
+    fr: 'En attente du traitement local',
+    en: 'Waiting for local processing',
+  },
+  extracting: {
+    ru: 'Извлекаем текст из файла',
+    it: 'Estrazione del testo dal file',
+    fr: 'Extraction du texte du fichier',
+    en: 'Extracting text from the file',
+  },
+  analyzing: {
+    ru: 'Ищем условия и риски',
+    it: 'Ricerca di clausole e rischi',
+    fr: 'Recherche des clauses et risques',
+    en: 'Finding clauses and risks',
+  },
+  finalizing: {
+    ru: 'Собираем отчет',
+    it: 'Preparazione del report',
+    fr: 'Preparation du rapport',
+    en: 'Preparing the report',
+  },
+};
+
+const getStageLabel = (
+  stage: AnalysisStatusType['stage'],
+  language: string,
+): string | null => {
+  if (!stage) {
+    return null;
+  }
+
+  const labels = stageLabels[stage];
+  return labels[language] ?? labels.en;
+};
+
 export const AnalysisStatusScreen = ({ navigation, route }: Props): JSX.Element => {
   const { t } = useTranslation();
   const { language } = useAppLanguage();
@@ -124,6 +163,12 @@ export const AnalysisStatusScreen = ({ navigation, route }: Props): JSX.Element 
       timeStyle: 'short',
     });
   }, [language, status?.updatedAt]);
+
+  const stageLabel = useMemo(
+    () => getStageLabel(status?.stage, language),
+    [language, status?.stage],
+  );
+  const progress = Math.max(0, Math.min(status?.progress ?? 0, 100));
 
   const timeline = useMemo<TimelineStep[]>(() => {
     const activeStatus = status?.status ?? 'queued';
@@ -229,7 +274,11 @@ export const AnalysisStatusScreen = ({ navigation, route }: Props): JSX.Element 
         <View style={styles.metricRow}>
           <View style={styles.metricBlock}>
             <Text style={styles.metricLabel}>{t('analysis.progressLabel')}</Text>
-            <Text style={styles.metricValue}>{`${status?.progress ?? 0}%`}</Text>
+            <Text style={styles.metricValue}>{`${progress}%`}</Text>
+            <View style={styles.progressTrack}>
+              <View style={[styles.progressFill, { width: `${progress}%` }]} />
+            </View>
+            {stageLabel ? <Text style={styles.stageLabel}>{stageLabel}</Text> : null}
           </View>
           <View style={styles.metricBlock}>
             <Text style={styles.metricLabel}>{t('analysis.updatedAtLabel')}</Text>
@@ -350,6 +399,23 @@ const styles = StyleSheet.create({
     fontSize: typography.size.body,
     lineHeight: typography.lineHeight.body,
     fontWeight: typography.weight.bold,
+  },
+  progressTrack: {
+    height: 6,
+    borderRadius: radius.pill,
+    backgroundColor: colors.divider,
+    overflow: 'hidden',
+  },
+  progressFill: {
+    height: '100%',
+    borderRadius: radius.pill,
+    backgroundColor: colors.accent,
+  },
+  stageLabel: {
+    color: colors.textSecondary,
+    fontSize: typography.size.caption,
+    lineHeight: typography.lineHeight.caption,
+    fontWeight: typography.weight.semibold,
   },
   statusCard: {
     borderRadius: radius.xl,

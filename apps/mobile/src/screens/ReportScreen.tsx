@@ -10,7 +10,7 @@ import { RiskCard } from '../components/cards/RiskCard';
 import { RoleBadge } from '../components/RoleBadge';
 import { StatusChip } from '../components/StatusChip';
 import { ScreenShell } from '../components/layout/ScreenShell';
-import { splitStructuredText } from '../components/report/reportText';
+import { buildPreviewItems, splitStructuredText } from '../components/report/reportText';
 import { useAppLanguage } from '../i18n/LanguageProvider';
 import type { RootStackParamList } from '../navigation/types';
 import { colors, radius, shadow, spacing, typography } from '../theme/tokens';
@@ -103,8 +103,10 @@ export const ReportScreen = ({ navigation, route }: Props): JSX.Element => {
   const disputedCount = report?.disputedClauses.length ?? 0;
   const summaryRole = report?.selectedRole ?? selectedRole ?? '';
 
-  const summaryOverviewItems = useMemo(() => splitStructuredText(report?.summary.shortDescription ?? '', 6), [report?.summary.shortDescription]);
+  const summaryOverviewItems = useMemo(() => splitStructuredText(report?.summary.shortDescription ?? '', 12), [report?.summary.shortDescription]);
+  const summaryOverviewPreviewItems = useMemo(() => buildPreviewItems(summaryOverviewItems, 3, 240), [summaryOverviewItems]);
   const summaryObligationItems = useMemo(() => report?.summary.obligationsForSelectedRole ?? [], [report?.summary.obligationsForSelectedRole]);
+  const summaryObligationPreviewItems = useMemo(() => buildPreviewItems(summaryObligationItems, 4, 240), [summaryObligationItems]);
 
   const loadStateCopy = useMemo(() => {
     switch (language) {
@@ -188,7 +190,7 @@ export const ReportScreen = ({ navigation, route }: Props): JSX.Element => {
           nestedScrollEnabled
           showsVerticalScrollIndicator={false}
         >
-          {summaryOverviewItems.map((item, index) => (
+          {summaryOverviewPreviewItems.map((item, index) => (
             <View key={`overview-${index}`} style={styles.bulletRow}>
               <View style={styles.bulletDot} />
               <Text style={styles.bulletItem}>{item}</Text>
@@ -211,7 +213,7 @@ export const ReportScreen = ({ navigation, route }: Props): JSX.Element => {
           nestedScrollEnabled
           showsVerticalScrollIndicator={false}
         >
-          {summaryObligationItems.map((item, index) => (
+          {summaryObligationPreviewItems.map((item, index) => (
             <View key={`obligation-${index}`} style={styles.bulletRow}>
               <View style={styles.bulletDot} />
               <Text style={styles.bulletItem}>{item}</Text>

@@ -51,6 +51,9 @@ const PDF_FAST_PATH_TEXT_LENGTH = 480;
 const PDF_BINARY_FALLBACK_MAX_BYTES = 2_000_000;
 const PDF_MAX_DECODED_STREAMS = 160;
 const PDF_MAX_STREAM_CHARS = 2_500_000;
+const PDF_MAX_RAW_STREAM_BYTES = 750_000;
+const PDF_MAX_UNICODE_MAPS = 16;
+const PDF_GOOD_STREAM_TEXT_LENGTH = 8_000;
 const STRING_CHUNK_SIZE = 0x8000;
 
 const localizedWarnings: Record<
@@ -945,6 +948,15 @@ const decodePdfStreamData = (rawStream: string, filters: string[]): Uint8Array |
   return decoded;
 };
 
+const shouldSkipPdfStreamDictionary = (dictionary: string): boolean => {
+  const normalizedDictionary = dictionary.replace(/\s+/g, ' ');
+
+  return (
+    /\/Subtype\s*\/Image\b/i.test(normalizedDictionary) ||
+    /\/Filter\s*\/(?:DCTDecode|JPXDecode|JBIG2Decode|CCITTFaxDecode)\b/i.test(normalizedDictionary)
+  );
+};
+
 const trimPdfStreamSuffix = (value: string): string => {
   if (value.endsWith('\r\n')) {
     return value.slice(0, -2);
@@ -981,6 +993,10 @@ const extractDecodedPdfStreams = (binary: string): string[] => {
     }
 
     const dictionary = body.slice(dictionaryStart, dictionaryEnd + 2);
+    if (shouldSkipPdfStreamDictionary(dictionary)) {
+      continue;
+    }
+
     const filters = extractPdfFilterNames(dictionary);
     const lengthMatch = dictionary.match(PDF_LENGTH_PATTERN);
     let rawStream = '';
@@ -1001,6 +1017,10 @@ const extractDecodedPdfStreams = (binary: string): string[] => {
       }
 
       rawStream = trimPdfStreamSuffix(body.slice(streamStart, streamEnd));
+    }
+
+    if (rawStream.length > PDF_MAX_RAW_STREAM_BYTES) {
+      continue;
     }
 
     const decodedBytes = decodePdfStreamData(rawStream, filters);
@@ -1047,15 +1067,28 @@ const extractPdfDocumentText = (binary: string): string => {
   }
 
   const decodedStreams = extractDecodedPdfStreams(binary);
-  const unicodeMaps = decodedStreams
-    .map((stream) => parsePdfUnicodeMap(stream))
-    .filter((unicodeMap): unicodeMap is PdfUnicodeMap => Boolean(unicodeMap));
+  const unicodeMaps: PdfUnicodeMap[] = [];
+
+  for (const stream of decodedStreams) {
+    if (unicodeMaps.length >= PDF_MAX_UNICODE_MAPS) {
+      break;
+    }
+
+    if (!stream.includes('begincmap')) {
+      continue;
+    }
+
+    const unicodeMap = parsePdfUnicodeMap(stream);
+    if (unicodeMap) {
+      unicodeMaps.push(unicodeMap);
+    }
+  }
+
   const textChunks: string[] = [];
   const seen = new Set<string>();
 
-  const mainText = unicodeMaps.length > 0 ? extractPdfText(binary, unicodeMaps) : directMainText;
-  if (isLikelyPdfTextChunk(mainText)) {
-    appendUniqueTextChunk(textChunks, seen, mainText);
+  if (isLikelyPdfTextChunk(directMainText)) {
+    appendUniqueTextChunk(textChunks, seen, directMainText);
   }
 
   for (const stream of decodedStreams) {
@@ -1069,6 +1102,21 @@ const extractPdfDocumentText = (binary: string): string => {
     }
 
     appendUniqueTextChunk(textChunks, seen, streamText);
+
+    const currentText = textChunks.join('\n');
+    if (
+      currentText.length >= PDF_GOOD_STREAM_TEXT_LENGTH &&
+      isLikelyPdfTextChunk(currentText)
+    ) {
+      break;
+    }
+  }
+
+  if (textChunks.length === 0 && unicodeMaps.length > 0) {
+    const unicodeMainText = extractPdfText(binary, unicodeMaps);
+    if (isLikelyPdfTextChunk(unicodeMainText)) {
+      appendUniqueTextChunk(textChunks, seen, unicodeMainText);
+    }
   }
 
   return normalizePdfText(textChunks.join('\n'));

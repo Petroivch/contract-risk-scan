@@ -183,6 +183,82 @@ const clearAcceptanceAnalysis = buildAnalysisArtifacts({
 
 assert.ok(!clearAcceptanceAnalysis.risks.some((risk) => risk.title === 'Неясная приемка результата'));
 
+const pledgeAnalysis = buildAnalysisArtifacts({
+  text: [
+    'ДОГОВОР ЗАЛОГА АКЦИЙ.',
+    '1.1. Залогодатель передает Залогодержателю в залог ценные бумаги в обеспечение исполнения обязательств по кредитному договору.',
+    '4.1. При просрочке Залогодержатель вправе обратить взыскание на заложенные акции во внесудебном порядке.',
+  ].join('\n\n'),
+  fileName: 'synthetic-pledge.html',
+  selectedRole: 'Залогодатель',
+  language: 'ru',
+  warnings: [],
+});
+
+assert.equal(pledgeAnalysis.summary.contractType, 'Договор залога');
+assert.ok(
+  pledgeAnalysis.summary.obligationsForSelectedRole.some((line) =>
+    line.includes('передает Залогодержателю в залог'),
+  ),
+);
+assert.ok(pledgeAnalysis.risks.some((risk) => risk.title === 'Обеспечение и взыскание'));
+
+const bankGuaranteeAnalysis = buildAnalysisArtifacts({
+  text: [
+    'Договор о предоставлении банковской гарантии.',
+    'Гарант обязуется безусловно и безотзывно уплатить Бенефициару сумму гарантии по первому требованию.',
+    'Принципал возмещает Гаранту суммы, выплаченные по банковской гарантии.',
+  ].join('\n\n'),
+  fileName: 'synthetic-bank-guarantee.doc',
+  selectedRole: 'Принципал',
+  language: 'ru',
+  warnings: [],
+});
+
+assert.equal(bankGuaranteeAnalysis.summary.contractType, 'Банковская гарантия');
+assert.ok(bankGuaranteeAnalysis.risks.some((risk) => risk.title === 'Банковская гарантия по требованию'));
+assert.ok(
+  bankGuaranteeAnalysis.summary.obligationsForSelectedRole.some((line) =>
+    line.includes('возмещает Гаранту'),
+  ),
+);
+
+const insuranceAnalysis = buildAnalysisArtifacts({
+  text: [
+    'ДОГОВОР смешанного страхования жизни.',
+    'Страхователь обязуется уплатить страховую премию ежемесячно.',
+    'Смерть застрахованного не признается страховым случаем, если она наступила в результате умышленного действия страхователя.',
+  ].join('\n\n'),
+  fileName: 'synthetic-insurance.html',
+  selectedRole: 'Страхователь',
+  language: 'ru',
+  warnings: [],
+});
+
+assert.equal(insuranceAnalysis.summary.contractType, 'Договор страхования');
+assert.ok(insuranceAnalysis.risks.some((risk) => risk.title === 'Исключения из страхового покрытия'));
+
+const ipLicenseAnalysis = buildAnalysisArtifacts({
+  text: [
+    'Контракт о передаче know-how.',
+    'ЛИЦЕНЗИАР передает ЛИЦЕНЗИАТУ технологию, документацию и опыт изготовления продукции.',
+    'Права являются исключительными (неисключительными), территория использования определяется сторонами дополнительно.',
+    'ЛИЦЕНЗИАТ обязан не разглашать коммерческую тайну и использовать документацию только по назначению.',
+  ].join('\n\n'),
+  fileName: 'synthetic-know-how.html',
+  selectedRole: 'ЛИЦЕНЗИАР',
+  language: 'ru',
+  warnings: [],
+});
+
+assert.equal(ipLicenseAnalysis.summary.contractType, 'Лицензионный договор / передача прав');
+assert.ok(
+  ipLicenseAnalysis.summary.obligationsForSelectedRole.some((line) =>
+    line.includes('передает ЛИЦЕНЗИАТУ технологию'),
+  ),
+);
+assert.ok(ipLicenseAnalysis.risks.some((risk) => risk.title === 'Объем прав на ИС и лицензию'));
+
 const colonCarrySummaryAnalysis = buildAnalysisArtifacts({
   text: [
     '4.1. Права и обязанности гражданина.',

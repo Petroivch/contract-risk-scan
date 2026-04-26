@@ -25,6 +25,7 @@ export interface AnalysisStatus {
   analysisId: string;
   status: AnalysisLifecycleStatus;
   progress: number;
+  stage?: 'queued' | 'extracting' | 'analyzing' | 'finalizing';
   selectedRole: string;
   updatedAt: string;
   errorMessage?: string;

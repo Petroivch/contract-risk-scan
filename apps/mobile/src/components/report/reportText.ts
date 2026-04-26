@@ -4,6 +4,7 @@ import type { SupportedLanguage } from '../../i18n/types';
 import { collapseWhitespace, uniqueStrings } from '../../analysis/textNormalization';
 
 const sentenceBoundaryPattern = /([.!?])\s+/gu;
+const previewBoundaryPattern = /[.!?;:]\s*/gu;
 
 const evidencePrefixes: Record<SupportedLanguage, string[]> = {
   ru: ['выявлено в пункте', 'выявлено в', 'обнаружено в пункте'],
@@ -44,6 +45,41 @@ export const splitStructuredText = (value: string, maxItems = 8): string[] => {
   );
 
   return items.slice(0, maxItems);
+};
+
+const trimPreviewText = (value: string, maxChars: number): string => {
+  const normalized = normalizePoint(value);
+  if (!normalized || normalized.length <= maxChars) {
+    return normalized;
+  }
+
+  let cutIndex = -1;
+  for (const match of normalized.matchAll(previewBoundaryPattern)) {
+    const nextIndex = match.index + match[0].length;
+    if (nextIndex >= Math.min(80, maxChars) && nextIndex <= maxChars) {
+      cutIndex = nextIndex;
+    }
+  }
+
+  if (cutIndex > 0) {
+    return normalized.slice(0, cutIndex).trim();
+  }
+
+  const softLimit = normalized.lastIndexOf(' ', maxChars - 3);
+  const fallbackIndex = softLimit >= Math.min(80, maxChars / 2) ? softLimit : maxChars - 3;
+  return `${normalized.slice(0, fallbackIndex).trim()}...`;
+};
+
+export const buildPreviewItems = (
+  items: string[],
+  maxItems = 3,
+  maxChars = 220,
+): string[] => {
+  return uniqueStrings(
+    items
+      .map((item) => trimPreviewText(item, maxChars))
+      .filter(Boolean),
+  ).slice(0, maxItems);
 };
 
 export const splitInlineEvidence = (

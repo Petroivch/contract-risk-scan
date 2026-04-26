@@ -9,7 +9,7 @@ import { useAppLanguage } from '../../i18n/LanguageProvider';
 import type { RootStackParamList } from '../../navigation/types';
 import { colors, radius, shadow, spacing, typography } from '../../theme/tokens';
 import { StatusChip } from '../StatusChip';
-import { buildClauseItems, splitInlineEvidence, splitStructuredText } from '../report/reportText';
+import { buildClauseItems, buildPreviewItems, splitInlineEvidence, splitStructuredText } from '../report/reportText';
 
 interface RiskCardProps {
   item: RiskItem;
@@ -38,24 +38,29 @@ export const RiskCard = ({ item }: RiskCardProps): JSX.Element => {
   );
 
   const clauseItems = useMemo(() => buildClauseItems(item.clauseRefs, item.clauseRef, t), [item.clauseRef, item.clauseRefs, t]);
-  const findingItems = useMemo(
+  const detailFindingItems = useMemo(
     () =>
       [
-        ...splitStructuredText(primaryText || item.description, 4),
-        ...splitStructuredText(inlineEvidenceItems.join(' '), 2),
-        ...(item.evidence ?? []).map((entry) => entry.trim()).filter(Boolean),
+        ...splitStructuredText(primaryText || item.description, 8),
+        ...splitStructuredText(inlineEvidenceItems.join(' '), 6),
+        ...(item.evidence ?? []).flatMap((entry) => splitStructuredText(entry, 8)),
       ],
     [inlineEvidenceItems, item.description, item.evidence, primaryText],
   );
-  const recommendationItems = useMemo(() => splitStructuredText(item.recommendation, 4), [item.recommendation]);
+  const previewFindingItems = useMemo(() => buildPreviewItems(detailFindingItems, 3, 220), [detailFindingItems]);
+  const detailRecommendationItems = useMemo(() => splitStructuredText(item.recommendation, 8), [item.recommendation]);
+  const previewRecommendationItems = useMemo(
+    () => buildPreviewItems(detailRecommendationItems, 2, 220),
+    [detailRecommendationItems],
+  );
 
   const detailSections = useMemo(
     () => [
       { title: t('report.sections.whereFound'), items: clauseItems },
-      { title: t('report.sections.riskPoints'), items: findingItems },
-      { title: t('report.sections.recommendationSteps'), items: recommendationItems },
+      { title: t('report.sections.riskPoints'), items: detailFindingItems },
+      { title: t('report.sections.recommendationSteps'), items: detailRecommendationItems },
     ],
-    [clauseItems, findingItems, recommendationItems, t],
+    [clauseItems, detailFindingItems, detailRecommendationItems, t],
   );
 
   return (
@@ -88,7 +93,7 @@ export const RiskCard = ({ item }: RiskCardProps): JSX.Element => {
 
         <View style={styles.sectionBox}>
           <Text style={styles.sectionLabel}>{t('report.sections.riskPoints')}</Text>
-          {findingItems.map((value, index) => (
+          {previewFindingItems.map((value, index) => (
             <Text key={`finding-${index}`} style={styles.listItem}>
               - {value}
             </Text>
@@ -97,7 +102,7 @@ export const RiskCard = ({ item }: RiskCardProps): JSX.Element => {
 
         <View style={styles.recommendationBox}>
           <Text style={styles.recommendationLabel}>{t('report.sections.recommendationSteps')}</Text>
-          {recommendationItems.map((value, index) => (
+          {previewRecommendationItems.map((value, index) => (
             <Text key={`recommendation-${index}`} style={styles.recommendation}>
               - {value}
             </Text>

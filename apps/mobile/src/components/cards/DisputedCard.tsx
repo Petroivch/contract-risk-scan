@@ -9,7 +9,7 @@ import { useAppLanguage } from '../../i18n/LanguageProvider';
 import type { RootStackParamList } from '../../navigation/types';
 import { colors, radius, shadow, spacing, typography } from '../../theme/tokens';
 import { StatusChip } from '../StatusChip';
-import { splitInlineEvidence, splitStructuredText } from '../report/reportText';
+import { buildPreviewItems, splitInlineEvidence, splitStructuredText } from '../report/reportText';
 
 interface DisputedCardProps {
   item: DisputedClause;
@@ -21,21 +21,24 @@ export const DisputedCard = ({ item }: DisputedCardProps): JSX.Element => {
   const { language } = useAppLanguage();
 
   const { primaryText, evidenceItems } = useMemo(() => splitInlineEvidence(item.whyDisputed, language), [item.whyDisputed, language]);
-  const disputedItems = useMemo(
-    () => [...splitStructuredText(primaryText || item.whyDisputed, 4), ...splitStructuredText(evidenceItems.join(' '), 2)],
+  const detailDisputedItems = useMemo(
+    () => [...splitStructuredText(primaryText || item.whyDisputed, 8), ...splitStructuredText(evidenceItems.join(' '), 6)],
     [evidenceItems, item.whyDisputed, primaryText],
   );
-  const fragmentItems = useMemo(() => splitStructuredText(item.clauseText ?? '', 4), [item.clauseText]);
-  const rewriteItems = useMemo(() => splitStructuredText(item.suggestedRewrite, 4), [item.suggestedRewrite]);
+  const previewDisputedItems = useMemo(() => buildPreviewItems(detailDisputedItems, 3, 220), [detailDisputedItems]);
+  const detailFragmentItems = useMemo(() => splitStructuredText(item.clauseText ?? '', 12), [item.clauseText]);
+  const previewFragmentItems = useMemo(() => buildPreviewItems(detailFragmentItems, 2, 220), [detailFragmentItems]);
+  const detailRewriteItems = useMemo(() => splitStructuredText(item.suggestedRewrite, 8), [item.suggestedRewrite]);
+  const previewRewriteItems = useMemo(() => buildPreviewItems(detailRewriteItems, 2, 220), [detailRewriteItems]);
 
   const detailSections = useMemo(
     () => [
       { title: t('report.sections.whereFound'), items: [t('report.clause', { value: item.clauseRef })] },
-      { title: t('report.sections.disputedPoints'), items: disputedItems },
-      { title: t('report.sections.contractFragment'), items: fragmentItems },
-      { title: t('report.sections.rewriteSteps'), items: rewriteItems },
+      { title: t('report.sections.disputedPoints'), items: detailDisputedItems },
+      { title: t('report.sections.contractFragment'), items: detailFragmentItems },
+      { title: t('report.sections.rewriteSteps'), items: detailRewriteItems },
     ],
-    [disputedItems, fragmentItems, item.clauseRef, rewriteItems, t],
+    [detailDisputedItems, detailFragmentItems, detailRewriteItems, item.clauseRef, t],
   );
 
   return (
@@ -56,17 +59,17 @@ export const DisputedCard = ({ item }: DisputedCardProps): JSX.Element => {
       >
         <View style={styles.sectionBox}>
           <Text style={styles.sectionLabel}>{t('report.sections.disputedPoints')}</Text>
-          {disputedItems.map((value, index) => (
+          {previewDisputedItems.map((value, index) => (
             <Text key={`disputed-${index}`} style={styles.listItem}>
               - {value}
             </Text>
           ))}
         </View>
 
-        {fragmentItems.length > 0 ? (
+        {previewFragmentItems.length > 0 ? (
           <View style={styles.sectionBox}>
             <Text style={styles.sectionLabel}>{t('report.sections.contractFragment')}</Text>
-            {fragmentItems.map((value, index) => (
+            {previewFragmentItems.map((value, index) => (
               <Text key={`fragment-${index}`} style={styles.listItem}>
                 - {value}
               </Text>
@@ -76,7 +79,7 @@ export const DisputedCard = ({ item }: DisputedCardProps): JSX.Element => {
 
         <View style={styles.rewriteBox}>
           <Text style={styles.rewriteLabel}>{t('report.sections.rewriteSteps')}</Text>
-          {rewriteItems.map((value, index) => (
+          {previewRewriteItems.map((value, index) => (
             <Text key={`rewrite-${index}`} style={styles.rewrite}>
               - {value}
             </Text>

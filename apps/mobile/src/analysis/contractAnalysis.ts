@@ -181,6 +181,15 @@ const localizedStrings: Record<SupportedLanguage, AnalysisLocalization> = repair
       supply: 'Р”РѕРіРѕРІРѕСЂ РїРѕСЃС‚Р°РІРєРё',
       contractWork: 'Р”РѕРіРѕРІРѕСЂ РїРѕРґСЂСЏРґР°',
       rent: 'Р”РѕРіРѕРІРѕСЂ Р°СЂРµРЅРґС‹',
+      pledge: 'Договор залога',
+      surety: 'Договор поручительства',
+      bankGuarantee: 'Банковская гарантия',
+      insurance: 'Договор страхования',
+      commission: 'Договор комиссии',
+      mandate: 'Договор поручения',
+      ipLicense: 'Лицензионный договор / передача прав',
+      rentLife: 'Договор ренты',
+      bankAccount: 'Договор банковского счета',
     },
     unknownContractType: 'Р”РѕРіРѕРІРѕСЂ РѕР±С‰РµРіРѕ С‚РёРїР°',
     reportTitle: 'РђРЅР°Р»РёР· РґРѕРіРѕРІРѕСЂР°',
@@ -213,6 +222,15 @@ const localizedStrings: Record<SupportedLanguage, AnalysisLocalization> = repair
       supply: 'Supply agreement',
       contractWork: 'Contract work agreement',
       rent: 'Lease agreement',
+      pledge: 'Pledge agreement',
+      surety: 'Suretyship agreement',
+      bankGuarantee: 'Bank guarantee',
+      insurance: 'Insurance agreement',
+      commission: 'Commission agreement',
+      mandate: 'Mandate agreement',
+      ipLicense: 'IP license / rights transfer',
+      rentLife: 'Annuity agreement',
+      bankAccount: 'Bank account agreement',
     },
     unknownContractType: 'General contract',
     reportTitle: 'Contract analysis',
@@ -244,6 +262,15 @@ const localizedStrings: Record<SupportedLanguage, AnalysisLocalization> = repair
       supply: 'Contratto di fornitura',
       contractWork: "Contratto d'opera",
       rent: 'Contratto di locazione',
+      pledge: 'Contratto di pegno',
+      surety: 'Contratto di fideiussione',
+      bankGuarantee: 'Garanzia bancaria',
+      insurance: 'Contratto di assicurazione',
+      commission: 'Contratto di commissione',
+      mandate: 'Mandato',
+      ipLicense: 'Licenza / trasferimento IP',
+      rentLife: 'Contratto di rendita',
+      bankAccount: 'Contratto di conto bancario',
     },
     unknownContractType: 'Contratto generico',
     reportTitle: 'Analisi del contratto',
@@ -275,6 +302,15 @@ const localizedStrings: Record<SupportedLanguage, AnalysisLocalization> = repair
       supply: 'Contrat de fourniture',
       contractWork: 'Contrat d entreprise',
       rent: 'Contrat de location',
+      pledge: 'Contrat de nantissement',
+      surety: 'Cautionnement',
+      bankGuarantee: 'Garantie bancaire',
+      insurance: 'Contrat d assurance',
+      commission: 'Contrat de commission',
+      mandate: 'Mandat',
+      ipLicense: 'Licence / transfert de droits IP',
+      rentLife: 'Contrat de rente',
+      bankAccount: 'Contrat de compte bancaire',
     },
     unknownContractType: 'Contrat general',
     reportTitle: 'Analyse du contrat',
@@ -352,9 +388,19 @@ const summaryMarkers = repairDeepStrings({
     'содействовать',
     'предпринять',
     'сохранять',
+    'сохранить',
     'оплатить',
     'оплачивать',
     'уплачивать',
+    'выдать',
+    'выплатить',
+    'застраховать',
+    'отчитаться',
+    'представить отчет',
+    'исполнить поручение',
+    'передать права',
+    'предоставить лицензию',
+    'не разглашать',
     'подписать',
     'сообщать',
     'проработать',
@@ -429,7 +475,6 @@ const summaryMarkers = repairDeepStrings({
     'имеет право',
     'вправе',
     'может',
-    'право',
     'форс-мажор',
     'обстоятельства непреодолимой силы',
     'реквизиты',
@@ -438,7 +483,6 @@ const summaryMarkers = repairDeepStrings({
     'кпп',
     'огрн',
     'юридический адрес',
-    'банк',
     'расчетный счет',
   ],
   liability: [
@@ -931,6 +975,122 @@ const hybridSignals = repairDeepStrings({
     'перенести отпуск',
     'дата отпуска',
   ],
+  collateralSupport: [
+    'залог',
+    'заложенн',
+    'залогодатель',
+    'залогодержатель',
+    'поручител',
+    'солидарн',
+    'субсидиарн',
+    'обеспечение исполнения',
+    'обеспечения исполнения',
+    'регресс',
+    'pledge',
+    'collateral',
+    'surety',
+    'guarantor',
+  ],
+  collateralHard: [
+    'обратить взыскание',
+    'обращение взыскания',
+    'внесудебн',
+    'реализац заложенн',
+    'удержать',
+    'безакцепт',
+    'солидарн',
+    'в полном объеме',
+    'отвечает перед кредитором',
+    'удовлетворить требования',
+    'enforce collateral',
+    'without court',
+    'jointly and severally',
+    'debit without acceptance',
+  ],
+  guaranteeSupport: [
+    'банковск гаранти',
+    'независим гаранти',
+    'гарант обязуется',
+    'бенефициар',
+    'принципал',
+    'bank guarantee',
+    'independent guarantee',
+    'beneficiary',
+    'principal',
+  ],
+  guaranteeHard: [
+    'по первому требованию',
+    'безусловн',
+    'безотзывн',
+    'без возражений',
+    'требование бенефициара',
+    'не позднее',
+    'on first demand',
+    'unconditional',
+    'irrevocable',
+    'without objection',
+  ],
+  insuranceSupport: [
+    'страхов',
+    'страховой случай',
+    'страховая сумма',
+    'страховая премия',
+    'страховое возмещение',
+    'выгодоприобретател',
+    'insurance',
+    'insured event',
+    'premium',
+    'beneficiary',
+  ],
+  insuranceHard: [
+    'не признается страховым случаем',
+    'не является страховым случаем',
+    'страховая выплата не производится',
+    'основани для отказа',
+    'исключени',
+    'умышленн',
+    'алкогольн',
+    'наркотическ',
+    'военных действий',
+    'not an insured event',
+    'coverage exclusion',
+    'no insurance payment',
+  ],
+  ipScopeSupport: [
+    'лиценз',
+    'лицензиар',
+    'лицензиат',
+    'know-how',
+    'ноу-хау',
+    'патент',
+    'исключительн',
+    'неисключительн',
+    'сублиценз',
+    'субконтракт',
+    'коммерческ тайн',
+    'территори',
+    'intellectual property',
+    'ip rights',
+    'license',
+    'exclusive',
+    'non-exclusive',
+    'sublicense',
+  ],
+  ipScopeHard: [
+    'исключительными (неисключительными)',
+    'территории любых стран',
+    'оставляет за собой право',
+    'передача прав третьим лицам',
+    'право сублиценз',
+    'только с согласия',
+    'не гарантирует',
+    'не разглашать',
+    'exclusive (non-exclusive)',
+    'worldwide',
+    'third parties',
+    'sublicense',
+    'does not warrant',
+  ],
 });
 
 const riskRules: RiskRule[] = repairDeepStrings([
@@ -1102,6 +1262,153 @@ const riskRules: RiskRule[] = repairDeepStrings([
       en: 'Specify the opt-out notice period and the consequences of silence.',
       it: 'Specificare il preavviso di disdetta e le conseguenze del silenzio.',
       fr: 'Preciser le preavis de non-renouvellement et les consequences du silence.',
+    },
+  },
+  {
+    id: 'collateral-enforcement',
+    severity: 'high',
+    keywords: [
+      'залог',
+      'заложенн',
+      'поручител',
+      'солидарн',
+      'субсидиарн',
+      'обратить взыскание',
+      'внесудебн',
+      'безакцепт',
+      'регресс',
+      'pledge',
+      'collateral',
+      'surety',
+      'jointly and severally',
+      'without court',
+      'debit without acceptance',
+    ],
+    title: {
+      ru: 'Обеспечение и взыскание',
+      en: 'Security and enforcement',
+      it: 'Garanzie reali e escussione',
+      fr: 'Suretes et execution',
+    },
+    description: {
+      ru: 'Найдены условия о залоге, поручительстве, солидарной ответственности или упрощенном взыскании обеспечения.',
+      en: 'The contract contains pledge, suretyship, joint liability, or accelerated enforcement language.',
+      it: 'Il contratto contiene pegno, fideiussione, responsabilita solidale o escussione accelerata.',
+      fr: 'Le contrat contient un nantissement, cautionnement, responsabilite solidaire ou execution acceleree.',
+    },
+    recommendation: {
+      ru: 'Проверьте предел обеспеченного долга, порядок уведомления, внесудебное взыскание, регресс и срок прекращения обеспечения.',
+      en: 'Check the secured amount, notice mechanics, out-of-court enforcement, recourse, and security expiry.',
+      it: 'Verificare importo garantito, preavviso, escussione extragiudiziale, regresso e scadenza.',
+      fr: 'Verifier le montant garanti, le preavis, l execution extrajudiciaire, le recours et l expiration.',
+    },
+  },
+  {
+    id: 'independent-guarantee',
+    severity: 'high',
+    keywords: [
+      'банковск гаранти',
+      'независим гаранти',
+      'по первому требованию',
+      'безусловн',
+      'безотзывн',
+      'бенефициар',
+      'принципал',
+      'bank guarantee',
+      'independent guarantee',
+      'on first demand',
+      'unconditional',
+      'irrevocable',
+    ],
+    title: {
+      ru: 'Банковская гарантия по требованию',
+      en: 'On-demand bank guarantee',
+      it: 'Garanzia bancaria a prima richiesta',
+      fr: 'Garantie bancaire a premiere demande',
+    },
+    description: {
+      ru: 'Условие похоже на независимую или банковскую гарантию с платежом по требованию бенефициара.',
+      en: 'The wording resembles an independent or bank guarantee payable on the beneficiary demand.',
+      it: 'La clausola somiglia a una garanzia bancaria o autonoma pagabile a richiesta.',
+      fr: 'La clause ressemble a une garantie bancaire ou autonome payable sur demande.',
+    },
+    recommendation: {
+      ru: 'Уточните перечень документов к требованию, срок проверки, лимит суммы, срок гарантии и основания отказа в платеже.',
+      en: 'Define demand documents, review period, amount cap, guarantee term, and payment refusal grounds.',
+      it: 'Definire documenti della richiesta, termine di verifica, massimale, durata e motivi di rifiuto.',
+      fr: 'Definir les pieces de demande, delai de controle, plafond, duree et motifs de refus.',
+    },
+  },
+  {
+    id: 'insurance-exclusions',
+    severity: 'medium',
+    keywords: [
+      'страхов',
+      'не признается страховым случаем',
+      'страховая выплата не производится',
+      'исключени',
+      'основани для отказа',
+      'выгодоприобретател',
+      'insurance',
+      'coverage exclusion',
+      'not an insured event',
+      'no insurance payment',
+    ],
+    title: {
+      ru: 'Исключения из страхового покрытия',
+      en: 'Insurance coverage exclusions',
+      it: 'Esclusioni assicurative',
+      fr: 'Exclusions de couverture',
+    },
+    description: {
+      ru: 'В договоре есть условия, ограничивающие страховой случай, выплату или круг выгодоприобретателей.',
+      en: 'The contract limits insured events, insurance payout, or beneficiary coverage.',
+      it: 'Il contratto limita eventi assicurati, pagamento o beneficiari.',
+      fr: 'Le contrat limite les evenements assures, le paiement ou les beneficiaires.',
+    },
+    recommendation: {
+      ru: 'Сверьте исключения с ожиданиями страхового покрытия, сроками заявления и пакетом документов для выплаты.',
+      en: 'Check exclusions against expected coverage, claim notice deadlines, and payout document requirements.',
+      it: 'Confrontare esclusioni, termini di denuncia e documenti richiesti per il pagamento.',
+      fr: 'Comparer les exclusions, delais de declaration et documents requis pour le paiement.',
+    },
+  },
+  {
+    id: 'ip-scope',
+    severity: 'medium',
+    keywords: [
+      'лиценз',
+      'know-how',
+      'ноу-хау',
+      'патент',
+      'исключительн',
+      'неисключительн',
+      'сублиценз',
+      'коммерческ тайн',
+      'территори',
+      'intellectual property',
+      'ip rights',
+      'exclusive',
+      'non-exclusive',
+      'sublicense',
+    ],
+    title: {
+      ru: 'Объем прав на ИС и лицензию',
+      en: 'IP and license scope',
+      it: 'Ambito dei diritti IP e licenza',
+      fr: 'Perimetre des droits IP et licence',
+    },
+    description: {
+      ru: 'Обнаружены условия о передаче технологии, лицензии, патентах, исключительности, территории или правах третьих лиц.',
+      en: 'The contract addresses technology transfer, license scope, patents, exclusivity, territory, or third-party rights.',
+      it: 'Il contratto tratta trasferimento tecnologico, licenza, brevetti, esclusiva, territorio o diritti di terzi.',
+      fr: 'Le contrat traite transfert de technologie, licence, brevets, exclusivite, territoire ou droits de tiers.',
+    },
+    recommendation: {
+      ru: 'Зафиксируйте исключительность, территорию, срок, право сублицензии, конфиденциальность know-how и гарантии от претензий третьих лиц.',
+      en: 'Specify exclusivity, territory, term, sublicensing, know-how confidentiality, and third-party claim warranties.',
+      it: 'Precisare esclusiva, territorio, durata, sublicenza, riservatezza know-how e garanzie verso terzi.',
+      fr: 'Preciser exclusivite, territoire, duree, sous-licence, confidentialite du know-how et garanties de tiers.',
     },
   },
 ]);
@@ -1288,10 +1595,134 @@ const contractTypeDetectors: Record<string, string[]> = repairDeepStrings({
     'contratto d opera',
     'contrat d entreprise',
   ],
+  pledge: [
+    'договор залога',
+    'залог',
+    'заложенн',
+    'залогодатель',
+    'залогодержатель',
+    'предмет залога',
+    'обеспечения возврата',
+    'pledge agreement',
+    'collateral agreement',
+    'nantissement',
+    'pegno',
+  ],
+  surety: [
+    'поручитель',
+    'поручительство',
+    'договор поручительства',
+    'кредитор',
+    'должник',
+    'солидарн',
+    'surety',
+    'suretyship',
+    'surety agreement',
+    'guarantor',
+    'cautionnement',
+    'fideiussione',
+  ],
+  bankGuarantee: [
+    'банковская гарантия',
+    'независимая гарантия',
+    'гарант',
+    'бенефициар',
+    'принципал',
+    'bank guarantee',
+    'independent guarantee',
+    'garantie bancaire',
+  ],
+  insurance: [
+    'договор страхования',
+    'страхование',
+    'страхователь',
+    'страховщик',
+    'застрахованн',
+    'выгодоприобретател',
+    'страховой случай',
+    'страховая премия',
+    'insurance agreement',
+    'insurer',
+    'policyholder',
+    'assicurazione',
+    'assurance',
+  ],
+  commission: [
+    'комиссионер',
+    'комитент',
+    'договор комиссии',
+    'комиссионное вознаграждение',
+    'commission agreement',
+    'commission agent',
+    'commissionnaire',
+    'contratto di commissione',
+  ],
+  mandate: [
+    'поверенный',
+    'доверитель',
+    'договор поручения',
+    'поручает',
+    'доверенность',
+    'mandate agreement',
+    'mandato',
+    'mandat',
+  ],
+  ipLicense: [
+    'лицензионн',
+    'лицензионный договор',
+    'лицензиар',
+    'лицензиат',
+    'know-how',
+    'ноу-хау',
+    'патент',
+    'исключительное право',
+    'передача прав',
+    'коммерческ тайн',
+    'intellectual property',
+    'license agreement',
+    'licence',
+    'licenza',
+  ],
+  rentLife: [
+    'договор ренты',
+    'постоянной ренты',
+    'пожизненной ренты',
+    'плательщик ренты',
+    'получатель ренты',
+    'пожизненное содержание',
+    'иждивением',
+    'annuity agreement',
+    'rente viagere',
+  ],
+  bankAccount: [
+    'договор банковского счета',
+    'банковский счет',
+    'расчетно-кассовое обслуживание',
+    'расчетный счет',
+    'текущий валютный счет',
+    'банк обязуется принимать',
+    'bank account agreement',
+    'settlement account',
+    'conto bancario',
+    'compte bancaire',
+  ],
 });
 
 const normalizeLanguage = (language?: SupportedLanguage): SupportedLanguage => {
   return language && localizedStrings[language] ? language : defaultLanguage;
+};
+
+const normalizedMarkerCache = new Map<string, string>();
+
+const normalizeMarker = (marker: string): string => {
+  const cached = normalizedMarkerCache.get(marker);
+  if (cached !== undefined) {
+    return cached;
+  }
+
+  const normalized = normalizeSearchText(marker);
+  normalizedMarkerCache.set(marker, normalized);
+  return normalized;
 };
 
 const tokenizeSearchText = (input: string): string[] => {
@@ -1305,7 +1736,7 @@ const tokenizeSearchText = (input: string): string[] => {
 
 const countMatches = (normalizedText: string, markers: string[]): number => {
   return markers.reduce((total, marker) => {
-    const normalizedMarker = normalizeSearchText(marker);
+    const normalizedMarker = normalizeMarker(marker);
     if (!normalizedMarker) {
       return total;
     }
@@ -1320,7 +1751,7 @@ const findMarkerPositions = (normalizedText: string, markers: string[]): number[
   const positions: number[] = [];
 
   for (const marker of markers) {
-    const normalizedMarker = normalizeSearchText(marker);
+    const normalizedMarker = normalizeMarker(marker);
     if (!normalizedMarker) {
       continue;
     }
@@ -1608,6 +2039,38 @@ const scoreRiskContext = (
       const supportHits = countMatches(normalizedText, hybridSignals.autoRenewalSupport);
       return supportHits * 4 + (hasExplicitNumericSignal(excerpt) ? 1 : 0);
     }
+    case 'collateral-enforcement': {
+      const supportHits = countMatches(normalizedText, hybridSignals.collateralSupport);
+      const hardHits = countMatches(normalizedText, hybridSignals.collateralHard);
+      return (
+        supportHits * 3 +
+        hardHits * 5 +
+        roleHits +
+        actionHits +
+        (hasMonetarySignal(excerpt) ? 2 : 0)
+      );
+    }
+    case 'independent-guarantee': {
+      const supportHits = countMatches(normalizedText, hybridSignals.guaranteeSupport);
+      const hardHits = countMatches(normalizedText, hybridSignals.guaranteeHard);
+      return (
+        supportHits * 4 +
+        hardHits * 5 +
+        roleHits +
+        actionHits +
+        (hasMonetarySignal(excerpt) ? 2 : 0)
+      );
+    }
+    case 'insurance-exclusions': {
+      const supportHits = countMatches(normalizedText, hybridSignals.insuranceSupport);
+      const hardHits = countMatches(normalizedText, hybridSignals.insuranceHard);
+      return supportHits * 3 + hardHits * 5 + roleHits + actionHits;
+    }
+    case 'ip-scope': {
+      const supportHits = countMatches(normalizedText, hybridSignals.ipScopeSupport);
+      const hardHits = countMatches(normalizedText, hybridSignals.ipScopeHard);
+      return supportHits * 3 + hardHits * 4 + roleHits + actionHits;
+    }
     default:
       return roleHits + actionHits;
   }
@@ -1648,6 +2111,33 @@ const meetsRiskThreshold = (
       );
     case 'auto-renewal':
       return totalScore >= 7;
+    case 'collateral-enforcement':
+      return (
+        totalScore >= 8 &&
+        countMatches(normalizedText, hybridSignals.collateralSupport) >= 1 &&
+        (countMatches(normalizedText, hybridSignals.collateralHard) >= 1 ||
+          countMatches(normalizedText, hybridSignals.roleAction) >= 1)
+      );
+    case 'independent-guarantee':
+      return (
+        totalScore >= 8 &&
+        countMatches(normalizedText, hybridSignals.guaranteeSupport) >= 1 &&
+        (countMatches(normalizedText, hybridSignals.guaranteeHard) >= 1 ||
+          hasMonetarySignal(normalizedText))
+      );
+    case 'insurance-exclusions':
+      return (
+        totalScore >= 8 &&
+        countMatches(normalizedText, hybridSignals.insuranceSupport) >= 1 &&
+        countMatches(normalizedText, hybridSignals.insuranceHard) >= 1
+      );
+    case 'ip-scope':
+      return (
+        totalScore >= 8 &&
+        countMatches(normalizedText, hybridSignals.ipScopeSupport) >= 1 &&
+        (countMatches(normalizedText, hybridSignals.ipScopeHard) >= 1 ||
+          countMatches(normalizedText, hybridSignals.futureAgreementOpenEnded) >= 1)
+      );
     default:
       return totalScore >= 6;
   }
@@ -2608,6 +3098,15 @@ export const detectContractType = (text: string, language: SupportedLanguage): s
   const normalizedHead = normalizeSearchText(normalizeExtractedText(text).slice(0, 4000));
   const localization = localizedStrings[normalizeLanguage(language)];
   const priorityOrder = [
+    'bankGuarantee',
+    'surety',
+    'pledge',
+    'insurance',
+    'ipLicense',
+    'rentLife',
+    'commission',
+    'mandate',
+    'bankAccount',
     'agency',
     'loan',
     'cession',

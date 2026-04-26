@@ -18,6 +18,7 @@ interface LocalFirstAdapterConfig {
 const shouldUseFallback = (enabled: boolean): boolean => enabled;
 const nowIso = (): string => new Date().toISOString();
 const buildQueuedAnalysisId = (): string => `queued_${Date.now()}`;
+const localFallbackTasks = new Map<string, Promise<void>>();
 const buildCompletedStatus = (analysisId: string, selectedRole: string): AnalysisStatus => ({
   analysisId,
   status: 'completed',
@@ -52,6 +53,25 @@ const ignoreCacheError = async (operation: () => Promise<void>): Promise<void> =
     // Local cache must not break the user-visible analysis flow.
   }
 };
+
+const delay = (ms: number): Promise<void> => new Promise((resolve) => setTimeout(resolve, ms));
+
+const buildLocalStatus = (
+  analysisId: string,
+  selectedRole: string,
+  status: AnalysisStatus['status'],
+  progress: number,
+  stage?: AnalysisStatus['stage'],
+  errorMessage?: string,
+): AnalysisStatus => ({
+  analysisId,
+  status,
+  progress,
+  stage,
+  selectedRole,
+  updatedAt: nowIso(),
+  errorMessage,
+});
 
 const buildHistoryItem = (
   analysisId: string,
@@ -127,6 +147,55 @@ export const createLocalFirstAdapter = (
     return { report: completedReport, status };
   };
 
+  const scheduleLocalFallbackAnalysis = (
+    analysisId: string,
+    payload: UploadContractRequest,
+    meta?: RequestMeta,
+  ): void => {
+    if (localFallbackTasks.has(analysisId)) {
+      return;
+    }
+
+    const task = (async (): Promise<void> => {
+      try {
+        await delay(80);
+        await ignoreCacheError(() =>
+          localCache.saveStatus(buildLocalStatus(analysisId, payload.selectedRole, 'processing', 24, 'extracting')),
+        );
+
+        await delay(40);
+        await ignoreCacheError(() =>
+          localCache.saveStatus(buildLocalStatus(analysisId, payload.selectedRole, 'processing', 62, 'analyzing')),
+        );
+
+        const { report } = await runCompletedLocalAnalysis(analysisId, payload, meta);
+
+        await ignoreCacheError(() => localCache.saveReport(report));
+        await ignoreCacheError(() =>
+          localCache.saveStatus(buildLocalStatus(analysisId, payload.selectedRole, 'completed', 100)),
+        );
+        await ignoreCacheError(() =>
+          localCache.upsertHistoryItem(buildHistoryItem(analysisId, payload, 'completed')),
+        );
+      } catch (error) {
+        const failedStatus = buildLocalStatus(
+          analysisId,
+          payload.selectedRole,
+          'failed',
+          0,
+          undefined,
+          error instanceof Error ? error.message : 'Local analysis failed.',
+        );
+        await ignoreCacheError(() => localCache.saveStatus(failedStatus));
+        await ignoreCacheError(() => localCache.upsertHistoryItem(buildHistoryItem(analysisId, payload, 'failed')));
+      } finally {
+        localFallbackTasks.delete(analysisId);
+      }
+    })();
+
+    localFallbackTasks.set(analysisId, task);
+  };
+
   return {
     uploadContract: async (payload: UploadContractRequest, meta?: RequestMeta) => {
       try {
@@ -156,7 +225,11 @@ export const createLocalFirstAdapter = (
       } catch (error) {
         if (shouldUseFallback(config.enableLocalFirst) && payload.localFileUri) {
           const analysisId = buildQueuedAnalysisId();
-          const { status } = await runCompletedLocalAnalysis(analysisId, payload, meta);
+          const status = buildLocalStatus(analysisId, payload.selectedRole, 'queued', 8, 'queued');
+          await ignoreCacheError(() => localCache.saveQueuedUpload(buildQueuedUpload(analysisId, payload, meta)));
+          await ignoreCacheError(() => localCache.saveStatus(status));
+          await ignoreCacheError(() => localCache.upsertHistoryItem(buildHistoryItem(analysisId, payload, 'queued')));
+          scheduleLocalFallbackAnalysis(analysisId, payload, meta);
           return { analysisId, status };
         }
 
@@ -186,15 +259,13 @@ export const createLocalFirstAdapter = (
             if (cached.status === 'queued') {
               const queuedUpload = await localCache.getQueuedUpload(analysisId);
               if (queuedUpload?.localFileUri) {
-                const { status } = await runCompletedLocalAnalysis(
+                scheduleLocalFallbackAnalysis(
                   analysisId,
                   buildUploadPayloadFromQueue(queuedUpload, {
                     language: meta?.language ?? queuedUpload.language,
                   }),
                   { ...meta, language: meta?.language ?? queuedUpload.language },
                 );
-
-                return status;
               }
             }
             return cached;
