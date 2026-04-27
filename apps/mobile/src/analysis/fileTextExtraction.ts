@@ -47,7 +47,6 @@ const DOCX_PARAGRAPH_PATTERN = /<w:p\b[\s\S]*?<\/w:p>/g;
 const DOCX_TABLE_CELL_PATTERN = /<w:tc\b[\s\S]*?<\/w:tc>/g;
 const DOCX_TABLE_ROW_PATTERN = /<w:tr\b[\s\S]*?<\/w:tr>/g;
 const MIN_EXTRACTED_TEXT_LENGTH = 160;
-const PDF_FAST_PATH_TEXT_LENGTH = 480;
 const PDF_BINARY_FALLBACK_MAX_BYTES = 2_000_000;
 const PDF_MAX_DECODED_STREAMS = 160;
 const PDF_MAX_STREAM_CHARS = 2_500_000;
@@ -1062,10 +1061,6 @@ const extractPdfText = (binary: string, unicodeMaps: PdfUnicodeMap[]): string =>
 
 const extractPdfDocumentText = (binary: string): string => {
   const directMainText = extractPdfText(binary, []);
-  if (isLikelyPdfTextChunk(directMainText) && directMainText.length >= PDF_FAST_PATH_TEXT_LENGTH) {
-    return normalizePdfText(directMainText);
-  }
-
   const decodedStreams = extractDecodedPdfStreams(binary);
   const unicodeMaps: PdfUnicodeMap[] = [];
 
@@ -1087,10 +1082,6 @@ const extractPdfDocumentText = (binary: string): string => {
   const textChunks: string[] = [];
   const seen = new Set<string>();
 
-  if (isLikelyPdfTextChunk(directMainText)) {
-    appendUniqueTextChunk(textChunks, seen, directMainText);
-  }
-
   for (const stream of decodedStreams) {
     if (!PDF_STREAM_HINT_PATTERN.test(stream)) {
       continue;
@@ -1110,6 +1101,10 @@ const extractPdfDocumentText = (binary: string): string => {
     ) {
       break;
     }
+  }
+
+  if (textChunks.length === 0 && isLikelyPdfTextChunk(directMainText)) {
+    appendUniqueTextChunk(textChunks, seen, directMainText);
   }
 
   if (textChunks.length === 0 && unicodeMaps.length > 0) {

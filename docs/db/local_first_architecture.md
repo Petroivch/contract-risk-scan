@@ -27,7 +27,6 @@
 - Лимиты и политики задаются через `app_config`, не через magic numbers в коде.
 - Ключи:
   - `mobile.cache.max_contracts`
-  - `migration.runtime_budget_ms`
   - `data.retention.contract_hard_delete_days`
   - `data.retention.audit_logs_days`
   - `language.default`, `language.supported`
@@ -37,18 +36,8 @@
 1. Additive-first изменения.
 2. Минимум тяжелых rewrite-операций.
 3. Backfill только фоново и чанками.
-4. Контроль времени миграции по `migration.runtime_budget_ms`.
 
-## 6. Общий release budget
-- Контроль на уровне финального релизного комплекта.
-- Глобальный лимит задается ключом `build.final_release_size_limit_mb` (текущий default: 228).
-- Вклад DB-части контролируется ключами:
-  - `build.db_contribution_target_mb`
-  - `build.db_contribution_hard_cap_mb`
-
-Подробности в `docs/db/release_size_budget_db_contribution.md`.
-
-## 7. Критерии приемки
+## 6. Критерии приемки
 1. Offline flow работает: роль -> загрузка -> анализ -> отчет.
 2. Язык и локаль консистентны в API и БД.
 3. Никакого хардкода лимитов и enum в мобильном коде.

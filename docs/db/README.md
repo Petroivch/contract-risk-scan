@@ -4,7 +4,6 @@
 - Мобильное приложение Android + iOS работает по модели `offline-first`.
 - Поддерживаемые языки: `ru`, `en`, `it`, `fr`, default/fallback - `ru`.
 - Принцип качества: `no hardcode`, все лимиты и политики задаются через схему, реестр конфигов и документацию.
-- Общий лимит финального релизного комплекта - `228 МБ`.
 
 ## 2. Артефакты БД
 - `db/migrations/v1__init_schema.sql` - базовая схема MVP.
@@ -16,7 +15,6 @@
 ## 3. Документация по интеграции
 - `docs/db/api_contract_impact.md` - влияние на API-контракт Backend и Frontend.
 - `docs/db/local_first_architecture.md` - local-first архитектура: что хранится локально, а что остается серверным.
-- `docs/db/release_size_budget_db_contribution.md` - общий бюджет `228 МБ` и вклад DB-части.
 - `docs/db/config_registry.md` - реестр конфиг-ключей и инвариантов.
 - `docs/db/index_strategy.md` - стратегия индексации для server и mobile.
 - `docs/db/data_lifecycle_policy.md` - хранение, очистка данных и retention.

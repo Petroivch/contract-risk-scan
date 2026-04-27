@@ -183,6 +183,7 @@ const localizedStrings: Record<SupportedLanguage, AnalysisLocalization> = repair
       supply: 'Р”РѕРіРѕРІРѕСЂ РїРѕСЃС‚Р°РІРєРё',
       contractWork: 'Р”РѕРіРѕРІРѕСЂ РїРѕРґСЂСЏРґР°',
       rent: 'Р”РѕРіРѕРІРѕСЂ Р°СЂРµРЅРґС‹',
+      education: 'Договор целевого обучения',
       pledge: 'Договор залога',
       surety: 'Договор поручительства',
       bankGuarantee: 'Банковская гарантия',
@@ -224,6 +225,7 @@ const localizedStrings: Record<SupportedLanguage, AnalysisLocalization> = repair
       supply: 'Supply agreement',
       contractWork: 'Contract work agreement',
       rent: 'Lease agreement',
+      education: 'Targeted education agreement',
       pledge: 'Pledge agreement',
       surety: 'Suretyship agreement',
       bankGuarantee: 'Bank guarantee',
@@ -264,6 +266,7 @@ const localizedStrings: Record<SupportedLanguage, AnalysisLocalization> = repair
       supply: 'Contratto di fornitura',
       contractWork: "Contratto d'opera",
       rent: 'Contratto di locazione',
+      education: 'Contratto di formazione mirata',
       pledge: 'Contratto di pegno',
       surety: 'Contratto di fideiussione',
       bankGuarantee: 'Garanzia bancaria',
@@ -304,6 +307,7 @@ const localizedStrings: Record<SupportedLanguage, AnalysisLocalization> = repair
       supply: 'Contrat de fourniture',
       contractWork: 'Contrat d entreprise',
       rent: 'Contrat de location',
+      education: 'Contrat de formation ciblee',
       pledge: 'Contrat de nantissement',
       surety: 'Cautionnement',
       bankGuarantee: 'Garantie bancaire',
@@ -514,6 +518,11 @@ const roleBenefitMarkers = repairDeepStrings({
     'не отвечает',
     'освобождается от ответственности',
     'не подлежит ответственности',
+    'ответственность ограничена',
+    'ответственность ограничивается',
+    'ограничена размером',
+    'ограничивается размером',
+    'лимит ответственности',
     'вправе потребовать возмещения',
     'вправе потребовать',
     'вправе требовать',
@@ -599,6 +608,73 @@ const hybridSignals = repairDeepStrings({
     'giorni',
     'jours',
   ],
+  paymentDeadlineSupport: [
+    'оплат',
+    'платеж',
+    'расчет',
+    'стоимость',
+    'цена',
+    'тариф',
+    'вознагражден',
+    'предоплат',
+    'постоплат',
+    'арендная плата',
+    'расход',
+    'срок',
+    'этап',
+    'payment',
+    'invoice',
+    'price',
+    'fee',
+    'rent',
+    'expense',
+    'deadline',
+    'term',
+  ],
+  paymentDeadlineHard: [
+    'после подписания акта',
+    'после подписания акта сдачи',
+    'после подписания акта сдачи-приемки',
+    'после приемки',
+    'после получения уведомления',
+    'с даты подписания акта',
+    'с даты выполнения',
+    'встречных обязательств',
+    'при условии выполнения',
+    'не входят в стоимость',
+    'оплачиваются отдельно',
+    'дополнительные расходы',
+    'повторные правки',
+    'выходящие за рамки',
+    'может быть изменена',
+    'может быть изменен',
+    'изменить тариф',
+    'изменить цену',
+    'без согласования',
+    'не возвращается',
+    'удерживается',
+    'безакцепт',
+    'after acceptance',
+    'after signing the acceptance certificate',
+    'subject to acceptance',
+    'subject to payment',
+    'additional expenses',
+    'not included in the price',
+    'may change the price',
+    'may change the fees',
+    'non-refundable',
+  ],
+  paymentDeadlineNeutral: [
+    'фиксированная цена',
+    'фиксированная стоимость',
+    'окончательная стоимость',
+    'изменяется по соглашению сторон',
+    'по соглашению сторон',
+    'по взаимному согласию',
+    'fixed price',
+    'fixed fee',
+    'by mutual agreement',
+  ],
   acceptanceSupport: [
     'приемк',
     'сдач',
@@ -680,6 +756,9 @@ const hybridSignals = repairDeepStrings({
     'считается принятым',
     'считается принятой',
     'считается принятым без замечаний',
+    'считаются принятыми',
+    'принятыми без замечаний',
+    'услуги считаются оказанными',
     'считаются сданными',
     'считаются выполненными',
     'подписанный исполнителем',
@@ -755,7 +834,18 @@ const hybridSignals = repairDeepStrings({
     'damages',
     'responsabil',
   ],
-  liabilityHard: ['убыт', 'возмещ', 'компенсац', 'ущерб', 'indemn', 'damages'],
+  liabilityHard: [
+    'убыт',
+    'возмещ',
+    'компенсац',
+    'ущерб',
+    'ограничена размером',
+    'ограничивается размером',
+    'лимит ответственности',
+    'предел ответственности',
+    'indemn',
+    'damages',
+  ],
   unilateralSupport: [
     'односторон',
     'sole discretion',
@@ -910,6 +1000,9 @@ const hybridSignals = repairDeepStrings({
     'согласие на обработку',
     'субъект персональных данных',
     'оператор персональных данных',
+    'паспортных данных',
+    'адреса регистрации',
+    'банковских реквизитов',
     'data processing',
     'personal data',
     'personal information',
@@ -1022,6 +1115,12 @@ const hybridSignals = repairDeepStrings({
     'в полном объеме',
     'все убытки',
     'в полном размере',
+    'ответственность ограничена',
+    'ответственность ограничивается',
+    'ограничена размером',
+    'ограничивается размером',
+    'лимит ответственности',
+    'предел ответственности',
     'упущенн',
     'любой ущерб',
     'утраченн',
@@ -1258,6 +1357,51 @@ const hybridSignals = repairDeepStrings({
     'sublicense',
     'does not warrant',
   ],
+  operationalDependencySupport: [
+    'постамат',
+    'raspberry',
+    'linux',
+    'сервер',
+    'хостинг',
+    'домен',
+    'sms-шлюз',
+    'api',
+    'оборудован',
+    'аппаратн',
+    'система',
+    'доступ',
+    'электропит',
+    'интернет',
+    'postamat',
+    'parcel locker',
+    'server',
+    'hosting',
+    'third-party service',
+    'hardware',
+    'admin access',
+  ],
+  operationalDependencyHard: [
+    'передачи физического постамата',
+    'физический доступ',
+    'полный административный доступ',
+    'административный доступ',
+    'предоставления всех необходимых доступов',
+    'бесперебойное питание',
+    'доступе к сети интернет',
+    'сторонних сервисов',
+    'хостинг-провайдеров',
+    'регистраторов доменных имен',
+    'аппаратной части',
+    'некорректной работой',
+    'тестовом постамате',
+    'physical access',
+    'administrative access',
+    'admin access',
+    'uninterrupted power',
+    'internet access',
+    'third-party services',
+    'hardware failure',
+  ],
 });
 
 const riskRules: RiskRule[] = repairDeepStrings([
@@ -1409,6 +1553,48 @@ const riskRules: RiskRule[] = repairDeepStrings([
     },
   },
   {
+    id: 'payment-deadlines',
+    severity: 'medium',
+    keywords: [
+      'оплат',
+      'платеж',
+      'расчет',
+      'стоимость',
+      'цена',
+      'тариф',
+      'предоплат',
+      'вознагражден',
+      'расход',
+      'срок',
+      'этап',
+      'payment',
+      'invoice',
+      'price',
+      'fee',
+      'expense',
+      'deadline',
+      'term',
+    ],
+    title: {
+      ru: 'Оплата, сроки и зависимые условия',
+      en: 'Payment, deadlines, and dependencies',
+      it: 'Pagamenti, termini e dipendenze',
+      fr: 'Paiement, delais et dependances',
+    },
+    description: {
+      ru: 'Найдены условия, где оплата, начало срока или дополнительные расходы зависят от приемки, встречных действий или отдельных затрат.',
+      en: 'Payment, deadline start, or extra costs depend on acceptance, counter-performance, or separate expenses.',
+      it: 'Pagamento, decorrenza dei termini o costi extra dipendono da accettazione, prestazioni reciproche o spese separate.',
+      fr: 'Le paiement, le debut des delais ou les couts extra dependent de l acceptation, de contreparties ou de frais separes.',
+    },
+    recommendation: {
+      ru: 'Зафиксируйте событие оплаты, срок платежа, перечень включенных расходов и последствия задержки встречных действий.',
+      en: 'Define the payment trigger, payment period, included expenses, and consequences of delayed counter-performance.',
+      it: 'Definire evento di pagamento, termine, spese incluse e conseguenze del ritardo della controprestazione.',
+      fr: 'Definir le fait generateur du paiement, le delai, les frais inclus et les effets du retard de contrepartie.',
+    },
+  },
+  {
     id: 'auto-renewal',
     severity: 'medium',
     keywords: [
@@ -1519,6 +1705,9 @@ const riskRules: RiskRule[] = repairDeepStrings([
       'персональн данн',
       'обработк персональн',
       'согласие на обработку',
+      'паспортных данных',
+      'адреса регистрации',
+      'банковских реквизитов',
       'data processing',
       'personal data',
       'personal information',
@@ -1721,6 +1910,51 @@ const riskRules: RiskRule[] = repairDeepStrings([
       fr: 'Preciser exclusivite, territoire, duree, sous-licence, confidentialite du know-how et garanties de tiers.',
     },
   },
+  {
+    id: 'operational-dependencies',
+    severity: 'medium',
+    keywords: [
+      'постамат',
+      'raspberry',
+      'linux',
+      'сервер',
+      'хостинг',
+      'домен',
+      'sms-шлюз',
+      'api',
+      'оборудован',
+      'аппаратн',
+      'система',
+      'доступ',
+      'электропит',
+      'интернет',
+      'postamat',
+      'parcel locker',
+      'server',
+      'hosting',
+      'third-party service',
+      'hardware',
+      'admin access',
+    ],
+    title: {
+      ru: 'Технические зависимости и доступы',
+      en: 'Technical dependencies and access',
+      it: 'Dipendenze tecniche e accessi',
+      fr: 'Dependances techniques et acces',
+    },
+    description: {
+      ru: 'Условие перекладывает исполнение или стабильность сервиса на оборудование, доступы, питание, интернет или сторонние сервисы.',
+      en: 'Performance or service stability depends on hardware, access, power, internet, or third-party services.',
+      it: 'Esecuzione o stabilita del servizio dipendono da hardware, accessi, alimentazione, internet o servizi terzi.',
+      fr: 'L execution ou la stabilite du service depend du materiel, des acces, de l alimentation, d internet ou de services tiers.',
+    },
+    recommendation: {
+      ru: 'Опишите ответственных за доступы и инфраструктуру, сроки реакции, подтверждение сбоев и влияние таких сбоев на сроки и оплату.',
+      en: 'Specify owners for access and infrastructure, response times, incident proof, and impact on deadlines and payment.',
+      it: 'Precisare responsabili di accessi e infrastruttura, tempi di reazione, prove degli incidenti e impatto su termini e pagamenti.',
+      fr: 'Preciser les responsables des acces et infrastructures, delais de reaction, preuves d incident et effets sur delais et paiement.',
+    },
+  },
 ]);
 
 const disputeMarkers: DisputeMarker[] = repairDeepStrings([
@@ -1817,6 +2051,10 @@ const contractTypeDetectors: Record<string, string[]> = repairDeepStrings({
   services: [
     'услуг',
     'оказания услуг',
+    'договор об оказании услуг',
+    'оказать услуги',
+    'оказанных услуг',
+    'оказание услуг',
     'service agreement',
     'services agreement',
     'statement of work',
@@ -1890,6 +2128,19 @@ const contractTypeDetectors: Record<string, string[]> = repairDeepStrings({
     'leasing',
     'locazione',
     'bail',
+  ],
+  education: [
+    'целевом обучении',
+    'целевое обучение',
+    'образовательной программе',
+    'образовательная организация',
+    'гражданин обязан освоить',
+    'освоить образовательную программу',
+    'характеристики обучения',
+    'практическая подготовка',
+    'targeted education',
+    'education agreement',
+    'student sponsorship',
   ],
   contractWork: [
     'подряд',
@@ -2315,6 +2566,20 @@ const scoreRiskContext = (
         transferHits * 3
       );
     }
+    case 'payment-deadlines': {
+      const supportHits = countMatches(normalizedText, hybridSignals.paymentDeadlineSupport);
+      const hardHits = countMatches(normalizedText, hybridSignals.paymentDeadlineHard);
+      const neutralHits = countMatches(normalizedText, hybridSignals.paymentDeadlineNeutral);
+      return (
+        supportHits * 3 +
+        hardHits * 5 +
+        roleHits +
+        actionHits +
+        (hasMonetarySignal(excerpt) ? 2 : 0) +
+        (hasExplicitNumericSignal(excerpt) ? 1 : 0) -
+        neutralHits * 4
+      );
+    }
     case 'penalties': {
       const supportHits = countMatches(normalizedText, hybridSignals.penaltySupport);
       const triggerHits = countMatches(normalizedText, hybridSignals.penaltyTrigger);
@@ -2435,6 +2700,11 @@ const scoreRiskContext = (
       const hardHits = countMatches(normalizedText, hybridSignals.ipScopeHard);
       return supportHits * 3 + hardHits * 4 + roleHits + actionHits;
     }
+    case 'operational-dependencies': {
+      const supportHits = countMatches(normalizedText, hybridSignals.operationalDependencySupport);
+      const hardHits = countMatches(normalizedText, hybridSignals.operationalDependencyHard);
+      return supportHits * 3 + hardHits * 5 + roleHits + actionHits;
+    }
     default:
       return roleHits + actionHits;
   }
@@ -2453,6 +2723,12 @@ const meetsRiskThreshold = (
         (countMatches(normalizedText, hybridSignals.acceptanceClarity) < 2 ||
           countMatches(normalizedText, hybridSignals.acceptanceEscalation) > 0) &&
         countMatches(normalizedText, hybridSignals.acceptanceTransfer) < 3
+      );
+    case 'payment-deadlines':
+      return (
+        totalScore >= 8 &&
+        countMatches(normalizedText, hybridSignals.paymentDeadlineSupport) >= 1 &&
+        countMatches(normalizedText, hybridSignals.paymentDeadlineHard) >= 1
       );
     case 'penalties':
       return (
@@ -2526,6 +2802,12 @@ const meetsRiskThreshold = (
         countMatches(normalizedText, hybridSignals.ipScopeSupport) >= 1 &&
         (countMatches(normalizedText, hybridSignals.ipScopeHard) >= 1 ||
           countMatches(normalizedText, hybridSignals.futureAgreementOpenEnded) >= 1)
+      );
+    case 'operational-dependencies':
+      return (
+        totalScore >= 8 &&
+        countMatches(normalizedText, hybridSignals.operationalDependencySupport) >= 1 &&
+        countMatches(normalizedText, hybridSignals.operationalDependencyHard) >= 1
       );
     default:
       return totalScore >= 6;
@@ -2716,9 +2998,11 @@ const buildRiskCandidates = (clauses: ClauseSegment[], roleTerms: string[]): Ris
           continue;
         }
 
+        const clauseRef = extractExplicitClauseReference(fragment) ?? clause.clauseRef;
+
         candidates.push({
           rule,
-          clauseRef: clause.clauseRef,
+          clauseRef,
           clauseIndex,
           fragmentIndex,
           excerpt,
@@ -2830,9 +3114,11 @@ const buildDisputeCandidates = (clauses: ClauseSegment[]): DisputeCandidate[] =>
           continue;
         }
 
+        const clauseRef = extractExplicitClauseReference(fragment) ?? clause.clauseRef;
+
         candidates.push({
           marker,
-          clauseRef: clause.clauseRef,
+          clauseRef,
           clauseIndex,
           fragmentIndex,
           excerpt,
@@ -3276,7 +3562,184 @@ export const buildStrictRoleTerms = (selectedRole: string): string[] => {
   return extractStrictRoleTerms(selectedRole);
 };
 
-const buildClauseReference = (text: string, index: number): string => {
+const commonPartyRoleTerms = uniqueStrings(
+  [
+    'Заказчик',
+    'Исполнитель',
+    'Подрядчик',
+    'Субподрядчик',
+    'Поставщик',
+    'Покупатель',
+    'Продавец',
+    'Арендатор',
+    'Арендодатель',
+    'Доверитель',
+    'Поверенный',
+    'Принципал',
+    'Агент',
+    'Комитент',
+    'Комиссионер',
+    'Лицензиар',
+    'Лицензиат',
+    'Страхователь',
+    'Страховщик',
+    'Залогодатель',
+    'Залогодержатель',
+    'Гарант',
+    'Бенефициар',
+    'Гражданин',
+    'Образовательная организация',
+    'Работодатель',
+    'Работник',
+    'Customer',
+    'Client',
+    'Contractor',
+    'Supplier',
+    'Buyer',
+    'Seller',
+    'Tenant',
+    'Landlord',
+    'Principal',
+    'Agent',
+    'Licensee',
+    'Licensor',
+    'Insurer',
+    'Policyholder',
+    'Guarantor',
+    'Beneficiary',
+  ].flatMap((roleName) => buildSelectedRoleTerms(roleName)),
+).filter((term) => term.length >= 5);
+
+const counterpartyBurdenMarkers = repairDeepStrings({
+  liability: [
+    'возмещает',
+    'обязан возместить',
+    'обязуется возместить',
+    'компенсирует',
+    'несет ответственность',
+    'принимает на себя ответственность',
+    'indemnifies',
+    'shall indemnify',
+    'is liable for',
+    'shall be liable',
+    'compensates',
+  ],
+  penalties: [
+    'уплачивает штраф',
+    'уплачивает неустой',
+    'выплачивает штраф',
+    'выплачивает неустой',
+    'обязан уплатить штраф',
+    'обязуется уплатить штраф',
+    'обязан уплатить неустой',
+    'обязуется уплатить неустой',
+    'shall pay a penalty',
+    'must pay a penalty',
+    'pays a penalty',
+  ],
+});
+
+const recoveryExclusionMarkers = repairDeepStrings([
+  'возмещению не подлежит',
+  'не подлежит возмещению',
+  'не возмещается',
+  'не компенсируется',
+  'компенсации не подлежит',
+  'recovery is excluded',
+  'shall not be recovered',
+  'is not recoverable',
+  'not recoverable',
+  'not compensated',
+]);
+
+const recoverySubjectMarkers = repairDeepStrings([
+  'упущенная выгода',
+  'упущенной выгоды',
+  'убытки',
+  'убытков',
+  'ущерб',
+  'расходы',
+  'lost profit',
+  'lost profits',
+  'damages',
+  'losses',
+  'expenses',
+]);
+
+const getCounterpartyTerms = (roleTerms: string[]): string[] =>
+  commonPartyRoleTerms.filter((term) => !roleTerms.some((roleTerm) => roleTerm === term));
+
+const hasCounterpartyMarker = (normalizedText: string, roleTerms: string[]): boolean =>
+  countMatches(normalizedText, getCounterpartyTerms(roleTerms)) > 0;
+
+const isCounterpartyBurdenForSelectedRole = (
+  ruleId: string,
+  normalizedText: string,
+  roleTerms: string[],
+): boolean => {
+  if (roleTerms.length === 0) {
+    return false;
+  }
+
+  const counterpartyTerms = getCounterpartyTerms(roleTerms);
+  if (counterpartyTerms.length === 0 || countMatches(normalizedText, counterpartyTerms) === 0) {
+    return false;
+  }
+
+  if (ruleId === 'liability') {
+    const selectedPartyPays = hasLeadingRoleMarker(
+      normalizedText,
+      roleTerms,
+      counterpartyBurdenMarkers.liability,
+      112,
+    );
+    const recoveryIsExcluded = countMatches(normalizedText, recoveryExclusionMarkers) > 0;
+    const selectedPartyRecoveryExcluded =
+      recoveryIsExcluded && hasNearbyMarkers(normalizedText, roleTerms, recoverySubjectMarkers, 88);
+    if (selectedPartyPays || selectedPartyRecoveryExcluded) {
+      return false;
+    }
+
+    if (hasNearbyMarkers(normalizedText, counterpartyTerms, roleBenefitMarkers.liability)) {
+      return false;
+    }
+
+    const counterpartyPays = hasLeadingRoleMarker(
+      normalizedText,
+      counterpartyTerms,
+      counterpartyBurdenMarkers.liability,
+      112,
+    );
+    const counterpartyRecoveryExcluded =
+      recoveryIsExcluded &&
+      hasNearbyMarkers(normalizedText, counterpartyTerms, recoverySubjectMarkers, 88);
+
+    return counterpartyPays || counterpartyRecoveryExcluded;
+  }
+
+  if (ruleId === 'penalties') {
+    if (
+      hasLeadingRoleMarker(normalizedText, roleTerms, counterpartyBurdenMarkers.penalties, 112)
+    ) {
+      return false;
+    }
+
+    if (hasNearbyMarkers(normalizedText, counterpartyTerms, roleBenefitMarkers.penalties)) {
+      return false;
+    }
+
+    return hasLeadingRoleMarker(
+      normalizedText,
+      counterpartyTerms,
+      counterpartyBurdenMarkers.penalties,
+      112,
+    );
+  }
+
+  return false;
+};
+
+const extractExplicitClauseReference = (text: string): string | undefined => {
   const normalized = normalizeExtractedText(text);
   const numberedMatch = normalized.match(/^\s*(\d+(?:\.\d+){0,5})[.)]?(?:\s|$)/u);
   if (numberedMatch?.[1]) {
@@ -3290,7 +3753,11 @@ const buildClauseReference = (text: string, index: number): string => {
     return labeledMatch[1];
   }
 
-  return String(index + 1);
+  return undefined;
+};
+
+const buildClauseReference = (text: string, index: number): string => {
+  return extractExplicitClauseReference(text) ?? String(index + 1);
 };
 
 const isHeadingLike = (text: string): boolean => {
@@ -3411,7 +3878,13 @@ const isBeneficialRiskMatch = (
 ): boolean => {
   switch (ruleId) {
     case 'liability':
-      if (countMatches(normalizedText, genericBenefitMarkers.liability) > 0) {
+      if (isCounterpartyBurdenForSelectedRole(ruleId, normalizedText, roleTerms)) {
+        return true;
+      }
+      if (
+        countMatches(normalizedText, genericBenefitMarkers.liability) > 0 &&
+        !hasCounterpartyMarker(normalizedText, roleTerms)
+      ) {
         return true;
       }
       if (roleTerms.length === 0 || countMatches(normalizedText, roleTerms) === 0) {
@@ -3419,7 +3892,13 @@ const isBeneficialRiskMatch = (
       }
       return hasNearbyMarkers(normalizedText, roleTerms, roleBenefitMarkers.liability);
     case 'penalties':
-      if (countMatches(normalizedText, genericBenefitMarkers.penalties) > 0) {
+      if (isCounterpartyBurdenForSelectedRole(ruleId, normalizedText, roleTerms)) {
+        return true;
+      }
+      if (
+        countMatches(normalizedText, genericBenefitMarkers.penalties) > 0 &&
+        !hasCounterpartyMarker(normalizedText, roleTerms)
+      ) {
         return true;
       }
       if (roleTerms.length === 0 || countMatches(normalizedText, roleTerms) === 0) {
@@ -3499,6 +3978,7 @@ export const detectContractType = (text: string, language: SupportedLanguage): s
     'agency',
     'loan',
     'cession',
+    'education',
     'employment',
     'nda',
     'contractWork',
@@ -3596,8 +4076,8 @@ export const buildRiskItems = (
       id: 'risk-1',
       groupId: 'low-signal',
       severity: 'low',
-      clauseRef: role ? role : 'overview',
-      clauseRefs: [role ? role : 'overview'],
+      clauseRef: 'overview',
+      clauseRefs: ['overview'],
       occurrences: 1,
       title: strings.lowSignalRiskTitle,
       description: strings.lowSignalRiskDescription,

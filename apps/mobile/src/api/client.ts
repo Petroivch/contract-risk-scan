@@ -8,7 +8,6 @@ import type {
   AnalysisStatus,
   ContractRiskScannerApi,
   DisputedClause,
-  HistoryItem,
   RequestContext,
   RequestMeta,
   RiskItem,
@@ -24,7 +23,7 @@ export interface ApiClientConfig {
 
 export class ApiClientNotImplementedError extends Error {
   constructor(
-    message = 'HTTP transport is not implemented yet. Use local transport for offline mobile runs.',
+    message = 'Remote upload is disabled. Use local transport for on-device analysis.',
   ) {
     super(message);
     this.name = 'ApiClientNotImplementedError';
@@ -199,6 +198,8 @@ const mapRemoteReport = (payload: {
   generatedAt: payload.generatedAt ?? new Date().toISOString(),
 });
 
+// HTTP transport stays disabled at the factory, but the mapper is kept close to the API shape.
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const createHttpApiClient = (config: ApiClientConfig): ContractRiskScannerApi => {
   const baseUrl = ensureBaseUrl(config.baseUrl);
   const timeoutMs = config.timeoutMs ?? appConfig.api.timeoutMs;
@@ -278,15 +279,6 @@ const createHttpApiClient = (config: ApiClientConfig): ContractRiskScannerApi =>
         ),
       );
     },
-
-    listHistory: async (meta?: RequestMeta) => {
-      const response = await requestJson<{ items?: HistoryItem[] }>(
-        'contracts/history',
-        { method: 'GET' },
-        meta,
-      );
-      return response.items ?? [];
-    },
   };
 };
 
@@ -298,7 +290,7 @@ export const createApiClient = (config: ApiClientConfig = {}): ContractRiskScann
   }
 
   if (transport === 'http') {
-    return createHttpApiClient(config);
+    throw new ApiClientNotImplementedError();
   }
 
   throw new ApiClientNotImplementedError(`Unsupported API transport: ${transport}`);

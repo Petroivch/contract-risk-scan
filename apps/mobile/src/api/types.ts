@@ -69,26 +69,6 @@ export interface AnalysisReport {
   generatedAt: string;
 }
 
-export interface HistoryItem {
-  analysisId: string;
-  fileName: string;
-  selectedRole: string;
-  status: AnalysisLifecycleStatus;
-  createdAt: string;
-  updatedAt: string;
-}
-
-export interface QueuedUploadItem {
-  analysisId: string;
-  fileName: string;
-  mimeType: string;
-  selectedRole: string;
-  localFileUri: string;
-  language: SupportedLanguage;
-  createdAt: string;
-  updatedAt: string;
-}
-
 export interface ContractRiskScannerApi {
   uploadContract(
     payload: UploadContractRequest,
@@ -99,5 +79,4 @@ export interface ContractRiskScannerApi {
     input: { analysisId: string; selectedRole?: string },
     meta?: RequestMeta,
   ): Promise<AnalysisReport>;
-  listHistory(meta?: RequestMeta): Promise<HistoryItem[]>;
 }

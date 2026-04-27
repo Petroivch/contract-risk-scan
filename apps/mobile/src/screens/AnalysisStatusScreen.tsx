@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 
 import { useApiClient } from '../api/ApiClientProvider';
-import type { AnalysisStatus as AnalysisStatusType } from '../api/types';
+import type { AnalysisReport, AnalysisStatus as AnalysisStatusType } from '../api/types';
 import { RoleBadge } from '../components/RoleBadge';
 import { StatusChip } from '../components/StatusChip';
 import { ScreenShell } from '../components/layout/ScreenShell';
@@ -116,7 +116,7 @@ export const AnalysisStatusScreen = ({ navigation, route }: Props): JSX.Element 
 
     const openReadyReport = async (): Promise<void> => {
       try {
-        await api.getReport({ analysisId, selectedRole }, { language });
+        const report: AnalysisReport = await api.getReport({ analysisId, selectedRole }, { language });
         if (cancelled) {
           return;
         }
@@ -125,18 +125,16 @@ export const AnalysisStatusScreen = ({ navigation, route }: Props): JSX.Element 
         navigation.replace('Report', {
           analysisId,
           selectedRole,
+          initialReport: report,
         });
       } catch {
         if (!cancelled) {
           setReportPrefetchFailed(true);
-          setTimeout(
-            () => {
-              if (!cancelled) {
-                void openReadyReport();
-              }
-            },
-            Math.min(appConfig.api.statusPollIntervalMs, 1500),
-          );
+          setTimeout(() => {
+            if (!cancelled) {
+              void openReadyReport();
+            }
+          }, Math.min(appConfig.api.statusPollIntervalMs, 1500));
         }
       }
     };
@@ -315,12 +313,12 @@ export const AnalysisStatusScreen = ({ navigation, route }: Props): JSX.Element 
         <View style={styles.inlineNotice}>
           <Text style={styles.inlineNoticeText}>
             {language === 'ru'
-              ? 'Не удалось подготовить отчет с первого раза. Пробуем восстановить данные автоматически.'
+              ? 'Не удалось открыть отчет с первого раза. Повторяем запрос автоматически.'
               : language === 'it'
-                ? 'Non e stato possibile preparare subito il report. Proviamo a ripristinare i dati automaticamente.'
+                ? 'Il report non si e aperto al primo tentativo. Ripetiamo la richiesta automaticamente.'
                 : language === 'fr'
-                  ? 'Le rapport n a pas pu etre prepare du premier coup. Nous tentons de restaurer les donnees automatiquement.'
-                  : 'The report could not be prepared on the first attempt. We are trying to restore the data automatically.'}
+                  ? 'Le rapport ne s est pas ouvert du premier coup. Nous relancons la demande automatiquement.'
+                  : 'The report did not open on the first attempt. Retrying automatically.'}
           </Text>
         </View>
       ) : null}

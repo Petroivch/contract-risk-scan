@@ -10,7 +10,6 @@
 
 | Constant ID | Value | Scope | Rationale |
 |---|---:|---|---|
-| `CONST_RELEASE_TOTAL_BUDGET_MB` | 228 | Общая финальная релизная сборка | бизнес-ограничение на весь пакет приложения |
 | `CONST_UPLOAD_MAX_FILE_MB` | 20 | Валидация загрузки | предсказуемый мобильный UX и контракт MVP |
 | `CONST_ROLE_MAX_LENGTH` | 50 | Поле роли | защита от переполнения и слабых custom labels |
 | `CONST_DISPUTED_PREVIEW_MAX_CHARS` | 280 | Preview спорного пункта | баланс плотности и читаемости |
@@ -37,7 +36,6 @@
 
 ## 5) Контроль размера релиза
 - лимит относится ко всей итоговой сборке, а не только к UI;
-- если общий размер превышает `CONST_RELEASE_TOTAL_BUDGET_MB`, оптимизация начинается с:
   1. onboarding media;
   2. animation packs;
   3. custom fonts;

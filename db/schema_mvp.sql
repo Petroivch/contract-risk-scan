@@ -394,11 +394,10 @@ VALUES
     ('data.retention.contract_hard_delete_days', '30'::jsonb, 'integer', 'db', 'Hard delete delay for soft-deleted contracts'),
     ('data.retention.audit_logs_days', '365'::jsonb, 'integer', 'db', 'Audit log retention period'),
     ('mobile.cache.max_contracts', '50'::jsonb, 'integer', 'mobile', 'Suggested local cache limit for contracts'),
-    ('migration.runtime_budget_ms', '500'::jsonb, 'integer', 'db', 'Target runtime budget for mobile DB migration on startup'),
+    ('migration.runtime_target_ms', '500'::jsonb, 'integer', 'db', 'Target runtime for mobile DB migration on startup'),
     ('migration.max_complex_ops_per_release', '1'::jsonb, 'integer', 'db', 'Maximum count of complex migration operations per release'),
-    ('build.final_release_size_limit_mb', '228'::jsonb, 'integer', 'build', 'Max allowed total release package size'),
-    ('build.db_contribution_target_mb', '35'::jsonb, 'integer', 'build', 'Target DB contribution in final release package'),
-    ('build.db_contribution_hard_cap_mb', '40'::jsonb, 'integer', 'build', 'Hard cap for DB contribution in final release package')
+    ('artifact.mobile_data_target_mb', '35'::jsonb, 'integer', 'build', 'Target mobile data footprint'),
+    ('artifact.mobile_data_cap_mb', '40'::jsonb, 'integer', 'build', 'Hard cap for mobile data footprint')
 ON CONFLICT (key) DO UPDATE
 SET
     value_json = EXCLUDED.value_json,

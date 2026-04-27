@@ -26,18 +26,19 @@ export const RiskCard = ({ item }: RiskCardProps): JSX.Element => {
   const { t } = useTranslation();
   const { language } = useAppLanguage();
 
-  const occurrences = item.occurrences ?? 1;
-  const clauseLabel =
-    item.clauseRefs && item.clauseRefs.length > 1
-      ? t('report.clauses', { value: item.clauseRef })
-      : t('report.clause', { value: item.clauseRef });
-
   const { primaryText, evidenceItems: inlineEvidenceItems } = useMemo(
     () => splitInlineEvidence(item.description, language),
     [item.description, language],
   );
 
   const clauseItems = useMemo(() => buildClauseItems(item.clauseRefs, item.clauseRef, t), [item.clauseRef, item.clauseRefs, t]);
+  const occurrences = item.occurrences ?? 1;
+  const clauseLabel =
+    clauseItems.length === 0
+      ? ''
+      : clauseItems.length > 1
+        ? t('report.clauses', { value: item.clauseRef })
+        : clauseItems[0] ?? '';
   const detailFindingItems = useMemo(
     () =>
       [
@@ -73,7 +74,7 @@ export const RiskCard = ({ item }: RiskCardProps): JSX.Element => {
         <StatusChip label={t(`severity.${item.severity}`)} tone={severityToneMap[item.severity]} />
       </View>
 
-      <Text style={styles.meta}>{clauseLabel}</Text>
+      {clauseLabel ? <Text style={styles.meta}>{clauseLabel}</Text> : null}
       {occurrences > 1 ? <Text style={styles.meta}>{t('report.riskOccurrences', { count: occurrences })}</Text> : null}
 
       <ScrollView
@@ -115,7 +116,7 @@ export const RiskCard = ({ item }: RiskCardProps): JSX.Element => {
         onPress={() =>
           navigation.navigate('ReportItemDetail', {
             title: item.title,
-            subtitle: clauseLabel,
+            subtitle: clauseLabel || undefined,
             sections: detailSections,
           })
         }

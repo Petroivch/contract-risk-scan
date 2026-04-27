@@ -15,8 +15,6 @@ export const appConfig = {
   },
   limits: {
     maxUploadFileMb: readNumber('MAX_UPLOAD_FILE_MB', CONFIG_DEFAULTS.maxUploadFileMb),
-    totalReleaseBudgetMb: readNumber('TOTAL_RELEASE_BUDGET_MB', CONFIG_DEFAULTS.totalReleaseBudgetMb),
-    mobileBudgetShareMb: readNumber('MOBILE_BUDGET_SHARE_MB', CONFIG_DEFAULTS.mobileBudgetShareMb),
   },
   roles: {
     presetTranslationKeys: readCsv('ROLE_PRESETS', [...DEFAULT_ROLE_PRESET_KEYS]),
@@ -27,9 +25,9 @@ export const appConfig = {
     languagePreferenceKey: readString('LANGUAGE_PREFERENCE_KEY', CONFIG_DEFAULTS.languagePreferenceKey),
   },
   featureFlags: {
-    enableLocalFirstCache: readBoolean('ENABLE_LOCAL_FIRST_CACHE', true),
-    enableSQLiteCache: readBoolean('ENABLE_SQLITE_CACHE', true),
-    enableFileCache: readBoolean('ENABLE_FILE_CACHE', true),
+    enableLocalFirstCache: readBoolean('ENABLE_LOCAL_FIRST_CACHE', false),
+    enableSQLiteCache: readBoolean('ENABLE_SQLITE_CACHE', false),
+    enableFileCache: readBoolean('ENABLE_FILE_CACHE', false),
   },
   defaults: {
     stubContractFileName: readString('STUB_CONTRACT_FILENAME', CONFIG_DEFAULTS.stubContractFileName),

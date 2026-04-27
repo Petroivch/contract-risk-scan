@@ -10,7 +10,6 @@ import { RoleBadge } from '../components/RoleBadge';
 import { StatusChip } from '../components/StatusChip';
 import { ScreenShell } from '../components/layout/ScreenShell';
 import { appConfig } from '../config/appConfig';
-import { LocalFileCache } from '../data/local/file/LocalFileCache';
 import { useAppLanguage } from '../i18n/LanguageProvider';
 import type { RootStackParamList } from '../navigation/types';
 import { colors, radius, shadow, spacing, typography } from '../theme/tokens';
@@ -22,7 +21,6 @@ interface SelectedFileState {
   mimeType: string;
   fileSizeBytes?: number;
   localFileUri?: string;
-  sourceFileUri?: string;
 }
 
 const formatFileType = (mimeType: string, fileName?: string): string => {
@@ -71,7 +69,6 @@ export const UploadWithRoleScreen = ({ navigation }: Props): JSX.Element => {
     () => appConfig.roles.presetTranslationKeys.map((translationKey) => t(translationKey)),
     [t],
   );
-  const fileCache = useMemo(() => new LocalFileCache(), []);
 
   const [selectedRole, setSelectedRole] = useState(presetRoles[0] ?? '');
   const [selectedFile, setSelectedFile] = useState<SelectedFileState | null>(null);
@@ -80,7 +77,7 @@ export const UploadWithRoleScreen = ({ navigation }: Props): JSX.Element => {
   const chooseFile = async (): Promise<void> => {
     const result = await DocumentPicker.getDocumentAsync({
       multiple: false,
-      copyToCacheDirectory: true,
+      copyToCacheDirectory: false,
       type: [
         'application/pdf',
         'application/msword',
@@ -100,31 +97,15 @@ export const UploadWithRoleScreen = ({ navigation }: Props): JSX.Element => {
 
     const maxFileSizeBytes = appConfig.limits.maxUploadFileMb * 1024 * 1024;
     if (asset.size && asset.size > maxFileSizeBytes) {
-      Alert.alert(
-        t('upload.startFailedTitle'),
-        language === 'ru'
-          ? `Файл больше лимита ${appConfig.limits.maxUploadFileMb} MB. Сохраните договор в меньшем PDF/DOCX или разделите документ.`
-          : `The file is larger than the ${appConfig.limits.maxUploadFileMb} MB limit. Save a smaller PDF/DOCX or split the document.`,
-      );
+      Alert.alert(t('upload.startFailedTitle'), t('upload.fileTooLargeMessage'));
       return;
-    }
-
-    let cachedUri = asset.uri;
-    if (asset.uri) {
-      try {
-        const cacheId = `upload_${Date.now()}`;
-        cachedUri = await fileCache.cacheFile(cacheId, asset.uri, asset.name);
-      } catch {
-        cachedUri = asset.uri;
-      }
     }
 
     setSelectedFile({
       fileName: asset.name ?? appConfig.defaults.stubContractFileName,
       mimeType: asset.mimeType ?? 'application/octet-stream',
       fileSizeBytes: asset.size,
-      localFileUri: cachedUri,
-      sourceFileUri: asset.uri,
+      localFileUri: asset.uri,
     });
   };
 
@@ -139,7 +120,7 @@ export const UploadWithRoleScreen = ({ navigation }: Props): JSX.Element => {
         {
           fileName: selectedFile.fileName,
           mimeType: selectedFile.mimeType,
-          localFileUri: selectedFile.localFileUri ?? selectedFile.sourceFileUri,
+          localFileUri: selectedFile.localFileUri,
           selectedRole,
           language,
         },
@@ -165,11 +146,6 @@ export const UploadWithRoleScreen = ({ navigation }: Props): JSX.Element => {
   return (
     <ScreenShell title={t('upload.title')} subtitle={t('upload.subtitle')} scroll>
       <View style={styles.noticeCard}>
-        <View style={styles.noticeBlock}>
-          <Text style={styles.noticeKicker}>{t('privacy.noticeKicker')}</Text>
-          <Text style={styles.noticeTitle}>{t('privacy.storageTitle')}</Text>
-          <Text style={styles.noticeText}>{t('privacy.storageText')}</Text>
-        </View>
         <View style={styles.noticeBlock}>
           <Text style={styles.noticeKicker}>{t('legal.noticeKicker')}</Text>
           <Text style={styles.noticeTitle}>{t('legal.disclaimerTitle')}</Text>
@@ -245,13 +221,6 @@ export const UploadWithRoleScreen = ({ navigation }: Props): JSX.Element => {
             {selectedFile ? t('upload.pickAnotherFile') : t('upload.fileTapHint')}
           </Text>
         </Pressable>
-
-        {selectedFile ? (
-          <View style={styles.localCopyStrip}>
-            <Text style={styles.localCopyLabel}>{t('upload.localCopyLabel')}</Text>
-            <Text style={styles.localCopyText}>{t('upload.localCopyText')}</Text>
-          </View>
-        ) : null}
       </View>
 
       <Pressable
@@ -368,27 +337,6 @@ const styles = StyleSheet.create({
   },
   fileHint: {
     color: colors.textSecondary,
-    fontSize: typography.size.bodySm,
-    lineHeight: typography.lineHeight.bodySm,
-  },
-  localCopyStrip: {
-    borderRadius: radius.lg,
-    borderWidth: 1,
-    borderColor: '#C9EAD9',
-    backgroundColor: '#ECFBF4',
-    padding: spacing.md,
-    gap: spacing.xxs,
-  },
-  localCopyLabel: {
-    color: colors.success,
-    fontSize: typography.size.caption,
-    lineHeight: typography.lineHeight.caption,
-    fontWeight: typography.weight.semibold,
-    textTransform: 'uppercase',
-    letterSpacing: 0.6,
-  },
-  localCopyText: {
-    color: colors.textPrimary,
     fontSize: typography.size.bodySm,
     lineHeight: typography.lineHeight.bodySm,
   },

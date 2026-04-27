@@ -8,7 +8,6 @@ import type {
   AnalysisReport,
   AnalysisStatus,
   ContractRiskScannerApi,
-  HistoryItem,
   RequestMeta,
   UploadContractRequest,
 } from './types';
@@ -31,13 +30,55 @@ interface StubClientConfig {
   getLanguage?: () => SupportedLanguage;
 }
 
-const storage = new Map<string, StoredAnalysis>();
+let currentAnalysis: StoredAnalysis | null = null;
 const processingTasks = new Map<string, Promise<void>>();
+const cleanupTimers = new Map<string, ReturnType<typeof setTimeout>>();
 const queuedPhaseMs = 900;
 const processingPhaseMs = 5200;
+const completedRetentionMs = 60_000;
+const failedRetentionMs = 15_000;
 
 const delay = (ms: number): Promise<void> => new Promise((resolve) => setTimeout(resolve, ms));
 const nowIso = (): string => new Date().toISOString();
+const getCurrentAnalysis = (analysisId: string): StoredAnalysis | null =>
+  currentAnalysis?.analysisId === analysisId ? currentAnalysis : null;
+
+const clearStoredAnalysis = (analysisId: string): void => {
+  const timer = cleanupTimers.get(analysisId);
+  if (timer) {
+    clearTimeout(timer);
+    cleanupTimers.delete(analysisId);
+  }
+
+  if (currentAnalysis?.analysisId === analysisId) {
+    currentAnalysis = null;
+  }
+  processingTasks.delete(analysisId);
+};
+
+export const clearStubRuntimeCache = async (): Promise<void> => {
+  if (currentAnalysis) {
+    clearStoredAnalysis(currentAnalysis.analysisId);
+  }
+
+  cleanupTimers.forEach((timer) => clearTimeout(timer));
+  cleanupTimers.clear();
+  processingTasks.clear();
+};
+
+const scheduleCleanup = (analysisId: string, delayMs: number): void => {
+  const existingTimer = cleanupTimers.get(analysisId);
+  if (existingTimer) {
+    clearTimeout(existingTimer);
+  }
+
+  cleanupTimers.set(
+    analysisId,
+    setTimeout(() => {
+      clearStoredAnalysis(analysisId);
+    }, delayMs),
+  );
+};
 
 const resolveStatus = (entity: StoredAnalysis): AnalysisLifecycleStatus => {
   return entity.status;
@@ -85,18 +126,6 @@ const toStatus = (entity: StoredAnalysis): AnalysisStatus => {
   };
 };
 
-const toHistory = (entity: StoredAnalysis): HistoryItem => {
-  const status = resolveStatus(entity);
-  return {
-    analysisId: entity.analysisId,
-    fileName: entity.fileName,
-    selectedRole: entity.selectedRole,
-    status,
-    createdAt: entity.createdAt,
-    updatedAt: status === 'completed' ? entity.completedAt : entity.updatedAt,
-  };
-};
-
 const scheduleLocalAnalysis = (
   entity: StoredAnalysis,
   payload: UploadContractRequest,
@@ -130,12 +159,14 @@ const scheduleLocalAnalysis = (
       entity.stage = undefined;
       entity.updatedAt = completedAt;
       entity.completedAt = completedAt;
+      scheduleCleanup(entity.analysisId, completedRetentionMs);
     } catch (error) {
       const failedAt = nowIso();
       entity.status = 'failed';
       entity.updatedAt = failedAt;
       entity.completedAt = failedAt;
       entity.errorMessage = error instanceof Error ? error.message : 'Local analysis failed.';
+      scheduleCleanup(entity.analysisId, failedRetentionMs);
     } finally {
       processingTasks.delete(entity.analysisId);
     }
@@ -153,6 +184,8 @@ export const createStubApiClient = (config: StubClientConfig = {}): ContractRisk
     const requestContext = prepareRequestContext(meta, config.getLanguage);
     const language = payload.language ?? requestContext.language ?? defaultLanguage;
 
+    await clearStubRuntimeCache();
+
     const analysisId = `analysis_${Date.now()}`;
     const now = nowIso();
 
@@ -168,7 +201,7 @@ export const createStubApiClient = (config: StubClientConfig = {}): ContractRisk
       language,
     };
 
-    storage.set(analysisId, entity);
+    currentAnalysis = entity;
     scheduleLocalAnalysis(entity, payload, language);
     return { analysisId, status: toStatus(entity) };
   },
@@ -177,9 +210,9 @@ export const createStubApiClient = (config: StubClientConfig = {}): ContractRisk
     await delay(250);
     prepareRequestContext(meta, config.getLanguage);
 
-    const entity = storage.get(analysisId);
+    const entity = getCurrentAnalysis(analysisId);
     if (!entity) {
-      throw new Error(`Analysis ${analysisId} was not found in local runtime cache.`);
+      throw new Error(`Analysis ${analysisId} is not available in the current session.`);
     }
 
     return toStatus(entity);
@@ -192,28 +225,24 @@ export const createStubApiClient = (config: StubClientConfig = {}): ContractRisk
     await delay(180);
     prepareRequestContext(meta, config.getLanguage);
 
-    const entity = storage.get(input.analysisId);
+    const entity = getCurrentAnalysis(input.analysisId);
     if (!entity) {
-      throw new Error(`Report ${input.analysisId} was not found in local runtime cache.`);
+      throw new Error(`Report ${input.analysisId} is not available in the current session.`);
     }
 
     if (entity.status !== 'completed' || !entity.report) {
       throw new Error(`Report ${input.analysisId} is not ready yet.`);
     }
 
-    return {
+    const report = {
       ...entity.report,
       analysisId: input.analysisId,
       selectedRole: input.selectedRole ?? entity.selectedRole,
       generatedAt: entity.completedAt,
     };
-  },
 
-  async listHistory(meta?: RequestMeta): Promise<HistoryItem[]> {
-    await delay(120);
-    prepareRequestContext(meta, config.getLanguage);
-    return [...storage.values()]
-      .sort((a, b) => (a.createdAt < b.createdAt ? 1 : -1))
-      .map((entry) => toHistory(entry));
+    clearStoredAnalysis(input.analysisId);
+
+    return report;
   },
 });

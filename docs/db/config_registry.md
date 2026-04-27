@@ -14,7 +14,6 @@
 2. Анализ и миграции:
 - `analysis.priority.min` = `1`
 - `analysis.priority.max` = `9`
-- `migration.runtime_budget_ms` = `500`
 - `migration.max_complex_ops_per_release` = `1`
 
 3. Retention:
@@ -23,7 +22,6 @@
 - `mobile.cache.max_contracts` = `50`
 
 4. Release size:
-- `build.final_release_size_limit_mb` = `228`
 - `build.db_contribution_target_mb` = `35`
 - `build.db_contribution_hard_cap_mb` = `40`
 

@@ -8,7 +8,6 @@
 - `data.retention.contract_hard_delete_days`
 - `data.retention.audit_logs_days`
 - `mobile.cache.max_contracts`
-- `migration.runtime_budget_ms`
 
 Значения по умолчанию см. в `docs/db/config_registry.md`.
 
@@ -53,4 +52,3 @@
 ## 6. Наблюдаемость
 - Контроль размера локальной БД и файлового хранилища на устройстве.
 - Контроль доли fallback на default-language.
-- Контроль времени миграций против `migration.runtime_budget_ms`.

@@ -247,11 +247,10 @@ VALUES
     ('data.retention.contract_hard_delete_days', '30'::jsonb, 'integer', 'db', 'Hard delete delay for soft-deleted contracts'),
     ('data.retention.audit_logs_days', '365'::jsonb, 'integer', 'db', 'Audit log retention period'),
     ('mobile.cache.max_contracts', '50'::jsonb, 'integer', 'mobile', 'Suggested local cache limit for contracts'),
-    ('migration.runtime_budget_ms', '500'::jsonb, 'integer', 'db', 'Target runtime budget for mobile DB migration on startup'),
+    ('migration.runtime_target_ms', '500'::jsonb, 'integer', 'db', 'Target runtime for mobile DB migration on startup'),
     ('migration.max_complex_ops_per_release', '1'::jsonb, 'integer', 'db', 'Maximum count of complex migration operations per release'),
-    ('build.final_release_size_limit_mb', '228'::jsonb, 'integer', 'build', 'Max allowed total release package size'),
-    ('build.db_contribution_target_mb', '35'::jsonb, 'integer', 'build', 'Target DB contribution in final release package'),
-    ('build.db_contribution_hard_cap_mb', '40'::jsonb, 'integer', 'build', 'Hard cap for DB contribution in final release package')
+    ('artifact.mobile_data_target_mb', '35'::jsonb, 'integer', 'build', 'Target mobile data contribution in packaged artifacts'),
+    ('artifact.mobile_data_cap_mb', '40'::jsonb, 'integer', 'build', 'Hard cap for mobile data contribution in packaged artifacts')
 ON CONFLICT (key) DO UPDATE
 SET
     value_json = EXCLUDED.value_json,
@@ -389,42 +388,34 @@ BEGIN
             RAISE EXCEPTION 'analysis priority config must satisfy 1 <= min <= max <= 9';
         END IF;
     ELSIF NEW.key IN (
-        'build.db_contribution_target_mb',
-        'build.db_contribution_hard_cap_mb',
-        'build.final_release_size_limit_mb'
+        'artifact.mobile_data_target_mb',
+        'artifact.mobile_data_cap_mb'
     ) THEN
         IF NEW.value_type <> 'integer' THEN
             RAISE EXCEPTION '% must use integer value_type', NEW.key;
         END IF;
 
         effective_db_target_mb := CASE
-            WHEN NEW.key = 'build.db_contribution_target_mb' THEN (NEW.value_json::text)::INTEGER
+            WHEN NEW.key = 'artifact.mobile_data_target_mb' THEN (NEW.value_json::text)::INTEGER
             ELSE COALESCE(
-                (SELECT (value_json::text)::INTEGER FROM app_config WHERE key = 'build.db_contribution_target_mb' LIMIT 1),
+                (SELECT (value_json::text)::INTEGER FROM app_config WHERE key = 'artifact.mobile_data_target_mb' LIMIT 1),
                 35
             )
         END;
         effective_db_hard_cap_mb := CASE
-            WHEN NEW.key = 'build.db_contribution_hard_cap_mb' THEN (NEW.value_json::text)::INTEGER
+            WHEN NEW.key = 'artifact.mobile_data_cap_mb' THEN (NEW.value_json::text)::INTEGER
             ELSE COALESCE(
-                (SELECT (value_json::text)::INTEGER FROM app_config WHERE key = 'build.db_contribution_hard_cap_mb' LIMIT 1),
+                (SELECT (value_json::text)::INTEGER FROM app_config WHERE key = 'artifact.mobile_data_cap_mb' LIMIT 1),
                 40
             )
         END;
-        effective_release_limit_mb := CASE
-            WHEN NEW.key = 'build.final_release_size_limit_mb' THEN (NEW.value_json::text)::INTEGER
-            ELSE COALESCE(
-                (SELECT (value_json::text)::INTEGER FROM app_config WHERE key = 'build.final_release_size_limit_mb' LIMIT 1),
-                228
-            )
-        END;
 
-        IF effective_db_target_mb <= 0 OR effective_db_hard_cap_mb <= 0 OR effective_release_limit_mb <= 0 THEN
-            RAISE EXCEPTION 'build size config must be positive integers';
+        IF effective_db_target_mb <= 0 OR effective_db_hard_cap_mb <= 0 THEN
+            RAISE EXCEPTION 'artifact size config must be positive integers';
         END IF;
 
-        IF effective_db_target_mb > effective_db_hard_cap_mb OR effective_db_hard_cap_mb > effective_release_limit_mb THEN
-            RAISE EXCEPTION 'build size config must satisfy target <= hard cap <= final release limit';
+        IF effective_db_target_mb > effective_db_hard_cap_mb THEN
+            RAISE EXCEPTION 'artifact size config must satisfy target <= cap';
         END IF;
     END IF;
 

@@ -84,11 +84,10 @@ BEGIN
         RAISE EXCEPTION 'validation failed: analysis priority range must satisfy 1 <= min <= max <= 9';
     END IF;
 
-    release_limit_mb := get_config_integer('build.final_release_size_limit_mb');
-    db_target_mb := get_config_integer('build.db_contribution_target_mb');
-    db_hard_cap_mb := get_config_integer('build.db_contribution_hard_cap_mb');
-    IF db_target_mb > db_hard_cap_mb OR db_hard_cap_mb > release_limit_mb THEN
-        RAISE EXCEPTION 'validation failed: build size config must satisfy target <= hard cap <= final limit';
+    db_target_mb := get_config_integer('artifact.mobile_data_target_mb');
+    db_hard_cap_mb := get_config_integer('artifact.mobile_data_cap_mb');
+    IF db_target_mb > db_hard_cap_mb THEN
+        RAISE EXCEPTION 'validation failed: mobile data config must satisfy target <= hard cap';
     END IF;
 END $$;
 

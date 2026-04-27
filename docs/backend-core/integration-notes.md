@@ -1,4 +1,4 @@
-# Backend Core: интеграционные заметки
+﻿# Backend Core: интеграционные заметки
 
 ## Текущее состояние архитектуры
 - `core-api` больше не держит договоры только в памяти: исходные файлы и JSON-метадата сохраняются локально на диске.
@@ -80,7 +80,6 @@ DATA_DIR/
 - path локального persistence;
 - URL и таймауты `analysis-engine`.
 
-## Бюджет релиза 228 МБ
 Формула:
 
 ```text
@@ -97,7 +96,6 @@ TotalReleaseSize = AndroidRelease + iOSRelease + BackendReleaseBundle + SharedRu
 - CI/cache/logs;
 - внешние облачные зависимости, не входящие в release-kit.
 
-## Если общий размер > 228 МБ
 Варианты на стороне backend:
 1. исключить backend-бинарники из пользовательского release-kit и поставлять только mobile;
 2. оставить `core-api` тонким orchestration-слоем, а тяжелые ML-компоненты выносить отдельно;

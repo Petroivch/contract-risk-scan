@@ -43,8 +43,6 @@
 - Endpoints, лимиты, таймауты, preset-роли и feature flags читаются из config (`app.json` `expo.extra` + env overrides).
 - UI-тексты берутся только из словарей i18n.
 
-## Бюджет размера релиза
-- Общий бюджет проекта: `228 MB`.
 - Целевой вклад mobile и чеклист оптимизации: `docs/frontend/package-size-optimization.md`
 
 ## Рекомендуемые расширения VS Code

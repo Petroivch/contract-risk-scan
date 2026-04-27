@@ -136,6 +136,20 @@ const CP1251_CHAR_TO_BYTE = new Map<string, number>(
 );
 
 const SHORT_MOJIBAKE_TOKEN_FIXES: Record<string, string> = {
+  'Р°': 'а',
+  'Рђ': 'А',
+  'РІ': 'в',
+  'Р’': 'В',
+  'Рё': 'и',
+  'Р': 'И',
+  'СЃ': 'с',
+  'РЎ': 'С',
+  'Рє': 'к',
+  'Рљ': 'К',
+  'Рѕ': 'о',
+  'Рћ': 'О',
+  'Сѓ': 'у',
+  'РЈ': 'У',
   'Р В°': 'Р°',
   'Р С’': 'Рђ',
   'Р Р†': 'РІ',
@@ -161,6 +175,91 @@ const LINE_WRAP_HYPHEN_PATTERN =
   /([0-9A-Za-zА-Яа-яЁёÀ-ÖØ-öø-ÿ])(?:[\u00AD\u2010\u2011-])[ \t]*\n[ \t]*(?=[0-9A-Za-zА-Яа-яЁёÀ-ÖØ-öø-ÿ])/gu;
 const SOFT_LINE_BREAK_PATTERN =
   /([0-9A-Za-zА-Яа-яЁёÀ-ÖØ-öø-ÿ])\n(?=[0-9a-zа-яёß-öø-ÿ][0-9A-Za-zА-Яа-яЁёÀ-ÖØ-öø-ÿ]{1,})/gu;
+const BULLET_OR_CHECKBOX_GLYPH_PATTERN = /[\u25A0-\u25A3\u25A7-\u25A9\u25AA-\u25AD\u25B6\u25C6\u25CB\u25CF\u2610-\u2612\u2713\u2714\uF0A7\uF0B7\uF0D8]/g;
+const CYRILLIC_RUN_PATTERN = /[А-Яа-яЁё]{14,}/g;
+
+const RUSSIAN_SEGMENT_WORDS = [
+  'а',
+  'без',
+  'бюджетное',
+  'в',
+  'во',
+  'высшего',
+  'газпром',
+  'государственный',
+  'гражданин',
+  'гражданина',
+  'гражданином',
+  'гражданину',
+  'деятельности',
+  'деятельность',
+  'для',
+  'договор',
+  'договора',
+  'должен',
+  'должна',
+  'должны',
+  'дополнительной',
+  'за',
+  'заказчик',
+  'заключили',
+  'и',
+  'или',
+  'именуемый',
+  'качестве',
+  'меры',
+  'на',
+  'настоящего',
+  'нефтяной',
+  'обеспечить',
+  'образовательной',
+  'образовательную',
+  'образования',
+  'обучения',
+  'обязуется',
+  'обязан',
+  'обязана',
+  'ограниченной',
+  'освоения',
+  'освоить',
+  'основной',
+  'осуществить',
+  'ответственностью',
+  'период',
+  'по',
+  'полученной',
+  'пределах',
+  'предоставить',
+  'предмет',
+  'программы',
+  'программу',
+  'профессионального',
+  'поддержки',
+  'работодателя',
+  'разделом',
+  'самара',
+  'с',
+  'средств',
+  'стороны',
+  'трансгаз',
+  'трудоустройство',
+  'трудовую',
+  'технический',
+  'указанной',
+  'университет',
+  'условиях',
+  'уфимский',
+  'услуг',
+  'услуги',
+  'учреждение',
+  'федеральное',
+  'характеристики',
+] as const;
+
+const RUSSIAN_SEGMENT_DICTIONARY = new Set<string>(RUSSIAN_SEGMENT_WORDS);
+const RUSSIAN_SEGMENT_MAX_WORD_LENGTH = Math.max(
+  ...RUSSIAN_SEGMENT_WORDS.map((word) => word.length),
+);
 
 const decodeUtf8Bytes = (bytes: number[]): string => {
   try {
@@ -273,8 +372,57 @@ const repairBrokenWords = (input: string): string => {
     .replace(SOFT_LINE_BREAK_PATTERN, '$1 ');
 };
 
+const normalizeDocumentGlyphs = (input: string): string => {
+  return input
+    .replace(/[±]/g, '-')
+    .replace(/[©ª]/g, '"')
+    .replace(BULLET_OR_CHECKBOX_GLYPH_PATTERN, '-')
+    .replace(/[ \t]*-[ \t]+/g, ' - ')
+    .replace(/([А-Яа-яЁё])-(?=[А-Яа-яЁё])/g, '$1-');
+};
+
+const restoreRussianTokenSpaces = (token: string): string => {
+  const lowerToken = token.toLowerCase();
+  const bestPartsAt: Array<string[] | undefined> = Array.from({ length: lowerToken.length + 1 });
+  bestPartsAt[0] = [];
+
+  for (let index = 0; index < lowerToken.length; index += 1) {
+    const currentParts = bestPartsAt[index];
+    if (!currentParts) {
+      continue;
+    }
+
+    const maxEnd = Math.min(lowerToken.length, index + RUSSIAN_SEGMENT_MAX_WORD_LENGTH);
+    for (let end = index + 1; end <= maxEnd; end += 1) {
+      const candidate = lowerToken.slice(index, end);
+      if (!RUSSIAN_SEGMENT_DICTIONARY.has(candidate)) {
+        continue;
+      }
+
+      const nextParts = [...currentParts, token.slice(index, end)];
+      const existingParts = bestPartsAt[end];
+      if (
+        !existingParts ||
+        nextParts.length < existingParts.length ||
+        nextParts.join('').length > existingParts.join('').length
+      ) {
+        bestPartsAt[end] = nextParts;
+      }
+    }
+  }
+
+  const parts = bestPartsAt[lowerToken.length];
+  return parts && parts.length > 1 ? parts.join(' ') : token;
+};
+
+const restoreMissingRussianSpaces = (input: string): string => {
+  return input.replace(CYRILLIC_RUN_PATTERN, (token) => restoreRussianTokenSpaces(token));
+};
+
 export const normalizeExtractedText = (input: string): string => {
-  return repairBrokenWords(stripControlCharacters(repairMojibakeText(input)))
+  return restoreMissingRussianSpaces(
+    repairBrokenWords(normalizeDocumentGlyphs(stripControlCharacters(repairMojibakeText(input)))),
+  )
     .replace(/\u00a0/g, ' ')
     .replace(/\u00ad/g, '')
     .replace(/\r\n?/g, '\n')

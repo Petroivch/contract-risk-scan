@@ -9,8 +9,6 @@ export const CONFIG_DEFAULTS = {
   apiTimeoutMs: 15000,
   statusPollIntervalMs: 2000,
   maxUploadFileMb: 25,
-  totalReleaseBudgetMb: 228,
-  mobileBudgetShareMb: 120,
   sqliteDbName: 'contract-risk-scanner.db',
   fileCacheDir: 'contract-file-cache',
   languagePreferenceKey: 'contract-risk-scanner.language',

@@ -16,7 +16,7 @@ const unexpectedExtractionWarnings: Record<SupportedLanguage, string> = {
 };
 
 const unexpectedAnalysisWarnings: Record<SupportedLanguage, string> = {
-  ru: 'Локальный анализатор столкнулся с ошибкой при поиске рисков. Отчет сформирован в безопасном режиме, файл требует ручной проверки.',
+  ru: 'Локальный анализатор столкнулся с ошибкой при поиске рисков. Отчет сформирован в безопасном режиме и требует ручной проверки.',
   en: 'The local analyzer hit an error while searching for risks. The report was generated in safe mode and needs manual review.',
   it: 'L analizzatore locale ha incontrato un errore nella ricerca dei rischi. Il report e stato generato in modalita sicura e richiede revisione manuale.',
   fr: 'L analyseur local a rencontre une erreur lors de la recherche des risques. Le rapport a ete genere en mode sur et necessite une revue manuelle.',
@@ -62,8 +62,8 @@ const buildSafeFallbackReport = (
         id: 'risk-1',
         groupId: 'analysis-safe-mode',
         severity: 'medium',
-        clauseRef: 'system',
-        clauseRefs: ['system'],
+        clauseRef: 'overview',
+        clauseRefs: ['overview'],
         occurrences: Math.max(warnings.length, 1),
         title: language === 'ru' ? 'Требуется ручная проверка' : 'Manual review required',
         description: details,

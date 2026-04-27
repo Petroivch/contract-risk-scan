@@ -33,11 +33,13 @@ iOS release builds are prepared through Expo EAS in `apps/mobile/eas.json`. Comm
 
 An installable iOS `.ipa` requires Apple Developer credentials and valid signing/provisioning. Without those credentials, EAS configuration can be checked, but a usable `.ipa` should not be promised.
 
-`Contract Risk Scanner` — мобильное приложение для Android и iPhone, которое принимает файл договора, анализирует его и возвращает:
-- риски
-- спорные пункты
-- краткое резюме договора
+`Contract Risk Scanner` — мобильное приложение для Android и iPhone, которое принимает файл договора и показывает предварительные индикаторы:
+- возможные риски
+- спорные формулировки
+- краткую сводку договора
 - ролевой фокус: что должен пользователь и что должна другая сторона
+
+Приложение не выдает юридическое заключение, не заменяет консультацию юриста и не подтверждает, что договор можно подписывать без дополнительной проверки. Базовый режим описывается как local-only/no-history: выбранный договор используется только для текущего анализа; сохраненные копии договоров, сохраненные отчеты и история анализов не должны оставаться после завершения сценария; в настройках доступна очистка временных файлов чтения документа.
 
 Поддерживаемые языки интерфейса и результата:
 - `ru` по умолчанию
@@ -55,6 +57,7 @@ An installable iOS `.ipa` requires Apple Developer credentials and valid signing
 - [Полный локальный запуск](#полный-локальный-запуск)
 - [Команды качества](#команды-качества)
 - [Сборка Android и iPhone](#сборка-android-и-iphone)
+- [Legal/compliance готовность](#legalcompliance-готовность)
 - [Ограничения и текущие блокеры](#ограничения-и-текущие-блокеры)
 - [Оглавление документации](#оглавление-документации)
 
@@ -62,9 +65,9 @@ An installable iOS `.ipa` requires Apple Developer credentials and valid signing
 
 На текущий момент в проекте есть:
 - мобильный каркас приложения на `React Native + Expo`
-- базовые экраны: авторизация, загрузка договора, статус анализа, отчет, история, настройки
+- базовые экраны: авторизация, загрузка договора, статус анализа, отчет и настройки
 - мультиязычность `ru/en/it/fr`
-- local-first подход: локальный кэш, SQLite, очереди загрузок и fallback-сценарии
+- local-first инфраструктура в кодовой базе, при этом пользовательский сценарий для РФ должен описываться как local-only/no-history
 - локальный офлайн-анализ договора прямо в mobile-приложении без обязательного обращения к `core-api` или `analysis-engine`
 - выбор файла через системный picker
 - backend skeleton на `NestJS`
@@ -72,14 +75,14 @@ An installable iOS `.ipa` requires Apple Developer credentials and valid signing
 - схема БД, миграции и документация
 - UI/UX документация и визуальное направление
 - GitHub-репозиторий с ветками под отдельные зоны работы
-- рабочий Android `release APK` в корне репозитория: `contract-risk-scanner-android.apk`
+- ранее собранный Android `APK` для внутренней проверки в корне репозитория: `contract-risk-scanner-android.apk`
 
 ## Текущие приоритеты
 
 Сейчас проект ведется по трем главным направлениям:
 1. красивый и сильный mobile UI
 2. рабочий пользовательский сценарий, особенно анализ договора
-3. дальнейшее усиление качества анализа и backend-сервисов, при том что базовый Android `APK` уже собран
+3. дальнейшее усиление качества анализа и release/compliance-пакета, при том что в репозитории уже есть ранее собранный Android `APK` для внутренней проверки
 
 ## Структура репозитория
 
@@ -210,13 +213,13 @@ npx expo prebuild --platform android
 npm run android
 ```
 
-Готовый автономный `APK` уже лежит в корне репозитория:
+В корне репозитория лежит ранее собранный `APK` для внутренней проверки:
 
 ```text
 contract-risk-scanner-android.apk
 ```
 
-Он собран с упакованным `assets/index.android.bundle`, поэтому не требует Metro и не обращается к компьютеру пользователя после установки.
+Этот артефакт собран с упакованным `assets/index.android.bundle`, поэтому не требует Metro и не обращается к компьютеру пользователя после установки. Наличие файла в репозитории само по себе не означает legal/compliance readiness для публичного релиза.
 
 Для повторной локальной сборки Android:
 - использовать `Node.js 20`
@@ -265,18 +268,25 @@ EAS-конфигурация лежит в `apps/mobile/eas.json`. Для iOS з
 Текущие известные ограничения:
 - в `core-api` еще остались упрощенные части вокруг `auth` и части production-hardening
 - `analysis-engine` пока является рабочим skeleton, а не production OCR/NLP пайплайном
-- Android `APK` уже собран и лежит в корне репозитория, но iPhone локально по-прежнему не собрать без `macOS`
+- в репозитории есть ранее собранный Android `APK` для внутренней проверки, но публичный РФ-релиз остается заблокированным до закрытия P0 checklist
+- iPhone локально по-прежнему не собрать без `macOS`
+
+## Legal/compliance готовность
+
+Перед публичным релизом для РФ нужно закрыть P0 из [`docs/legal/release_checklist_ru.md`](docs/legal/release_checklist_ru.md). До закрытия checklist продукт должен позиционироваться только как инструмент предварительной подсветки рисков, без обещаний юридического заключения, проверки юристом или гарантированного обнаружения всех проблем договора.
+
+Local-only/no-history режим для пользователя означает: выбранный договор используется только для текущего анализа; сохраненные копии договоров, сохраненные отчеты и история анализов не должны оставаться после завершения сценария; очистка временных файлов удаляет оставшийся кэш чтения документов.
 
 Требования к итоговому релизу:
 - пользователь устанавливает только готовую сборку
 - дополнительных скачиваний после установки быть не должно
-- общий целевой размер финальной сборки — не более `228 МБ`
 
 ## Оглавление документации
 
 ### Общая
 
 - [`README.md`](README.md)
+- [`docs/legal/release_checklist_ru.md`](docs/legal/release_checklist_ru.md)
 
 ### Mobile
 
@@ -298,7 +308,6 @@ EAS-конфигурация лежит в `apps/mobile/eas.json`. Для iOS з
 - [`docs/db/data_lifecycle_policy.md`](docs/db/data_lifecycle_policy.md)
 - [`docs/db/index_strategy.md`](docs/db/index_strategy.md)
 - [`docs/db/local_first_architecture.md`](docs/db/local_first_architecture.md)
-- [`docs/db/release_size_budget_db_contribution.md`](docs/db/release_size_budget_db_contribution.md)
 - [`docs/db/rollback_v1.md`](docs/db/rollback_v1.md)
 - [`docs/db/rollback_v2.md`](docs/db/rollback_v2.md)
 - [`docs/db/rollback_v3.md`](docs/db/rollback_v3.md)

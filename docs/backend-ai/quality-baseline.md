@@ -1,4 +1,4 @@
-# Базовый quality baseline для Analysis Engine (Stage 1)
+﻿# Базовый quality baseline для Analysis Engine (Stage 1)
 
 ## Наша цель
 Мы хотим определить минимальные, но достаточные требования к качеству и рамки безопасности (guardrails) для движка анализа рисков. Это наш ориентир до перехода к следующему этапу (model hardening).
@@ -43,7 +43,6 @@
 - `contract_brief` должен объяснять, что важно для выбранной роли и по возможности показывать обязанности обеих сторон
 
 7. Ограничение размера сборки и local-first quality
-- общий release build проекта должен быть `<= 228 МБ`
 - вклад AI должен отслеживаться как доля общего build (`ai_assets_mb / total_build_mb`)
 - пороги по доле AI:
   - pass: `<= 35%`
@@ -72,7 +71,6 @@
 
 4. Input limits
 - лимиты на размер текста и binary payload управляются только конфигом
-- time budgets управляются только конфигом
 
 5. Наблюдаемость (следующий этап)
 - structured logs по шагам пайплайна с `job_id` и locale
@@ -80,7 +78,6 @@
 - error taxonomy для основных классов сбоев
 - size telemetry для AI-артефактов и общего app artifact
 
-6. Порядок сокращения функциональности при превышении `228 МБ`
 - первым offload'ится локальный semantic AI inference
 - затем сокращаются расширенные OCR assets
 - затем убираются вторичные AI enrichments
@@ -97,7 +94,6 @@
 - pipeline stubs связаны end-to-end
 - multilingual fallback поведение проверено (`invalid -> ru`)
 - read-path error localization и lightweight/offload execution plan покрыты API-тестами
-- size budget gates для всего продукта задокументированы и могут быть включены в CI/CD
 - доля AI в общем build измеряется и репортится
 - no-hardcode policy обеспечивается конфигом и валидацией
 - quality baseline согласован с backend/core-api/mobile интеграцией

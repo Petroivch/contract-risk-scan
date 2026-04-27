@@ -1,3 +1,5 @@
+import type { AnalysisReport } from '../api/types';
+
 export interface ReportDetailSectionParam {
   title: string;
   items: string[];
@@ -13,6 +15,7 @@ export type RootStackParamList = {
   Report: {
     analysisId: string;
     selectedRole?: string;
+    initialReport?: AnalysisReport;
   };
   ReportItemDetail: {
     title: string;
