@@ -1,0 +1,211 @@
+{
+  "case_id": "договоры 4__primerniy-dogovor-kontraktatsii-selskohozyaystvennoy-produktsii_html",
+  "relative_path": "договоры 4/primerniy-dogovor-kontraktatsii-selskohozyaystvennoy-produktsii.html",
+  "document_path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\договоры 4\\primerniy-dogovor-kontraktatsii-selskohozyaystvennoy-produktsii.html",
+  "document_name": "primerniy-dogovor-kontraktatsii-selskohozyaystvennoy-produktsii.html",
+  "role": "Исполнитель",
+  "counterparty_role": "Заказчик",
+  "language": "ru",
+  "mime_type": "text/html",
+  "tags": [
+    "ad_hoc"
+  ],
+  "source_group": "договоры 4",
+  "expected": {},
+  "started_at": "2026-04-28T16:19:03.109651+00:00",
+  "status": "completed",
+  "request": {
+    "document_name": "primerniy-dogovor-kontraktatsii-selskohozyaystvennoy-produktsii.html",
+    "role_context": {
+      "role": "Исполнитель",
+      "counterparty_role": "Заказчик"
+    },
+    "document_text": null,
+    "document_base64": "PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMDEgVHJhbnNpdGlvbmFsLy9FTiI+DQo8aHRtbD4NCjxoZWFkPg0KPGJhc2UgaHJlZj0iaHR0cHM6Ly9kb2dvdm9yLXVyaXN0LnJ1LyI+DQo8dGl0bGU+0J/RgNC40LzQtdGA0L3Ri9C5INC00L7Qs9C+0LLQvtGAINC60L7QvdGC0YDQsNC60YLQsNGG0LjQuCDRgdC10LvRjNGB0LrQvtGF0L7Qt9GP0LnRgdGC0LLQtdC90L3QvtC5ICAg0L/RgNC+0LTRg9C60YbQuNC4IC0g0LLQtdGA0YHQuNGPINC00LvRjyDQv9C10YfQsNGC0LguIDIwMjYuINCe0LHRgNCw0LfRhtGLINC00L7Qs9C+0LLQvtGA0L7Qsiwg0YLQuNC/0L7QstGL0LUg0LTQvtCz0L7QstC+0YDQsCwg0LDQutGC0YPQsNC70YzQvdGL0LUg0LTQvtC60YPQvNC10L3RgtGLLCDRjtGA0LjQtNC40YfQtdGB0LrQuNC8INC4INGE0LjQt9C40YfQtdGB0LrQuNC8INC70LjRhtCw0Lw8L3RpdGxlPg0KPG1ldGEgY29udGVudD0iIiBuYW1lPSJrZXl3b3JkcyI+DQo8bWV0YSBjb250ZW50PSIiIG5hbWU9ImRlc2NyaXB0aW9uIj4NCjxtZXRhIG5hbWU9InJvYm90cyIgY29udGVudD0ibm9pbmRleCxub2ZvbGxvdyI+DQo8bWV0YSBodHRwLWVxdWl2PSJDb250ZW50LVR5cGUiIGNvbnRlbnQ9InRleHQvaHRtbDsgY2hhcnNldD11dGYtOCI+DQo8bGluayByZWw9InN0eWxlc2hlZXQiIGhyZWY9Ii9pbWFnZXMvc3R5bGUuY3NzIiB0eXBlPSJ0ZXh0L2NzcyI+DQo8L2hlYWQ+DQo8Ym9keT4NCjxkaXYgY2xhc3M9ImRvY3VtZW50VGV4dCI+DQo8cHJlPiAgICAgICAgICAgICAgICAgICAgICAg0J/QoNCY0JzQldCg0J3Qq9CZINCU0J7Qk9Ce0JLQntCgDQogICAgICAgICAgINC60L7QvdGC0YDQsNC60YLQsNGG0LjQuCDRgdC10LvRjNGB0LrQvtGF0L7Qt9GP0LnRgdGC0LLQtdC90L3QvtC5INC/0YDQvtC00YPQutGG0LjQuA0KDQrQsy5fX19fX19fX19fX19fX19fX19fXyAgICAgICAgICAgICAgICAgICAgICAgICAgICAiX19fIl9fX19fX19fMjBfX1/Qsy4NCg0KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXyAo0L3QsNC40LzQtdC90L7QstCw0L3QuNC1DQrRgdC10LvRjNGB0LrQvtGF0L7Qt9GP0LnRgdGC0LLQtdC90L3QvtCz0L4g0L/RgNC10LTQv9GA0LjRj9GC0LjRjyksINC40LzQtdC90YPQtdC8X19fX18g0LIg0LTQsNC70YzQvdC10LnRiNC10Lwg0KXQvtC30Y/QudGB0YLQstC+LA0K0LIgINC70LjRhtC1ICBfX19fX19fX19fX19fX19fXyAgKNC00L7Qu9C20L3QvtGB0YLRjCwgINGELtC4LtC+LiksICDRgSAg0L7QtNC90L7QuSAg0YHRgtC+0YDQvtC90YssICDQuA0K0L/QtdGA0LXRh9C40YHQu9C10L3QvdGL0LUg0L3QuNC20LUg0L/RgNC10LTQv9GA0LjRj9GC0LjRjzoNCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KTk4gICDQndCw0LjQvNC10L3QvtCy0LDQvdC40LUg0LfQsNCz0L7RgtC+0LLQuNGC0LXQu9GM0L3Ri9GFLCDQlNC+0LvQttC90L7RgdGC0LgsINGELtC4LtC+LiAgINCd0LDQuNC80LXQvdC+0LLQsNC90LjQtQ0K0L/QvyAgINGC0L7RgNCz0L7QstGL0YUg0L/RgNC10LTQv9GA0LjRj9GC0LjQuSAgICAgICAgICDQu9C40YYsINC/0L7QtNC/0LjRgdGL0LLQsNGO0YnQuNGFICDQtNC+0LrRg9C80LXQvdGC0L7Qsiwg0LTQsNGOLQ0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICDQtNC+0LPQvtCy0L7RgCAgICAgICAgICAgICDRidC40YUg0L/RgNCw0LLQviDQvdCwDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg0LfQsNC60LvRjtGH0LXQvdC40LUNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICDQtNC+0LPQvtCy0L7RgNCwDQpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0K0LjQvNC10L3Rg9C10LzRi9C1ICDQsiAgINC00LDQu9GM0L3QtdC50YjQtdC8ICDQl9Cw0LPQvtGC0L7QstC40YLQtdC70LgsICDRgSAg0LTRgNGD0LPQvtC5ICDRgdGC0L7RgNC+0L3RiywgINC30LDQutC70Y7Rh9C40LvQuA0K0L3QsNGB0YLQvtGP0YnQuNC5INC00L7Qs9C+0LLQvtGAINC+INC90LjQttC10YHQu9C10LTRg9GO0YnQtdC8Og0KDQogICAgIDEuICDQpdC+0LfRj9C50YHRgtCy0L4gICDQvtCx0Y/Qt9GD0LXRgtGB0Y8gICDQv9GA0L7QtNCw0YLRjCAgINC4ICAg0LTQvtGB0YLQsNCy0LjRgtGMICAg0JfQsNCz0L7RgtC+0LLQuNGC0LXQu9GP0LwNCtGB0LXQu9GM0YHQutC+0YXQvtC30Y/QudGB0YLQstC10L3QvdGD0Y4g0L/RgNC+0LTRg9C60YbQuNGOICDQsiDQutC+0LvQuNGH0LXRgdGC0LLQtSwg0LDRgdGB0L7RgNGC0LjQvNC10L3RgtC1INC4INC60LDRh9C10YHRgtCy0LUsINCyDQrRgdGA0L7QutC4INC4ICDQv9C+INGG0LXQvdCw0Lwg0YHQvtCz0LvQsNGB0L3QviDQv9GA0LjQu9C+0LbQtdC90LjRj9C8IE5OX19fX19fLCDRj9Cy0LvRj9GO0YnQuNC80YHRjyDQvdC10L7RgtGK0LXQvNC70LXQvNC+0LkNCtGH0LDRgdGC0YzRjiDQvdCw0YHRgtC+0Y/RidC10LPQviDQtNC+0LPQvtCy0L7RgNCwLg0KDQogICAgIDIuINCX0LDQs9C+0YLQvtCy0LjRgtC10LvQuCDQvtCx0Y/Qt9GD0Y7RgtGB0Y86DQogICAgINCwKSDQv9GA0LjQvdGP0YLRjCAg0LIg0L7QsdGD0YHQu9C+0LLQu9C10L3QvdGL0LUgINC00L7Qs9C+0LLQvtGA0L7QvCDRgdGA0L7QutC4ICDQuCDQvtC/0LvQsNGC0LjRgtGMICDRg9C60LDQt9Cw0L3QvdGD0Y4NCtC/0YDQvtC00YPQutGG0LjRjiDQuCDRgdGC0L7QuNC80L7RgdGC0Ywg0LXQtSDQtNC+0YHRgtCw0LLQutC4INCyINGD0YHRgtCw0L3QvtCy0LvQtdC90L3QvtC8INC/0L7RgNGP0LTQutC1Ow0KICAgICDQsSkgINC+0LHQtdGB0L/QtdGH0LjRgtGMICAg0KXQvtC30Y/QudGB0YLQstC+ICAg0LTQtdC50YHRgtCy0YPRjtGJ0LjQvNC4ICAg0JPQntCh0KLQsNC80LgsICAg0YLQtdGF0L3QuNGH0LXRgdC60LjQvNC4DQrRg9GB0LvQvtCy0LjRj9C80Lgg0LggINC60L7QvdC00LjRhtC40Y/QvNC4LCDQv9GA0LDQstC40LvQsNC80Lgg0L/RgNC40LXQvNC60Lgg0Lgg0L7RhtC10L3QutC4INC30LDQutGD0L/QsNC10LzQvtC5INC/0YDQvtC00YPQutGG0LjQuA0K0Lgg0YDQsNGB0YfQtdGC0L7QsiDQt9CwINC90LXQtTsNCiAgICAg0LIpINC+0LHQtdGB0L/QtdGH0LjRgtGMINCy0YvQtNCw0YfRgyDQpdC+0LfRj9C50YHRgtCy0YMg0LTQtdC90LXQttC90L7Qs9C+INCw0LLQsNC90YHQsCDQsiDRgdGD0LzQvNC1IF9fX19fX19fX19fDQrQuCDQsiDRgdGA0L7QuiDQtNC+IF9fX19fX19fX19fX19fX19fX19fXw0KICAgICDQsykg0L7QsdC10YHQv9C10YfQuNGC0Ywg0KXQvtC30Y/QudGB0YLQstC+INC90LDQtNC70LXQttCw0YnQtdC5INGC0LDRgNC+0LkuDQoNCiAgICAgMy4gINCX0LAgICDQvdC10LjRgdC/0L7Qu9C90LXQvdC40LUgINC40LvQuCAg0L3QtdC90LDQtNC70LXQttCw0YnQtdC1ICDQuNGB0L/QvtC70L3QtdC90LjQtSAg0L7QsdGP0LfQsNGC0LXQu9GM0YHRgtCyLA0K0L/RgNC10LTRg9GB0LzQvtGC0YDQtdC90L3Ri9GFINC90LDRgdGC0L7Rj9GJ0LjQvCAg0LTQvtCz0L7QstC+0YDQvtC8LCAg0KXQvtC30Y/QudGB0YLQstC+ICDQuCAg0JfQsNCz0L7RgtC+0LLQuNGC0LXQu9C4ICDQvdC10YHRg9GCDQrRgdC70LXQtNGD0Y7RidGD0Y4g0L7RgtCy0LXRgtGB0YLQstC10L3QvdC+0YHRgtGMOg0KICAgICDQsCkg0LfQsCAg0L/RgNC+0YHRgNC+0YfQutGDINC40LvQuCAg0L3QtdGB0LTQsNGH0YMg0L/RgNC+0LTRg9C60YbQuNC4ICDQsiDRg9GB0YLQsNC90L7QstC70LXQvdC90YvQtSAg0LTQvtCz0L7QstC+0YDQvtC8DQrRgdGA0L7QutC4INCl0L7Qt9GP0LnRgdGC0LLQviAg0YPQv9C70LDRh9C40LLQsNC10YIg0JfQsNCz0L7RgtC+0LLQuNGC0LXQu9GOICDQv9C10L3RjiDQsiDRgNCw0LfQvNC10YDQtSBfX19fJSDQt9CwINC60LDQttC00YvQuQ0K0LTQtdC90Ywg0L/RgNC+0YHRgNC+0YfQutC4LiDQn9GA0Lgg0L/RgNC+0YHRgNC+0YfQutC1INGB0LLRi9GI0LUgMTAg0LTQvdC10Lkg0L3QsNGH0LjRgdC70LXQvdC40LUg0L/QtdC90Lgg0L/RgNC10LrRgNCw0YnQsNC10YLRgdGPDQrQuCDQpdC+0LfRj9C50YHRgtCy0L4g0YPQv9C70LDRh9C40LLQsNC10YIg0JfQsNCz0L7RgtC+0LLQuNGC0LXQu9GOINC/0L7QvNC40LzQviDQv9C10L3QuCDRiNGC0YDQsNGEINCyINGA0LDQt9C80LXRgNC1IF9fX19fX18lDQrRgdGC0L7QuNC80L7RgdGC0Lgg0L3QtdGB0LTQsNC90L3QvtC5INC/0YDQvtC00YPQutGG0LjQuC4NCiAgICAg0J/QtdC90Y8g0LggINGI0YLRgNCw0YQg0LIgINGD0LrQsNC30LDQvdC90YvRhSDRgNCw0LfQvNC10YDQsNGFICDQstC30YvRgdC60LjQstCw0Y7RgtGB0Y8g0YEgINCl0L7Qt9GP0LnRgdGC0LLQsCDQuCDQt9CwDQrQvdC10YHQtNCw0YfRgyDQv9GA0L7QtNGD0LrRhtC40LggINC/0L4g0L7RgtC00LXQu9GM0L3Ri9C8INC90LDQuNC80LXQvdC+0LLQsNC90LjRj9C8INC/0YDQtdC00YPRgdC80L7RgtGA0LXQvdC90L7Qs9C+INC00L7Qs9C+0LLQvtGA0L7QvA0K0LDRgdGB0L7RgNGC0LjQvNC10L3RgtCwLg0KICAgICDQpdC+0LfRj9C50YHRgtCy0L4gINC+0YHQstC+0LHQvtC20LTQsNC10YLRgdGPICAg0L7RgiAgINC+0YLQstC10YLRgdGC0LLQtdC90L3QvtGB0YLQuCAgINC30LAgICDQvdC10LLRi9C/0L7Qu9C90LXQvdC40LUNCtC+0LHRj9C30LDRgtC10LvRjNGB0YLQsiAg0L/QviAgINC90LDRgdGC0L7Rj9GJ0LXQvNGDICDQtNC+0LPQvtCy0L7RgNGDLCAg0LXRgdC70LggINC+0L3QuCAg0L3QtSAg0LHRi9C70LggINCy0YvQv9C+0LvQvdC10L3Riw0K0LLRgdC70LXQtNGB0YLQstC40LUg0L3QtdC/0YDQtdC+0LTQvtC70LjQvNC+0Lkg0YHQuNC70Ysg0LjQu9C4INC/0L4g0LLQuNC90LUg0JfQsNCz0L7RgtC+0LLQuNGC0LXQu9GPLg0KICAgICDQsSkg0LfQsCAg0L7RgtC60LDQtyDQvtGCINC/0YDQuNC10LzQutC4INC/0YDQvtC00YPQutGG0LjQuCwg0L/RgNC10LTRitGP0LLQu9C10L3QvdC+0Lkg0KXQvtC30Y/QudGB0YLQstC+0Lwg0Log0YHQtNCw0YfQtQ0K0LIg0YHQvtC+0YLQstC10YLRgdGC0LLQuNC4ICDRgSDQvdCw0YHRgtC+0Y/RidC40LwgINC00L7Qs9C+0LLQvtGA0L7QvCAg0LggINC/0L4gINGB0L7Qs9C70LDRgdC+0LLQsNC90L3QvtC80YMgINGB0YLQvtGA0L7QvdCw0LzQuA0K0LPRgNCw0YTQuNC60YMsINC70LjQsdC+ICDQt9CwINC/0YDQvtGB0YDQvtGH0LrRgyDQtdC1INC/0YDQuNC10LzQutC4INCX0LDQs9C+0YLQvtCy0LjRgtC10LvRjCDRg9C/0LvQsNGH0LjQstCw0LXRgiDQpdC+0LfRj9C50YHRgtCy0YMNCtGI0YLRgNCw0YQg0LIgINGA0LDQt9C80LXRgNC1IF9fX19fJSAg0YHRgtC+0LjQvNC+0YHRgtC4INC90LXQv9GA0LjQvdGP0YLQvtC5ICDQuNC70Lgg0L/RgNC40L3Rj9GC0L7QuSDRgSDQv9GA0L7RgdGA0L7Rh9C60L7QuQ0K0L/RgNC+0LTRg9C60YbQuNC4INC4INCy0L7Qt9C80LXRidCw0LXRgiDRgNCw0YHRhdC+0LTRiyDQv9C+INC00L7RgdGC0LDQstC60LUg0L/RgNC+0LTRg9C60YbQuNC4INCyINC+0LHQsCDQutC+0L3RhtCwLCDQsCDRgtCw0LrQttC1DQrRg9Cx0YvRgtC60LgsINC/0L7QvdC10YHQtdC90L3Ri9C1ICDQpdC+0LfRj9C50YHRgtCy0L7QvCAo0L/QvtGC0LXRgNC4ICDRgdC60L7RgtCwINCyICDQstC10YHQtSwg0YHQvdC40LbQtdC90LjQtSDQutCw0YfQtdGB0YLQstCwDQrQv9GA0L7QtNGD0LrRhtC40LgsINC/0YDQvtGB0YLQvtC5INGC0YDQsNC90YHQv9C+0YDRgtC90YvRhSDRgdGA0LXQtNGB0YLQsiDQsiDQvtC20LjQtNCw0L3QuNC4INC/0YDQuNC10LzQutC4INC4INGCLtC/LikuDQogICAgINCSINGB0LvRg9GH0LDQtSAg0L7RgtC60LDQt9CwINC+0YIgINC/0YDQuNC10LzQutC4INGB0LrQvtGA0L7Qv9C+0YDRgtGP0YnQtdC50YHRjyDQv9GA0L7QtNGD0LrRhtC40Lgg0JfQsNCz0L7RgtC+0LLQuNGC0LXQu9GMDQrQv9C+0LzQuNC80L4g0YjRgtGA0LDRhNCwICDQvtC/0LvQsNGH0LjQstCw0LXRgiDQpdC+0LfRj9C50YHRgtCy0YMg0L/QvtC70L3Rg9GOINGB0YLQvtC40LzQvtGB0YLRjCDQv9GA0L7QtNGD0LrRhtC40Lgg0Lgg0YDQsNGB0YXQvtC00YsNCtC/0L4g0LXQtSDQtNC+0YHRgtCw0LLQutC1Lg0KICAgICDQsikgINC30LAgICDQvdC10YHQstC+0LXQstGA0LXQvNC10L3QvdGD0Y4gINC+0L/Qu9Cw0YLRgyAg0L/RgNC40L3Rj9GC0L7QuSAg0L/RgNC+0LTRg9C60YbQuNC4ICDQl9Cw0LPQvtGC0L7QstC40YLQtdC70YwNCtGD0L/Qu9Cw0YfQuNCy0LDQtdGCINCl0L7Qt9GP0LnRgdGC0LLRgyDQt9CwINC60LDQttC00YvQuSDQtNC10L3RjCDQv9GA0L7RgdGA0L7Rh9C60Lgg0L/QtdC90Y4g0LIg0YDQsNC30LzQtdGA0LUgX19fX19fX19fXyUNCtGB0YLQvtC40LzQvtGB0YLQuCDQv9GA0LjQvdGP0YLQvtC5ICDQv9GA0L7QtNGD0LrRhtC40LguINCf0YDQuCAg0L/RgNC+0YHRgNC+0YfQutC1INGB0LLRi9GI0LUgIDEwINC00L3QtdC5ICDQvdCw0YfQuNGB0LvQtdC90LjQtQ0K0L/QtdC90Lgg0L/RgNC10LrRgNCw0YnQsNC10YLRgdGPLCDQuCDQl9Cw0LPQvtGC0L7QstC40YLQtdC70Ywg0YPQv9C70LDRh9C40LLQsNC10YIg0KXQvtC30Y/QudGB0YLQstGDINGB0LLQtdGA0YUg0L3QsNGH0LjRgdC70LXQvdC90L7QuQ0K0L/QtdC90Lgg0YjRgtGA0LDRhCDQsiDRgNCw0LfQvNC10YDQtSBfX19fX18lINC90LXRgdCy0L7QtdCy0YDQtdC80LXQvdC90L4g0LLRi9C/0LvQsNGH0LXQvdC90L7QuSDRgdGD0LzQvNGLLg0KICAgICDQsykgINC30LAgICDQvdC10L7QsdC10YHQv9C10YfQtdC90LjQtSAg0KXQvtC30Y/QudGB0YLQstCwICAg0L3QsNC00LvQtdC20LDRidC10LkgINGC0LDRgNC+0LkgINCX0LDQs9C+0YLQvtCy0LjRgtC10LvRjA0K0YPQv9C70LDRh9C40LLQsNC10YIg0KXQvtC30Y/QudGB0YLQstGDICDRiNGC0YDQsNGEINCyICDRgNCw0LfQvNC10YDQtSBfX19fX18lICDRgdGC0L7QuNC80L7RgdGC0Lgg0L3QtdC/0L7RgdGC0LDQstC70LXQvdC90L7QuQ0K0YLQsNGA0YsuDQogICAgINC0KSAg0L/RgNC4ICAg0L3QtdC/0YDQsNCy0LjQu9GM0L3QvtC8ICAg0L7Qv9GA0LXQtNC10LvQtdC90LjQuCAgINC60L7Qu9C40YfQtdGB0YLQstCwLCAgINC60LDRh9C10YHRgtCy0LAgICDQuNC70LgNCtC90LXQv9GA0LDQstC40LvRjNC90L7QuSAg0L7Qv9C70LDRgtC1ICAg0L/RgNC40L3Rj9GC0L7QuSAgINC/0YDQvtC00YPQutGG0LjQuCAgINCX0LDQs9C+0YLQvtCy0LjRgtC10LvRjCAgINC/0LXRgNC10YfQuNGB0LvRj9C10YINCtCl0L7Qt9GP0LnRgdGC0LLRgyDQvdC10LTQvtC/0LvQsNGH0LXQvdC90YPRjiDRgdGD0LzQvNGDINGBINC90LDRh9C40YHQu9C10L3QuNC10Lwg0L3QsCDQvdC10LUgX19fX18lINCz0L7QtNC+0LLRi9GFLg0KDQogICAgIDQuINCd0LXQt9Cw0LLQuNGB0LjQvNC+ICDQvtGCINGD0L/Qu9Cw0YLRiyAg0L/QtdC90LgsINGI0YLRgNCw0YTQsCAg0LLQuNC90L7QstC90LDRjyDRgdGC0L7RgNC+0L3QsCAg0LLQvtC30LzQtdGJ0LDQtdGCDQrQtNGA0YPQs9C+0Lkg0YHRgtC+0YDQvtC90LUg0L/RgNC40YfQuNC90LXQvdC90YvQtSDQsiDRgNC10LfRg9C70YzRgtCw0YLQtSDQvdCw0YDRg9GI0LXQvdC40Y8g0LTQvtCz0L7QstC+0YDQsCDRg9Cx0YvRgtC60LguDQoNCiAgICAgNS4g0J/QviAg0LLQvtC/0YDQvtGB0LDQvCwg0L3QtSAg0YPRgNC10LPRg9C70LjRgNC+0LLQsNC90L3Ri9C8INCyICDQvdCw0YHRgtC+0Y/RidC10Lwg0LTQvtCz0L7QstC+0YDQtSwg0YHRgtC+0YDQvtC90YsNCtGA0YPQutC+0LLQvtC00YHRgtCy0YPRjtGC0YHRjyDQtNC10LnRgdGC0LLRg9GO0YnQuNC8INC30LDQutC+0L3QvtC00LDRgtC10LvRjNGB0YLQstC+0LwuDQoNCiAgICAgNi4g0JTQvtCz0L7QstC+0YAgINGB0L7RgdGC0LDQstC70LXQvSDQsiAgX19fX19fX19fXyDRjdC60LfQtdC80L/Qu9GP0YDQsNGFLCDQuNC80LXRjtGJ0LjRhSDQvtC00LjQvdCw0LrQvtCy0YPRjg0K0Y7RgNC40LTQuNGH0LXRgdC60YPRjiDRgdC40LvRgy4NCg0KICAgICA3LiDQrtGA0LjQtNC40YfQtdGB0LrQuNC1INCw0LTRgNC10YHQsCDRgdGC0L7RgNC+0L06DQogICAgINCl0L7Qt9GP0LnRgdGC0LLQvjogX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCiAgICAg0KDQsNGB0YfQtdGC0L3Ri9C5INGB0YfQtdGCIF9fX19fX19fX19fX19fX19fXyDQsiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCtCd0LDQuNC80LXQvdC+0LLQsNC90LjQtSDQt9Cw0LPQvtGC0L7QstC40YLQtdC70YzQvdGL0YUgICAgICAg0JDQtNGA0LXRgdCwICAgICAgICAgICAgICDQkdCw0L3QutC+0LLRgdC60LjQtQ0K0YLQvtGA0LPQvtCy0YvRhSDQv9GA0LXQtNC/0YDQuNGP0YLQuNC5ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICDRgNC10LrQstC40LfQuNGC0YsNCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQoNCiAgICAg0J/QvtC00L/QuNGB0LgNCiAgICAg0J/QtdGH0LDRgtC4DQoNCg0KICANCjwvcHJlPjwvZGl2Pg0KPC9ib2R5Pg0KPC9odG1sPg==",
+    "mime_type": "text/html",
+    "language": "ru",
+    "locale": "ru"
+  },
+  "ingestion_preflight": {
+    "mime_type": "text/html",
+    "extractor": "html:regex",
+    "extraction_source": "html:regex",
+    "extraction_ok": true,
+    "error": null,
+    "extraction_error": null,
+    "sha256": "ce0a31d86506ad1f1cf1e0deb443685aa31a26414fff47a1b4904e6f916c1148"
+  },
+  "metrics": {
+    "risk_count": 1,
+    "high_risk_count": 0,
+    "disputed_clause_count": 1,
+    "asymmetry_signal_count": 0,
+    "contract_type": "labor_contract"
+  },
+  "analysis": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'primerniy-dogovor-kontraktatsii-selskohozyaystvennoy-produktsii. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Исполнитель'. Определен тип договора: Трудовой договор (уверенность 56%, правовая рамка: ТК РФ). Ключевые обязательства по договору для роли 'Исполнитель': Хозяйство обязуется продать и доставить Заготовителям сельскохозяйственную продукцию в количестве, ассортименте и качестве, в сроки и по ценам согласно приложениям NN______, являющимся неотъемлемой частью настоящего договора; б) обеспечить Хозяйство действующими ГОСТами, техническими условиями и кондициями, правилами приемки и оценки закупаемой продукции и расчетов за нее; в) обеспечить выдачу Хозяйству денежного аванса в сумме ___________ и в срок до _____________________ г) обеспечить Хозяйство надлежащей тарой. Условия оплаты: Заготовители обязуются: а) принять в обусловленные договором сроки и оплатить указанную продукцию и стоимость ее доставки в установленном порядке; б) обеспечить Хозяйство действующими ГОСТами, техническими условиями и кондициями, правилами приемки и оценки закупаемой продукции и расчетов за нее; в) обеспечить выдачу Хозяйству денежного аванса в сумме ___________ и в срок до _____________________ г) обеспечить Хозяйство надлежащей тарой. Сроки и дедлайны: Хозяйство обязуется продать и доставить Заготовителям сельскохозяйственную продукцию в количестве, ассортименте и качестве, в сроки и по ценам согласно приложениям NN______, являющимся неотъемлемой частью настоящего договора; Заготовители обязуются: а) принять в обусловленные договором сроки и оплатить указанную продукцию и стоимость ее доставки в установленном порядке; в) обеспечить выдачу Хозяйству денежного аванса в сумме ___________ и в срок до _____________________ г) обеспечить Хозяйство надлежащей тарой. Штрафы и санкции: При просрочке свыше 10 дней начисление пени прекращается и Хозяйство уплачивает Заготовителю помимо пени штраф в размере _______% стоимости несданной продукции; Пеня и штраф в указанных размерах взыскиваются с Хозяйства и за несдачу продукции по отдельным наименованиям предусмотренного договором ассортимента; б) за отказ от приемки продукции, предъявленной Хозяйством к сдаче в соответствии с настоящим договором и по согласованному сторонами графику, либо за просрочку ее приемки Заготовитель уплачивает Хозяйству штраф в размере _____% стоимости непринятой или принятой с просрочкой продукции и возмещает расходы по доставке продукции в оба конца, а также убытки, понесенные Хозяйством (потери скота в весе, снижение качества продукции, простой транспортных средств в ожидании приемки и т. Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Исполнитель'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Примерный договор контрактации сельскохозяйственной продукции - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ПРИМЕРНЫЙ ДОГОВОР контрактации сельскохозяйственной продукции г. ____________________ \"___\"________20___г. __________________________________________________________ (наименование сельскохозяйственного предприятия), именуем_____ в дальнейшем Хозяйство, в лице _________________ (должность, ф. и. о.",
+        "dispute_reason": "Явные маркеры спорных формулировок не обнаружены.",
+        "possible_consequence": "Скрытые спорные моменты требуют дополнительной юридической проверки.",
+        "confidence": 0.35
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Исполнитель",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Исполнитель'.",
+      "must_do": [
+        "Хозяйство обязуется продать и доставить Заготовителям сельскохозяйственную продукцию в количестве, ассортименте и качестве, в сроки и по ценам согласно приложениям NN______, являющимся неотъемлемой частью настоящего договора.",
+        "б) обеспечить Хозяйство действующими ГОСТами, техническими условиями и кондициями, правилами приемки и оценки закупаемой продукции и расчетов за нее.",
+        "в) обеспечить выдачу Хозяйству денежного аванса в сумме ___________ и в срок до _____________________ г) обеспечить Хозяйство надлежащей тарой."
+      ],
+      "should_review": [
+        "Конфиг не выявил явных дискреционных условий."
+      ],
+      "payment_terms": [
+        "Заготовители обязуются: а) принять в обусловленные договором сроки и оплатить указанную продукцию и стоимость ее доставки в установленном порядке.",
+        "б) обеспечить Хозяйство действующими ГОСТами, техническими условиями и кондициями, правилами приемки и оценки закупаемой продукции и расчетов за нее.",
+        "в) обеспечить выдачу Хозяйству денежного аванса в сумме ___________ и в срок до _____________________ г) обеспечить Хозяйство надлежащей тарой.",
+        "в) за несвоевременную оплату принятой продукции Заготовитель уплачивает Хозяйству за каждый день просрочки пеню в размере __________% стоимости принятой продукции.",
+        "д) при неправильном определении количества, качества или неправильной оплате принятой продукции Заготовитель перечисляет Хозяйству недоплаченную сумму с начислением на нее _____% годовых.",
+        "Юридические адреса сторон: Хозяйство: ________________________________________________________ Расчетный счет __________________ в _______________________________ ________________________________________________________________________ Наименование заготовительных Адреса Банковские торговых предприятий реквизиты ________________________________________________________________________ ________________________________________________________________________ ________________________________________________________________________ ________________________________________________________________________ ________________________________________________________________________ Подписи Печати."
+      ],
+      "deadlines": [
+        "Хозяйство обязуется продать и доставить Заготовителям сельскохозяйственную продукцию в количестве, ассортименте и качестве, в сроки и по ценам согласно приложениям NN______, являющимся неотъемлемой частью настоящего договора.",
+        "Заготовители обязуются: а) принять в обусловленные договором сроки и оплатить указанную продукцию и стоимость ее доставки в установленном порядке.",
+        "в) обеспечить выдачу Хозяйству денежного аванса в сумме ___________ и в срок до _____________________ г) обеспечить Хозяйство надлежащей тарой.",
+        "За неисполнение или ненадлежащее исполнение обязательств, предусмотренных настоящим договором, Хозяйство и Заготовители несут следующую ответственность: а) за просрочку или несдачу продукции в установленные договором сроки Хозяйство уплачивает Заготовителю пеню в размере ____% за каждый день просрочки.",
+        "При просрочке свыше 10 дней начисление пени прекращается и Хозяйство уплачивает Заготовителю помимо пени штраф в размере _______% стоимости несданной продукции.",
+        "При просрочке свыше 10 дней начисление пени прекращается, и Заготовитель уплачивает Хозяйству сверх начисленной пени штраф в размере ______% несвоевременно выплаченной суммы."
+      ],
+      "penalties": [
+        "При просрочке свыше 10 дней начисление пени прекращается и Хозяйство уплачивает Заготовителю помимо пени штраф в размере _______% стоимости несданной продукции.",
+        "Пеня и штраф в указанных размерах взыскиваются с Хозяйства и за несдачу продукции по отдельным наименованиям предусмотренного договором ассортимента.",
+        "б) за отказ от приемки продукции, предъявленной Хозяйством к сдаче в соответствии с настоящим договором и по согласованному сторонами графику, либо за просрочку ее приемки Заготовитель уплачивает Хозяйству штраф в размере _____% стоимости непринятой или принятой с просрочкой продукции и возмещает расходы по доставке продукции в оба конца, а также убытки, понесенные Хозяйством (потери скота в весе, снижение качества продукции, простой транспортных средств в ожидании приемки и т.",
+        "В случае отказа от приемки скоропортящейся продукции Заготовитель помимо штрафа оплачивает Хозяйству полную стоимость продукции и расходы по ее доставке.",
+        "При просрочке свыше 10 дней начисление пени прекращается, и Заготовитель уплачивает Хозяйству сверх начисленной пени штраф в размере ______% несвоевременно выплаченной суммы.",
+        "г) за необеспечение Хозяйства надлежащей тарой Заготовитель уплачивает Хозяйству штраф в размере ______% стоимости непоставленной тары."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "ce0a31d86506ad1f1cf1e0deb443685aa31a26414fff47a1b4904e6f916c1148"
+    },
+    "contract_type": {
+      "type_id": "labor_contract",
+      "confidence": 0.57,
+      "ru_name": "Трудовой договор",
+      "legal_framework": "ТК РФ"
+    },
+    "asymmetry_signals": []
+  },
+  "result": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'primerniy-dogovor-kontraktatsii-selskohozyaystvennoy-produktsii. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Исполнитель'. Определен тип договора: Трудовой договор (уверенность 56%, правовая рамка: ТК РФ). Ключевые обязательства по договору для роли 'Исполнитель': Хозяйство обязуется продать и доставить Заготовителям сельскохозяйственную продукцию в количестве, ассортименте и качестве, в сроки и по ценам согласно приложениям NN______, являющимся неотъемлемой частью настоящего договора; б) обеспечить Хозяйство действующими ГОСТами, техническими условиями и кондициями, правилами приемки и оценки закупаемой продукции и расчетов за нее; в) обеспечить выдачу Хозяйству денежного аванса в сумме ___________ и в срок до _____________________ г) обеспечить Хозяйство надлежащей тарой. Условия оплаты: Заготовители обязуются: а) принять в обусловленные договором сроки и оплатить указанную продукцию и стоимость ее доставки в установленном порядке; б) обеспечить Хозяйство действующими ГОСТами, техническими условиями и кондициями, правилами приемки и оценки закупаемой продукции и расчетов за нее; в) обеспечить выдачу Хозяйству денежного аванса в сумме ___________ и в срок до _____________________ г) обеспечить Хозяйство надлежащей тарой. Сроки и дедлайны: Хозяйство обязуется продать и доставить Заготовителям сельскохозяйственную продукцию в количестве, ассортименте и качестве, в сроки и по ценам согласно приложениям NN______, являющимся неотъемлемой частью настоящего договора; Заготовители обязуются: а) принять в обусловленные договором сроки и оплатить указанную продукцию и стоимость ее доставки в установленном порядке; в) обеспечить выдачу Хозяйству денежного аванса в сумме ___________ и в срок до _____________________ г) обеспечить Хозяйство надлежащей тарой. Штрафы и санкции: При просрочке свыше 10 дней начисление пени прекращается и Хозяйство уплачивает Заготовителю помимо пени штраф в размере _______% стоимости несданной продукции; Пеня и штраф в указанных размерах взыскиваются с Хозяйства и за несдачу продукции по отдельным наименованиям предусмотренного договором ассортимента; б) за отказ от приемки продукции, предъявленной Хозяйством к сдаче в соответствии с настоящим договором и по согласованному сторонами графику, либо за просрочку ее приемки Заготовитель уплачивает Хозяйству штраф в размере _____% стоимости непринятой или принятой с просрочкой продукции и возмещает расходы по доставке продукции в оба конца, а также убытки, понесенные Хозяйством (потери скота в весе, снижение качества продукции, простой транспортных средств в ожидании приемки и т. Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Исполнитель'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Примерный договор контрактации сельскохозяйственной продукции - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ПРИМЕРНЫЙ ДОГОВОР контрактации сельскохозяйственной продукции г. ____________________ \"___\"________20___г. __________________________________________________________ (наименование сельскохозяйственного предприятия), именуем_____ в дальнейшем Хозяйство, в лице _________________ (должность, ф. и. о.",
+        "dispute_reason": "Явные маркеры спорных формулировок не обнаружены.",
+        "possible_consequence": "Скрытые спорные моменты требуют дополнительной юридической проверки.",
+        "confidence": 0.35
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Исполнитель",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Исполнитель'.",
+      "must_do": [
+        "Хозяйство обязуется продать и доставить Заготовителям сельскохозяйственную продукцию в количестве, ассортименте и качестве, в сроки и по ценам согласно приложениям NN______, являющимся неотъемлемой частью настоящего договора.",
+        "б) обеспечить Хозяйство действующими ГОСТами, техническими условиями и кондициями, правилами приемки и оценки закупаемой продукции и расчетов за нее.",
+        "в) обеспечить выдачу Хозяйству денежного аванса в сумме ___________ и в срок до _____________________ г) обеспечить Хозяйство надлежащей тарой."
+      ],
+      "should_review": [
+        "Конфиг не выявил явных дискреционных условий."
+      ],
+      "payment_terms": [
+        "Заготовители обязуются: а) принять в обусловленные договором сроки и оплатить указанную продукцию и стоимость ее доставки в установленном порядке.",
+        "б) обеспечить Хозяйство действующими ГОСТами, техническими условиями и кондициями, правилами приемки и оценки закупаемой продукции и расчетов за нее.",
+        "в) обеспечить выдачу Хозяйству денежного аванса в сумме ___________ и в срок до _____________________ г) обеспечить Хозяйство надлежащей тарой.",
+        "в) за несвоевременную оплату принятой продукции Заготовитель уплачивает Хозяйству за каждый день просрочки пеню в размере __________% стоимости принятой продукции.",
+        "д) при неправильном определении количества, качества или неправильной оплате принятой продукции Заготовитель перечисляет Хозяйству недоплаченную сумму с начислением на нее _____% годовых.",
+        "Юридические адреса сторон: Хозяйство: ________________________________________________________ Расчетный счет __________________ в _______________________________ ________________________________________________________________________ Наименование заготовительных Адреса Банковские торговых предприятий реквизиты ________________________________________________________________________ ________________________________________________________________________ ________________________________________________________________________ ________________________________________________________________________ ________________________________________________________________________ Подписи Печати."
+      ],
+      "deadlines": [
+        "Хозяйство обязуется продать и доставить Заготовителям сельскохозяйственную продукцию в количестве, ассортименте и качестве, в сроки и по ценам согласно приложениям NN______, являющимся неотъемлемой частью настоящего договора.",
+        "Заготовители обязуются: а) принять в обусловленные договором сроки и оплатить указанную продукцию и стоимость ее доставки в установленном порядке.",
+        "в) обеспечить выдачу Хозяйству денежного аванса в сумме ___________ и в срок до _____________________ г) обеспечить Хозяйство надлежащей тарой.",
+        "За неисполнение или ненадлежащее исполнение обязательств, предусмотренных настоящим договором, Хозяйство и Заготовители несут следующую ответственность: а) за просрочку или несдачу продукции в установленные договором сроки Хозяйство уплачивает Заготовителю пеню в размере ____% за каждый день просрочки.",
+        "При просрочке свыше 10 дней начисление пени прекращается и Хозяйство уплачивает Заготовителю помимо пени штраф в размере _______% стоимости несданной продукции.",
+        "При просрочке свыше 10 дней начисление пени прекращается, и Заготовитель уплачивает Хозяйству сверх начисленной пени штраф в размере ______% несвоевременно выплаченной суммы."
+      ],
+      "penalties": [
+        "При просрочке свыше 10 дней начисление пени прекращается и Хозяйство уплачивает Заготовителю помимо пени штраф в размере _______% стоимости несданной продукции.",
+        "Пеня и штраф в указанных размерах взыскиваются с Хозяйства и за несдачу продукции по отдельным наименованиям предусмотренного договором ассортимента.",
+        "б) за отказ от приемки продукции, предъявленной Хозяйством к сдаче в соответствии с настоящим договором и по согласованному сторонами графику, либо за просрочку ее приемки Заготовитель уплачивает Хозяйству штраф в размере _____% стоимости непринятой или принятой с просрочкой продукции и возмещает расходы по доставке продукции в оба конца, а также убытки, понесенные Хозяйством (потери скота в весе, снижение качества продукции, простой транспортных средств в ожидании приемки и т.",
+        "В случае отказа от приемки скоропортящейся продукции Заготовитель помимо штрафа оплачивает Хозяйству полную стоимость продукции и расходы по ее доставке.",
+        "При просрочке свыше 10 дней начисление пени прекращается, и Заготовитель уплачивает Хозяйству сверх начисленной пени штраф в размере ______% несвоевременно выплаченной суммы.",
+        "г) за необеспечение Хозяйства надлежащей тарой Заготовитель уплачивает Хозяйству штраф в размере ______% стоимости непоставленной тары."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "ce0a31d86506ad1f1cf1e0deb443685aa31a26414fff47a1b4904e6f916c1148"
+    },
+    "contract_type": {
+      "type_id": "labor_contract",
+      "confidence": 0.57,
+      "ru_name": "Трудовой договор",
+      "legal_framework": "ТК РФ"
+    },
+    "asymmetry_signals": []
+  },
+  "finished_at": "2026-04-28T16:19:03.224643+00:00",
+  "duration_ms": 116.09
+}

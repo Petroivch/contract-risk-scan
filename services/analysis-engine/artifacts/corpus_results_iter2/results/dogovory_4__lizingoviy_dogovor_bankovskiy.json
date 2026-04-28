@@ -1,0 +1,223 @@
+{
+  "case_id": "dogovory_4__lizingoviy_dogovor_bankovskiy",
+  "relative_path": "договоры 4/lizingoviy-dogovor-bankovskiy.html",
+  "document_path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\договоры 4\\lizingoviy-dogovor-bankovskiy.html",
+  "document_name": "lizingoviy-dogovor-bankovskiy.html",
+  "role": "Заявитель",
+  "counterparty_role": "Организация",
+  "language": "ru",
+  "mime_type": "text/html",
+  "tags": [
+    "workspace-corpus",
+    "html",
+    "dogovory_4",
+    "non_contract_legal_form"
+  ],
+  "source_group": "manifest",
+  "expected": {
+    "contract_type": "non_contract_legal_form",
+    "min_contract_type_confidence": 0.35,
+    "min_risk_count": 0,
+    "min_disputed_clause_count": 2,
+    "execution_mode": "local_first",
+    "expected_high_risk_ids": []
+  },
+  "started_at": "2026-04-28T16:12:38.946923+00:00",
+  "status": "completed",
+  "request": {
+    "document_name": "lizingoviy-dogovor-bankovskiy.html",
+    "role_context": {
+      "role": "Заявитель",
+      "counterparty_role": "Организация"
+    },
+    "document_text": null,
+    "document_base64": "PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMDEgVHJhbnNpdGlvbmFsLy9FTiI+DQo8aHRtbD4NCjxoZWFkPg0KPGJhc2UgaHJlZj0iaHR0cHM6Ly9kb2dvdm9yLXVyaXN0LnJ1LyI+DQo8dGl0bGU+0JvQuNC30LjQvdCz0L7QstGL0Lkg0LTQvtCz0L7QstC+0YAgKNCx0LDQvdC60L7QstGB0LrQuNC5KSAtINCy0LXRgNGB0LjRjyDQtNC70Y8g0L/QtdGH0LDRgtC4LiAyMDI2LiDQntCx0YDQsNC30YbRiyDQtNC+0LPQvtCy0L7RgNC+0LIsINGC0LjQv9C+0LLRi9C1INC00L7Qs9C+0LLQvtGA0LAsINCw0LrRgtGD0LDQu9GM0L3Ri9C1INC00L7QutGD0LzQtdC90YLRiywg0Y7RgNC40LTQuNGH0LXRgdC60LjQvCDQuCDRhNC40LfQuNGH0LXRgdC60LjQvCDQu9C40YbQsNC8PC90aXRsZT4NCjxtZXRhIGNvbnRlbnQ9IiIgbmFtZT0ia2V5d29yZHMiPg0KPG1ldGEgY29udGVudD0iIiBuYW1lPSJkZXNjcmlwdGlvbiI+DQo8bWV0YSBuYW1lPSJyb2JvdHMiIGNvbnRlbnQ9Im5vaW5kZXgsbm9mb2xsb3ciPg0KPG1ldGEgaHR0cC1lcXVpdj0iQ29udGVudC1UeXBlIiBjb250ZW50PSJ0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgiPg0KPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSIvaW1hZ2VzL3N0eWxlLmNzcyIgdHlwZT0idGV4dC9jc3MiPg0KPC9oZWFkPg0KPGJvZHk+DQo8ZGl2IGNsYXNzPSJkb2N1bWVudFRleHQiPg0KPHByZT4gICAgICAgICAgICAgICAgICDQm9CY0JfQmNCd0JPQntCS0KvQmSDQlNCe0JPQntCS0J7QoCAo0LHQsNC90LrQvtCy0YHQutC40LkpDQoNCiAgICAgICAgICDQsy5fX19fX19fX19fX19fICAgICAgICAgICAgICAgICAgICAiX19fIl9fX19fXzIwX19f0LMuDQoNCiAgICAgX19fX19fX19fX18g0LHQsNC90LosICAg0LjQvNC10L3Rg9C10LzRi9C5ICAg0LIgICDQtNCw0LvRjNC90LXQudGI0LXQvCAg0J/Qu9Cw0YLQtdC70YzRidC40LosICDQsiAg0LvQuNGG0LUNCl9fX19fX19fX19fLCAg0LTQtdC50YHRgtCy0YPRjtGJ0LXQs9C+INC90LAg0L7RgdC90L7QstCw0L3QuNC4IF9fX19fX19fX18sICDRgSDQvtC00L3QvtC5ICDRgdGC0L7RgNC+0L3RiywgINC4DQpfX19fX19fX19fXyAsICDQuNC80LXQvdGD0LXQvNGL0Lkg0LIg0LTQsNC70YzQvdC10LnRiNC10Lwg0JvQuNC30LjQvdCz0L7Qv9C+0LvRg9GH0LDRgtC10LvRjCwg0LIg0LvQuNGG0LUgX19fX19fX18sDQrQtNC10LnRgdGC0LLRg9GO0YnQtdCz0L4gINC90LAgINC+0YHQvdC+0LLQsNC90LjQuCAgX19fX19fX19fX18sICDRgSAg0LTRgNGD0LPQvtC5ICDRgdGC0L7RgNC+0L3RiywgINC30LDQutC70Y7Rh9C40LvQuA0K0L3QsNGB0YLQvtGP0YnQuNC5INC00L7Qs9C+0LLQvtGAINC+INC90LjQttC10YHQu9C10LTRg9GO0YnQtdC8Og0KDQogICAgIDEu0J/QvtGB0YLQsNCy0YnQuNC6INC4INC+0LHRitC10LrRgiDQu9C40LfQuNC90LPQvtCy0L7QuSDRgdC00LXQu9C60LgNCiAgICAgMS4xLiDQm9C40LfQuNC90LPQvtC/0L7Qu9GD0YfQsNGC0LXQu9GOINC/0YDQtdC00L7RgdGC0LDQstC70Y/QtdGC0YHRjyDQsiDQutCw0YfQtdGB0YLQstC1INC+0LHRitC10LrRgtCwINC70LjQt9C40L3Qs9C+0LLQvtC5DQrRgdC00LXQu9C60LgsICDQutCw0Log0L7Qv9C40YHQsNC90L4g0LIgINC/0YDQuNC70L7QttC10L3QuNC4ICAxLCAg0YHQvtGB0YLQsNCy0LvRj9GO0YnQtdC8ICDQvdC10L7RgtGK0LXQvNC70LXQvNGD0Y4gINGH0LDRgdGC0YwNCtC60L7QvdGC0YDQsNC60YLQsCwg0LTQu9GPINC/0YDQvtC40LfQstC+0LTRgdGC0LLQtdC90L3QvtC5INGN0LrRgdC/0LvRg9Cw0YLQsNGG0LjQuF9fX19fX19fX19fX19fDQogICAgIDEuMi4g0J/QvtGB0YLQsNCy0YnQuNC60L7QvCDQtNCw0L3QvdC+0LPQviDQvtCx0YrQtdC60YLQsCDQu9C40LfQuNC90LPQvtCy0L7QuSAg0YHQtNC10LvQutC4ICDRj9Cy0LvRj9C10YLRgdGPICDRhNC40YDQvNCwDQpfX19fX19fX18sICAg0LjQvNC10L3Rg9C10LzQsNGPICDQsiAg0LTQsNC70YzQvdC10LnRiNC10LwgINCf0L7RgdGC0LDQstGJ0LjQuiwgINC60L7RgtC+0YDQsNGPICDRgdC00LDRgdGCICDQvtCx0YrQtdC60YINCtC70LjQt9C40L3Qs9C+0LLQvtC5INGB0LTQtdC70LrQuCDQsiDRgdGA0L7QutC4INGB0L7Qs9C70LDRgdC90L4g0L/RgNC40LvQvtC20LXQvdC40Y4gMi4NCiAgICAgMS4zLiDQn9C+0YDRj9C00L7QuiAg0L7Qv9C70LDRgtGLINC+0LHRitC10LrRgtCwINGB0LTQtdC70LrQuCDQv9GA0LXQtNGD0YHQvNCw0YLRgNC40LLQsNC10YLRgdGPINC/0YDQuNC70L7QttC10L3QuNC10LwgMywNCtGP0LLQu9GP0Y7RidC40LzRgdGPINC90LXQvtGC0YrQtdC80LvQtdC80L7QuSDRh9Cw0YHRgtGM0Y4g0LrQsNC6INC90LDRgdGC0L7Rj9GJ0LXQs9C+INC60L7QvdGC0YDQsNC60YLQsCwg0YLQsNC6INC4INC60L7QvdGC0YDQsNC60YLQvtC8DQrQvNC10LbQtNGDINCb0LjQt9C40L3Qs9C+0L/QvtC70YPRh9Cw0YLQtdC70LXQvCDQuCDQn9C+0YHRgtCw0LLRidC40LrQvtC8Lg0KDQogICAgIDIuINCh0YDQvtC6INC00LXQudGB0YLQstC40Y8g0LrQvtC90YLRgNCw0LrRgtCwLg0KICAgICAyLjEuINCb0LjQt9C40L3Qs9C+0LLRi9C5INC60L7QvdGC0YDQsNC60YIg0L7RgdGC0LDQtdGC0YHRjyDQsiDRgdC40LvQtSDQvdCwINC/0YDQvtGC0Y/QttC10L3QuNC4IF9fX19fX18g0LPQvtC00LAsDQrQvdCw0YfQuNC90LDRjyDRgSDQtNCw0YLRiyDQv9C10YDQtdC00LDRh9C4INC+0LHRitC10LrRgtCwINC70LjQt9C40L3Qs9C+0LLQvtC5INGB0LTQtdC70LrQuCDQm9C40LfQuNC90LPQvtC/0L7Qu9GD0YfQsNGC0LXQu9GOLCDQuCDQvdC1DQrQv9C+0LTQu9C10LbQuNGCINC+0LTQvdC+0YHRgtC+0YDQvtC90L3QtdC80YMg0YDQsNGB0YLQvtGA0LbQtdC90LjRjiDRgSDQtdCz0L4g0YHRgtC+0YDQvtC90YsuDQoNCiAgICAgMy4g0J/RgNC40LXQvNC60LAg0L7QsdGK0LXQutGC0L7QsiDQu9C40LfQuNC90LPQvtCy0L7QuSDRgdC00LXQu9C60LgNCiAgICAgMy4xLiDQm9C40LfQuNC90LPQvtC/0L7Qu9GD0YfQsNGC0LXQu9GMICDQvtCx0Y/Qt9Cw0L0gINC/0YDQuNC90LjQvNCw0YLRjCDQvtCx0YrQtdC60YIg0L3QtdC/0L7RgdGA0LXQtNGB0YLQstC10L3QvdC+INC/0YDQuA0K0L/QvtGB0YLQsNCy0LrQtS4gINCS0YHQtSDRgtC10YXQvdC40YfQtdGB0LrQuNC1INC4ICDQv9GA0LDQstC+0LLRi9C1ICDQv9GA0LXQtNC/0L7RgdGL0LvQutC4ICDQv9GA0LjQtdC80LrQuCwgINC80L7QvdGC0LDQttCwICDQuA0K0Y3QutGB0L/Qu9GD0LDRgtCw0YbQuNC4INC+0LHQtdGB0L/QtdGH0LjQstCw0Y7RgtGB0Y8g0JvQuNC30LjQvdCz0L7Qv9C+0LvRg9GH0LDRgtC10LvQtdC8INC30LAg0LXQs9C+INGB0L7QsdGB0YLQstC10L3QvdGL0Lkg0YHRh9C10YIuINCSDQrRgdC70YPRh9Cw0LUsICDQtdGB0LvQuCDQm9C40LfQuNC90LPQvtC/0L7Qu9GD0YfQsNGC0LXQu9GMINC90LUgINCy0YvQv9C+0LvQvdGP0LXRgiAg0Y3RgtC40YUgINGD0YHQu9C+0LLQuNC5LCAg0J/Qu9Cw0YLQtdC70YzRidC40LoNCtCy0L/RgNCw0LLQtSAgINGA0LDRgdGC0L7RgNCz0L3Rg9GC0YwgICDQutC+0L3RgtGA0LDQutGCLiAgINCb0LjQt9C40L3Qs9C+0L/QvtC70YPRh9Cw0YLQtdC70YwgICDQvtCx0Y/Qt9Cw0L0gINCy0L7Qt9C80LXRgdGC0LjRgtGMDQrQn9C70LDRgtC10LvRjNGJ0LjQutGDINCy0L7Qt9C90LjQutCw0Y7RidC40LUg0LIg0YDQtdC30YPQu9GM0YLQsNGC0LUg0Y3RgtC+0LPQviDRg9Cx0YvRgtC60LguDQogICAgIDMuMi4g0JLRgdC1ICDQstC+0L/RgNC+0YHRiyAg0LrQvtC80L/Qu9C10LrRgtC90L7RgdGC0LgsICDQutCw0YfQtdGB0YLQstC1ICDQuCAg0LTRgNGD0LPQuNGFICDRgdGD0YnQtdGB0YLQstC10L3QvdGL0YUNCtGD0YHQu9C+0LLQuNC5INC/0L7RgdGC0LDQstC60Lgg0YDQtdGI0LDRjtGC0YHRjyDQvNC10LbQtNGDINCf0L7RgdGC0LDQstGJ0LjQutC+0Lwg0Lgg0JvQuNC30LjQvdCz0L7Qv9C+0LvRg9GH0LDRgtC10LvQtdC8Lg0KICAgICAzLjMuINCf0YDQuCAg0L/RgNC40LXQvNC60LUgINC+0LHRitC10LrRgtCwICDQm9C40LfQuNC90LPQvtC/0L7Qu9GD0YfQsNGC0LXQu9GMICDQv9GA0LjQvdC40LzQsNC10YIg0L3QsCDRgdC10LHRjyDQstGB0LUNCtC/0YDQsNCy0LAg0J/Qu9Cw0YLQtdC70YzRidC40LrQsCDQsiAg0L7RgtC90L7RiNC10L3QuNC4ICDQn9C+0YHRgtCw0LLRidC40LrQsCAg0LggINC+0LHQtdGB0L/QtdGH0LjQstCw0LXRgiAg0L7RgdCy0L7QsdC+0LbQtNC10L3QuNC1DQrQn9C70LDRgtC10LvRjNGJ0LjQutCwINC+0YIg0LLRgdC10YUg0YHQstGP0LfQsNC90L3Ri9GFINGBINGN0YLQuNC8INGD0LHRi9GC0LrQvtC8INC4INGB0YPQtNC10LHQvdGL0YUg0LjRgdC60L7Qsi4NCiAgICAgMy40LiDQn9C70LDRgtC10LvRjNGJ0LjQuiDQvdC1INC+0YLQstC10YfQsNC10YIg0L/QtdGA0LXQtCAg0JvQuNC30LjQvdCz0L7Qv9C+0LvRg9GH0LDRgtC10LvQtdC8LCAg0LrQvtGC0L7RgNGL0LkgINGB0LDQvA0K0L/QvtC00L7QsdGA0LDQuyAg0L7QsdGK0LXQutGCICDQu9C40LfQuNC90LPQvtCy0L7QuSAg0YHQtNC10LvQutC4ICDQuCAg0J/QvtGB0YLQsNCy0YnQuNC60LAsICDQvdC4INC30LAg0L7QsdGP0LfQsNGC0LXQu9GM0YHRgtCy0LANCtCf0L7RgdGC0LDQstGJ0LjQutCwLCDQvdC4INC30LAg0L7Qv9GA0LXQtNC10LvQtdC90L3Ri9C1INGB0LLQvtC50YHRgtCy0LAg0LjQu9C4INC30LAg0L/RgNC40LPQvtC00L3QvtGB0YLRjCDQvtCx0YrQtdC60YLQsCwg0L3QuCDQt9CwDQrRg9GJ0LXRgNCxLCDQstC+0LfQvdC40LrRiNC40Lkg0LIg0YDQtdC30YPQu9GM0YLQsNGC0LUg0LXQs9C+INGN0LrRgdC/0LvRg9Cw0YLQsNGG0LjQuC4NCiAgICAgMy41LiDQn9C+INC+0LrQvtC90YfQsNC90LjQuCAg0L/RgNC40LXQvNC60LggINCb0LjQt9C40L3Qs9C+0L/QvtC70YPRh9Cw0YLQtdC70YwgINC/0LXRgNC10LTQsNC10YIgINCf0LvQsNGC0LXQu9GM0YnQuNC60YMNCtC90LDQtNC70LXQttCw0YnQtSDQvtGE0L7RgNC80LvQtdC90L3Ri9C5INC/0YDQuNC10LzQvtGH0L3Ri9C5INC00L7QutGD0LzQtdC90YIsINC90LAg0YfRgtC+INC/0L7Qu9GD0YfQsNC10YIg0L7RgiDQn9C70LDRgtC10LvRjNGJ0LjQutCwDQrRgdCy0LjQtNC10YLQtdC70YzRgdGC0LLQvi4NCg0KICAgICA0LiDQm9C40LfQuNC90LPQvtCy0YvQtSDQstC30L3QvtGB0YsNCiAgICAgNC4xLiDQm9C40LfQuNC90LPQvtCy0YvQtSDQstC30L3QvtGB0Ysg0YHQvtGB0YLQsNCy0LvRj9GO0YJfX19fX19fX19fX19fX18gINC4ICDRg9C/0LvQsNGH0LjQstCw0Y7RgtGB0Y8gINCyDQrRgdC70LXQtNGD0Y7RidC10Lwg0L/QvtGA0Y/QtNC60LVfX19fX19fX19fX19fX19fDQogICAgIDQuMi4g0JLRgdC1INC90LDQu9C+0LPQuCwgINCy0LfQuNC80LDQtdC80YvQtSDQsiDRgdCy0Y/Qt9C4INGBINC90LDRgdGC0L7Rj9GJ0LjQvCDQutC+0L3RgtGA0LDQutGC0L7QvCDQsiAg0YHRgtGA0LDQvdC1DQrQm9C40LfQuNC90LPQvtC/0L7Qu9GD0YfQsNGC0LXQu9GPINC+0YLQvdC+0YHRj9GC0YHRjyDQvdCwINC10LPQviDRgdGH0LXRgi4NCiAgICAgNC4zLiDQn9C+0YHQu9C1INGD0L/Qu9Cw0YLRiyDQu9C40LfQuNC90LPQvtCy0YvRhSDQv9C70LDRgtC10LbQtdC5INCb0LjQt9C40L3Qs9C+0L/QvtC70YPRh9Cw0YLQtdC70Ywg0LjQvNC10LXRgiAg0L/RgNCw0LLQvg0K0L/QvtC70YPRh9C40YLRjCAg0L/RgNCw0LLQsCAg0YHQvtCx0YHRgtCy0LXQvdC90L7RgdGC0Lgg0L3QsCDQvtCx0YrQtdC60YIg0LvQuNC30LjQvdCz0L7QstC+0Lkg0YHQtNC10LvQutC4INGBINC60L7QvNC/0LXQvdGB0LDRhtC40LXQuQ0K0L7RgdGC0LDRgtC+0YfQvdC+0Lkg0YHRgtC+0LjQvNC+0YHRgtC4INCyINGA0LDQt9C80LXRgNC1X19fX19fX19fX19fX19fX19fX19fXw0KICAgICA0LjQuINCe0LPRgNCw0L3QuNGH0LXQvdC90LDRjyAgINCy0L7Qt9C80L7QttC90L7RgdGC0YwgICDQuNGB0L/QvtC70YzQt9C+0LLQsNC90LjRjyAg0L7QsdGK0LXQutGC0LAgINC70LjQt9C40L3Qs9C+0LLQvtC5DQrRgdC00LXQu9C60Lgg0LLRgdC70LXQtNGB0YLQstC40LUg0L/QvtCy0YDQtdC20LTQtdC90LjRjywg0Y7RgNC40LTQuNGH0LXRgdC60L7QuSwg0YLQtdGF0L3QuNGH0LXRgdC60L7QuSDQuNC70Lgg0Y3QutC+0L3QvtC80LjRh9C10YHQutC+0LkNCtC90LXQv9GA0LjQs9C+0LTQvdC+0YHRgtC4LCDRgtCw0LrQttC1INCyINGB0LLRj9C30Lgg0YHQviDRgdC70YPRh9Cw0LnQvdC+0YHRgtGP0LzQuCDQuNC70Lgg0L3QtdC/0YDQtdC+0LTQvtC70LjQvNC+0Lkg0YHQuNC70L7QuSwg0L3QtQ0K0L7RgtGA0LDQt9C40YLRgdGPINC90LAg0L7QsdGP0LfQsNGC0LXQu9GM0YHRgtCy0LAg0L/QviDQutC+0L3RgtGA0LDQutGC0YMuICDQntCx0Y/Qt9Cw0L3QvdC+0YHRgtGMICDQv9GA0L7QuNC30LLQtdGB0YLQuCAg0L/Qu9Cw0YLQtdC2DQrQu9C40LfQuNC90LPQvtCy0YvRhSDQstC30L3QvtGB0L7QsiDQvtGB0YLQsNC90LXRgtGB0Y8g0L3QtdC40LfQvNC10L3QvdC+0LkuDQoNCiAgICAgNS4g0J/RgNC+0YHRgNC+0YfQutCwDQogICAgIDUuMS4g0JIgICDRgdC70YPRh9Cw0LUgINC/0YDQvtGB0YDQvtGH0LrQuCAg0JvQuNC30LjQvdCz0L7Qv9C+0LvRg9GH0LDRgtC10LvQtdC8ICDQv9C70LDRgtC10LbQsCAg0LvQuNC30LjQvdCz0L7QstC+0LPQvg0K0LLQt9C90L7RgdCwINCx0L7Qu9C10LUg0YfQtdC8INC90LAgX19fINC00L3QtdC5INCf0LvQsNGC0LXQu9GM0YnQuNC6INC40LzQtdC10YIg0L/RgNCw0LLQviDRgNCw0YHRgtC+0YDQs9C90YPRgtGMINC60L7QvdGC0YDQsNC60YIuDQogICAgIDUuMi4g0JvQuNC30LjQvdCz0L7Qv9C+0LvRg9GH0LDRgtC10LvRjCDQvtCx0Y/Qt9Cw0L0g0YPQv9C70LDRgtC40YLRjCDQv9C10L3RjiDQt9CwINC/0YDQvtGB0YDQvtGH0LrRgywgINC90LDRh9C40L3QsNGPINGBDQrQtNCw0YLRiyDQvdCw0YHRgtGD0L/Qu9C10L3QuNGPINC/0YDQvtGB0YDQvtGH0LrQuCDQsiDRgNCw0LfQvNC10YDQtSBfX19fJSAg0LfQsCDQutCw0LbQtNGL0Lkg0LTQtdC90YwgINC/0YDQvtGB0YDQvtGH0LrQuCwgINCwDQrRgtCw0LrQttC1ICDQstC+0LfQstGA0LDRgtC40YLRjCAg0L7QsdGK0LXQutGCINC70LjQt9C40L3Qs9C+0LLQvtC5ICDRgdC00LXQu9C60Lgg0L/QviDRgtGA0LXQsdC+0LLQsNC90LjRjiDQn9C70LDRgtC10LvRjNGJ0LjQutCwINC90LANCtGD0LrQsNC30LDQvdC90L7QtSDQn9C70LDRgtC10LvRjNGJ0LjQutC+0Lwg0LzQtdGB0YLQvi4NCiAgICAgNS4zLiDQn9C70LDRgtC10LvRjNGJ0LjQuiDQvtCx0Y/Qt9Cw0L0gINC60L7QvNC/0LXQvdGB0LjRgNC+0LLQsNGC0Ywg0JvQuNC30LjQvdCz0L7Qv9C+0LvRg9GH0LDRgtC10LvRjiDQstGB0LUg0YPQsdGL0YLQutC4LA0K0YHQstGP0LfQsNC90L3Ri9C1ICDRgSAg0LfQsNC00LXRgNC20LrQvtC5ICDQstGL0L/Qu9Cw0YIgINCf0L7RgdGC0LDQstGJ0LjQutGDICDQv9C+ICDQv9C+0YHRgtCw0LLQutC1LCAg0YHQstGP0LfQsNC90L3QvtC5ICAg0YENCtCy0YvQv9C+0LvQvdC10L3QuNC10Lwg0L3QsNGB0YLQvtGP0YnQtdCz0L4g0LrQvtC90YLRgNCw0LrRgtCwLCAg0LXRgdC70Lgg0L/QvtGA0Y/QtNC+0Log0L7Qv9C70LDRgtGLLCDQv9GA0LXQtNGD0YHQvNC+0YLRgNC10L3QvdGL0Lkg0LINCtC60L7QvdGC0YDQsNC60YLQtSDRgSDQn9C+0YHRgtCw0LLRidC40LrQvtC8LCDRgdC+0L7RgtCy0LXRgtGB0YLQstGD0LXRgiDQv9GA0LjQu9C+0LbQtdC90LjRjiAzINC90LDRgdGC0L7Rj9GJ0LXQs9C+INC60L7QvdGC0YDQsNC60YLQsC4NCg0KICAgICA2LiDQrdC60YHQv9C70YPQsNGC0LDRhtC40Y8g0L7QsdGK0LXQutGC0LANCiAgICAgNi4xLiDQktC70LDQtNC10LvRjNGG0LXQvCDQvtCx0YrQtdC60YLQsCDQu9C40LfQuNC90LPQvtCy0L7QuSAg0YHQtNC10LvQutC4ICDRj9Cy0LvRj9C10YLRgdGPICDQn9C70LDRgtC10LvRjNGJ0LjQuiAg0LTQvg0K0LzQvtC80LXQvdGC0LAgINCy0YvQv9C70LDRgtGLINCb0LjQt9C40L3Qs9C+0L/QvtC70YPRh9Cw0YLQtdC70LXQvCDQstGB0LXRhSDQu9C40LfQuNC90LPQvtCy0YvRhSDQv9C70LDRgtC10LbQtdC5INC4INC+0YHRgtCw0YLQvtGH0L3QvtC5DQrRgdGC0L7QuNC80L7RgdGC0Lgg0L7QsdGK0LXQutGC0LAuDQogICAgIDYuMi4g0JvQuNC30LjQvdCz0L7Qv9C+0LvRg9GH0LDRgtC10LvRjCAg0LLQv9GA0LDQstC1ICDQv9GA0LXQtNC+0YHRgtCw0LLQu9GP0YLRjCAg0YLRgNC10YLRjNC40LwgINC70LjRhtCw0LwgINC/0YDQsNCy0L4NCtC/0L7Qu9GM0LfQvtCy0LDQvdC40Y8gINC+0LHRitC10LrRgtC+0LwgINC70LjQt9C40L3Qs9C+0LLQvtC5ICDRgdC00LXQu9C60LguICDQrdGC0L4sICDQvtC00L3QsNC60L4sICDQvdC1ICDQstC70LjRj9C10YIgINC90LANCtC+0YLQstC10YLRgdGC0LLQtdC90L3QvtGB0YLRjCAg0JvQuNC30LjQvdCz0L7Qv9C+0LvRg9GH0LDRgtC10LvRjyAg0LfQsCAg0LLRi9C/0L7Qu9C90LXQvdC40LUgINCy0YHQtdGFICDQvtCx0Y/Qt9Cw0YLQtdC70YzRgdGC0LIg0L/Qvg0K0LrQvtC90YLRgNCw0LrRgtGDLg0KDQogICAgIDcuINCu0YDQuNC00LjRh9C10YHQutC40LUg0LDQtNGA0LXRgdCwINC4INGA0LXQutCy0LjQt9C40YLRiyDRgdGC0L7RgNC+0L0NCiAgICAg0J/Qu9Cw0YLQtdC70YzRidC40Lo6X19fX19fX19fX19fX19fX19fDQogICAgINCb0LjQt9C40L3Qs9C+0L/QvtC70YPRh9Cw0YLQtdC70Yw6X19fX19fX19fX18NCg0KICAgICDQndCw0YHRgtC+0Y/RidC40Lkg0LTQvtCz0L7QstC+0YAgINGB0L7RgdGC0LDQstC70LXQvSAg0LIgNC3RhSDRjdC60LfQtdC80L/Qu9GP0YDQsNGFOyAg0L/QtdGA0LLRi9C5INC4INGH0LXRgtCy0LXRgNGC0YvQuQ0K0YXRgNCw0L3Rj9GC0YHRjyDRgyDQn9C70LDRgtC10LvRjNGJ0LjQutCwLCAg0LLRgtC+0YDQvtC5INGDINCb0LjQt9C40L3Qs9C+0L/QvtC70YPRh9Cw0YLQtdC70Y8sICDRgtGA0LXRgtC40Lkg0L3QsNGF0L7QtNC40YLRgdGPICDQsg0K0YPRh9GA0LXQttC00LXQvdC40Lgg0LHQsNC90LrQsCDQv9C+INC80LXRgdGC0YMg0L7RgtC60YDRi9GC0LjRjyDRgNCw0YHRh9C10YLQvdC+0LPQviDRgdGH0LXRgtCwINCb0LjQt9C40L3Qs9C+0L/QvtC70YPRh9Cw0YLQtdC70Y8uDQoNCtCf0LvQsNGC0LXQu9GM0YnQuNC6ICAgICAgICAgICAgICAgICAgICDQm9C40LfQuNC90LPQvtC/0L7Qu9GD0YfQsNGC0LXQu9GMDQpfX19fX19fX19fX19fICAgICAgICAgICAgICAgICBfX19fX19fX19fX19fX19fXw0KDQogICAg0Jwu0J8uICAgICAgICAgICAgICAgICAgICAgICAgICDQnC7Qny4NCg0KDQogIA0KPC9wcmU+PC9kaXY+DQo8L2JvZHk+DQo8L2h0bWw+",
+    "mime_type": "text/html",
+    "language": "ru",
+    "locale": "ru"
+  },
+  "ingestion_preflight": {
+    "mime_type": "text/html",
+    "extractor": "html:regex",
+    "extraction_source": "html:regex",
+    "extraction_ok": true,
+    "error": null,
+    "extraction_error": null,
+    "sha256": "617072b769d642ff23825d8dfe9cc49346b7d67440622969d76150f3b8569c95"
+  },
+  "metrics": {
+    "risk_count": 1,
+    "high_risk_count": 0,
+    "disputed_clause_count": 2,
+    "asymmetry_signal_count": 0,
+    "contract_type": "non_contract_legal_form"
+  },
+  "analysis": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'lizingoviy-dogovor-bankovskiy. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Заявитель'. Определен тип договора: Иной юридический документ (уверенность 43%, правовая рамка: Вне типовой contract taxonomy). Ключевые обязательства по договору для роли 'Заявитель': Лизингополучатель обязан принимать объект непосредственно при поставке; Лизингополучатель обязан возместить Плательщику возникающие в результате этого убытки; Обязанность произвести платеж лизинговых взносов останется неизменной. Условия оплаты: Порядок оплаты объекта сделки предусматривается приложением 3, являющимся неотъемлемой частью как настоящего контракта, так и контрактом между Лизингополучателем и Поставщиком; Все технические и правовые предпосылки приемки, монтажа и эксплуатации обеспечиваются Лизингополучателем за его собственный счет; Все налоги, взимаемые в связи с настоящим контрактом в стране Лизингополучателя относятся на его счет. Сроки и дедлайны: Поставщиком данного объекта лизинговой сделки является фирма _________, именуемая в дальнейшем Поставщик, которая сдаст объект лизинговой сделки в сроки согласно приложению 2; Срок действия контракта; В случае просрочки Лизингополучателем платежа лизингового взноса более чем на ___ дней Плательщик имеет право расторгнуть контракт. Найдено спорных или расплывчатых пунктов: 2.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Заявитель'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Лизинговый договор (банковский) - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ЛИЗИНГОВЫЙ ДОГОВОР (банковский) г. _____________ \"___\"______20___г. ___________ банк, именуемый в дальнейшем Плательщик, в лице ___________, действующего на основании __________, с одной стороны, и ___________ , именуемый в дальнейшем Лизингополучатель, в лице ________, действующего на основании ___________, с другой стороны, заключили настоящий...",
+        "dispute_reason": "Одна из сторон получила дискреционное право без достаточных ограничителей.",
+        "possible_consequence": "Это может привести к одностороннему применению условия и спору о пределах такого права.",
+        "confidence": 0.76
+      },
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Лизинговый договор (банковский) - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ЛИЗИНГОВЫЙ ДОГОВОР (банковский) г. _____________ \"___\"______20___г. ___________ банк, именуемый в дальнейшем Плательщик, в лице ___________, действующего на основании __________, с одной стороны, и ___________ , именуемый в дальнейшем Лизингополучатель, в лице ________, действующего на основании ___________, с другой стороны, заключили настоящий...",
+        "dispute_reason": "Существенное условие вынесено в приложение или график, который может быть не заполнен.",
+        "possible_consequence": "Если приложение отсутствует или неполно, стороны будут спорить о содержании обязательства.",
+        "confidence": 0.8
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Заявитель",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Заявитель'.",
+      "must_do": [
+        "Лизингополучатель обязан принимать объект непосредственно при поставке.",
+        "Лизингополучатель обязан возместить Плательщику возникающие в результате этого убытки.",
+        "Обязанность произвести платеж лизинговых взносов останется неизменной.",
+        "Лизингополучатель обязан уплатить пеню за просрочку, начиная с даты наступления просрочки в размере ____% за каждый день просрочки, а также возвратить объект лизинговой сделки по требованию Плательщика на указанное Плательщиком место.",
+        "Плательщик обязан компенсировать Лизингополучателю все убытки, связанные с задержкой выплат Поставщику по поставке, связанной с выполнением настоящего контракта, если порядок оплаты, предусмотренный в контракте с Поставщиком, соответствует приложению 3 настоящего контракта."
+      ],
+      "should_review": [
+        "В случае, если Лизингополучатель не выполняет этих условий, Плательщик вправе расторгнуть контракт.",
+        "Лизингополучатель вправе предоставлять третьим лицам право пользования объектом лизинговой сделки."
+      ],
+      "payment_terms": [
+        "Порядок оплаты объекта сделки предусматривается приложением 3, являющимся неотъемлемой частью как настоящего контракта, так и контрактом между Лизингополучателем и Поставщиком.",
+        "Все технические и правовые предпосылки приемки, монтажа и эксплуатации обеспечиваются Лизингополучателем за его собственный счет.",
+        "Все налоги, взимаемые в связи с настоящим контрактом в стране Лизингополучателя относятся на его счет.",
+        "Плательщик обязан компенсировать Лизингополучателю все убытки, связанные с задержкой выплат Поставщику по поставке, связанной с выполнением настоящего контракта, если порядок оплаты, предусмотренный в контракте с Поставщиком, соответствует приложению 3 настоящего контракта.",
+        "первый и четвертый хранятся у Плательщика, второй у Лизингополучателя, третий находится в учреждении банка по месту открытия расчетного счета Лизингополучателя."
+      ],
+      "deadlines": [
+        "Поставщиком данного объекта лизинговой сделки является фирма _________, именуемая в дальнейшем Поставщик, которая сдаст объект лизинговой сделки в сроки согласно приложению 2.",
+        "Срок действия контракта.",
+        "В случае просрочки Лизингополучателем платежа лизингового взноса более чем на ___ дней Плательщик имеет право расторгнуть контракт."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "617072b769d642ff23825d8dfe9cc49346b7d67440622969d76150f3b8569c95"
+    },
+    "contract_type": {
+      "type_id": "non_contract_legal_form",
+      "confidence": 0.43,
+      "ru_name": "Иной юридический документ",
+      "legal_framework": "Вне типовой contract taxonomy"
+    },
+    "asymmetry_signals": []
+  },
+  "result": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'lizingoviy-dogovor-bankovskiy. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Заявитель'. Определен тип договора: Иной юридический документ (уверенность 43%, правовая рамка: Вне типовой contract taxonomy). Ключевые обязательства по договору для роли 'Заявитель': Лизингополучатель обязан принимать объект непосредственно при поставке; Лизингополучатель обязан возместить Плательщику возникающие в результате этого убытки; Обязанность произвести платеж лизинговых взносов останется неизменной. Условия оплаты: Порядок оплаты объекта сделки предусматривается приложением 3, являющимся неотъемлемой частью как настоящего контракта, так и контрактом между Лизингополучателем и Поставщиком; Все технические и правовые предпосылки приемки, монтажа и эксплуатации обеспечиваются Лизингополучателем за его собственный счет; Все налоги, взимаемые в связи с настоящим контрактом в стране Лизингополучателя относятся на его счет. Сроки и дедлайны: Поставщиком данного объекта лизинговой сделки является фирма _________, именуемая в дальнейшем Поставщик, которая сдаст объект лизинговой сделки в сроки согласно приложению 2; Срок действия контракта; В случае просрочки Лизингополучателем платежа лизингового взноса более чем на ___ дней Плательщик имеет право расторгнуть контракт. Найдено спорных или расплывчатых пунктов: 2.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Заявитель'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Лизинговый договор (банковский) - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ЛИЗИНГОВЫЙ ДОГОВОР (банковский) г. _____________ \"___\"______20___г. ___________ банк, именуемый в дальнейшем Плательщик, в лице ___________, действующего на основании __________, с одной стороны, и ___________ , именуемый в дальнейшем Лизингополучатель, в лице ________, действующего на основании ___________, с другой стороны, заключили настоящий...",
+        "dispute_reason": "Одна из сторон получила дискреционное право без достаточных ограничителей.",
+        "possible_consequence": "Это может привести к одностороннему применению условия и спору о пределах такого права.",
+        "confidence": 0.76
+      },
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Лизинговый договор (банковский) - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ЛИЗИНГОВЫЙ ДОГОВОР (банковский) г. _____________ \"___\"______20___г. ___________ банк, именуемый в дальнейшем Плательщик, в лице ___________, действующего на основании __________, с одной стороны, и ___________ , именуемый в дальнейшем Лизингополучатель, в лице ________, действующего на основании ___________, с другой стороны, заключили настоящий...",
+        "dispute_reason": "Существенное условие вынесено в приложение или график, который может быть не заполнен.",
+        "possible_consequence": "Если приложение отсутствует или неполно, стороны будут спорить о содержании обязательства.",
+        "confidence": 0.8
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Заявитель",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Заявитель'.",
+      "must_do": [
+        "Лизингополучатель обязан принимать объект непосредственно при поставке.",
+        "Лизингополучатель обязан возместить Плательщику возникающие в результате этого убытки.",
+        "Обязанность произвести платеж лизинговых взносов останется неизменной.",
+        "Лизингополучатель обязан уплатить пеню за просрочку, начиная с даты наступления просрочки в размере ____% за каждый день просрочки, а также возвратить объект лизинговой сделки по требованию Плательщика на указанное Плательщиком место.",
+        "Плательщик обязан компенсировать Лизингополучателю все убытки, связанные с задержкой выплат Поставщику по поставке, связанной с выполнением настоящего контракта, если порядок оплаты, предусмотренный в контракте с Поставщиком, соответствует приложению 3 настоящего контракта."
+      ],
+      "should_review": [
+        "В случае, если Лизингополучатель не выполняет этих условий, Плательщик вправе расторгнуть контракт.",
+        "Лизингополучатель вправе предоставлять третьим лицам право пользования объектом лизинговой сделки."
+      ],
+      "payment_terms": [
+        "Порядок оплаты объекта сделки предусматривается приложением 3, являющимся неотъемлемой частью как настоящего контракта, так и контрактом между Лизингополучателем и Поставщиком.",
+        "Все технические и правовые предпосылки приемки, монтажа и эксплуатации обеспечиваются Лизингополучателем за его собственный счет.",
+        "Все налоги, взимаемые в связи с настоящим контрактом в стране Лизингополучателя относятся на его счет.",
+        "Плательщик обязан компенсировать Лизингополучателю все убытки, связанные с задержкой выплат Поставщику по поставке, связанной с выполнением настоящего контракта, если порядок оплаты, предусмотренный в контракте с Поставщиком, соответствует приложению 3 настоящего контракта.",
+        "первый и четвертый хранятся у Плательщика, второй у Лизингополучателя, третий находится в учреждении банка по месту открытия расчетного счета Лизингополучателя."
+      ],
+      "deadlines": [
+        "Поставщиком данного объекта лизинговой сделки является фирма _________, именуемая в дальнейшем Поставщик, которая сдаст объект лизинговой сделки в сроки согласно приложению 2.",
+        "Срок действия контракта.",
+        "В случае просрочки Лизингополучателем платежа лизингового взноса более чем на ___ дней Плательщик имеет право расторгнуть контракт."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "617072b769d642ff23825d8dfe9cc49346b7d67440622969d76150f3b8569c95"
+    },
+    "contract_type": {
+      "type_id": "non_contract_legal_form",
+      "confidence": 0.43,
+      "ru_name": "Иной юридический документ",
+      "legal_framework": "Вне типовой contract taxonomy"
+    },
+    "asymmetry_signals": []
+  },
+  "finished_at": "2026-04-28T16:12:39.050969+00:00",
+  "duration_ms": 104.16
+}

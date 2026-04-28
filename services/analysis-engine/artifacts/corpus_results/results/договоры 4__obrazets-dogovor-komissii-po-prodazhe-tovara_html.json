@@ -1,0 +1,201 @@
+{
+  "case_id": "договоры 4__obrazets-dogovor-komissii-po-prodazhe-tovara_html",
+  "relative_path": "договоры 4/obrazets-dogovor-komissii-po-prodazhe-tovara.html",
+  "document_path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\договоры 4\\obrazets-dogovor-komissii-po-prodazhe-tovara.html",
+  "document_name": "obrazets-dogovor-komissii-po-prodazhe-tovara.html",
+  "role": "Подрядчик",
+  "counterparty_role": "Заказчик",
+  "language": "ru",
+  "mime_type": "text/html",
+  "tags": [
+    "ad_hoc"
+  ],
+  "source_group": "договоры 4",
+  "expected": {},
+  "started_at": "2026-04-28T16:18:51.531315+00:00",
+  "status": "completed",
+  "request": {
+    "document_name": "obrazets-dogovor-komissii-po-prodazhe-tovara.html",
+    "role_context": {
+      "role": "Подрядчик",
+      "counterparty_role": "Заказчик"
+    },
+    "document_text": null,
+    "document_base64": "PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMDEgVHJhbnNpdGlvbmFsLy9FTiI+DQo8aHRtbD4NCjxoZWFkPg0KPGJhc2UgaHJlZj0iaHR0cHM6Ly9kb2dvdm9yLXVyaXN0LnJ1LyI+DQo8dGl0bGU+0J7QsdGA0LDQt9C10YYuINCU0L7Qs9C+0LLQvtGAINC60L7QvNC40YHRgdC40Lgg0L/QviDQv9GA0L7QtNCw0LbQtSDRgtC+0LLQsNGA0LAgLSDQstC10YDRgdC40Y8g0LTQu9GPINC/0LXRh9Cw0YLQuC4gMjAyNi4g0J7QsdGA0LDQt9GG0Ysg0LTQvtCz0L7QstC+0YDQvtCyLCDRgtC40L/QvtCy0YvQtSDQtNC+0LPQvtCy0L7RgNCwLCDQsNC60YLRg9Cw0LvRjNC90YvQtSDQtNC+0LrRg9C80LXQvdGC0YssINGO0YDQuNC00LjRh9C10YHQutC40Lwg0Lgg0YTQuNC30LjRh9C10YHQutC40Lwg0LvQuNGG0LDQvDwvdGl0bGU+DQo8bWV0YSBjb250ZW50PSIiIG5hbWU9ImtleXdvcmRzIj4NCjxtZXRhIGNvbnRlbnQ9IiIgbmFtZT0iZGVzY3JpcHRpb24iPg0KPG1ldGEgbmFtZT0icm9ib3RzIiBjb250ZW50PSJub2luZGV4LG5vZm9sbG93Ij4NCjxtZXRhIGh0dHAtZXF1aXY9IkNvbnRlbnQtVHlwZSIgY29udGVudD0idGV4dC9odG1sOyBjaGFyc2V0PXV0Zi04Ij4NCjxsaW5rIHJlbD0ic3R5bGVzaGVldCIgaHJlZj0iL2ltYWdlcy9zdHlsZS5jc3MiIHR5cGU9InRleHQvY3NzIj4NCjwvaGVhZD4NCjxib2R5Pg0KPGRpdiBjbGFzcz0iZG9jdW1lbnRUZXh0Ij4NCjxwcmU+ICAgICAgICAgICAgICAgICAgICDQlNCe0JPQntCS0J7QoCDQmtCe0JzQmNCh0KHQmNCYINCf0J4g0J/QoNCe0JTQkNCW0JUg0KLQntCS0JDQoNCQDQoNCg0KDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICDQn9Cg0JjQnNCV0KDQndCr0Jkg0JTQntCT0J7QktCe0KANCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICDQutC+0LzQuNGB0YHQuNC4DQoNCiAgICAgICAgINCzLiBfX19fX19fX19fX19fX19fICAgICAgICAgICAgICAgICAgICAgICAiX19fIl9fX19fX19fX18yMF9fX9CzLg0KDQogICAgICAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLCDQuNC80LXQvdGD0LXQvF9fXw0KICAgICAgICAgICAgICAgICAgICAgICjQvdCw0LjQvNC10L3QvtCy0LDQvdC40LUg0L/RgNC10LTQv9GA0LjRj9GC0LjRjykNCg0KICAgINCyICAg0LTQsNC70YzQvdC10LnRiNC10LwgICAgItCa0L7QvNC40YHRgdC40L7QvdC10YAiLCAgINCyICAg0LvQuNGG0LUgX19fX19fX19fX19fX19fX19fX19fX19fLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAo0LTQvtC70LbQvdC+0YHRgtGMLCDRhC4g0LguINC+LikNCg0KICAgINC00LXQudGB0YLQstGD0Y7RidC10LPQviDQvdCwINC+0YHQvdC+0LLQsNC90LjQuCBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLCDRgSDQvtC00L3QvtC5DQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgKNGD0YHRgtCw0LLQsCwg0L/QvtC70L7QttC10L3QuNGPKQ0KDQogICAg0YHRgtC+0YDQvtC90YssINC4IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXywNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICjQvdCw0LjQvNC10L3QvtCy0LDQvdC40LUg0L/RgNC10LTQv9GA0LjRj9GC0LjRjykNCg0KICAgINC40LzQtdC90YPQtdC8X19fINCyICDQtNCw0LvRjNC90LXQudGI0LXQvCAgItCa0L7QvNC40YLQtdC90YIiLCDQsiDQu9C40YbQtSBfX19fX19fX19fX19fX19fX19fX19fXywNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgKNC00L7Qu9C20L3QvtGB0YLRjCwg0YQuINC4LiDQvi4pDQogICAg0LTQtdC50YHRgtCy0YPRjtGJ0LXQs9C+INC90LAgICDQvtGB0L3QvtCy0LDQvdC40LggX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXywNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgKNGD0YHRgtCw0LLQsCwg0L/QvtC70L7QttC10L3QuNGPKQ0KDQogICAg0YEgINC00YDRg9Cz0L7QuSAg0YHRgtC+0YDQvtC90YssICAg0LjQvNC10L3Rg9C10LzRi9C1ICDQsiAg0LTQsNC70YzQvdC10LnRiNC10LwgICLQodGC0L7RgNC+0L3RiyIgICDQt9Cw0LrQu9GO0YfQuNC70LgNCiAgICDQvdCw0YHRgtC+0Y/RidC40Lkg0LTQvtCz0L7QstC+0YAg0L4g0L3QuNC20LXRgdC70LXQtNGD0Y7RidC10Lw6DQoNCiAgICAgICAgICAgICAgICAgICDQn9GA0LXQtNC80LXRgiDQtNC+0LPQvtCy0L7RgNCwINC4INC00YDRg9Cz0LjQtSDQvtCx0YnQuNC1INGD0YHQu9C+0LLQuNGPDQoNCiAgICAgICAgIDEuINCh0L7Qs9C70LDRgdC90L4gICDQvdCw0YHRgtC+0Y/RidC10LzRgyAgINC00L7Qs9C+0LLQvtGA0YMgICDQmtC+0LzQuNGB0YHQuNC+0L3QtdGAICDQvtCx0Y/Qt9GD0LXRgtGB0Y8gINC/0L4NCiAgICDQv9C+0YDRg9GH0LXQvdC40Y4g0JrQvtC80LjRgtC10L3RgtCwINC30LAgINCy0L7Qt9C90LDQs9GA0LDQttC00LXQvdC40LUgINGB0L7QstC10YDRiNC40YLRjCAg0LTQu9GPICDQmtC+0LzQuNGC0LXQvdGC0LAgINC+0YINCiAgICDRgdCy0L7QtdCz0L4g0LjQvNC10L3QuCDQvtC00L3RgyDQuNC70Lgg0L3QtdGB0LrQvtC70YzQutC+INGB0LTQtdC70L7QuiDQv9C+INC/0YDQvtC00LDQttC1IF9fX19fX19fX19fX19fX19fXywNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICjQvdCw0LjQvNC10L3QvtCy0LDQvdC40LUg0LjQt9C00LXQu9C40LkpDQoNCiAgICDQuNC80LXQvdGD0LXQvF9fXyDQsiDQtNCw0LvRjNC90LXQudGI0LXQvCAi0JjQt9C00LXQu9C40Y8iLCAg0L/QviDRhtC10L3QtSwgINC90LUgINC90LjQttC1ICDRgdC+0LPQu9Cw0YHQvtCy0LDQvdC90L7QuQ0KICAgINCh0YLQvtGA0L7QvdCw0LzQuCAg0LIgINCf0YDQuNC70L7QttC10L3QuNC4ICBOby4gIDEgINC6ICDQvdCw0YHRgtC+0Y/RidC10LzRgyAg0LTQvtCz0L7QstC+0YDRgyAg0LggINCyINGB0YDQvtC6LA0KICAgINC+0L/RgNC10LTQtdC70LXQvdC90YvQuSAgICDQmtC+0LzQuNGB0YHQuNC+0L3QtdGA0L7QvCAgICDQuCAgICDQmtC+0LzQuNGC0LXQvdGC0L7QvCAgICDQv9GA0LggICAg0LfQsNC60LvRjtGH0LXQvdC40LgNCiAgICDRgdC+0L7RgtCy0LXRgtGB0YLQstGD0Y7RidC10LPQviDQtNC+0LPQvtCy0L7RgNCwINGBINCf0L7QutGD0L/QsNGC0LXQu9C10LwuDQogICAgICAgICAyLiDQmtC+0LzQuNGB0YHQuNC+0L3QtdGAICDQvtCx0Y/Qt9GD0LXRgtGB0Y8g0LfQsNCy0LXRgNGI0LjRgtGMINGA0LDQsdC+0YLRiyDQv9C+INC/0YDQvtC00LDQttC1ICDQuNC30LTQtdC70LjQuSDQsg0KICAgINGE0L7RgNC80LUg0L/QvtC00L/QuNGB0LDQvdC40Y8g0YHQvtC+0YLQstC10YLRgdGC0LLRg9GO0YnQtdCz0L4g0LTQvtCz0L7QstC+0YDQsCDRgSDQn9C+0LrRg9C/0LDRgtC10LvQtdC8Lg0KICAgICAgICAgMi4g0JfQsCAg0LLRi9C/0L7Qu9C90LXQvdC40LUgINGD0YHQu9GD0LMgINC/0L4gINC/0YDQvtC00LDQttC1INCY0LfQtNC10LvQuNC5INCa0L7QvNC40YLQtdC90YIg0L7QsdGP0LfRg9C10YLRgdGPDQogICAg0YPQv9C70LDRgtC40YLRjCDQmtC+0LzQuNGB0YHQuNC+0L3QtdGA0YMg0LrQvtC80LjRgdGB0LjQvtC90L3QvtC1INCy0L7Qt9C90LDQs9GA0LDQttC00LXQvdC40LUg0LIg0YDQsNC30LzQtdGA0LUgX19fX19fX19fDQogICAg0L/RgNC+0YbQtdC90YLQvtCyINC+0YIgINGG0LXQvdGLLCAg0YHQvtCz0LvQsNGB0L7QstCw0L3QvdC+0LkgINCh0YLQvtGA0L7QvdCw0LzQuCAg0LIgINCf0YDQuNC70L7QttC10L3QuNC4IE5vLiAgMSDQug0KICAgINC90LDRgdGC0L7Rj9GJ0LXQvNGDINC00L7Qs9C+0LLQvtGA0YMuDQogICAgICAgICA0LiDQkiDRgdC70YPRh9Cw0LUsINC10YHQu9C4INCa0L7QvNC40YHRgdC40L7QvdC10YAg0L7QsdC10YHQv9C10YfQuNGCINC/0YDQvtC00LDQttGDINCY0LfQtNC10LvQuNC5INC90LAg0LHQvtC70LXQtQ0KICAgINCy0YvQs9C+0LTQvdGL0YUg0LTQu9GPICDQmtC+0LzQuNGC0LXQvdGC0LAgINGD0YHQu9C+0LLQuNGP0YUsICDRh9C10LwgICDRgdC+0LPQu9Cw0YHQvtCy0LDQvdC+ICAg0KHRgtC+0YDQvtC90LDQvNC4ICAg0LINCiAgICDQn9GA0LjQu9C+0LbQtdC90LjQuCBOby4gMSwg0JrQvtC80LjRgtC10L3RgiAg0LIg0LrQsNGH0LXRgdGC0LLQtSDQtNC+0L/QvtC70L3QuNGC0LXQu9GM0L3QvtCz0L4g0LLQvtC30L3QsNCz0YDQsNC20LTQtdC90LjRjw0KICAgINGD0L/Qu9Cw0YfQuNCy0LDQtdGCINCa0L7QvNC40YHRgdC40L7QvdC10YDRgyBfX19fX19fX19fINC/0YDQvtGG0LXQvdGC0L7QsiDQvtGCINC/0L7Qu9GD0YfQtdC90L3QvtC5INCy0YvQs9C+0LTRiy4NCiAgICAgICAgIDUuINCf0YDQuCAgINC30LDQutC70Y7Rh9C10L3QuNC4ICAg0YHQvtC+0YLQstC10YLRgdGC0LLRg9GO0YnQtdCz0L4gINC00L7Qs9C+0LLQvtGA0LAgINGBICDQn9C+0LrRg9C/0LDRgtC10LvQtdC8DQogICAg0JrQvtC80LjRgdGB0LjQvtC90LXRgCDQvtCx0Y/Qt9GD0LXRgtGB0Y8g0LTQtdC50YHRgtCy0L7QstCw0YLRjCDQsiDQuNC90YLQtdGA0LXRgdCw0YUg0JrQvtC80LjRgtC10L3RgtCwLg0KICAgICAgICAgNi4g0J/RgNC+0LXQutGCICDQtNC+0LPQvtCy0L7RgNCwINGBINCf0L7QutGD0L/QsNGC0LXQu9C10LwsICDQv9GA0LXQtNCy0LDRgNC40YLQtdC70YzQvdC+INGB0L7Qs9C70LDRgdC+0LLQsNC90L3Ri9C5DQogICAg0LzQtdC20LTRgyDQmtC+0LzQuNGB0YHQuNC+0L3QtdGA0L7QvCDQuCDQn9C+0LrRg9C/0LDRgtC10LvQtdC8LCAg0L/QvtC00LvQtdC20LjRgiAg0LLQuNC30LjRgNC+0LLQsNC90LjRjiAg0JrQvtC80LjRgtC10L3RgtC+0LwNCiAgICDQv9GA0Lgg0LXQs9C+INGB0L7Qs9C70LDRgdC40Lgg0YEg0YPRgdC70L7QstC40Y/QvNC4INC/0YDQvtC10LrRgtCwINC00L7Qs9C+0LLQvtGA0LAuDQogICAgICAgICA3LiDQo9C/0L7Qu9C90L7QvNC+0YfQtdC90L3Ri9C8ICAgICDQv9GA0LXQtNGB0YLQsNCy0LjRgtC10LvQtdC8ICAgICDQmtC+0LzQuNGC0LXQvdGC0LAsICAgICDQutC+0YLQvtGA0L7QvNGDDQogICAg0L/RgNC10LTQvtGB0YLQsNCy0LvRj9C10YLRgdGPINC/0YDQsNCy0L4gICDQstC40LfQuNGA0L7QstCw0L3QuNGPICAg0LfQsNC60LvRjtGH0LDQtdC80L7Qs9C+ICDQsiAg0LXQs9C+ICDQuNC90YLQtdGA0LXRgdCw0YUNCiAgICDQtNC+0LPQvtCy0L7RgNCwLCDRj9Cy0LvRj9C10YLRgdGPIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLg0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICjQtNC+0LvQttC90L7RgdGC0YwsINGELiDQuC4g0L4uKQ0KDQogICAgICAgICA4LiDQn9GA0LjQvdGP0YLQvtC1ICDQv9C+0YDRg9GH0LXQvdC40LUgINCa0L7QvNC40YHRgdC40L7QvdC10YAgICDQvtCx0Y/Qt9GD0LXRgtGB0Y8gICDQuNGB0L/QvtC70L3QuNGC0YwgICDQvdCwDQogICAg0YPRgdC70L7QstC40Y/RhSwg0L3QsNC40LHQvtC70LXQtSDQstGL0LPQvtC00L3Ri9GFINC00LvRjyDQmtC+0LzQuNGC0LXQvdGC0LAuDQoNCiAgICAgICAgICAgICAgICAgICAgICDQn9GA0LDQstCwINC4INC+0LHRj9C30LDQvdC90L7RgdGC0Lgg0JrQvtC80LjRgdGB0LjQvtC90LXRgNCwDQoNCiAgICAgICAgIDkuINCa0L7QvNC40YHRgdC40L7QvdC10YAgINC+0LHRj9C30YPQtdGC0YHRjzoNCiAgICAgICAgINCwKSDQuNC30YPRh9C40YLRjCAgINGA0YvQvdC+0LogICDRgSAg0YbQtdC70YzRjiAg0LjQt9GL0YHQutCw0L3QuNGPICDQn9C+0LrRg9C/0LDRgtC10LvRjywgINC20LXQu9Cw0Y7RidC10LPQvg0KICAgINC/0YDQuNC+0LHRgNC10YHRgtC4INCY0LfQtNC10LvQuNGPINC90LAg0YPRgdC70L7QstC40Y/RhSwg0L7Qv9GA0LXQtNC10LvQtdC90L3Ri9GFINCyINC90LDRgdGC0L7Rj9GJ0LXQvCDQtNC+0LPQvtCy0L7RgNC1Ow0KICAgICAgICAg0LEpINGB0L7QvtCx0YnQsNGC0YwgINCa0L7QvNC40YLQtdC90YLRgyAg0L/QviAg0LXQs9C+ICDRgtGA0LXQsdC+0LLQsNC90LjRjiAg0LLRgdC1INGB0LLQtdC00LXQvdC40Y8g0L4g0YXQvtC00LUNCiAgICDQuNGB0L/QvtC70L3QtdC90LjRjyDQvdCw0YHRgtC+0Y/RidC10LPQviDQtNC+0LPQvtCy0L7RgNCwOw0KICAgICAgICAg0LIpINCyICDRgdC70YPRh9Cw0LUg0L3QtdC+0LHRhdC+0LTQuNC80L7RgdGC0Lgg0L/RgNC40LLQu9C10LrQsNGC0Ywg0L/RgNC10LTRgdGC0LDQstC40YLQtdC70LXQuSDQmtC+0LzQuNGC0LXQvdGC0LAg0LoNCiAgICDRg9GH0LDRgdGC0LjRjiDQsiDQv9C10YDQtdCz0L7QstC+0YDQsNGFINGBINCf0L7QutGD0L/QsNGC0LXQu9C10Lw7DQogICAgICAgICDQsykg0LfQsNC60LvRjtGH0LjRgtGMICAg0L7RgiAgINGB0LLQvtC10LPQviAgINC40LzQtdC90LggICDQtNC+0LPQvtCy0L7RgCAg0YEgINCf0L7QutGD0L/QsNGC0LXQu9C10LwgINC90LANCiAgICDQv9GA0LjQvtCx0YDQtdGC0LXQvdC40LUg0LjQvCDQmNC30LTQtdC70LjQuTsNCiAgICAgICAgINC0KSDQsiDRgdC70YPRh9Cw0LUg0L3QsNGA0YPRiNC10L3QuNGPINCf0L7QutGD0L/QsNGC0LXQu9C10LwgINC00L7Qs9C+0LLQvtGA0LAsICDQt9Cw0LrQu9GO0YfQtdC90L3QvtCz0L4g0YEg0L3QuNC8DQogICAg0JrQvtC80LjRgdGB0LjQvtC90LXRgNC+0LwsINCx0LXQtyDQv9GA0L7QvNC10LTQu9C10L3QuNGPINGD0LLQtdC00L7QvNC40YLRjCDQvtCxINGN0YLQvtC8INCa0L7QvNC40YLQtdC90YLQsCwgINCwICDRgtCw0LrQttC1DQogICAg0YHQvtCx0YDQsNGC0Ywg0Lgg0L7QsdC10YHQv9C10YfQuNGC0Ywg0L3QtdC+0LHRhdC+0LTQuNC80YvQtSDQtNC+0LrQsNC30LDRgtC10LvRjNGB0YLQstCwOw0KICAgICAgICAg0LUpINC90LUgINC/0L7Qt9C00L3QtdC1ICBfX19fX19fX19fX18gINC00L3QtdC5ICDRgSAgINC80L7QvNC10L3RgtCwICAg0L/QvtC70YPRh9C10L3QuNGPICAg0L7Rgg0KICAgINCf0L7QutGD0L/QsNGC0LXQu9GPINGB0L7QvtGC0LLQtdGC0YHRgtCy0YPRjtGJ0LjRhSAg0LTQtdC90LXQttC90YvRhSDRgdGD0LzQvCDQsiDQutCw0YfQtdGB0YLQstC1INC/0LvQsNGC0Ysg0LfQsCDQmNC30LTQtdC70LjRjw0KICAgINC/0LXRgNC10YfQuNGB0LvQuNGC0Ywg0JrQvtC80LjRgtC10L3RgtGDINC/0YDQuNGH0LjRgtCw0Y7RidGD0Y7RgdGPINC10LzRgyDRh9Cw0YHRgtGMINGN0YLQuNGFINGB0YPQvNC8ICAo0LfQsCAg0LLRi9GH0LXRgtC+0LwNCiAgICDRgdGD0LzQvCwg0L/RgNC40YfQuNGC0LDRjtGJ0LjRhdGB0Y8g0JrQvtC80LjRgdGB0LjQvtC90LXRgNGDKTsNCiAgICAgICAgINC2KSDQtdGB0LvQuCDQv9GA0LggINC/0YDQuNC10LzQtSAg0JrQvtC80LjRgdGB0LjQvtC90LXRgNC+0LwgINC40LzRg9GJ0LXRgdGC0LLQsCwgINC/0LXRgNC10LTQsNC90L3QvtCz0L4gINC10LzRgw0KICAgINCa0L7QvNC40YLQtdC90YLQvtC8INGB0L7Qs9C70LDRgdC90L4gINC90LDRgdGC0L7Rj9GJ0LXQvNGDICDQtNC+0LPQvtCy0L7RgNGDLCAg0LIg0Y3RgtC+0Lwg0LjQvNGD0YnQtdGB0YLQstC1INC+0LrQsNC20YPRgtGB0Y8NCiAgICDQv9C+0LLRgNC10LbQtNC10L3QuNGPINC40LvQuCDQvdC10LTQvtGB0YLQsNGC0LrQuCwgINC60L7RgtC+0YDRi9C1INC80L7Qs9GD0YIg0LHRi9GC0Ywg0LfQsNC80LXRh9C10L3RiyDQv9GA0Lgg0L3QsNGA0YPQttC90L7QvA0KICAgINC+0YHQvNC+0YLRgNC1LCDQsCAg0YLQsNC60LbQtSAg0LIgINGB0LvRg9GH0LDQtSAg0L/RgNC40YfQuNC90LXQvdC40Y8gINC60LXQvC3Qu9C40LHQviAg0YPRidC10YDQsdCwICDQuNC80YPRidC10YHRgtCy0YMNCiAgICDQmtC+0LzQuNGC0LXQvdGC0LAsINC90LDRhdC+0LTRj9GJ0LXQvNGD0YHRjyDRgyDQmtC+0LzQuNGB0YHQuNC+0L3QtdGA0LAsICDQv9GA0LjQvdGP0YLRjCDQvNC10YDRiyDQuiAg0L7RhdGA0LDQvdC1ICDQv9GA0LDQsg0KICAgINCa0L7QvNC40YLQtdC90YLQsCwg0YHQvtCx0YDQsNGC0YwgINC90LXQvtCx0YXQvtC00LjQvNGL0LUgINC00L7QutCw0LfQsNGC0LXQu9GM0YHRgtCy0LAgINC4INC40LfQstC10YHRgtC40YLRjCDQvtCx0L4g0LLRgdC10LwNCiAgICDQmtC+0LzQuNGC0LXQvdGC0LA7DQogICAgICAgICDQtykg0L/RgNC4ICAg0LjRgdC/0L7Qu9C90LXQvdC40LggINC/0L7RgNGD0YfQtdC90LjRjyAg0L/RgNC10LTRgdGC0LDQstC40YLRjCAg0JrQvtC80LjRgtC10L3RgtGDICDQvtGC0YfQtdGCICDRgQ0KICAgINC/0YDQuNC70L7QttC10L3QuNC10Lwg0LLRgdC10YUg0L7Qv9GA0LDQstC00LDRgtC10LvRjNC90YvRhSAg0LTQvtC60YPQvNC10L3RgtC+0LIgINC4ICAg0L/QtdGA0LXQtNCw0YLRjCAgINC10LzRgyAgINCy0YHQtQ0KICAgINC/0L7Qu9GD0YfQtdC90L3QvtC1INC/0L4gINC40YHQv9C+0LvQvdC10L3QvdC+0LzRgyDQv9C+0YDRg9GH0LXQvdC40Y4sICDQsCDRgtCw0LrQttC1INC/0LXRgNC10LTQsNGC0Ywg0JrQvtC80LjRgtC10L3RgtGDINC/0L4NCiAgICDQtdCz0L4g0YLRgNC10LHQvtCy0LDQvdC40Y4gINCy0YHQtSAg0L/RgNCw0LLQsCAg0LIgINC+0YLQvdC+0YjQtdC90LjQuCAg0J/QvtC60YPQv9Cw0YLQtdC70Y8sICDQstGL0YLQtdC60LDRjtGJ0LjQtSAg0LjQtw0KICAgINC30LDQutC70Y7Rh9C10L3QvdC+0LPQviDRgSDQvdC40Lwg0LTQvtCz0L7QstC+0YDQsCwg0YPQstC10LTQvtC80LjQsiDQviDQv9C10YDQtdC00LDRh9C1INCf0L7QutGD0L/QsNGC0LXQu9GPLg0KICAgICAgICAgMTAuINCa0L7QvNC40YHRgdC40L7QvdC10YAg0LLQv9GA0LDQstC1INGD0LTQtdGA0LbQsNGC0YwgINC40LcgINC/0L7RgdGC0YPQv9C40LLRiNC40YUgINC+0YIgINCf0L7QutGD0L/QsNGC0LXQu9GPDQogICAg0LTQtdC90LXQttC90YvRhSDRgdGD0LzQvCAg0L/RgNC40YfQuNGC0LDRjtGJ0LXQtdGB0Y8g0LXQvNGDINCyINGB0L7QvtGC0LLQtdGC0YHRgtCy0LjQuCDRgSDQvdCw0YHRgtC+0Y/RidC40Lwg0LTQvtCz0L7QstC+0YDQvtC8DQogICAg0LLQvtC30L3QsNCz0YDQsNC20LTQtdC90LjQtS4NCg0KICAgICAgICAgICAgICAgICAgICAgICAgICAgINCe0LHRj9C30LDQvdC90L7RgdGC0Lgg0JrQvtC80LjRgtC10L3RgtCwDQoNCiAgICAgICAgIDExLiDQmtC+0LzQuNGC0LXQvdGCINC+0LHRj9C30YPQtdGC0YHRjzoNCiAgICAgICAgINCwKSDQvdC1INC/0L7Qt9C00L3QtdC1IF9fX19fX19fX18g0LTQvdC10Lkg0YEgINC80L7QvNC10L3RgtCwICDQt9Cw0LrQu9GO0YfQtdC90LjRjyAg0L3QsNGB0YLQvtGP0YnQtdCz0L4NCiAgICDQtNC+0LPQvtCy0L7RgNCwINC/0L7RgdGC0LDQstC40YLRjCAgICAgINCa0L7QvNC40YHRgdC40L7QvdC10YDRgyAgICAg0JjQt9C00LXQu9C40Y8gICAgINC90LAgICAgINGD0YHQu9C+0LLQuNGP0YU6DQogICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fOw0KICAgICAgICAg0LEpINC+0LHQtdGB0L/QtdGH0LjRgtGMICDQmtC+0LzQuNGB0YHQuNC+0L3QtdGA0LAgINGC0LXRhdC90LjRh9C10YHQutC40LzQuCAg0LggINC40L3Ri9C80Lgg0LzQsNGC0LXRgNC40LDQu9Cw0LzQuCwNCiAgICDQvdC10L7QsdGF0L7QtNC40LzRi9C80Lgg0LTQu9GPINC30LDQutC70Y7Rh9C10L3QuNGPINC00L7Qs9C+0LLQvtGA0LAg0YEg0J/QvtC60YPQv9Cw0YLQtdC70LXQvDsNCiAgICAgICAgINCyKSDQt9Cw0LLQuNC30LjRgNC+0LLQsNGC0YwgICDQv9C+0LTQv9C40YHRi9Cy0LDQtdC80YvQuSAgINCa0L7QvNC40YHRgdC40L7QvdC10YDQvtC8ICAg0LggINCf0L7QutGD0L/QsNGC0LXQu9C10LwNCiAgICDQtNC+0LPQvtCy0L7RgDsNCiAgICAgICAgINCzKSDQsiAgINGB0LvRg9GH0LDQtSAgINC90LXQvtCx0YXQvtC00LjQvNC+0YHRgtC4ICAg0L7QsdC10YHQv9C10YfQuNGC0YwgICDQv9GA0LjRgdGD0YLRgdGC0LLQuNC1ICAg0YHQstC+0LjRhQ0KICAgINC/0L7Qu9C90L7QvNC+0YfQvdGL0YUg0L/RgNC10LTRgdGC0LDQstC40YLQtdC70LXQuSAg0L3QsCAg0L/QtdGA0LXQs9C+0LLQvtGA0LDRhSAg0LzQtdC20LTRgyAg0JrQvtC80LjRgdGB0LjQvtC90LXRgNC+0LwgICDQuA0KICAgINCf0L7QutGD0L/QsNGC0LXQu9C10Lw7DQogICAgICAgICDQtCkg0LLQvtC30LzQtdGB0YLQuNGC0Ywg0JrQvtC80LjRgdGB0LjQvtC90LXRgNGDINC/0L7QvdC10YHQtdC90L3Ri9C1INC40Lwg0YDQsNGB0YXQvtC00YssICDQutC+0YLQvtGA0YvQtSAg0LHRi9C70LgNCiAgICDQvdC10L7QsdGF0L7QtNC40LzRiyDQtNC70Y8g0LjRgdC/0L7Qu9C90LXQvdC40Y8g0L/QvtGA0YPRh9C10L3QuNGPINCa0L7QvNC40YLQtdC90YLQsC4NCg0KICAgICAgICAgICAgICAgICAgICAgICAgICAg0J7RgtCy0LXRgtGB0YLQstC10L3QvdC+0YHRgtGMINGB0YLQvtGA0L7QvQ0KDQogICAgICAgICAxMi4g0JfQsCAgICDQvdC10LjRgdC/0L7Qu9C90LXQvdC40LUgICDQuNC70LggICDQvdC10L3QsNC00LvQtdC20LDRidC10LUgICDQuNGB0L/QvtC70L3QtdC90LjQtSAgINGB0LLQvtC40YUNCiAgICDQvtCx0Y/Qt9Cw0YLQtdC70YzRgdGC0LIg0L/QviDQvdCw0YHRgtC+0Y/RidC10LzRgyDQtNC+0LPQvtCy0L7RgNGDINCh0YLQvtGA0L7QvdGLINC90LXRgdGD0YIgINC+0YLQstC10YLRgdGC0LLQtdC90L3QvtGB0YLRjCAg0LINCiAgICDRgdC+0L7RgtCy0LXRgtGB0YLQstC40Lgg0YEg0LTQtdC50YHRgtCy0YPRjtGJ0LjQvCDQt9Cw0LrQvtC90L7QtNCw0YLQtdC70YzRgdGC0LLQvtC8Lg0KDQogICAgICAgICAgICAgICAgICAgICAgICAgINCX0LDQutC70Y7Rh9C40YLQtdC70YzQvdGL0LUg0L/QvtC70L7QttC10L3QuNGPDQoNCiAgICAgICAgIDEzLiDQndCw0YHRgtC+0Y/RidC40Lkg0LTQvtCz0L7QstC+0YAg0LLRgdGC0YPQv9Cw0LXRgiDQsiDRgdC40LvRgyDRgSDQvNC+0LzQtdC90YLQsCDQv9C+0LTQv9C40YHQsNC90LjRjy4NCiAgICAgICAgIDE0LiDQndCw0YHRgtC+0Y/RidC40LkgINC00L7Qs9C+0LLQvtGAICAg0LHRg9C00LXRgiAgINGB0YfQuNGC0LDRgtGM0YHRjyAgINC30LDQutC+0L3Rh9C10L3QvdGL0LwgICDQv9C+0YHQu9C1DQogICAg0LLRi9C/0L7Qu9C90LXQvdC40Y8g0LLQt9Cw0LjQvNC90YvRhSDQvtCx0Y/Qt9Cw0YLQtdC70YzRgdGC0LIg0Lgg0YPRgNC10LPRg9C70LjRgNC+0LLQsNC90LjRjyDQstGB0LXRhSDRgNCw0YHRh9C10YLQvtCyINC80LXQttC00YMNCiAgICDRgdGC0L7RgNC+0L3QsNC80LguDQogICAgICAgICAxNS4g0J/RgNC40LvQvtC20LXQvdC40Y8g0Log0L3QsNGB0YLQvtGP0YnQtdC80YMg0LTQvtCz0L7QstC+0YDRgyDRj9Cy0LvRj9GO0YLRgdGPINC10LPQviAg0L3QtdC+0YLRitC10LzQu9C10LzRi9C80LgNCiAgICDRh9Cw0YHRgtGP0LzQuC4NCiAgICAgICAgIDE2LiDQn9C+INCy0LfQsNC40LzQvdC+0LzRgyDRgdC+0LPQu9Cw0YjQtdC90LjRjiDQodGC0L7RgNC+0L3RiyAg0LzQvtCz0YPRgiAg0LLQvdC10YHRgtC4ICDQsiAg0L3QsNGB0YLQvtGP0YnQuNC5DQogICAg0LTQvtCz0L7QstC+0YAg0L3QtdC+0LHRhdC+0LTQuNC80YvQtSDQtNC+0L/QvtC70L3QtdC90LjRjyAg0LvQuNCx0L4gINC40LfQvNC10L3QtdC90LjRjywgINC60L7RgtC+0YDRi9C1INCx0YPQtNGD0YIg0LjQvNC10YLRjA0KICAgINGB0LjQu9GDLCDQtdGB0LvQuCDQv9C+0LTQv9C40YHQsNC90Ysg0YPQv9C+0LvQvdC+0LzQvtGH0LXQvdC90YvQvNC4INC/0YDQtdC00YHRgtCw0LLQuNGC0LXQu9GP0LzQuCDQodGC0L7RgNC+0L0uDQogICAgICAgICAxNy4g0JIgINGB0LvRg9GH0LDQtSDQstC+0LfQvdC40LrQvdC+0LLQtdC90LjRjyDRgdC/0L7RgNC+0LIg0L/QviDQstC+0L/RgNC+0YHQsNC8LCAg0L/RgNC10LTRg9GB0LzQvtGC0YDQtdC90L3Ri9C8DQogICAg0L3QsNGB0YLQvtGP0YnQuNC8INC00L7Qs9C+0LLQvtGA0L7QvCDQuNC70Lgg0LIg0YHQstGP0LfQuCDRgSDQvdC40LwsINCh0YLQvtGA0L7QvdGLINC/0YDQuNC80YPRgiDQstGB0LUg0LzQtdGA0YsgINC6ICDQuNGFDQogICAg0YDQsNC30YDQtdGI0LXQvdC40Y4g0L/Rg9GC0LXQvCDQv9C10YDQtdCz0L7QstC+0YDQvtCyLg0KICAgICAgICAgMTguINCSINGB0LvRg9GH0LDQtSDQvdC10LLQvtC30LzQvtC20L3QvtGB0YLQuCAg0YDQsNC30YDQtdGI0LXQvdC40Y8gINGD0LrQsNC30LDQvdC90YvRhSAg0YHQv9C+0YDQvtCyICDQv9GD0YLQtdC8DQogICAg0L/QtdGA0LXQs9C+0LLQvtGA0L7Qsiwg0L7QvdC4ICAg0LHRg9C00YPRgiAg0YDQsNC30YDQtdGI0LDRgtGM0YHRjyAg0LIg0YHQvtC+0YLQstC10YLRgdGC0LLQuNC4ICDRgSAg0LTQtdC50YHRgtCy0YPRjtGJ0LjQvA0KICAgINC30LDQutC+0L3QvtC00LDRgtC10LvRjNGB0YLQstC+0LwuDQogICAgICAgICAxOS4g0JLQviAgINCy0YHQtdC8LCAgINGH0YLQviAgINC90LUgINC/0YDQtdC00YPRgdC80L7RgtGA0LXQvdC+ICAg0L3QsNGB0YLQvtGP0YnQuNC8ICDQtNC+0LPQvtCy0L7RgNC+0LwsDQogICAg0L/RgNC40LzQtdC90Y/RjtGC0YHRjyDQv9C+0LvQvtC20LXQvdC40Y8gINC00LXQudGB0YLQstGD0Y7RidC10LPQviAg0LfQsNC60L7QvdC+0LTQsNGC0LXQu9GM0YHRgtCy0LAuDQogICAgICAgICAyMC4g0J3QsNGB0YLQvtGP0YnQuNC5INC00L7Qs9C+0LLQvtGAINGB0L7RgdGC0LDQstC70LXQvSDQsiBfX19fX19fX19fXyDRjdC60LfQtdC80L/Qu9GP0YDQsNGFLg0KICAgICAgICAgMjEuINCu0YDQuNC00LjRh9C10YHQutC40LUg0LDQtNGA0LXRgdCwINC4INGA0LDRgdGH0LXRgtC90YvQtSDRgdGH0LXRgtCwINCh0YLQvtGA0L7QvToNCg0KICAgICAgICAg0JrQvtC80LjRgdGB0LjQvtC90LXRgNCwOg0KICAgICAgICAg0JrQvtC80LjRgtC10L3RgtCwOg0KDQogICAgICAgICDQn9C+0LTQv9C40YHQuA0KICAgICAgICAg0J/QtdGH0LDRgtC4DQogIA0KPC9wcmU+PC9kaXY+DQo8L2JvZHk+DQo8L2h0bWw+",
+    "mime_type": "text/html",
+    "language": "ru",
+    "locale": "ru"
+  },
+  "ingestion_preflight": {
+    "mime_type": "text/html",
+    "extractor": "html:regex",
+    "extraction_source": "html:regex",
+    "extraction_ok": true,
+    "error": null,
+    "extraction_error": null,
+    "sha256": "cf04994a3a933f671fd34997e5b1edf133960138f6c78509935a73a411ecd86c"
+  },
+  "metrics": {
+    "risk_count": 1,
+    "high_risk_count": 1,
+    "disputed_clause_count": 1,
+    "asymmetry_signal_count": 0,
+    "contract_type": "agency_agreement"
+  },
+  "analysis": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'obrazets-dogovor-komissii-po-prodazhe-tovara. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Подрядчик'. Определен тип договора: Агентский / комиссионный договор (уверенность 98%, правовая рамка: ГК РФ, главы 51 и 52). Ключевые обязательства по договору для роли 'Подрядчик': Согласно настоящему договору Комиссионер обязуется по поручению Комитента за вознаграждение совершить для Комитента от своего имени одну или несколько сделок по продаже __________________, (наименование изделий) именуем___ в дальнейшем \"Изделия\", по цене, не ниже согласованной Сторонами в Приложении No; Комиссионер обязуется завершить работы по продаже изделий в форме подписания соответствующего договора с Покупателем; За выполнение услуг по продаже Изделий Комитент обязуется уплатить Комиссионеру комиссионное вознаграждение в размере _________ процентов от цены, согласованной Сторонами в Приложении No. Условия оплаты: Согласно настоящему договору Комиссионер обязуется по поручению Комитента за вознаграждение совершить для Комитента от своего имени одну или несколько сделок по продаже __________________, (наименование изделий) именуем___ в дальнейшем \"Изделия\", по цене, не ниже согласованной Сторонами в Приложении No; За выполнение услуг по продаже Изделий Комитент обязуется уплатить Комиссионеру комиссионное вознаграждение в размере _________ процентов от цены, согласованной Сторонами в Приложении No; 1, Комитент в качестве дополнительного вознаграждения уплачивает Комиссионеру __________ процентов от полученной выгоды. Сроки и дедлайны: 1 к настоящему договору и в срок, определенный Комиссионером и Комитентом при заключении соответствующего договора с Покупателем; е) не позднее ____________ дней с момента получения от Покупателя соответствующих денежных сумм в качестве платы за Изделия перечислить Комитенту причитающуюся ему часть этих сумм (за вычетом сумм, причитающихся Комиссионеру); Комитент обязуется: а) не позднее __________ дней с момента заключения настоящего договора поставить Комиссионеру Изделия на условиях: __________________________________________________________________. Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "retention_or_deposit_discretion",
+        "title": "Высокий риск: Удержание депозита или обеспечительного платежа по усмотрению одной стороны",
+        "severity": "high",
+        "clause_id": "clause-1",
+        "description": "Возврат депозита или обеспечения зависит от односторонней оценки арендодателя, заказчика или принципала. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: Образец. Договор комиссии по продаже товара - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР КОМИССИИ ПО ПРОДАЖЕ ТОВАРА ПРИМЕРНЫЙ ДОГОВОР комиссии г. ________________ \"___\"__________20___г. ____________________________________________________, именуем___ (наименование предприятия) в дальнейшем \"Комиссионер\", в лице ________________________, (должность, ф. и. о.",
+        "role_relevance": "Для исполнителя удержание обеспечения ухудшает расчет по договору.",
+        "mitigation": "Опишите исчерпывающие основания удержания, порядок расчета и срок возврата остатка."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Образец. Договор комиссии по продаже товара - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР КОМИССИИ ПО ПРОДАЖЕ ТОВАРА ПРИМЕРНЫЙ ДОГОВОР комиссии г. ________________ \"___\"__________20___г. ____________________________________________________, именуем___ (наименование предприятия) в дальнейшем \"Комиссионер\", в лице ________________________, (должность, ф. и. о.",
+        "dispute_reason": "Одна из сторон получила дискреционное право без достаточных ограничителей.",
+        "possible_consequence": "Это может привести к одностороннему применению условия и спору о пределах такого права.",
+        "confidence": 0.76
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Подрядчик",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Подрядчик'. Обнаружено 1 пунктов с высоким уровнем риска; их стоит перепроверить вручную.",
+      "must_do": [
+        "Согласно настоящему договору Комиссионер обязуется по поручению Комитента за вознаграждение совершить для Комитента от своего имени одну или несколько сделок по продаже __________________, (наименование изделий) именуем___ в дальнейшем \"Изделия\", по цене, не ниже согласованной Сторонами в Приложении No.",
+        "Комиссионер обязуется завершить работы по продаже изделий в форме подписания соответствующего договора с Покупателем.",
+        "За выполнение услуг по продаже Изделий Комитент обязуется уплатить Комиссионеру комиссионное вознаграждение в размере _________ процентов от цены, согласованной Сторонами в Приложении No.",
+        "При заключении соответствующего договора с Покупателем Комиссионер обязуется действовать в интересах Комитента.",
+        "Принятое поручение Комиссионер обязуется исполнить на условиях, наиболее выгодных для Комитента.",
+        "Права и обязанности Комиссионера 9."
+      ],
+      "should_review": [
+        "Комиссионер вправе удержать из поступивших от Покупателя денежных сумм причитающееся ему в соответствии с настоящим договором вознаграждение."
+      ],
+      "payment_terms": [
+        "Согласно настоящему договору Комиссионер обязуется по поручению Комитента за вознаграждение совершить для Комитента от своего имени одну или несколько сделок по продаже __________________, (наименование изделий) именуем___ в дальнейшем \"Изделия\", по цене, не ниже согласованной Сторонами в Приложении No.",
+        "За выполнение услуг по продаже Изделий Комитент обязуется уплатить Комиссионеру комиссионное вознаграждение в размере _________ процентов от цены, согласованной Сторонами в Приложении No.",
+        "1, Комитент в качестве дополнительного вознаграждения уплачивает Комиссионеру __________ процентов от полученной выгоды.",
+        "Комиссионер вправе удержать из поступивших от Покупателя денежных сумм причитающееся ему в соответствии с настоящим договором вознаграждение.",
+        "Настоящий договор будет считаться законченным после выполнения взаимных обязательств и урегулирования всех расчетов между сторонами.",
+        "Юридические адреса и расчетные счета Сторон: Комиссионера: Комитента: Подписи Печати."
+      ],
+      "deadlines": [
+        "1 к настоящему договору и в срок, определенный Комиссионером и Комитентом при заключении соответствующего договора с Покупателем.",
+        "е) не позднее ____________ дней с момента получения от Покупателя соответствующих денежных сумм в качестве платы за Изделия перечислить Комитенту причитающуюся ему часть этих сумм (за вычетом сумм, причитающихся Комиссионеру).",
+        "Комитент обязуется: а) не позднее __________ дней с момента заключения настоящего договора поставить Комиссионеру Изделия на условиях: __________________________________________________________________."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "cf04994a3a933f671fd34997e5b1edf133960138f6c78509935a73a411ecd86c"
+    },
+    "contract_type": {
+      "type_id": "agency_agreement",
+      "confidence": 0.98,
+      "ru_name": "Агентский / комиссионный договор",
+      "legal_framework": "ГК РФ, главы 51 и 52"
+    },
+    "asymmetry_signals": []
+  },
+  "result": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'obrazets-dogovor-komissii-po-prodazhe-tovara. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Подрядчик'. Определен тип договора: Агентский / комиссионный договор (уверенность 98%, правовая рамка: ГК РФ, главы 51 и 52). Ключевые обязательства по договору для роли 'Подрядчик': Согласно настоящему договору Комиссионер обязуется по поручению Комитента за вознаграждение совершить для Комитента от своего имени одну или несколько сделок по продаже __________________, (наименование изделий) именуем___ в дальнейшем \"Изделия\", по цене, не ниже согласованной Сторонами в Приложении No; Комиссионер обязуется завершить работы по продаже изделий в форме подписания соответствующего договора с Покупателем; За выполнение услуг по продаже Изделий Комитент обязуется уплатить Комиссионеру комиссионное вознаграждение в размере _________ процентов от цены, согласованной Сторонами в Приложении No. Условия оплаты: Согласно настоящему договору Комиссионер обязуется по поручению Комитента за вознаграждение совершить для Комитента от своего имени одну или несколько сделок по продаже __________________, (наименование изделий) именуем___ в дальнейшем \"Изделия\", по цене, не ниже согласованной Сторонами в Приложении No; За выполнение услуг по продаже Изделий Комитент обязуется уплатить Комиссионеру комиссионное вознаграждение в размере _________ процентов от цены, согласованной Сторонами в Приложении No; 1, Комитент в качестве дополнительного вознаграждения уплачивает Комиссионеру __________ процентов от полученной выгоды. Сроки и дедлайны: 1 к настоящему договору и в срок, определенный Комиссионером и Комитентом при заключении соответствующего договора с Покупателем; е) не позднее ____________ дней с момента получения от Покупателя соответствующих денежных сумм в качестве платы за Изделия перечислить Комитенту причитающуюся ему часть этих сумм (за вычетом сумм, причитающихся Комиссионеру); Комитент обязуется: а) не позднее __________ дней с момента заключения настоящего договора поставить Комиссионеру Изделия на условиях: __________________________________________________________________. Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "retention_or_deposit_discretion",
+        "title": "Высокий риск: Удержание депозита или обеспечительного платежа по усмотрению одной стороны",
+        "severity": "high",
+        "clause_id": "clause-1",
+        "description": "Возврат депозита или обеспечения зависит от односторонней оценки арендодателя, заказчика или принципала. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: Образец. Договор комиссии по продаже товара - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР КОМИССИИ ПО ПРОДАЖЕ ТОВАРА ПРИМЕРНЫЙ ДОГОВОР комиссии г. ________________ \"___\"__________20___г. ____________________________________________________, именуем___ (наименование предприятия) в дальнейшем \"Комиссионер\", в лице ________________________, (должность, ф. и. о.",
+        "role_relevance": "Для исполнителя удержание обеспечения ухудшает расчет по договору.",
+        "mitigation": "Опишите исчерпывающие основания удержания, порядок расчета и срок возврата остатка."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Образец. Договор комиссии по продаже товара - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР КОМИССИИ ПО ПРОДАЖЕ ТОВАРА ПРИМЕРНЫЙ ДОГОВОР комиссии г. ________________ \"___\"__________20___г. ____________________________________________________, именуем___ (наименование предприятия) в дальнейшем \"Комиссионер\", в лице ________________________, (должность, ф. и. о.",
+        "dispute_reason": "Одна из сторон получила дискреционное право без достаточных ограничителей.",
+        "possible_consequence": "Это может привести к одностороннему применению условия и спору о пределах такого права.",
+        "confidence": 0.76
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Подрядчик",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Подрядчик'. Обнаружено 1 пунктов с высоким уровнем риска; их стоит перепроверить вручную.",
+      "must_do": [
+        "Согласно настоящему договору Комиссионер обязуется по поручению Комитента за вознаграждение совершить для Комитента от своего имени одну или несколько сделок по продаже __________________, (наименование изделий) именуем___ в дальнейшем \"Изделия\", по цене, не ниже согласованной Сторонами в Приложении No.",
+        "Комиссионер обязуется завершить работы по продаже изделий в форме подписания соответствующего договора с Покупателем.",
+        "За выполнение услуг по продаже Изделий Комитент обязуется уплатить Комиссионеру комиссионное вознаграждение в размере _________ процентов от цены, согласованной Сторонами в Приложении No.",
+        "При заключении соответствующего договора с Покупателем Комиссионер обязуется действовать в интересах Комитента.",
+        "Принятое поручение Комиссионер обязуется исполнить на условиях, наиболее выгодных для Комитента.",
+        "Права и обязанности Комиссионера 9."
+      ],
+      "should_review": [
+        "Комиссионер вправе удержать из поступивших от Покупателя денежных сумм причитающееся ему в соответствии с настоящим договором вознаграждение."
+      ],
+      "payment_terms": [
+        "Согласно настоящему договору Комиссионер обязуется по поручению Комитента за вознаграждение совершить для Комитента от своего имени одну или несколько сделок по продаже __________________, (наименование изделий) именуем___ в дальнейшем \"Изделия\", по цене, не ниже согласованной Сторонами в Приложении No.",
+        "За выполнение услуг по продаже Изделий Комитент обязуется уплатить Комиссионеру комиссионное вознаграждение в размере _________ процентов от цены, согласованной Сторонами в Приложении No.",
+        "1, Комитент в качестве дополнительного вознаграждения уплачивает Комиссионеру __________ процентов от полученной выгоды.",
+        "Комиссионер вправе удержать из поступивших от Покупателя денежных сумм причитающееся ему в соответствии с настоящим договором вознаграждение.",
+        "Настоящий договор будет считаться законченным после выполнения взаимных обязательств и урегулирования всех расчетов между сторонами.",
+        "Юридические адреса и расчетные счета Сторон: Комиссионера: Комитента: Подписи Печати."
+      ],
+      "deadlines": [
+        "1 к настоящему договору и в срок, определенный Комиссионером и Комитентом при заключении соответствующего договора с Покупателем.",
+        "е) не позднее ____________ дней с момента получения от Покупателя соответствующих денежных сумм в качестве платы за Изделия перечислить Комитенту причитающуюся ему часть этих сумм (за вычетом сумм, причитающихся Комиссионеру).",
+        "Комитент обязуется: а) не позднее __________ дней с момента заключения настоящего договора поставить Комиссионеру Изделия на условиях: __________________________________________________________________."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "cf04994a3a933f671fd34997e5b1edf133960138f6c78509935a73a411ecd86c"
+    },
+    "contract_type": {
+      "type_id": "agency_agreement",
+      "confidence": 0.98,
+      "ru_name": "Агентский / комиссионный договор",
+      "legal_framework": "ГК РФ, главы 51 и 52"
+    },
+    "asymmetry_signals": []
+  },
+  "finished_at": "2026-04-28T16:18:51.695316+00:00",
+  "duration_ms": 164.65
+}

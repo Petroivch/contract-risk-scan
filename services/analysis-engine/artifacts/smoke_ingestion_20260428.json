@@ -1,0 +1,256 @@
+{
+  "generated_at": "2026-04-28T15:49:41Z",
+  "corpus_root": "C:\\Users\\user\\Documents\\Codex\\вайбкод",
+  "real_document_cases": [
+    {
+      "case_id": "01_akt-priemaperedachi-imuschestva-v-zaklad-iz-zaklada.doc",
+      "path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\договоры\\akt-priemaperedachi-imuschestva-v-zaklad-iz-zaklada.doc",
+      "extension": ".doc",
+      "size_bytes": 31232,
+      "timing_ms": {
+        "ingestion": 5834.95,
+        "ocr": 4.68,
+        "analysis": 64.8,
+        "total": 5904.44
+      },
+      "ingestion": {
+        "extraction_source": "doc:word_com:text",
+        "extraction_ok": true,
+        "extraction_error": null,
+        "sha256": "c6ca0d74c6c83bb5117d45ddd115aba7f5d14533b147229783ada3768a97d72c"
+      },
+      "text_length": 829,
+      "clause_count": 7,
+      "risk_count": 1,
+      "disputed_clause_count": 1,
+      "contract_type": {
+        "type_id": "non_contract_legal_form",
+        "confidence": 0.43,
+        "ru_name": "Иной юридический документ",
+        "legal_framework": "Вне типовой contract taxonomy"
+      },
+      "sample_overview": "Договор содержит 7 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'buyer'."
+    },
+    {
+      "case_id": "02_Brachnyy-dogovor-dlya-licb-sostoyaschih-v-brake.doc",
+      "path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\договоры\\Brachnyy-dogovor-dlya-licb-sostoyaschih-v-brake.doc",
+      "extension": ".doc",
+      "size_bytes": 36864,
+      "timing_ms": {
+        "ingestion": 385.78,
+        "ocr": 3.93,
+        "analysis": 205.4,
+        "total": 595.12
+      },
+      "ingestion": {
+        "extraction_source": "doc:word_com:text",
+        "extraction_ok": true,
+        "extraction_error": null,
+        "sha256": "a46453b268ddd227fa39b3abe62785d033cd853b767b2dbb74ee73a2cd6e12ce"
+      },
+      "text_length": 4950,
+      "clause_count": 18,
+      "risk_count": 1,
+      "disputed_clause_count": 2,
+      "contract_type": {
+        "type_id": "non_contract_legal_form",
+        "confidence": 0.43,
+        "ru_name": "Иной юридический документ",
+        "legal_framework": "Вне типовой contract taxonomy"
+      },
+      "sample_overview": "Договор содержит 18 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'buyer'."
+    },
+    {
+      "case_id": "03_Brachnyy-dogovor-osnovnoy-rejim-imuschestva-dolevaya-sobstvennost.doc",
+      "path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\договоры\\Brachnyy-dogovor-osnovnoy-rejim-imuschestva-dolevaya-sobstvennost.doc",
+      "extension": ".doc",
+      "size_bytes": 35840,
+      "timing_ms": {
+        "ingestion": 478.97,
+        "ocr": 2.3,
+        "analysis": 1166.12,
+        "total": 1647.4
+      },
+      "ingestion": {
+        "extraction_source": "doc:word_com:text",
+        "extraction_ok": true,
+        "extraction_error": null,
+        "sha256": "8c921dffca524e077f9fb09fde9c3ac08cf4553a62b73d62045a04a9888e0f7c"
+      },
+      "text_length": 5981,
+      "clause_count": 9,
+      "risk_count": 1,
+      "disputed_clause_count": 1,
+      "contract_type": {
+        "type_id": "lease_agreement",
+        "confidence": 0.57,
+        "ru_name": "Договор аренды",
+        "legal_framework": "ГК РФ, глава 34"
+      },
+      "sample_overview": "Договор содержит 9 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'buyer'. Обнаружено 1 пунктов с высоким уровнем риска; их стоит перепроверить вручную."
+    },
+    {
+      "case_id": "04_Dog-ob-ohrane-kvartir-i-drugih-mest-hran-lich-imuschestva.doc",
+      "path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\договоры\\Dog-ob-ohrane-kvartir-i-drugih-mest-hran-lich-imuschestva.doc",
+      "extension": ".doc",
+      "size_bytes": 122368,
+      "timing_ms": {
+        "ingestion": 649.24,
+        "ocr": 4.73,
+        "analysis": 216258.37,
+        "total": 216912.41
+      },
+      "ingestion": {
+        "extraction_source": "doc:word_com:text",
+        "extraction_ok": true,
+        "extraction_error": null,
+        "sha256": "1f5de4e5e222a113a0b71d6f3c7325b580f415b174e76eed577c68f9e779873b"
+      },
+      "text_length": 29460,
+      "clause_count": 110,
+      "risk_count": 8,
+      "disputed_clause_count": 6,
+      "contract_type": {
+        "type_id": "service_agreement",
+        "confidence": 0.87,
+        "ru_name": "Договор оказания услуг",
+        "legal_framework": "ГК РФ, глава 39"
+      },
+      "sample_overview": "Договор содержит 110 пунктов и 8 выявленных рисков. Краткий вывод сфокусирован на роли 'buyer'. Обнаружено 6 пунктов с высоким уровнем риска; их стоит перепроверить вручную."
+    },
+    {
+      "case_id": "05_Dog-ob-okaz-uslug-na-vedenie-buh-ucheta-dogovor-autsorsinga.doc",
+      "path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\договоры\\Dog-ob-okaz-uslug-na-vedenie-buh-ucheta-dogovor-autsorsinga.doc",
+      "extension": ".doc",
+      "size_bytes": 37888,
+      "timing_ms": {
+        "ingestion": 1089.5,
+        "ocr": 15.29,
+        "analysis": 214.85,
+        "total": 1319.65
+      },
+      "ingestion": {
+        "extraction_source": "doc:word_com:text",
+        "extraction_ok": true,
+        "extraction_error": null,
+        "sha256": "62e176becec087b4915293cc25ace105a6c34755722ccc877545a0df74587c3f"
+      },
+      "text_length": 3553,
+      "clause_count": 2,
+      "risk_count": 1,
+      "disputed_clause_count": 1,
+      "contract_type": {
+        "type_id": "non_contract_legal_form",
+        "confidence": 0.65,
+        "ru_name": "Иной юридический документ",
+        "legal_framework": "Вне типовой contract taxonomy"
+      },
+      "sample_overview": "Договор содержит 2 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'buyer'."
+    },
+    {
+      "case_id": "06_akt-priema-peredachi-del-i-dolzhnosti-predsedatelem-garazhnogo-kooperativa.docx",
+      "path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\договоры\\akt-priema-peredachi-del-i-dolzhnosti-predsedatelem-garazhnogo-kooperativa.docx",
+      "extension": ".docx",
+      "size_bytes": 16379,
+      "timing_ms": {
+        "ingestion": 1004.07,
+        "ocr": 7.12,
+        "analysis": 223.58,
+        "total": 1234.79
+      },
+      "ingestion": {
+        "extraction_source": "docx:mammoth",
+        "extraction_ok": true,
+        "extraction_error": null,
+        "sha256": "16013fa6e32b1a581e7783d45561908493c173a794ae8c8b41b5a9bd7a587bd7"
+      },
+      "text_length": 3408,
+      "clause_count": 2,
+      "risk_count": 1,
+      "disputed_clause_count": 1,
+      "contract_type": {
+        "type_id": "non_contract_legal_form",
+        "confidence": 0.57,
+        "ru_name": "Иной юридический документ",
+        "legal_framework": "Вне типовой contract taxonomy"
+      },
+      "sample_overview": "Договор содержит 2 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'buyer'."
+    },
+    {
+      "case_id": "07_dogovor-okazaniya-uslug-brachnim-agenstvom.docx",
+      "path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\договоры\\dogovor-okazaniya-uslug-brachnim-agenstvom.docx",
+      "extension": ".docx",
+      "size_bytes": 23791,
+      "timing_ms": {
+        "ingestion": 292.91,
+        "ocr": 6.92,
+        "analysis": 1842.35,
+        "total": 2142.2
+      },
+      "ingestion": {
+        "extraction_source": "docx:mammoth",
+        "extraction_ok": true,
+        "extraction_error": null,
+        "sha256": "898a28bdf5f77ca1020fcc06ac134079e547c3b80c1c33eb108197c47eb3505f"
+      },
+      "text_length": 7593,
+      "clause_count": 2,
+      "risk_count": 4,
+      "disputed_clause_count": 1,
+      "contract_type": {
+        "type_id": "service_agreement",
+        "confidence": 0.99,
+        "ru_name": "Договор оказания услуг",
+        "legal_framework": "ГК РФ, глава 39"
+      },
+      "sample_overview": "Договор содержит 2 пунктов и 4 выявленных рисков. Краткий вывод сфокусирован на роли 'buyer'. Обнаружено 1 пунктов с высоким уровнем риска; их стоит перепроверить вручную."
+    },
+    {
+      "case_id": "08_dogovor_o_perevode_dolga_po_dogovoru_postavki_tovara.docx",
+      "path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\договоры 3\\dogovor_o_perevode_dolga_po_dogovoru_postavki_tovara.docx",
+      "extension": ".docx",
+      "size_bytes": 16710,
+      "timing_ms": {
+        "ingestion": 153.21,
+        "ocr": 5.7,
+        "analysis": 3189.07,
+        "total": 3347.99
+      },
+      "ingestion": {
+        "extraction_source": "docx:mammoth",
+        "extraction_ok": true,
+        "extraction_error": null,
+        "sha256": "3cc223019833c29140896fd1ae674c6c17bd141fb35bd8770ceca8621d4926c1"
+      },
+      "text_length": 3135,
+      "clause_count": 16,
+      "risk_count": 3,
+      "disputed_clause_count": 1,
+      "contract_type": {
+        "type_id": "supply_agreement",
+        "confidence": 0.5,
+        "ru_name": "Договор поставки",
+        "legal_framework": "ГК РФ, глава 30"
+      },
+      "sample_overview": "Договор содержит 16 пунктов и 3 выявленных рисков. Краткий вывод сфокусирован на роли 'buyer'. Обнаружено 2 пунктов с высоким уровнем риска; их стоит перепроверить вручную."
+    }
+  ],
+  "synthetic_pdf_case": {
+    "case_id": "synthetic_pdf",
+    "extension": ".pdf",
+    "size_bytes": 726,
+    "timing_ms": {
+      "ingestion": 569.59,
+      "ocr": 2.51,
+      "total_until_text": 572.11
+    },
+    "ingestion": {
+      "extraction_source": "pdf:pdfplumber",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "4fb062a536847f0713e32ff41ee3289f2adf3b88f5fd55c9a7fbb939ab03f837"
+    },
+    "text_length": 123,
+    "text_preview": "Buyer must pay within 10 days.\nSeller shall deliver the goods within 5 days.\nBuyer may unilaterally terminate the contract."
+  }
+}

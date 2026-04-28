@@ -1,0 +1,234 @@
+{
+  "case_id": "dogovory_4__akt_sdachipriemki_produktsii_prilozhenie_k_dogovoru_na_sozdanie",
+  "relative_path": "договоры 4/akt-sdachipriemki-produktsii-prilozhenie-k-dogovoru-na-sozdanie-.html",
+  "document_path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\договоры 4\\akt-sdachipriemki-produktsii-prilozhenie-k-dogovoru-na-sozdanie-.html",
+  "document_name": "akt-sdachipriemki-produktsii-prilozhenie-k-dogovoru-na-sozdanie-.html",
+  "role": "Исполнитель",
+  "counterparty_role": "Заказчик",
+  "language": "ru",
+  "mime_type": "text/html",
+  "tags": [
+    "workspace-corpus",
+    "html",
+    "dogovory_4",
+    "service_agreement"
+  ],
+  "source_group": "manifest",
+  "expected": {
+    "contract_type": "service_agreement",
+    "min_contract_type_confidence": 0.42,
+    "min_risk_count": 3,
+    "min_disputed_clause_count": 0,
+    "execution_mode": "local_first",
+    "expected_high_risk_ids": [
+      "payment_asymmetry",
+      "undefined_acceptance_criteria"
+    ]
+  },
+  "started_at": "2026-04-28T16:12:40.194618+00:00",
+  "status": "completed",
+  "request": {
+    "document_name": "akt-sdachipriemki-produktsii-prilozhenie-k-dogovoru-na-sozdanie-.html",
+    "role_context": {
+      "role": "Исполнитель",
+      "counterparty_role": "Заказчик"
+    },
+    "document_text": null,
+    "document_base64": "PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMDEgVHJhbnNpdGlvbmFsLy9FTiI+DQo8aHRtbD4NCjxoZWFkPg0KPGJhc2UgaHJlZj0iaHR0cHM6Ly9kb2dvdm9yLXVyaXN0LnJ1LyI+DQo8dGl0bGU+0JDQutGCINGB0LTQsNGH0Lgt0L/RgNC40LXQvNC60Lgg0L/RgNC+0LTRg9C60YbQuNC4ICAgKNC/0YDQuNC70L7QttC10L3QuNC1INC6INC00L7Qs9C+0LLQvtGA0YMg0L3QsCDRgdC+0LfQtNCw0L3QuNC1INC/0LDRgtC10L3RgtC90L4t0LjQvdGE0L7RgNC80LDRhtC40L7QvdC90L7QuSDQv9GA0L7QtNGD0LrRhtC40LgpICAgIC0g0LLQtdGA0YHQuNGPINC00LvRjyDQv9C10YfQsNGC0LguIDIwMjYuINCe0LHRgNCw0LfRhtGLINC00L7Qs9C+0LLQvtGA0L7Qsiwg0YLQuNC/0L7QstGL0LUg0LTQvtCz0L7QstC+0YDQsCwg0LDQutGC0YPQsNC70YzQvdGL0LUg0LTQvtC60YPQvNC10L3RgtGLLCDRjtGA0LjQtNC40YfQtdGB0LrQuNC8INC4INGE0LjQt9C40YfQtdGB0LrQuNC8INC70LjRhtCw0Lw8L3RpdGxlPg0KPG1ldGEgY29udGVudD0iIiBuYW1lPSJrZXl3b3JkcyI+DQo8bWV0YSBjb250ZW50PSIiIG5hbWU9ImRlc2NyaXB0aW9uIj4NCjxtZXRhIG5hbWU9InJvYm90cyIgY29udGVudD0ibm9pbmRleCxub2ZvbGxvdyI+DQo8bWV0YSBodHRwLWVxdWl2PSJDb250ZW50LVR5cGUiIGNvbnRlbnQ9InRleHQvaHRtbDsgY2hhcnNldD11dGYtOCI+DQo8bGluayByZWw9InN0eWxlc2hlZXQiIGhyZWY9Ii9pbWFnZXMvc3R5bGUuY3NzIiB0eXBlPSJ0ZXh0L2NzcyI+DQo8L2hlYWQ+DQo8Ym9keT4NCjxkaXYgY2xhc3M9ImRvY3VtZW50VGV4dCI+DQo8cHJlPiAgICDQndCw0LjQvNC10L3QvtCy0LDQvdC40LUg0LjRgdC/0L7Qu9C90LjRgtC10LvRjyAgICAgICAgICAgICAgICAgINCd0LDQuNC80LXQvdC+0LLQsNC90LjQtSDQt9Cw0LrQsNC30YfQuNC60LANCiAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fXyAgICAgICAgICAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX18NCg0KICAgINCQ0LTRgNC10YE6IF9fX19fX19fX19fX19fX19fX19fX18gICAgICAgICAgICAg0JDQtNGA0LXRgTpfX19fX19fX19fX19fX19fX19fX18NCiAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fXyAgICAgICAgICAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX18NCiAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fXyAgICAgICAgICAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX18NCiAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fXyAgICAgICAgICAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX18NCiAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fXyAgICAgICAgICAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX18NCg0KDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg0JDQmtCiIE5vLiBfX19fX19fDQogICAgICAgICAgICAgICAgICAgICAgICAgICDRgdC00LDRh9C4LdC/0YDQuNC10LzQutC4INC/0YDQvtC00YPQutGG0LjQuA0KDQogICAgICAgICAgICAgICAgINCa0L7QvNC/0LvQtdC60YEg0L/QsNGC0LXQvdGC0L3Qvi3QuNC90YTQvtGA0LzQsNGG0LjQvtC90L3Ri9GFINC80LDRgtC10YDQuNCw0LvQvtCyDQogICAgICAgICAgICAgICAgICDQuCDRg9GB0LvRg9CzINC00LvRjyDRgNC10LPQuNGB0YLRgNCw0YbQuNC4INGC0L7QstCw0YDQvdC+0LPQviDQt9C90LDQutCwLg0KDQogICAgICAgICAgICAgICDQv9C+INC00L7Qs9C+0LLQvtGA0YMgTm8uIF9fX19fINC+0YIgIl9fXyJfX19fX19fXyAyMF9fXyDQsy4NCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAg0YHQvtGB0YLQsNCy0LvQtdC9ICAiX19fIl9fX19fX19fIDIwX19fINCzLg0KDQoNCiAgICAgICAgINCc0YssINC90LjQttC10L/QvtC00L/QuNGB0LDQstGI0LjQtdGB0Y8sINC+0YIg0LvQuNGG0LAg0JfQkNCa0JDQl9Cn0JjQmtCQIF9fX19fX19fX19fX19fX19fX19fX19fDQogICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18sDQogICAg0L7RgiDQu9C40YbQsCDQmNCh0J/QntCb0J3QmNCi0JXQm9CvIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXywNCiAgICDRgdC+0YHRgtCw0LLQuNC70Lgg0L3QsNGB0YLQvtGP0YnQuNC5INCw0LrRgiDQviDRgtC+0LwsICDRh9GC0L4g0L/QsNGC0LXQvdGC0L3Qvi3QuNC90YTQvtGA0LzQsNGG0LjQvtC90L3QsNGPINC/0YDQvtC00YPQutGG0LjRjw0KICAgINGD0LTQvtCy0LvQtdGC0LLQvtGA0Y/QtdGCINGD0YHQu9C+0LLQuNGP0Lwg0LTQvtCz0L7QstC+0YDQsCDQuCDQsiDQvdCw0LTQu9C10LbQsNGJ0LXQvCDQv9C+0YDRj9C00LrQtSDQvtGE0L7RgNC80LvQtdC90LAuDQogICAgICAgICDQmtGA0LDRgtC60L7QtSDQvtC/0LjRgdCw0L3QuNC1INC/0LDRgtC10L3RgtC90L4t0LjQvdGE0L7RgNC80LDRhtC40L7QvdC90L7QuSDQv9GA0L7QtNGD0LrRhtC40Lg6DQogICAgICAgICAxLiBfX19fINGN0LrQt9C10LzQv9C70Y/RgNC+0LIg0YLQvtCy0LDRgNC90L7Qs9C+INC30L3QsNC60LAuDQogICAgICAgICAyLiDQntC/0LjRgdCw0L3QuNC1INGC0L7QstCw0YDQvdC+0LPQviDQt9C90LDQutCwLg0KICAgICAgICAgMy4g0JfQsNGP0LLQutCwINC90LAg0YDQtdCz0LjRgdGC0YDQsNGG0LjRjiDRgtC+0LLQsNGA0L3QvtCz0L4g0LfQvdCw0LrQsC4NCiAgICAgICAgIDQuINCS0YvQv9C40YHQutCwINC40Lcg0YPRgdGC0LDQstCwINC/0YDQtdC00L/RgNC40Y/RgtC40Y8uDQogICAgICAgICA1LiDQodC+0L/RgNC+0LLQvtC00LjRgtC10LvRjNC90L7QtSDQv9C40YHRjNC80L4uDQogICAgICAgICA2LiDQn9GA0LjQvtGA0LjRgtC10YLQvdCw0Y8gICDRgdC/0YDQsNCy0LrQsC4gICjQodC/0YDQsNCy0LrQsCAg0LjQtyAg0J3QmNCY0JPQn9CtICDQviAg0L/RgNC40L3Rj9GC0LjQuCAg0LoNCiAgICDRgNCw0YHRgdC80L7RgtGA0LXQvdC40Y4g0LfQsNGP0LLQutC4ICAg0L3QsCAgINGA0LXQs9C40YHRgtGA0LDRhtC40Y4gICDRgtC+0LLQsNGA0L3QvtCz0L4gICAg0LfQvdCw0LrQsCAgICAo0LfQvdCw0LrQsA0KICAgINC+0LHRgdC70YPQttC40LLQsNC90LjRjykuDQoNCiAgICAgICAgINCU0L7Qs9C+0LLQvtGA0L3QsNGPINGG0LXQvdCwINC/0L4g0LTQvtCz0L7QstC+0YDRgyDRgSDRg9GH0LXRgtC+0Lwg0J3QlNChINC4INGB0L/QtdGG0L3QsNC70L7Qs9CwINGB0L7RgdGC0LDQstC70Y/QtdGCDQogICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXyDRgNGD0LEuDQogICAgICAgICAgICAgICAgICAgICAgICAgICjRgdGD0LzQvNCwINGG0LjRhNGA0LDQvNC4INC4INC/0YDQvtC/0LjRgdGM0Y4pDQoNCiAgICAgICAgINCe0LHRidCw0Y8g0YHRg9C80LzQsCAg0LDQstCw0L3RgdCwLCAgINC/0LXRgNC10YfQuNGB0LvQtdC90L3QsNGPICAg0LfQsCAgINCy0YvQv9C+0LvQvdC10L3QvdGL0LUgICDRjdGC0LDQv9GLLA0KICAgINGB0L7RgdGC0LDQstC40LvQsCBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18g0YDRg9CxLg0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICjRgdGD0LzQvNCwINGG0LjRhNGA0LDQvNC4INC4INC/0YDQvtC/0LjRgdGM0Y4pDQoNCiAgICAgICAgINCh0LvQtdC00YPQtdGCINC6INC/0LXRgNC10YfQuNGB0LvQtdC90LjRjiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXyDRgNGD0LEuDQogICAgICAgICDQoNCw0LHQvtGC0LAg0LLRi9C/0L7Qu9C90LXQvdCwINC4INC+0L/Qu9Cw0YfQtdC90LAg0L/QvtC70L3QvtGB0YLRjNGOLiAg0JfQkNCa0JDQl9Cn0JjQmiAg0LggINCY0KHQn9Ce0JvQndCY0KLQldCb0KwNCiAgICDQv9GA0LjQt9C90LDRjtGCINC00LXQudGB0YLQstC40LUgINC00L7Qs9C+0LLQvtGA0LAgINC30LDQutC+0L3Rh9C10L3QvdGL0LwgINC4INCy0LfQsNC40LzQvdGL0YUg0L/RgNC10YLQtdC90LfQuNC5INC00YDRg9CzINC6DQogICAg0LTRgNGD0LPRgyDQvdC1INC40LzQtdGO0YIuDQoNCg0KICAgICAgICAg0J7QoiDQmNCh0J/QntCb0J3QmNCi0JXQm9CvICAgICAgICAgICAgICAgICAgICAgICAgICAgICDQntCiINCX0JDQmtCQ0JfQp9CY0JrQkA0KICAgICAgICAgINCg0LDQsdC+0YLRgyDRgdC00LDQuzogICAgICAgICAgICAgICAgICAgICAgICAgICAgICDQoNCw0LHQvtGC0YMg0L/RgNC40L3Rj9C7Og0KDQogICAgX19fX19fX19fX19fX19fX19fX19fX19fXyAgICAgICAgICAgICAgICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fDQogICAgICAgICAgICDQnC7Qny4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICDQnC7Qny4NCg0KICANCjwvcHJlPjwvZGl2Pg0KPC9ib2R5Pg0KPC9odG1sPg==",
+    "mime_type": "text/html",
+    "language": "ru",
+    "locale": "ru"
+  },
+  "ingestion_preflight": {
+    "mime_type": "text/html",
+    "extractor": "html:regex",
+    "extraction_source": "html:regex",
+    "extraction_ok": true,
+    "error": null,
+    "extraction_error": null,
+    "sha256": "bcf00ec169a8f7ab92cdf217f65321380f4a04ff3befdfeded5ed617cecc9d35"
+  },
+  "metrics": {
+    "risk_count": 2,
+    "high_risk_count": 2,
+    "disputed_clause_count": 1,
+    "asymmetry_signal_count": 1,
+    "contract_type": "service_agreement"
+  },
+  "analysis": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'akt-sdachipriemki-produktsii-prilozhenie-k-dogovoru-na-sozdanie-. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Исполнитель'. Определен тип договора: Договор оказания услуг (уверенность 56%, правовая рамка: ГК РФ, глава 39). Условия оплаты: (сумма цифрами и прописью) Общая сумма аванса, перечисленная за выполненные этапы, составила ______________________________________________________ руб. Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "payment_asymmetry",
+        "title": "Критический риск: Платежная асимметрия: исполнение до оплаты",
+        "severity": "critical",
+        "clause_id": "clause-1",
+        "description": "Одна сторона обязана начать исполнение раньше, чем получает деньги, что создает кассовый разрыв и риск неоплаты. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: Акт сдачи-приемки продукции (приложение к договору на создание патентно-информационной продукции) - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам Наименование исполнителя Наименование заказчика _____________________________ ___________________________ Адрес: ______________________ Адрес: _____________________ _____________________________ ___________________________ _____________________________ ___________________________. . .",
+        "role_relevance": "Для исполнителя это прямой риск финансировать проект за свой счет.",
+        "mitigation": "Согласуйте аванс, этапные платежи или право приостановить исполнение до поступления оплаты."
+      },
+      {
+        "risk_id": "risk-2",
+        "rule_id": "undefined_acceptance_criteria",
+        "title": "Критический риск: Неопределенные критерии приемки",
+        "severity": "critical",
+        "clause_id": "clause-1",
+        "description": "В договоре есть приемка результата, но отсутствуют объективные критерии качества, чек-листы, метрики или ссылка на полное ТЗ. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: Акт сдачи-приемки продукции (приложение к договору на создание патентно-информационной продукции) - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам Наименование исполнителя Наименование заказчика _____________________________ ___________________________ Адрес: ______________________ Адрес: _____________________ _____________________________ ___________________________ _____________________________ ___________________________. . .",
+        "role_relevance": "Без критериев приемки исполнитель зависит от субъективного мнения заказчика.",
+        "mitigation": "Опишите, что именно считается готовым результатом и по каким тестам или документам это проверяется."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Акт сдачи-приемки продукции (приложение к договору на создание патентно-информационной продукции) - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам Наименование исполнителя Наименование заказчика _____________________________ ___________________________ Адрес: ______________________ Адрес: _____________________ _____________________________ ___________________________ _____________________________ ___________________________...",
+        "dispute_reason": "Явные маркеры спорных формулировок не обнаружены.",
+        "possible_consequence": "Скрытые спорные моменты требуют дополнительной юридической проверки.",
+        "confidence": 0.35
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Исполнитель",
+      "overview": "Договор содержит 1 пунктов и 2 выявленных рисков. Краткий вывод сфокусирован на роли 'Исполнитель'. Обнаружено 2 пунктов с высоким уровнем риска; их стоит перепроверить вручную.",
+      "must_do": [
+        "Конфиг не выявил явных обязательств."
+      ],
+      "should_review": [
+        "Конфиг не выявил явных дискреционных условий."
+      ],
+      "payment_terms": [
+        "(сумма цифрами и прописью) Общая сумма аванса, перечисленная за выполненные этапы, составила ______________________________________________________ руб."
+      ],
+      "deadlines": [
+        "Конфиг не выявил явных сроков."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "bcf00ec169a8f7ab92cdf217f65321380f4a04ff3befdfeded5ed617cecc9d35"
+    },
+    "contract_type": {
+      "type_id": "service_agreement",
+      "confidence": 0.57,
+      "ru_name": "Договор оказания услуг",
+      "legal_framework": "ГК РФ, глава 39"
+    },
+    "asymmetry_signals": [
+      {
+        "risk_id": "undefined_acceptance_criteria",
+        "clause_id": "clause-1",
+        "summary": "Приемка предусмотрена без объективных критериев результата.",
+        "details": "Акт сдачи-приемки продукции (приложение к договору на создание патентно-информационной продукции) - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам Наименование исполнителя Наименование заказчика _____________________________ ___________________________ Адрес: ______________________ Адрес: _____________________ _____________________________ ___________________________ _____________________________ ___________________________ _____________________________ ___________________________ _____________________________ ___________________________ АКТ No. _______ сдачи-приемки продукции Комплекс патентно-информационных материалов и услуг для регистрации товарного знака. по договору No. _____ от \"___\"________ 20___ г. составлен \"___\"________ 20___ г. Мы, нижеподписавшиеся, от лица ЗАКАЗЧИКА _______________________ ____________________________________________________________________, от лица ИСПОЛНИТЕЛЯ ________________________________________________, составили настоящий акт о том, что патентно-информационная продукция удовлетворяет условиям договора и в надлежащем порядке оформлена. Краткое описание патентно-информационной продукции: 1. ____ экземпляров товарного знака. 2. Описание товарного знака. 3. Заявка на регистрацию товарного знака. 4. Выписка из устава предприятия. 5. Сопроводительное письмо. 6. Приоритетная справка. (Справка из НИИГПЭ о принятии к рассмотрению заявки на регистрацию товарного знака (знака обслуживания). Договорная цена по договору с учетом НДС и спецналога составляет ________________________________________________________________ руб. (сумма цифрами и прописью) Общая сумма аванса, перечисленная за выполненные этапы, составила ______________________________________________________ руб. (сумма цифрами и прописью) Следует к перечислению ________________________________ руб. Работа выполнена и оплачена полностью. ЗАКАЗЧИК и ИСПОЛНИТЕЛЬ признают действие договора законченным и взаимных претензий друг к другу не имеют. ОТ ИСПОЛНИТЕЛЯ ОТ ЗАКАЗЧИКА Работу сдал: Работу принял: _________________________ ___________________________ М. П. М. П.",
+        "severity_hint": "medium",
+        "affected_roles": [
+          "executor",
+          "client"
+        ]
+      }
+    ]
+  },
+  "result": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'akt-sdachipriemki-produktsii-prilozhenie-k-dogovoru-na-sozdanie-. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Исполнитель'. Определен тип договора: Договор оказания услуг (уверенность 56%, правовая рамка: ГК РФ, глава 39). Условия оплаты: (сумма цифрами и прописью) Общая сумма аванса, перечисленная за выполненные этапы, составила ______________________________________________________ руб. Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "payment_asymmetry",
+        "title": "Критический риск: Платежная асимметрия: исполнение до оплаты",
+        "severity": "critical",
+        "clause_id": "clause-1",
+        "description": "Одна сторона обязана начать исполнение раньше, чем получает деньги, что создает кассовый разрыв и риск неоплаты. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: Акт сдачи-приемки продукции (приложение к договору на создание патентно-информационной продукции) - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам Наименование исполнителя Наименование заказчика _____________________________ ___________________________ Адрес: ______________________ Адрес: _____________________ _____________________________ ___________________________ _____________________________ ___________________________. . .",
+        "role_relevance": "Для исполнителя это прямой риск финансировать проект за свой счет.",
+        "mitigation": "Согласуйте аванс, этапные платежи или право приостановить исполнение до поступления оплаты."
+      },
+      {
+        "risk_id": "risk-2",
+        "rule_id": "undefined_acceptance_criteria",
+        "title": "Критический риск: Неопределенные критерии приемки",
+        "severity": "critical",
+        "clause_id": "clause-1",
+        "description": "В договоре есть приемка результата, но отсутствуют объективные критерии качества, чек-листы, метрики или ссылка на полное ТЗ. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: Акт сдачи-приемки продукции (приложение к договору на создание патентно-информационной продукции) - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам Наименование исполнителя Наименование заказчика _____________________________ ___________________________ Адрес: ______________________ Адрес: _____________________ _____________________________ ___________________________ _____________________________ ___________________________. . .",
+        "role_relevance": "Без критериев приемки исполнитель зависит от субъективного мнения заказчика.",
+        "mitigation": "Опишите, что именно считается готовым результатом и по каким тестам или документам это проверяется."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Акт сдачи-приемки продукции (приложение к договору на создание патентно-информационной продукции) - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам Наименование исполнителя Наименование заказчика _____________________________ ___________________________ Адрес: ______________________ Адрес: _____________________ _____________________________ ___________________________ _____________________________ ___________________________...",
+        "dispute_reason": "Явные маркеры спорных формулировок не обнаружены.",
+        "possible_consequence": "Скрытые спорные моменты требуют дополнительной юридической проверки.",
+        "confidence": 0.35
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Исполнитель",
+      "overview": "Договор содержит 1 пунктов и 2 выявленных рисков. Краткий вывод сфокусирован на роли 'Исполнитель'. Обнаружено 2 пунктов с высоким уровнем риска; их стоит перепроверить вручную.",
+      "must_do": [
+        "Конфиг не выявил явных обязательств."
+      ],
+      "should_review": [
+        "Конфиг не выявил явных дискреционных условий."
+      ],
+      "payment_terms": [
+        "(сумма цифрами и прописью) Общая сумма аванса, перечисленная за выполненные этапы, составила ______________________________________________________ руб."
+      ],
+      "deadlines": [
+        "Конфиг не выявил явных сроков."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "bcf00ec169a8f7ab92cdf217f65321380f4a04ff3befdfeded5ed617cecc9d35"
+    },
+    "contract_type": {
+      "type_id": "service_agreement",
+      "confidence": 0.57,
+      "ru_name": "Договор оказания услуг",
+      "legal_framework": "ГК РФ, глава 39"
+    },
+    "asymmetry_signals": [
+      {
+        "risk_id": "undefined_acceptance_criteria",
+        "clause_id": "clause-1",
+        "summary": "Приемка предусмотрена без объективных критериев результата.",
+        "details": "Акт сдачи-приемки продукции (приложение к договору на создание патентно-информационной продукции) - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам Наименование исполнителя Наименование заказчика _____________________________ ___________________________ Адрес: ______________________ Адрес: _____________________ _____________________________ ___________________________ _____________________________ ___________________________ _____________________________ ___________________________ _____________________________ ___________________________ АКТ No. _______ сдачи-приемки продукции Комплекс патентно-информационных материалов и услуг для регистрации товарного знака. по договору No. _____ от \"___\"________ 20___ г. составлен \"___\"________ 20___ г. Мы, нижеподписавшиеся, от лица ЗАКАЗЧИКА _______________________ ____________________________________________________________________, от лица ИСПОЛНИТЕЛЯ ________________________________________________, составили настоящий акт о том, что патентно-информационная продукция удовлетворяет условиям договора и в надлежащем порядке оформлена. Краткое описание патентно-информационной продукции: 1. ____ экземпляров товарного знака. 2. Описание товарного знака. 3. Заявка на регистрацию товарного знака. 4. Выписка из устава предприятия. 5. Сопроводительное письмо. 6. Приоритетная справка. (Справка из НИИГПЭ о принятии к рассмотрению заявки на регистрацию товарного знака (знака обслуживания). Договорная цена по договору с учетом НДС и спецналога составляет ________________________________________________________________ руб. (сумма цифрами и прописью) Общая сумма аванса, перечисленная за выполненные этапы, составила ______________________________________________________ руб. (сумма цифрами и прописью) Следует к перечислению ________________________________ руб. Работа выполнена и оплачена полностью. ЗАКАЗЧИК и ИСПОЛНИТЕЛЬ признают действие договора законченным и взаимных претензий друг к другу не имеют. ОТ ИСПОЛНИТЕЛЯ ОТ ЗАКАЗЧИКА Работу сдал: Работу принял: _________________________ ___________________________ М. П. М. П.",
+        "severity_hint": "medium",
+        "affected_roles": [
+          "executor",
+          "client"
+        ]
+      }
+    ]
+  },
+  "finished_at": "2026-04-28T16:12:40.388933+00:00",
+  "duration_ms": 194.18
+}

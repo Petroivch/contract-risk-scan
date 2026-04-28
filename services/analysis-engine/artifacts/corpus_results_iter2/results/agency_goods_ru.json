@@ -1,0 +1,231 @@
+{
+  "case_id": "agency_goods_ru",
+  "relative_path": "contract-risk-scan/services/analysis-engine/golden_set/docs/agency_goods.txt",
+  "document_path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\contract-risk-scan\\services\\analysis-engine\\golden_set\\docs\\agency_goods.txt",
+  "document_name": "agency_goods.txt",
+  "role": "Агент",
+  "counterparty_role": "Предприятие",
+  "language": "ru",
+  "mime_type": "text/plain",
+  "tags": [
+    "real-corpus",
+    "agency"
+  ],
+  "source_group": "manifest",
+  "expected": {
+    "contract_type": "agency_agreement",
+    "min_contract_type_confidence": 0.9,
+    "min_risk_count": 2,
+    "min_disputed_clause_count": 1,
+    "risk_title_fragments_any": [
+      "пеня",
+      "конфиденциальность"
+    ],
+    "execution_mode": "local_first",
+    "expected_high_risk_ids": [
+      "uncapped_daily_penalty"
+    ]
+  },
+  "started_at": "2026-04-28T16:12:19.572262+00:00",
+  "status": "completed",
+  "request": {
+    "document_name": "agency_goods.txt",
+    "role_context": {
+      "role": "Агент",
+      "counterparty_role": "Предприятие"
+    },
+    "document_text": null,
+    "document_base64": "77u/0JDQk9CV0J3QotCh0JrQmNCZINCU0J7Qk9Ce0JLQntCgIOKEliBfX19f0L3QsCDRgNC10LDQu9C40LfQsNGG0LjRjiDRgtC+0LLQsNGA0LDQsy4gX19fX19fX19fX19fX19fICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIl9fXyJfX19fX19fX18gX19fXyDQsy5fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLCDQuNC80LXQvdGD0LXQvF9fXyDQsiDQtNCw0LvRjNC90LXQudGI0LXQvCAi0J/RgNC10LTQv9GA0LjRj9GC0LjQtSIsICAgICAgICAgICAgKNC90LDQuNC80LXQvdC+0LLQsNC90LjQtSDQvtGA0LPQsNC90LjQt9Cw0YbQuNC4KdCyINC70LjRhtC1IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLCDQtNC10LnRgdGC0LLRg9GO0YlfXyDQvdCwINC+0YHQvdC+0LLQsNC90LjQuCBfX19fX19fX19fX19fX19fLCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAo0LTQvtC70LbQvdC+0YHRgtGMLCDRhC7QuC7Qvi4p0YEg0L7QtNC90L7QuSDRgdGC0L7RgNC+0L3Riywg0LggX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXywg0LjQvNC10L3Rg9C10LxfXyDQsiDQtNCw0LvRjNC90LXQudGI0LXQvCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgKNC90LDQuNC80LXQvdC+0LLQsNC90LjQtSDQvtGA0LPQsNC90LjQt9Cw0YbQuNC4KSLQkNCz0LXQvdGCIiwg0LIg0LvQuNGG0LUgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLCDQtNC10LnRgdGC0LLRg9GO0YlfX19fINC90LAg0L7RgdC90L7QstCw0L3QuNC4ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAo0LTQvtC70LbQvdC+0YHRgtGMLCDRhC7QuC7Qvi4pX19fX19fX19fX19fX19fX19fX19fLCDRgSDQtNGA0YPQs9C+0Lkg0YHRgtC+0YDQvtC90YssINC30LDQutC70Y7Rh9C40LvQuCDQvdCw0YHRgtC+0Y/RidC40Lkg0LTQvtCz0L7QstC+0YAg0L4g0L3QuNC20LXRgdC70LXQtNGD0Y7RidC10Lw6MS4g0J/QoNCV0JTQnNCV0KIg0JTQntCT0J7QktCe0KDQkDEuMS4g0J/RgNC10LTQv9GA0LjRj9GC0LjQtSDQv9C+0YDRg9GH0LDQtdGCLCDQsCDQkNCz0LXQvdGCINC/0YDQuNC90LjQvNCw0LXRgiDQvdCwINGB0LXQsdGPINC+0LHRj9C30LDRgtC10LvRjNGB0YLQstCwINGA0LXQsNC70LjQt9C+0LLQsNGC0Ywg0YHQu9C10LTRg9GO0YnQuNC5INGC0L7QstCw0YA60J3QsNC40LzQtdC90L7QstCw0L3QuNC1INGC0L7QstCw0YDQsDogX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLtCa0L7Qu9C40YfQtdGB0YLQstC+OiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18u0JHQsNC30LjRgSDQv9C+0YHRgtCw0LLQutC4OiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXy4xLjIuINCf0YDQtdC00L/RgNC40Y/RgtC40LUg0Y/QstC70Y/QtdGC0YHRjyDRgdC+0LHRgdGC0LLQtdC90L3QuNC60L7QvCDRgtC+0LLQsNGA0LAg0L3QsCDQvtGB0L3QvtCy0LDQvdC40Lgg0LTQvtCz0L7QstC+0YDQsCDihJYgX19fX19fICjQn9GA0LjQu9C+0LbQtdC90LjQtSDihJYgMSkg0L7RgiAiX19fIl9fX19fX19fIF9fX18g0LMuINC80LXQttC00YMg0J/RgNC10LTQv9GA0LjRj9GC0LjQtdC8INC4IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLjEuMy4g0JDQs9C10L3RgiDQtNC10LnRgdGC0LLRg9C10YIg0L7RgiDRgdCy0L7QtdCz0L4g0LjQvNC10L3QuC4g0J7RgtCy0LXRgtGB0YLQstC10L3QvdC+0YHRgtGMINCQ0LPQtdC90YLQsCDQvdCw0YHRgtGD0L/QsNC10YIg0YHQviDQtNC90Y8g0L/QvtC70YPRh9C10L3QuNGPINGC0L7QstCw0YDQsCDRgSDQvNC10YHRgtCwINGF0YDQsNC90LXQvdC40Y8uMi4g0KPQodCb0J7QktCY0K8g0KDQkNCh0KfQldCi0J7QkjIuMS4g0JDQs9C10L3RgiDQv9GA0L7QuNC30LLQvtC00LjRgiDRgNC10LDQu9C40LfQsNGG0LjRjiDRgtC+0LLQsNGA0LAsINGD0LrQsNC30LDQvdC90L7Qs9C+INCyINC/LiAxLjEsINGB0LDQvNC+0YHRgtC+0Y/RgtC10LvRjNC90L4sINC90LXRgdC10YIg0LLRgdC1INC40LfQtNC10YDQttC60LgsINGB0LLRj9C30LDQvdC90YvQtSDRgSDRgNC10LDQu9C40LfQsNGG0LjQtdC5INGC0L7QstCw0YDQsCwg0LIg0YIu0YcuINGB0LLRj9C30LDQvdC90YvQtSDRgSDRgtGA0LDQvdGB0L/QvtGA0YLQuNGA0L7QstC60L7QuSDQtNC+INC80LXRgdGC0LAg0YDQtdCw0LvQuNC30LDRhtC40LgsINC/0YDQtdC00L/RgNC+0LTQsNC20L3QvtC5INC/0L7QtNCz0L7RgtC+0LLQutC+0Lkg0Lgg0LTRgC4g0KDQsNC30LzQtdGAINC40LfQtNC10YDQttC10Log0LTQvtC70LbQtdC9INCx0YvRgtGMINC/0YDQtdC00LLQsNGA0LjRgtC10LvRjNC90L4g0YHQvtCz0LvQsNGB0L7QstCw0L0g0YEg0J/RgNC10LTQv9GA0LjRj9GC0LjQtdC8LjIuMi4g0J/RgNC10LTQv9GA0LjRj9GC0LjQtSDQutC+0LzQv9C10L3RgdC40YDRg9C10YIg0JDQs9C10L3RgtGDINC/0L7QvdC10YHQtdC90L3Ri9C1INC/0L7RgdC70LXQtNC90LjQvCDQuNC30LTQtdGA0LbQutC4LCDRgdC+0LPQu9Cw0YHQvtCy0LDQvdC90YvQtSDRgSDQn9GA0LXQtNC/0YDQuNGP0YLQuNC10LwsINCyINGC0LXRh9C10L3QuNC1IF9fX19fX19fX19fX19fX18g0L/QvtGB0LvQtSBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLjIuMy4g0JDQs9C10L3RgiDQuNC80LXQtdGCINC/0YDQsNCy0L4g0L3QsCDQutC+0LzQv9C10L3RgdCw0YbQuNGOINC40LfQtNC10YDQttC10LosINC90LUg0YHQvtCz0LvQsNGB0L7QstCw0L3QvdGL0YUg0YEg0J/RgNC10LTQv9GA0LjRj9GC0LjQtdC8LCDQtdGB0LvQuCDQvtC90Lgg0LHRi9C70Lgg0L3QtdC+0LHRhdC+0LTQuNC80Ysg0LIg0LjQvdGC0LXRgNC10YHQsNGFINCf0YDQtdC00L/RgNC40Y/RgtC40Y8sINC4INCQ0LPQtdC90YIg0L3QtSDQvNC+0LMg0L/RgNC10LTQstCw0YDQuNGC0LXQu9GM0L3QviDQt9Cw0L/RgNC+0YHQuNGC0Ywg0J/RgNC10LTQv9GA0LjRj9GC0LjQtSDQu9C40LHQviDQvdC1INC/0L7Qu9GD0YfQuNC7INCyINGC0LXRh9C10L3QuNC1IF9fX19fX19fINC/0L7RgdC70LUg0YPQstC10LTQvtC80LvQtdC90LjRjyDQvtGC0LLQtdGCINC90LAg0YHQstC+0Lkg0LfQsNC/0YDQvtGBLiDQkNCz0LXQvdGCINC+0LHRj9C30LDQvSDRg9Cy0LXQtNC+0LzQuNGC0Ywg0J/RgNC10LTQv9GA0LjRj9GC0LjQtSDQviDQv9C+0L3QtdGB0LXQvdC90YvRhSDQuNC30LTQtdGA0LbQutCw0YUsINC60LDQuiDRgtC+0LvRjNC60L4g0YPQstC10LTQvtC80LvQtdC90LjQtSDRgdGC0LDQvdC10YIg0LLQvtC30LzQvtC20L3Ri9C8LjIuNC4g0JDQs9C10L3RgiDQv9GA0LXQtNGB0YLQsNCy0LvRj9C10YIg0J/RgNC10LTQv9GA0LjRj9GC0LjRjiDRgNCw0YHRh9C10YIg0LjQt9C00LXRgNC20LXQuiwg0YHQstGP0LfQsNC90L3Ri9GFINGBINGA0LXQsNC70LjQt9Cw0YbQuNC10Lkg0YLQvtCy0LDRgNCwLCDQv9C+0LTRgtCy0LXRgNC20LTQtdC90L3Ri9GFINC00L7QutGD0LzQtdC90YLQsNGA0L3Qvi4yLjUuINCQ0LPQtdC90YIg0L7QsdGP0LfQsNC9INCyINGC0LXRh9C10L3QuNC1IF9fX19fX19fINCx0LDQvdC60L7QstGB0LrQuNGFINC00L3QtdC5INC/0LXRgNC10YfQuNGB0LvRj9GC0Ywg0L3QsCDRgNCw0YHRh9C10YLQvdGL0Lkg0YHRh9C10YIg0J/RgNC10LTQv9GA0LjRj9GC0LjRjyDQstGB0LUg0LTQtdC90LXQttC90YvQtSDRgdGA0LXQtNGB0YLQstCwLCDQv9C+0LvRg9GH0LXQvdC90YvQtSDQuNC8INC00LvRjyDQn9GA0LXQtNC/0YDQuNGP0YLQuNGPINCyINGB0L7QvtGC0LLQtdGC0YHRgtCy0LjQuCDRgSDQvdCw0YHRgtC+0Y/RidC40Lwg0LTQvtCz0L7QstC+0YDQvtC8LCDQt9CwINC40YHQutC70Y7Rh9C10L3QuNC10Lwg0LLQvtC30L3QsNCz0YDQsNC20LTQtdC90LjRjy4yLjYuINCf0YDQtdC00L/RgNC40Y/RgtC40LUg0LLRi9C/0LvQsNGH0LjQstCw0LXRgiDQkNCz0LXQvdGC0YMg0LLQvtC30L3QsNCz0YDQsNC20LTQtdC90LjQtSDQsiDRgNCw0LfQvNC10YDQtSBfX19fX19fX19fX19fX19fX19fX19fX19fX19fINC90LUg0L/QvtC30LTQvdC10LUgX19fX19fX19fX19fX19fX19fX19fX19fX19fLjMuINCe0KLQktCV0KLQodCi0JLQldCd0J3QntCh0KLQrCDQodCi0J7QoNCe0J0zLjEuINCh0YLQvtGA0L7QvdCwLCDQvdC1INC40YHQv9C+0LvQvdC40LLRiNCw0Y8g0LjQu9C4INC90LXQvdCw0LTQu9C10LbQsNGJ0LjQvCDQvtCx0YDQsNC30L7QvCDQuNGB0L/QvtC70L3QuNCy0YjQsNGPINC+0LHRj9C30LDRgtC10LvRjNGB0YLQstCwINC/0L4g0L3QsNGB0YLQvtGP0YnQtdC80YMg0LTQvtCz0L7QstC+0YDRgywg0L7QsdGP0LfQsNC90LAg0LLQvtC30LzQtdGB0YLQuNGC0Ywg0LTRgNGD0LPQvtC5INGB0YLQvtGA0L7QvdC1INC/0YDQuNGH0LjQvdC10L3QvdGL0LUg0YLQsNC60LjQvCDQvdC10LjRgdC/0L7Qu9C90LXQvdC40LXQvCDRg9Cx0YvRgtC60LguMy4yLiDQl9CwINC/0YDQvtGB0YDQvtGH0LrRgyDQv9C10YDQtdGH0LjRgdC70LXQvdC40Y8g0LTQtdC90LXQttC90YvRhSDRgdGA0LXQtNGB0YLQsiwg0L/QvtGB0YLRg9C/0LjQstGI0LjRhSDQtNC70Y8g0J/RgNC10LTQv9GA0LjRj9GC0LjRjywg0JDQs9C10L3RgiDRg9C/0LvQsNGH0LjQstCw0LXRgiDQn9GA0LXQtNC/0YDQuNGP0YLQuNGOINC/0LXQvdGOINCyINGA0LDQt9C80LXRgNC1IF9fX19fJSDQvtGCINGB0YPQvNC80Ysg0L3QtdC/0LXRgNC10YfQuNGB0LvQtdC90L3Ri9GFINGB0YDQtdC00YHRgtCyINC30LAg0LrQsNC20LTRi9C5INC00LXQvdGMINC/0YDQvtGB0YDQvtGH0LrQuC4zLjMuINCX0LAg0L/RgNC+0YHRgNC+0YfQutGDINCy0YvQv9C70LDRgtGLINCy0L7Qt9C90LDQs9GA0LDQttC00LXQvdC40Y8g0J/RgNC10LTQv9GA0LjRj9GC0LjQtSDRg9C/0LvQsNGH0LjQstCw0LXRgiDQkNCz0LXQvdGC0YMg0L/QtdC90Y4g0LIg0YDQsNC30LzQtdGA0LUgX19fX19fJSDQvtGCINC90LXQstGL0L/Qu9Cw0YfQtdC90L3QvtC5INGB0YPQvNC80Ysg0LfQsCDQutCw0LbQtNGL0Lkg0LTQtdC90Ywg0L/RgNC+0YHRgNC+0YfQutC4LjMuNC4g0JLQt9GL0YHQutCw0L3QuNC1INC90LXRg9GB0YLQvtC10Log0Lgg0L/RgNC+0YbQtdC90YLQvtCyINC90LUg0L7RgdCy0L7QsdC+0LbQtNCw0LXRgiDRgdGC0L7RgNC+0L3Rgywg0L3QsNGA0YPRiNC40LLRiNGD0Y4g0LTQvtCz0L7QstC+0YAsINC+0YIg0LjRgdC/0L7Qu9C90LXQvdC40Y8g0L7QsdGP0LfQsNGC0LXQu9GM0YHRgtCyINCyINC90LDRgtGD0YDQtS4zLjUuINCSINGB0LvRg9GH0LDRj9GFLCDQvdC1INC/0YDQtdC00YPRgdC80L7RgtGA0LXQvdC90YvRhSDQvdCw0YHRgtC+0Y/RidC40Lwg0LTQvtCz0L7QstC+0YDQvtC8LCDQuNC80YPRidC10YHRgtCy0LXQvdC90LDRjyDQvtGC0LLQtdGC0YHRgtCy0LXQvdC90L7RgdGC0Ywg0L7Qv9GA0LXQtNC10LvRj9C10YLRgdGPINCyINGB0L7QvtGC0LLQtdGC0YHRgtCy0LjQuCDRgSDQtNC10LnRgdGC0LLRg9GO0YnQuNC8INC30LDQutC+0L3QvtC00LDRgtC10LvRjNGB0YLQstC+0Lwg0KDQpC40LiDQntCR0KHQotCe0K/QotCV0JvQrNCh0KLQktCQINCd0JXQn9Cg0JXQntCU0J7Qm9CY0JzQntCZINCh0JjQm9CrNC4xLiDQodGC0L7RgNC+0L3RiyDQvtGB0LLQvtCx0L7QttC00LDRjtGC0YHRjyDQvtGCINC+0YLQstC10YLRgdGC0LLQtdC90L3QvtGB0YLQuCDQt9CwINGH0LDRgdGC0LjRh9C90L7QtSDQuNC70Lgg0L/QvtC70L3QvtC1INC90LXQuNGB0L/QvtC70L3QtdC90LjQtSDRgdCy0L7QuNGFINC+0LHRj9C30LDRgtC10LvRjNGB0YLQsiDQv9C+INC90LDRgdGC0L7Rj9GJ0LXQvNGDINC00L7Qs9C+0LLQvtGA0YMsINC10YHQu9C4INC40YUg0LjRgdC/0L7Qu9C90LXQvdC40Y4g0L/RgNC10L/Rj9GC0YHRgtCy0YPQtdGCINGH0YDQtdC30LLRi9GH0LDQudC90L7QtSDQuCDQvdC10L/RgNC10LTQvtGC0LLRgNCw0YLQuNC80L7QtSDQv9GA0Lgg0LTQsNC90L3Ri9GFINGD0YHQu9C+0LLQuNGP0YUg0L7QsdGB0YLQvtGP0YLQtdC70YzRgdGC0LLQviAo0L3QtdC/0YDQtdC+0LTQvtC70LjQvNCw0Y8g0YHQuNC70LApLjUuINCh0KDQntCaINCU0JXQmdCh0KLQktCY0K8g0J3QkNCh0KLQntCv0KnQldCT0J4g0JTQntCT0J7QktCe0KDQkDUuMS4g0J3QsNGB0YLQvtGP0YnQuNC5INC00L7Qs9C+0LLQvtGAINCy0YHRgtGD0L/QsNC10YIg0LIg0YHQuNC70YMg0YEg0LzQvtC80LXQvdGC0LAg0LXQs9C+INC/0L7QtNC/0LjRgdCw0L3QuNGPINGB0YLQvtGA0L7QvdCw0LzQuCDQuCDQtNC10LnRgdGC0LLRg9C10YIg0LTQviAiX19fIl9fX19fX19fXyBfX19fINCzLjUuMi4g0J3QsNGB0YLQvtGP0YnQuNC5INC00L7Qs9C+0LLQvtGAINC80L7QttC10YIg0LHRi9GC0Ywg0YDQsNGB0YLQvtGA0LPQvdGD0YIg0L/QviDQstC30LDQuNC80L3QvtC80YMg0YHQvtCz0LvQsNGB0L7QstCw0L3QuNGOINGB0YLQvtGA0L7QvSwg0YHQvtCy0LXRgNGI0LXQvdC90L7QvNGDINCyINC/0LjRgdGM0LzQtdC90L3QvtC5INGE0L7RgNC80LUsINC30LAg0L/QvtC00L/QuNGB0YzRjiDRg9C/0L7Qu9C90L7QvNC+0YfQtdC90L3Ri9GFINC70LjRhiDRgdGC0L7RgNC+0L0uNi4g0JrQntCd0KTQmNCU0JXQndCm0JjQkNCb0KzQndCe0KHQotCsNi4xLiDQo9GB0LvQvtCy0LjRjyDQvdCw0YHRgtC+0Y/RidC10LPQviDQtNC+0LPQvtCy0L7RgNCwLCDQtNC+0L/QvtC70L3QuNGC0LXQu9GM0L3Ri9GFINGB0L7Qs9C70LDRiNC10L3QuNC5INC6INC90LXQvNGDINC4INC40L3QsNGPINC40L3RhNC+0YDQvNCw0YbQuNGPLCDQv9C+0LvRg9GH0LXQvdC90LDRjyDRgdGC0L7RgNC+0L3QsNC80Lgg0LIg0YHQvtC+0YLQstC10YLRgdGC0LLQuNC4INGBINC00L7Qs9C+0LLQvtGA0L7QvCwg0LrQvtC90YTQuNC00LXQvdGG0LjQsNC70YzQvdGLINC4INC90LUg0L/QvtC00LvQtdC20LDRgiDRgNCw0LfQs9C70LDRiNC10L3QuNGOLjcuINCg0JDQl9Cg0JXQqNCV0J3QmNCVINCh0J/QntCg0J7QkjcuMS4g0JLRgdC1INGB0L/QvtGA0Ysg0Lgg0YDQsNC30L3QvtCz0LvQsNGB0LjRjywg0LrQvtGC0L7RgNGL0LUg0LzQvtCz0YPRgiDQstC+0LfQvdC40LrQvdGD0YLRjCDQvNC10LbQtNGDINGB0YLQvtGA0L7QvdCw0LzQuCDQv9C+INCy0L7Qv9GA0L7RgdCw0LwsINC90LUg0L3QsNGI0LXQtNGI0LjQvCDRgdCy0L7QtdCz0L4g0YDQsNC30YDQtdGI0LXQvdC40Y8g0LIg0YLQtdC60YHRgtC1INC00LDQvdC90L7Qs9C+INC00L7Qs9C+0LLQvtGA0LAsINCx0YPQtNGD0YIg0YDQsNC30YDQtdGI0LDRgtGM0YHRjyDQv9GD0YLQtdC8INC/0LXRgNC10LPQvtCy0L7RgNC+0LIg0L3QsCDQvtGB0L3QvtCy0LUg0LTQtdC50YHRgtCy0YPRjtGJ0LXQs9C+INC30LDQutC+0L3QvtC00LDRgtC10LvRjNGB0YLQstCwLjcuMi4g0J/RgNC4INC90LXRg9GA0LXQs9GD0LvQuNGA0L7QstCw0L3QuNC4INCyINC/0YDQvtGG0LXRgdGB0LUg0L/QtdGA0LXQs9C+0LLQvtGA0L7QsiDRgdC/0L7RgNC90YvRhSDQstC+0L/RgNC+0YHQvtCyINGB0L/QvtGA0Ysg0YDQsNC30YDQtdGI0LDRjtGC0YHRjyDQsiDRgdGD0LTQtSDQsiDQv9C+0YDRj9C00LrQtSwg0YPRgdGC0LDQvdC+0LLQu9C10L3QvdC+0Lwg0LTQtdC50YHRgtCy0YPRjtGJ0LjQvCDQt9Cw0LrQvtC90L7QtNCw0YLQtdC70YzRgdGC0LLQvtC8LjguINCX0JDQmtCb0K7Qp9CY0KLQldCb0KzQndCr0JUg0J/QntCb0J7QltCV0J3QmNCvOC4xLiDQm9GO0LHRi9C1INC40LfQvNC10L3QtdC90LjRjyDQuCDQtNC+0L/QvtC70L3QtdC90LjRjyDQuiDQvdCw0YHRgtC+0Y/RidC10LzRgyDQtNC+0LPQvtCy0L7RgNGDINC00LXQudGB0YLQstC40YLQtdC70YzQvdGLINC/0YDQuCDRg9GB0LvQvtCy0LjQuCwg0LXRgdC70Lgg0L7QvdC4INGB0L7QstC10YDRiNC10L3RiyDQsiDQv9C40YHRjNC80LXQvdC90L7QuSDRhNC+0YDQvNC1INC40L/QvtC00L/QuNGB0LDQvdGLINGB0YLQvtGA0L7QvdCw0LzQuCDQuNC70Lgg0L3QsNC00LvQtdC20LDRidC1INGD0L/QvtC70L3QvtC80L7Rh9C10L3QvdGL0LzQuCDQvdCwINGC0L4g0L/RgNC10LTRgdGC0LDQstC40YLQtdC70Y/QvNC4INGB0YLQvtGA0L7QvS44LjIuINCS0YHQtSDRg9Cy0LXQtNC+0LzQu9C10L3QuNGPINC4INGB0L7QvtCx0YnQtdC90LjRjyDQtNC+0LvQttC90Ysg0L3QsNC/0YDQsNCy0LvRj9GC0YzRgdGPINCyINC/0LjRgdGM0LzQtdC90L3QvtC5INGE0L7RgNC80LUuOC4zLiDQktC+INCy0YHQtdC8INC+0YHRgtCw0LvRjNC90L7QvCwg0YfRgtC+INC90LUg0L/RgNC10LTRg9GB0LzQvtGC0YDQtdC90L4g0L3QsNGB0YLQvtGP0YnQuNC8INC00L7Qs9C+0LLQvtGA0L7QvCwg0YHRgtC+0YDQvtC90Ysg0YDRg9C60L7QstC+0LTRgdGC0LLRg9GO0YLRgdGPINC00LXQudGB0YLQstGD0Y7RidC40Lwg0LfQsNC60L7QvdC+0LTQsNGC0LXQu9GM0YHRgtCy0L7QvC44LjQuINCU0L7Qs9C+0LLQvtGAINGB0L7RgdGC0LDQstC70LXQvSDQsiDQtNCy0YPRhSDRjdC60LfQtdC80L/Qu9GP0YDQsNGFLCDQuNC3INC60L7RgtC+0YDRi9GFINC+0LTQuNC9INC90LDRhdC+0LTQuNGC0YHRjyDRgyDQn9GA0LXQtNC/0YDQuNGP0YLQuNGPLCDQstGC0L7RgNC+0LkgLSDRgyDQkNCz0LXQvdGC0LAuOC41LiDQkNC00YDQtdGB0LAg0Lgg0L/Qu9Cw0YLQtdC20L3Ri9C1INGA0LXQutCy0LjQt9C40YLRiyDRgdGC0L7RgNC+0L06ICAgICDQn9GA0LXQtNC/0YDQuNGP0YLQuNC1OiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18gICAgINCQ0LPQtdC90YI6IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXyAgICAgICAgICAgICAgICAgICAgICAgICAgINCf0J7QlNCf0JjQodCYINCh0KLQntCg0J7QnTogICAgINCf0YDQtdC00L/RgNC40Y/RgtC40LU6X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXyAgIF9fX19fX19fX19fX19fXyAgICAgICAgICAgICAgICAgICAgICAgICAg0Jwu0J8uICAgICDQkNCz0LXQvdGCOl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18gICBfX19fX19fX19fX19fX18gICAgICAgICAgICAgICAgICAgICAgICAgINCcLtCfLg0K",
+    "mime_type": "text/plain",
+    "language": "ru",
+    "locale": "ru"
+  },
+  "ingestion_preflight": {
+    "mime_type": "text/plain",
+    "extractor": "binary:utf8_decode",
+    "extraction_source": "binary:utf8_decode",
+    "extraction_ok": true,
+    "error": null,
+    "extraction_error": null,
+    "sha256": "48e06aba7e9b3160f6d749166465a65a94a476db1af323601cf717c9e73fa036"
+  },
+  "metrics": {
+    "risk_count": 2,
+    "high_risk_count": 1,
+    "disputed_clause_count": 1,
+    "asymmetry_signal_count": 0,
+    "contract_type": "agency_agreement"
+  },
+  "analysis": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "local_first",
+      "offline_capable": true,
+      "network_required": false,
+      "policy_source": "mime_type:text/plain",
+      "reason": "Mime type документа перевел задачу в более безопасный lightweight/offload режим согласно policy."
+    },
+    "contract_brief": "Договор 'agency_goods. txt' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Агент'. Определен тип договора: Агентский / комиссионный договор (уверенность 99%, правовая рамка: ГК РФ, главы 51 и 52). Что должен Агент: Агент обязан уведомить Предприятие о понесенных издержках, как только уведомление станет возможным; Агент обязан в течение ________ банковских дней перечислять на расчетный счет Предприятия все денежные средства, полученные им для Предприятия в соответствии с настоящим договором, за исключением вознаграждения. Что должен Предприятие: Размер издержек должен быть предварительно согласован с Предприятием; Агент обязан уведомить Предприятие о понесенных издержках, как только уведомление станет возможным. Условия оплаты: УСЛОВИЯ РАСЧЕТОВ2; Агент представляет Предприятию расчет издержек, связанных с реализацией товара, подтвержденных документарно; Агент обязан в течение ________ банковских дней перечислять на расчетный счет Предприятия все денежные средства, полученные им для Предприятия в соответствии с настоящим договором, за исключением вознаграждения. Сроки и дедлайны: Предприятие компенсирует Агенту понесенные последним издержки, согласованные с Предприятием, в течение ________________ после ___________________________________________; Агент имеет право на компенсацию издержек, не согласованных с Предприятием, если они были необходимы в интересах Предприятия, и Агент не мог предварительно запросить Предприятие либо не получил в течение ________ после уведомления ответ на свой запрос; Агент обязан в течение ________ банковских дней перечислять на расчетный счет Предприятия все денежные средства, полученные им для Предприятия в соответствии с настоящим договором, за исключением вознаграждения. Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "uncapped_daily_penalty",
+        "title": "Критический риск: Ежедневная пеня без верхнего лимита",
+        "severity": "critical",
+        "clause_id": "clause-1",
+        "description": "Договор содержит ежедневную пеню, но не ограничивает ее общий размер или период начисления. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: ﻿АГЕНТСКИЙ ДОГОВОР № ____на реализацию товараг. _______________ \"___\"_________ ____ г. ________________________________________, именуем___ в дальнейшем \"Предприятие\", (наименование организации)в лице ___________________________________, действующ__ на основании ________________, (должность, ф. и. о. )с одной стороны, и _____________________________________, именуем__ в дальнейшем (наименование организации)\"Агент\", в лице ____________________________________, действующ____ на основании. . .",
+        "role_relevance": "Неограниченная пеня быстро превращается в непропорциональную ответственность.",
+        "mitigation": "Установите cap по общей сумме неустойки и предельный период начисления."
+      },
+      {
+        "risk_id": "risk-2",
+        "rule_id": "confidentiality_without_exceptions",
+        "title": "Средний риск: Конфиденциальность без carve-outs и разумных исключений",
+        "severity": "medium",
+        "clause_id": "clause-1",
+        "description": "Обязанность по конфиденциальности сформулирована широко, но не содержит исключений для общедоступной информации, законных запросов и ранее известных данных. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: ﻿АГЕНТСКИЙ ДОГОВОР № ____на реализацию товараг. _______________ \"___\"_________ ____ г. ________________________________________, именуем___ в дальнейшем \"Предприятие\", (наименование организации)в лице ___________________________________, действующ__ на основании ________________, (должность, ф. и. о. )с одной стороны, и _____________________________________, именуем__ в дальнейшем (наименование организации)\"Агент\", в лице ____________________________________, действующ____ на основании. . .",
+        "role_relevance": "Исполнитель рискует нарушить чрезмерно широкую конфиденциальность.",
+        "mitigation": "Добавьте стандартные carve-outs и ограничьте ответственность за непредотвратимое раскрытие."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "﻿АГЕНТСКИЙ ДОГОВОР № ____на реализацию товараг. _______________ \"___\"_________ ____ г. ________________________________________, именуем___ в дальнейшем \"Предприятие\", (наименование организации)в лице ___________________________________, действующ__ на основании ________________, (должность, ф. и. о. )с одной стороны, и _____________________________________, именуем__ в дальнейшем (наименование организации)\"Агент\", в лице ____________________________________, действующ____ на основании...",
+        "dispute_reason": "Явные маркеры спорных формулировок не обнаружены.",
+        "possible_consequence": "Скрытые спорные моменты требуют дополнительной юридической проверки.",
+        "confidence": 0.35
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Агент",
+      "overview": "Договор содержит 1 пунктов и 2 выявленных рисков. Краткий вывод сфокусирован на роли 'Агент'. Обнаружено 1 пунктов с высоким уровнем риска; их стоит перепроверить вручную.",
+      "must_do": [
+        "Агент обязан уведомить Предприятие о понесенных издержках, как только уведомление станет возможным.",
+        "Агент обязан в течение ________ банковских дней перечислять на расчетный счет Предприятия все денежные средства, полученные им для Предприятия в соответствии с настоящим договором, за исключением вознаграждения.",
+        "Размер издержек должен быть предварительно согласован с Предприятием.",
+        "Сторона, не исполнившая или ненадлежащим образом исполнившая обязательства по настоящему договору, обязана возместить другой стороне причиненные таким неисполнением убытки."
+      ],
+      "should_review": [
+        "Настоящий договор может быть расторгнут по взаимному согласованию сторон, совершенному в письменной форме, за подписью уполномоченных лиц сторон."
+      ],
+      "payment_terms": [
+        "Агент представляет Предприятию расчет издержек, связанных с реализацией товара, подтвержденных документарно.",
+        "Агент обязан в течение ________ банковских дней перечислять на расчетный счет Предприятия все денежные средства, полученные им для Предприятия в соответствии с настоящим договором, за исключением вознаграждения.",
+        "Предприятие выплачивает Агенту вознаграждение в размере ____________________________ не позднее ___________________________.",
+        "За просрочку выплаты вознаграждения Предприятие уплачивает Агенту пеню в размере ______% от невыплаченной суммы за каждый день просрочки.",
+        "УСЛОВИЯ РАСЧЕТОВ2."
+      ],
+      "deadlines": [
+        "Предприятие компенсирует Агенту понесенные последним издержки, согласованные с Предприятием, в течение ________________ после ___________________________________________.",
+        "Агент имеет право на компенсацию издержек, не согласованных с Предприятием, если они были необходимы в интересах Предприятия, и Агент не мог предварительно запросить Предприятие либо не получил в течение ________ после уведомления ответ на свой запрос.",
+        "Агент обязан в течение ________ банковских дней перечислять на расчетный счет Предприятия все денежные средства, полученные им для Предприятия в соответствии с настоящим договором, за исключением вознаграждения.",
+        "СРОК ДЕЙСТВИЯ НАСТОЯЩЕГО ДОГОВОРА5."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "binary:utf8_decode",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "48e06aba7e9b3160f6d749166465a65a94a476db1af323601cf717c9e73fa036"
+    },
+    "contract_type": {
+      "type_id": "agency_agreement",
+      "confidence": 0.99,
+      "ru_name": "Агентский / комиссионный договор",
+      "legal_framework": "ГК РФ, главы 51 и 52"
+    },
+    "asymmetry_signals": []
+  },
+  "result": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "local_first",
+      "offline_capable": true,
+      "network_required": false,
+      "policy_source": "mime_type:text/plain",
+      "reason": "Mime type документа перевел задачу в более безопасный lightweight/offload режим согласно policy."
+    },
+    "contract_brief": "Договор 'agency_goods. txt' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Агент'. Определен тип договора: Агентский / комиссионный договор (уверенность 99%, правовая рамка: ГК РФ, главы 51 и 52). Что должен Агент: Агент обязан уведомить Предприятие о понесенных издержках, как только уведомление станет возможным; Агент обязан в течение ________ банковских дней перечислять на расчетный счет Предприятия все денежные средства, полученные им для Предприятия в соответствии с настоящим договором, за исключением вознаграждения. Что должен Предприятие: Размер издержек должен быть предварительно согласован с Предприятием; Агент обязан уведомить Предприятие о понесенных издержках, как только уведомление станет возможным. Условия оплаты: УСЛОВИЯ РАСЧЕТОВ2; Агент представляет Предприятию расчет издержек, связанных с реализацией товара, подтвержденных документарно; Агент обязан в течение ________ банковских дней перечислять на расчетный счет Предприятия все денежные средства, полученные им для Предприятия в соответствии с настоящим договором, за исключением вознаграждения. Сроки и дедлайны: Предприятие компенсирует Агенту понесенные последним издержки, согласованные с Предприятием, в течение ________________ после ___________________________________________; Агент имеет право на компенсацию издержек, не согласованных с Предприятием, если они были необходимы в интересах Предприятия, и Агент не мог предварительно запросить Предприятие либо не получил в течение ________ после уведомления ответ на свой запрос; Агент обязан в течение ________ банковских дней перечислять на расчетный счет Предприятия все денежные средства, полученные им для Предприятия в соответствии с настоящим договором, за исключением вознаграждения. Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "uncapped_daily_penalty",
+        "title": "Критический риск: Ежедневная пеня без верхнего лимита",
+        "severity": "critical",
+        "clause_id": "clause-1",
+        "description": "Договор содержит ежедневную пеню, но не ограничивает ее общий размер или период начисления. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: ﻿АГЕНТСКИЙ ДОГОВОР № ____на реализацию товараг. _______________ \"___\"_________ ____ г. ________________________________________, именуем___ в дальнейшем \"Предприятие\", (наименование организации)в лице ___________________________________, действующ__ на основании ________________, (должность, ф. и. о. )с одной стороны, и _____________________________________, именуем__ в дальнейшем (наименование организации)\"Агент\", в лице ____________________________________, действующ____ на основании. . .",
+        "role_relevance": "Неограниченная пеня быстро превращается в непропорциональную ответственность.",
+        "mitigation": "Установите cap по общей сумме неустойки и предельный период начисления."
+      },
+      {
+        "risk_id": "risk-2",
+        "rule_id": "confidentiality_without_exceptions",
+        "title": "Средний риск: Конфиденциальность без carve-outs и разумных исключений",
+        "severity": "medium",
+        "clause_id": "clause-1",
+        "description": "Обязанность по конфиденциальности сформулирована широко, но не содержит исключений для общедоступной информации, законных запросов и ранее известных данных. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: ﻿АГЕНТСКИЙ ДОГОВОР № ____на реализацию товараг. _______________ \"___\"_________ ____ г. ________________________________________, именуем___ в дальнейшем \"Предприятие\", (наименование организации)в лице ___________________________________, действующ__ на основании ________________, (должность, ф. и. о. )с одной стороны, и _____________________________________, именуем__ в дальнейшем (наименование организации)\"Агент\", в лице ____________________________________, действующ____ на основании. . .",
+        "role_relevance": "Исполнитель рискует нарушить чрезмерно широкую конфиденциальность.",
+        "mitigation": "Добавьте стандартные carve-outs и ограничьте ответственность за непредотвратимое раскрытие."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "﻿АГЕНТСКИЙ ДОГОВОР № ____на реализацию товараг. _______________ \"___\"_________ ____ г. ________________________________________, именуем___ в дальнейшем \"Предприятие\", (наименование организации)в лице ___________________________________, действующ__ на основании ________________, (должность, ф. и. о. )с одной стороны, и _____________________________________, именуем__ в дальнейшем (наименование организации)\"Агент\", в лице ____________________________________, действующ____ на основании...",
+        "dispute_reason": "Явные маркеры спорных формулировок не обнаружены.",
+        "possible_consequence": "Скрытые спорные моменты требуют дополнительной юридической проверки.",
+        "confidence": 0.35
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Агент",
+      "overview": "Договор содержит 1 пунктов и 2 выявленных рисков. Краткий вывод сфокусирован на роли 'Агент'. Обнаружено 1 пунктов с высоким уровнем риска; их стоит перепроверить вручную.",
+      "must_do": [
+        "Агент обязан уведомить Предприятие о понесенных издержках, как только уведомление станет возможным.",
+        "Агент обязан в течение ________ банковских дней перечислять на расчетный счет Предприятия все денежные средства, полученные им для Предприятия в соответствии с настоящим договором, за исключением вознаграждения.",
+        "Размер издержек должен быть предварительно согласован с Предприятием.",
+        "Сторона, не исполнившая или ненадлежащим образом исполнившая обязательства по настоящему договору, обязана возместить другой стороне причиненные таким неисполнением убытки."
+      ],
+      "should_review": [
+        "Настоящий договор может быть расторгнут по взаимному согласованию сторон, совершенному в письменной форме, за подписью уполномоченных лиц сторон."
+      ],
+      "payment_terms": [
+        "Агент представляет Предприятию расчет издержек, связанных с реализацией товара, подтвержденных документарно.",
+        "Агент обязан в течение ________ банковских дней перечислять на расчетный счет Предприятия все денежные средства, полученные им для Предприятия в соответствии с настоящим договором, за исключением вознаграждения.",
+        "Предприятие выплачивает Агенту вознаграждение в размере ____________________________ не позднее ___________________________.",
+        "За просрочку выплаты вознаграждения Предприятие уплачивает Агенту пеню в размере ______% от невыплаченной суммы за каждый день просрочки.",
+        "УСЛОВИЯ РАСЧЕТОВ2."
+      ],
+      "deadlines": [
+        "Предприятие компенсирует Агенту понесенные последним издержки, согласованные с Предприятием, в течение ________________ после ___________________________________________.",
+        "Агент имеет право на компенсацию издержек, не согласованных с Предприятием, если они были необходимы в интересах Предприятия, и Агент не мог предварительно запросить Предприятие либо не получил в течение ________ после уведомления ответ на свой запрос.",
+        "Агент обязан в течение ________ банковских дней перечислять на расчетный счет Предприятия все денежные средства, полученные им для Предприятия в соответствии с настоящим договором, за исключением вознаграждения.",
+        "СРОК ДЕЙСТВИЯ НАСТОЯЩЕГО ДОГОВОРА5."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "binary:utf8_decode",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "48e06aba7e9b3160f6d749166465a65a94a476db1af323601cf717c9e73fa036"
+    },
+    "contract_type": {
+      "type_id": "agency_agreement",
+      "confidence": 0.99,
+      "ru_name": "Агентский / комиссионный договор",
+      "legal_framework": "ГК РФ, главы 51 и 52"
+    },
+    "asymmetry_signals": []
+  },
+  "finished_at": "2026-04-28T16:12:19.759314+00:00",
+  "duration_ms": 187.86
+}

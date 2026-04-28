@@ -1,0 +1,239 @@
+{
+  "case_id": "договоры 4__obrazets-dogovor-komissii-na-poisk-kontragenta-po-sdelke-s-tsely_html",
+  "relative_path": "договоры 4/obrazets-dogovor-komissii-na-poisk-kontragenta-po-sdelke-s-tsely.html",
+  "document_path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\договоры 4\\obrazets-dogovor-komissii-na-poisk-kontragenta-po-sdelke-s-tsely.html",
+  "document_name": "obrazets-dogovor-komissii-na-poisk-kontragenta-po-sdelke-s-tsely.html",
+  "role": "Подрядчик",
+  "counterparty_role": "Заказчик",
+  "language": "ru",
+  "mime_type": "text/html",
+  "tags": [
+    "ad_hoc"
+  ],
+  "source_group": "договоры 4",
+  "expected": {},
+  "started_at": "2026-04-28T16:18:49.805213+00:00",
+  "status": "completed",
+  "request": {
+    "document_name": "obrazets-dogovor-komissii-na-poisk-kontragenta-po-sdelke-s-tsely.html",
+    "role_context": {
+      "role": "Подрядчик",
+      "counterparty_role": "Заказчик"
+    },
+    "document_text": null,
+    "document_base64": "PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMDEgVHJhbnNpdGlvbmFsLy9FTiI+DQo8aHRtbD4NCjxoZWFkPg0KPGJhc2UgaHJlZj0iaHR0cHM6Ly9kb2dvdm9yLXVyaXN0LnJ1LyI+DQo8dGl0bGU+0J7QsdGA0LDQt9C10YYuINCU0L7Qs9C+0LLQvtGAINC60L7QvNC40YHRgdC40Lgg0L3QsCDQv9C+0LjRgdC6INC60L7QvdGC0YDQsNCz0LXQvdGC0LAg0L/QviDRgdC00LXQu9C60LUg0YEg0YbQtdC70YzRjiDQv9C+0LrRg9C/0LrQuCAgINC00L7Qu9C70LDRgNC+0LIg0YHRiNCwIC0g0LLQtdGA0YHQuNGPINC00LvRjyDQv9C10YfQsNGC0LguIDIwMjYuINCe0LHRgNCw0LfRhtGLINC00L7Qs9C+0LLQvtGA0L7Qsiwg0YLQuNC/0L7QstGL0LUg0LTQvtCz0L7QstC+0YDQsCwg0LDQutGC0YPQsNC70YzQvdGL0LUg0LTQvtC60YPQvNC10L3RgtGLLCDRjtGA0LjQtNC40YfQtdGB0LrQuNC8INC4INGE0LjQt9C40YfQtdGB0LrQuNC8INC70LjRhtCw0Lw8L3RpdGxlPg0KPG1ldGEgY29udGVudD0iIiBuYW1lPSJrZXl3b3JkcyI+DQo8bWV0YSBjb250ZW50PSIiIG5hbWU9ImRlc2NyaXB0aW9uIj4NCjxtZXRhIG5hbWU9InJvYm90cyIgY29udGVudD0ibm9pbmRleCxub2ZvbGxvdyI+DQo8bWV0YSBodHRwLWVxdWl2PSJDb250ZW50LVR5cGUiIGNvbnRlbnQ9InRleHQvaHRtbDsgY2hhcnNldD11dGYtOCI+DQo8bGluayByZWw9InN0eWxlc2hlZXQiIGhyZWY9Ii9pbWFnZXMvc3R5bGUuY3NzIiB0eXBlPSJ0ZXh0L2NzcyI+DQo8L2hlYWQ+DQo8Ym9keT4NCjxkaXYgY2xhc3M9ImRvY3VtZW50VGV4dCI+DQo8cHJlPiAgICAgICAgICAgICAgICAgICAgICAgICAg0JTQntCT0J7QktCe0KAg0JrQntCc0JjQodCh0JjQmCBO0L4uIF9fX18NCg0KICAgINCzLiBfX19fX19fX19fX19fXyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIl9fXyJfX19fX19fX18gMjBfX18g0LMuDQoNCiAgICAgICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXywNCiAgICAgICAgICAgICAgICAgICAgICAgICAo0L3QsNC40LzQtdC90L7QstCw0L3QuNC1INC/0YDQtdC00L/RgNC40Y/RgtC40Y8pDQoNCiAgICDQuNC80LXQvdGD0LXQvF9fINCyINC00LDQu9GM0L3QtdC50YjQtdC8ICLQpNC40YDQvNCwIiwg0LIg0LvQuNGG0LUgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgKNC00L7Qu9C20L3QvtGB0YLRjCkNCg0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18sINC00LXQudGB0YLQstGD0Y7RidC10LPQvg0KICAgICAgICAgICAgICAgICjRhNCw0LzQuNC70LjRjywg0LjQvNGPLCDQvtGC0YfQtdGB0YLQstC+KQ0KDQogICAg0L3QsCDQvtGB0L3QvtCy0LDQvdC40LggX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fINGBINC+0LTQvdC+0Lkg0YHRgtC+0YDQvtC90YssDQogICAgICAgICAgICAgICAgICAgICAgICAgKNCj0YHRgtCw0LLQsCwg0L/QvtC70L7QttC10L3QuNGPKQ0KDQogICAg0LggX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAo0L3QsNC40LzQtdC90L7QstCw0L3QuNC1INC/0YDQtdC00L/RgNC40Y/RgtC40Y8pDQoNCiAgICDQuNC80LXQvdGD0LXQvF9fINCyINC00LDQu9GM0L3QtdC50YjQtdC8ICLQmtC70LjQtdC90YIiLCDQsiDQu9C40YbQtSBfX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgKNC00L7Qu9C20L3QvtGB0YLRjCkNCg0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18sINC00LXQudGB0YLQstGD0Y7RidC10LPQvg0KICAgICAgICAgICAgICAgICAgKNGE0LDQvNC40LvQuNGPLCDQuNC80Y8sINC+0YLRh9C10YHRgtCy0L4pDQoNCiAgICDQvdCwINC+0YHQvdC+0LLQsNC90LjQuCBfX19fX19fX19fX19fX19fX19fX19fX19fX18sINGBINC00YDRg9Cz0L7QuSDRgdGC0L7RgNC+0L3Riywg0LfQsNC60LvRjtGH0LjQu9C4DQogICAgICAgICAgICAgICAgICAgICAo0KPRgdGC0LDQstCwLCDQv9C+0LvQvtC20LXQvdC40Y8pDQoNCiAgICDQvdCw0YHRgtC+0Y/RidC40Lkg0LTQvtCz0L7QstC+0YAg0L4g0L3QuNC20LXRgdC70LXQtNGD0Y7RidC10Lw6DQoNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgMS4g0J/QoNCV0JTQnNCV0KIg0JTQntCT0J7QktCe0KDQkA0KDQogICAgICAgICDQmtC70LjQtdC90YIgINC/0L7RgNGD0YfQsNC10YIgINCk0LjRgNC80LUgINC90LDQudGC0LggINCa0L7QvdGC0YDQsNCz0LXQvdGC0LAgINC/0L4gINGB0LTQtdC70LrQtSAg0YEg0YbQtdC70YzRjg0KICAgINC/0L7QutGD0L/QutC4INC00L7Qu9C70LDRgNC+0LIg0KHQqNCQINC90LAg0YHRg9C80LzRgyBfX19fX19fX18gKF9fX19fX19fX19fX19fX19fX19fX19fX19fXykNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAo0L/RgNC+0L/QuNGB0YzRjikNCg0KICAgIFVTRCDQv9C+INC60YPRgNGB0YMg0L3QtSDQsdC+0LvQtdC1IF9fX19fX19fX18gKF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fKSDRgNGD0LEuDQogICAg0LfQsCAxINC00L7Qu9C70LDRgCDQvdCwINC+0LHRidGD0Y4g0YHRg9C80LzRgyDQv9C+0LrRg9C/0LrQuCBfX19fX19fX19fXyAoX19fX19fX19fX19fX19fX19fX19fDQogICAgX19fX19fX19fX19fX19fX19fKSDRgNGD0LHQu9C10LkuDQogICAgICAgKNC/0YDQvtC/0LjRgdGM0Y4pDQoNCiAgICAgICAgICAgICAgICAgICAgICAgICAgIDIuINCe0JHQr9CX0JDQotCV0JvQrNCh0KLQktCQINCh0KLQntCg0J7QnQ0KDQogICAgICAgICDQmtCb0JjQldCd0KI6DQogICAgICAgICAyLjEuINCf0YDQuCDQt9Cw0LrQu9GO0YfQtdC90LjQuCDQtNC+0LPQvtCy0L7RgNCwINGBINCa0L7QvdGC0YDQsNCz0LXQvdGC0L7QvCDQv9C+INGB0LTQtdC70LrQtSAg0LLRi9C/0L7Qu9C90Y/QtdGCDQogICAg0LLRgdC1INC+0LHRj9C30LDRgtC10LvRjNGB0YLQstCwINC/0L4g0L3QsNC30LLQsNC90L3QvtC80YMg0LTQvtCz0L7QstC+0YDRgyDQv9C+0LvQvdC+0YHRgtGM0Y4g0Lgg0LIg0YHRgNC+0LouDQogICAgICAgICAyLjIuICDQn9C+0YHQu9C1ICDQv9C+0LTQv9C40YHQsNC90LjRjyAg0LTQvtCz0L7QstC+0YDQsCAg0YEgINCa0L7QvdGC0YDQsNCz0LXQvdGC0L7QvCAg0L/QviAg0YHQtNC10LvQutC1INCyDQogICAg0YLQtdGH0LXQvdC40LUgINGC0YDQtdGFICDQsdCw0L3QutC+0LLRgdC60LjRhSAgINC00L3QtdC5ICAg0L/QtdGA0LXQstC+0LTQuNGCICAg0L3QsCAgINGB0YfQtdGCICAg0KTQuNGA0LzRiyAgINC10LUNCiAgICDQstC+0LfQvdCw0LPRgNCw0LbQtNC10L3QuNC1LCAg0LrQvtGC0L7RgNC+0LUgINC/0LXRgNC10YXQvtC00LjRgiAg0LIgINGB0L7QsdGB0YLQstC10L3QvdC+0YHRgtGMICDQpNC40YDQvNGLICDQsiAg0LTQtdC90YwNCiAgICDQv9C+0LTQv9C40YHQsNC90LjRjyDQsNC60YLQsCDQv9GA0LjQtdC80LrQuC3Qv9C10YDQtdC00LDRh9C4INGA0LDQsdC+0YIg0L/QviDQvdCw0YHRgtC+0Y/RidC10LzRgyDQtNC+0LPQvtCy0L7RgNGDLg0KICAgICAgICAgMi4zLiDQkiAg0YHQu9GD0YfQsNC1ICDQvdC10L7QsdGF0L7QtNC40LzQvtGB0YLQuCAg0L7QsdGP0LfRg9C10YLRgdGPICDQv9GA0LXQtNC+0YHRgtCw0LLQuNGC0YwgINC00L7QutGD0LzQtdC90YINCiAgICAo0LrQvtC90YLRgNCw0LrRgiksINC90LAg0L7RgdC90L7QstCw0L3QuNC4INC60L7RgtC+0YDQvtCz0L4g0LHRg9C00LXRgiDQv9GA0L7QuNC30LLQvtC00LjRgtGM0YHRjyDQutC+0L3QstC10YDRgtCw0YbQuNGPLg0KICAgICAgICAgMi40LiDQkiDRgtC10YfQtdC90LjQuCDQtNCy0YPRhSDQsdCw0L3QutC+0LLRgdC60LjRhSDQtNC90LXQuSDRgSDQvNC+0LzQtdC90YLQsCAg0L/QvtC70YPRh9C10L3QuNGPICDQstCw0LvRjtGC0YsNCiAgICDQvdCwICDRgNCw0YHRh9C10YLQvdGL0Lkg0YHRh9C10YIg0JrQu9C40LXQvdGC0LAsINC/0L7QtNC/0LjRgdGL0LLQsNC10YIg0LDQutGCINC/0YDQuNC10LzQutC4LdC/0LXRgNC10LTQsNGH0Lgg0YDQsNCx0L7RgiDQv9C+DQogICAg0L3QsNGB0YLQvtGP0YnQtdC80YMg0LTQvtCz0L7QstC+0YDRgy4NCiAgICAgICAgINCk0JjQoNCc0JA6DQogICAgICAgICAyLjUuICDQn9C+0YHQu9C1ICDQv9C+0LTQv9C40YHQsNC90LjRjyAg0L3QsNGB0YLQvtGP0YnQtdCz0L4gICDQtNC+0LPQvtCy0L7RgNCwICAg0L3QtdC30LDQvNC10LTQu9C40YLQtdC70YzQvdC+DQogICAg0L3QsNGH0LjQvdCw0LXRgiDRgNCw0LHQvtGC0YMuDQoNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAzLiDQntCf0JvQkNCi0JANCg0KICAgICAgICAg0JfQsCAg0YPRgdC70YPQs9C4ICDQv9C+ICDQvdCw0YHRgtC+0Y/RidC10LzRgyAg0LTQvtCz0L7QstC+0YDRgyAg0JrQu9C40LXQvdGCICDQstGL0L/Qu9Cw0YfQuNCy0LDQtdGCICDQpNC40YDQvNC1DQogICAg0LLQvtC30L3QsNCz0YDQsNC20LTQtdC90LjQtSDQsiDRgNGD0LHQu9GP0YUg0LIg0YDQsNC30LzQtdGA0LUgX19fXyAoX19fX19fX19fKSDQv9GA0L7RhtC10L3RgtC+0LIg0L7RgiDRgdGD0LzQvNGLDQogICAg0YHQtNC10LvQutC4INCyINGA0YPQsdC70Y/RhS4NCg0KICAgICAgICAgICAgICAgICAgICAgICAgICA0LiDQntCi0JLQldCi0KHQotCS0JXQndCd0J7QodCi0Kwg0KHQotCe0KDQntCdDQoNCiAgICAgICAgIDQuMS4g0JrQm9CY0JXQndCiOg0KICAgICAgICAg0LApINCyINGB0LvRg9GH0LDQtSAgINC90LXQstGL0L/QvtC70L3QtdC90LjRjyAg0L8uIDIuMiwgINCy0YvQv9C70LDRh9C40LLQsNC10YIgINCk0LjRgNC80LUgINC/0LXQvdGOICDQsg0KICAgINGA0LDQt9C80LXRgNC1IF9fX19fXyAg0L/RgNC+0YbQtdC90YLQsCAg0L7RgiAg0YHRg9C80LzRiyAg0YHQtNC10LvQutC4ICDQsiAg0YDRg9Cx0LvRj9GFINC30LAg0LrQsNC20LTRi9C5INC00LXQvdGMDQogICAg0L/RgNC+0YHRgNC+0YfQutC4Lg0KICAgICAgICAg0LEpINCyINGB0LvRg9GH0LDQtSDQvdC10LLRi9C/0L7Qu9C90LXQvdC40Y8g0L8uIDIuNCDQstGL0L/Qu9Cw0YfQuNCy0LDQtdGCINCk0LjRgNC80LUg0L/QtdC90Y4g0LIg0YDQsNC30LzQtdGA0LUNCiAgICBfX19fX18g0L/RgNC+0YbQtdC90YLQsCDQvtGCINGB0YPQvNC80Ysg0YHQtNC10LvQutC4INCyINGA0YPQsdC70Y/RhSDQt9CwINC60LDQttC00YvQuSDQtNC10L3RjCDQv9GA0L7RgdGA0L7Rh9C60LguDQogICAgICAgICA0LjIuINCk0JjQoNCc0JA6DQogICAgICAgICDQkiAg0YHQu9GD0YfQsNC1ICDRgNCw0YHRgtC+0YDQttC10L3QuNGPICDQtNC+0LPQvtCy0L7RgNCwLCAg0LfQsNC60LvRjtGH0LXQvdC90L7Qs9C+INC80LXQttC00YMg0JrQu9C40LXQvdGC0L7QvCDQuA0KICAgINCa0L7QvdGC0YDQsNCz0LXQvdGC0L7QvCwgICDQvtCx0Y/Qt9GD0LXRgtGB0Y8gICDQstC10YDQvdGD0YLRjCAgINC/0LXRgNC10LLQtdC00LXQvdC90L7QtSAgINC90LAgICAg0LXQtSAgICDRgdGH0LXRgg0KICAgINCy0L7Qt9C90LDQs9GA0LDQttC00LXQvdC40LUgINCyINGC0LXRh9C10L3QuNC1INGC0YDQtdGFINCx0LDQvdC60L7QstGB0LrQuNGFINC00L3QtdC5INGBINC80L7QvNC10L3RgtCwINC/0L7Qu9GD0YfQtdC90LjRjyDQvtGCDQogICAg0JrQu9C40LXQvdGC0LAg0LTQvtC60YPQvNC10L3RgtCwLCDQv9C+0LTRgtCy0LXRgNC20LTQsNGO0YnQtdCz0L4gINGE0LDQutGCICDRgNCw0YHRgtC+0YDQttC10L3QuNGPICDQstGL0YjQtdC90LDQt9Cy0LDQvdC90L7Qs9C+DQogICAg0LTQvtCz0L7QstC+0YDQsC4NCg0KICAgICAgICAgICAgICAgICAgICAgICA1LiDQn9Ce0KDQr9CU0J7QmiDQoNCQ0KHQodCc0J7QotCg0JXQndCY0K8g0KHQn9Ce0KDQntCSDQoNCiAgICAgICAgINCS0YHQtSAgINGA0LDQt9C90L7Qs9C70LDRgdC40Y8gICDQv9C+ICAg0L3QsNGB0YLQvtGP0YnQtdC80YMgICDQtNC+0LPQvtCy0L7RgNGDICAg0YDQtdGI0LDRjtGC0YHRjyAg0L/Rg9GC0LXQvA0KICAgINC/0LXRgNC10LPQvtCy0L7RgNC+0LIg0LjQu9C4INCyINGB0L7QvtGC0LLQtdGC0YHRgtCy0LjQuCDRgSDQtNC10LnRgdGC0LLRg9GO0YnQuNC8INC30LDQutC+0L3QvtC00LDRgtC10LvRjNGB0YLQstC+0LwuDQoNCiAgICAgICAgICAgICAgICAgICAgICAgIDYuINCf0J7QoNCv0JTQntCaINCe0KHQo9Cp0JXQodCi0JLQm9CV0J3QmNCvINCh0JLQr9CX0JgNCg0KICAgICAgICAg0J/QvtGA0YPRh9C10L3QuNGPLCAgINC40LfQstC10YnQtdC90LjRjyAgINC4ICAg0LTRgNGD0LPQuNC1ICAgINC00L7QutGD0LzQtdC90YLRiywgICAg0L/QvtC00L/QuNGB0LDQvdC90YvQtQ0KICAgINGA0YPQutC+0LLQvtC00LjRgtC10LvQtdC8ICDQuCDQs9C70LDQstC90YvQvCDQsdGD0YXQs9Cw0LvRgtC10YDQvtC8LCDQt9Cw0LLQtdGA0LXQvdC90YvQtSDQv9C10YfQsNGC0YzRjiDQuCDQv9C10YDQtdC00LDQvdC90YvQtQ0KICAgINC/0YDQvtGC0LjQstC+0L/QvtC70L7QttC90L7QuSDRgdGC0L7RgNC+0L3QtSDRgtC10LvQtdGE0LDQutGB0L7QvCwg0L/RgNC40LfQvdCw0Y7RgtGB0Y8g0YHRgtC+0YDQvtC90LDQvNC4INC/0L7Qu9C90L7RhtC10L3QvdGL0LzQuA0KICAgINGO0YDQuNC00LjRh9C10YHQutC40LzQuCDQtNC+0LrRg9C80LXQvdGC0LDQvNC4Lg0KDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgIDcuINCe0KHQntCR0KvQlSDQo9Ch0JvQntCS0JjQrw0KICAgICAgICAgNy4xLiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLg0KICAgICAgICAgNy4yLiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLg0KDQogICAgICAgICAgICAgICAgICAgICAgICAgIDguINCh0KDQntCaINCU0JXQmdCh0KLQktCY0K8g0JTQntCT0J7QktCe0KDQkA0KDQogICAgICAgICA4LjEgINCh0YDQvtC6ICDQtNC10LnRgdGC0LLQuNGPICDQvdCw0YHRgtC+0Y/RidC10LPQviAg0LTQvtCz0L7QstC+0YDQsCAg0L3QsNGH0LjQvdCw0LXRgtGB0Y8gINC00LDRgtC+0Lkg0LXQs9C+DQogICAg0L/QvtC00L/QuNGB0LDQvdC40Y8g0Lgg0LfQsNC60LDQvdGH0LjQstCw0LXRgtGB0Y8gIl9fXyJfX19fX19fX19fXyAyMF9fXyDQsy4NCiAgICAgICAgINCU0L7Qs9C+0LLQvtGAINGB0L7RgdGC0LDQstC70LXQvSDQsiDQtNCy0YPRhSDRjdC60LfQtdC80L/Qu9GP0YDQsNGFLCDQv9C+INC+0LTQvdC+0LzRgyAg0LTQu9GPICDQutCw0LbQtNC+0LkgINC40LcNCiAgICDRgdGC0L7RgNC+0L0uDQoNCiAgICAgICAgICAgICAgICAgICDQrtCg0JjQlNCY0KfQldCh0JrQmNCVINCQ0JTQoNCV0KHQkCDQmCDQoNCV0JrQktCY0JfQmNCi0Ksg0KHQotCe0KDQntCdOg0KDQogICAgICAgICAgICAgICAg0KTQmNCg0JzQkDogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgINCa0JvQmNCV0J3QojoNCiAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXyAgICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCiAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXyAgICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCiAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXyAgICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCiAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXyAgICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCiAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXyAgICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCiAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXyAgICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCiAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXyAgICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCiAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXyAgICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCg0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fICAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KDQogICAgICAgICAgICAgICAgINCcLtCfLiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICDQnC7Qny4NCg0KICANCjwvcHJlPjwvZGl2Pg0KPC9ib2R5Pg0KPC9odG1sPg==",
+    "mime_type": "text/html",
+    "language": "ru",
+    "locale": "ru"
+  },
+  "ingestion_preflight": {
+    "mime_type": "text/html",
+    "extractor": "html:regex",
+    "extraction_source": "html:regex",
+    "extraction_ok": true,
+    "error": null,
+    "extraction_error": null,
+    "sha256": "4b4c92c1447b584e3237312f49f10b83655395cef64096058efef571572a701a"
+  },
+  "metrics": {
+    "risk_count": 2,
+    "high_risk_count": 1,
+    "disputed_clause_count": 1,
+    "asymmetry_signal_count": 1,
+    "contract_type": "agency_agreement"
+  },
+  "analysis": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'obrazets-dogovor-komissii-na-poisk-kontragenta-po-sdelke-s-tsely. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Подрядчик'. Определен тип договора: Агентский / комиссионный договор (уверенность 57%, правовая рамка: ГК РФ, главы 51 и 52). Ключевые обязательства по договору для роли 'Подрядчик': В случае необходимости обязуется предоставить документ (контракт), на основании которого будет производиться конвертация; ФИРМА: В случае расторжения договора, заключенного между Клиентом и Контрагентом, обязуется вернуть переведенное на ее счет вознаграждение в течение трех банковских дней с момента получения от Клиента документа, подтверждающего факт расторжения вышеназванного договора. Условия оплаты: После подписания договора с Контрагентом по сделке в течение трех банковских дней переводит на счет Фирмы ее вознаграждение, которое переходит в собственность Фирмы в день подписания акта приемки-передачи работ по настоящему договору; В течении двух банковских дней с момента получения валюты на расчетный счет Клиента, подписывает акт приемки-передачи работ по настоящему договору; ОПЛАТА За услуги по настоящему договору Клиент выплачивает Фирме вознаграждение в рублях в размере ____ (_________) процентов от суммы сделки в рублях. Сроки и дедлайны: При заключении договора с Контрагентом по сделке выполняет все обязательства по названному договору полностью и в срок; После подписания договора с Контрагентом по сделке в течение трех банковских дней переводит на счет Фирмы ее вознаграждение, которое переходит в собственность Фирмы в день подписания акта приемки-передачи работ по настоящему договору; В течении двух банковских дней с момента получения валюты на расчетный счет Клиента, подписывает акт приемки-передачи работ по настоящему договору. Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "uncapped_daily_penalty",
+        "title": "Критический риск: Ежедневная пеня без верхнего лимита",
+        "severity": "critical",
+        "clause_id": "clause-1",
+        "description": "Договор содержит ежедневную пеню, но не ограничивает ее общий размер или период начисления. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: Образец. Договор комиссии на поиск контрагента по сделке с целью покупки долларов сша - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР КОМИССИИ Nо. ____ г. ______________ \"___\"_________ 20___ г. _______________________________________________________________, (наименование предприятия) именуем__ в дальнейшем \"Фирма\", в лице ______________________________ (должность). . .",
+        "role_relevance": "Неограниченная пеня быстро превращается в непропорциональную ответственность.",
+        "mitigation": "Установите cap по общей сумме неустойки и предельный период начисления."
+      },
+      {
+        "risk_id": "risk-2",
+        "rule_id": "undefined_acceptance_criteria",
+        "title": "Средний риск: Приемка предусмотрена без объективных критериев результата.",
+        "severity": "medium",
+        "clause_id": "clause-1",
+        "description": "Образец. Договор комиссии на поиск контрагента по сделке с целью покупки долларов сша - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР КОМИССИИ Nо. ____ г. ______________ \"___\"_________ 20___ г. _______________________________________________________________, (наименование предприятия) именуем__ в дальнейшем \"Фирма\", в лице ______________________________ (должность) _______________________________________________________, действующего (фамилия, имя, отчество) на основании _______________________________________ с одной стороны, (Устава, положения) и __________________________________________________________________, (наименование предприятия) именуем__ в дальнейшем \"Клиент\", в лице _____________________________ (должность) _______________________________________________________, действующего (фамилия, имя, отчество) на основании ___________________________, с другой стороны, заключили (Устава, положения) настоящий договор о нижеследующем: 1. ПРЕДМЕТ ДОГОВОРА Клиент поручает Фирме найти Контрагента по сделке с целью покупки долларов США на сумму _________ (___________________________) (прописью) USD по курсу не более __________ (_____________________________) руб. за 1 доллар на общую сумму покупки ___________ (_____________________ __________________) рублей. (прописью) 2. ОБЯЗАТЕЛЬСТВА СТОРОН КЛИЕНТ: 2. 1. При заключении договора с Контрагентом по сделке выполняет все обязательства по названному договору полностью и в срок. 2. 2. После подписания договора с Контрагентом по сделке в течение трех банковских дней переводит на счет Фирмы ее вознаграждение, которое переходит в собственность Фирмы в день подписания акта приемки-передачи работ по настоящему договору. 2. 3. В случае необходимости обязуется предоставить документ (контракт), на основании которого будет производиться конвертация. 2. 4. В течении двух банковских дней с момента получения валюты на расчетный счет Клиента, подписывает акт приемки-передачи работ по настоящему договору. ФИРМА: 2. 5. После подписания настоящего договора незамедлительно начинает работу. 3. ОПЛАТА За услуги по настоящему договору Клиент выплачивает Фирме вознаграждение в рублях в размере ____ (_________) процентов от суммы сделки в рублях. 4. ОТВЕТСТВЕННОСТЬ СТОРОН 4. 1. КЛИЕНТ: а) в случае невыполнения п. 2. 2, выплачивает Фирме пеню в размере ______ процента от суммы сделки в рублях за каждый день просрочки. б) в случае невыполнения п. 2. 4 выплачивает Фирме пеню в размере ______ процента от суммы сделки в рублях за каждый день просрочки. 4. 2. ФИРМА: В случае расторжения договора, заключенного между Клиентом и Контрагентом, обязуется вернуть переведенное на ее счет вознаграждение в течение трех банковских дней с момента получения от Клиента документа, подтверждающего факт расторжения вышеназванного договора. 5. ПОРЯДОК РАССМОТРЕНИЯ СПОРОВ Все разногласия по настоящему договору решаются путем переговоров или в соответствии с действующим законодательством. 6. ПОРЯДОК ОСУЩЕСТВЛЕНИЯ СВЯЗИ Поручения, извещения и другие документы, подписанные руководителем и главным бухгалтером, заверенные печатью и переданные противоположной стороне телефаксом, признаются сторонами полноценными юридическими документами. 7. ОСОБЫЕ УСЛОВИЯ 7. 1. ___________________________________________________________ ____________________________________________________________________. 7. 2. ___________________________________________________________ ____________________________________________________________________. 8. СРОК ДЕЙСТВИЯ ДОГОВОРА 8. 1 Срок действия настоящего договора начинается датой его подписания и заканчивается \"___\"___________ 20___ г. Договор составлен в двух экземплярах, по одному для каждой из сторон. ЮРИДИЧЕСКИЕ АДРЕСА И РЕКВИЗИТЫ СТОРОН: ФИРМА: КЛИЕНТ: ________________________________ ________________________________ ________________________________ ________________________________ ________________________________ ________________________________ ________________________________ ________________________________ ________________________________ ________________________________ ________________________________ ________________________________ ________________________________ ________________________________ ________________________________ ________________________________ ________________________________ ________________________________ М. П. М. П.",
+        "role_relevance": "Сигнал асимметрии затрагивает выбранную роль 'Подрядчик'.",
+        "mitigation": "Зафиксируйте объективные критерии приемки, сроки проверки и мотивированный отказ."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Образец. Договор комиссии на поиск контрагента по сделке с целью покупки долларов сша - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР КОМИССИИ Nо. ____ г. ______________ \"___\"_________ 20___ г. _______________________________________________________________, (наименование предприятия) именуем__ в дальнейшем \"Фирма\", в лице ______________________________ (должность)...",
+        "dispute_reason": "Срок задан оценочно и может толковаться сторонами по-разному.",
+        "possible_consequence": "Стороны могут спорить о моменте надлежащего исполнения и начале просрочки.",
+        "confidence": 0.77
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Подрядчик",
+      "overview": "Договор содержит 1 пунктов и 2 выявленных рисков. Краткий вывод сфокусирован на роли 'Подрядчик'. Обнаружено 1 пунктов с высоким уровнем риска; их стоит перепроверить вручную.",
+      "must_do": [
+        "В случае необходимости обязуется предоставить документ (контракт), на основании которого будет производиться конвертация.",
+        "ФИРМА: В случае расторжения договора, заключенного между Клиентом и Контрагентом, обязуется вернуть переведенное на ее счет вознаграждение в течение трех банковских дней с момента получения от Клиента документа, подтверждающего факт расторжения вышеназванного договора."
+      ],
+      "should_review": [
+        "Конфиг не выявил явных дискреционных условий."
+      ],
+      "payment_terms": [
+        "После подписания договора с Контрагентом по сделке в течение трех банковских дней переводит на счет Фирмы ее вознаграждение, которое переходит в собственность Фирмы в день подписания акта приемки-передачи работ по настоящему договору.",
+        "В течении двух банковских дней с момента получения валюты на расчетный счет Клиента, подписывает акт приемки-передачи работ по настоящему договору.",
+        "ОПЛАТА За услуги по настоящему договору Клиент выплачивает Фирме вознаграждение в рублях в размере ____ (_________) процентов от суммы сделки в рублях.",
+        "ФИРМА: В случае расторжения договора, заключенного между Клиентом и Контрагентом, обязуется вернуть переведенное на ее счет вознаграждение в течение трех банковских дней с момента получения от Клиента документа, подтверждающего факт расторжения вышеназванного договора."
+      ],
+      "deadlines": [
+        "При заключении договора с Контрагентом по сделке выполняет все обязательства по названному договору полностью и в срок.",
+        "После подписания договора с Контрагентом по сделке в течение трех банковских дней переводит на счет Фирмы ее вознаграждение, которое переходит в собственность Фирмы в день подписания акта приемки-передачи работ по настоящему договору.",
+        "В течении двух банковских дней с момента получения валюты на расчетный счет Клиента, подписывает акт приемки-передачи работ по настоящему договору.",
+        "ФИРМА: В случае расторжения договора, заключенного между Клиентом и Контрагентом, обязуется вернуть переведенное на ее счет вознаграждение в течение трех банковских дней с момента получения от Клиента документа, подтверждающего факт расторжения вышеназванного договора.",
+        "СРОК ДЕЙСТВИЯ ДОГОВОРА 8.",
+        "1 Срок действия настоящего договора начинается датой его подписания и заканчивается \"___\"___________ 20___ г."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "4b4c92c1447b584e3237312f49f10b83655395cef64096058efef571572a701a"
+    },
+    "contract_type": {
+      "type_id": "agency_agreement",
+      "confidence": 0.58,
+      "ru_name": "Агентский / комиссионный договор",
+      "legal_framework": "ГК РФ, главы 51 и 52"
+    },
+    "asymmetry_signals": [
+      {
+        "risk_id": "undefined_acceptance_criteria",
+        "clause_id": "clause-1",
+        "summary": "Приемка предусмотрена без объективных критериев результата.",
+        "details": "Образец. Договор комиссии на поиск контрагента по сделке с целью покупки долларов сша - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР КОМИССИИ Nо. ____ г. ______________ \"___\"_________ 20___ г. _______________________________________________________________, (наименование предприятия) именуем__ в дальнейшем \"Фирма\", в лице ______________________________ (должность) _______________________________________________________, действующего (фамилия, имя, отчество) на основании _______________________________________ с одной стороны, (Устава, положения) и __________________________________________________________________, (наименование предприятия) именуем__ в дальнейшем \"Клиент\", в лице _____________________________ (должность) _______________________________________________________, действующего (фамилия, имя, отчество) на основании ___________________________, с другой стороны, заключили (Устава, положения) настоящий договор о нижеследующем: 1. ПРЕДМЕТ ДОГОВОРА Клиент поручает Фирме найти Контрагента по сделке с целью покупки долларов США на сумму _________ (___________________________) (прописью) USD по курсу не более __________ (_____________________________) руб. за 1 доллар на общую сумму покупки ___________ (_____________________ __________________) рублей. (прописью) 2. ОБЯЗАТЕЛЬСТВА СТОРОН КЛИЕНТ: 2. 1. При заключении договора с Контрагентом по сделке выполняет все обязательства по названному договору полностью и в срок. 2. 2. После подписания договора с Контрагентом по сделке в течение трех банковских дней переводит на счет Фирмы ее вознаграждение, которое переходит в собственность Фирмы в день подписания акта приемки-передачи работ по настоящему договору. 2. 3. В случае необходимости обязуется предоставить документ (контракт), на основании которого будет производиться конвертация. 2. 4. В течении двух банковских дней с момента получения валюты на расчетный счет Клиента, подписывает акт приемки-передачи работ по настоящему договору. ФИРМА: 2. 5. После подписания настоящего договора незамедлительно начинает работу. 3. ОПЛАТА За услуги по настоящему договору Клиент выплачивает Фирме вознаграждение в рублях в размере ____ (_________) процентов от суммы сделки в рублях. 4. ОТВЕТСТВЕННОСТЬ СТОРОН 4. 1. КЛИЕНТ: а) в случае невыполнения п. 2. 2, выплачивает Фирме пеню в размере ______ процента от суммы сделки в рублях за каждый день просрочки. б) в случае невыполнения п. 2. 4 выплачивает Фирме пеню в размере ______ процента от суммы сделки в рублях за каждый день просрочки. 4. 2. ФИРМА: В случае расторжения договора, заключенного между Клиентом и Контрагентом, обязуется вернуть переведенное на ее счет вознаграждение в течение трех банковских дней с момента получения от Клиента документа, подтверждающего факт расторжения вышеназванного договора. 5. ПОРЯДОК РАССМОТРЕНИЯ СПОРОВ Все разногласия по настоящему договору решаются путем переговоров или в соответствии с действующим законодательством. 6. ПОРЯДОК ОСУЩЕСТВЛЕНИЯ СВЯЗИ Поручения, извещения и другие документы, подписанные руководителем и главным бухгалтером, заверенные печатью и переданные противоположной стороне телефаксом, признаются сторонами полноценными юридическими документами. 7. ОСОБЫЕ УСЛОВИЯ 7. 1. ___________________________________________________________ ____________________________________________________________________. 7. 2. ___________________________________________________________ ____________________________________________________________________. 8. СРОК ДЕЙСТВИЯ ДОГОВОРА 8. 1 Срок действия настоящего договора начинается датой его подписания и заканчивается \"___\"___________ 20___ г. Договор составлен в двух экземплярах, по одному для каждой из сторон. ЮРИДИЧЕСКИЕ АДРЕСА И РЕКВИЗИТЫ СТОРОН: ФИРМА: КЛИЕНТ: ________________________________ ________________________________ ________________________________ ________________________________ ________________________________ ________________________________ ________________________________ ________________________________ ________________________________ ________________________________ ________________________________ ________________________________ ________________________________ ________________________________ ________________________________ ________________________________ ________________________________ ________________________________ М. П. М. П.",
+        "severity_hint": "medium",
+        "affected_roles": [
+          "executor",
+          "client"
+        ]
+      }
+    ]
+  },
+  "result": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'obrazets-dogovor-komissii-na-poisk-kontragenta-po-sdelke-s-tsely. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Подрядчик'. Определен тип договора: Агентский / комиссионный договор (уверенность 57%, правовая рамка: ГК РФ, главы 51 и 52). Ключевые обязательства по договору для роли 'Подрядчик': В случае необходимости обязуется предоставить документ (контракт), на основании которого будет производиться конвертация; ФИРМА: В случае расторжения договора, заключенного между Клиентом и Контрагентом, обязуется вернуть переведенное на ее счет вознаграждение в течение трех банковских дней с момента получения от Клиента документа, подтверждающего факт расторжения вышеназванного договора. Условия оплаты: После подписания договора с Контрагентом по сделке в течение трех банковских дней переводит на счет Фирмы ее вознаграждение, которое переходит в собственность Фирмы в день подписания акта приемки-передачи работ по настоящему договору; В течении двух банковских дней с момента получения валюты на расчетный счет Клиента, подписывает акт приемки-передачи работ по настоящему договору; ОПЛАТА За услуги по настоящему договору Клиент выплачивает Фирме вознаграждение в рублях в размере ____ (_________) процентов от суммы сделки в рублях. Сроки и дедлайны: При заключении договора с Контрагентом по сделке выполняет все обязательства по названному договору полностью и в срок; После подписания договора с Контрагентом по сделке в течение трех банковских дней переводит на счет Фирмы ее вознаграждение, которое переходит в собственность Фирмы в день подписания акта приемки-передачи работ по настоящему договору; В течении двух банковских дней с момента получения валюты на расчетный счет Клиента, подписывает акт приемки-передачи работ по настоящему договору. Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "uncapped_daily_penalty",
+        "title": "Критический риск: Ежедневная пеня без верхнего лимита",
+        "severity": "critical",
+        "clause_id": "clause-1",
+        "description": "Договор содержит ежедневную пеню, но не ограничивает ее общий размер или период начисления. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: Образец. Договор комиссии на поиск контрагента по сделке с целью покупки долларов сша - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР КОМИССИИ Nо. ____ г. ______________ \"___\"_________ 20___ г. _______________________________________________________________, (наименование предприятия) именуем__ в дальнейшем \"Фирма\", в лице ______________________________ (должность). . .",
+        "role_relevance": "Неограниченная пеня быстро превращается в непропорциональную ответственность.",
+        "mitigation": "Установите cap по общей сумме неустойки и предельный период начисления."
+      },
+      {
+        "risk_id": "risk-2",
+        "rule_id": "undefined_acceptance_criteria",
+        "title": "Средний риск: Приемка предусмотрена без объективных критериев результата.",
+        "severity": "medium",
+        "clause_id": "clause-1",
+        "description": "Образец. Договор комиссии на поиск контрагента по сделке с целью покупки долларов сша - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР КОМИССИИ Nо. ____ г. ______________ \"___\"_________ 20___ г. _______________________________________________________________, (наименование предприятия) именуем__ в дальнейшем \"Фирма\", в лице ______________________________ (должность) _______________________________________________________, действующего (фамилия, имя, отчество) на основании _______________________________________ с одной стороны, (Устава, положения) и __________________________________________________________________, (наименование предприятия) именуем__ в дальнейшем \"Клиент\", в лице _____________________________ (должность) _______________________________________________________, действующего (фамилия, имя, отчество) на основании ___________________________, с другой стороны, заключили (Устава, положения) настоящий договор о нижеследующем: 1. ПРЕДМЕТ ДОГОВОРА Клиент поручает Фирме найти Контрагента по сделке с целью покупки долларов США на сумму _________ (___________________________) (прописью) USD по курсу не более __________ (_____________________________) руб. за 1 доллар на общую сумму покупки ___________ (_____________________ __________________) рублей. (прописью) 2. ОБЯЗАТЕЛЬСТВА СТОРОН КЛИЕНТ: 2. 1. При заключении договора с Контрагентом по сделке выполняет все обязательства по названному договору полностью и в срок. 2. 2. После подписания договора с Контрагентом по сделке в течение трех банковских дней переводит на счет Фирмы ее вознаграждение, которое переходит в собственность Фирмы в день подписания акта приемки-передачи работ по настоящему договору. 2. 3. В случае необходимости обязуется предоставить документ (контракт), на основании которого будет производиться конвертация. 2. 4. В течении двух банковских дней с момента получения валюты на расчетный счет Клиента, подписывает акт приемки-передачи работ по настоящему договору. ФИРМА: 2. 5. После подписания настоящего договора незамедлительно начинает работу. 3. ОПЛАТА За услуги по настоящему договору Клиент выплачивает Фирме вознаграждение в рублях в размере ____ (_________) процентов от суммы сделки в рублях. 4. ОТВЕТСТВЕННОСТЬ СТОРОН 4. 1. КЛИЕНТ: а) в случае невыполнения п. 2. 2, выплачивает Фирме пеню в размере ______ процента от суммы сделки в рублях за каждый день просрочки. б) в случае невыполнения п. 2. 4 выплачивает Фирме пеню в размере ______ процента от суммы сделки в рублях за каждый день просрочки. 4. 2. ФИРМА: В случае расторжения договора, заключенного между Клиентом и Контрагентом, обязуется вернуть переведенное на ее счет вознаграждение в течение трех банковских дней с момента получения от Клиента документа, подтверждающего факт расторжения вышеназванного договора. 5. ПОРЯДОК РАССМОТРЕНИЯ СПОРОВ Все разногласия по настоящему договору решаются путем переговоров или в соответствии с действующим законодательством. 6. ПОРЯДОК ОСУЩЕСТВЛЕНИЯ СВЯЗИ Поручения, извещения и другие документы, подписанные руководителем и главным бухгалтером, заверенные печатью и переданные противоположной стороне телефаксом, признаются сторонами полноценными юридическими документами. 7. ОСОБЫЕ УСЛОВИЯ 7. 1. ___________________________________________________________ ____________________________________________________________________. 7. 2. ___________________________________________________________ ____________________________________________________________________. 8. СРОК ДЕЙСТВИЯ ДОГОВОРА 8. 1 Срок действия настоящего договора начинается датой его подписания и заканчивается \"___\"___________ 20___ г. Договор составлен в двух экземплярах, по одному для каждой из сторон. ЮРИДИЧЕСКИЕ АДРЕСА И РЕКВИЗИТЫ СТОРОН: ФИРМА: КЛИЕНТ: ________________________________ ________________________________ ________________________________ ________________________________ ________________________________ ________________________________ ________________________________ ________________________________ ________________________________ ________________________________ ________________________________ ________________________________ ________________________________ ________________________________ ________________________________ ________________________________ ________________________________ ________________________________ М. П. М. П.",
+        "role_relevance": "Сигнал асимметрии затрагивает выбранную роль 'Подрядчик'.",
+        "mitigation": "Зафиксируйте объективные критерии приемки, сроки проверки и мотивированный отказ."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Образец. Договор комиссии на поиск контрагента по сделке с целью покупки долларов сша - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР КОМИССИИ Nо. ____ г. ______________ \"___\"_________ 20___ г. _______________________________________________________________, (наименование предприятия) именуем__ в дальнейшем \"Фирма\", в лице ______________________________ (должность)...",
+        "dispute_reason": "Срок задан оценочно и может толковаться сторонами по-разному.",
+        "possible_consequence": "Стороны могут спорить о моменте надлежащего исполнения и начале просрочки.",
+        "confidence": 0.77
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Подрядчик",
+      "overview": "Договор содержит 1 пунктов и 2 выявленных рисков. Краткий вывод сфокусирован на роли 'Подрядчик'. Обнаружено 1 пунктов с высоким уровнем риска; их стоит перепроверить вручную.",
+      "must_do": [
+        "В случае необходимости обязуется предоставить документ (контракт), на основании которого будет производиться конвертация.",
+        "ФИРМА: В случае расторжения договора, заключенного между Клиентом и Контрагентом, обязуется вернуть переведенное на ее счет вознаграждение в течение трех банковских дней с момента получения от Клиента документа, подтверждающего факт расторжения вышеназванного договора."
+      ],
+      "should_review": [
+        "Конфиг не выявил явных дискреционных условий."
+      ],
+      "payment_terms": [
+        "После подписания договора с Контрагентом по сделке в течение трех банковских дней переводит на счет Фирмы ее вознаграждение, которое переходит в собственность Фирмы в день подписания акта приемки-передачи работ по настоящему договору.",
+        "В течении двух банковских дней с момента получения валюты на расчетный счет Клиента, подписывает акт приемки-передачи работ по настоящему договору.",
+        "ОПЛАТА За услуги по настоящему договору Клиент выплачивает Фирме вознаграждение в рублях в размере ____ (_________) процентов от суммы сделки в рублях.",
+        "ФИРМА: В случае расторжения договора, заключенного между Клиентом и Контрагентом, обязуется вернуть переведенное на ее счет вознаграждение в течение трех банковских дней с момента получения от Клиента документа, подтверждающего факт расторжения вышеназванного договора."
+      ],
+      "deadlines": [
+        "При заключении договора с Контрагентом по сделке выполняет все обязательства по названному договору полностью и в срок.",
+        "После подписания договора с Контрагентом по сделке в течение трех банковских дней переводит на счет Фирмы ее вознаграждение, которое переходит в собственность Фирмы в день подписания акта приемки-передачи работ по настоящему договору.",
+        "В течении двух банковских дней с момента получения валюты на расчетный счет Клиента, подписывает акт приемки-передачи работ по настоящему договору.",
+        "ФИРМА: В случае расторжения договора, заключенного между Клиентом и Контрагентом, обязуется вернуть переведенное на ее счет вознаграждение в течение трех банковских дней с момента получения от Клиента документа, подтверждающего факт расторжения вышеназванного договора.",
+        "СРОК ДЕЙСТВИЯ ДОГОВОРА 8.",
+        "1 Срок действия настоящего договора начинается датой его подписания и заканчивается \"___\"___________ 20___ г."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "4b4c92c1447b584e3237312f49f10b83655395cef64096058efef571572a701a"
+    },
+    "contract_type": {
+      "type_id": "agency_agreement",
+      "confidence": 0.58,
+      "ru_name": "Агентский / комиссионный договор",
+      "legal_framework": "ГК РФ, главы 51 и 52"
+    },
+    "asymmetry_signals": [
+      {
+        "risk_id": "undefined_acceptance_criteria",
+        "clause_id": "clause-1",
+        "summary": "Приемка предусмотрена без объективных критериев результата.",
+        "details": "Образец. Договор комиссии на поиск контрагента по сделке с целью покупки долларов сша - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР КОМИССИИ Nо. ____ г. ______________ \"___\"_________ 20___ г. _______________________________________________________________, (наименование предприятия) именуем__ в дальнейшем \"Фирма\", в лице ______________________________ (должность) _______________________________________________________, действующего (фамилия, имя, отчество) на основании _______________________________________ с одной стороны, (Устава, положения) и __________________________________________________________________, (наименование предприятия) именуем__ в дальнейшем \"Клиент\", в лице _____________________________ (должность) _______________________________________________________, действующего (фамилия, имя, отчество) на основании ___________________________, с другой стороны, заключили (Устава, положения) настоящий договор о нижеследующем: 1. ПРЕДМЕТ ДОГОВОРА Клиент поручает Фирме найти Контрагента по сделке с целью покупки долларов США на сумму _________ (___________________________) (прописью) USD по курсу не более __________ (_____________________________) руб. за 1 доллар на общую сумму покупки ___________ (_____________________ __________________) рублей. (прописью) 2. ОБЯЗАТЕЛЬСТВА СТОРОН КЛИЕНТ: 2. 1. При заключении договора с Контрагентом по сделке выполняет все обязательства по названному договору полностью и в срок. 2. 2. После подписания договора с Контрагентом по сделке в течение трех банковских дней переводит на счет Фирмы ее вознаграждение, которое переходит в собственность Фирмы в день подписания акта приемки-передачи работ по настоящему договору. 2. 3. В случае необходимости обязуется предоставить документ (контракт), на основании которого будет производиться конвертация. 2. 4. В течении двух банковских дней с момента получения валюты на расчетный счет Клиента, подписывает акт приемки-передачи работ по настоящему договору. ФИРМА: 2. 5. После подписания настоящего договора незамедлительно начинает работу. 3. ОПЛАТА За услуги по настоящему договору Клиент выплачивает Фирме вознаграждение в рублях в размере ____ (_________) процентов от суммы сделки в рублях. 4. ОТВЕТСТВЕННОСТЬ СТОРОН 4. 1. КЛИЕНТ: а) в случае невыполнения п. 2. 2, выплачивает Фирме пеню в размере ______ процента от суммы сделки в рублях за каждый день просрочки. б) в случае невыполнения п. 2. 4 выплачивает Фирме пеню в размере ______ процента от суммы сделки в рублях за каждый день просрочки. 4. 2. ФИРМА: В случае расторжения договора, заключенного между Клиентом и Контрагентом, обязуется вернуть переведенное на ее счет вознаграждение в течение трех банковских дней с момента получения от Клиента документа, подтверждающего факт расторжения вышеназванного договора. 5. ПОРЯДОК РАССМОТРЕНИЯ СПОРОВ Все разногласия по настоящему договору решаются путем переговоров или в соответствии с действующим законодательством. 6. ПОРЯДОК ОСУЩЕСТВЛЕНИЯ СВЯЗИ Поручения, извещения и другие документы, подписанные руководителем и главным бухгалтером, заверенные печатью и переданные противоположной стороне телефаксом, признаются сторонами полноценными юридическими документами. 7. ОСОБЫЕ УСЛОВИЯ 7. 1. ___________________________________________________________ ____________________________________________________________________. 7. 2. ___________________________________________________________ ____________________________________________________________________. 8. СРОК ДЕЙСТВИЯ ДОГОВОРА 8. 1 Срок действия настоящего договора начинается датой его подписания и заканчивается \"___\"___________ 20___ г. Договор составлен в двух экземплярах, по одному для каждой из сторон. ЮРИДИЧЕСКИЕ АДРЕСА И РЕКВИЗИТЫ СТОРОН: ФИРМА: КЛИЕНТ: ________________________________ ________________________________ ________________________________ ________________________________ ________________________________ ________________________________ ________________________________ ________________________________ ________________________________ ________________________________ ________________________________ ________________________________ ________________________________ ________________________________ ________________________________ ________________________________ ________________________________ ________________________________ М. П. М. П.",
+        "severity_hint": "medium",
+        "affected_roles": [
+          "executor",
+          "client"
+        ]
+      }
+    ]
+  },
+  "finished_at": "2026-04-28T16:18:50.014975+00:00",
+  "duration_ms": 208.88
+}

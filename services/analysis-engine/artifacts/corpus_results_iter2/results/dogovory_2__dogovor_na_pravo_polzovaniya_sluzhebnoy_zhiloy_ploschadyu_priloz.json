@@ -1,0 +1,203 @@
+{
+  "case_id": "dogovory_2__dogovor_na_pravo_polzovaniya_sluzhebnoy_zhiloy_ploschadyu_priloz",
+  "relative_path": "договоры 2/dogovor-na-pravo-polzovaniya-sluzhebnoy-zhiloy-ploschadyu-priloz.html",
+  "document_path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\договоры 2\\dogovor-na-pravo-polzovaniya-sluzhebnoy-zhiloy-ploschadyu-priloz.html",
+  "document_name": "dogovor-na-pravo-polzovaniya-sluzhebnoy-zhiloy-ploschadyu-priloz.html",
+  "role": "Работник",
+  "counterparty_role": "Работодатель",
+  "language": "ru",
+  "mime_type": "text/html",
+  "tags": [
+    "workspace-corpus",
+    "html",
+    "dogovory_2",
+    "labor_contract"
+  ],
+  "source_group": "manifest",
+  "expected": {
+    "contract_type": "labor_contract",
+    "min_contract_type_confidence": 0.84,
+    "min_risk_count": 0,
+    "min_disputed_clause_count": 0,
+    "execution_mode": "local_first",
+    "expected_high_risk_ids": []
+  },
+  "started_at": "2026-04-28T16:12:33.604376+00:00",
+  "status": "completed",
+  "request": {
+    "document_name": "dogovor-na-pravo-polzovaniya-sluzhebnoy-zhiloy-ploschadyu-priloz.html",
+    "role_context": {
+      "role": "Работник",
+      "counterparty_role": "Работодатель"
+    },
+    "document_text": null,
+    "document_base64": "PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMDEgVHJhbnNpdGlvbmFsLy9FTiI+DQo8aHRtbD4NCjxoZWFkPg0KPGJhc2UgaHJlZj0iaHR0cHM6Ly9kb2dvdm9yLXVyaXN0LnJ1LyI+DQo8dGl0bGU+0JTQvtCz0L7QstC+0YAg0L3QsCAgINC/0YDQsNCy0L4g0L/QvtC70YzQt9C+0LLQsNC90LjRjyDRgdC70YPQttC10LHQvdC+0Lkg0LbQuNC70L7QuSDQv9C70L7RidCw0LTRjNGOICjQv9GA0LjQu9C+0LbQtdC90LjQtSDihJYgNCDQuiDRgNCw0YHQv9C+0YDRj9C20LXQvdC40Y4g0LzRjdGA0LAg0JzQvtGB0LrQstGLINC+0YIgOSAgINCw0LLQs9GD0YHRgtCwIDE5OTQg0LMuIOKEliAzOTQt0YDQvCkgLSDQstC10YDRgdC40Y8g0LTQu9GPINC/0LXRh9Cw0YLQuC4gMjAyNi4g0J7QsdGA0LDQt9GG0Ysg0LTQvtCz0L7QstC+0YDQvtCyLCDRgtC40L/QvtCy0YvQtSDQtNC+0LPQvtCy0L7RgNCwLCDQsNC60YLRg9Cw0LvRjNC90YvQtSDQtNC+0LrRg9C80LXQvdGC0YssINGO0YDQuNC00LjRh9C10YHQutC40Lwg0Lgg0YTQuNC30LjRh9C10YHQutC40Lwg0LvQuNGG0LDQvDwvdGl0bGU+DQo8bWV0YSBjb250ZW50PSIiIG5hbWU9ImtleXdvcmRzIj4NCjxtZXRhIGNvbnRlbnQ9IiIgbmFtZT0iZGVzY3JpcHRpb24iPg0KPG1ldGEgbmFtZT0icm9ib3RzIiBjb250ZW50PSJub2luZGV4LG5vZm9sbG93Ij4NCjxtZXRhIGh0dHAtZXF1aXY9IkNvbnRlbnQtVHlwZSIgY29udGVudD0idGV4dC9odG1sOyBjaGFyc2V0PXV0Zi04Ij4NCjxsaW5rIHJlbD0ic3R5bGVzaGVldCIgaHJlZj0iL2ltYWdlcy9zdHlsZS5jc3MiIHR5cGU9InRleHQvY3NzIj4NCjwvaGVhZD4NCjxib2R5Pg0KPGRpdiBjbGFzcz0iZG9jdW1lbnRUZXh0Ij4NCjxwcmU+ICAgICAgICDQlNCe0JPQntCS0J7QoCDQndCQINCf0KDQkNCS0J4g0J/QntCb0KzQl9Ce0JLQkNCd0JjQryDQodCb0KPQltCV0JHQndCe0Jkg0JbQmNCb0J7QmSDQn9Cb0J7QqdCQ0JTQrNCuIA0KDQogDQoNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgINCf0YDQuNC70L7QttC10L3QuNC1IE7Qvi4gNA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICDQuiDRgNCw0YHQv9C+0YDRj9C20LXQvdC40Y4g0LzRjdGA0LAg0JzQvtGB0LrQstGLDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICDQvtGCIDkg0LDQstCz0YPRgdGC0LAgMTk5NCDQsy4gTtC+LiAzODQt0KDQnA0KDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgINCU0J7Qk9Ce0JLQntCgDQogICAgICAgICAgICAg0L3QsCDQv9GA0LDQstC+INC/0L7Qu9GM0LfQvtCy0LDQvdC40Y8g0YHQu9GD0LbQtdCx0L3QvtC5INC20LjQu9C+0Lkg0L/Qu9C+0YnQsNC00YzRjg0KICAgICAgICAgICDQvtGCICJfX19fXyJfX19fX19fX19fXzIwX19fINCzLiBO0L4uX19fX19fINCzLiDQnNC+0YHQutCy0LANCg0KICAgICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KICAgICAgICAgICAgICAgICAgICAgICAgKNC90LDQuNC80LXQvdC+0LLQsNC90LjQtSDQvtGA0LPQsNC90LjQt9Cw0YbQuNC4KQ0KDQog0LIg0LvQuNGG0LVfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXywNCiAgICAgICAgICAgICAgICAgICAgICjQpC7QmC7Qni4sINC30LDQvdC40LzQsNC10LzQsNGPINC00L7Qu9C20L3QvtGB0YLRjCkNCg0KINC00LXQudGB0YLQstGD0Y7RidC10LPQviDQvdCwINC+0YHQvdC+0LLQsNC90LjQuF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18sDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAo0L7RgdC90L7QstCw0L3QuNC1KQ0KDQog0LjQvNC10L3Rg9C10LzQvtC1INCyINC00LDQu9GM0L3QtdC50YjQtdC8ICLQn9GA0LXQtNC/0YDQuNGP0YLQuNC1Iiwg0Lgg0LPRgNCw0LbQtNCw0L3QuNC9IF9fX19fX19fX19fX19fX19fX18NCg0KIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICjQpC7QmC7Qni4pDQoNCiDRgNCw0LHQvtGC0LDRjtGJ0LjQuSDQsiDQtNC+0LvQttC90L7RgdGC0LggX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICjQtNC+0LvQttC90L7RgdGC0YwpDQoNCiDQuNC80LXQvdGD0LXQvNGL0LkgINCyICDQtNCw0LvRjNC90LXQudGI0LXQvCAgItCf0L7Qu9GM0LfQvtCy0LDRgtC10LvRjCIsINC30LDQutC70Y7Rh9C40LvQuCDQvdCw0YHRgtC+0Y/RidC40Lkg0LTQvtCz0L7QstC+0YANCiDQviDRgdC70LXQtNGD0Y7RidC10Lw6DQogICAgICAxLiAi0J/RgNC10LTQv9GA0LjRj9GC0LjQtSIgICDQv9GA0LXQtNC+0YHRgtCw0LLQu9GP0LXRgiAgICLQn9C+0LvRjNC30L7QstCw0YLQtdC70Y4iICDQvdCwICDQvtGB0L3QvtCy0LDQvdC40LgNCg0KINC00L7Qs9C+0LLQvtGA0LAg0LDRgNC10L3QtNGLINGB0LvRg9C20LXQsdC90L7Qs9C+INC20LjQu9C+0LPQviDQv9C+0LzQtdGJ0LXQvdC40Y8gINC+0YJfX19fX19fX19fX19fX19fX19fX19fDQoNCiBO0L4uX19fX19fX19fX19fLCAg0LLRi9C00LDQvdC90L7Qs9C+ICAg0JTQtdC/0LDRgNGC0LDQvNC10L3RgtC+0LwgICDQvNGD0L3QuNGG0LjQv9Cw0LvRjNC90L7Qs9C+ICAg0LbQuNC70YzRjywNCg0KINGB0LvRg9C20LXQsdC90L7QtSDQv9C+0LzQtdGJ0LXQvdC40LUsINGB0L7RgdGC0L7Rj9GJ0LXQtSDQuNC3X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICjQvtGC0LTQtdC70YzQvdC+0Lkg0LrQstCw0YDRgtC40YDRiyzQutC+0LzQvdCw0YLRiy4uLikNCg0KICAgICAg0L7QsdGJ0LXQuSDQv9C70L7RidCw0LTRjNGOX19fX19fX19fX19fX19fX19fX19fX19fX1/QutCyLiDQvCwNCg0KICAgICAg0LbQuNC70L7QuSDQv9C70L7RidCw0LTRjNGOX19fX19fX19fX19fX19fX19fX19fX19fX1/QutCyLiDQvCwNCg0KICAgICAg0L/QviDQsNC00YDQtdGB0YM6X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQoNCiAgICAgIDIuItCf0L7Qu9GM0LfQvtCy0LDRgtC10LvRjCIg0L7QsdGP0LfRg9C10YLRgdGPOg0KICAgICAg0LApINC40YHQv9C+0LvRjNC30L7QstCw0YLRjCAg0L/RgNC10LTQvtGB0YLQsNCy0LvQtdC90L3QvtC1ICDQtdC80YMgINGB0LvRg9C20LXQsdC90L7QtSDQv9C+0LzQtdGJ0LXQvdC40LUg0Lgg0LXQs9C+DQog0L7QsdC+0YDRg9C00L7QstCw0L3QuNC1INC/0L4g0L/RgNGP0LzQvtC80YMg0L3QsNC30L3QsNGH0LXQvdC40Y4sICDQsdC10YDQtdC20L3QviDQvtGC0L3QvtGB0LjRgtGM0YHRjyAg0LggINGB0L7QtNC10YDQttCw0YLRjA0KINC10LPQviDQsiDQvdCw0LTQu9C10LbQsNGJ0LXQvCDRgdC+0YHRgtC+0Y/QvdC40Lg7DQogICAgICDQsSkg0YHQstC+0LXQstGA0LXQvNC10L3QvdC+INCy0L3QvtGB0LjRgtGMINCw0YDQtdC90LTQvdGD0Y4g0L/Qu9Cw0YLRgyDQt9CwINC/0L7Qu9GM0LfQvtCy0LDQvdC40LUgINGB0LvRg9C20LXQsdC90L7QuQ0KINC20LjQu9C+0LkgINC/0LvQvtGJ0LDQtNGM0Y4gINCyICDRg9GB0YLQsNC90L7QstC70LXQvdC90L7QvCAg0L/QvtGA0Y/QtNC60LUg0LIg0YDQsNC30LzQtdGA0LUg0Y3QutGB0L/Qu9GD0LDRgtCw0YbQuNC+0L3QvdGL0YUNCiDQt9Cw0YLRgNCw0YIg0Lgg0L/Qu9Cw0YLRgyDQt9CwINC60L7QvNC80YPQvdCw0LvRjNC90YvQtSDRg9GB0LvRg9Cz0Lg7DQogICAgICDQsikg0L/RgNC+0LjQt9Cy0L7QtNC40YLRjCDQt9CwINGB0LLQvtC5INGB0YfQtdGCINGC0LXQutGD0YnQuNC5INGA0LXQvNC+0L3RgiDQt9Cw0L3QuNC80LDQtdC80L7Qs9C+INC/0L7QvNC10YnQtdC90LjRjw0KINGB0L7Qs9C70LDRgdC90L4g0L/RgNC40LvQsNCz0LDQtdC80L7QuSDQuiDQtNC+0LPQvtCy0L7RgNGDINCyINC80L7QvNC10L3RgiDQtdCz0L4g0LfQsNC60LvRjtGH0LXQvdC40Y8g0L7Qv9C40YHQuCDRgNCw0LHQvtGCINC4DQog0LIgINGB0YDQvtC60LgsICDRg9GB0YLQsNC90LDQstC70LjQstCw0LXQvNGL0LUgINGB0L7QstC80LXRgdGC0L3QviAg0YEgICLQn9GA0LXQtNC/0YDQuNGP0YLQuNC10LwiINC+0LHRidC10YHRgtCy0LXQvdC90YvQvA0KINC00L7QvNC+0LLRi9C8INC60L7QvNC40YLQtdGC0L7QvDsNCiAgICAgINCzKSDQvdC1ICAgICDQtNC10LvQsNGC0YwgICAg0LIgICAg0L/QvtC80LXRidC10L3QuNC4ICAgINC90LjQutCw0LrQuNGFICAgINC/0LXRgNC10L/Qu9Cw0L3QuNGA0L7QstC+0LosDQog0L/QtdGA0LXQvtCx0L7RgNGD0LTQvtCy0LDQvdC40Y8g0LjQu9C4INC/0LXRgNC10YHRgtCw0L3QvtCy0LrQuCDQvdCw0YXQvtC00Y/RidC10LPQvtGB0Y8g0LIg0L3QtdC8INC+0LHQvtGA0YPQtNC+0LLQsNC90LjRjyDQsdC10LcNCiDRgdC+0L7RgtCy0LXRgtGB0YLQstGD0Y7RidC10LPQviDQv9C40YHRjNC80LXQvdC90L7Qs9C+INGA0LDQt9GA0LXRiNC10L3QuNGPOw0KICAgICAg0LQpINGB0L7QsdC70Y7QtNCw0YLRjCDQv9GA0LDQstC40LvQsCDQv9C+0LvRjNC30L7QstCw0L3QuNGPINC20LjQu9GL0LzQuCDQv9C+0LzQtdGJ0LXQvdC40Y/QvNC4Ow0KICAgICAg0LUpINCy0L7Qt9C80LXRidCw0YLRjCAgItCf0YDQtdC00L/RgNC40Y/RgtC40Y4iINCy0YHQtSDRg9Cx0YvRgtC60Lgg0L7RgiDQv9C+0LLRgNC10LbQtNC10L3QuNGPINC60LLQsNGA0YLQuNGA0Ysg0LgNCiDQtNC+0LzQsCDQuCDQuNGFINC+0LHQvtGA0YPQtNC+0LLQsNC90LjRjywgINC/0YDQvtC40YHRiNC10LTRiNC40LUg0L/QviDQstC40L3QtSAi0J/QvtC70YzQt9C+0LLQsNGC0LXQu9GPIiDQuNC70LggINC70LjRhiwNCiDRgdC+0LLQvNC10YHRgtC90L4g0YEg0L3QuNC8INC/0YDQvtC20LjQstCw0Y7RidC40YU7DQogICAgICDQtikg0L/RgNC4INCy0YvQtdC30LTQtSDQuNC3INC20LjQu9C+0LPQviDQv9C+0LzQtdGJ0LXQvdC40Y8gINC90LAgINC00YDRg9Cz0L7QtSAg0L/QvtGB0YLQvtGP0L3QvdC+0LUgINC80LXRgdGC0L4NCiDQttC40YLQtdC70YzRgdGC0LLQsCAg0YHQviDQstGB0LXQuSDRgdC10LzRjNC10Lkg0L7RgdCy0L7QsdC+0LTQuNGC0Ywg0Lgg0YHQtNCw0YLRjCAi0J/RgNC10LTQv9GA0LjRj9GC0LjRjiIg0L/QvtC80LXRidC10L3QuNC1DQog0LggINC10LPQviAg0L7QsdC+0YDRg9C00L7QstCw0L3QuNC1ICDQv9C+ICDQsNC60YLRgyAg0LIgINC40YHQv9GA0LDQstC90L7QvCAg0YHQvtGB0YLQvtGP0L3QuNC4LiAgINCf0YDQuCAgINGN0YLQvtC8DQog0LfQsNC/0YDQtdGJ0LDQtdGC0YHRjyAgINGB0L3QuNC80LDRgtGMICDRg9GB0YLQsNC90L7QstC70LXQvdC90L7QtSAgItCf0YDQtdC00L/RgNC40Y/RgtC40LXQvCIgINC+0LHQvtGA0YPQtNC+0LLQsNC90LjQtSAg0LgNCiDQv9GA0LjRgdC/0L7RgdC+0LHQu9C10L3QuNGPLCAg0L/RgNC4INGB0L3Rj9GC0LjQuCDQutC+0YLQvtGA0YvRhSDQvNC+0LPRg9GCINCx0YvRgtGMICDQv9C+0LLRgNC10LbQtNC10L3RiyAg0L7RgtC00LXQu9GM0L3Ri9C1DQog0LrQvtC90YHRgtGA0YPQutGG0LjQuCDQuNC70Lgg0L7RgtC00LXQu9C60LAg0L/QvtC80LXRidC10L3QuNGPLg0KICAgICAg0J/RgNC+0LjQt9Cy0LXQtNC10L3QvdGL0LUgItCf0L7Qu9GM0LfQvtCy0LDRgtC10LvQtdC8IiDQv9C+0LLRgNC10LbQtNC10L3QuNGPINC/0L7QvNC10YnQtdC90LjRjywgINCwINGC0LDQutC20LUg0L3QtQ0KINCy0YvQv9C+0LvQvdC10L3QvdGL0LUgINC40LwgINGA0LDQsdC+0YLRiyAg0L/QviAg0YLQtdC60YPRidC10LzRgyDRgNC10LzQvtC90YLRgyDQv9C+0LzQtdGJ0LXQvdC40Y8sICDQu9C10LbQsNGJ0LXQvNGDINC90LANCiDQvtCx0Y/Qt9Cw0L3QvdC+0YHRgtC4ICLQn9C+0LvRjNC30L7QstCw0YLQtdC70Y8iLCAg0YTQuNC60YHQuNGA0YPRjtGC0YHRjyDQsiDQsNC60YLQtSAg0YHQtNCw0YfQuCAg0L/QvtC80LXRidC10L3QuNGPLiAg0JINCiDRjdGC0L7QvCAg0YHQu9GD0YfQsNC1ICDRgdGC0L7QuNC80L7RgdGC0YwgINC90LXQvtCx0YXQvtC00LjQvNC+0LPQviAg0YDQtdC80L7QvdGC0LAgINC4ICDRgNCw0YHRhdC+0LTRiyDRg9C/0YDQsNCy0LvQtdC90LjRjw0KINC00L7QvNCw0LzQuCDQv9C+INC40YHQv9GA0LDQstC70LXQvdC40Y4g0L/RgNC40YfQuNC90LXQvdC90YvRhSDQv9C+0LLRgNC10LbQtNC10L3QuNC5INC/0L7QtNC70LXQttCw0YIg0L7Qv9C70LDRgtC1INC30LAg0YHRh9C10YINCiAi0J/QvtC70YzQt9C+0LLQsNGC0LXQu9GPIi4NCiAgICAgINCQ0LrRgiDRgdC00LDRh9C4INC/0L7QvNC10YnQtdC90LjRjyDRgdC+0YHRgtCw0LLQu9GP0LXRgtGB0Y8g0Lgg0L/QvtC00L/QuNGB0YvQstCw0LXRgtGB0Y8g0L/RgNC10LTRgdGC0LDQstC40YLQtdC70Y/QvNC4DQogItCf0YDQtdC00L/RgNC40Y/RgtC40Y8iLCDQvtCx0YnQtdGB0YLQstC10L3QvdC+0LPQviDQtNC+0LzQvtCy0L7Qs9C+INC60L7QvNC40YLQtdGC0LAg0LggItCf0L7Qu9GM0LfQvtCy0LDRgtC10LvQtdC8Ii4NCiAgICAgIDMuItCf0YDQtdC00L/RgNC40Y/RgtC40LUiINC+0LHRj9C30YPQtdGC0YHRjyAg0L/RgNC10LTQvtGB0YLQsNCy0LjRgtGMICAgItCf0L7Qu9GM0LfQvtCy0LDRgtC10LvRjiIgICDQttC40LvQvtC1DQog0L/QvtC80LXRidC10L3QuNC1INCyINC40YHQv9GA0LDQstC90L7QvCDRgdC+0YHRgtC+0Y/QvdC40LguDQogICAgICA0LiDQkiAg0YHQu9GD0YfQsNC1ICDQvtCx0YDQsNC30L7QstCw0L3QuNGPICDQuNC30LvQuNGI0L3QtdC5ICAo0L/RgNC10LLRi9GI0LDRjtGJ0LXQuSAg0YPRgdGC0LDQvdC+0LLQu9C10L3QvdGD0Y4NCiDQvdC+0YDQvNGDKSAg0LbQuNC70L7QuSAg0L/Qu9C+0YnQsNC00LggINCyICDQstC40LTQtSAg0L7RgtC00LXQu9GM0L3QvtC5ICDQuNC30L7Qu9C40YDQvtCy0LDQvdC90L7QuSDQutC+0LzQvdCw0YLRiyDRjdGC0LANCiDQv9C70L7RidCw0LTRjCDQvNC+0LbQtdGCINCx0YvRgtGMINC40LfRitGP0YLQsCDRgyAi0J/QvtC70YzQt9C+0LLQsNGC0LXQu9GPIi4NCiAgICAgINCV0YHQu9C4INC40LfQu9C40YjQvdGP0Y8gINC40LfQvtC70LjRgNC+0LLQsNC90L3QsNGPICDQutC+0LzQvdCw0YLQsCAg0L7QsdGA0LDQt9C+0LLQsNC70LDRgdGMICDQsiDQutCy0LDRgNGC0LjRgNC1LA0KINC/0YDQtdC00L7RgdGC0LDQstC70LXQvdC90L7QuSDQsiDRgdC70YPQttC10LHQvdC+0LUg0L/QvtC70YzQt9C+0LLQsNC90LjQtSDQvtC00L3QvtC5ICDRgdC10LzRjNC1LCAgItCf0L7Qu9GM0LfQvtCy0LDRgtC10LvRjiINCiDQtNC+0LvQttC90LAgINCx0YvRgtGMICDQv9GA0LXQtNC+0YHRgtCw0LLQu9C10L3QsCAg0L7RgtC00LXQu9GM0L3QsNGPICDRgdC70YPQttC10LHQvdCw0Y8gINC60LLQsNGA0YLQuNGA0LAgINC80LXQvdGM0YjQtdCz0L4NCiDRgNCw0LfQvNC10YDQsC4NCiAgICAgIDUuINCd0LDRgdGC0L7Rj9GJ0LjQuSAg0LTQvtCz0L7QstC+0YAgINC00LXQudGB0YLQstGD0LXRgiAg0YLQvtC70YzQutC+ICDQsiDRgtC10YfQtdC90LjQtSDQt9Cw0LrQu9GO0YfQtdC90L3QvtCz0L4NCiAi0J/QvtC70YzQt9C+0LLQsNGC0LXQu9C10LwiICDRgSAgItCf0YDQtdC00L/RgNC40Y/RgtC40LXQvCIgINGC0YDRg9C00L7QstC+0LPQviAg0LTQvtCz0L7QstC+0YDQsCAg0LggICDQv9C+0LTQu9C10LbQuNGCDQog0YDQsNGB0YLQvtGA0LbQtdC90LjRjiDRgSDQstGL0YHQtdC70LXQvdC40LXQvCAi0J/QvtC70YzQt9C+0LLQsNGC0LXQu9GPIiDQuCDQu9C40YYsICDRgdC+0LLQvNC10YHRgtC90L4g0L/RgNC+0LbQuNCy0LDRjtGJ0LjRhQ0KINGBINC90LjQvCwgINCx0LXQtyDQv9GA0LXQtNC+0YHRgtCw0LLQu9C10L3QuNGPINC00YDRg9Cz0L7Qs9C+INC20LjQu9C+0LPQviDQv9C+0LzQtdGJ0LXQvdC40Y8gINCyICDRg9GB0YLQsNC90L7QstC70LXQvdC90L7QvA0KINC30LDQutC+0L3QvtC8INC/0L7RgNGP0LTQutC1Og0KICAgICAg0LApINCyICDRgdC70YPRh9Cw0Y/RhSwgINC10YHQu9C4ICAi0J/QvtC70YzQt9C+0LLQsNGC0LXQu9GMIiAgINC40LvQuCAgINGH0LvQtdC90YsgICDQtdCz0L4gICDRgdC10LzRjNC4DQog0YHQuNGB0YLQtdC80LDRgtC40YfQtdGB0LrQuCAg0YDQsNC30YDRg9GI0LDRjtGCICDQuNC70LggINC/0L7RgNGC0Y/RgiAg0LbQuNC70L7QtSAg0L/QvtC80LXRidC10L3QuNC1LCAg0LjQu9C4INC00LXQu9Cw0Y7Rgg0KINC90LXQstC+0LfQvNC+0LbQvdGL0Lwg0LTQu9GPINC00YDRg9Cz0LjRhSDQv9GA0L7QttC40LLQsNC90LjQtSDRgSDQvdC40LzQuCDQsiDQvtC00L3QvtC5INC60LLQsNGA0YLQuNGA0LUg0LjQu9C4INCyINC+0LTQvdC+0LwNCiDQtNC+0LzQtSwgINCwICDQvNC10YDRiyAg0L/RgNC10LTRg9C/0YDQtdC20LTQtdC90LjRjyAg0Lgg0L7QsdGJ0LXRgdGC0LLQtdC90L3QvtCz0L4g0LLQvtC30LTQtdC50YHRgtCy0LjRjyDQvtC60LDQt9Cw0LvQuNGB0YwNCiDQsdC10LfRgNC10LfRg9C70YzRgtCw0YLQvdGL0LzQuDsNCiAgICAgINCxKSDQsiAg0YHQu9GD0YfQsNC1ICDQv9GA0LXQutGA0LDRidC10L3QuNGPICAi0J/QvtC70YzQt9C+0LLQsNGC0LXQu9C10LwiICDRgtGA0YPQtNC+0LLRi9GFINC+0YLQvdC+0YjQtdC90LjQuSDRgQ0KICLQn9GA0LXQtNC/0YDQuNGP0YLQuNC10LwiLCDQvdC10LfQsNCy0LjRgdC40LzQviDQvtGCINC/0YDQuNGH0LjQvSDQtdCz0L4g0L/RgNC10LrRgNCw0YnQtdC90LjRjzsNCiAgICAgINCf0YDQuNC80LXRh9Cw0L3QuNC1LiDQn9GA0LggINC/0YDQtdC60YDQsNGJ0LXQvdC40LggINGC0YDRg9C00L7QstGL0YUgINC+0YLQvdC+0YjQtdC90LjQuSAi0J/QvtC70YzQt9C+0LLQsNGC0LXQu9GMIg0KINGB0L7QstC80LXRgdGC0L3QviDRgdC+ICDQstGB0LXQvNC4ICDQv9GA0L7QttC40LLQsNGO0YnQuNC80LggINGBICDQvdC40LwgINC70LjRhtCw0LzQuCAg0L7QsdGP0LfQsNC9ICDQvtGB0LLQvtCx0L7QtNC40YLRjA0KINGB0LvRg9C20LXQsdC90L7QtSAg0LbQuNC70L7QtSAg0L/QvtC80LXRidC10L3QuNC1ICDQsiAg0LzQtdGB0Y/Rh9C90YvQuSAg0YHRgNC+0LogINGBICDQvNC+0LzQtdC90YLQsCAg0L/QvtC70YPRh9C10L3QuNGPDQog0L/QuNGB0YzQvNC10L3QvdC+0LPQviDQv9GA0LXQtNGD0L/RgNC10LbQtNC10L3QuNGPICLQn9GA0LXQtNC/0YDQuNGP0YLQuNGPIi4NCiAgICAgINCyKSDQv9C+ICAgICDQtNGA0YPQs9C40LwgICAgINC+0YHQvdC+0LLQsNC90LjRj9C8LCAgICDRg9GB0YLQsNC90L7QstC70LXQvdC90YvQvCAgICDQtNC10LnRgdGC0LLRg9GO0YnQuNC8DQog0LfQsNC60L7QvdC+0LTQsNGC0LXQu9GM0YHRgtCy0L7QvC4NCiAgICAgIDYuINCS0YvRgdC10LvQtdC90LjQtSAgINGB0L4gINGB0LvRg9C20LXQsdC90L7QuSAg0LbQuNC70L7QuSAg0L/Qu9C+0YnQsNC00Lg6ICDQuNC90LLQsNC70LjQtNC+0LIgINCy0L7QudC90YssDQog0LjQvdCy0LDQu9C40LTQvtCyINGC0YDRg9C00LAgSSDQuCBJSSDQs9GA0YPQv9C/0YssICDQv9C10L3RgdC40L7QvdC10YDQvtCyINC/0L4g0YHRgtCw0YDQvtGB0YLQuCwg0L/QtdGA0YHQvtC90LDQu9GM0L3Ri9GFDQog0L/QtdC90YHQuNC+0L3QtdGA0L7Qsiwg0YHQtdC80LXQuSDQu9C40YYsINC90LDRhdC+0LTRj9GJ0LjRhdGB0Y8g0L3QsCDRgdC70YPQttCx0LUg0LIg0JLQvtC+0YDRg9C20LXQvdC90YvRhSDQodC40LvQsNGFINCg0KQsDQog0YHQtdC80LXQuSDQstC+0LXQvdC90L7RgdC70YPQttCw0YnQuNGFINC4INC/0LDRgNGC0LjQt9Cw0L0sINC/0L7Qs9C40LHRiNC40YUg0LjQu9C4INC/0YDQvtC/0LDQstGI0LjRhSDQsdC10Lcg0LLQtdGB0YLQuCDQv9GA0LgNCiDQt9Cw0YnQuNGC0LUg0KHQodCh0KAg0LjQu9C4INC/0YDQuCDQuNGB0L/QvtC70L3QtdC90LjQuCDQuNC90YvRhSDQvtCx0Y/Qt9Cw0L3QvdC+0YHRgtC10Lkg0LLQvtC10L3QvdC+0Lkg0YHQu9GD0LbQsdGLLCAgLSDQsg0KINGB0LvRg9GH0LDQtSDQv9GA0LXQutGA0LDRidC10L3QuNGPINGC0YDRg9C00L7QstGL0YUg0L7RgtC90L7RiNC10L3QuNC5INGBICLQn9GA0LXQtNC/0YDQuNGP0YLQuNC10LwiINC/0YDQvtC40LfQstC+0LTQuNGC0YHRjyDRgQ0KINC/0YDQtdC00L7RgdGC0LDQstC70LXQvdC40LXQvCDQtNGA0YPQs9C+0LksINC/0YDQuNCz0L7QtNC90L7QuSDQuiDQv9GA0L7QttC40LLQsNC90LjRjiDQttC40LvQvtC5INC/0LvQvtGJ0LDQtNC4Lg0KICAgICAgNy4g0JLQvtC/0YDQvtGB0YssICDQvdC1INC/0YDQtdC00YPRgdC80L7RgtGA0LXQvdC90YvQtSDQvdCw0YHRgtC+0Y/RidC40Lwg0LTQvtCz0L7QstC+0YDQvtC8LCAg0YDQtdGI0LDRjtGC0YHRjyDQsg0KINGB0L7QvtGC0LLQtdGC0YHRgtCy0LjQuCAgINGBICDQtNC10LnRgdGC0LLRg9GO0YnQuNC8ICDQt9Cw0LrQvtC90L7QtNCw0YLQtdC70YzRgdGC0LLQvtC8ICDQuCAg0LjQt9C00LDQvdC90YvQvNC4ICDQsiAg0LjRhQ0KINGA0LDQt9Cy0LjRgtC40LUg0L/QvtGB0YLQsNC90L7QstC70LXQvdC40Y/QvNC4LCAg0L/QvtC70L7QttC10L3QuNGP0LzQuCwgINC/0YDQsNCy0LjQu9Cw0LzQuCDQuCDQuNC90YHRgtGA0YPQutGG0LjRj9C80LggINC/0L4NCiDQttC40LvQuNGJ0L3QvtC80YMg0YXQvtC30Y/QudGB0YLQstGDLg0KICAgICAgOC4g0KHQv9C+0YDRiywg0LrQvtGC0L7RgNGL0LUg0LzQvtCz0YPRgiDQstC+0LfQvdC40LrQvdGD0YLRjCDQvNC10LbQtNGDINGB0YLQvtGA0L7QvdCw0LzQuCDQv9C+INC90LDRgdGC0L7Rj9GJ0LXQvNGDDQog0LTQvtCz0L7QstC+0YDRgywg0L/QvtC00LvQtdC20LDRgiDRgNCw0LfRgNC10YjQtdC90LjRjiDQsiDRgdGD0LTQtdCx0L3QvtC8INC/0L7RgNGP0LTQutC1Lg0KICAgICAgOS4g0J3QsNGB0YLQvtGP0YnQuNC5INC00L7Qs9C+0LLQvtGAICDRgdC+0YHRgtCw0LLQu9C10L0gINCyICDQtNCy0YPRhSAg0Y3QutC30LXQvNC/0LvRj9GA0LDRhSwgINC+0LTQuNC9ICDQuNC3DQog0LrQvtGC0L7RgNGL0YUg0YXRgNCw0L3QuNGC0YHRjyDRgyAi0J/QvtC70YzQt9C+0LLQsNGC0LXQu9GPIiwg0LTRgNGD0LPQvtC5INGDICLQn9GA0LXQtNC/0YDQuNGP0YLQuNGPIi4NCg0KICAgICAgItCf0YDQtdC00L/RgNC40Y/RgtC40LUiICAgICAgICAgICAgICAgICAgICAgICAgICLQn9C+0LvRjNC30L7QstCw0YLQtdC70YwiDQogICAgICBfX19fX19fX19fX19fX18gICAgICAgICAgICAgICAgICAgICAgIF9fX19fX19fX19fX19fDQogICAgICAgICAgINC00LDRgtCwICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgINC00LDRgtCwDQoNCg0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICDQmtCe0JzQnNCV0J3QotCQ0KDQmNCYOg0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAtLS0tLS0tLS0tLS0NCg0KICAgICAg0J7RgdC90L7QstCw0L3QuNC10Lwg0LTQu9GPICDQv9GA0LXQtNC+0YHRgtCw0LLQu9C10L3QuNGPINGB0LvRg9C20LXQsdC90L7QuSDQttC40LvQvtC5INC/0LvQvtGJ0LDQtNC4INGA0LDQsdC+0YLQvdC40LrRgw0KINGP0LLQu9GP0Y7RgtGB0Y8g0L/RgNC40LrQsNC3ICDQv9C+ICDQvtGA0LPQsNC90LjQt9Cw0YbQuNC4LCAg0LDRgNC10L3QtNGD0Y7RidC10LkgINGB0LvRg9C20LXQsdC90YPRjiAg0L/Qu9C+0YnQsNC00YwsICDQuA0KINGC0YDRg9C00L7QstC+0Lkg0LTQvtCz0L7QstC+0YAsINC30LDQutC70Y7Rh9C10L3QvdGL0Lkg0L7RgNCz0LDQvdC40LfQsNGG0LjQtdC5INGBINGA0LDQsdC+0YLQvdC40LrQvtC8Lg0KICAgICAg0JDRgNC10L3QtNCw0YLQvtGA0Ysg0YHQu9GD0LbQtdCx0L3QvtC5ICDQttC40LvQvtC5ICDQv9C70L7RidCw0LTQuCAg0L/RgNC10LTQvtGB0YLQsNCy0LvRj9GO0YIgICDQtdC1ICAg0YHQstC+0LjQvA0KINGA0LDQsdC+0YLQvdC40LrQsNC8LCAg0LrQsNGC0LXQs9C+0YDQuNC4INC60L7RgtC+0YDRi9GFINGD0YLQstC10YDQttC00LXQvdGLINCyINGD0YHRgtCw0L3QvtCy0LvQtdC90L3QvtC8INC/0L7RgNGP0LTQutC1LCDQv9C+DQog0LTQvtCz0L7QstC+0YDRgyDRgdGD0LHQsNGA0LXQvdC00YsgKNC/0YDQuNC70L7QttC10L3QuNC1IDQgLSDRhNC+0YDQvNCwINC00L7Qs9C+0LLQvtGA0LApLg0KICAgICAg0JDRgNC10L3QtNC90LDRjyDQv9C70LDRgtCwICDQt9CwINC/0L7Qu9GM0LfQvtCy0LDQvdC40LUg0YHQu9GD0LbQtdCx0L3QvtC5INC20LjQu9C+0Lkg0L/Qu9C+0YnQsNC00YzRjiDQstC90L7RgdC40YLRgdGPDQog0YDQsNCx0L7RgtC90LjQutCw0LzQuCDQsiDRg9GB0YLQsNC90L7QstC70LXQvdC90L7QvCDQv9C+0YDRj9C00LrQtSDQv9C+INC00L7Qs9C+0LLQvtGA0YMg0YHRg9Cx0LDRgNC10L3QtNGLICDQsiAg0YDQsNC30LzQtdGA0LUNCiDRjdC60YHQv9C70YPQsNGC0LDRhtC40L7QvdC90YvRhSDQuCDQutC+0LzQvNGD0L3QsNC70YzQvdGL0YUg0LfQsNGC0YDQsNGCLg0KICAgICAg0JrQvtC/0LjQuCDQv9GA0LjQutCw0LfQsCDQviAg0L3QsNC30L3QsNGH0LXQvdC40LggINC90LAgINGA0LDQsdC+0YLRgyAg0LggINGC0YDRg9C00L7QstC+0LPQviAg0LTQvtCz0L7QstC+0YDQsCwNCiDQt9Cw0LrQu9GO0YfQtdC90L3QvtCz0L4gICAg0YEgICDRgNCw0LHQvtGC0L3QuNC60L7QvCwgICDQv9C10YDQtdC00LDRjtGC0YHRjyAgINCyICAg0YLRgNC10YXQtNC90LXQstC90YvQuSAgINGB0YDQvtC6DQog0LHQsNC70LDQvdGB0L7QtNC10YDQttCw0YLQtdC70Y4g0LTQvtC80LAuDQoNCg0KDQoNCg0KDQogIA0KPC9wcmU+PC9kaXY+DQo8L2JvZHk+DQo8L2h0bWw+",
+    "mime_type": "text/html",
+    "language": "ru",
+    "locale": "ru"
+  },
+  "ingestion_preflight": {
+    "mime_type": "text/html",
+    "extractor": "html:regex",
+    "extraction_source": "html:regex",
+    "extraction_ok": true,
+    "error": null,
+    "extraction_error": null,
+    "sha256": "4b48665b76c1fed0823f14a56231b5e2497b9c154ccc49e838a9de0329f32b2d"
+  },
+  "metrics": {
+    "risk_count": 1,
+    "high_risk_count": 0,
+    "disputed_clause_count": 1,
+    "asymmetry_signal_count": 0,
+    "contract_type": "labor_contract"
+  },
+  "analysis": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'dogovor-na-pravo-polzovaniya-sluzhebnoy-zhiloy-ploschadyu-priloz. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Работник'. Определен тип договора: Трудовой договор (уверенность 99%, правовая рамка: ТК РФ). Ключевые обязательства по договору для роли 'Работник': \"Пользователь\" обязуется: а) использовать предоставленное ему служебное помещение и его оборудование по прямому назначению, бережно относиться и содержать его в надлежащем состоянии; Произведенные \"Пользователем\" повреждения помещения, а также не выполненные им работы по текущему ремонту помещения, лежащему на обязанности \"Пользователя\", фиксируются в акте сдачи помещения; \"Предприятие\" обязуется предоставить \"Пользователю\" жилое помещение в исправном состоянии. Условия оплаты: в) производить за свой счет текущий ремонт занимаемого помещения согласно прилагаемой к договору в момент его заключения описи работ и в сроки, устанавливаемые совместно с \"Предприятием\" общественным домовым комитетом; В этом случае стоимость необходимого ремонта и расходы управления домами по исправлению причиненных повреждений подлежат оплате за счет \"Пользователя\". Сроки и дедлайны: в) производить за свой счет текущий ремонт занимаемого помещения согласно прилагаемой к договору в момент его заключения описи работ и в сроки, устанавливаемые совместно с \"Предприятием\" общественным домовым комитетом; Настоящий договор действует только в течение заключенного \"Пользователем\" с \"Предприятием\" трудового договора и подлежит расторжению с выселением \"Пользователя\" и лиц, совместно проживающих с ним, без предоставления другого жилого помещения в установленном законом порядке: а) в случаях, если \"Пользователь\" или члены его семьи систематически разрушают или портят жилое помещение, или делают невозможным для других проживание с ними в одной квартире или в одном доме, а меры предупреждения и общественного воздействия оказались безрезультатными; При прекращении трудовых отношений \"Пользователь\" совместно со всеми проживающими с ним лицами обязан освободить служебное жилое помещение в месячный срок с момента получения письменного предупреждения \"Предприятия\". Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Работник'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Договор на право пользования служебной жилой площадью (приложение № 4 к распоряжению мэра Москвы от 9 августа 1994 г. № 394-рм) - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР НА ПРАВО ПОЛЬЗОВАНИЯ СЛУЖЕБНОЙ ЖИЛОЙ ПЛОЩАДЬЮ Приложение Nо. 4 к распоряжению мэра Москвы от 9 августа 1994 г. Nо. 384-РМ ДОГОВОР на право пользования служебной жилой площадью от \"_____\"___________20___ г. Nо. ______ г.",
+        "dispute_reason": "Маркер указывает на возможный конфликт между несколькими обязанностями или сроками.",
+        "possible_consequence": "При исполнении может оказаться, что условия невозможно соблюсти одновременно.",
+        "confidence": 0.66
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Работник",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Работник'.",
+      "must_do": [
+        "\"Пользователь\" обязуется: а) использовать предоставленное ему служебное помещение и его оборудование по прямому назначению, бережно относиться и содержать его в надлежащем состоянии.",
+        "Произведенные \"Пользователем\" повреждения помещения, а также не выполненные им работы по текущему ремонту помещения, лежащему на обязанности \"Пользователя\", фиксируются в акте сдачи помещения.",
+        "\"Предприятие\" обязуется предоставить \"Пользователю\" жилое помещение в исправном состоянии.",
+        "При прекращении трудовых отношений \"Пользователь\" совместно со всеми проживающими с ним лицами обязан освободить служебное жилое помещение в месячный срок с момента получения письменного предупреждения \"Предприятия\".",
+        "Выселение со служебной жилой площади: инвалидов войны, инвалидов труда I и II группы, пенсионеров по старости, персональных пенсионеров, семей лиц, находящихся на службе в Вооруженных Силах РФ, семей военнослужащих и партизан, погибших или пропавших без вести при защите СССР или при исполнении иных обязанностей военной службы, - в случае прекращения трудовых отношений с \"Предприятием\" производится с предоставлением другой, пригодной к проживанию жилой площади."
+      ],
+      "should_review": [
+        "В случае образования излишней (превышающей установленную норму) жилой площади в виде отдельной изолированной комнаты эта площадь может быть изъята у \"Пользователя\"."
+      ],
+      "payment_terms": [
+        "в) производить за свой счет текущий ремонт занимаемого помещения согласно прилагаемой к договору в момент его заключения описи работ и в сроки, устанавливаемые совместно с \"Предприятием\" общественным домовым комитетом.",
+        "В этом случае стоимость необходимого ремонта и расходы управления домами по исправлению причиненных повреждений подлежат оплате за счет \"Пользователя\"."
+      ],
+      "deadlines": [
+        "Копии приказа о назначении на работу и трудового договора, заключенного с работником, передаются в трехдневный срок балансодержателю дома.",
+        "в) производить за свой счет текущий ремонт занимаемого помещения согласно прилагаемой к договору в момент его заключения описи работ и в сроки, устанавливаемые совместно с \"Предприятием\" общественным домовым комитетом.",
+        "Настоящий договор действует только в течение заключенного \"Пользователем\" с \"Предприятием\" трудового договора и подлежит расторжению с выселением \"Пользователя\" и лиц, совместно проживающих с ним, без предоставления другого жилого помещения в установленном законом порядке: а) в случаях, если \"Пользователь\" или члены его семьи систематически разрушают или портят жилое помещение, или делают невозможным для других проживание с ними в одной квартире или в одном доме, а меры предупреждения и общественного воздействия оказались безрезультатными.",
+        "При прекращении трудовых отношений \"Пользователь\" совместно со всеми проживающими с ним лицами обязан освободить служебное жилое помещение в месячный срок с момента получения письменного предупреждения \"Предприятия\"."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "4b48665b76c1fed0823f14a56231b5e2497b9c154ccc49e838a9de0329f32b2d"
+    },
+    "contract_type": {
+      "type_id": "labor_contract",
+      "confidence": 0.99,
+      "ru_name": "Трудовой договор",
+      "legal_framework": "ТК РФ"
+    },
+    "asymmetry_signals": []
+  },
+  "result": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'dogovor-na-pravo-polzovaniya-sluzhebnoy-zhiloy-ploschadyu-priloz. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Работник'. Определен тип договора: Трудовой договор (уверенность 99%, правовая рамка: ТК РФ). Ключевые обязательства по договору для роли 'Работник': \"Пользователь\" обязуется: а) использовать предоставленное ему служебное помещение и его оборудование по прямому назначению, бережно относиться и содержать его в надлежащем состоянии; Произведенные \"Пользователем\" повреждения помещения, а также не выполненные им работы по текущему ремонту помещения, лежащему на обязанности \"Пользователя\", фиксируются в акте сдачи помещения; \"Предприятие\" обязуется предоставить \"Пользователю\" жилое помещение в исправном состоянии. Условия оплаты: в) производить за свой счет текущий ремонт занимаемого помещения согласно прилагаемой к договору в момент его заключения описи работ и в сроки, устанавливаемые совместно с \"Предприятием\" общественным домовым комитетом; В этом случае стоимость необходимого ремонта и расходы управления домами по исправлению причиненных повреждений подлежат оплате за счет \"Пользователя\". Сроки и дедлайны: в) производить за свой счет текущий ремонт занимаемого помещения согласно прилагаемой к договору в момент его заключения описи работ и в сроки, устанавливаемые совместно с \"Предприятием\" общественным домовым комитетом; Настоящий договор действует только в течение заключенного \"Пользователем\" с \"Предприятием\" трудового договора и подлежит расторжению с выселением \"Пользователя\" и лиц, совместно проживающих с ним, без предоставления другого жилого помещения в установленном законом порядке: а) в случаях, если \"Пользователь\" или члены его семьи систематически разрушают или портят жилое помещение, или делают невозможным для других проживание с ними в одной квартире или в одном доме, а меры предупреждения и общественного воздействия оказались безрезультатными; При прекращении трудовых отношений \"Пользователь\" совместно со всеми проживающими с ним лицами обязан освободить служебное жилое помещение в месячный срок с момента получения письменного предупреждения \"Предприятия\". Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Работник'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Договор на право пользования служебной жилой площадью (приложение № 4 к распоряжению мэра Москвы от 9 августа 1994 г. № 394-рм) - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР НА ПРАВО ПОЛЬЗОВАНИЯ СЛУЖЕБНОЙ ЖИЛОЙ ПЛОЩАДЬЮ Приложение Nо. 4 к распоряжению мэра Москвы от 9 августа 1994 г. Nо. 384-РМ ДОГОВОР на право пользования служебной жилой площадью от \"_____\"___________20___ г. Nо. ______ г.",
+        "dispute_reason": "Маркер указывает на возможный конфликт между несколькими обязанностями или сроками.",
+        "possible_consequence": "При исполнении может оказаться, что условия невозможно соблюсти одновременно.",
+        "confidence": 0.66
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Работник",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Работник'.",
+      "must_do": [
+        "\"Пользователь\" обязуется: а) использовать предоставленное ему служебное помещение и его оборудование по прямому назначению, бережно относиться и содержать его в надлежащем состоянии.",
+        "Произведенные \"Пользователем\" повреждения помещения, а также не выполненные им работы по текущему ремонту помещения, лежащему на обязанности \"Пользователя\", фиксируются в акте сдачи помещения.",
+        "\"Предприятие\" обязуется предоставить \"Пользователю\" жилое помещение в исправном состоянии.",
+        "При прекращении трудовых отношений \"Пользователь\" совместно со всеми проживающими с ним лицами обязан освободить служебное жилое помещение в месячный срок с момента получения письменного предупреждения \"Предприятия\".",
+        "Выселение со служебной жилой площади: инвалидов войны, инвалидов труда I и II группы, пенсионеров по старости, персональных пенсионеров, семей лиц, находящихся на службе в Вооруженных Силах РФ, семей военнослужащих и партизан, погибших или пропавших без вести при защите СССР или при исполнении иных обязанностей военной службы, - в случае прекращения трудовых отношений с \"Предприятием\" производится с предоставлением другой, пригодной к проживанию жилой площади."
+      ],
+      "should_review": [
+        "В случае образования излишней (превышающей установленную норму) жилой площади в виде отдельной изолированной комнаты эта площадь может быть изъята у \"Пользователя\"."
+      ],
+      "payment_terms": [
+        "в) производить за свой счет текущий ремонт занимаемого помещения согласно прилагаемой к договору в момент его заключения описи работ и в сроки, устанавливаемые совместно с \"Предприятием\" общественным домовым комитетом.",
+        "В этом случае стоимость необходимого ремонта и расходы управления домами по исправлению причиненных повреждений подлежат оплате за счет \"Пользователя\"."
+      ],
+      "deadlines": [
+        "Копии приказа о назначении на работу и трудового договора, заключенного с работником, передаются в трехдневный срок балансодержателю дома.",
+        "в) производить за свой счет текущий ремонт занимаемого помещения согласно прилагаемой к договору в момент его заключения описи работ и в сроки, устанавливаемые совместно с \"Предприятием\" общественным домовым комитетом.",
+        "Настоящий договор действует только в течение заключенного \"Пользователем\" с \"Предприятием\" трудового договора и подлежит расторжению с выселением \"Пользователя\" и лиц, совместно проживающих с ним, без предоставления другого жилого помещения в установленном законом порядке: а) в случаях, если \"Пользователь\" или члены его семьи систематически разрушают или портят жилое помещение, или делают невозможным для других проживание с ними в одной квартире или в одном доме, а меры предупреждения и общественного воздействия оказались безрезультатными.",
+        "При прекращении трудовых отношений \"Пользователь\" совместно со всеми проживающими с ним лицами обязан освободить служебное жилое помещение в месячный срок с момента получения письменного предупреждения \"Предприятия\"."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "4b48665b76c1fed0823f14a56231b5e2497b9c154ccc49e838a9de0329f32b2d"
+    },
+    "contract_type": {
+      "type_id": "labor_contract",
+      "confidence": 0.99,
+      "ru_name": "Трудовой договор",
+      "legal_framework": "ТК РФ"
+    },
+    "asymmetry_signals": []
+  },
+  "finished_at": "2026-04-28T16:12:33.753428+00:00",
+  "duration_ms": 149.24
+}

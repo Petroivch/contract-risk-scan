@@ -1,0 +1,280 @@
+{
+  "case_id": "dogovory_4__dogovor_o_poryadke_obsluzhivaniya_dokumentooborota_po_valyutnomu",
+  "relative_path": "договоры 4/dogovor-o-poryadke-obsluzhivaniya-dokumentooborota-po-valyutnomu.html",
+  "document_path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\договоры 4\\dogovor-o-poryadke-obsluzhivaniya-dokumentooborota-po-valyutnomu.html",
+  "document_name": "dogovor-o-poryadke-obsluzhivaniya-dokumentooborota-po-valyutnomu.html",
+  "role": "Подрядчик",
+  "counterparty_role": "Заказчик",
+  "language": "ru",
+  "mime_type": "text/html",
+  "tags": [
+    "workspace-corpus",
+    "html",
+    "dogovory_4",
+    "consulting_agreement"
+  ],
+  "source_group": "manifest",
+  "expected": {
+    "contract_type": "consulting_agreement",
+    "min_contract_type_confidence": 0.52,
+    "min_risk_count": 7,
+    "min_disputed_clause_count": 4,
+    "execution_mode": "local_first",
+    "expected_high_risk_ids": [
+      "payment_asymmetry",
+      "long_payment_delay_no_security",
+      "strict_deadlines_without_dependency_carveout",
+      "ip_transfer_without_scope"
+    ]
+  },
+  "started_at": "2026-04-28T16:12:27.035472+00:00",
+  "status": "completed",
+  "request": {
+    "document_name": "dogovor-o-poryadke-obsluzhivaniya-dokumentooborota-po-valyutnomu.html",
+    "role_context": {
+      "role": "Подрядчик",
+      "counterparty_role": "Заказчик"
+    },
+    "document_text": null,
+    "document_base64": "PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMDEgVHJhbnNpdGlvbmFsLy9FTiI+DQo8aHRtbD4NCjxoZWFkPg0KPGJhc2UgaHJlZj0iaHR0cHM6Ly9kb2dvdm9yLXVyaXN0LnJ1LyI+DQo8dGl0bGU+0JTQvtCz0L7QstC+0YAg0L4g0L/QvtGA0Y/QtNC60LUg0L7QsdGB0LvRg9C20LjQstCw0L3QuNGPINC00L7QutGD0LzQtdC90YLQvtC+0LHQvtGA0L7RgtCwINC/0L4g0LLQsNC70Y7RgtC90L7QvNGDICAg0YHRh9C10YLRgyAtINCy0LXRgNGB0LjRjyDQtNC70Y8g0L/QtdGH0LDRgtC4LiAyMDI2LiDQntCx0YDQsNC30YbRiyDQtNC+0LPQvtCy0L7RgNC+0LIsINGC0LjQv9C+0LLRi9C1INC00L7Qs9C+0LLQvtGA0LAsINCw0LrRgtGD0LDQu9GM0L3Ri9C1INC00L7QutGD0LzQtdC90YLRiywg0Y7RgNC40LTQuNGH0LXRgdC60LjQvCDQuCDRhNC40LfQuNGH0LXRgdC60LjQvCDQu9C40YbQsNC8PC90aXRsZT4NCjxtZXRhIGNvbnRlbnQ9IiIgbmFtZT0ia2V5d29yZHMiPg0KPG1ldGEgY29udGVudD0iIiBuYW1lPSJkZXNjcmlwdGlvbiI+DQo8bWV0YSBuYW1lPSJyb2JvdHMiIGNvbnRlbnQ9Im5vaW5kZXgsbm9mb2xsb3ciPg0KPG1ldGEgaHR0cC1lcXVpdj0iQ29udGVudC1UeXBlIiBjb250ZW50PSJ0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgiPg0KPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSIvaW1hZ2VzL3N0eWxlLmNzcyIgdHlwZT0idGV4dC9jc3MiPg0KPC9oZWFkPg0KPGJvZHk+DQo8ZGl2IGNsYXNzPSJkb2N1bWVudFRleHQiPg0KPHByZT4gICAgICAgICAgICAgICAgICAgICAgICAgICAgINCU0J7Qk9Ce0JLQntCgIE7Qvi4gX19fX19fDQogICAgICAgICAgICAgICAgICAg0L4g0L/QvtGA0Y/QtNC60LUg0L7QsdGB0LvRg9C20LjQstCw0L3QuNGPINC00L7QutGD0LzQtdC90YLQvtC+0LHQvtGA0L7RgtCwDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgINC/0L4g0LLQsNC70Y7RgtC90L7QvNGDINGB0YfQtdGC0YMNCiAgIA0KICAgINCzLiBfX19fX19fX19fX19fICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICJfX18iX19fX19fXyAyMF9fX18g0LMuDQogICANCiAgICAgICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXywg0LjQvNC10L3Rg9C10LxfXyDQsg0KICAgICAgICAgICAgICAgICAo0L3QsNC40LzQtdC90L7QstCw0L3QuNC1INC60YDQtdC00LjRgtC90L7Qs9C+INGD0YfRgNC10LbQtNC10L3QuNGPKQ0KICAgDQogICAg0LTQsNC70YzQvdC10LnRiNC10Lwg0JHQsNC90LogTtC+LiAxICjRg9C/0L7Qu9C90L7QvNC+0YfQtdC90L3Ri9C5INCx0LDQvdC6KSwg0LIg0LvQuNGG0LUgX19fX19fX19fX19fX19fX18NCiAgIA0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXywg0LTQtdC50YHRgtCy0YPRjtGJ0LXQs9C+INC90LAg0L7RgdC90L7QstCw0L3QuNC4DQogICAgICAgICAgICAgKNC00L7Qu9C20L3QvtGB0YLRjCwg0YQu0Lgu0L4uKQ0KICAgDQogICAgX19fX19fX19fX19fX19fX19fLCBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18sDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICjQvdCw0LjQvNC10L3QvtCy0LDQvdC40LUg0LrRgNC10LTQuNGC0L3QvtCz0L4g0YPRh9GA0LXQttC00LXQvdC40Y8pDQogICANCiAgICDQuNC80LXQvdGD0LXQvF9fINCyICAg0LTQsNC70YzQvdC10LnRiNC10LwgINCR0LDQvdC6ICBO0L4uICAyICAo0LHQsNC90LosICDQvdC1ICDQuNC80LXRjtGJ0LjQuSAg0LLQsNC70Y7RgtC90L7QuQ0KICAgINC70LjRhtC10L3Qt9C40LgpLCDQsiDQu9C40YbQtSBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXywNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAo0LTQvtC70LbQvdC+0YHRgtGMLCDRhC7QuC7Qvi4pDQogICANCiAgICDQtNC10LnRgdGC0LLRg9GO0YnQtdCz0L4g0L3QsCDQvtGB0L3QvtCy0LDQvdC40LggX19fX19fX19fX19fX19fX19fX18sINC4IF9fX19fX19fX19fX19fX19fX18NCiAgIA0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLCDQuNC80LXQvdGD0LXQvF9fINCyINC00LDQu9GM0L3QtdC50YjQtdC8ICLQmtC70LjQtdC90YIiLA0KICAgICAgICAo0L3QsNC40LzQtdC90L7QstCw0L3QuNC1INC+0YDQs9Cw0L3QuNC30LDRhtC40LgpDQogICANCiAgICDQsiDQu9C40YbQtSBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18sINC00LXQudGB0YLQstGD0Y7RidC10LPQvg0KICAgICAgICAgICAgICAgICAgICAgICAgICAo0LTQvtC70LbQvdC+0YHRgtGMLCDRhC7QuC7Qvi4pDQogICANCiAgICDQvdCwINC+0YHQvdC+0LLQsNC90LjQuCBfX19fX19fX19fX19fX19fX19fX19fXywg0LTQvtCz0L7QstC+0YDQuNC70LjRgdGMINC+INC90LjQttC10YHQu9C10LTRg9GO0YnQtdC8Lg0KICAgDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgIDEuINCf0KDQldCU0JzQldCiINCU0J7Qk9Ce0JLQntCg0JANCiAgIA0KICAgICAgICAgMS4xLiDQkdCw0L3QuiAgTtC+LiAgMSAg0L7RgtC60YDRi9Cy0LDQtdGCICDQmtC70LjQtdC90YLRgyAg0YLQtdC60YPRidC40LkgINCy0LDQu9GO0YLQvdGL0LkgINGB0YfQtdGCINC4DQogICAg0L7RgdGD0YnQtdGB0YLQstC70Y/QtdGCINGA0LDRgdGH0LXRgtC90L4t0LrQsNGB0YHQvtCy0L7QtSAg0L7QsdGB0LvRg9C20LjQstCw0L3QuNC1ICDQmtC70LjQtdC90YLQsCAg0LIgINC40L3QvtGB0YLRgNCw0L3QvdC+0LkNCiAgICDQstCw0LvRjtGC0LUuINCf0YDQuCDRjdGC0L7QvCDQkdCw0L3QuiBO0L4uIDEgINC/0L7RgNGD0YfQsNC10YIsINCwINCR0LDQvdC6IE7Qvi4gMiDQv9GA0LjQvdC40LzQsNC10YIg0L3QsCDRgdC10LHRjw0KICAgINC+0LHRj9C30LDRgtC10LvRjNGB0YLQstCwINC/0L4g0L7QsdGB0LvRg9C20LjQstCw0L3QuNGOICDQtNC+0LrRg9C80LXQvdGC0L7QvtCx0L7RgNC+0YLQsCAg0L/QviAg0LLQsNC70Y7RgtC90L7QvNGDICDRgdGH0LXRgtGDDQogICAg0JrQu9C40LXQvdGC0LAsINC40LzQtdGO0YnQtdCz0L4gICDRgNCw0YHRh9C10YLQvdGL0LkgICDRgdGH0LXRgiAgINCyICAg0JHQsNC90LrQtSAgTtC+LiAgMiwgINCyICDQvtCx0YrQtdC80LUsDQogICAg0L7Qv9GA0LXQtNC10LvRj9C10LzQvtC8INC90LDRgdGC0L7Rj9GJ0LjQvCAg0JTQvtCz0L7QstC+0YDQvtC8LiAg0JHQsNC90LogIE7Qvi4gIDIgINC/0YDQuNC90LjQvNCw0LXRgiAg0L3QsCAg0YHQtdCx0Y8NCiAgICDQvtCx0Y/Qt9Cw0YLQtdC70YzRgdGC0LLQsCDQv9C+ICDQv9GA0LXQtNGB0YLQsNCy0LvQtdC90LjRjiAg0LjQvdGC0LXRgNC10YHQvtCyICDQmtC70LjQtdC90YLQsCAg0LIg0JHQsNC90LrQtSBO0L4uICAxINCyDQogICAg0L7QsdGK0LXQvNC1LCDQvtC/0YDQtdC00LXQu9GP0LXQvNC+0Lwg0JTQvtCy0LXRgNC10L3QvdC+0YHRgtGM0Y4gICjQn9GA0LjQu9C+0LbQtdC90LjQtSAgTtC+LiAgMSksICDQstGL0LTQsNCy0LDQtdC80L7QuQ0KICAgINCa0LvQuNC10L3RgtC+0Lwg0JHQsNC90LrRgyBO0L4uIDEgKNC00LDQu9C10LUgLSDQlNC+0LLQtdGA0LXQvdC90L7RgdGC0YwpLg0KICAgICAgICAgMS4yLiDQkdCw0L3QuiBO0L4uICAxINC90LUg0LjQvNC10LXRgiAg0L/RgNCw0LLQsCAg0LLQt9C40LzQsNGC0YwgINGBICDQutC70LjQtdC90YLQsCAg0L/Qu9Cw0YLRgyAg0LfQsA0KICAgINC+0LrQsNC30LDQvdC40LUg0YHQstGP0LfQsNC90L3Ri9GFINGBINCU0L7Qs9C+0LLQvtGA0L7QvCDRg9GB0LvRg9CzLiDQn9C70LDRgtCwINC/0L4g0L7Qv9C10YDQsNGG0LjRj9C8INC/0L4g0LLQsNC70Y7RgtC90L7QvNGDDQogICAg0YHRh9C10YLRgyDQstC30LjQvNCw0LXRgtGB0Y8g0JHQsNC90LrQvtC8IE7Qvi4gIDEg0YEg0JHQsNC90LrQsCBO0L4uICAyICDQsiAg0YHQvtC+0YLQstC10YLRgdGC0LLQuNC4ICDRgSAg0LXQs9C+DQogICAg0L/RgNCw0LLQuNC70LDQvNC4INC4ICAg0YLQsNGA0LjRhNCw0LzQuCAgICjRgdC+0LPQu9Cw0YHQvdC+ICDQn9GA0LjQu9C+0LbQtdC90LjRjiAgTtC+LiAgX19fICDRj9Cy0LvRj9GO0YnQtdC80YPRgdGPDQogICAg0L3QtdC+0YLRitC10LzQu9C10LzQvtC5INGH0LDRgdGC0YzRjiDQvdCw0YHRgtC+0Y/RidC10LPQviDQtNC+0LPQvtCy0L7RgNCwKS4NCiAgIA0KICAgICAgICAgICAgICAgICAgICAgICAgMi4g0J/QoNCQ0JLQkCDQmCDQntCR0K/Ql9CQ0J3QndCe0KHQotCYINCh0KLQntCg0J7QnQ0KICAgDQogICAgICAgICDQkdCw0L3QuiBO0L4uIDI6DQogICAgICAgICAyLjEuINCR0LDQvdC6IE7Qvi4gMiDQtNC10LnRgdGC0LLRg9C10YIg0L7RgiDQuNC80LXQvdC4INC4INC/0L4g0L/QvtGA0YPRh9C10L3QuNGOINCa0LvQuNC10L3RgtCwINGC0L7Qu9GM0LrQvg0KICAgINCyINC/0YDQtdC00LXQu9Cw0YUg0L/QvtC70L3QvtC80L7Rh9C40LksINC/0LXRgNC10LTQsNC90L3Ri9GFINC10LzRgyDQv9C+INCU0L7QstC10YDQtdC90L3QvtGB0YLQuC4NCiAgICAgICAgIDIuMi4g0JHQsNC90LogIE7Qvi4gIDIgINC/0YDQuNC90LjQvNCw0LXRgiDRgyDQmtC70LjQtdC90YLQsCDQstGB0LUg0L3QtdC+0LHRhdC+0LTQuNC80YvQtSDQtNC+0LrRg9C80LXQvdGC0YsNCiAgICDQtNC70Y8g0L7RgtC60YDRi9GC0LjRjyDQstCw0LvRjtGC0L3QvtCz0L4g0YHRh9C10YLQsCDQuCDQv9GA0LXQtNGB0YLQsNCy0LvRj9C10YIg0LjRhSDQsiDQkdCw0L3QuiBO0L4uIDEuDQogICAgICAgICDQkdCw0L3QuiBO0L4uIDIg0L/QviDQv9C+0YDRg9GH0LXQvdC40Y4g0JrQu9C40LXQvdGC0LAg0L/RgNC10LTRgdGC0LDQstC70Y/QtdGCINCyINCR0LDQvdC6IE7Qvi4gMSDQtNGA0YPQs9C40LUNCiAgICDQtNC+0LrRg9C80LXQvdGC0Ysg0LIg0YHQvtC+0YLQstC10YLRgdGC0LLQuNC4INGBINCU0L7QstC10YDQtdC90L3QvtGB0YLRjNGOOw0KICAgICAgICAgMi4zLiDQkdCw0L3QuiBO0L4uICAyINGB0L3QsNCx0LbQsNC10YIg0JrQu9C40LXQvdGC0LAg0LLRgdC10Lkg0L3QtdC+0LHRhdC+0LTQuNC80L7QuSDQtNC+0LrRg9C80LXQvdGC0LDRhtC40LXQuQ0KICAgINC4INC40L3RhNC+0YDQvNCw0YbQuNC10Lkg0L7RgtC90L7RgdC40YLQtdC70YzQvdC+INC+0L/QtdGA0LDRhtC40Lkg0L/QviDQtdCz0L4g0LLQsNC70Y7RgtC90L7QvNGDINGB0YfQtdGC0YM7DQogICAgICAgICAyLjQuINCR0LDQvdC6ICAgTtC+LiAgMiAg0L/RgNC10LTRgdGC0LDQstC70Y/QtdGCICDQsiAg0JHQsNC90LogIE7Qvi4gIDEgINGB0L/QuNGB0L7QuiAg0YHQstC+0LjRhQ0KICAgINGB0L7RgtGA0YPQtNC90LjQutC+0LIsINGD0L/QvtC70L3QvtC80L7Rh9C10L3QvdGL0YUg0L/RgNC10LTRgdGC0LDQstC70Y/RgtGMINC4INC/0L7Qu9GD0YfQsNGC0Ywg0LTQvtC60YPQvNC10L3RgtGLINCyINCR0LDQvdC60LUNCiAgICBO0L4uIDEuDQogICAgICAgICAyLjUuINCR0LDQvdC6IE7Qvi4gMiDQvtCx0Y/Qt9GD0LXRgtGB0Y8g0L7RgdGD0YnQtdGB0YLQstC70Y/RgtGMINC60L7QvdGC0YDQvtC70Ywg0LfQsCDRgdCy0L7QtdCy0YDQtdC80LXQvdC90YvQvA0KICAgINC/0LXRgNC10LLQvtC00L7QvCDQtNC10L3QtdC20L3Ri9GFINGB0YDQtdC00YHRgtCyINGB0L4g0YHRh9C10YLQsCDQmtC70LjQtdC90YLQsCDQv9C+INC10LPQviDQv9C+0YDRg9GH0LXQvdC40Y4uDQogICAgICAgICAyLjYuINCR0LDQvdC6IE7Qvi4gIDIgINC+0LHRj9C30LDQvSAg0L7RgdGD0YnQtdGB0YLQstC40YLRjCAg0LLRi9C00LDRh9GDICDQmtC70LjQtdC90YLRgyAg0L3QsNC70LjRh9C90YvRhQ0KICAgINCy0LDQu9GO0YLQvdGL0YUgINGB0YDQtdC00YHRgtCyINCyINGC0LXRh9C10L3QuNC1IF9fX19fX19fXyDRgNCw0LHQvtGH0LjRhSDQtNC90LXQuSDRgdC+INC00L3RjyDQv9C+0YHRgtGD0L/Qu9C10L3QuNGPDQogICAg0LfQsNGP0LLQutC4INC+0YIg0JrQu9C40LXQvdGC0LAuDQogICAgICAgICAyLjcuINCR0LDQvdC6ICBO0L4uICAyICDQv9C10YDQtdC00LDQtdGCICDQstGL0L/QuNGB0LrQuCAg0JrQu9C40LXQvdGC0YMg0L/QviDQvNC10YDQtSDRgdC+0LLQtdGA0YjQtdC90LjRjw0KICAgINC+0L/QtdGA0LDRhtC40Lkg0L/QviDRgdGH0LXRgtGDLg0KICAgICAgICAgMi44LiDQkdCw0L3QuiAgIE7Qvi4gICAyICDQvtCx0Y/Qt9GD0LXRgtGB0Y8gINC+0LHQtdGB0L/QtdGH0LjQstCw0YLRjCAg0LrQvtC90YTQuNC00LXQvdGG0LjQsNC70YzQvdC+0YHRgtGMDQogICAg0LjQvdGE0L7RgNC80LDRhtC40LggINC+ICDRhdC+0LfRj9C50YHRgtCy0LXQvdC90L7QuSAgINC00LXRj9GC0LXQu9GM0L3QvtGB0YLQuCAgINCa0LvQuNC10L3RgtCwICAg0LggICDRgdC+0YXRgNCw0L3Rj9GC0YwNCiAgICDQutC+0LzQvNC10YDRh9C10YHQutGD0Y4g0YLQsNC50L3RgyDQv9C+INC+0L/QtdGA0LDRhtC40Y/QvCwg0L/RgNC+0LjQt9Cy0L7QtNC40LzRi9C8INC/0L4g0YHRh9C10YLRgyDQmtC70LjQtdC90YLQsC4NCiAgIA0KICAgICAgICAg0JHQsNC90LogTtC+LiAxOg0KICAgICAgICAgMi4xMC4g0J7RgtC60YDRi9Cy0LDQtdGCINCy0LDQu9GO0YLQvdGL0Lkg0YHRh9C10YIg0JrQu9C40LXQvdGC0YMgINC/0L4gINC/0YDQtdC00YHRgtCw0LLQu9C10L3QuNC4ICDQkdCw0L3QutC+0LwNCiAgICBO0L4uICAgMiAgINC90LXQvtCx0YXQvtC00LjQvNC+0LPQviAgINC00LvRjyAg0Y3RgtC+0LPQviAg0LrQvtC80L/Qu9C10LrRgtCwICDQtNC+0LrRg9C80LXQvdGC0L7QsiAg0LLQvNC10YHRgtC1ICDRgQ0KICAgINC/0L7QtNC/0LjRgdCw0L3QvdGL0LwgINCa0LvQuNC10L3RgtC+0LwgINC4ICDQkdCw0L3QutC+0LwgIE7Qvi4gICAxICAg0L3QsNGB0YLQvtGP0YnQuNC8ICAg0JTQvtCz0L7QstC+0YDQvtC8ICAg0LgNCiAgICDQlNC+0LLQtdGA0LXQvdC90L7RgdGC0YzRji4NCiAgICAgICAgINCi0LXQutGD0YnQuNC5INCy0LDQu9GO0YLQvdGL0Lkg0YHRh9C10YIg0JrQu9C40LXQvdGC0LAgINCyICDQkdCw0L3QutC1ICBO0L4uICAxICDQvtGC0LrRgNGL0LLQsNC10YLRgdGPICDQvdCwDQogICAg0L7RgdC90L7QstCw0L3QuNC4INC30LDRj9Cy0LvQtdC90LjRjyDQmtC70LjQtdC90YLQsCDQuCDQv9GA0LXQtNC+0YHRgtCw0LLQu9C10L3QuNGPINGB0LvQtdC00YPRjtGJ0LjRhSDQtNC+0LrRg9C80LXQvdGC0L7QsjoNCiAgICAgICAgIC0g0LrQvtC/0LjQuCDQvdC+0YLQsNGA0LjQsNC70YzQvdC+INC30LDQstC10YDQtdC90L3Ri9GFINCj0YfRgNC10LTQuNGC0LXQu9GM0L3Ri9GFINC00L7QutGD0LzQtdC90YLQvtCyICAo0KPRgdGC0LDQsiwNCiAgICDQtNC+0LPQvtCy0L7RgCDQviDRgdC+0LfQtNCw0L3QuNC4LCDQv9GA0L7RgtC+0LrQvtC7KQ0KICAgICAgICAgLSDQvdC+0YLQsNGA0LjQsNC70YzQvdC+ICDQt9Cw0LLQtdGA0LXQvdC90YvQtSAg0LHQsNC90LrQvtCy0YHQutC40LUgICDQutCw0YDRgtC+0YfQutC4ICAg0YEgICDQvtCx0YDQsNC30YbQsNC80LgNCiAgICDQv9C+0LTQv9C40YHQtdC5INC4INC+0YLRgtC40YHQutC+0Lwg0L/QtdGH0LDRgtC4ICjQtNCy0LAg0Y3QutC30LXQvNC/0LvRj9GA0LApOw0KICAgICAgICAgLSDQodC/0YDQsNCy0LrQuCDQviDQv9C+0YHRgtCw0L3QvtCy0LrQtSAg0L3QsCAg0YPRh9C10YIgINC40LcgINCT0L7RgdGD0LTQsNGA0YHRgtCy0LXQvdC90L7QuSAg0J3QsNC70L7Qs9C+0LLQvtC5DQogICAg0JjQvdGB0L/QtdC60YbQuNC4LCAg0J/QtdC90YHQuNC+0L3QvdC+0LPQviAg0KTQvtC90LTQsCAg0KDQpCwgINCk0L7QvdC00LAg0J7QsdGP0LfQsNGC0LXQu9GM0L3QvtCz0L4g0JzQtdC00LjRhtC40L3RgdC60L7Qs9C+DQogICAg0KHRgtGA0LDRhdC+0LLQsNC90LjRjywg0KTQvtC90LTQsCDQotGA0YPQtNCwINC4INCX0LDQvdGP0YLQvtGB0YLQuCDQoNCkLg0KICAgICAgICAgMi4xMS4g0J/QtdGA0LXRh9C10L3RjCAg0LLQvtC30LzQvtC20L3Ri9GFINC/0L7RgdGC0YPQv9C70LXQvdC40Lkg0Lgg0L/Qu9Cw0YLQtdC20LXQuSwgINCwINGC0LDQutC20LUg0YTQvtGA0LzRiw0KICAgINGA0LDRgdGH0LXRgtC+0LIgINC4ICDRg9GB0LvRg9CzLCAg0L/RgNC10LTQvtGB0YLQsNCy0LvRj9C10LzRi9GFICDQkdCw0L3QutC+0LwgIE7Qvi4gICAxLCAgINC+0L/RgNC10LTQtdC70Y/RjtGC0YHRjw0KICAgINC30LDQutC+0L3QvtC00LDRgtC10LvRjNGB0YLQstC+0Lwg0Lgg0LLQvdGD0YLRgNC10L3QvdC40LzQuCDQmNC90YHRgtGA0YPQutGG0LjRj9C80Lgg0JHQsNC90LrQsCDQviDQv9C+0YDRj9C00LrQtSDQvtGC0LrRgNGL0YLQuNGPDQogICAg0Lgg0LLQtdC00LXQvdC40Y8g0YLQtdC60YPRidC40YUg0LLQsNC70Y7RgtC90YvRhSDRgdGH0LXRgtC+0LIuDQogICAgICAgICAyLjEyLiDQn9C70LDRgtC10LbQuCDRgdC+INGB0YfQtdGC0LAg0JrQu9C40LXQvdGC0LAg0L7RgdGD0YnQtdGB0YLQstC70Y/RjtGC0YHRjyDQsiDQv9GA0LXQtNC10LvQsNGFINC+0YHRgtCw0YLQutCwDQogICAg0YHRgNC10LTRgdGC0LIg0L3QsCDRgdGH0LXRgtC1LiDQntCy0LXRgNC00YDQsNGE0YLQvdGL0Lkg0LrRgNC10LTQuNGCINC90LUg0L/RgNC10LTQvtGB0YLQsNCy0LvRj9C10YLRgdGPLg0KICAgICAgICAgMi4xMy4g0KHQstC+0LHQvtC00L3Ri9C1ICDQvtGB0YLQsNGC0LrQuCAg0LLQsNC70Y7RgtC90YvRhSDRgdGA0LXQtNGB0YLQsiDQvdCwINGB0YfQtdGC0LUg0L3QsCDQvtGB0L3QvtCy0LDQvdC40LgNCiAgICDQt9Cw0Y/QstC70LXQvdC40Y8g0JrQu9C40LXQvdGC0LAgINC80L7Qs9GD0YIgINCx0YvRgtGMICDRgNCw0LfQvNC10YnQtdC90YsgINCyICDQtNC10L/QvtC30LjRgiAg0YEgINC/0L7RgdC70LXQtNGD0Y7RidC10LkNCiAgICDQstGL0L/Qu9Cw0YLQvtC5ICDQv9GA0L7RhtC10L3RgtC+0LIgINCyINC/0L7Qu9GM0LfRgyDQmtC70LjQtdC90YLQsCDQsiDRgdC+0L7RgtCy0LXRgtGB0YLQstC40Lgg0YEg0KLQsNGA0LjRhNCw0LzQuCDQkdCw0L3QutCwDQogICAgTtC+LiAxLg0KICAgICAgICAgMi4xNC4g0JLRi9C/0LjRgdC60Lgg0L/QviDRgdGH0LXRgtGDINGB0YfQuNGC0LDRjtGC0YHRjyDQv9C+0LTRgtCy0LXRgNC20LTQtdC90L3Ri9C80LgsICDQtdGB0LvQuCDQstC70LDQtNC10LvQtdGGDQogICAg0YHRh9C10YLQsCDQvdC1INC/0YDQtdC00YHRgtCw0LLQuNGCINGB0LLQvtC4INC30LDQvNC10YfQsNC90LjRjyDQsiDRgtC10YfQtdC90LjQtSAzMCDQutCw0LvQtdC90LTQsNGA0L3Ri9GFICDQtNC90LXQuSAg0YHQvg0KICAgINC00L3RjyDQv9C+0LvRg9GH0LXQvdC40Y8g0LLRi9C/0LjRgdC60LguDQogICAgICAgICAyLjE1LiDQktGB0LUg0L/Qu9Cw0YLQtdC20Lgg0YHQviAg0YHRh9C10YLQsCAg0JrQu9C40LXQvdGC0LAgINC+0YHRg9GJ0LXRgdGC0LLQu9GP0Y7RgtGB0Y8gINCyICDQv9C+0YDRj9C00LrQtQ0KICAgINC60LDQu9C10L3QtNCw0YDQvdC+0Lkg0L7RgtGH0LXRgtC90L7RgdGC0LguDQogICAgICAgICAyLjE2LiDQkdCw0L3QuiBO0L4uICAxLiAg0L7RgdGD0YnQtdGB0YLQstC70Y/QtdGCICDQvtC/0LXRgNCw0YbQuNC4ICDQv9C+ICDQstCw0LvRjtGC0L3QvtC80YMgINGB0YfQtdGC0YMNCiAgICDQmtC70LjQtdC90YLQsCDQsiDRgdC+0L7RgtCy0LXRgtGB0YLQstC40Lgg0YEg0YDQtdC20LjQvNC+0Lwg0LTQsNC90L3QvtCz0L4g0YHRh9C10YLQsC4NCiAgICAgICAgINCR0LDQvdC6IE7Qvi4gIDEg0L7QsdGP0LfQsNC9INC+0YHRg9GJ0LXRgdGC0LLQuNGC0Ywg0LLRi9C00LDRh9GDINCa0LvQuNC10L3RgtGDINC90LDQu9C40YfQvdGL0YUgINCy0LDQu9GO0YLQvdGL0YUNCiAgICDRgdGA0LXQtNGB0YLQsiDQsiDRgtC10YfQtdC90LjQtSBfX19fX19fX18g0YDQsNCx0L7Rh9C40YUg0LTQvdC10Lkg0YHQviDQtNC90Y8g0L/QvtGB0YLRg9C/0LvQtdC90LjRjyDQt9Cw0Y/QstC60Lgg0L7Rgg0KICAgINCa0LvQuNC10L3RgtCwLg0KICAgICAgICAgMi4xNy4g0JHQsNC90LogIE7Qvi4gIDEg0LjQvdGB0YLRgNGD0LrRgtC40YDRg9C10YIg0YPQv9C+0LvQvdC+0LzQvtGH0LXQvdC90YvRhSDRgNCw0LHQvtGC0L3QuNC60L7QsiDQkdCw0L3QutCwDQogICAgTtC+LiAgMiDQvtGC0L3QvtGB0LjRgtC10LvRjNC90L4g0L/QvtGA0Y/QtNC60LAg0LfQsNC/0L7Qu9C90LXQvdC40Y8g0L3QtdC+0LHRhdC+0LTQuNC80YvRhSDRhNC+0YDQvCDQtNC+0LrRg9C80LXQvdGC0L7QsiAg0LgNCiAgICDQv9GA0LjQu9C+0LbQtdC90LjQuSDQuiDQvdC40Lwg0Lgg0L/RgNC+0LLQtdGA0Y/QtdGCINC/0YDQsNCy0LjQu9GM0L3QvtGB0YLRjCDQuNGFINC30LDQv9C+0LvQvdC10L3QuNGPLg0KICAgICAgICAgMi4xOC4g0JIgINGC0LXRh9C10L3QuNC1ICDQstGB0LXQs9C+ICDRgdGA0L7QutCwICDQtNC10LnRgdGC0LLQuNGPICDQlNC+0LPQvtCy0L7RgNCwICDQkdCw0L3QuiAgTtC+LiAgMQ0KICAgINC/0YDQtdC00L7RgdGC0LDQstC70Y/QtdGCINCR0LDQvdC60YMgIE7Qvi4gIDIgINC4ICDQmtC70LjQtdC90YLRgyAg0L/QvtC70L3Rg9GOICDQuNC90YTQvtGA0LzQsNGG0LjRjiDQviDRgdC+0YHRgtCw0LLQtQ0KICAgINGD0YHQu9GD0LMsICDQvtC60LDQt9GL0LLQsNC10LzRi9GFINC/0L4g0LLQsNC70Y7RgtC90L7QvNGDINGB0YfQtdGC0YMsINC4INGA0LDQt9C80LXRgNCw0YUg0YLQsNGA0LjRhNC+0LIsINCy0LfQuNC80LDQtdC80YvRhQ0KICAgINC30LAg0L3QuNGFLg0KICAgDQogICAgICAgICDQmtC70LjQtdC90YI6DQogICAgICAgICAyLjE5LiDQktGL0LTQsNC10YIgICDQlNC+0LLQtdGA0LXQvdC90L7RgdGC0YwgICDQkdCw0L3QutGDICAgTtC+LiAgIDIgICDQuCAgINC+0YHRg9GJ0LXRgdGC0LLQu9GP0LXRgg0KICAgINGB0LLQvtC10LLRgNC10LzQtdC90L3QvtC1INC/0YDQvtC00LvQtdC90LjQtSDRgdGA0L7QutCwINC10LUg0LTQtdC50YHRgtCy0LjRjy4NCiAgICAgICAgIDIuMjAuINCj0L/Qu9Cw0YfQuNCy0LDQtdGCICAg0JHQsNC90LrRgyAgIE7Qvi4gICBfXyAgINCy0L7Qt9C90LDQs9GA0LDQttC00LXQvdC40LUgICAg0YHQvtCz0LvQsNGB0L3Qvg0KICAgINGD0YHRgtCw0L3QvtCy0LvQtdC90L3Ri9C8INC/0L7RgdC70LXQtNC90LjQvCDRgtCw0YDQuNGE0LDQvCDQt9CwINC+0LHRgdC70YPQttC40LLQsNC90LjQtSDQstCw0LvRjtGC0L3QvtCz0L4g0YHRh9C10YLQsC4NCiAgICAgICAgIDIuMjEuINCa0LvQuNC10L3RgiBfX19fX19fX19fX19fX19fX19fX19fX18g0YXRgNCw0L3QuNGC0Ywg0LLRgdC1INGB0LLQvtC4ICDQstCw0LvRjtGC0L3Ri9C1DQogICAgICAgICAgICAgICAgICAgICAgKNC+0LHRj9C30YPQtdGC0YHRjy/QvdC1INC+0LHRj9C30YPQtdGC0YHRjykNCiAgIA0KICAgINGB0YDQtdC00YHRgtCy0LAg0YLQvtC70YzQutC+INC90LAg0YHRh9C10YLQtSDQkdCw0L3QutC1IE7Qvi4gMS4NCiAgICAgICAgIDIuMjIuINCa0LvQuNC10L3RgiAg0L7QsdGP0LfRg9C10YLRgdGPICDRgNCw0YHQv9C+0YDRj9C20LDRgtGM0YHRjyAgINCy0LDQu9GO0YLQvdGL0LzQuCAgINGB0YDQtdC00YHRgtCy0LDQvNC4LA0KICAgINGF0YDQsNC90Y/RidC40LzQuNGB0Y8g0L3QsCAg0YHRh9C10YLQtSAg0LIgINCR0LDQvdC60LUgTtC+LiAgMSwgINCyINGB0L7QvtGC0LLQtdGC0YHRgtCy0LjQuCDRgSDQtNC10LnRgdGC0LLRg9GO0YnQuNC8DQogICAg0LfQsNC60L7QvdC+0LTQsNGC0LXQu9GM0YHRgtCy0L7QvC4NCiAgIA0KICAgICAgICAgICAgICAgICAgICAgICAgICAzLiDQntCi0JLQldCi0KHQotCS0JXQndCd0J7QodCi0Kwg0KHQotCe0KDQntCdDQogICANCiAgICAgICAgIDMuMS4g0J/RgNC4ICDQvdCw0YDRg9GI0LXQvdC40LggINC+0LTQvdC+0LkgINC40LcgINGB0YLQvtGA0L7QvSAg0YHQstC+0LjRhSAg0L7QsdGP0LfQsNC90L3QvtGB0YLQtdC5ICAg0L/Qvg0KICAgINC90LDRgdGC0L7Rj9GJ0LXQvNGDICDQlNC+0LPQvtCy0L7RgNGDINCy0LjQvdC+0LLQvdCw0Y8g0YHRgtC+0YDQvtC90LAg0LLQvtC30LzQtdGJ0LDQtdGCINC/0YDQuNGH0LjQvdC10L3QvdGL0LUg0LIg0YHQstGP0LfQuCDRgQ0KICAgINGN0YLQuNC8INGD0LHRi9GC0LrQuCDQsiDQv9C+0LvQvdC+0Lwg0L7QsdGK0LXQvNC1Lg0KICAgICAgICAgMy4yLiDQkiAgINGB0LvRg9GH0LDQtSAgINC90LDRgNGD0YjQtdC90LjRjyAgINC/LiAgNC4xICAg0JTQvtCz0L7QstC+0YDQsCAg0YHRgtC+0YDQvtC90YsgINC90LXRgdGD0YINCiAgICDQvtGC0LLQtdGC0YHRgtCy0LXQvdC90L7RgdGC0Ywg0LjQtyAgINGA0LDRgdGH0LXRgtCwICAgX19fJSAgINC30LAgICDQutCw0LbQtNGL0LkgICDQtNC10L3RjCAgICDQv9GA0L7RgdGA0L7Rh9C60LgNCiAgICDQv9GA0LXQtNGB0YLQsNCy0LvQtdC90LjRjyDRgdC+0L7RgtCy0LXRgtGB0YLQstGD0Y7RidC10Lkg0LjQvdGE0L7RgNC80LDRhtC40LguICDQn9GA0Lgg0Y3RgtC+0Lwg0YHRgtC+0YDQvtC90LAsICDQutC+0YLQvtGA0LDRjw0KICAgINC90LUg0LHRi9C70LAg0YHQstC+0LXQstGA0LXQvNC10L3QvdC+INC40L3RhNC+0YDQvNC40YDQvtCy0LDQvdCwINC+0LEg0YPQutCw0LfQsNC90L3Ri9GFINCyINC/LiA0LjEgINC40LfQvNC10L3QtdC90LjRj9GFLA0KICAgINC90LUgINC90LXRgdC10YIgINC+0YLQstC10YLRgdGC0LLQtdC90L3QvtGB0YLQuCDQt9CwINC/0LXRgNC10YfQuNGB0LvQtdC90LjQtSDQtNC10L3QtdC20L3Ri9GFINGB0YDQtdC00YHRgtCyINC/0L4g0YHRgtCw0YDRi9C8DQogICAg0YDQtdC60LLQuNC30LjRgtCw0LwuDQogICANCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDQuINCe0KHQntCR0KvQlSDQo9Ch0JvQntCS0JjQrw0KICAgDQogICAgICAgICA0LjEuINCh0YLQvtGA0L7QvdGLINC+0LHRj9C30LDQvdGLICDQt9Cw0LHQu9Cw0LPQvtCy0YDQtdC80LXQvdC90L4gINC40LfQstC10YnQsNGC0YwgINC00YDRg9CzICDQtNGA0YPQs9CwICDQvtCxDQogICAg0LjQt9C80LXQvdC10L3QuNC4ICDRjtGA0LjQtNC40YfQtdGB0LrQvtCz0L4gINCw0LTRgNC10YHQsCwgINGE0LjRgNC80LXQvdC90L7Qs9C+INC90LDQuNC80LXQvdC+0LLQsNC90LjRjyDQuCDQv9C70LDRgtC10LbQvdGL0YUNCiAgICDRgNC10LrQstC40LfQuNGC0L7Qsi4NCiAgICAgICAgIDQuMi4g0JTQvtCz0L7QstC+0YAgICDQvNC+0LbQtdGCICAg0LHRi9GC0YwgICDQuNC30LzQtdC90LXQvSAg0LjQu9C4ICDQtNC+0L/QvtC70L3QtdC9ICDRgtC+0LvRjNC60L4gINC/0L4NCiAgICDRgdC+0LPQu9Cw0YjQtdC90LjRjiAg0LLRgdC10YUgINGB0YLQvtGA0L7QvSAg0L3QsNGB0YLQvtGP0YnQtdCz0L4gINCU0L7Qs9C+0LLQvtGA0LA7ICAg0LLRgdC1ICAg0LjQt9C80LXQvdC10L3QuNGPICAg0LgNCiAgICDQtNC+0L/QvtC70L3QtdC90LjRjyDQv9C+0LTQu9C10LbQsNGCINC+0YTQvtGA0LzQu9C10L3QuNGOINCyINC/0LjRgdGM0LzQtdC90L3QvtC8INCy0LjQtNC1Lg0KICAgICAgICAgNC4zLiDQntGC0L3QvtGI0LXQvdC40Y8gINGB0YLQvtGA0L7QvSAg0L/QviAg0L3QsNGB0YLQvtGP0YnQtdC80YMgINCU0L7Qs9C+0LLQvtGA0YMgINC90L7RgdGP0YIgICDRgdGC0YDQvtCz0L4NCiAgICDQutC+0L3RhNC40LTQtdC90YbQuNCw0LvRjNC90YvQuSDRhdCw0YDQsNC60YLQtdGAINC4INC90LUg0L/QvtC00LvQtdC20LDRgiDRgNCw0LfQs9C70LDRiNC10L3QuNGOINGC0YDQtdGC0YzQuNC8INC70LjRhtCw0LwsINC30LANCiAgICDQuNGB0LrQu9GO0YfQtdC90LjQtdC8INGB0LvRg9GH0LDQtdCyLCDQv9GA0LXQtNGD0YHQvNC+0YLRgNC10L3QvdGL0YUg0LTQtdC50YHRgtCy0YPRjtGJ0LjQvCDQt9Cw0LrQvtC90L7QtNCw0YLQtdC70YzRgdGC0LLQvtC8Lg0KICAgDQogICAgICAgICAgICAgICAgICAgICAgICAgIDUuINCh0KDQntCaINCU0JXQmdCh0KLQktCY0K8g0JTQntCT0J7QktCe0KDQkA0KICAgDQogICAgICAgICA1LjEuINCU0L7Qs9C+0LLQvtGAICDQstGB0YLRg9C/0LDQtdGCICDQsiAg0YHQuNC70YMgINGBICDQtNCw0YLRiyAg0LXQs9C+ICDQv9C+0LTQv9C40YHQsNC90LjRjyAg0LLRgdC10LzQuA0KICAgINGB0YLQvtGA0L7QvdCw0LzQuC4g0JTQvtCz0L7QstC+0YAg0LfQsNC60LvRjtGH0LDQtdGC0YHRjyDQvdCwINC90LXQvtC/0YDQtdC00LXQu9C10L3QvdGL0Lkg0YHRgNC+0LouDQogICAgICAgICA1LjIuINCb0Y7QsdCw0Y8gINC40LcgINGB0YLQvtGA0L7QvSAg0LzQvtC20LXRgiAg0YDQsNGB0YLQvtGA0LPQvdGD0YLRjCAg0L3QsNGB0YLQvtGP0YnQuNC8ICAg0JTQvtCz0L7QstC+0YAsDQogICAg0L/RgNC10LTQstCw0YDQuNGC0LXQu9GM0L3QviDRg9Cy0LXQtNC+0LzQuNCyINC00YDRg9Cz0LjQtSDRgdGC0L7RgNC+0L3RiyDQt9CwIF9fX19fX19fX19fX19fX19fX19fX19fXy4NCiAgICAgICAgIDUuMy4g0JIg0YHQu9GD0YfQsNC1ICDRgNCw0YHRgtC+0YDQttC10L3QuNGPICDQvdCw0YHRgtC+0Y/RidC10LPQviAg0JTQvtCz0L7QstC+0YDQsCAg0L/QviAg0LjQvdC40YbQuNCw0YLQuNCy0LUNCiAgICDQkdCw0L3QutCwIE7Qvi4gIDIgINC+0YLQvdC+0YjQtdC90LjRjyAg0LzQtdC20LTRgyAg0JHQsNC90LrQvtC8ICBO0L4uICAxICDQuCAg0JrQu9C40LXQvdGC0L7QvCDQv9C+INC/0L7QstC+0LTRgw0KICAgINC+0LHRgdC70YPQttC40LLQsNC90LjRjyDQstCw0LvRjtGC0L3QvtCz0L4g0YHRh9C10YLQsCDRgdC+0YXRgNCw0L3Rj9GO0YIg0YHQstC+0Y4g0YHQuNC70YMsINC/0YDQuCDRjdGC0L7QvCDQkdCw0L3QuiBO0L4uIDENCiAgICDQv9GA0LjQvdC40LzQsNC10YIgICAg0L3QsCAgICDRgdC10LHRjyAgINC+0LHRj9C30LDRgtC10LvRjNGB0YLQstCwICAg0L/QviAgINC/0L7Qu9C90L7QvNGDICAg0L7QsdGB0LvRg9C20LjQstCw0L3QuNGODQogICAg0LTQvtC60YPQvNC10L3RgtC+0L7QsdC+0YDQvtGC0LAg0L/QviDQstCw0LvRjtGC0L3QvtC80YMg0YHRh9C10YLRgyDQmtC70LjQtdC90YLQsC4NCiAgIA0KICAgICAgICAgICAgICAgICAgICAgICA2LiDQn9Ce0KDQr9CU0J7QmiDQoNCQ0KHQodCc0J7QotCg0JXQndCY0K8g0KHQn9Ce0KDQntCSDQogICANCiAgICAgICAgIDYuMS4g0KHQv9C+0YDRiywgINCy0L7Qt9C90LjQutCw0Y7RidC40LUg0LIg0YXQvtC00LUg0LjRgdC/0L7Qu9C90LXQvdC40Y8g0JTQvtCz0L7QstC+0YDQsCwg0YDQsNC30YDQtdGI0LDRjtGC0YHRjw0KICAgINGB0YLQvtGA0L7QvdCw0LzQuCDRgdCw0LzQvtGB0YLQvtGP0YLQtdC70YzQvdC+INC/0YPRgtC10Lwg0L/QtdGA0LXQs9C+0LLQvtGA0L7Qsi4g0JIg0YHQu9GD0YfQsNC1LCDQtdGB0LvQuCDRgdGC0L7RgNC+0L3RiyDQvdC1DQogICAg0L/RgNC40LTRg9GCINC6INCy0LfQsNC40LzQvdC+0LzRgyDRgdC+0LPQu9Cw0YHQuNGOLCAg0YHQv9C+0YDRiyDRgNCw0LfRgNC10YjQsNGO0YLRgdGPINCyICDQkNGA0LHQuNGC0YDQsNC20L3QvtC8ICDRgdGD0LTQtS4NCiAgICDQn9GA0Lgg0Y3RgtC+0Lwg0LLRgdC1INC/0YDQtdGC0LXQvdC30LjQuCwgINC40YHQutC+0LLRi9C1INGC0YDQtdCx0L7QstCw0L3QuNGPLCDRgdCy0Y/Qt9Cw0L3QvdGL0LUg0YEg0L3QtdC90LDQtNC70LXQttCw0YnQuNC8DQogICAg0L7QsdGB0LvRg9C20LjQstCw0L3QuNC10LwgINC00L7QutGD0LzQtdC90YLQvtC+0LHQvtGA0L7RgtCwICDQv9C+ICDQstCw0LvRjtGC0L3QvtC80YMgINGB0YfQtdGC0YMsICDQv9GA0LXQtNGK0Y/QstC70Y/RjtGC0YHRjw0KICAgINCa0LvQuNC10L3RgtC+0Lwg0L3QtdC/0L7RgdGA0LXQtNGB0YLQstC10L3QvdC+ICDQuiAg0JHQsNC90LrRgyAgTtC+LiAgMi4gINCSICDRgdC70YPRh9Cw0LUg0YPQtNC+0LLQu9C10YLQstC+0YDQtdC90LjRjw0KICAgINC/0YDQsNCy0L7QvNC10YDQvdGL0YUg0YLRgNC10LHQvtCy0LDQvdC40Lkg0JrQu9C40LXQvdGC0LAsICDQstGL0LfQstCw0L3QvdGL0YUg0L3QtdC90LDQtNC70LXQttCw0YnQuNC8INC+0LHRgdC70YPQttC40LLQsNC90LjQtdC8DQogICAg0LTQvtC60YPQvNC10L3RgtC+0L7QsdC+0YDQvtGC0LAg0L/QviAg0LLQuNC90LUgINCR0LDQvdC60LAgIE7Qvi4gIDEsICDQkdCw0L3QuiBO0L4uICAyINC80L7QttC10YIsICDQsiDRgdCy0L7Rjg0KICAgINC+0YfQtdGA0LXQtNGMLCDQv9GA0LXQtNGK0Y/QstC40YLRjCDQv9GA0LXRgtC10L3Qt9C40Lgg0Log0JHQsNC90LrRgyBO0L4uIDEuDQogICANCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDcuINCf0KDQntCn0JjQlSDQo9Ch0JvQntCS0JjQrw0KICAgDQogICAgICAgICA3LjEuINCU0L7Qs9C+0LLQvtGAINGB0L7RgdGC0LDQstC70LXQvSDQsiDRgtGA0LXRhSDRjdC60LfQtdC80L/Qu9GP0YDQsNGFLCAg0L/QviDQvtC00L3QvtC80YMg0LTQu9GPINC60LDQttC00L7QuQ0KICAgINC40Lcg0YHRgtC+0YDQvtC9Lg0KICAgDQogICAgICAgICAgICAgICAgICAgICAgICA4LiDQkNCU0KDQldCh0JAg0Jgg0KDQldCa0JLQmNCX0JjQotCrINCh0KLQntCg0J7QnQ0KICAgDQogICAgICAgICDQkdCw0L3QuiBO0L4uIDE6IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCiAgICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCiAgICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCiAgIA0KICAgICAgICAg0JHQsNC90LogTtC+LiAyOiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQogICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQogICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQogICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQogICANCiAgICAgICAgINCa0LvQuNC10L3RgjogX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCiAgICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCiAgICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCiAgICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCiAgIA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgINCf0L7QtNC/0LjRgdC4INGB0YLQvtGA0L7QvToNCiAgIA0KICAgDQogICAg0JHQsNC90LogTtC+LiAxICAgICAgICAgICAgICDQkdCw0L3QuiBO0L4uIDIgICAgICAgICAgICAg0JrQu9C40LXQvdGCDQogICANCiAgICBfX19fX19fX19fX19fX19fX19fXyAgICBfX19fX19fX19fX19fX19fX19fICAgIF9fX19fX19fX19fX19fX19fX19fX18NCg0KICANCjwvcHJlPjwvZGl2Pg0KPC9ib2R5Pg0KPC9odG1sPg==",
+    "mime_type": "text/html",
+    "language": "ru",
+    "locale": "ru"
+  },
+  "ingestion_preflight": {
+    "mime_type": "text/html",
+    "extractor": "html:regex",
+    "extraction_source": "html:regex",
+    "extraction_ok": true,
+    "error": null,
+    "extraction_error": null,
+    "sha256": "b6c5ff7c2084d3ab35f51a14774c089513e157d6db3eb779e6840f30f4f43afd"
+  },
+  "metrics": {
+    "risk_count": 3,
+    "high_risk_count": 2,
+    "disputed_clause_count": 2,
+    "asymmetry_signal_count": 0,
+    "contract_type": "consulting_agreement"
+  },
+  "analysis": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'dogovor-o-poryadke-obsluzhivaniya-dokumentooborota-po-valyutnomu. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Подрядчик'. Определен тип договора: Консалтинговый договор (уверенность 67%, правовая рамка: ГК РФ, глава 39). Ключевые обязательства по договору для роли 'Подрядчик': ПРАВА И ОБЯЗАННОСТИ СТОРОН Банк Nо; 2 обязуется осуществлять контроль за своевременным переводом денежных средств со счета Клиента по его поручению; 2 обязан осуществить выдачу Клиенту наличных валютных средств в течение _________ рабочих дней со дня поступления заявки от Клиента. Условия оплаты: Договор о порядке обслуживания документооборота по валютному счету - версия для печати; ______ о порядке обслуживания документооборота по валютному счету г; 1 открывает Клиенту текущий валютный счет и осуществляет расчетно-кассовое обслуживание Клиента в иностранной валюте. Сроки и дедлайны: 2 обязан осуществить выдачу Клиенту наличных валютных средств в течение _________ рабочих дней со дня поступления заявки от Клиента; Выписки по счету считаются подтвержденными, если владелец счета не представит свои замечания в течение 30 календарных дней со дня получения выписки; 1 обязан осуществить выдачу Клиенту наличных валютных средств в течение _________ рабочих дней со дня поступления заявки от Клиента. Найдено спорных или расплывчатых пунктов: 2.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "payment_asymmetry",
+        "title": "Критический риск: Платежная асимметрия: исполнение до оплаты",
+        "severity": "critical",
+        "clause_id": "clause-1",
+        "description": "Одна сторона обязана начать исполнение раньше, чем получает деньги, что создает кассовый разрыв и риск неоплаты. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: Договор о порядке обслуживания документооборота по валютному счету - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР Nо. ______ о порядке обслуживания документооборота по валютному счету г. _____________ \"___\"_______ 20____ г. ___________________________________________________, именуем__ в (наименование кредитного учреждения) дальнейшем Банк Nо.",
+        "role_relevance": "Для исполнителя это прямой риск финансировать проект за свой счет.",
+        "mitigation": "Согласуйте аванс, этапные платежи или право приостановить исполнение до поступления оплаты."
+      },
+      {
+        "risk_id": "risk-2",
+        "rule_id": "long_payment_delay_no_security",
+        "title": "Критический риск: Длинная отсрочка платежа без обеспечений",
+        "severity": "critical",
+        "clause_id": "clause-1",
+        "description": "Договор закладывает длительную отсрочку оплаты без аванса, банковской гарантии или права остановить исполнение. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: Договор о порядке обслуживания документооборота по валютному счету - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР Nо. ______ о порядке обслуживания документооборота по валютному счету г. _____________ \"___\"_______ 20____ г. ___________________________________________________, именуем__ в (наименование кредитного учреждения) дальнейшем Банк Nо.",
+        "role_relevance": "Длинная отсрочка оплаты бьет по оборотному капиталу исполнителя.",
+        "mitigation": "Сократите срок оплаты, добавьте аванс, лимит дебиторки или договорное обеспечение."
+      },
+      {
+        "risk_id": "risk-3",
+        "rule_id": "confidentiality_without_exceptions",
+        "title": "Средний риск: Конфиденциальность без carve-outs и разумных исключений",
+        "severity": "medium",
+        "clause_id": "clause-1",
+        "description": "Обязанность по конфиденциальности сформулирована широко, но не содержит исключений для общедоступной информации, законных запросов и ранее известных данных. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: Договор о порядке обслуживания документооборота по валютному счету - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР Nо. ______ о порядке обслуживания документооборота по валютному счету г. _____________ \"___\"_______ 20____ г. ___________________________________________________, именуем__ в (наименование кредитного учреждения) дальнейшем Банк Nо.",
+        "role_relevance": "Исполнитель рискует нарушить чрезмерно широкую конфиденциальность.",
+        "mitigation": "Добавьте стандартные carve-outs и ограничьте ответственность за непредотвратимое раскрытие."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Договор о порядке обслуживания документооборота по валютному счету - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР Nо. ______ о порядке обслуживания документооборота по валютному счету г. _____________ \"___\"_______ 20____ г. ___________________________________________________, именуем__ в (наименование кредитного учреждения) дальнейшем Банк Nо.",
+        "dispute_reason": "Существенное условие вынесено в приложение или график, который может быть не заполнен.",
+        "possible_consequence": "Если приложение отсутствует или неполно, стороны будут спорить о содержании обязательства.",
+        "confidence": 0.8
+      },
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Договор о порядке обслуживания документооборота по валютному счету - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР Nо. ______ о порядке обслуживания документооборота по валютному счету г. _____________ \"___\"_______ 20____ г. ___________________________________________________, именуем__ в (наименование кредитного учреждения) дальнейшем Банк Nо.",
+        "dispute_reason": "Маркер указывает на возможный конфликт между несколькими обязанностями или сроками.",
+        "possible_consequence": "При исполнении может оказаться, что условия невозможно соблюсти одновременно.",
+        "confidence": 0.66
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Подрядчик",
+      "overview": "Договор содержит 1 пунктов и 3 выявленных рисков. Краткий вывод сфокусирован на роли 'Подрядчик'. Обнаружено 2 пунктов с высоким уровнем риска; их стоит перепроверить вручную.",
+      "must_do": [
+        "ПРАВА И ОБЯЗАННОСТИ СТОРОН Банк Nо.",
+        "2 обязуется осуществлять контроль за своевременным переводом денежных средств со счета Клиента по его поручению.",
+        "2 обязан осуществить выдачу Клиенту наличных валютных средств в течение _________ рабочих дней со дня поступления заявки от Клиента.",
+        "2 обязуется обеспечивать конфиденциальность информации о хозяйственной деятельности Клиента и сохранять коммерческую тайну по операциям, производимым по счету Клиента.",
+        "1 обязан осуществить выдачу Клиенту наличных валютных средств в течение _________ рабочих дней со дня поступления заявки от Клиента.",
+        "Клиент ________________________ хранить все свои валютные (обязуется/не обязуется) средства только на счете Банке Nо."
+      ],
+      "should_review": [
+        "Договор может быть изменен или дополнен только по соглашению всех сторон настоящего Договора.",
+        "Любая из сторон может расторгнуть настоящим Договор, предварительно уведомив другие стороны за ________________________.",
+        "2 может, в свою очередь, предъявить претензии к Банку Nо."
+      ],
+      "payment_terms": [
+        "Договор о порядке обслуживания документооборота по валютному счету - версия для печати.",
+        "______ о порядке обслуживания документооборота по валютному счету г.",
+        "1 открывает Клиенту текущий валютный счет и осуществляет расчетно-кассовое обслуживание Клиента в иностранной валюте.",
+        "2 принимает на себя обязательства по обслуживанию документооборота по валютному счету Клиента, имеющего расчетный счет в Банке Nо.",
+        "Плата по операциям по валютному счету взимается Банком Nо.",
+        "2 принимает у Клиента все необходимые документы для открытия валютного счета и представляет их в Банк Nо."
+      ],
+      "deadlines": [
+        "2 обязан осуществить выдачу Клиенту наличных валютных средств в течение _________ рабочих дней со дня поступления заявки от Клиента.",
+        "Выписки по счету считаются подтвержденными, если владелец счета не представит свои замечания в течение 30 календарных дней со дня получения выписки.",
+        "1 обязан осуществить выдачу Клиенту наличных валютных средств в течение _________ рабочих дней со дня поступления заявки от Клиента.",
+        "В течение всего срока действия Договора Банк Nо.",
+        "2 и осуществляет своевременное продление срока ее действия.",
+        "СРОК ДЕЙСТВИЯ ДОГОВОРА 5."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "b6c5ff7c2084d3ab35f51a14774c089513e157d6db3eb779e6840f30f4f43afd"
+    },
+    "contract_type": {
+      "type_id": "consulting_agreement",
+      "confidence": 0.67,
+      "ru_name": "Консалтинговый договор",
+      "legal_framework": "ГК РФ, глава 39"
+    },
+    "asymmetry_signals": []
+  },
+  "result": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'dogovor-o-poryadke-obsluzhivaniya-dokumentooborota-po-valyutnomu. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Подрядчик'. Определен тип договора: Консалтинговый договор (уверенность 67%, правовая рамка: ГК РФ, глава 39). Ключевые обязательства по договору для роли 'Подрядчик': ПРАВА И ОБЯЗАННОСТИ СТОРОН Банк Nо; 2 обязуется осуществлять контроль за своевременным переводом денежных средств со счета Клиента по его поручению; 2 обязан осуществить выдачу Клиенту наличных валютных средств в течение _________ рабочих дней со дня поступления заявки от Клиента. Условия оплаты: Договор о порядке обслуживания документооборота по валютному счету - версия для печати; ______ о порядке обслуживания документооборота по валютному счету г; 1 открывает Клиенту текущий валютный счет и осуществляет расчетно-кассовое обслуживание Клиента в иностранной валюте. Сроки и дедлайны: 2 обязан осуществить выдачу Клиенту наличных валютных средств в течение _________ рабочих дней со дня поступления заявки от Клиента; Выписки по счету считаются подтвержденными, если владелец счета не представит свои замечания в течение 30 календарных дней со дня получения выписки; 1 обязан осуществить выдачу Клиенту наличных валютных средств в течение _________ рабочих дней со дня поступления заявки от Клиента. Найдено спорных или расплывчатых пунктов: 2.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "payment_asymmetry",
+        "title": "Критический риск: Платежная асимметрия: исполнение до оплаты",
+        "severity": "critical",
+        "clause_id": "clause-1",
+        "description": "Одна сторона обязана начать исполнение раньше, чем получает деньги, что создает кассовый разрыв и риск неоплаты. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: Договор о порядке обслуживания документооборота по валютному счету - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР Nо. ______ о порядке обслуживания документооборота по валютному счету г. _____________ \"___\"_______ 20____ г. ___________________________________________________, именуем__ в (наименование кредитного учреждения) дальнейшем Банк Nо.",
+        "role_relevance": "Для исполнителя это прямой риск финансировать проект за свой счет.",
+        "mitigation": "Согласуйте аванс, этапные платежи или право приостановить исполнение до поступления оплаты."
+      },
+      {
+        "risk_id": "risk-2",
+        "rule_id": "long_payment_delay_no_security",
+        "title": "Критический риск: Длинная отсрочка платежа без обеспечений",
+        "severity": "critical",
+        "clause_id": "clause-1",
+        "description": "Договор закладывает длительную отсрочку оплаты без аванса, банковской гарантии или права остановить исполнение. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: Договор о порядке обслуживания документооборота по валютному счету - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР Nо. ______ о порядке обслуживания документооборота по валютному счету г. _____________ \"___\"_______ 20____ г. ___________________________________________________, именуем__ в (наименование кредитного учреждения) дальнейшем Банк Nо.",
+        "role_relevance": "Длинная отсрочка оплаты бьет по оборотному капиталу исполнителя.",
+        "mitigation": "Сократите срок оплаты, добавьте аванс, лимит дебиторки или договорное обеспечение."
+      },
+      {
+        "risk_id": "risk-3",
+        "rule_id": "confidentiality_without_exceptions",
+        "title": "Средний риск: Конфиденциальность без carve-outs и разумных исключений",
+        "severity": "medium",
+        "clause_id": "clause-1",
+        "description": "Обязанность по конфиденциальности сформулирована широко, но не содержит исключений для общедоступной информации, законных запросов и ранее известных данных. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: Договор о порядке обслуживания документооборота по валютному счету - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР Nо. ______ о порядке обслуживания документооборота по валютному счету г. _____________ \"___\"_______ 20____ г. ___________________________________________________, именуем__ в (наименование кредитного учреждения) дальнейшем Банк Nо.",
+        "role_relevance": "Исполнитель рискует нарушить чрезмерно широкую конфиденциальность.",
+        "mitigation": "Добавьте стандартные carve-outs и ограничьте ответственность за непредотвратимое раскрытие."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Договор о порядке обслуживания документооборота по валютному счету - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР Nо. ______ о порядке обслуживания документооборота по валютному счету г. _____________ \"___\"_______ 20____ г. ___________________________________________________, именуем__ в (наименование кредитного учреждения) дальнейшем Банк Nо.",
+        "dispute_reason": "Существенное условие вынесено в приложение или график, который может быть не заполнен.",
+        "possible_consequence": "Если приложение отсутствует или неполно, стороны будут спорить о содержании обязательства.",
+        "confidence": 0.8
+      },
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Договор о порядке обслуживания документооборота по валютному счету - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР Nо. ______ о порядке обслуживания документооборота по валютному счету г. _____________ \"___\"_______ 20____ г. ___________________________________________________, именуем__ в (наименование кредитного учреждения) дальнейшем Банк Nо.",
+        "dispute_reason": "Маркер указывает на возможный конфликт между несколькими обязанностями или сроками.",
+        "possible_consequence": "При исполнении может оказаться, что условия невозможно соблюсти одновременно.",
+        "confidence": 0.66
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Подрядчик",
+      "overview": "Договор содержит 1 пунктов и 3 выявленных рисков. Краткий вывод сфокусирован на роли 'Подрядчик'. Обнаружено 2 пунктов с высоким уровнем риска; их стоит перепроверить вручную.",
+      "must_do": [
+        "ПРАВА И ОБЯЗАННОСТИ СТОРОН Банк Nо.",
+        "2 обязуется осуществлять контроль за своевременным переводом денежных средств со счета Клиента по его поручению.",
+        "2 обязан осуществить выдачу Клиенту наличных валютных средств в течение _________ рабочих дней со дня поступления заявки от Клиента.",
+        "2 обязуется обеспечивать конфиденциальность информации о хозяйственной деятельности Клиента и сохранять коммерческую тайну по операциям, производимым по счету Клиента.",
+        "1 обязан осуществить выдачу Клиенту наличных валютных средств в течение _________ рабочих дней со дня поступления заявки от Клиента.",
+        "Клиент ________________________ хранить все свои валютные (обязуется/не обязуется) средства только на счете Банке Nо."
+      ],
+      "should_review": [
+        "Договор может быть изменен или дополнен только по соглашению всех сторон настоящего Договора.",
+        "Любая из сторон может расторгнуть настоящим Договор, предварительно уведомив другие стороны за ________________________.",
+        "2 может, в свою очередь, предъявить претензии к Банку Nо."
+      ],
+      "payment_terms": [
+        "Договор о порядке обслуживания документооборота по валютному счету - версия для печати.",
+        "______ о порядке обслуживания документооборота по валютному счету г.",
+        "1 открывает Клиенту текущий валютный счет и осуществляет расчетно-кассовое обслуживание Клиента в иностранной валюте.",
+        "2 принимает на себя обязательства по обслуживанию документооборота по валютному счету Клиента, имеющего расчетный счет в Банке Nо.",
+        "Плата по операциям по валютному счету взимается Банком Nо.",
+        "2 принимает у Клиента все необходимые документы для открытия валютного счета и представляет их в Банк Nо."
+      ],
+      "deadlines": [
+        "2 обязан осуществить выдачу Клиенту наличных валютных средств в течение _________ рабочих дней со дня поступления заявки от Клиента.",
+        "Выписки по счету считаются подтвержденными, если владелец счета не представит свои замечания в течение 30 календарных дней со дня получения выписки.",
+        "1 обязан осуществить выдачу Клиенту наличных валютных средств в течение _________ рабочих дней со дня поступления заявки от Клиента.",
+        "В течение всего срока действия Договора Банк Nо.",
+        "2 и осуществляет своевременное продление срока ее действия.",
+        "СРОК ДЕЙСТВИЯ ДОГОВОРА 5."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "b6c5ff7c2084d3ab35f51a14774c089513e157d6db3eb779e6840f30f4f43afd"
+    },
+    "contract_type": {
+      "type_id": "consulting_agreement",
+      "confidence": 0.67,
+      "ru_name": "Консалтинговый договор",
+      "legal_framework": "ГК РФ, глава 39"
+    },
+    "asymmetry_signals": []
+  },
+  "finished_at": "2026-04-28T16:12:27.391699+00:00",
+  "duration_ms": 356.98
+}

@@ -34,6 +34,8 @@ def _validate_runtime_config(config: AnalysisRuntimeConfig) -> None:
         config.pipeline.ingestion.empty_text_placeholder,
         supported_languages,
     )
+    if config.pipeline.ingestion.extraction_timeout_seconds <= 0:
+        raise ValueError("pipeline.ingestion.extraction_timeout_seconds must be positive")
     _assert_localized_map(
         "pipeline.segmentation.fallback_clause_text",
         config.pipeline.segmentation.fallback_clause_text,
@@ -130,11 +132,18 @@ def _validate_runtime_config(config: AnalysisRuntimeConfig) -> None:
     )
 
     for rule in config.risk_scoring.risk_rules:
-        if rule.severity not in severity_levels:
-            raise ValueError(f"Rule '{rule.id}' has unsupported severity '{rule.severity}'")
+        resolved_severity = rule.severity_base or rule.severity
+        if not resolved_severity or resolved_severity not in severity_levels:
+            raise ValueError(f"Rule '{rule.id}' has unsupported severity '{resolved_severity}'")
         _assert_localized_map(f"risk_rule.{rule.id}.title", rule.title, supported_languages)
         _assert_localized_map(f"risk_rule.{rule.id}.description", rule.description, supported_languages)
         _assert_localized_map(f"risk_rule.{rule.id}.mitigation", rule.mitigation, supported_languages)
+        for role_name, escalation in rule.role_escalation.items():
+            if escalation.escalate_to not in severity_levels:
+                raise ValueError(
+                    f"Rule '{rule.id}' role escalation for '{role_name}' has unsupported severity "
+                    f"'{escalation.escalate_to}'"
+                )
 
     for marker in config.risk_scoring.dispute_markers:
         _assert_localized_map(f"dispute_marker.{marker.id}.reason", marker.reason, supported_languages)
@@ -143,6 +152,31 @@ def _validate_runtime_config(config: AnalysisRuntimeConfig) -> None:
             marker.consequence,
             supported_languages,
         )
+
+    if config.risk_scoring.truncation and config.risk_scoring.truncation.max_chars < 50:
+        raise ValueError("risk_scoring.truncation.max_chars must be at least 50 characters")
+
+    for contract_type in config.contract_types:
+        if not contract_type.id:
+            raise ValueError("contract_types contains an empty id")
+
+    for contract_type_id, matrix in config.risk_scoring.role_escalation_matrix.items():
+        if not contract_type_id:
+            raise ValueError("role_escalation_matrix contains an empty contract type id")
+        for risk_id, role_map in matrix.items():
+            if not risk_id:
+                raise ValueError("role_escalation_matrix contains an empty risk id")
+            for role_name, escalation in role_map.items():
+                if not role_name:
+                    raise ValueError(
+                        f"role_escalation_matrix for contract type '{contract_type_id}' risk '{risk_id}' "
+                        "contains an empty role name"
+                    )
+                if escalation.escalate_to not in severity_levels:
+                    raise ValueError(
+                        f"role_escalation_matrix for contract type '{contract_type_id}' risk '{risk_id}' "
+                        f"role '{role_name}' has unsupported severity '{escalation.escalate_to}'"
+                    )
 
     fallback_config = config.risk_scoring.fallback
     _assert_localized_map("risk_fallback.risk_title", fallback_config.risk_title, supported_languages)

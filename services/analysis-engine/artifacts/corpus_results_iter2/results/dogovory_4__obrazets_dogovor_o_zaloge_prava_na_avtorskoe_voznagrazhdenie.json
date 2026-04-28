@@ -1,0 +1,197 @@
+{
+  "case_id": "dogovory_4__obrazets_dogovor_o_zaloge_prava_na_avtorskoe_voznagrazhdenie",
+  "relative_path": "договоры 4/obrazets-dogovor-o-zaloge-prava-na-avtorskoe-voznagrazhdenie.html",
+  "document_path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\договоры 4\\obrazets-dogovor-o-zaloge-prava-na-avtorskoe-voznagrazhdenie.html",
+  "document_name": "obrazets-dogovor-o-zaloge-prava-na-avtorskoe-voznagrazhdenie.html",
+  "role": "Заемщик",
+  "counterparty_role": "Кредитор",
+  "language": "ru",
+  "mime_type": "text/html",
+  "tags": [
+    "workspace-corpus",
+    "html",
+    "dogovory_4",
+    "loan_security_agreement"
+  ],
+  "source_group": "manifest",
+  "expected": {
+    "contract_type": "loan_security_agreement",
+    "min_contract_type_confidence": 0.5,
+    "min_risk_count": 0,
+    "min_disputed_clause_count": 0,
+    "execution_mode": "local_first",
+    "expected_high_risk_ids": []
+  },
+  "started_at": "2026-04-28T16:12:36.888604+00:00",
+  "status": "completed",
+  "request": {
+    "document_name": "obrazets-dogovor-o-zaloge-prava-na-avtorskoe-voznagrazhdenie.html",
+    "role_context": {
+      "role": "Заемщик",
+      "counterparty_role": "Кредитор"
+    },
+    "document_text": null,
+    "document_base64": "PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMDEgVHJhbnNpdGlvbmFsLy9FTiI+DQo8aHRtbD4NCjxoZWFkPg0KPGJhc2UgaHJlZj0iaHR0cHM6Ly9kb2dvdm9yLXVyaXN0LnJ1LyI+DQo8dGl0bGU+0J7QsdGA0LDQt9C10YYuINCU0L7Qs9C+0LLQvtGAINC+INC30LDQu9C+0LPQtSDQv9GA0LDQstCwINC90LAgICDQsNCy0YLQvtGA0YHQutC+0LUg0LLQvtC30L3QsNCz0YDQsNC20LTQtdC90LjQtSAtINCy0LXRgNGB0LjRjyDQtNC70Y8g0L/QtdGH0LDRgtC4LiAyMDI2LiDQntCx0YDQsNC30YbRiyDQtNC+0LPQvtCy0L7RgNC+0LIsINGC0LjQv9C+0LLRi9C1INC00L7Qs9C+0LLQvtGA0LAsINCw0LrRgtGD0LDQu9GM0L3Ri9C1INC00L7QutGD0LzQtdC90YLRiywg0Y7RgNC40LTQuNGH0LXRgdC60LjQvCDQuCDRhNC40LfQuNGH0LXRgdC60LjQvCDQu9C40YbQsNC8PC90aXRsZT4NCjxtZXRhIGNvbnRlbnQ9IiIgbmFtZT0ia2V5d29yZHMiPg0KPG1ldGEgY29udGVudD0iIiBuYW1lPSJkZXNjcmlwdGlvbiI+DQo8bWV0YSBuYW1lPSJyb2JvdHMiIGNvbnRlbnQ9Im5vaW5kZXgsbm9mb2xsb3ciPg0KPG1ldGEgaHR0cC1lcXVpdj0iQ29udGVudC1UeXBlIiBjb250ZW50PSJ0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgiPg0KPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSIvaW1hZ2VzL3N0eWxlLmNzcyIgdHlwZT0idGV4dC9jc3MiPg0KPC9oZWFkPg0KPGJvZHk+DQo8ZGl2IGNsYXNzPSJkb2N1bWVudFRleHQiPg0KPHByZT4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICDQlNCe0JPQntCS0J7QoCBO0L4uIF9fX18NCiAgICAgICAgICAgICAgICAg0J4g0JfQkNCb0J7Qk9CVINCf0KDQkNCS0JAg0J3QkCDQkNCS0KLQntCg0KHQmtCe0JUg0JLQntCX0J3QkNCT0KDQkNCW0JTQldCd0JjQlQ0KDQogICAg0LMuIF9fX19fX19fX19fX19fX19fICAgICAgICAgICAgICAgICAgICAgICAgICAgIl9fXyJfX19fX19fX18gMjBfXyDQsy4NCg0KICAgICAgICAg0JHQsNC90LogX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18sINC40LzQtdC90YPQtdC80YvQuSDQsiDQtNCw0LvRjNC90LXQudGI0LXQvA0KICAgICAgICAgICAgICAgICAgICAgKNC90LDQuNC80LXQvdC+0LLQsNC90LjQtSDQsdCw0L3QutCwKQ0KDQogICAg0JfQsNC70L7Qs9C+0LTQtdGA0LbQsNGC0LXQu9GMLCDQsiDQu9C40YbQtSBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXywNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAo0LTQvtC70LbQvdC+0YHRgtGMLCDQpC7QmC7Qni4pDQoNCiAgICDQtNC10LnRgdGC0LLRg9GO0YnQtdCz0L4g0L3QsCDQvtGB0L3QvtCy0LDQvdC40LggX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICjQo9GB0YLQsNCy0LAsINC00L7QstC10YDQtdC90L3QvtGB0YLQuDogTm8uLCDQtNCw0YLQsCDQstGL0LTQsNGH0LgpDQoNCiAgICDRgSDQvtC00L3QvtC5INGB0YLQvtGA0L7QvdGLLCDQuCDQs9GA0LDQttC00LDQvdC40L0gX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAo0KQu0Jgu0J4uKQ0KDQogICAg0L/RgNC+0LbQuNCy0LDRjtGJ0LjQuSDQv9C+INCw0LTRgNC10YHRgzogX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLA0KICAgINC40LzQtdC90YPQtdC80YvQuSDQsiAg0LTQsNC70YzQvdC10LnRiNC10LwgINCX0LDQu9C+0LPQvtC00LDRgtC10LvRjCwgINGBICDQtNGA0YPQs9C+0Lkg0YHRgtC+0YDQvtC90YssICDQt9Cw0LrQu9GO0YfQuNC70LgNCiAgICDQvdCw0YHRgtC+0Y/RidC40LkgINC00L7Qs9C+0LLQvtGAICDQviAg0L3QuNC20LXRgdC70LXQtNGD0Y7RidC10Lw6DQoNCiAgICAgICAgIDEuINCX0LDQu9C+0LPQvtC00LXRgNC20LDRgtC10LvRjCDQv9C+INC00L7Qs9C+0LLQvtGA0YMgTm8uIF9fX19fINC+0YIgIl9fIl9fX19fX19fIDIwX18g0LMuDQogICAg0L/RgNC10LTQvtGB0YLQsNCy0LvRj9C10YIg0JfQsNC70L7Qs9C+0LTQsNGC0LXQu9GOINC60YDQtdC00LjRgiDQsiDRgNCw0LfQvNC10YDQtSBfX19fX19fX19fX19fX19fX19fX19fX19fDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAo0L/RgNC+0L/QuNGB0YzRjikNCg0KICAgINGA0YPQsdC70LXQuSDQvdCwINGB0YDQvtC6IF9fX19fX19fX19fX19fX19fX19fX19fINC/0L7QtCDQv9GA0L7RhtC10L3RgtGLICjQutC+0L/QuNGPINC60YDQtdC00LjRgtC90L7Qs9C+DQogICAg0LTQvtCz0L7QstC+0YDQsCAtINCf0YDQuNC70L7QttC10L3QuNC1IE5vLiAxKS4NCiAgICAgICAgIDIuINCSICDQutCw0YfQtdGB0YLQstC1ICDQvtCx0LXRgdC/0LXRh9C10L3QuNGPICDRgdCy0L7QtdCy0YDQtdC80LXQvdC90L7Qs9C+ICAg0LLQvtC30LLRgNCw0YLQsCAgINC60YDQtdC00LjRgtCwDQogICAg0JfQsNC70L7Qs9C+0LTQtdGA0LbQsNGC0LXQu9GMINC/0YDQuNC90LjQvNCw0LXRgiAgINCyICAg0LfQsNC70L7QsyAgINC/0YDQuNC90LDQtNC70LXQttCw0YnQtdC1ICAgINCX0LDQu9C+0LPQvtC00LDRgtC10LvRjg0KICAgINC/0YDQsNCy0L4g0L3QsCDQv9C+0LvRg9GH0LXQvdC40LUgINCw0LLRgtC+0YDRgdC60L7Qs9C+ICDQstC+0LfQvdCw0LPRgNCw0LbQtNC10L3QuNGPICAo0LPQvtC90L7RgNCw0YDQsCkgINCyINGA0LDQt9C80LXRgNC1DQogICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18sDQogICAg0L/RgNC40YfQuNGC0LDRjtGJ0LXQs9C+0YHRjyDQl9Cw0LvQvtCz0L7QtNCw0YLQtdC70Y4g0L/QviDQsNCy0YLQvtGA0YHQutC+0LzRgyDQtNC+0LPQvtCy0L7RgNGDIE5vLiBfX19fX19fX19fICDQvtGCDQogICAgIl9fXyJfX19fX19fX18gMjBfXyDQsy4g0LfQsNC60LvRjtGH0LXQvdC90L7QvNGDINGBIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fXy4NCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgKNC90LDQuNC80LXQvdC+0LLQsNC90LjQtSDQvtGA0LPQsNC90LjQt9Cw0YbQuNC4KQ0KDQogICAgICAgICDQodGA0L7QuiDQuCDQv9C+0YDRj9C00L7QuiDQstGL0L/Qu9Cw0YLRiyAg0LDQstGC0L7RgNGB0LrQvtCz0L4gINCy0L7Qt9C90LDQs9GA0LDQttC00LXQvdC40Y8gINC+0L/RgNC10LTQtdC70Y/QtdGC0YHRjw0KICAgINCw0LLRgtC+0YDRgdC60LjQvCDQtNC+0LPQvtCy0L7RgNC+0LwgKNC60L7Qv9C40Y8g0LDQstGC0L7RgNGB0LrQvtCz0L4g0LTQvtCz0L7QstC+0YDQsCAtINCf0YDQuNC70L7QttC10L3QuNC1IE5vLiAyKS4NCiAgICAgICAgIDMuINCSICDQvtGB0YLQsNC70YzQvdC+0LwsICAg0L3QtSAgINC/0YDQtdC00YPRgdC80L7RgtGA0LXQvdC90L7QvCAgINC90LDRgdGC0L7Rj9GJ0LjQvCAgINC00L7Qs9C+0LLQvtGA0L7QvCwNCiAgICDQvtGC0L3QvtGI0LXQvdC40Y8g0YHRgtC+0YDQvtC9INGA0LXQs9GD0LvQuNGA0YPRjtGC0YHRjyDQl9Cw0LrQvtC90L7QvCDQoNCkICLQniDQt9Cw0LvQvtCz0LUiLg0KICAgICAgICAgNC4g0JTQvtCz0L7QstC+0YAg0YHQvtGB0YLQsNCy0LvQtdC9INCyINC00LLRg9GFINGN0LrQt9C10LzQv9C70Y/RgNCw0YUgLSDQv9C+ICDQvtC00L3QvtC80YMgINC60LDQttC00L7QuSAg0LjQtw0KICAgINGB0YLQvtGA0L7QvS4NCiAgICAgICAgIDUuINCu0YDQuNC00LjRh9C10YHQutC40LUg0LDQtNGA0LXRgdCwINC4INGA0LXQutCy0LjQt9C40YLRiyDRgdGC0L7RgNC+0L06DQoNCiAgICAgICAgINCX0LDQu9C+0LPQvtC00LXRgNC20LDRgtC10LvRjDogX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCiAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCg0KICAgICAgICAg0JfQsNC70L7Qs9C+0LTQsNGC0LXQu9GMOiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg0J/QvtC00L/QuNGB0Lgg0YHRgtC+0YDQvtC9Og0KDQogICAgICAgICDQl9Cw0LvQvtCz0L7QtNC10YDQttCw0YLQtdC70YwgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgINCX0LDQu9C+0LPQvtC00LDRgtC10LvRjA0KDQogICAgICBfX19fX19fX19fX19fX19fX19fXyAgICAgICAgICAgICAgICAgICAgICAgICAgIF9fX19fX19fX19fX19fX19fX19fDQogICAgICAgICAgICjQv9C+0LTQv9C40YHRjCkgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICjQv9C+0LTQv9C40YHRjCkNCg0KICAgICAgICAgICAg0Lwu0L8uDQoNCg0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICDQmtCe0JzQnNCV0J3QotCQ0KDQmNCYOg0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAtLS0tLS0tLS0tLS0NCiAgICAgICAgICDQkiDQtNC+0LPQvtCy0L7RgNC1ICDQviDQt9Cw0LvQvtCz0LUg0L/RgNCw0LIg0LLQvtC30LzQvtC20L3QviDQvtGB0LLQvtCx0L7QttC00LXQvdC40LUg0JfQsNC70L7Qs9C+0LTQsNGC0LXQu9GPINC+0YINCiAgICDQuNGB0L/QvtC70L3QtdC90LjRjyDQvtCx0Y/Qt9Cw0L3QvdC+0YHRgtC10Lkg0L/RgNC10LTRg9GB0LzQvtGC0YDQtdC90L3Ri9GFINC30LDQutC+0L3QvtC8ICjRgdGCLiAgNTYg0JfQsNC60L7QvdCwINCg0KQgItCeDQogICAg0LfQsNC70L7Qs9C1IiksINC70LjQsdC+ICDQvtC/0YDQtdC00LXQu9C10L3QuNC1ICDRjdGC0LjRhSAg0L7QsdGP0LfQsNC90L3QvtGB0YLQtdC5INC/0L4g0LjQvdC+0LzRgywgINC90LXQttC10LvQuCDRjdGC0L4NCiAgICDRg9GB0YLQsNC90L7QstC70LXQvdC+INGD0LrQsNC30LDQvdC90L7QuSAgINGB0YLQsNGC0YzQtdC5ICAg0LfQsNC60L7QvdCwLCAgICDQu9C40LHQviAgICDQstC+0LfQu9C+0LbQtdC90LjQtSAgICDQvdCwDQogICAg0JfQsNC70L7Qs9C+0LTQtdGA0LbQsNGC0LXQu9GPINC00L7Qv9C+0LvQvdC40YLQtdC70YzQvdGL0YUgINC+0LHRj9C30LDQvdC90L7RgdGC0LXQuS4gINCi0L7Rh9C90L4g0LzQvtC20L3QviDQv9C+0YHRgtGD0L/QuNGC0YwsDQogICAg0L7Qv9GA0LXQtNC10LvRj9GPINC/0YDQsNCy0LAg0JfQsNC70L7Qs9C+0LTQtdGA0LbQsNGC0LXQu9GPICjRgdGCLiA1NyDQl9Cw0LrQvtC90LAgItCeINC30LDQu9C+0LPQtSIpLg0KDQogIA0KPC9wcmU+PC9kaXY+DQo8L2JvZHk+DQo8L2h0bWw+",
+    "mime_type": "text/html",
+    "language": "ru",
+    "locale": "ru"
+  },
+  "ingestion_preflight": {
+    "mime_type": "text/html",
+    "extractor": "html:regex",
+    "extraction_source": "html:regex",
+    "extraction_ok": true,
+    "error": null,
+    "extraction_error": null,
+    "sha256": "9526dfd0fbffcccb8cdae20845c70de61b9e2c3efc450beca7f6592dcb09406e"
+  },
+  "metrics": {
+    "risk_count": 1,
+    "high_risk_count": 0,
+    "disputed_clause_count": 1,
+    "asymmetry_signal_count": 0,
+    "contract_type": "loan_security_agreement"
+  },
+  "analysis": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'obrazets-dogovor-o-zaloge-prava-na-avtorskoe-voznagrazhdenie. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Заемщик'. Определен тип договора: Договор займа / залога / гарантии (уверенность 65%, правовая рамка: ГК РФ, главы 23, 42, 43). Ключевые обязательства по договору для роли 'Заемщик': КОММЕНТАРИИ: ------------ В договоре о залоге прав возможно освобождение Залогодателя от исполнения обязанностей предусмотренных законом (ст; 56 Закона РФ \"О залоге\"), либо определение этих обязанностей по иному, нежели это установлено указанной статьей закона, либо возложение на Залогодержателя дополнительных обязанностей. Условия оплаты: Договор о залоге права на авторское вознаграждение - версия для печати; ____ О ЗАЛОГЕ ПРАВА НА АВТОРСКОЕ ВОЗНАГРАЖДЕНИЕ г; В качестве обеспечения своевременного возврата кредита Залогодержатель принимает в залог принадлежащее Залогодателю право на получение авторского вознаграждения (гонорара) в размере ____________________________________________________________________, причитающегося Залогодателю по авторскому договору No. Сроки и дедлайны: предоставляет Залогодателю кредит в размере _________________________ (прописью) рублей на срок _______________________ под проценты (копия кредитного договора - Приложение No; (наименование организации) Срок и порядок выплаты авторского вознаграждения определяется авторским договором (копия авторского договора - Приложение No. Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Заемщик'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Образец. Договор о залоге права на авторское вознаграждение - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР Nо. ____ О ЗАЛОГЕ ПРАВА НА АВТОРСКОЕ ВОЗНАГРАЖДЕНИЕ г. _________________ \"___\"_________ 20__ г. Банк ___________________________________, именуемый в дальнейшем (наименование банка) Залогодержатель, в лице ____________________________________________, (должность, Ф. И. О.",
+        "dispute_reason": "Явные маркеры спорных формулировок не обнаружены.",
+        "possible_consequence": "Скрытые спорные моменты требуют дополнительной юридической проверки.",
+        "confidence": 0.35
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Заемщик",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Заемщик'.",
+      "must_do": [
+        "КОММЕНТАРИИ: ------------ В договоре о залоге прав возможно освобождение Залогодателя от исполнения обязанностей предусмотренных законом (ст.",
+        "56 Закона РФ \"О залоге\"), либо определение этих обязанностей по иному, нежели это установлено указанной статьей закона, либо возложение на Залогодержателя дополнительных обязанностей."
+      ],
+      "should_review": [
+        "Конфиг не выявил явных дискреционных условий."
+      ],
+      "payment_terms": [
+        "Договор о залоге права на авторское вознаграждение - версия для печати.",
+        "____ О ЗАЛОГЕ ПРАВА НА АВТОРСКОЕ ВОЗНАГРАЖДЕНИЕ г.",
+        "В качестве обеспечения своевременного возврата кредита Залогодержатель принимает в залог принадлежащее Залогодателю право на получение авторского вознаграждения (гонорара) в размере ____________________________________________________________________, причитающегося Залогодателю по авторскому договору No.",
+        "(наименование организации) Срок и порядок выплаты авторского вознаграждения определяется авторским договором (копия авторского договора - Приложение No."
+      ],
+      "deadlines": [
+        "предоставляет Залогодателю кредит в размере _________________________ (прописью) рублей на срок _______________________ под проценты (копия кредитного договора - Приложение No.",
+        "(наименование организации) Срок и порядок выплаты авторского вознаграждения определяется авторским договором (копия авторского договора - Приложение No."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "9526dfd0fbffcccb8cdae20845c70de61b9e2c3efc450beca7f6592dcb09406e"
+    },
+    "contract_type": {
+      "type_id": "loan_security_agreement",
+      "confidence": 0.65,
+      "ru_name": "Договор займа / залога / гарантии",
+      "legal_framework": "ГК РФ, главы 23, 42, 43"
+    },
+    "asymmetry_signals": []
+  },
+  "result": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'obrazets-dogovor-o-zaloge-prava-na-avtorskoe-voznagrazhdenie. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Заемщик'. Определен тип договора: Договор займа / залога / гарантии (уверенность 65%, правовая рамка: ГК РФ, главы 23, 42, 43). Ключевые обязательства по договору для роли 'Заемщик': КОММЕНТАРИИ: ------------ В договоре о залоге прав возможно освобождение Залогодателя от исполнения обязанностей предусмотренных законом (ст; 56 Закона РФ \"О залоге\"), либо определение этих обязанностей по иному, нежели это установлено указанной статьей закона, либо возложение на Залогодержателя дополнительных обязанностей. Условия оплаты: Договор о залоге права на авторское вознаграждение - версия для печати; ____ О ЗАЛОГЕ ПРАВА НА АВТОРСКОЕ ВОЗНАГРАЖДЕНИЕ г; В качестве обеспечения своевременного возврата кредита Залогодержатель принимает в залог принадлежащее Залогодателю право на получение авторского вознаграждения (гонорара) в размере ____________________________________________________________________, причитающегося Залогодателю по авторскому договору No. Сроки и дедлайны: предоставляет Залогодателю кредит в размере _________________________ (прописью) рублей на срок _______________________ под проценты (копия кредитного договора - Приложение No; (наименование организации) Срок и порядок выплаты авторского вознаграждения определяется авторским договором (копия авторского договора - Приложение No. Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Заемщик'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Образец. Договор о залоге права на авторское вознаграждение - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР Nо. ____ О ЗАЛОГЕ ПРАВА НА АВТОРСКОЕ ВОЗНАГРАЖДЕНИЕ г. _________________ \"___\"_________ 20__ г. Банк ___________________________________, именуемый в дальнейшем (наименование банка) Залогодержатель, в лице ____________________________________________, (должность, Ф. И. О.",
+        "dispute_reason": "Явные маркеры спорных формулировок не обнаружены.",
+        "possible_consequence": "Скрытые спорные моменты требуют дополнительной юридической проверки.",
+        "confidence": 0.35
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Заемщик",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Заемщик'.",
+      "must_do": [
+        "КОММЕНТАРИИ: ------------ В договоре о залоге прав возможно освобождение Залогодателя от исполнения обязанностей предусмотренных законом (ст.",
+        "56 Закона РФ \"О залоге\"), либо определение этих обязанностей по иному, нежели это установлено указанной статьей закона, либо возложение на Залогодержателя дополнительных обязанностей."
+      ],
+      "should_review": [
+        "Конфиг не выявил явных дискреционных условий."
+      ],
+      "payment_terms": [
+        "Договор о залоге права на авторское вознаграждение - версия для печати.",
+        "____ О ЗАЛОГЕ ПРАВА НА АВТОРСКОЕ ВОЗНАГРАЖДЕНИЕ г.",
+        "В качестве обеспечения своевременного возврата кредита Залогодержатель принимает в залог принадлежащее Залогодателю право на получение авторского вознаграждения (гонорара) в размере ____________________________________________________________________, причитающегося Залогодателю по авторскому договору No.",
+        "(наименование организации) Срок и порядок выплаты авторского вознаграждения определяется авторским договором (копия авторского договора - Приложение No."
+      ],
+      "deadlines": [
+        "предоставляет Залогодателю кредит в размере _________________________ (прописью) рублей на срок _______________________ под проценты (копия кредитного договора - Приложение No.",
+        "(наименование организации) Срок и порядок выплаты авторского вознаграждения определяется авторским договором (копия авторского договора - Приложение No."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "9526dfd0fbffcccb8cdae20845c70de61b9e2c3efc450beca7f6592dcb09406e"
+    },
+    "contract_type": {
+      "type_id": "loan_security_agreement",
+      "confidence": 0.65,
+      "ru_name": "Договор займа / залога / гарантии",
+      "legal_framework": "ГК РФ, главы 23, 42, 43"
+    },
+    "asymmetry_signals": []
+  },
+  "finished_at": "2026-04-28T16:12:36.960596+00:00",
+  "duration_ms": 72.27
+}

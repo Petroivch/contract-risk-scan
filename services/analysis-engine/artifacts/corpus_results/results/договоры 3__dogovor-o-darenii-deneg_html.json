@@ -1,0 +1,177 @@
+{
+  "case_id": "договоры 3__dogovor-o-darenii-deneg_html",
+  "relative_path": "договоры 3/dogovor-o-darenii-deneg.html",
+  "document_path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\договоры 3\\dogovor-o-darenii-deneg.html",
+  "document_name": "dogovor-o-darenii-deneg.html",
+  "role": "Исполнитель",
+  "counterparty_role": "Заказчик",
+  "language": "ru",
+  "mime_type": "text/html",
+  "tags": [
+    "ad_hoc"
+  ],
+  "source_group": "договоры 3",
+  "expected": {},
+  "started_at": "2026-04-28T16:16:04.738089+00:00",
+  "status": "completed",
+  "request": {
+    "document_name": "dogovor-o-darenii-deneg.html",
+    "role_context": {
+      "role": "Исполнитель",
+      "counterparty_role": "Заказчик"
+    },
+    "document_text": null,
+    "document_base64": "PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMDEgVHJhbnNpdGlvbmFsLy9FTiI+DQo8aHRtbD4NCjxoZWFkPg0KPGJhc2UgaHJlZj0iaHR0cHM6Ly9kb2dvdm9yLXVyaXN0LnJ1LyI+DQo8dGl0bGU+0JTQvtCz0L7QstC+0YAg0L4g0LTQsNGA0LXQvdC40Lgg0LTQtdC90LXQsyAgICAtINCy0LXRgNGB0LjRjyDQtNC70Y8g0L/QtdGH0LDRgtC4LiAyMDI2LiDQntCx0YDQsNC30YbRiyDQtNC+0LPQvtCy0L7RgNC+0LIsINGC0LjQv9C+0LLRi9C1INC00L7Qs9C+0LLQvtGA0LAsINCw0LrRgtGD0LDQu9GM0L3Ri9C1INC00L7QutGD0LzQtdC90YLRiywg0Y7RgNC40LTQuNGH0LXRgdC60LjQvCDQuCDRhNC40LfQuNGH0LXRgdC60LjQvCDQu9C40YbQsNC8PC90aXRsZT4NCjxtZXRhIGNvbnRlbnQ9IiIgbmFtZT0ia2V5d29yZHMiPg0KPG1ldGEgY29udGVudD0iIiBuYW1lPSJkZXNjcmlwdGlvbiI+DQo8bWV0YSBuYW1lPSJyb2JvdHMiIGNvbnRlbnQ9Im5vaW5kZXgsbm9mb2xsb3ciPg0KPG1ldGEgaHR0cC1lcXVpdj0iQ29udGVudC1UeXBlIiBjb250ZW50PSJ0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgiPg0KPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSIvaW1hZ2VzL3N0eWxlLmNzcyIgdHlwZT0idGV4dC9jc3MiPg0KPC9oZWFkPg0KPGJvZHk+DQo8ZGl2IGNsYXNzPSJkb2N1bWVudFRleHQiPg0KPHByZT4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICDQniDQlNCQ0KDQldCd0JjQmCDQlNCV0J3QldCTDQoNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgINCU0J7Qk9Ce0JLQntCgDQoNCg0KICAgICAgICDQk9C+0YDQvtC0INCW0YPQutC+0LLQutCwINCR0YDRj9C90YHQutC+0Lkg0L7QsdC70LDRgdGC0LgsICDQtNCy0LDQtNGG0LDRgtGMINGC0YDQtdGC0YzQtdCz0L4g0LjRjtC70Y8g0YLRi9GB0Y/Rh9CwDQogICAg0LTQtdCy0Y/RgtGM0YHQvtGCINC00LXQstGP0L3QvtGB0YLQviDRgtGA0LXRgtGM0LXQs9C+INCz0L7QtNCwLg0KICAgICAgICDQnNGLLCDQkdC+0YDQvtCy0LjQutC+0LLQsCAg0JXQu9C10L3QsCAg0JjQstCw0L3QvtCy0L3QsCwgICDQv9GA0L7QttC40LLQsNGO0YnQsNGPICAg0LIgICDQsy7QltGD0LrQvtCy0LrQsA0KICAgINCR0YDRj9C90YHQutC+0Lkg0L7QsdC70LDRgdGC0LgsINGD0Lsu0JPQsNCz0LDRgNC40L3QsCwg0LQuIDE4LCDQuCDQkdC+0YDQvtCy0LjQutC+0LLQsCDQntC70YzQs9CwINCf0LXRgtGA0L7QstC90LAsDQogICAg0L/RgNC+0LbQuNCy0LDRjtGJ0LDRjyDQsiAg0LMu0JHRgNGP0L3RgdC60LUsICAg0YPQuy7QpNC+0LrQuNC90LAsICAg0LQuODcsICAg0LrQsi42LCAgINC30LDQutC70Y7Rh9C40LvQuA0KICAgINC90LDRgdGC0L7Rj9GJ0LjQuSDQtNC+0LPQvtCy0L7RgCDQviDQvdC40LbQtdGB0LvQtdC00YPRjtGJ0LXQvDoNCg0KICAgICAgICAxLiDQrywgINCR0L7RgNC+0LLQuNC60L7QstCwICDQldC70LXQvdCwINCY0LLQsNC90L7QstC90LAsICDQsiDRgdCy0Y/Qt9C4INGBINCy0YHRgtGD0L/Qu9C10L3QuNC10Lwg0LzQvtC10LkNCiAgICDQtNC+0YfQtdGA0Lgg0JHQvtGA0L7QstC40LrQvtCy0L7QuSDQntC70YzQs9C4INCf0LXRgtGA0L7QstC90Ysg0LIg0LHRgNCw0Log0LTQsNGA0Y4g0LXQuSDQtNCy0LUg0YLRi9GB0Y/Rh9C4ICgyMDAwKQ0KICAgINGA0YPQsdC70LXQuSwg0LrQvtGC0L7RgNGL0LUg0LLRgNGD0YfQtdC90Ysg0L/RgNC4INC/0L7QtNC/0LjRgdCw0L3QuNC4INC00L7Qs9C+0LLQvtGA0LAuDQoNCiAgICAgICAgMi4g0KPQutCw0LfQsNC90L3Ri9C5ICAg0LTQsNGALCAgINGPLCAg0JHQvtGA0L7QstC40LrQvtCy0LAgINCeLtCfLiwgINGBICDQsdC70LDQs9C+0LTQsNGA0L3QvtGB0YLRjNGODQogICAg0L/RgNC40L3QuNC80LDRji4NCg0KICAgICAgICAzLiDQoNCw0YHRhdC+0LTRiyDQv9C+ICDRg9C00L7RgdGC0L7QstC10YDQtdC90LjRjiAg0L3QsNGB0YLQvtGP0YnQtdCz0L4gINC00L7Qs9C+0LLQvtGA0LAgINGD0L/Qu9Cw0YfQuNCy0LDQtdGCDQogICAg0L/QvtC70L3QvtGB0YLRjNGOINCR0L7RgNC+0LLQuNC60L7QstCwINCVLtCYLg0KDQogICAgICAgIDQuINCU0L7Qs9C+0LLQvtGAICDRgdC+0YHRgtCw0LLQu9C10L0gINCyICDQtNCy0YPRhSAg0Y3QutC30LXQvNC/0LvRj9GA0LDRhSwgINC40LcgINC60L7RgtC+0YDRi9GFINC+0LTQuNC9DQogICAg0Y3QutC30LXQvNC/0LvRj9GAINC+0YHRgtCw0LXRgtGB0Y8gINCyICDQtNC10LvQsNGFICDQltGD0LrQvtCy0YHQutC+0LkgINC90L7RgtCw0YDQuNCw0LvRjNC90L7QuSAg0LrQvtC90YLQvtGA0YssICDQsA0KICAgINC00YDRg9Cz0L7QuSDQstGL0LTQsNC10YLRgdGPINCR0L7RgNC+0LLQuNC60L7QstC+0Lkg0J4u0J8uDQoNCg0KICAgICAgICDQn9C+0LTQv9C40YHQuCDRgdGC0L7RgNC+0L0NCl8NCiAgDQo8L3ByZT48L2Rpdj4NCjwvYm9keT4NCjwvaHRtbD4=",
+    "mime_type": "text/html",
+    "language": "ru",
+    "locale": "ru"
+  },
+  "ingestion_preflight": {
+    "mime_type": "text/html",
+    "extractor": "html:regex",
+    "extraction_source": "html:regex",
+    "extraction_ok": true,
+    "error": null,
+    "extraction_error": null,
+    "sha256": "c1b61eeb44daec841af98f819e3c88ebf4bb7d85097a39286a0e5ff9527d224a"
+  },
+  "metrics": {
+    "risk_count": 1,
+    "high_risk_count": 0,
+    "disputed_clause_count": 1,
+    "asymmetry_signal_count": 0,
+    "contract_type": "non_contract_legal_form"
+  },
+  "analysis": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'dogovor-o-darenii-deneg. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Исполнитель'. Определен тип договора: Иной юридический документ (уверенность 48%, правовая рамка: Вне типовой contract taxonomy). Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Исполнитель'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Договор о дарении денег - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам О ДАРЕНИИ ДЕНЕГ ДОГОВОР Город Жуковка Брянской области, двадцать третьего июля тысяча девятьсот девяносто третьего года. Мы, Боровикова Елена Ивановна, проживающая в г. Жуковка Брянской области, ул. Гагарина, д. 18, и Боровикова Ольга Петровна, проживающая в г. Брянске, ул. Фокина, д. 87, кв. 6, заключили настоящий договор о нижеследующем: 1.",
+        "dispute_reason": "Явные маркеры спорных формулировок не обнаружены.",
+        "possible_consequence": "Скрытые спорные моменты требуют дополнительной юридической проверки.",
+        "confidence": 0.35
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Исполнитель",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Исполнитель'.",
+      "must_do": [
+        "Конфиг не выявил явных обязательств."
+      ],
+      "should_review": [
+        "Конфиг не выявил явных дискреционных условий."
+      ],
+      "payment_terms": [
+        "Конфиг не выявил явных условий оплаты."
+      ],
+      "deadlines": [
+        "Конфиг не выявил явных сроков."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "c1b61eeb44daec841af98f819e3c88ebf4bb7d85097a39286a0e5ff9527d224a"
+    },
+    "contract_type": {
+      "type_id": "non_contract_legal_form",
+      "confidence": 0.48,
+      "ru_name": "Иной юридический документ",
+      "legal_framework": "Вне типовой contract taxonomy"
+    },
+    "asymmetry_signals": []
+  },
+  "result": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'dogovor-o-darenii-deneg. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Исполнитель'. Определен тип договора: Иной юридический документ (уверенность 48%, правовая рамка: Вне типовой contract taxonomy). Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Исполнитель'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Договор о дарении денег - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам О ДАРЕНИИ ДЕНЕГ ДОГОВОР Город Жуковка Брянской области, двадцать третьего июля тысяча девятьсот девяносто третьего года. Мы, Боровикова Елена Ивановна, проживающая в г. Жуковка Брянской области, ул. Гагарина, д. 18, и Боровикова Ольга Петровна, проживающая в г. Брянске, ул. Фокина, д. 87, кв. 6, заключили настоящий договор о нижеследующем: 1.",
+        "dispute_reason": "Явные маркеры спорных формулировок не обнаружены.",
+        "possible_consequence": "Скрытые спорные моменты требуют дополнительной юридической проверки.",
+        "confidence": 0.35
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Исполнитель",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Исполнитель'.",
+      "must_do": [
+        "Конфиг не выявил явных обязательств."
+      ],
+      "should_review": [
+        "Конфиг не выявил явных дискреционных условий."
+      ],
+      "payment_terms": [
+        "Конфиг не выявил явных условий оплаты."
+      ],
+      "deadlines": [
+        "Конфиг не выявил явных сроков."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "c1b61eeb44daec841af98f819e3c88ebf4bb7d85097a39286a0e5ff9527d224a"
+    },
+    "contract_type": {
+      "type_id": "non_contract_legal_form",
+      "confidence": 0.48,
+      "ru_name": "Иной юридический документ",
+      "legal_framework": "Вне типовой contract taxonomy"
+    },
+    "asymmetry_signals": []
+  },
+  "finished_at": "2026-04-28T16:16:04.763102+00:00",
+  "duration_ms": 24.38
+}

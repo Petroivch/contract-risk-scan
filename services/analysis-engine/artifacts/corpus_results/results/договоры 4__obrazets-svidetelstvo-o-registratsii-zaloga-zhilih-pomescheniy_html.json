@@ -1,0 +1,181 @@
+{
+  "case_id": "договоры 4__obrazets-svidetelstvo-o-registratsii-zaloga-zhilih-pomescheniy_html",
+  "relative_path": "договоры 4/obrazets-svidetelstvo-o-registratsii-zaloga-zhilih-pomescheniy.html",
+  "document_path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\договоры 4\\obrazets-svidetelstvo-o-registratsii-zaloga-zhilih-pomescheniy.html",
+  "document_name": "obrazets-svidetelstvo-o-registratsii-zaloga-zhilih-pomescheniy.html",
+  "role": "Поставщик",
+  "counterparty_role": "Покупатель",
+  "language": "ru",
+  "mime_type": "text/html",
+  "tags": [
+    "ad_hoc"
+  ],
+  "source_group": "договоры 4",
+  "expected": {},
+  "started_at": "2026-04-28T16:19:01.030281+00:00",
+  "status": "completed",
+  "request": {
+    "document_name": "obrazets-svidetelstvo-o-registratsii-zaloga-zhilih-pomescheniy.html",
+    "role_context": {
+      "role": "Поставщик",
+      "counterparty_role": "Покупатель"
+    },
+    "document_text": null,
+    "document_base64": "PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMDEgVHJhbnNpdGlvbmFsLy9FTiI+DQo8aHRtbD4NCjxoZWFkPg0KPGJhc2UgaHJlZj0iaHR0cHM6Ly9kb2dvdm9yLXVyaXN0LnJ1LyI+DQo8dGl0bGU+0J7QsdGA0LDQt9C10YYuINCh0LLQuNC00LXRgtC10LvRjNGB0YLQstC+INC+INGA0LXQs9C40YHRgtGA0LDRhtC40Lgg0LfQsNC70L7Qs9CwINC20LjQu9GL0YUgICDQv9C+0LzQtdGJ0LXQvdC40LkgLSDQstC10YDRgdC40Y8g0LTQu9GPINC/0LXRh9Cw0YLQuC4gMjAyNi4g0J7QsdGA0LDQt9GG0Ysg0LTQvtCz0L7QstC+0YDQvtCyLCDRgtC40L/QvtCy0YvQtSDQtNC+0LPQvtCy0L7RgNCwLCDQsNC60YLRg9Cw0LvRjNC90YvQtSDQtNC+0LrRg9C80LXQvdGC0YssINGO0YDQuNC00LjRh9C10YHQutC40Lwg0Lgg0YTQuNC30LjRh9C10YHQutC40Lwg0LvQuNGG0LDQvDwvdGl0bGU+DQo8bWV0YSBjb250ZW50PSIiIG5hbWU9ImtleXdvcmRzIj4NCjxtZXRhIGNvbnRlbnQ9IiIgbmFtZT0iZGVzY3JpcHRpb24iPg0KPG1ldGEgbmFtZT0icm9ib3RzIiBjb250ZW50PSJub2luZGV4LG5vZm9sbG93Ij4NCjxtZXRhIGh0dHAtZXF1aXY9IkNvbnRlbnQtVHlwZSIgY29udGVudD0idGV4dC9odG1sOyBjaGFyc2V0PXV0Zi04Ij4NCjxsaW5rIHJlbD0ic3R5bGVzaGVldCIgaHJlZj0iL2ltYWdlcy9zdHlsZS5jc3MiIHR5cGU9InRleHQvY3NzIj4NCjwvaGVhZD4NCjxib2R5Pg0KPGRpdiBjbGFzcz0iZG9jdW1lbnRUZXh0Ij4NCjxwcmU+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICANCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICDQodCS0JjQlNCV0KLQldCb0KzQodCi0JLQng0KICAgICAgICAgICAgICAgICAgINCeINCg0JXQk9CY0KHQotCg0JDQptCY0Jgg0JfQkNCb0J7Qk9CQINCW0JjQm9Cr0KUg0J/QntCc0JXQqdCV0J3QmNCZDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIA0KICAgINCzLiDQnNC+0YHQutCy0LAgICAgICAgICAgICAgICAgTl9fX19fX19fX19fX18gICJfXyJfX19fX19fX19fX19fXyAyMF9f0LMuDQogICAgICAgINCd0LDRgdGC0L7Rj9GJ0LjQvCAg0KHQstC40LTQtdGC0LXQu9GM0YHRgtCy0L7QvCAg0YPQtNC+0YHRgtC+0LLQtdGA0Y/QtdGC0YHRjywgINGH0YLQviAg0LfQsNC70L7QsyAg0LbQuNC70L7Qs9C+DQogICAg0L/QvtC80LXRidC10L3QuNGPINC/0L4g0LDQtNGA0LXRgdGDOl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAo0YPQu9C40YbQsCwg0L/RgNC+0YHQv9C10LrRgiwg0LHRg9C70YzQstCw0YAsINC/0LXRgNC10YPQu9C+0LopDQogICAg0LTQvtC8IE5fX19fX19fX19fLCDQutC+0YDQvy4gTl9fX19fX19fX19fX18s0LrQsi5fX19fX19fINC/0L4g0LTQvtCz0L7QstC+0YDRgyDQvNC10LbQtNGDDQogICAg0LfQsNC60L7QvdC+0LTQsNGC0LXQu9C10LxfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KICAgINC4INC30LDQu9C+0LPQvtC00LXRgNC20LDRgtC10LvQtdC8X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgKNC+0YDQs9Cw0L3QuNC30LDRhtC40Y8sINC10LPQviDRjtGA0LjQtNC40YfQtdGB0LrQuNC5INCw0LTRgNC10YEpDQogICAg0YPQtNC+0YHRgtC+0LLQtdGA0LXQvdC90L7QvNGDINCz0L7RgdGD0LTQsNGA0YHRgtCy0LXQvdC90L7QuSDQvdC+0YLQsNGA0LjQsNC70YzQvdC+0Lkg0LrQvtC90YLQvtGA0L7QuSDQsy4g0JzQvtGB0LrQstGLIE5fDQogICAg0LfQsNGA0LXQs9C40YHRgtGA0LjRgNC+0LLQsNC9INCyINCU0LXQv9Cw0YDRgtCw0LzQtdC90YLQtSDQvNGD0L3QuNGG0LjQv9Cw0LvRjNC90L7Qs9C+INC20LjQu9GM0Y8NCiAgICAiX18iX19fX19fX19fX19fX19fMjBfX9CzLiDRgNC10LXRgdGC0YAgTl9fX19fX19fX19fX19fX18NCiAgICDQl9Cw0LvQvtCz0L7QstCw0Y8g0YHRgtC+0LjQvNC+0YHRgtGMICjRgdGD0LzQvNCwKSDQttC40LvQvtCz0L4g0L/QvtC80LXRidC10L3QuNGPINC90LANCiAgICAiX18iX19fX19fX19fX19fX19fMjBfX9CzLl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX1/RgNGD0LEuDQogICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQogICAgICAgICAgICAo0LTQvtC70LbQvdC+0YHRgtGMLCDRhC7QuC7Qvi4g0LvQuNGG0LAsINCy0YvQtNCw0LLRiNC10LPQviDRgdCy0LjQtNC10YLQtdC70YzRgdGC0LLQvikNCiAgICAgICAg0Jwu0J8uDQoNCiAgICAgICAg0KHQu9C10LTRg9C10YIgINGD0YfQtdGB0YLRjCwgICDRh9GC0L4gINC4ICAg0LLRi9GI0LXRg9C/0L7QvNGP0L3Rg9GC0YvQtSAgINCw0LrRgtGLICDQv9GA0LjQvNC10L3Rj9GO0YLRgdGPDQogICAg0L/QvtGB0YLQvtC70YzQutGDLCDQv9C+0YHQutC+0LvRjNC60YMgINC+0L3QuCDQvdC1ICDQv9GA0L7RgtC40LLQvtGA0LXRh9Cw0YIg0L3QvtGA0LzQsNC8ICDQk9CaINC4ICDQl9Cw0LrQvtC90LAg0L7QsQ0KICAgINC40L/QvtGC0LXQutC1LiDQndC+0YDQvNGLICDRgdCw0LzQvtCz0L4g0JPQmiAg0L/RgNC40LzQtdC90Y/RjtGC0YHRjyAg0Log0LjQv9C+0YLQtdC60LUgINCyICDRgtC+0Lkg0LzQtdGA0LUsICDQsg0KICAgINC60L7RgtC+0YDQvtC5INCX0LDQutC+0L3QvtC8INC+0LEg0LjQv9C+0YLQtdC60LUg0L3QtSDQsdGD0LTQtdGCINGD0YHRgtCw0L3QvtCy0LvQtdC90L4g0LjQvdC+0LUuDQogICAgICAgIDQuINCa0L7QvNC80LXQvdGC0LjRgNGD0LXQvNCw0Y8g0YHRgtCw0YLRjNGPINC40YHRhdC+0LTQuNGCINC40Lcg0YLQvtCz0L4sICDRh9GC0L4g0LfQsNC70L7QsyDQstC+0LfQvdC40LrQsNC10YINCiAgICDQsiDRgdC40LvRgyAg0LTQvtCz0L7QstC+0YDQsC4g0JjQvdCw0YfQtSAg0LPQvtCy0L7RgNGPLCDRgdGC0L7RgNC+0L3RiyAg0YHQsNC80LggINGB0LLQvtCx0L7QtNC90Ysg0LIgINCy0YvQsdC+0YDQtQ0KICAgINC00LDQvdC90L7Qs9C+INGB0L/QvtGB0L7QsdCwICDQuNGB0L/QvtC70L3QtdC90LjRjyDQvtCx0Y/Qt9Cw0YLQtdC70YzRgdGC0LLQsC4gINCe0LTQvdCw0LrQviDQsiAg0YDRj9C00LUg0YHQu9GD0YfQsNC10LINCiAgICDQt9Cw0LvQvtCzINCy0L7Qt9C90LjQutCw0LXRgiAg0Lgg0L3QsCAg0L7RgdC90L7QstCw0L3QuNC4INC30LDQutC+0L3QsC4gINCd0L4gINC/0YDQuCDRjdGC0L7QvCAg0L3QtdC+0LHRhdC+0LTQuNC80YsNCiAgICDRgdC70LXQtNGD0Y7RidC40LUg0YPRgdC70L7QstC40Y86DQogICAgICAgIC0g0LIg0LfQsNC60L7QvdC1INC00L7Qu9C20L3QviAg0LHRi9GC0Ywg0YPQutCw0LfQsNC90L4g0LrQsNC60L7QtSAg0LjQvNGD0YnQtdGB0YLQstC+INC80L7QttC10YIg0YHQu9GD0LbQuNGC0YwNCiAgICDQv9GA0LXQtNC80LXRgtC+0Lwg0LfQsNC70L7Qs9CwOw0KICAgICAgICAtICDQsiAg0LfQsNC60L7QvdC1ICDQtNC+0LvQttC10L0gINCx0YvRgtGMICDRgtCw0LrQttC1ICDRgNC10YjQtdC9ICDQstC+0L/RgNC+0YEgINC+ICDRgtC+0LwsICDQtNC70Y8NCiAgICDQvtCx0LXRgdC/0LXRh9C10L3QuNGPINC40YHQv9C+0LvQvdC10L3QuNGPINC60LDQutC+0LPQviDQutC+0L3QutGA0LXRgtC90L7Qs9C+INC+0LHRj9C30LDRgtC10LvRjNGB0YLQstCwINGD0L/QvtC80Y/QvdGD0YLQvtC1DQogICAg0LjQvNGD0YnQtdGB0YLQstC+INC00L7Qv9GD0YHQutCw0LXRgtGB0Y8g0LIg0LrQsNGH0LXRgdGC0LLQtSDQv9GA0LXQtNC80LXRgtCwINC30LDQu9C+0LPQsC4NCiAgICAgICAg0J/RgNC40LzQtdGA0L7QvCDQvNC+0LbQtdGCICDRgdC70YPQttC40YLRjCAg0YHRgtCw0YLRjNGPICAxMjIgINCi0LDQvNC+0LbQtdC90L3QvtCz0L4g0JrQvtC00LXQutGB0LAgINCg0KQsDQogICAg0LrQvtGC0L7RgNCw0Y8g0YDQtdCz0YPQu9C40YDRg9C10YIgINCy0L7Qt9C90LjQutC90L7QstC10L3QuNC1ICDQt9Cw0LvQvtCz0LAgINC00LvRjyDQvtCx0LXRgdC/0LXRh9C10L3QuNGPICDRg9C/0LvQsNGC0YsNCiAgICDRgtCw0LzQvtC20LXQvdC90YvRhSDQv9C70LDRgtC10LbQtdC5LCDQndCU0KEsINCw0LrRhtC40LfQvtC8LiAg0JIg0YHRgi4gMTIyICDQotCw0LzQvtC20LXQvdC90L7Qs9C+INCa0L7QtNC10LrRgdCwDQogICAg0YPQutCw0LfQsNC90L4g0YLQsNC60LbQtSwgINC60LDQutC+0LUgINC40LzRg9GJ0LXRgdGC0LLQviAg0LzQvtC20LXRgiDRgdC70YPQttC40YLRjCAg0L/RgNC10LTQvNC10YLQvtC8ICDQt9Cw0LvQvtCz0LANCiAgICAo0YLRgNCw0L3RgdC/0L7RgNGC0L3Ri9C1ICDRgdGA0LXQtNGB0YLQstCwLCAg0YLQvtCy0LDRgNGLKS4gINCSICDQv9GA0LjQvdGP0YLQvtC8ICDQsiAg0YDQsNC30LLQuNGC0LjQtSAg0L3QvtGA0LwNCiAgICDQotCw0LzQvtC20LXQvdC90L7Qs9C+INCa0L7QtNC10LrRgdCwINCf0L7Qu9C+0LbQtdC90LjQuCDQvtCxICDQuNGB0L/QvtC70YzQt9C+0LLQsNC90LjQuCDQt9Cw0LvQvtCz0LAg0YLQsNC80L7QttC10L3QvdGL0LzQuA0KICAgINC+0YDQs9Cw0L3QsNC80Lgg0KDQpCAgKNGD0YLQsi4gINC/0YDQuNC6LiAg0JPQotCaIE4gIDcxICDQvtGCICAyMi4wMi45NCkg0YPQutCw0LfQsNC90YsgINGC0LDQutC20LUNCiAgICDQv9GA0LXQtNC80LXRgtGLLCDQutC+0YLQvtGA0YvQtSAg0L3QtSDQvNC+0LPRg9GCICDRgdC70YPQttC40YLRjCDQv9GA0LXQtNC80LXRgtC+0LwgINC30LDQu9C+0LPQsCAg0YEg0YPRh9Cw0YHRgtC40LXQvA0KICAgINGC0LDQvNC+0LbQtdC90L3Ri9GFICAg0L7RgNCz0LDQvdC+0LIgICAgKNGN0LvQtdC60YLRgNC+0Y3QvdC10YDQs9C40Y8sICAg0L/RgNC10LTQv9GA0LjRj9GC0LjRjywgICAg0LfQtNCw0L3QuNGPLA0KICAgINGB0L7QvtGA0YPQttC10L3QuNGPLCDQt9C10LzQtdC70YzQvdGL0LUg0YPRh9Cw0YHRgtC60LgsINC40LzRg9GJ0LXRgdGC0LLQtdC90L3Ri9C1INC/0YDQsNCy0LAg0Lgg0YIuINC0LiAo0L8uIDEuMg0KICAgINCf0YDQuNC70L7QttC10L3QuNGPKS4NCiAgICAgICAgIA0KICANCjwvcHJlPjwvZGl2Pg0KPC9ib2R5Pg0KPC9odG1sPg==",
+    "mime_type": "text/html",
+    "language": "ru",
+    "locale": "ru"
+  },
+  "ingestion_preflight": {
+    "mime_type": "text/html",
+    "extractor": "html:regex",
+    "extraction_source": "html:regex",
+    "extraction_ok": true,
+    "error": null,
+    "extraction_error": null,
+    "sha256": "d3db290b1f1c9f6335fc4eb339c260d17fbca9c26777619f82f0dca41d8f3775"
+  },
+  "metrics": {
+    "risk_count": 1,
+    "high_risk_count": 0,
+    "disputed_clause_count": 1,
+    "asymmetry_signal_count": 0,
+    "contract_type": "labor_contract"
+  },
+  "analysis": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'obrazets-svidetelstvo-o-registratsii-zaloga-zhilih-pomescheniy. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Поставщик'. Определен тип договора: Трудовой договор (уверенность 56%, правовая рамка: ТК РФ). Ключевые обязательства по договору для роли 'Поставщик': - в законе должен быть также решен вопрос о том, для обеспечения исполнения какого конкретного обязательства упомянутое имущество допускается в качестве предмета залога. Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Поставщик'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Образец. Свидетельство о регистрации залога жилых помещений - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам СВИДЕТЕЛЬСТВО О РЕГИСТРАЦИИ ЗАЛОГА ЖИЛЫХ ПОМЕЩЕНИЙ г. Москва N_____________ \"__\"______________ 20__г. Настоящим Свидетельством удостоверяется, что залог жилого помещения по адресу: ______________________________________________ (улица, проспект, бульвар, переулок) дом N__________, корп. N_____________,кв.",
+        "dispute_reason": "Маркер указывает на возможный конфликт между несколькими обязанностями или сроками.",
+        "possible_consequence": "При исполнении может оказаться, что условия невозможно соблюсти одновременно.",
+        "confidence": 0.66
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Поставщик",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Поставщик'.",
+      "must_do": [
+        "- в законе должен быть также решен вопрос о том, для обеспечения исполнения какого конкретного обязательства упомянутое имущество допускается в качестве предмета залога."
+      ],
+      "should_review": [
+        "Но при этом необходимы следующие условия: - в законе должно быть указано какое имущество может служить предметом залога.",
+        "Примером может служить статья 122 Таможенного Кодекса РФ, которая регулирует возникновение залога для обеспечения уплаты таможенных платежей, НДС, акцизом.",
+        "122 Таможенного Кодекса указано также, какое имущество может служить предметом залога (транспортные средства, товары)."
+      ],
+      "payment_terms": [
+        "Конфиг не выявил явных условий оплаты."
+      ],
+      "deadlines": [
+        "Конфиг не выявил явных сроков."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "d3db290b1f1c9f6335fc4eb339c260d17fbca9c26777619f82f0dca41d8f3775"
+    },
+    "contract_type": {
+      "type_id": "labor_contract",
+      "confidence": 0.57,
+      "ru_name": "Трудовой договор",
+      "legal_framework": "ТК РФ"
+    },
+    "asymmetry_signals": []
+  },
+  "result": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'obrazets-svidetelstvo-o-registratsii-zaloga-zhilih-pomescheniy. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Поставщик'. Определен тип договора: Трудовой договор (уверенность 56%, правовая рамка: ТК РФ). Ключевые обязательства по договору для роли 'Поставщик': - в законе должен быть также решен вопрос о том, для обеспечения исполнения какого конкретного обязательства упомянутое имущество допускается в качестве предмета залога. Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Поставщик'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Образец. Свидетельство о регистрации залога жилых помещений - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам СВИДЕТЕЛЬСТВО О РЕГИСТРАЦИИ ЗАЛОГА ЖИЛЫХ ПОМЕЩЕНИЙ г. Москва N_____________ \"__\"______________ 20__г. Настоящим Свидетельством удостоверяется, что залог жилого помещения по адресу: ______________________________________________ (улица, проспект, бульвар, переулок) дом N__________, корп. N_____________,кв.",
+        "dispute_reason": "Маркер указывает на возможный конфликт между несколькими обязанностями или сроками.",
+        "possible_consequence": "При исполнении может оказаться, что условия невозможно соблюсти одновременно.",
+        "confidence": 0.66
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Поставщик",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Поставщик'.",
+      "must_do": [
+        "- в законе должен быть также решен вопрос о том, для обеспечения исполнения какого конкретного обязательства упомянутое имущество допускается в качестве предмета залога."
+      ],
+      "should_review": [
+        "Но при этом необходимы следующие условия: - в законе должно быть указано какое имущество может служить предметом залога.",
+        "Примером может служить статья 122 Таможенного Кодекса РФ, которая регулирует возникновение залога для обеспечения уплаты таможенных платежей, НДС, акцизом.",
+        "122 Таможенного Кодекса указано также, какое имущество может служить предметом залога (транспортные средства, товары)."
+      ],
+      "payment_terms": [
+        "Конфиг не выявил явных условий оплаты."
+      ],
+      "deadlines": [
+        "Конфиг не выявил явных сроков."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "d3db290b1f1c9f6335fc4eb339c260d17fbca9c26777619f82f0dca41d8f3775"
+    },
+    "contract_type": {
+      "type_id": "labor_contract",
+      "confidence": 0.57,
+      "ru_name": "Трудовой договор",
+      "legal_framework": "ТК РФ"
+    },
+    "asymmetry_signals": []
+  },
+  "finished_at": "2026-04-28T16:19:01.097412+00:00",
+  "duration_ms": 67.1
+}

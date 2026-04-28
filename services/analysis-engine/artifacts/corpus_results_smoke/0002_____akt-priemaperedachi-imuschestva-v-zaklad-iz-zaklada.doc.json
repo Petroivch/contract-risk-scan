@@ -1,0 +1,90 @@
+{
+  "source_path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\договоры\\akt-priemaperedachi-imuschestva-v-zaklad-iz-zaklada.doc",
+  "relative_path": "договоры\\akt-priemaperedachi-imuschestva-v-zaklad-iz-zaklada.doc",
+  "mime_type": "application/msword",
+  "role_context": {
+    "role": "Исполнитель",
+    "counterparty_role": "Заказчик"
+  },
+  "ingestion_preflight": {
+    "extraction_source": "doc:none",
+    "extraction_ok": false,
+    "extraction_error": "_extract_doc_via_word_com: Command '['powershell', '-NoProfile', '-Command', \"$ErrorActionPreference='Stop';$input='C:\\\\Users\\\\user\\\\AppData\\\\Local\\\\Temp\\\\analysis-doc-f43jjss4\\\\source.doc';$output='C:\\\\Users\\\\user\\\\AppData\\\\Local\\\\Temp\\\\analysis-doc-f43jjss4\\\\word-com-output.docx';$word=New-Object -ComObject Word.Application;$word.Visible=$false;try {$doc=$word.Documents.Open($input,$false,$true);$doc.SaveAs([ref]$output,[ref]16);$doc.Close();} finally {$word.Quit();}\"]' timed out after 25.0 seconds; soffice not found; antiword not found; catdoc not found; textract extractor disabled",
+    "sha256": "c6ca0d74c6c83bb5117d45ddd115aba7f5d14533b147229783ada3768a97d72c",
+    "text_length": 43
+  },
+  "timings": {
+    "analysis_seconds": 25.922,
+    "total_seconds": 51.922
+  },
+  "analysis": {
+    "job_id": "a63c6274-58d8-4270-b2af-01cf155a77c7",
+    "status": "completed",
+    "result": {
+      "language": "ru",
+      "locale": "ru",
+      "execution_plan": {
+        "mode": "server_assist",
+        "offline_capable": false,
+        "network_required": true,
+        "policy_source": "mime_type:application/msword",
+        "reason": "Mime type документа перевел задачу в более безопасный lightweight/offload режим согласно policy."
+      },
+      "contract_brief": "Договор 'akt-priemaperedachi-imuschestva-v-zaklad-iz-zaklada. doc' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Исполнитель'. Найдено спорных или расплывчатых пунктов: 1.",
+      "risks": [
+        {
+          "risk_id": "risk-1",
+          "rule_id": "fallback_low_risk",
+          "title": "Низкий риск: явные критические маркеры не обнаружены",
+          "severity": "low",
+          "clause_id": null,
+          "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+          "role_relevance": "Базовый вывод для роли 'Исполнитель'.",
+          "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+        }
+      ],
+      "disputed_clauses": [
+        {
+          "clause_id": "clause-1",
+          "clause_excerpt": "Текст документа пуст после этапа ingestion.",
+          "dispute_reason": "Явные маркеры спорных формулировок не обнаружены.",
+          "possible_consequence": "Скрытые спорные моменты требуют дополнительной юридической проверки.",
+          "confidence": 0.35
+        }
+      ],
+      "role_focused_summary": {
+        "role": "Исполнитель",
+        "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Исполнитель'.",
+        "must_do": [
+          "Конфиг не выявил явных обязательств."
+        ],
+        "should_review": [
+          "Конфиг не выявил явных дискреционных условий."
+        ],
+        "payment_terms": [
+          "Конфиг не выявил явных условий оплаты."
+        ],
+        "deadlines": [
+          "Конфиг не выявил явных сроков."
+        ],
+        "penalties": [
+          "Конфиг не выявил явных штрафных санкций."
+        ]
+      },
+      "ingestion": {
+        "extraction_source": "doc:none",
+        "extraction_ok": false,
+        "extraction_error": "_extract_doc_via_word_com: Command '['powershell', '-NoProfile', '-Command', \"$ErrorActionPreference='Stop';$input='C:\\\\Users\\\\user\\\\AppData\\\\Local\\\\Temp\\\\analysis-doc-iw490dz3\\\\source.doc';$output='C:\\\\Users\\\\user\\\\AppData\\\\Local\\\\Temp\\\\analysis-doc-iw490dz3\\\\word-com-output.docx';$word=New-Object -ComObject Word.Application;$word.Visible=$false;try {$doc=$word.Documents.Open($input,$false,$true);$doc.SaveAs([ref]$output,[ref]16);$doc.Close();} finally {$word.Quit();}\"]' timed out after 25.0 seconds; soffice not found; antiword not found; catdoc not found; textract extractor disabled",
+        "sha256": "c6ca0d74c6c83bb5117d45ddd115aba7f5d14533b147229783ada3768a97d72c"
+      },
+      "contract_type": {
+        "type_id": "general_contract",
+        "confidence": 0.0,
+        "ru_name": "Договор",
+        "legal_framework": "Общие нормы ГК РФ"
+      },
+      "asymmetry_signals": []
+    },
+    "error_message": null
+  }
+}

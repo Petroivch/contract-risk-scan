@@ -4,10 +4,12 @@ from app.config.runtime import get_runtime_config
 from app.localization import normalize_analysis_language, resolve_localized_text
 from app.schemas.analysis import RiskItem, RoleFocusedSummary
 from app.services.clause_segmentation import ClauseSegment
+from app.services.contract_analysis import canonicalize_role
+from app.services.text_normalization import normalize_contract_text, split_into_sentences
 
 
 class SummaryGenerationService:
-    """Config-driven summary generation with role-aware prioritization."""
+    """Role-aware summary generation with sentence-safe output."""
 
     def __init__(self) -> None:
         self._config = get_runtime_config().summary_generation
@@ -48,7 +50,7 @@ class SummaryGenerationService:
         deadlines = self._collect_lines(
             candidates,
             self._config.markers["deadlines"],
-            prioritized_terms=role_terms,
+            prioritized_terms=role_terms + counterparty_terms,
             max_items=max_items,
         )
         penalties = self._collect_lines(
@@ -63,6 +65,7 @@ class SummaryGenerationService:
             risks_count=len(risks),
             role=role,
         )
+        overview = self._ensure_complete_summary(overview, risks, resolved_language)
 
         fallback_values = self._config.fallback_values
 
@@ -83,18 +86,12 @@ class SummaryGenerationService:
         seen: set[str] = set()
 
         for raw_block in [text, *(clause.text for clause in clauses)]:
-            normalized_block = raw_block.replace("\r", "").replace(";", "\n")
-            for raw_line in normalized_block.split("\n"):
-                line = raw_line.strip()
-                if not line:
-                    continue
-
-                normalized_key = line.casefold()
+            for sentence in split_into_sentences(raw_block):
+                normalized_key = sentence.casefold()
                 if normalized_key in seen:
                     continue
-
                 seen.add(normalized_key)
-                candidates.append(line[: self._config.max_line_length])
+                candidates.append(self._normalize_line(sentence))
 
         return candidates
 
@@ -107,9 +104,15 @@ class SummaryGenerationService:
     ) -> list[str]:
         lines: list[str] = []
         markers_normalized = [marker.casefold() for marker in markers]
-        prioritized_terms_normalized = [
-            term.casefold().strip() for term in prioritized_terms if term and term.strip()
-        ]
+        prioritized_terms_normalized: list[str] = []
+        for term in prioritized_terms:
+            if not term or not term.strip():
+                continue
+            normalized_term = term.casefold().strip()
+            prioritized_terms_normalized.append(normalized_term)
+            canonical_term = canonicalize_role(term)
+            if canonical_term and canonical_term not in prioritized_terms_normalized:
+                prioritized_terms_normalized.append(canonical_term)
 
         def append_matching_lines(require_priority_match: bool) -> None:
             for line in candidates:
@@ -126,10 +129,36 @@ class SummaryGenerationService:
                 if not require_priority_match and prioritized_terms_normalized and has_priority_term:
                     continue
 
-                lines.append(line)
+                if line not in lines:
+                    lines.append(line)
 
         append_matching_lines(require_priority_match=True)
         if len(lines) < max_items:
             append_matching_lines(require_priority_match=False)
 
-        return lines
+        return [self._normalize_line(line) for line in lines]
+
+    @staticmethod
+    def _normalize_line(line: str) -> str:
+        cleaned = normalize_contract_text(line)
+        if cleaned and cleaned[-1] not in ".!?":
+            cleaned = f"{cleaned}."
+        return cleaned
+
+    @staticmethod
+    def _ensure_complete_summary(summary: str, risks: list[RiskItem], language: str) -> str:
+        cleaned = normalize_contract_text(summary)
+        if cleaned and cleaned[-1] not in ".!?":
+            cleaned = f"{cleaned}."
+
+        high_risks = [risk for risk in risks if risk.severity.value in {"high", "critical"}]
+        if not high_risks:
+            return cleaned
+
+        recommendations = {
+            "ru": f" Обнаружено {len(high_risks)} пунктов с высоким уровнем риска; их стоит перепроверить вручную.",
+            "en": f" {len(high_risks)} high-risk clauses were detected and should be reviewed manually.",
+            "it": f" Sono stati rilevati {len(high_risks)} punti ad alto rischio da verificare manualmente.",
+            "fr": f" {len(high_risks)} clauses a haut risque ont ete detectees et demandent une verification manuelle.",
+        }
+        return f"{cleaned}{recommendations.get(language, recommendations['ru'])}"

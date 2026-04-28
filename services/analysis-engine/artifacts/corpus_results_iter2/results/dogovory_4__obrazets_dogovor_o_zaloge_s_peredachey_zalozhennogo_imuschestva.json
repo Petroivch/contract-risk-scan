@@ -1,0 +1,217 @@
+{
+  "case_id": "dogovory_4__obrazets_dogovor_o_zaloge_s_peredachey_zalozhennogo_imuschestva",
+  "relative_path": "договоры 4/obrazets-dogovor-o-zaloge-s-peredachey-zalozhennogo-imuschestva-.html",
+  "document_path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\договоры 4\\obrazets-dogovor-o-zaloge-s-peredachey-zalozhennogo-imuschestva-.html",
+  "document_name": "obrazets-dogovor-o-zaloge-s-peredachey-zalozhennogo-imuschestva-.html",
+  "role": "Заемщик",
+  "counterparty_role": "Кредитор",
+  "language": "ru",
+  "mime_type": "text/html",
+  "tags": [
+    "workspace-corpus",
+    "html",
+    "dogovory_4",
+    "loan_security_agreement"
+  ],
+  "source_group": "manifest",
+  "expected": {
+    "contract_type": "loan_security_agreement",
+    "min_contract_type_confidence": 0.83,
+    "min_risk_count": 0,
+    "min_disputed_clause_count": 2,
+    "execution_mode": "local_first",
+    "expected_high_risk_ids": []
+  },
+  "started_at": "2026-04-28T16:12:36.963610+00:00",
+  "status": "completed",
+  "request": {
+    "document_name": "obrazets-dogovor-o-zaloge-s-peredachey-zalozhennogo-imuschestva-.html",
+    "role_context": {
+      "role": "Заемщик",
+      "counterparty_role": "Кредитор"
+    },
+    "document_text": null,
+    "document_base64": "PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMDEgVHJhbnNpdGlvbmFsLy9FTiI+DQo8aHRtbD4NCjxoZWFkPg0KPGJhc2UgaHJlZj0iaHR0cHM6Ly9kb2dvdm9yLXVyaXN0LnJ1LyI+DQo8dGl0bGU+0J7QsdGA0LDQt9C10YYuICAg0JTQvtCz0L7QstC+0YAg0L4g0LfQsNC70L7Qs9C1ICjRgSDQv9C10YDQtdC00LDRh9C10Lkg0LfQsNC70L7QttC10L3QvdC+0LPQviDQuNC80YPRidC10YHRgtCy0LAgKNCy0LXRidC4KSDQsdCw0L3QutGDIC0g0LfQsNC60LvQsNC0KSAgICAtINCy0LXRgNGB0LjRjyDQtNC70Y8g0L/QtdGH0LDRgtC4LiAyMDI2LiDQntCx0YDQsNC30YbRiyDQtNC+0LPQvtCy0L7RgNC+0LIsINGC0LjQv9C+0LLRi9C1INC00L7Qs9C+0LLQvtGA0LAsINCw0LrRgtGD0LDQu9GM0L3Ri9C1INC00L7QutGD0LzQtdC90YLRiywg0Y7RgNC40LTQuNGH0LXRgdC60LjQvCDQuCDRhNC40LfQuNGH0LXRgdC60LjQvCDQu9C40YbQsNC8PC90aXRsZT4NCjxtZXRhIGNvbnRlbnQ9IiIgbmFtZT0ia2V5d29yZHMiPg0KPG1ldGEgY29udGVudD0iIiBuYW1lPSJkZXNjcmlwdGlvbiI+DQo8bWV0YSBuYW1lPSJyb2JvdHMiIGNvbnRlbnQ9Im5vaW5kZXgsbm9mb2xsb3ciPg0KPG1ldGEgaHR0cC1lcXVpdj0iQ29udGVudC1UeXBlIiBjb250ZW50PSJ0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgiPg0KPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSIvaW1hZ2VzL3N0eWxlLmNzcyIgdHlwZT0idGV4dC9jc3MiPg0KPC9oZWFkPg0KPGJvZHk+DQo8ZGl2IGNsYXNzPSJkb2N1bWVudFRleHQiPg0KPHByZT4gICAgICAgICAgICAgICAgICAgICAgICAgINCU0J7Qk9Ce0JLQntCgINCeINCX0JDQm9Ce0JPQlSBO0L4uIF9fX18NCiAgICAgICAgICAgICAgICAgICAgICDRgSDQv9C10YDQtdC00LDRh9C10Lkg0LfQsNC70L7QttC10L3QvdC+0LPQviDQuNC80YPRidC10YHRgtCy0LANCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAo0LLQtdGJ0LgpINCR0LDQvdC60YMgLSDQt9Cw0LrQu9Cw0LQNCg0KICAgINCzLiBfX19fX19fX19fX19fICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIl9fIl9fX19fX19fIDIwX18g0LMuDQoNCiAgICAgICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXywNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAo0L3QsNC40LzQtdC90L7QstCw0L3QuNC1INCx0LDQvdC60LApDQoNCiAgICDQsiDQu9C40YbQtSBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLA0KICAgICAgICAgICAgICAgICAgICAgICAgKNGE0LDQvNC40LvQuNGPLCDQuNC80Y8sINC+0YLRh9C10YHRgtCy0L4sINC00L7Qu9C20L3QvtGB0YLRjCkNCg0KICAgINC00LXQudGB0YLQstGD0Y7RidC10LPQviDQvdCwINC+0YHQvdC+0LLQsNC90LjQuCBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX18sINC40LzQtdC90YPQtdC80YvQuSDQsg0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICjQo9GB0YLQsNCy0LAsINC/0L7Qu9C+0LbQtdC90LjRjykNCg0KICAgINC00LDQu9GM0L3QtdC50YjQtdC8ICLQl9Cw0LvQvtCz0L7QtNC10YDQttCw0YLQtdC70YwiLCDQuCBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18sDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgKNC90LDQuNC80LXQvdC+0LLQsNC90LjQtSDRgdGB0YPQtNC+0LfQsNC10LzRidC40LrQsCkNCg0KICAgINCyINC70LjRhtC1IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXywg0LTQtdC50YHRgtCy0YPRjtGJ0LXQs9C+INC90LANCiAgICAgICAgICAgICAgICAo0YTQsNC80LjQu9C40Y8sINC40LzRjywg0L7RgtGH0LXRgdGC0LLQviwg0LTQvtC70LbQvdC+0YHRgtGMKQ0KDQogICAg0L7RgdC90L7QstCw0L3QuNC4IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18sINC40LzQtdC90YPQtdC80YvQuSDQsg0KICAgICAgICAgICAgICAgICAo0KPRgdGC0LDQstCwLCDQtNC+0LLQtdGA0LXQvdC90L7RgdGC0Lg6IE7Qvi4sINC00LDRgtCwINCy0YvQtNCw0YfQuCkNCg0KICAgINC00LDQu9GM0L3QtdC50YjQtdC8ICAi0JfQsNC70L7Qs9C+0LTQsNGC0LXQu9GMIiwgICAg0LfQsNC60LvRjtGH0LjQu9C4ICAgINC90LDRgdGC0L7Rj9GJ0LjQuSAgICDQtNC+0LPQvtCy0L7RgCAgICDQvg0KICAgINC90LjQttC10YHQu9C10LTRg9GO0YnQtdC8Og0KDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgIDEuINCf0YDQtdC00LzQtdGCINC00L7Qs9C+0LLQvtGA0LANCg0KICAgICAgICAgMS4xLiDQkiDQvtCx0LXRgdC/0LXRh9C10L3QuNC1INC+0LHRj9C30LDRgtC10LvRjNGB0YLQstCwINC/0L4g0L/QvtCz0LDRiNC10L3QuNGOINC60YDQtdC00LjRgtCwINCyICDRgNCw0LfQvNC10YDQtQ0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fINGA0YPQsdC70LXQuSwg0L/RgNC10LTQvtGB0YLQsNCy0LvQtdC90L3QvtCz0L4g0LIg0YHQvtC+0YLQstC10YLRgdGC0LLQuNC4DQogICAg0YEgINC60YDQtdC00LjRgtC90YvQvCAg0LTQvtCz0L7QstC+0YDQvtC8IE7Qvi4gX19fX19fINC+0YIgIl9fXyJfX19fX19fX19fIDIwX19fINCzLiAg0LzQtdC20LTRgw0KICAgINCR0LDQvdC60L7QvCDQuCDQl9Cw0LXQvNGJ0LjQutC+0LwsICDQv9C+0YHQu9C10LTQvdC40Lkg0L/QtdGA0LXQtNCw0LXRgiDQkdCw0L3QutGDINCyICDQt9Cw0LvQvtCzICDQv9GA0LjQvdCw0LTQu9C10LbQsNGJ0LXQtQ0KICAgINC10LzRgyAg0L3QsCDQv9GA0LDQstC1INGB0L7QsdGB0YLQstC10L3QvdC+0YHRgtC4INC40LzRg9GJ0LXRgdGC0LLQvjogX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQogICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQogICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18uDQogICAgICAgICjQvdCw0LjQvNC10L3QvtCy0LDQvdC40LUsINC60L7Qu9C40YfQtdGB0YLQstC+INC4INGB0YLQvtC40LzQvtGB0YLRjCDQt9Cw0LvQvtC20LXQvdC90L7Qs9C+INC40LzRg9GJ0LXRgdGC0LLQsCkNCg0KICAgICAgICAgMS4yLiDQl9Cw0LvQvtC20LXQvdC90L7QtSAgINC40LzRg9GJ0LXRgdGC0LLQviAgKNCy0LXRidGMKSAg0L/QtdGA0LXQtNCw0LXRgtGB0Y8gINCX0LDQu9C+0LPQvtC00LXRgNC20LDRgtC10LvRjg0KICAgICjQkdCw0L3QutGDKSDQstC+INCy0LvQsNC00LXQvdC40LUuDQoNCiAgICAgICAgICAgICAgICAgICAgICAgIDIuINCf0YDQsNCy0LAg0Lgg0L7QsdGP0LfQsNC90L3QvtGB0YLQuCDRgdGC0L7RgNC+0L0NCg0KICAgICAgICAgMi4xLiDQl9Cw0LvQvtCz0L7QtNC10YDQttCw0YLQtdC70Ywg0L7QsdGP0LfQsNC9Og0KICAgICAgICAg0LApINC30LDRgdGC0YDQsNGF0L7QstCw0YLRjCDQv9GA0LXQtNC80LXRgiDQt9Cw0LvQvtCz0LAg0L3QsCDQtdCz0L4g0L/QvtC70L3Rg9GOINGB0YLQvtC40LzQvtGB0YLRjCDQt9CwINGB0YfQtdGCINC4DQogICAg0LIg0LjQvdGC0LXRgNC10YHQsNGFINCX0LDQu9C+0LPQvtC00LDRgtC10LvRjzsNCiAgICAgICAgINCxKSDQv9GA0LjQvdC40LzQsNGC0Ywg0LzQtdGA0YssINC90LXQvtCx0YXQvtC00LjQvNGL0LUg0LTQu9GPINGB0L7RhdGA0LDQvdC10L3QuNGPINC/0YDQtdC00LzQtdGC0LAg0LfQsNC60LvQsNC00LA7DQogICAgICAgICDQsikg0YDQtdCz0YPQu9GP0YDQvdC+ICDQvdCw0L/RgNCw0LLQu9GP0YLRjCAg0JfQsNC70L7Qs9C+0LTQsNGC0LXQu9GOICAg0L7RgtGH0LXRgiAgINC+ICAg0L/QvtC70YzQt9C+0LLQsNC90LjQuA0KICAgINC/0YDQtdC00LzQtdGC0L7QvCDQt9Cw0LrQu9Cw0LTQsCwgINC10YHQu9C4INC90LDRgdGC0L7Rj9GJ0LjQvCDQtNC+0LPQvtCy0L7RgNC+0Lwg0L/RgNC10LTRg9GB0LzQvtGC0YDQtdC90L4sICDRh9GC0L4g0JHQsNC90LoNCiAgICDQstC/0YDQsNCy0LUg0LjQvCDQv9C+0LvRjNC30L7QstCw0YLRjNGB0Y87DQogICAgICAgICDQsykg0L3QtdC80LXQtNC70LXQvdC90L4gINC40LfQstC10YHRgtC40YLRjCAg0JfQsNC70L7Qs9C+0LTQsNGC0LXQu9GPICDQviAg0LLQvtC30L3QuNC60L3QvtCy0LXQvdC40LggINGD0LPRgNC+0LfRiw0KICAgINGD0YLRgNCw0YLRiyDQuNC70Lgg0L/QvtCy0YDQtdC20LTQtdC90LjRjyDQv9GA0LXQtNC80LXRgtCwINC30LDQutC70LDQtNCwOw0KICAgICAgICAg0LQpINC90LXQvNC10LTQu9C10L3QvdC+ICAg0LLQvtC30LLRgNCw0YLQuNGC0YwgICDQv9GA0LXQtNC80LXRgiAg0LfQsNC60LvQsNC00LAgINC/0L7RgdC70LUgINC40YHQv9C+0LvQvdC10L3QuNGPDQogICAg0JfQsNC70L7Qs9C+0LTQsNGC0LXQu9C10Lwg0LjQu9C4INGC0YDQtdGC0YzQuNC8INC70LjRhtC+0Lwg0L7QsdC10YHQv9C10YfQtdC90L3QvtCz0L4g0LfQsNC70L7Qs9C+0Lwg0L7QsdGP0LfQsNGC0LXQu9GM0YHRgtCy0LAuDQogICAgICAgICAyLjIuINCX0LDQu9C+0LPQvtC00LXRgNC20LDRgtC10LvRjCAgINCy0L/RgNCw0LLQtSAg0L/QvtC70YzQt9C+0LLQsNGC0YzRgdGPICDQv9GA0LXQtNC80LXRgtC+0LwgINC30LDQutC70LDQtNCwLg0KICAgINCf0YDQuNC+0LHRgNC10YLQtdC90L3Ri9C1INCX0LDQu9C+0LPQvtC00LXRgNC20LDRgtC10LvQtdC8ICDQsiAg0YDQtdC30YPQu9GM0YLQsNGC0LUgINC/0L7Qu9GM0LfQvtCy0LDQvdC40Y8gINC/0YDQtdC00LzQtdGC0L7QvA0KICAgINC30LDQutC70LDQtNCwICDQtNC+0YXQvtC00YsgINC4ICDQuNC90YvQtSAg0LjQvNGD0YnQtdGB0YLQstC10L3QvdGL0LUg0LLRi9Cz0L7QtNGLINC00L7Qu9C20L3RiyDQvdCw0L/RgNCw0LLQu9GP0YLRjNGB0Y8g0L3QsA0KICAgINC/0L7QutGA0YvRgtC40LUgINGA0LDRgdGF0L7QtNC+0LIgINC90LAgICDRgdC+0LTQtdGA0LbQsNC90LjQtSAgINC/0YDQtdC00LzQtdGC0LAgICDQt9Cw0LrQu9Cw0LTQsCwgICDQsCAgINGC0LDQutC20LUNCiAgICDQt9Cw0YHRh9C40YLRi9Cy0LDRgtGM0YHRjyDQsiDRgdGH0LXRgiDQv9C+0LPQsNGI0LXQvdC40Y8g0LTQvtC70LPQsCDQv9C+INC60YDQtdC00LjRgtGDLg0KICAgICAgICAgMi4zLiDQn9GA0Lgg0LLQvtC30L3QuNC60L3QvtCy0LXQvdC40Lgg0YDQtdCw0LvRjNC90L7QuSAg0YPQs9GA0L7Qt9GLICDRg9GC0YDQsNGC0YssICDQvdC10LTQvtGB0YLQsNGH0LggINC40LvQuA0KICAgINC/0L7QstGA0LXQttC00LXQvdC40Y8g0L/RgNC10LTQvNC10YLQsCAg0LfQsNC60LvQsNC00LAgINC90LUgINC/0L4g0LLQuNC90LUg0JfQsNC70L7Qs9C+0LTQtdGA0LbQsNGC0LXQu9GPLCDQvtC9INCy0L/RgNCw0LLQtQ0KICAgINC/0L7RgtGA0LXQsdC+0LLQsNGC0Ywg0LfQsNC80LXQvdGLICDQv9GA0LXQtNC80LXRgtCwICDQt9Cw0LrQu9Cw0LTQsCwgINCwICDQv9GA0LggINC+0YLQutCw0LfQtSAgINCX0LDQu9C+0LPQvtC00LDRgtC10LvRjw0KICAgINCy0YvQv9C+0LvQvdC40YLRjCDRjdGC0L4gINGC0YDQtdCx0L7QstCw0L3QuNC1ICAtINC+0LHRgNCw0YLQuNGC0Ywg0LLQt9GL0YHQutCw0L3QuNC1INC90LAg0L/RgNC10LTQvNC10YIg0LfQsNC60LvQsNC00LAg0LTQvg0KICAgINC90LDRgdGC0YPQv9C70LXQvdC40Y8g0YHRgNC+0LrQsCDQuNGB0L/QvtC70L3QtdC90LjRjyDQvtCx0LXRgdC/0LXRh9C10L3QvdC+0LPQviDQt9Cw0LrQu9Cw0LTQvtC8INC+0LHRj9C30LDRgtC10LvRjNGB0YLQstCwLg0KDQogICAgICAgICAgICAgICAgICAgICAgICAgIDMuINCe0YLQstC10YLRgdGC0LLQtdC90L3QvtGB0YLRjCDRgdGC0L7RgNC+0L0NCg0KICAgICAgICAgMy4xLiDQl9Cw0LvQvtCz0L7QtNC10YDQttCw0YLQtdC70YwgICDQvtGC0LLQtdGH0LDQtdGCICAg0LfQsCAgINGD0YLRgNCw0YLRgywgICDQvdC10LTQvtGB0YLQsNGH0YMgICDQuNC70LgNCiAgICDQv9C+0LLRgNC10LbQtNC10L3QuNC1INC/0YDQtdC00LzQtdGC0LAg0LfQsNC60LvQsNC00LAsICDQtdGB0LvQuCDQvdC1INC00L7QutCw0LbQtdGCLCDRh9GC0L4g0YPRgtGA0LDRgtCwLCDQvdC10LTQvtGB0YLQsNGH0LANCiAgICDQuNC70Lgg0L/QvtCy0YDQtdC20LTQtdC90LjQtSDQv9GA0L7QuNC30L7RiNC70Lgg0L3QtSDQv9C+INC10LPQviDQstC40L3QtS4NCiAgICAgICAgIDMuMi4g0JfQsNC70L7Qs9C+0LTQtdGA0LbQsNGC0LXQu9GMINC/0YDQuCDQt9Cw0LrQu9Cw0LTQtSDQvdC10YHQtdGCINC+0YLQstC10YLRgdGC0LLQtdC90L3QvtGB0YLRjCDQt9CwINGD0YLRgNCw0YLRgw0KICAgINC4INC90LXQtNC+0YHRgtCw0YfRgyAgINC/0YDQtdC00LzQtdGC0LAgICDQt9Cw0LrQu9Cw0LTQsCAgINCyICDRgNCw0LfQvNC10YDQtSAg0YHRgtC+0LjQvNC+0YHRgtC4ICDRg9GC0YDQsNGH0LXQvdC90L7Qs9C+DQogICAgKNC90LXQtNC+0YHRgtCw0Y7RidC10LPQvikg0LjQvNGD0YnQtdGB0YLQstCwICjQstC10YnQuCksICDQsCDQt9CwINC/0L7QstGA0LXQttC00LXQvdC40LUg0L/RgNC10LTQvNC10YLQsCDQt9Cw0LrQu9Cw0LTQsCAtDQogICAg0LIg0YDQsNC30LzQtdGA0LUgINGB0YPQvNC80YssICDQvdCwICDQutC+0YLQvtGA0YPRjiAg0L/QvtC90LjQt9C40LvQsNGB0Ywg0YHRgtC+0LjQvNC+0YHRgtGMINC30LDQu9C+0LbQtdC90L3QvtC5INCy0LXRidC4Lg0KICAgINCe0YLQstC10YLRgdGC0LLQtdC90L3QvtGB0YLRjCDQl9Cw0LvQvtCz0L7QtNC10YDQttCw0YLQtdC70Y8gICDQvdC1ICAg0LTQvtC70LbQvdCwICAg0L/RgNC10LLRi9GI0LDRgtGMICAg0YPQutCw0LfQsNC90L3QvtC5DQogICAg0L7RhtC10L3QvtGH0L3QvtC5INGB0YLQvtC40LzQvtGB0YLQuCDQv9GA0LXQtNC80LXRgtCwINC30LDQutC70LDQtNCwLg0KDQogICAgICAgICAgICAgICAzLiDQntCx0YDQsNGJ0LXQvdC40LUg0LLQt9GL0YHQutCw0L3QuNGPINC90LAg0LfQsNC70L7QttC10L3QvdC+0LUg0LjQvNGD0YnQtdGB0YLQstC+DQoNCiAgICAgICAgIDMuMS4g0JfQsCAgINGB0YfQtdGCICAg0LfQsNC70L7QttC10L3QvdC+0LPQviAg0LjQvNGD0YnQtdGB0YLQstCwICDQl9Cw0LvQvtCz0L7QtNC10YDQttCw0YLQtdC70YwgINCy0L/RgNCw0LLQtQ0KICAgINGD0LTQvtCy0LvQtdGC0LLQvtGA0LjRgtGMINGB0LLQvtC4INGC0YDQtdCx0L7QstCw0L3QuNGPINC/0L4g0LrRgNC10LTQuNGC0L3QvtC80YMg0LTQvtCz0L7QstC+0YDRgyDQsiDQv9C+0LvQvdC+0Lwg0L7QsdGK0LXQvNC1LA0KICAgINC+0L/RgNC10LTQtdC70Y/QtdC80L7QvCDQuiDQvNC+0LzQtdC90YLRgyDRhNCw0LrRgtC40YfQtdGB0LrQvtCz0L4g0YPQtNC+0LLQu9C10YLQstC+0YDQtdC90LjRjywg0LLQutC70Y7Rh9Cw0Y8g0L/RgNC+0YbQtdC90YLRiywNCiAgICDRg9Cx0YvRgtC60LgsICDQv9GA0LjRh9C40L3QtdC90L3Ri9C1INC/0YDQvtGB0YDQvtGH0LrQvtC5INC40YHQv9C+0LvQvdC10L3QuNGPLCDQsCDRgtCw0LrQttC1INC90LXRg9GB0YLQvtC50LrRgywgLSDQtdGB0LvQuA0KICAgINC+0L3QsCAg0L/RgNC10LTRg9GB0LzQvtGC0YDQtdC90LAgINC60YDQtdC00LjRgtC90YvQvCAg0LTQvtCz0L7QstC+0YDQvtC8LiAg0JLQvtC30LzQtdGJ0LXQvdC40Y4gINC/0L7QtNC70LXQttCw0YIg0YLQsNC60LbQtQ0KICAgINC/0YDQvtC40LfQstC10LTQtdC90L3Ri9C1INC40LfQtNC10YDQttC60Lgg0L/QviDRgdC+0LTQtdGA0LbQsNC90LjRjiDQt9Cw0LvQvtC20LXQvdC90L7Qs9C+INC40LzRg9GJ0LXRgdGC0LLQsCAg0LggINGA0LDRgdGF0L7QtA0KICAgINC/0L4g0L7RgdGD0YnQtdGB0YLQstC70LXQvdC40Y4g0L7QsdC10YHQv9C10YfQtdC90L3QvtCz0L4g0LfQsNC70L7Qs9C+0Lwg0YLRgNC10LHQvtCy0LDQvdC40Y8g0JfQsNC70L7Qs9C+0LTQtdGA0LbQsNGC0LXQu9GPLg0KICAgICAgICAgMy4yLiDQl9Cw0LvQvtCz0L7QtNC10YDQttCw0YLQtdC70Ywg0L/RgNC40L7QsdGA0LXRgtCw0LXRgiAg0L/RgNCw0LLQviAg0L7QsdGA0LDRgtC40YLRjCAg0LLQt9GL0YHQutCw0L3QuNC1ICDQvdCwDQogICAg0LfQsNC70L7QttC10L3QvdC+0LUg0LjQvNGD0YnQtdGB0YLQstC+ICDQsiAg0YHQu9GD0YfQsNC1ICDQvdC10LLQvtC30LLRgNCw0YLQsCAg0LrRgNC10LTQuNGC0LAg0JfQsNC70L7Qs9C+0LTQsNGC0LXQu9C10Lwg0L/Qvg0KICAgINC40YHRgtC10YfQtdC90LjQuCBfX19fX19fX19fX18gINC00L3QtdC5ICDQv9C+0YHQu9C1ICDQvdCw0YHRgtGD0L/Qu9C10L3QuNGPICAg0YHRgNC+0LrQsCAgINC40YHQv9C+0LvQvdC10L3QuNGPDQogICAg0L7QsdGP0LfQsNGC0LXQu9GM0YHRgtCy0LAsINGD0LrQsNC30LDQvdC90L7Qs9C+INCyINC60YDQtdC00LjRgtC90L7QvCDQtNC+0LPQvtCy0L7RgNC1Lg0KICAgICAgICAgMy4zLiDQntCx0YDQsNGJ0LXQvdC40LUg0LLQt9GL0YHQutCw0L3QuNGPINC90LAg0LfQsNC70L7QttC10L3QvdC+0LUg0LjQvNGD0YnQtdGB0YLQstC+INC/0YDQvtC40LfQstC+0LTQuNGC0YHRjyDQv9C+DQogICAg0YDQtdGI0LXQvdC40Y4g0YHRg9C00LAsICDQsNGA0LHQuNGC0YDQsNC20L3QvtCz0L4g0YHRg9C00LAg0LjQu9C4INGC0YDQtdGC0LXQudGB0LrQvtCz0L4g0YHRg9C00LAsICDQsCDQsiAg0YHQu9GD0YfQsNGP0YUsDQogICAg0L/RgNC10LTRg9GB0LzQvtGC0YDQtdC90L3Ri9GFINC30LDQutC+0L3QvtC00LDRgtC10LvRjNGB0YLQstC+0Lwg0KDQvtGB0YHQuNC50YHQutC+0Lkg0KTQtdC00LXRgNCw0YbQuNC4LCAg0LIg0LHQtdGB0YHQv9C+0YDQvdC+0LwNCiAgICDQv9C+0YDRj9C00LrQtSDQvdCwINC+0YHQvdC+0LLQsNC90LjQuCDQuNGB0L/QvtC70L3QuNGC0LXQu9GM0L3QvtC5INC90LDQtNC/0LjRgdC4INC90L7RgtCw0YDQuNGD0YHQsC4NCiAgICAgICAgIDMuNC4g0JIgINGB0LvRg9GH0LDQtSwgINC60L7Qs9C00LAg0YHRg9C80LzRiywgINCy0YvRgNGD0YfQtdC90L3QvtC5INC+0YIg0L/RgNC+0LTQsNC20Lgg0LfQsNC70L7QttC10L3QvdC+0LPQvg0KICAgINC40LzRg9GJ0LXRgdGC0LLQsCDQvdC10LTQvtGB0YLQsNGC0L7Rh9C90L4gICAg0LTQu9GPICAg0L/QvtC70L3QvtCz0L4gICDRg9C00L7QstC70LXRgtCy0L7RgNC10L3QuNGPICAg0YLRgNC10LHQvtCy0LDQvdC40LkNCiAgICDQl9Cw0LvQvtCz0L7QtNC10YDQttCw0YLQtdC70Y8sICDQvtC9INCy0L/RgNCw0LLQtSDQv9C+0LvRg9GH0LjRgtGMICDQvdC10LTQvtGB0YLQsNGO0YnRg9GOICDRgdGD0LzQvNGDICDQuNC3ICDQtNGA0YPQs9C+0LPQvg0KICAgINC40LzRg9GJ0LXRgdGC0LLQsCDQtNC+0LvQttC90LjQutCwLCAg0L3QtSDQv9C+0LvRjNC30YPRj9GB0Ywg0L/RgNC4INGN0YLQvtC8INC/0YDQtdC40LzRg9GJ0LXRgdGC0LLQvtC8LCAg0L7RgdC90L7QstCw0L3QvdGL0LwNCiAgICDQvdCwINC/0YDQsNCy0LUg0LfQsNC70L7Qs9CwLg0KICAgICAgICAg0J3QsNGB0YLQvtGP0YnQuNC5INC00L7Qs9C+0LLQvtGAICDRj9Cy0LvRj9C10YLRgdGPICAg0L3QtdC+0YLRitC10LzQu9C10LzQvtC5ICAg0YfQsNGB0YLRjNGOICAg0LrRgNC10LTQuNGC0L3QvtCz0L4NCiAgICDQtNC+0LPQvtCy0L7RgNCwIE7Qvi4gX19fX19fXyDQvtGCICJfX18iX19fX19fX19fX19fIDIwX18g0LMuDQoNCiAgICAgICAgICAgICAgICAgICAgICA0LiDQrtGA0LjQtNC40YfQtdGB0LrQuNC1INCw0LTRgNC10YHQsCDRgdGC0L7RgNC+0L06DQoNCiAgICAgICAgINCR0LDQvdC6ICjQl9Cw0LvQvtCz0L7QtNC10YDQttCw0YLQtdC70YwpOiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQogICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQogICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQoNCiAgICAgICAgINCX0LDQtdC80YnQuNC6ICjQl9Cw0LvQvtCz0L7QtNCw0YLQtdC70YwpOiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQogICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQogICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQoNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICDQn9C+0LTQv9C40YHQuCDRgdGC0L7RgNC+0L06DQoNCiAgICAgICAgICAgICAgICAgICAgINCR0LDQvdC6ICAgICAgICAgICAgICAgICAgICAgICAgINCX0LDQtdC80YnQuNC6DQoNCiAgICAgICAgICAgICAgIF9fX19fX19fX19fX19fX19fICAgICAgICAgICAgX19fX19fX19fX19fX19fX19fX18NCiAgICAgICAgICAgICAgICAgICAgINCcLtCfLiAgICAgICAgICAgICAgICAgICAgICAgICAgINCcLtCfLg0KDQogIA0KPC9wcmU+PC9kaXY+DQo8L2JvZHk+DQo8L2h0bWw+",
+    "mime_type": "text/html",
+    "language": "ru",
+    "locale": "ru"
+  },
+  "ingestion_preflight": {
+    "mime_type": "text/html",
+    "extractor": "html:regex",
+    "extraction_source": "html:regex",
+    "extraction_ok": true,
+    "error": null,
+    "extraction_error": null,
+    "sha256": "47c656856635fafd2dd97e00ff769cf808c7d25bb68643eff7a27a07d71c456a"
+  },
+  "metrics": {
+    "risk_count": 1,
+    "high_risk_count": 0,
+    "disputed_clause_count": 2,
+    "asymmetry_signal_count": 0,
+    "contract_type": "loan_security_agreement"
+  },
+  "analysis": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'obrazets-dogovor-o-zaloge-s-peredachey-zalozhennogo-imuschestva-. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Заемщик'. Определен тип договора: Договор займа / залога / гарантии (уверенность 98%, правовая рамка: ГК РФ, главы 23, 42, 43). Ключевые обязательства по договору для роли 'Заемщик': Права и обязанности сторон 2; Залогодержатель обязан: а) застраховать предмет залога на его полную стоимость за счет и в интересах Залогодателя. Условия оплаты: Залогодержатель обязан: а) застраховать предмет залога на его полную стоимость за счет и в интересах Залогодателя; Приобретенные Залогодержателем в результате пользования предметом заклада доходы и иные имущественные выгоды должны направляться на покрытие расходов на содержание предмета заклада, а также засчитываться в счет погашения долга по кредиту; За счет заложенного имущества Залогодержатель вправе удовлетворить свои требования по кредитному договору в полном объеме, определяемом к моменту фактического удовлетворения, включая проценты, убытки, причиненные просрочкой исполнения, а также неустойку, - если она предусмотрена кредитным договором. Сроки и дедлайны: При возникновении реальной угрозы утраты, недостачи или повреждения предмета заклада не по вине Залогодержателя, он вправе потребовать замены предмета заклада, а при отказе Залогодателя выполнить это требование - обратить взыскание на предмет заклада до наступления срока исполнения обеспеченного закладом обязательства; Залогодержатель приобретает право обратить взыскание на заложенное имущество в случае невозврата кредита Залогодателем по истечении ____________ дней после наступления срока исполнения обязательства, указанного в кредитном договоре. Штрафы и санкции: За счет заложенного имущества Залогодержатель вправе удовлетворить свои требования по кредитному договору в полном объеме, определяемом к моменту фактического удовлетворения, включая проценты, убытки, причиненные просрочкой исполнения, а также неустойку, - если она предусмотрена кредитным договором. Найдено спорных или расплывчатых пунктов: 2.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Заемщик'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Образец. Договор о залоге (с передачей заложенного имущества (вещи) банку - заклад) - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР О ЗАЛОГЕ Nо. ____ с передачей заложенного имущества (вещи) Банку - заклад г. _____________ \"__\"________ 20__ г. _______________________________________________________________, (наименование банка) в лице _____________________________________________________________, (фамилия, имя,...",
+        "dispute_reason": "Одна из сторон получила дискреционное право без достаточных ограничителей.",
+        "possible_consequence": "Это может привести к одностороннему применению условия и спору о пределах такого права.",
+        "confidence": 0.76
+      },
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Образец. Договор о залоге (с передачей заложенного имущества (вещи) банку - заклад) - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР О ЗАЛОГЕ Nо. ____ с передачей заложенного имущества (вещи) Банку - заклад г. _____________ \"__\"________ 20__ г. _______________________________________________________________, (наименование банка) в лице _____________________________________________________________, (фамилия, имя,...",
+        "dispute_reason": "Маркер указывает на возможный конфликт между несколькими обязанностями или сроками.",
+        "possible_consequence": "При исполнении может оказаться, что условия невозможно соблюсти одновременно.",
+        "confidence": 0.66
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Заемщик",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Заемщик'.",
+      "must_do": [
+        "Права и обязанности сторон 2.",
+        "Залогодержатель обязан: а) застраховать предмет залога на его полную стоимость за счет и в интересах Залогодателя."
+      ],
+      "should_review": [
+        "в) регулярно направлять Залогодателю отчет о пользовании предметом заклада, если настоящим договором предусмотрено, что Банк вправе им пользоваться.",
+        "Залогодержатель вправе пользоваться предметом заклада.",
+        "При возникновении реальной угрозы утраты, недостачи или повреждения предмета заклада не по вине Залогодержателя, он вправе потребовать замены предмета заклада, а при отказе Залогодателя выполнить это требование - обратить взыскание на предмет заклада до наступления срока исполнения обеспеченного закладом обязательства.",
+        "За счет заложенного имущества Залогодержатель вправе удовлетворить свои требования по кредитному договору в полном объеме, определяемом к моменту фактического удовлетворения, включая проценты, убытки, причиненные просрочкой исполнения, а также неустойку, - если она предусмотрена кредитным договором.",
+        "В случае, когда суммы, вырученной от продажи заложенного имущества недостаточно для полного удовлетворения требований Залогодержателя, он вправе получить недостающую сумму из другого имущества должника, не пользуясь при этом преимуществом, основанным на праве залога."
+      ],
+      "payment_terms": [
+        "Залогодержатель обязан: а) застраховать предмет залога на его полную стоимость за счет и в интересах Залогодателя.",
+        "Приобретенные Залогодержателем в результате пользования предметом заклада доходы и иные имущественные выгоды должны направляться на покрытие расходов на содержание предмета заклада, а также засчитываться в счет погашения долга по кредиту.",
+        "За счет заложенного имущества Залогодержатель вправе удовлетворить свои требования по кредитному договору в полном объеме, определяемом к моменту фактического удовлетворения, включая проценты, убытки, причиненные просрочкой исполнения, а также неустойку, - если она предусмотрена кредитным договором."
+      ],
+      "deadlines": [
+        "При возникновении реальной угрозы утраты, недостачи или повреждения предмета заклада не по вине Залогодержателя, он вправе потребовать замены предмета заклада, а при отказе Залогодателя выполнить это требование - обратить взыскание на предмет заклада до наступления срока исполнения обеспеченного закладом обязательства.",
+        "Залогодержатель приобретает право обратить взыскание на заложенное имущество в случае невозврата кредита Залогодателем по истечении ____________ дней после наступления срока исполнения обязательства, указанного в кредитном договоре."
+      ],
+      "penalties": [
+        "За счет заложенного имущества Залогодержатель вправе удовлетворить свои требования по кредитному договору в полном объеме, определяемом к моменту фактического удовлетворения, включая проценты, убытки, причиненные просрочкой исполнения, а также неустойку, - если она предусмотрена кредитным договором."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "47c656856635fafd2dd97e00ff769cf808c7d25bb68643eff7a27a07d71c456a"
+    },
+    "contract_type": {
+      "type_id": "loan_security_agreement",
+      "confidence": 0.98,
+      "ru_name": "Договор займа / залога / гарантии",
+      "legal_framework": "ГК РФ, главы 23, 42, 43"
+    },
+    "asymmetry_signals": []
+  },
+  "result": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'obrazets-dogovor-o-zaloge-s-peredachey-zalozhennogo-imuschestva-. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Заемщик'. Определен тип договора: Договор займа / залога / гарантии (уверенность 98%, правовая рамка: ГК РФ, главы 23, 42, 43). Ключевые обязательства по договору для роли 'Заемщик': Права и обязанности сторон 2; Залогодержатель обязан: а) застраховать предмет залога на его полную стоимость за счет и в интересах Залогодателя. Условия оплаты: Залогодержатель обязан: а) застраховать предмет залога на его полную стоимость за счет и в интересах Залогодателя; Приобретенные Залогодержателем в результате пользования предметом заклада доходы и иные имущественные выгоды должны направляться на покрытие расходов на содержание предмета заклада, а также засчитываться в счет погашения долга по кредиту; За счет заложенного имущества Залогодержатель вправе удовлетворить свои требования по кредитному договору в полном объеме, определяемом к моменту фактического удовлетворения, включая проценты, убытки, причиненные просрочкой исполнения, а также неустойку, - если она предусмотрена кредитным договором. Сроки и дедлайны: При возникновении реальной угрозы утраты, недостачи или повреждения предмета заклада не по вине Залогодержателя, он вправе потребовать замены предмета заклада, а при отказе Залогодателя выполнить это требование - обратить взыскание на предмет заклада до наступления срока исполнения обеспеченного закладом обязательства; Залогодержатель приобретает право обратить взыскание на заложенное имущество в случае невозврата кредита Залогодателем по истечении ____________ дней после наступления срока исполнения обязательства, указанного в кредитном договоре. Штрафы и санкции: За счет заложенного имущества Залогодержатель вправе удовлетворить свои требования по кредитному договору в полном объеме, определяемом к моменту фактического удовлетворения, включая проценты, убытки, причиненные просрочкой исполнения, а также неустойку, - если она предусмотрена кредитным договором. Найдено спорных или расплывчатых пунктов: 2.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Заемщик'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Образец. Договор о залоге (с передачей заложенного имущества (вещи) банку - заклад) - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР О ЗАЛОГЕ Nо. ____ с передачей заложенного имущества (вещи) Банку - заклад г. _____________ \"__\"________ 20__ г. _______________________________________________________________, (наименование банка) в лице _____________________________________________________________, (фамилия, имя,...",
+        "dispute_reason": "Одна из сторон получила дискреционное право без достаточных ограничителей.",
+        "possible_consequence": "Это может привести к одностороннему применению условия и спору о пределах такого права.",
+        "confidence": 0.76
+      },
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Образец. Договор о залоге (с передачей заложенного имущества (вещи) банку - заклад) - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР О ЗАЛОГЕ Nо. ____ с передачей заложенного имущества (вещи) Банку - заклад г. _____________ \"__\"________ 20__ г. _______________________________________________________________, (наименование банка) в лице _____________________________________________________________, (фамилия, имя,...",
+        "dispute_reason": "Маркер указывает на возможный конфликт между несколькими обязанностями или сроками.",
+        "possible_consequence": "При исполнении может оказаться, что условия невозможно соблюсти одновременно.",
+        "confidence": 0.66
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Заемщик",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Заемщик'.",
+      "must_do": [
+        "Права и обязанности сторон 2.",
+        "Залогодержатель обязан: а) застраховать предмет залога на его полную стоимость за счет и в интересах Залогодателя."
+      ],
+      "should_review": [
+        "в) регулярно направлять Залогодателю отчет о пользовании предметом заклада, если настоящим договором предусмотрено, что Банк вправе им пользоваться.",
+        "Залогодержатель вправе пользоваться предметом заклада.",
+        "При возникновении реальной угрозы утраты, недостачи или повреждения предмета заклада не по вине Залогодержателя, он вправе потребовать замены предмета заклада, а при отказе Залогодателя выполнить это требование - обратить взыскание на предмет заклада до наступления срока исполнения обеспеченного закладом обязательства.",
+        "За счет заложенного имущества Залогодержатель вправе удовлетворить свои требования по кредитному договору в полном объеме, определяемом к моменту фактического удовлетворения, включая проценты, убытки, причиненные просрочкой исполнения, а также неустойку, - если она предусмотрена кредитным договором.",
+        "В случае, когда суммы, вырученной от продажи заложенного имущества недостаточно для полного удовлетворения требований Залогодержателя, он вправе получить недостающую сумму из другого имущества должника, не пользуясь при этом преимуществом, основанным на праве залога."
+      ],
+      "payment_terms": [
+        "Залогодержатель обязан: а) застраховать предмет залога на его полную стоимость за счет и в интересах Залогодателя.",
+        "Приобретенные Залогодержателем в результате пользования предметом заклада доходы и иные имущественные выгоды должны направляться на покрытие расходов на содержание предмета заклада, а также засчитываться в счет погашения долга по кредиту.",
+        "За счет заложенного имущества Залогодержатель вправе удовлетворить свои требования по кредитному договору в полном объеме, определяемом к моменту фактического удовлетворения, включая проценты, убытки, причиненные просрочкой исполнения, а также неустойку, - если она предусмотрена кредитным договором."
+      ],
+      "deadlines": [
+        "При возникновении реальной угрозы утраты, недостачи или повреждения предмета заклада не по вине Залогодержателя, он вправе потребовать замены предмета заклада, а при отказе Залогодателя выполнить это требование - обратить взыскание на предмет заклада до наступления срока исполнения обеспеченного закладом обязательства.",
+        "Залогодержатель приобретает право обратить взыскание на заложенное имущество в случае невозврата кредита Залогодателем по истечении ____________ дней после наступления срока исполнения обязательства, указанного в кредитном договоре."
+      ],
+      "penalties": [
+        "За счет заложенного имущества Залогодержатель вправе удовлетворить свои требования по кредитному договору в полном объеме, определяемом к моменту фактического удовлетворения, включая проценты, убытки, причиненные просрочкой исполнения, а также неустойку, - если она предусмотрена кредитным договором."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "47c656856635fafd2dd97e00ff769cf808c7d25bb68643eff7a27a07d71c456a"
+    },
+    "contract_type": {
+      "type_id": "loan_security_agreement",
+      "confidence": 0.98,
+      "ru_name": "Договор займа / залога / гарантии",
+      "legal_framework": "ГК РФ, главы 23, 42, 43"
+    },
+    "asymmetry_signals": []
+  },
+  "finished_at": "2026-04-28T16:12:37.096606+00:00",
+  "duration_ms": 133.03
+}

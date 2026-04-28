@@ -117,6 +117,7 @@ class AnalysisStatusResponse(BaseModel):
 
 class RiskItem(BaseModel):
     risk_id: str
+    rule_id: str | None = None
     title: str
     severity: RiskSeverity
     clause_id: str | None = None
@@ -141,6 +142,29 @@ class RoleFocusedSummary(BaseModel):
     payment_terms: list[str]
     deadlines: list[str]
     penalties: list[str]
+
+
+class IngestionMetadata(BaseModel):
+    extraction_source: str
+    extraction_ok: bool
+    extraction_error: str | None = None
+    sha256: str | None = None
+
+
+class ContractTypeMetadata(BaseModel):
+    type_id: str
+    confidence: float = Field(..., ge=0.0, le=1.0)
+    ru_name: str
+    legal_framework: str
+
+
+class AsymmetrySignalItem(BaseModel):
+    risk_id: str
+    clause_id: str | None = None
+    summary: str
+    details: str
+    severity_hint: RiskSeverity
+    affected_roles: list[str]
 
 
 class AnalysisExecutionPlan(BaseModel):
@@ -172,6 +196,9 @@ class AnalysisOutput(BaseModel):
     risks: list[RiskItem]
     disputed_clauses: list[DisputedClauseItem]
     role_focused_summary: RoleFocusedSummary
+    ingestion: IngestionMetadata | None = None
+    contract_type: ContractTypeMetadata | None = None
+    asymmetry_signals: list[AsymmetrySignalItem] = Field(default_factory=list)
 
 
 class AnalysisResultResponse(BaseModel):
