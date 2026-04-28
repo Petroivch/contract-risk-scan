@@ -1,0 +1,183 @@
+{
+  "case_id": "договоры 3__prikaz_o_privlechenii_rabotnika_k_sverhurochnoy_rabote_docx",
+  "relative_path": "договоры 3/prikaz_o_privlechenii_rabotnika_k_sverhurochnoy_rabote.docx",
+  "document_path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\договоры 3\\prikaz_o_privlechenii_rabotnika_k_sverhurochnoy_rabote.docx",
+  "document_name": "prikaz_o_privlechenii_rabotnika_k_sverhurochnoy_rabote.docx",
+  "role": "Работник",
+  "counterparty_role": "Работодатель",
+  "language": "ru",
+  "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+  "tags": [
+    "ad_hoc"
+  ],
+  "source_group": "договоры 3",
+  "expected": {},
+  "started_at": "2026-04-28T16:17:39.547089+00:00",
+  "status": "completed",
+  "request": {
+    "document_name": "prikaz_o_privlechenii_rabotnika_k_sverhurochnoy_rabote.docx",
+    "role_context": {
+      "role": "Работник",
+      "counterparty_role": "Работодатель"
+    },
+    "document_text": null,
+    "document_base64": "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",
+    "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "language": "ru",
+    "locale": "ru"
+  },
+  "ingestion_preflight": {
+    "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "extractor": "docx:mammoth",
+    "extraction_source": "docx:mammoth",
+    "extraction_ok": true,
+    "error": null,
+    "extraction_error": null,
+    "sha256": "8465645f0421fbb2b15c105ab8d8733b259a5fc323892d0e9e325e94bead0695"
+  },
+  "metrics": {
+    "risk_count": 1,
+    "high_risk_count": 0,
+    "disputed_clause_count": 1,
+    "asymmetry_signal_count": 0,
+    "contract_type": "labor_contract"
+  },
+  "analysis": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "mime_type:application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "reason": "Mime type документа перевел задачу в более безопасный lightweight/offload режим согласно policy."
+    },
+    "contract_brief": "Договор 'prikaz_o_privlechenii_rabotnika_k_sverhurochnoy_rabote. docx' разобран на 5 пунктов. Ниже показано, что действительно важно для роли 'Работник'. Определен тип договора: Трудовой договор (уверенность 83%, правовая рамка: ТК РФ). Что должен Работник: для продолжения работы при неявке сменяющего работника (пункт 3 части 2 статьи 99 ТК РФ). Условия оплаты: Иванову Ивану Ивановичу выполнять работу ______________________________________________ в сверхурочное время с оплатой. Сроки и дедлайны: к сверхурочной работе с ____ часов по ______ часов (не более 4 часов в течение двух дней подряд и 120 часов в год); в связи с необходимостью выполнить (закончить) начатую работу, которая вследствие непредвиденной задержки по техническим условиям производства не могла быть выполнена (закончена) в течение установленной продолжительности рабочего времени, т. Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Работник'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "1. Привлечь \"___\"_________ ____ г. к сверхурочной работе с ____ часов по ______ часов (не более 4 часов в течение двух дней подряд и 120 часов в год)\nИванова Ивана Ивановича, ___________________________________________________________________________\n(структурное подразделение) должность (специальность, профессия), разряд, класс (категория) квалификации.",
+        "dispute_reason": "Явные маркеры спорных формулировок не обнаружены.",
+        "possible_consequence": "Скрытые спорные моменты требуют дополнительной юридической проверки.",
+        "confidence": 0.35
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Работник",
+      "overview": "Договор содержит 5 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Работник'.",
+      "must_do": [
+        "для продолжения работы при неявке сменяющего работника (пункт 3 части 2 статьи 99 ТК РФ).",
+        "____________________________________________________________ обеспечить учет."
+      ],
+      "should_review": [
+        "невыполнение (незавершение) этой работы может повлечь за собой порчу или гибель имущества работодателя (в том числе имущества третьих лиц, находящегося у работодателя, если работодатель несет ответственность за сохранность этого имущества), государственного или муниципального имущества (пункт 1 части 2 статьи 99 ТК РФ).",
+        "невыполнение (незавершение) этой работы может создать угрозу жизни и здоровью людей (пункт 1 части 2 статьи 99 ТК РФ)."
+      ],
+      "payment_terms": [
+        "Иванову Ивану Ивановичу выполнять работу ______________________________________________ в сверхурочное время с оплатой."
+      ],
+      "deadlines": [
+        "к сверхурочной работе с ____ часов по ______ часов (не более 4 часов в течение двух дней подряд и 120 часов в год).",
+        "в связи с необходимостью выполнить (закончить) начатую работу, которая вследствие непредвиденной задержки по техническим условиям производства не могла быть выполнена (закончена) в течение установленной продолжительности рабочего времени, т."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "docx:mammoth",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "8465645f0421fbb2b15c105ab8d8733b259a5fc323892d0e9e325e94bead0695"
+    },
+    "contract_type": {
+      "type_id": "labor_contract",
+      "confidence": 0.83,
+      "ru_name": "Трудовой договор",
+      "legal_framework": "ТК РФ"
+    },
+    "asymmetry_signals": []
+  },
+  "result": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "mime_type:application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "reason": "Mime type документа перевел задачу в более безопасный lightweight/offload режим согласно policy."
+    },
+    "contract_brief": "Договор 'prikaz_o_privlechenii_rabotnika_k_sverhurochnoy_rabote. docx' разобран на 5 пунктов. Ниже показано, что действительно важно для роли 'Работник'. Определен тип договора: Трудовой договор (уверенность 83%, правовая рамка: ТК РФ). Что должен Работник: для продолжения работы при неявке сменяющего работника (пункт 3 части 2 статьи 99 ТК РФ). Условия оплаты: Иванову Ивану Ивановичу выполнять работу ______________________________________________ в сверхурочное время с оплатой. Сроки и дедлайны: к сверхурочной работе с ____ часов по ______ часов (не более 4 часов в течение двух дней подряд и 120 часов в год); в связи с необходимостью выполнить (закончить) начатую работу, которая вследствие непредвиденной задержки по техническим условиям производства не могла быть выполнена (закончена) в течение установленной продолжительности рабочего времени, т. Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Работник'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "1. Привлечь \"___\"_________ ____ г. к сверхурочной работе с ____ часов по ______ часов (не более 4 часов в течение двух дней подряд и 120 часов в год)\nИванова Ивана Ивановича, ___________________________________________________________________________\n(структурное подразделение) должность (специальность, профессия), разряд, класс (категория) квалификации.",
+        "dispute_reason": "Явные маркеры спорных формулировок не обнаружены.",
+        "possible_consequence": "Скрытые спорные моменты требуют дополнительной юридической проверки.",
+        "confidence": 0.35
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Работник",
+      "overview": "Договор содержит 5 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Работник'.",
+      "must_do": [
+        "для продолжения работы при неявке сменяющего работника (пункт 3 части 2 статьи 99 ТК РФ).",
+        "____________________________________________________________ обеспечить учет."
+      ],
+      "should_review": [
+        "невыполнение (незавершение) этой работы может повлечь за собой порчу или гибель имущества работодателя (в том числе имущества третьих лиц, находящегося у работодателя, если работодатель несет ответственность за сохранность этого имущества), государственного или муниципального имущества (пункт 1 части 2 статьи 99 ТК РФ).",
+        "невыполнение (незавершение) этой работы может создать угрозу жизни и здоровью людей (пункт 1 части 2 статьи 99 ТК РФ)."
+      ],
+      "payment_terms": [
+        "Иванову Ивану Ивановичу выполнять работу ______________________________________________ в сверхурочное время с оплатой."
+      ],
+      "deadlines": [
+        "к сверхурочной работе с ____ часов по ______ часов (не более 4 часов в течение двух дней подряд и 120 часов в год).",
+        "в связи с необходимостью выполнить (закончить) начатую работу, которая вследствие непредвиденной задержки по техническим условиям производства не могла быть выполнена (закончена) в течение установленной продолжительности рабочего времени, т."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "docx:mammoth",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "8465645f0421fbb2b15c105ab8d8733b259a5fc323892d0e9e325e94bead0695"
+    },
+    "contract_type": {
+      "type_id": "labor_contract",
+      "confidence": 0.83,
+      "ru_name": "Трудовой договор",
+      "legal_framework": "ТК РФ"
+    },
+    "asymmetry_signals": []
+  },
+  "finished_at": "2026-04-28T16:17:40.025999+00:00",
+  "duration_ms": 478.27
+}

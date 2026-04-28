@@ -1,0 +1,221 @@
+{
+  "case_id": "dogovory_4__obrazets_dogovor_zaloga_kvartiri_prinadlezhaschey_zalogodatelyam",
+  "relative_path": "договоры 4/obrazets-dogovor-zaloga-kvartiri-prinadlezhaschey-zalogodatelyam.html",
+  "document_path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\договоры 4\\obrazets-dogovor-zaloga-kvartiri-prinadlezhaschey-zalogodatelyam.html",
+  "document_name": "obrazets-dogovor-zaloga-kvartiri-prinadlezhaschey-zalogodatelyam.html",
+  "role": "Заемщик",
+  "counterparty_role": "Кредитор",
+  "language": "ru",
+  "mime_type": "text/html",
+  "tags": [
+    "workspace-corpus",
+    "html",
+    "dogovory_4",
+    "loan_security_agreement"
+  ],
+  "source_group": "manifest",
+  "expected": {
+    "contract_type": "loan_security_agreement",
+    "min_contract_type_confidence": 0.73,
+    "min_risk_count": 0,
+    "min_disputed_clause_count": 1,
+    "execution_mode": "local_first",
+    "expected_high_risk_ids": []
+  },
+  "started_at": "2026-04-28T16:12:37.193611+00:00",
+  "status": "completed",
+  "request": {
+    "document_name": "obrazets-dogovor-zaloga-kvartiri-prinadlezhaschey-zalogodatelyam.html",
+    "role_context": {
+      "role": "Заемщик",
+      "counterparty_role": "Кредитор"
+    },
+    "document_text": null,
+    "document_base64": "PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMDEgVHJhbnNpdGlvbmFsLy9FTiI+DQo8aHRtbD4NCjxoZWFkPg0KPGJhc2UgaHJlZj0iaHR0cHM6Ly9kb2dvdm9yLXVyaXN0LnJ1LyI+DQo8dGl0bGU+0J7QsdGA0LDQt9C10YYuINCU0L7Qs9C+0LLQvtGAINC30LDQu9C+0LPQsCDQutCy0LDRgNGC0LjRgNGLLCDQv9GA0LjQvdCw0LTQu9C10LbQsNGJ0LXQuSAgINC30LDQu9C+0LPQvtC00LDRgtC10LvRj9C8LCDQtNC70Y8g0L7QsdC10YHQv9C10YfQtdC90LjRjyDQstC+0LfQstGA0LDRgtCwINGB0YPQvNC80Ysg0LfQsNC50LzQsCDQv9C+INC00L7Qs9C+0LLQvtGA0YMgICDQt9Cw0LnQvNCwIC0g0LLQtdGA0YHQuNGPINC00LvRjyDQv9C10YfQsNGC0LguIDIwMjYuINCe0LHRgNCw0LfRhtGLINC00L7Qs9C+0LLQvtGA0L7Qsiwg0YLQuNC/0L7QstGL0LUg0LTQvtCz0L7QstC+0YDQsCwg0LDQutGC0YPQsNC70YzQvdGL0LUg0LTQvtC60YPQvNC10L3RgtGLLCDRjtGA0LjQtNC40YfQtdGB0LrQuNC8INC4INGE0LjQt9C40YfQtdGB0LrQuNC8INC70LjRhtCw0Lw8L3RpdGxlPg0KPG1ldGEgY29udGVudD0iIiBuYW1lPSJrZXl3b3JkcyI+DQo8bWV0YSBjb250ZW50PSIiIG5hbWU9ImRlc2NyaXB0aW9uIj4NCjxtZXRhIG5hbWU9InJvYm90cyIgY29udGVudD0ibm9pbmRleCxub2ZvbGxvdyI+DQo8bWV0YSBodHRwLWVxdWl2PSJDb250ZW50LVR5cGUiIGNvbnRlbnQ9InRleHQvaHRtbDsgY2hhcnNldD11dGYtOCI+DQo8bGluayByZWw9InN0eWxlc2hlZXQiIGhyZWY9Ii9pbWFnZXMvc3R5bGUuY3NzIiB0eXBlPSJ0ZXh0L2NzcyI+DQo8L2hlYWQ+DQo8Ym9keT4NCjxkaXYgY2xhc3M9ImRvY3VtZW50VGV4dCI+DQo8cHJlPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgINCU0J7Qk9Ce0JLQntCgIE7Qvi4gX19fXw0KICAgICAgICAgICAgICAgICAgICAgICAg0LfQsNC70L7Qs9CwINC40LzRg9GJ0LXRgdGC0LLQsCAo0LrQstCw0YDRgtC40YDRiykNCiAgIA0KICAg0LMuIF9fX19fX19fX19fX19fX18gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAiX18iX19fX19fX19fIDIwX18g0LMuDQogICANCiAgIA0KICAgICAgICAgICAgINCX0LDQutGA0YvRgtC+0LUg0LDQutGG0LjQvtC90LXRgNC90L7QtSDQvtCx0YnQtdGB0YLQstC+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICjQvdCw0LjQvNC10L3QvtCy0LDQvdC40LUg0L7QsdGJ0LXRgdGC0LLQsCkNCiAgIA0KICAg0LjQvNC10L3Rg9C10LzQvtC1INCyINC00LDQu9GM0L3QtdC50YjQtdC8ICLQl9Cw0LvQvtCz0L7QtNC10YDQttCw0YLQtdC70YwiLCDQsiDQu9C40YbQtSBfX19fX19fX19fX19fX19fX19fX18NCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgKNC00L7Qu9C20L3QvtGB0YLRjCwNCiAgIA0KICAgX19fX19fX19fX19fX19fX19fX19fXywg0LTQtdC50YHRgtCy0YPRjtGJ0LXQs9C+INC90LAg0L7RgdC90L7QstCw0L3QuNC4IF9fX19fX19fX19fX19fX19fX18sDQogICAgICAgINGE0LDQvNC40LvQuNGPLCDQuC7Qvi4pDQogICANCiAgINGBINC+0LTQvdC+0Lkg0YHRgtC+0YDQvtC90YssINC4INCz0YDQsNC20LTQsNC90LUgX19fX19fX19fX19fX19fX19fXyDQuCBfX19fX19fX19fX19fX19fX19fLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgKNGE0LDQvNC40LvQuNGPLCDQuC7Qvi4pICAgICAgICjRhNCw0LzQuNC70LjRjywg0Lgu0L4uKQ0KICAgDQogICDQuNC80LXQvdGD0LXQvNGL0LUg0LIgINC00LDQu9GM0L3QtdC50YjQtdC8ICAi0JfQsNC70L7Qs9C+0LTQsNGC0LXQu9C4IiwgINGBINC00YDRg9Cz0L7QuSDRgdGC0L7RgNC+0L3RiywgINC30LDQutC70Y7Rh9C40LvQuA0KICAg0L3QsNGB0YLQvtGP0YnQuNC5INC00L7Qs9C+0LLQvtGAINC+INC90LjQttC10YHQu9C10LTRg9GO0YnQtdC8Og0KICAgDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgMS4g0J/QoNCV0JTQnNCV0KIg0JTQntCT0J7QktCe0KDQkA0KICAgDQogICAgICAgIDEuMS4g0JIgINGB0L7QvtGC0LLQtdGC0YHRgtCy0LjQtSAg0YEgICDQvdCw0YHRgtC+0Y/RidC40LwgICDQtNC+0LPQvtCy0L7RgNC+0LwgICDQl9Cw0LvQvtCz0L7QtNC10YDQttCw0YLQtdC70YwNCiAgINC/0YDQuNC90LjQvNCw0LXRgiwg0LAg0LPRgC3QvdC1IF9fX19fX19fX19fX19fX19fX19fX19fXyDQuCBfX19fX19fX19fX19fX19fX19fX19fXywNCiAgINC40LzQtdC90YPQtdC80YvQtSDQsiDQtNCw0LvRjNC90LXQudGI0LXQvCAi0JfQsNC70L7Qs9C+0LTQsNGC0LXQu9C4IiDQv9C10YDQtdC00LDRjtGCINCyINC+0LHQtdGB0L/QtdGH0LXQvdC40LUgINCy0L7Qt9Cy0YDQsNGC0LANCiAgINGB0YPQvNC80Ysg0LfQsNC50LzQsCwgINC/0L7Qu9GD0YfQtdC90L3QvtC5IF9fX19fX19fX19fX19fX19fX19fLCDRgdC+0LPQu9Cw0YHQvdC+INC00L7Qs9C+0LLQvtGA0YMg0LfQsNC50LzQsA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICjRhNCw0LzQuNC70LjRjywg0Lgu0L4uKQ0KICAgDQogICBO0L4uIF9fX18g0L7RgiAiX19fIl9fX19fX19fXyAyMF9fXyDQsy4sICDQt9Cw0LrQu9GO0YfQtdC90L3QvtC80YMg0LzQtdC20LTRgyDQl9CQ0J4gX19fX19fX19fDQogICBfX19fX19fX19fX19fX19fINC4IF9fX19fX19fX19fX19fX19fX19fX19fX19fLCAg0LjQvNC10L3Rg9C10LxfXyDQsiDQtNCw0LvRjNC90LXQudGI0LXQvA0KICAgItCX0LDQtdC80YnQuNC6IiDQvdCwINGB0YPQvNC80YMgX19fX19fX19fX19fXyAoX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18pDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAo0L/RgNC+0L/QuNGB0YzRjikNCiAgIA0KICAg0YDRg9Cx0LvQtdC5INC90LAg0YHRgNC+0LogX19fX19fX19fX19fX19fX19fX19fX19fX19fLCAg0L/RgNC40L3QsNC00LvQtdC20LDRidGD0Y4g0LjQvCDQvdCwINC/0YDQsNCy0LUNCiAgINGB0L7QsdGB0YLQstC10L3QvdC+0YHRgtC4INC60LLQsNGA0YLQuNGA0YMg0YHRgtC+0LjQvNC+0YHRgtGM0Y4gX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICjRgdGD0LzQvNCwINC/0YDQvtC/0LjRgdGM0Y4pDQogICANCiAgINGA0YPQsdC70LXQuS4g0JrQstCw0YDRgtC40YDQsCDQvdCw0YXQvtC00LjRgtGB0Y8g0L/QviDQsNC00YDQtdGB0YM6IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQogICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18uDQogICAgICAgIDEuMi4g0JrQstCw0YDRgtC40YDQsCAo0LDQtNGA0LXRgTogX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fKQ0KICAg0L3QsNGF0L7QtNC40YLRgdGPINCyINC+0LHRidC10Lkg0YHQvtCy0LzQtdGB0YLQvdC+0Lkg0YHQvtCx0YHRgtCy0LXQvdC90L7RgdGC0Lgg0JfQsNC70L7Qs9C+0LTQsNGC0LXQu9C10LkgINC90LAg0L7RgdC90L7QstCw0L3QuNC4DQogICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQogICAgICAgKNGB0LLQuNC00LXRgtC10LvRjNGB0YLQstCwINC90LAg0L/RgNCw0LLQviDRgdC+0LHRgdGC0LLQtdC90L3QvtGB0YLQuCwg0LTQvtCz0L7QstC+0YAg0LrRg9C/0LvQuC3Qv9GA0L7QtNCw0LbQuCwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgINC4INGCLiDQtC4g0Lgg0YIuINC/LikNCiAgIA0KICAgICAgICAxLjMuINCa0LLQsNGA0YLQuNGA0LAsICDRg9C60LDQt9Cw0L3QvdCw0Y8gINCyICDQvy4gMS4xLCAg0L7RgdGC0LDQtdGC0YHRjyDRgyDQl9Cw0LvQvtCz0L7QtNCw0YLQtdC70Y8g0L3QsA0KICAg0LLQtdGB0Ywg0YHRgNC+0Log0LTQtdC50YHRgtCy0LjRjyDQvdCw0YHRgtC+0Y/RidC10LPQviDQtNC+0LPQvtCy0L7RgNCwLg0KICAgDQogICAgICAgICAgICAgICAgICAgICAgIDIuINCf0KDQkNCS0JAg0Jgg0J7QkdCv0JfQkNCd0J3QntCh0KLQmCDQodCi0J7QoNCe0J0NCiAgIA0KICAgICAgICAyLjEuINCX0LDQu9C+0LPQvtC00LDRgtC10LvQuCDQvtCx0Y/Qt9Cw0L3RizoNCiAgICAgICAgLSDQt9Cw0YDQtdCz0LjRgdGC0YDQuNGA0L7QstCw0YLRjCDRgdC+0LLQvNC10YHRgtC90L4g0YEg0JfQsNC70L7Qs9C+0LTQtdGA0LbQsNGC0LXQu9C10Lwg0L3QsNGB0YLQvtGP0YnQuNC5INC00L7Qs9C+0LLQvtGADQogICDQsiDQv9C+0YDRj9C00LrQtSwg0L/RgNC10LTRg9GB0LzQvtGC0YDQtdC90L3QvtC8INC00LXQudGB0YLQstGD0Y7RidC40Lwg0LfQsNC60L7QvdC+0LTQsNGC0LXQu9GM0YHRgtCy0L7QvCDQoNCkOw0KICAgICAgICAtINC/0YDQuNC90LjQvNCw0YLRjCDRgdC+0L7RgtCy0LXRgtGB0YLQstGD0Y7RidC40LUg0LzQtdGA0Ysg0Log0YHQvtGF0YDQsNC90L3QvtGB0YLQuCDQutCy0LDRgNGC0LjRgNGLLCAg0LLQutC70Y7Rh9Cw0Y8NCiAgINGC0LXQutGD0YnQuNC5INC4INC60LDQv9C40YLQsNC70YzQvdGL0Lkg0YDQtdC80L7QvdGCOw0KICAgICAgICAtINC+0YHRg9GJ0LXRgdGC0LLQu9GP0YLRjCDQvdC10L7QsdGF0L7QtNC40LzRi9C1INC60L7QvNC80YPQvdCw0LvRjNC90YvQtSDQv9C70LDRgtC10LbQuDsNCiAgICAgICAgLSDQv9C+ICDRgtGA0LXQsdC+0LLQsNC90LjRjiAg0JfQsNC70L7Qs9C+0LTQtdGA0LbQsNGC0LXQu9GPICDQv9C10YDQtdC00LDQstCw0YLRjCAgINC10LzRgyAgINC90L7RgtCw0YDQuNCw0LvRjNC90L4NCiAgINC30LDQstC10YDQtdC90L3Ri9C1ICAg0LrQvtC/0LjQuCAgINC00L7QutGD0LzQtdC90YLQvtCyLCAg0L/QvtC00YLQstC10YDQttC00LDRjtGJ0LjRhSAg0L/RgNCw0LLQviAg0YHQvtCx0YHRgtCy0LXQvdC90L7RgdGC0LgNCiAgINCX0LDQu9C+0LPQvtC00LDRgtC10LvRjyDQvdCwINC30LDQu9C+0LbQtdC90L3Rg9GOINC60LLQsNGA0YLQuNGA0YM7DQogICAgICAgIC0g0LPQsNGA0LDQvdGC0LjRgNC+0LLQsNGC0YwsICDRh9GC0L4gINC90LAgINC00LXQvdGMICDQt9Cw0LrQu9GO0YfQtdC90LjRjyAg0L3QsNGB0YLQvtGP0YnQtdCz0L4gINC00L7Qs9C+0LLQvtGA0LANCiAgINC60LLQsNGA0YLQuNGA0LAsICDRg9C60LDQt9Cw0L3QvdCw0Y8g0LIg0L3QsNGB0YLQvtGP0YnQtdC8INC00L7Qs9C+0LLQvtGA0LUsICDQv9GA0LjQvdCw0LTQu9C10LbQsNGCICDQuNC8ICDQvdCwICDQv9GA0LDQstC1DQogICDQvtCx0YnQtdC5ICDRgdC+0LLQvNC10YHRgtC90L7QuSDRgdC+0LHRgdGC0LLQtdC90L3QvtGB0YLQuCwgINCwINGC0LDQutC20LUg0L3QtSDRj9Cy0LvRj9C10YLRgdGPINC/0YDQtdC00LzQtdGC0L7QvCDQt9Cw0LvQvtCz0LANCiAgINC/0L4g0LTRgNGD0LPQuNC8INC00L7Qs9C+0LLQvtGA0LDQvCDQuCDQvdC1ICDQvNC+0LbQtdGCICDQsdGL0YLRjCAg0L7RgtGH0YPQttC00LXQvdCwICDQv9C+ICDQuNC90YvQvCAg0L7RgdC90L7QstCw0L3QuNGP0LwNCiAgINGC0YDQtdGC0YzQuNC80Lgg0LvQuNGG0LDQvNC4LCDQsiDRgdC/0L7RgNC1INC4INC/0L7QtCDQsNGA0LXRgdGC0L7QvCDQvdC1INGB0L7RgdGC0L7QuNGCOw0KICAgICAgICAtINC90LXQvNC10LTQu9C10L3QvdC+INGD0LLQtdC00L7QvNC40YLRjCDQl9Cw0LvQvtCz0L7QtNC10YDQttCw0YLQtdC70Y8g0L4g0L3QsNC80LXRgNC10L3QuNC4INGB0LTQsNGC0YwgINC/0YDQtdC00LzQtdGCDQogICDQt9Cw0LvQvtCz0LAgICDQsiAgINCw0YDQtdC90LTRgyAgINC40LvQuCAgINCyICAg0LfQsNC70L7QsyAgINCy0YvQv9C+0LvQvdC10L3QuNGPICDQvtCx0Y/Qt9Cw0YLQtdC70YzRgdGC0LLQsCwgINC90LUNCiAgINC/0YDQtdC00YPRgdC80L7RgtGA0LXQvdC90L7Qs9C+INC90LDRgdGC0L7Rj9GJ0LjQvCDQtNC+0LPQvtCy0L7RgNC+0LwuDQogICAgICAgIDIuMS4xLiDQl9Cw0LvQvtCz0L7QtNCw0YLQtdC70Ywg0LjQvNC10LXRgiDQv9GA0LDQstC+Og0KICAgICAgICAtINCy0LvQsNC00LXRgtGMINC4INC/0L7Qu9GM0LfQvtCy0LDRgtGM0YHRjyDQt9Cw0LvQvtC20LXQvdC90L7QuSDQutCy0LDRgNGC0LjRgNC+0Lkg0LIg0YHQvtC+0YLQstC10YLRgdGC0LLQuNC4INGBINC10LUNCiAgINC90LDQt9C90LDRh9C10L3QuNC10Lw7DQogICAgICAgIC0g0YEg0L/QuNGB0YzQvNC10L3QvdC+0LPQviDRgdC+0LPQu9Cw0YHQuNGPINCX0LDQu9C+0LPQvtC00LXRgNC20LDRgtC10LvRjyDRgNCw0YHQv9C+0YDRj9C20LDRgtGM0YHRjyAg0L/RgNC10LTQvNC10YLQvtC8DQogICDQt9Cw0LvQvtCz0LAgINC/0YPRgtC10LwgINC10LPQviAg0L7RgtGH0YPQttC00LXQvdC40Y8gINGBICDQv9C10YDQtdCy0L7QtNC+0Lwg0L3QsCDQv9GA0LjQvtCx0YDQtdGC0LDRgtC10LvRjyDQtNC+0LvQs9CwINC/0L4NCiAgINC+0LHRj9C30LDRgtC10LvRjNGB0YLQstGDLCDQvtCx0LXRgdC/0LXRh9C10L3QvdC+0LzRgyDQt9Cw0LvQvtCz0L7QvCDQuNC70Lgg0L/Rg9GC0LXQvCDRgdC00LDRh9C4INCyINCw0YDQtdC90LTRgy4NCiAgICAgICAgMi4yLiDQl9Cw0LvQvtCz0L7QtNC10YDQttCw0YLQtdC70Ywg0L7QsdGP0LfQsNC9Og0KICAgICAgICAtINGB0L7QstC80LXRgdGC0L3QviDRgSDQl9Cw0LvQvtCz0L7QtNCw0YLQtdC70Y/QvNC4INC30LDRgNC10LPQuNGB0YLRgNC40YDQvtCy0LDRgtGMINC90LDRgdGC0L7Rj9GJ0LjQuSDQtNC+0LPQvtCy0L7RgCDQsg0KICAg0L/QvtGA0Y/QtNC60LUsINC/0YDQtdC00YPRgdC80L7RgtGA0LXQvdC90L7QvCDQtNC10LnRgdGC0LLRg9GO0YnQuNC8INC30LDQutC+0L3QvtC00LDRgtC10LvRjNGB0YLQstC+0Lwg0KDQpDsNCiAgICAgICAgLSDQvtC/0LvQsNGC0LjRgtGMINCy0YHQtSDRgNCw0YHRhdC+0LTRiyDQv9C+INGA0LXQs9C40YHRgtGA0LDRhtC40Lgg0L3QsNGB0YLQvtGP0YnQtdCz0L4g0LTQvtCz0L7QstC+0YDQsC4NCiAgICAgICAgMi4zLiDQl9Cw0LvQvtCz0L7QtNC10YDQttCw0YLQtdC70Ywg0LjQvNC10LXRgiDQv9GA0LDQstC+Og0KICAgICAgICAtINC/0YDQvtCy0LXRgNGP0YLRjCDQv9C+ICDQtNC+0LrRg9C80LXQvdGC0LDQvCAg0LggINGE0LDQutGC0LjRh9C10YHQutC4ICDQvdCw0LvQuNGH0LjQtSwgINGB0L7RgdGC0L7Rj9C90LjQtSAg0LgNCiAgINGD0YHQu9C+0LLQuNGPINGB0L7QtNC10YDQttCw0L3QuNGPINC30LDQu9C+0LbQtdC90L3QvtC5INC60LLQsNGA0YLQuNGA0Ys7DQogICAgICAgIC0g0YLRgNC10LHQvtCy0LDRgtGMICDQvtGCICDQl9Cw0LvQvtCz0L7QtNCw0YLQtdC70Y8gINC/0YDQuNC90Y/RgtC40Y8gINC80LXRgCwgICDQvdC10L7QsdGF0L7QtNC40LzRi9GFICAg0LTQu9GPDQogICDRgdC+0YXRgNCw0L3QtdC90LjRjyDQv9GA0LXQtNC80LXRgtCwINC30LDQu9C+0LPQsCDQsiDQvdCw0LTQu9C10LbQsNGJ0LXQvCDRgdC+0YHRgtC+0Y/QvdC40Lg7DQogICAgICAgIC0g0YLRgNC10LHQvtCy0LDRgtGMICDQvtGCICDQu9GO0LHQvtCz0L4gICDQu9C40YbQsCAgINC/0YDQtdC60YDQsNGJ0LXQvdC40Y8gICDQv9C+0YHRj9Cz0LDRgtC10LvRjNGB0YLQsiAgINC90LANCiAgINC30LDQu9C+0LbQtdC90L3Rg9GOINC60LLQsNGA0YLQuNGA0YMsINGD0LPRgNC+0LbQsNGO0YnQuNGFINC10LUg0YPRgtGA0LDRgtC+0Lkg0LjQu9C4INC/0L7QstGA0LXQttC00LXQvdC40LXQvC4NCiAgICAgICAgMi40LiDQl9Cw0LvQvtCz0L7QtNC10YDQttCw0YLQtdC70Ywg0LHQtdC3INC00L7Qv9C+0LvQvdC40YLQtdC70YzQvdC+0LPQviDRgdC+0LPQu9Cw0YHQvtCy0LDQvdC40Y8g0L/RgNC40L7QsdGA0LXRgtCw0LXRgg0KICAg0L/RgNCw0LLQviAgINC+0LHRgNCw0YLQuNGC0YwgINCy0LfRi9GB0LrQsNC90LjQtSAg0L3QsCAg0L/RgNC10LTQvNC10YIgINC30LDQu9C+0LPQsCAgKNC/LiAgMS4xICDQvdCw0YHRgtC+0Y/RidC10LPQvg0KICAg0LTQvtCz0L7QstC+0YDQsCksICDQtdGB0LvQuCDQsiDQvNC+0LzQtdC90YIg0L3QsNGB0YLRg9C/0LvQtdC90LjRjyDRgdGA0L7QutCwINC40YHQv9C+0LvQvdC10L3QuNGPICDQvtCx0Y/Qt9Cw0YLQtdC70YzRgdGC0LLQsCwNCiAgINC+0LHQtdGB0L/QtdGH0LXQvdC90L7Qs9C+ICDQt9Cw0LvQvtCz0L7QvCwgINC+0L3QviAg0L3QtSAg0LHRg9C00LXRgiAg0LjRgdC/0L7Qu9C90LXQvdC+LCAg0LvQuNCx0L4g0LrQvtCz0LTQsCDQsiDRgdC40LvRgw0KICAg0LfQsNC60L7QvdCwINCX0LDQu9C+0LPQvtC00LXRgNC20LDRgtC10LvRjCDQstC/0YDQsNCy0LUg0L7RgdGD0YnQtdGB0YLQstC40YLRjCDQstC30YvRgdC60LDQvdC40LUg0YDQsNC90LXQtS4NCiAgIA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAzLiDQntCh0J7QkdCr0JUg0KPQodCb0J7QktCY0K8NCiAgIA0KICAgICAgICAzLjEuINCf0YDQtdC00LzQtdGCINC30LDQu9C+0LPQsCDQv9C+INC90LDRgdGC0L7Rj9GJ0LXQvNGDINC00L7Qs9C+0LLQvtGA0YMgKNC60LLQsNGA0YLQuNGA0LApINC80L7QttC10YIgINCx0YvRgtGMDQogICDQv9C+ICDRgdC+0LPQu9Cw0YjQtdC90LjRjiAg0YHRgtC+0YDQvtC9INC30LDQvNC10L3QtdC9INC00YDRg9Cz0LjQvCDQuNC80YPRidC10YHRgtCy0L7QvC4gINCh0L7Qs9C70LDRiNC10L3QuNC1INGB0YLQvtGA0L7QvSDQvg0KICAg0LfQsNC80LXQvdC1ICDQt9Cw0LvQvtC20LXQvdC90L7Qs9C+ICDQuNC80YPRidC10YHRgtCy0LAgINGB0L7RgdGC0LDQstC70Y/QtdGC0YHRjyAg0LIgINC/0LjRgdGM0LzQtdC90L3QvtC5ICDRhNC+0YDQvNC1ICAg0LINCiAgINGB0L7QvtGC0LLQtdGC0YHRgtCy0LjQtSAgINGBICAg0LTQtdC50YHRgtCy0YPRjtGJ0LjQvCAgINC30LDQutC+0L3QvtC00LDRgtC10LvRjNGB0YLQstC+0LwgICDQoNCkICAg0LggICDRj9Cy0LvRj9C10YLRgdGPDQogICDQvdC10L7RgtGK0LXQvNC70LXQvNC+0Lkg0YfQsNGB0YLRjNGOINC90LDRgdGC0L7Rj9GJ0LXQs9C+INC00L7Qs9C+0LLQvtGA0LAuDQogICAgICAgIDMuMi4g0JLQt9Cw0LjQvNC+0L7RgtC90L7RiNC10L3QuNGPICDRgdGC0L7RgNC+0L0sICDQv9GA0Y/QvNC+ICDQvdC10YPRgNC10LPRg9C70LjRgNC+0LLQsNC90L3Ri9C1INC90LDRgdGC0L7Rj9GJ0LjQvA0KICAg0LTQvtCz0L7QstC+0YDQvtC8LCAg0YDQtdCz0LvQsNC80LXQvdGC0LjRgNGD0Y7RgtGB0Y8g0LTQtdC50YHRgtCy0YPRjtGJ0LjQvCDQt9Cw0LrQvtC90L7QtNCw0YLQtdC70YzRgdGC0LLQvtC8ICDQoNC+0YHRgdC40LnRgdC60L7QuQ0KICAg0KTQtdC00LXRgNCw0YbQuNC4Lg0KICAgICAgICAzLjMuINCX0LDQu9C+0LMg0L7QsdC10YHQv9C10YfQuNCy0LDQtdGCINGC0YDQtdCx0L7QstCw0L3QuNGPINC30LDQu9C+0LPQvtC00LXRgNC20LDRgtC10LvRjyDQsiDRgtC+0LwgINC+0LHRitC10LzQtSwNCiAgINCyICDQutCw0LrQvtC8ICDQvtC90LggINGB0YPRidC10YHRgtCy0YPRjtGCICDQuiAg0LzQvtC80LXQvdGC0YMgINC40YUg0YTQsNC60YLQuNGH0LXRgdC60L7Qs9C+INGD0LTQvtCy0LvQtdGC0LLQvtGA0LXQvdC40Y8sDQogICDQstC60LvRjtGH0LDRjyDQv9GA0L7RhtC10L3RgtGLLCAg0YPQsdGL0YLQutC4LCAg0L/RgNC40YfQuNC90LXQvdC90YvQtSDQv9GA0L7RgdGA0L7Rh9C60L7QuSDQuNGB0L/QvtC70L3QtdC90LjRjywg0LAg0YLQsNC60LbQtQ0KICAg0L3QtdGD0YHRgtC+0LnQutGDINC4INC00YDRg9Cz0LjQtS4NCiAgICAgICAgMy40LiDQkiAg0YHQu9GD0YfQsNC1ICDRh9Cw0YHRgtC40YfQvdC+0LPQviAg0LjRgdC/0L7Qu9C90LXQvdC40Y8gINC30LDQtdC80YnQuNC60L7QvCAgINC+0LHQtdGB0L/QtdGH0LXQvdC90L7Qs9C+DQogICDQt9Cw0LvQvtCz0L7QvCAg0L7QsdGP0LfQsNGC0LXQu9GM0YHRgtCy0LAgINC30LDQu9C+0LMgINGB0L7RhdGA0LDQvdGP0LXRgtGB0Y8gINCyINC/0LXRgNCy0L7QvdCw0YfQsNC70YzQvdC+0Lwg0L7QsdGK0LXQvNC1INC00L4NCiAgINC/0L7Qu9C90L7Qs9C+INC40YHQv9C+0LvQvdC10L3QuNGPINC+0LHQtdGB0L/QtdGH0LXQvdC90L7Qs9C+INC40Lwg0L7QsdGP0LfQsNGC0LXQu9GM0YHRgtCy0LAuDQogICAgICAgIDMuNS4g0JfQsNC70L7QsyDRgdC+0YXRgNCw0L3Rj9C10YIg0YHQstC+0Y4g0YHQuNC70YMg0LIg0YHQu9GD0YfQsNC1LCDQtdGB0LvQuCDQv9GA0LDQstC+INGB0L7QsdGB0YLQstC10L3QvdC+0YHRgtC4DQogICDQvdCwINC30LDQu9C+0LbQtdC90L3Rg9GOINC60LLQsNGA0YLQuNGA0YMg0L/QtdGA0LXRhdC+0LTQuNGCINC6INGC0YDQtdGC0YzQtdC80YMg0LvQuNGG0YMuDQogICAgICAgIDMuNi4g0JLRgdC1ICAg0YDQsNGB0YXQvtC00YsgICDQv9C+ICDRgNC10LPQuNGB0YLRgNCw0YbQuNC4ICDQvdCw0YHRgtC+0Y/RidC10LPQviAg0LTQvtCz0L7QstC+0YDQsCAg0L3QtdGB0LXRgg0KICAg0JfQsNC70L7Qs9C+0LTQtdGA0LbQsNGC0LXQu9GMLg0KICAgDQogICAgICAgICAgICAgICAgICA0LiDQn9Ce0KDQr9CU0J7QmiDQoNCQ0JfQoNCV0KjQldCd0JjQryDQodCf0J7QoNCe0JIg0Jgg0J/QoNCV0KLQldCd0JfQmNCZDQogICANCiAgICAgICAgNC4xLiDQodC/0L7RgNGLICDQuCAg0L/RgNC10YLQtdC90LfQuNC4LCAg0LLRi9GC0LXQutCw0Y7RidC40LUgINC40LcgICDQvdCw0YHRgtC+0Y/RidC10LPQviAgINC00L7Qs9C+0LLQvtGA0LANCiAgINGA0LDQt9GA0LXRiNCw0Y7RgtGB0Y8g0YHRgtC+0YDQvtC90LDQvNC4INC/0YPRgtC10Lwg0L/QtdGA0LXQs9C+0LLQvtGA0L7Qsi4NCiAgICAgICAgNC4yLiDQkiDRgdC70YPRh9Cw0LUg0L3QtdC00L7RgdGC0LjQttC10L3QuNGPINGB0L7Qs9C70LDRiNC10L3QuNGPINC/0YPRgtC10Lwg0L/QtdGA0LXQs9C+0LLQvtGA0L7QsiwgINGB0L/QvtGA0Ysg0LgNCiAgINGA0LDQt9C90L7Qs9C70LDRgdC40Y8gINC/0L7QtNC70LXQttCw0YIgINGA0LDQt9GA0LXRiNC10L3QuNGOICDQsiDRgdGD0LTQtdCx0L3QvtC8INC/0L7RgNGP0LTQutC1INCyINGB0L7QvtGC0LLQtdGC0YHRgtCy0LjQtSDRgQ0KICAg0LfQsNC60L7QvdC+0LTQsNGC0LXQu9GM0YHRgtCy0L7QvCDQoNCkLg0KICAgDQogICAgICAgICAgICAgIDUuINCY0JfQnNCV0J3QldCd0JjQlSwg0KDQkNCh0KLQntCg0JbQldCd0JjQlSDQmCDQn9Cg0JXQmtCg0JDQqdCV0J3QmNCVINCU0J7Qk9Ce0JLQntCg0JANCiAgIA0KICAgICAgICA1LjEuINCY0LfQvNC10L3QtdC90LjQtSDQuCDRgNCw0YHRgtC+0YDQttC10L3QuNC1INC90LDRgdGC0L7Rj9GJ0LXQs9C+INC00L7Qs9C+0LLQvtGA0LAg0L/RgNC+0LjQt9Cy0L7QtNC40YLRgdGPICDQv9C+DQogICDQstC30LDQuNC80L3QvtC80YMg0YHQvtCz0LvQsNGI0LXQvdC40Y4g0YHRgtC+0YDQvtC9Lg0KICAgICAgICA1LjIuINCd0LDRgdGC0L7Rj9GJ0LjQuSDQtNC+0LPQvtCy0L7RgCDQv9GA0LXQutGA0LDRidCw0LXRgiDRgdCy0L7QtSDQtNC10LnRgdGC0LLQuNC1Og0KICAgICAgICAtINC/0YDQuCDQv9GA0LXQutGA0LDRidC10L3QuNC4INC+0LHQtdGB0L/QtdGH0LXQvdC90L7Qs9C+INC30LDQu9C+0LPQvtC8INC+0LHRj9C30LDRgtC10LvRjNGB0YLQstCwOw0KICAgICAgICAtINC/0YDQuCDQv9C10YDQtdGF0L7QtNC1INC/0YDQsNCy0LAg0L3QsCDQv9GA0LXQtNC80LXRgiDQt9Cw0LvQvtCz0LAg0Log0JfQsNC70L7Qs9C+0LTQtdGA0LbQsNGC0LXQu9GOOw0KICAgICAgICAtINC/0YDQuCAg0LTQvtGB0YLQuNC20LXQvdC40Y8gINC/0LjRgdGM0LzQtdC90L3QvtCz0L4gINGB0L7Qs9C70LDRgdC40Y8gINGB0YLQvtGA0L7QvSAg0L3QsCAg0YDQsNGB0YLQvtGA0LbQtdC90LjQtQ0KICAg0L3QsNGB0YLQvtGP0YnQtdCz0L4g0LTQvtCz0L7QstC+0YDQsC4NCiAgIA0KICAgICAgICAgICAgICAgICAgICAgICAgIDYuINCh0KDQntCaINCU0JXQmdCh0KLQktCY0K8g0JTQntCT0J7QktCe0KDQkA0KICAgDQogICAgICAgIDYuMS4g0J3QsNGB0YLQvtGP0YnQuNC5ICDQtNC+0LPQvtCy0L7RgCAgINCy0YHRgtGD0L/QsNC10YIgICDQsiAgINGB0LjQu9GDICAg0YEgICDQvNC+0LzQtdC90YLQsCAgINC10LPQvg0KICAg0LPQvtGB0YPQtNCw0YDRgdGC0LLQtdC90L3QvtC5ICDRgNC10LPQuNGB0YLRgNCw0YbQuNC4INC4INC00LXQudGB0YLQstGD0LXRgiDQtNC+INC/0L7Qu9C90L7Qs9C+INCy0YvQv9C+0LvQvdC10L3QuNGPINGD0YHQu9C+0LLQuNC5DQogICDQtNC+0LPQvtCy0L7RgNCwLg0KICAgICAgICA2LjIuINCh0YDQvtC6ICDQtNC10LnRgdGC0LLQuNGPICDQtNC+0LPQvtCy0L7RgNCwICDQvNC+0LbQtdGCICDQsdGL0YLRjCAg0L/RgNC+0LTQu9C10L0g0L/QviDRgdC+0LPQu9Cw0YjQtdC90LjRjg0KICAg0YHRgtC+0YDQvtC9Lg0KICAgICAgICA2LjMuINCU0L7Qs9C+0LLQvtGAICAgINGB0L7RgdGC0LDQstC70LXQvSAgICDQsiAgINGC0YDQtdGFICAg0Y3QutC30LXQvNC/0LvRj9GA0LDRhSwgICDQvtC00LjQvSAgINC00LvRjw0KICAg0JfQsNC70L7Qs9C+0LTQtdGA0LbQsNGC0LXQu9GPIC0g0L/QviDQvtC00L3QvtC80YMg0Y3QutC30LXQvNC/0LvRj9GA0YMg0LTQu9GPINC60LDQttC00L7Qs9C+INC40Lcg0JfQsNC70L7Qs9C+0LTQsNGC0LXQu9C10LkuDQogICAgICAgINCS0YHQtSDRjdC60LfQtdC80L/Qu9GP0YDRiyDQuNC80LXRjtGCINC+0LTQuNC90LDQutC+0LLRg9GOINGO0YDQuNC00LjRh9C10YHQutGD0Y4g0YHQuNC70YMuDQogICAgICAgIDYuNC4g0J/RgNC40LvQvtC20LXQvdC40Y8g0Log0LTQvtCz0L7QstC+0YDRgzoNCiAgICAgICAgMS4g0JDQutGCINC+0YbQtdC90LrQuCDRgdGC0L7QuNC80L7RgdGC0Lgg0LrQstCw0YDRgtC40YDRiy4NCiAgICAgICAgMi4g0JTQvtC60YPQvNC10L3RgtGLLCDRg9C00L7RgdGC0L7QstC10YDRj9GO0YnQuNC1INC/0YDQsNCy0L4g0YHQvtCx0YHRgtCy0LXQvdC90L7RgdGC0Lgg0LPRgNCw0LbQtNCw0L0gX19fX19fX18NCiAgIF9fX19fX19fX19fX19fXyDQuCBfX19fX19fX19fX19fX19fX19fX19fX19fINC90LAg0LTQsNC90L3Rg9GOINC60LLQsNGA0YLQuNGA0YMuDQogICANCiAgICAgICAgICAgICAgICAgICAgICAgIDcuINCQ0JTQoNCV0KHQkCDQmCDQoNCV0JrQktCY0JfQmNCi0Ksg0KHQotCe0KDQntCdDQogICANCiAgICAgICAg0JfQsNC70L7Qs9C+0LTQtdGA0LbQsNGC0LXQu9GMOiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCiAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCiAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCiAgIA0KICAgICAgICDQl9Cw0LvQvtCz0L7QtNCw0YLQtdC70Lg6DQogICAgICAgIDEuIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAo0YTQsNC80LjQu9C40Y8sINC40LzRjywg0L7RgtGH0LXRgdGC0LLQvikNCiAgIA0KICAg0L/QsNGB0L/QvtGA0YI6INGB0LXRgNC40Y8gX19fX19fX19fX19fXyBO0L4uIF9fX19fX19fX19fLCDQstGL0LTQsNC9IF9fX19fX19fX19fX19fX19fXw0KICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLA0KICAg0L/RgNC+0LbQuNCy0LDQtdGCINC/0L4g0LDQtNGA0LXRgdGDOiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQogICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18uDQogICANCiAgICAgICAgMi4gX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICjRhNCw0LzQuNC70LjRjywg0LjQvNGPLCDQvtGC0YfQtdGB0YLQstC+KQ0KICAgDQogICDQv9Cw0YHQv9C+0YDRgjog0YHQtdGA0LjRjyBfX19fX19fX19fX19fIE7Qvi4gX19fX19fX19fX18sINCy0YvQtNCw0L0gX19fX19fX19fX19fX19fX19fDQogICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18sDQogICDQv9GA0L7QttC40LLQsNC10YIg0L/QviDQsNC00YDQtdGB0YM6IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCiAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXy4NCiAgIA0KICAgDQogICAgICAgINCX0LDQu9C+0LPQvtC00LXRgNC20LDRgtC10LvRjCBfX19fX19fX19fX19fX19fX19fXyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBfX19fX19fX19fX19fX18NCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg0Jwu0J8uICAgICAgICAgICAgICAgICAgICjQv9C+0LTQv9C40YHRjCkNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg0Jwu0J8uDQogICANCiAgICAgICAg0JfQsNC70L7Qs9C+0LTQsNGC0LXQu9C4DQogICAgICAgICAgICAgICAgICAgICAgICBfX19fX19fX19fX19fX19fX19fX18gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBfX19fX19fX19fX19fDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICjQv9C+0LTQv9C40YHRjCkNCiAgICAgICAgICAgICAgICAgICAgICAgIF9fX19fX19fX19fX19fX19fX19fXw0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBfX19fX19fX19fX19fDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAo0L/QvtC00L/QuNGB0YwpDQogICANCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg0JrQntCc0JzQldCd0KLQkNCg0JjQmDoNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgLS0tLS0tLS0tLS0tDQogICAgICAgINCU0L7Qs9C+0LLQvtGAINC30LDQu9C+0LPQsCAg0L/QvtC00LvQtdC20LjRgiAg0L3QvtGC0LDRgNC40LDQu9GM0L3QvtC80YMgINGD0LTQvtGB0YLQvtCy0LXRgNC10L3QuNGOLiAgKNCU0L7Qs9C+0LLQvtGADQogICDQtNC+0LvQttC10L0g0LHRi9GC0Ywg0L/QvtC00L/QuNGB0LDQvSDQsiDQv9GA0LjRgdGD0YLRgdGC0LLQuNC4INC90L7RgtCw0YDQuNGD0YHQsCkuDQogICAgICAgINCU0L7Qs9C+0LLQvtGAINC30LDQu9C+0LPQsCAg0LrQstCw0YDRgtC40YDRiyAg0L/QvtC00LvQtdC20LjRgiAg0LPQvtGB0YPQtNCw0YDRgdGC0LLQtdC90L3QvtC5ICDRgNC10LPQuNGB0YLRgNCw0YbQuNC4Lg0KICAgKNCU0LvRjyDQsy4g0JzQvtGB0LrQstGLIC0g0LIg0JTQtdC/0LDRgNGC0LDQvNC10L3RgtC1INC80YPQvdC40YbQuNC/0LDQu9GM0L3QvtCz0L4g0LbQuNC70YzRjykuDQoNCiAgDQo8L3ByZT48L2Rpdj4NCjwvYm9keT4NCjwvaHRtbD4=",
+    "mime_type": "text/html",
+    "language": "ru",
+    "locale": "ru"
+  },
+  "ingestion_preflight": {
+    "mime_type": "text/html",
+    "extractor": "html:regex",
+    "extraction_source": "html:regex",
+    "extraction_ok": true,
+    "error": null,
+    "extraction_error": null,
+    "sha256": "5320cebb2a48253cdcd6ed80ee4b40c9bc9b54a0ccabb51a2cabe9824453cae7"
+  },
+  "metrics": {
+    "risk_count": 1,
+    "high_risk_count": 0,
+    "disputed_clause_count": 2,
+    "asymmetry_signal_count": 0,
+    "contract_type": "loan_security_agreement"
+  },
+  "analysis": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'obrazets-dogovor-zaloga-kvartiri-prinadlezhaschey-zalogodatelyam. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Заемщик'. Определен тип договора: Договор займа / залога / гарантии (уверенность 88%, правовая рамка: ГК РФ, главы 23, 42, 43). Ключевые обязательства по договору для роли 'Заемщик': ПРАВА И ОБЯЗАННОСТИ СТОРОН 2; Залогодатели обязаны: - зарегистрировать совместно с Залогодержателем настоящий договор в порядке, предусмотренном действующим законодательством РФ; Залогодержатель обязан: - совместно с Залогодателями зарегистрировать настоящий договор в порядке, предусмотренном действующим законодательством РФ. Условия оплаты: - оплатить все расходы по регистрации настоящего договора. Сроки и дедлайны: , заключенному между ЗАО _________ ________________ и __________________________, именуем__ в дальнейшем \"Заемщик\" на сумму _____________ (___________________________________) (прописью) рублей на срок ___________________________, принадлежащую им на праве собственности квартиру стоимостью ____________________________________ (сумма прописью) рублей; 1, остается у Залогодателя на весь срок действия настоящего договора; 1 настоящего договора), если в момент наступления срока исполнения обязательства, обеспеченного залогом, оно не будет исполнено, либо когда в силу закона Залогодержатель вправе осуществить взыскание ранее. Штрафы и санкции: Залог обеспечивает требования залогодержателя в том объеме, в каком они существуют к моменту их фактического удовлетворения, включая проценты, убытки, причиненные просрочкой исполнения, а также неустойку и другие. Найдено спорных или расплывчатых пунктов: 2.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Заемщик'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Образец. Договор залога квартиры, принадлежащей залогодателям, для обеспечения возврата суммы займа по договору займа - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР Nо. ____ залога имущества (квартиры) г. ________________ \"__\"_________ 20__ г. Закрытое акционерное общество _____________________________, (наименование общества) именуемое в дальнейшем \"Залогодержатель\", в лице _____________________ (должность,...",
+        "dispute_reason": "Формулировка зависит от будущего согласования и не содержит исполнимого критерия.",
+        "possible_consequence": "При исполнении может возникнуть спор о том, что именно стороны должны были согласовать.",
+        "confidence": 0.79
+      },
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Образец. Договор залога квартиры, принадлежащей залогодателям, для обеспечения возврата суммы займа по договору займа - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР Nо. ____ залога имущества (квартиры) г. ________________ \"__\"_________ 20__ г. Закрытое акционерное общество _____________________________, (наименование общества) именуемое в дальнейшем \"Залогодержатель\", в лице _____________________ (должность,...",
+        "dispute_reason": "Одна из сторон получила дискреционное право без достаточных ограничителей.",
+        "possible_consequence": "Это может привести к одностороннему применению условия и спору о пределах такого права.",
+        "confidence": 0.76
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Заемщик",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Заемщик'.",
+      "must_do": [
+        "ПРАВА И ОБЯЗАННОСТИ СТОРОН 2.",
+        "Залогодатели обязаны: - зарегистрировать совместно с Залогодержателем настоящий договор в порядке, предусмотренном действующим законодательством РФ.",
+        "Залогодержатель обязан: - совместно с Залогодателями зарегистрировать настоящий договор в порядке, предусмотренном действующим законодательством РФ.",
+        "(Договор должен быть подписан в присутствии нотариуса)."
+      ],
+      "should_review": [
+        "- гарантировать, что на день заключения настоящего договора квартира, указанная в настоящем договоре, принадлежат им на праве общей совместной собственности, а также не является предметом залога по другим договорам и не может быть отчуждена по иным основаниям третьими лицами, в споре и под арестом не состоит.",
+        "1 настоящего договора), если в момент наступления срока исполнения обязательства, обеспеченного залогом, оно не будет исполнено, либо когда в силу закона Залогодержатель вправе осуществить взыскание ранее.",
+        "Предмет залога по настоящему договору (квартира) может быть по соглашению сторон заменен другим имуществом.",
+        "Срок действия договора может быть продлен по соглашению сторон."
+      ],
+      "payment_terms": [
+        "- оплатить все расходы по регистрации настоящего договора."
+      ],
+      "deadlines": [
+        ", заключенному между ЗАО _________ ________________ и __________________________, именуем__ в дальнейшем \"Заемщик\" на сумму _____________ (___________________________________) (прописью) рублей на срок ___________________________, принадлежащую им на праве собственности квартиру стоимостью ____________________________________ (сумма прописью) рублей.",
+        "1, остается у Залогодателя на весь срок действия настоящего договора.",
+        "1 настоящего договора), если в момент наступления срока исполнения обязательства, обеспеченного залогом, оно не будет исполнено, либо когда в силу закона Залогодержатель вправе осуществить взыскание ранее.",
+        "СРОК ДЕЙСТВИЯ ДОГОВОРА 6.",
+        "Срок действия договора может быть продлен по соглашению сторон."
+      ],
+      "penalties": [
+        "Залог обеспечивает требования залогодержателя в том объеме, в каком они существуют к моменту их фактического удовлетворения, включая проценты, убытки, причиненные просрочкой исполнения, а также неустойку и другие."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "5320cebb2a48253cdcd6ed80ee4b40c9bc9b54a0ccabb51a2cabe9824453cae7"
+    },
+    "contract_type": {
+      "type_id": "loan_security_agreement",
+      "confidence": 0.88,
+      "ru_name": "Договор займа / залога / гарантии",
+      "legal_framework": "ГК РФ, главы 23, 42, 43"
+    },
+    "asymmetry_signals": []
+  },
+  "result": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'obrazets-dogovor-zaloga-kvartiri-prinadlezhaschey-zalogodatelyam. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Заемщик'. Определен тип договора: Договор займа / залога / гарантии (уверенность 88%, правовая рамка: ГК РФ, главы 23, 42, 43). Ключевые обязательства по договору для роли 'Заемщик': ПРАВА И ОБЯЗАННОСТИ СТОРОН 2; Залогодатели обязаны: - зарегистрировать совместно с Залогодержателем настоящий договор в порядке, предусмотренном действующим законодательством РФ; Залогодержатель обязан: - совместно с Залогодателями зарегистрировать настоящий договор в порядке, предусмотренном действующим законодательством РФ. Условия оплаты: - оплатить все расходы по регистрации настоящего договора. Сроки и дедлайны: , заключенному между ЗАО _________ ________________ и __________________________, именуем__ в дальнейшем \"Заемщик\" на сумму _____________ (___________________________________) (прописью) рублей на срок ___________________________, принадлежащую им на праве собственности квартиру стоимостью ____________________________________ (сумма прописью) рублей; 1, остается у Залогодателя на весь срок действия настоящего договора; 1 настоящего договора), если в момент наступления срока исполнения обязательства, обеспеченного залогом, оно не будет исполнено, либо когда в силу закона Залогодержатель вправе осуществить взыскание ранее. Штрафы и санкции: Залог обеспечивает требования залогодержателя в том объеме, в каком они существуют к моменту их фактического удовлетворения, включая проценты, убытки, причиненные просрочкой исполнения, а также неустойку и другие. Найдено спорных или расплывчатых пунктов: 2.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Заемщик'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Образец. Договор залога квартиры, принадлежащей залогодателям, для обеспечения возврата суммы займа по договору займа - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР Nо. ____ залога имущества (квартиры) г. ________________ \"__\"_________ 20__ г. Закрытое акционерное общество _____________________________, (наименование общества) именуемое в дальнейшем \"Залогодержатель\", в лице _____________________ (должность,...",
+        "dispute_reason": "Формулировка зависит от будущего согласования и не содержит исполнимого критерия.",
+        "possible_consequence": "При исполнении может возникнуть спор о том, что именно стороны должны были согласовать.",
+        "confidence": 0.79
+      },
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Образец. Договор залога квартиры, принадлежащей залогодателям, для обеспечения возврата суммы займа по договору займа - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР Nо. ____ залога имущества (квартиры) г. ________________ \"__\"_________ 20__ г. Закрытое акционерное общество _____________________________, (наименование общества) именуемое в дальнейшем \"Залогодержатель\", в лице _____________________ (должность,...",
+        "dispute_reason": "Одна из сторон получила дискреционное право без достаточных ограничителей.",
+        "possible_consequence": "Это может привести к одностороннему применению условия и спору о пределах такого права.",
+        "confidence": 0.76
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Заемщик",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Заемщик'.",
+      "must_do": [
+        "ПРАВА И ОБЯЗАННОСТИ СТОРОН 2.",
+        "Залогодатели обязаны: - зарегистрировать совместно с Залогодержателем настоящий договор в порядке, предусмотренном действующим законодательством РФ.",
+        "Залогодержатель обязан: - совместно с Залогодателями зарегистрировать настоящий договор в порядке, предусмотренном действующим законодательством РФ.",
+        "(Договор должен быть подписан в присутствии нотариуса)."
+      ],
+      "should_review": [
+        "- гарантировать, что на день заключения настоящего договора квартира, указанная в настоящем договоре, принадлежат им на праве общей совместной собственности, а также не является предметом залога по другим договорам и не может быть отчуждена по иным основаниям третьими лицами, в споре и под арестом не состоит.",
+        "1 настоящего договора), если в момент наступления срока исполнения обязательства, обеспеченного залогом, оно не будет исполнено, либо когда в силу закона Залогодержатель вправе осуществить взыскание ранее.",
+        "Предмет залога по настоящему договору (квартира) может быть по соглашению сторон заменен другим имуществом.",
+        "Срок действия договора может быть продлен по соглашению сторон."
+      ],
+      "payment_terms": [
+        "- оплатить все расходы по регистрации настоящего договора."
+      ],
+      "deadlines": [
+        ", заключенному между ЗАО _________ ________________ и __________________________, именуем__ в дальнейшем \"Заемщик\" на сумму _____________ (___________________________________) (прописью) рублей на срок ___________________________, принадлежащую им на праве собственности квартиру стоимостью ____________________________________ (сумма прописью) рублей.",
+        "1, остается у Залогодателя на весь срок действия настоящего договора.",
+        "1 настоящего договора), если в момент наступления срока исполнения обязательства, обеспеченного залогом, оно не будет исполнено, либо когда в силу закона Залогодержатель вправе осуществить взыскание ранее.",
+        "СРОК ДЕЙСТВИЯ ДОГОВОРА 6.",
+        "Срок действия договора может быть продлен по соглашению сторон."
+      ],
+      "penalties": [
+        "Залог обеспечивает требования залогодержателя в том объеме, в каком они существуют к моменту их фактического удовлетворения, включая проценты, убытки, причиненные просрочкой исполнения, а также неустойку и другие."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "5320cebb2a48253cdcd6ed80ee4b40c9bc9b54a0ccabb51a2cabe9824453cae7"
+    },
+    "contract_type": {
+      "type_id": "loan_security_agreement",
+      "confidence": 0.88,
+      "ru_name": "Договор займа / залога / гарантии",
+      "legal_framework": "ГК РФ, главы 23, 42, 43"
+    },
+    "asymmetry_signals": []
+  },
+  "finished_at": "2026-04-28T16:12:37.373812+00:00",
+  "duration_ms": 179.68
+}

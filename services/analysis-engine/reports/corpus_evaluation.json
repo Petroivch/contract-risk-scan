@@ -1,0 +1,2094 @@
+{
+  "generated_at": "2026-04-28T16:20:11.207228+00:00",
+  "golden_path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\contract-risk-scan\\services\\analysis-engine\\tests\\golden_set\\cases.json",
+  "results_dir": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\contract-risk-scan\\services\\analysis-engine\\artifacts\\corpus_results_iter2",
+  "missing_case_ids": [],
+  "summary": {
+    "total_cases": 88,
+    "expected_high_risks": 78,
+    "found_high_risks": 81,
+    "tp": 70,
+    "fp": 11,
+    "fn": 8,
+    "precision": 0.8642,
+    "recall": 0.8974,
+    "contract_type_accuracy": 0.9886,
+    "extractor_counts": {
+      "binary:utf8_decode": 15,
+      "html:regex": 73
+    },
+    "top_false_positives": {
+      "vague_material_breach": 3,
+      "strict_deadlines_without_dependency_carveout": 1,
+      "one_sided_penalty": 1,
+      "unilateral_termination_no_cause": 1,
+      "no_warranty_period": 1,
+      "long_payment_delay_no_security": 1,
+      "payment_asymmetry": 1,
+      "undefined_acceptance_criteria": 1,
+      "royalty_reduction_unclear": 1
+    },
+    "top_false_negatives": {
+      "one_sided_penalty": 4,
+      "ip_transfer_without_scope": 2,
+      "strict_deadlines_without_dependency_carveout": 2
+    }
+  },
+  "case_reports": [
+    {
+      "case_id": "agency_goods_ru",
+      "relative_path": "contract-risk-scan/services/analysis-engine/golden_set/docs/agency_goods.txt",
+      "role": "Агент",
+      "counterparty_role": "Предприятие",
+      "status": "completed",
+      "extractor": "binary:utf8_decode",
+      "extraction_ok": true,
+      "expected_contract_type": "agency_agreement",
+      "actual_contract_type": "agency_agreement",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [
+        "uncapped_daily_penalty"
+      ],
+      "found_high_risk_ids": [
+        "uncapped_daily_penalty"
+      ],
+      "tp": [
+        "uncapped_daily_penalty"
+      ],
+      "fp": [],
+      "fn": [],
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "case_id": "autstaffing_ru",
+      "relative_path": "contract-risk-scan/services/analysis-engine/golden_set/docs/autstaffing.txt",
+      "role": "Исполнитель",
+      "counterparty_role": "Заказчик",
+      "status": "completed",
+      "extractor": "binary:utf8_decode",
+      "extraction_ok": true,
+      "expected_contract_type": "labor_contract",
+      "actual_contract_type": "labor_contract",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [
+        "unlimited_liability"
+      ],
+      "found_high_risk_ids": [
+        "unlimited_liability"
+      ],
+      "tp": [
+        "unlimited_liability"
+      ],
+      "fp": [],
+      "fn": [],
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "case_id": "commission_ru",
+      "relative_path": "contract-risk-scan/services/analysis-engine/golden_set/docs/commission.txt",
+      "role": "Комиссионер",
+      "counterparty_role": "Комитент",
+      "status": "completed",
+      "extractor": "binary:utf8_decode",
+      "extraction_ok": true,
+      "expected_contract_type": "agency_agreement",
+      "actual_contract_type": "agency_agreement",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [
+        "one_sided_penalty",
+        "uncapped_daily_penalty"
+      ],
+      "found_high_risk_ids": [
+        "uncapped_daily_penalty"
+      ],
+      "tp": [
+        "uncapped_daily_penalty"
+      ],
+      "fp": [],
+      "fn": [
+        "one_sided_penalty"
+      ],
+      "precision": 1.0,
+      "recall": 0.5
+    },
+    {
+      "case_id": "contractor_ru",
+      "relative_path": "contract-risk-scan/services/analysis-engine/golden_set/docs/contractor.txt",
+      "role": "Подрядчик",
+      "counterparty_role": "Заказчик",
+      "status": "completed",
+      "extractor": "binary:utf8_decode",
+      "extraction_ok": true,
+      "expected_contract_type": "non_contract_legal_form",
+      "actual_contract_type": "non_contract_legal_form",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [],
+      "found_high_risk_ids": [],
+      "tp": [],
+      "fp": [],
+      "fn": [],
+      "precision": 0.0,
+      "recall": 0.0
+    },
+    {
+      "case_id": "dealer_ru",
+      "relative_path": "contract-risk-scan/services/analysis-engine/golden_set/docs/dealer.txt",
+      "role": "Дилер",
+      "counterparty_role": "Фирма",
+      "status": "completed",
+      "extractor": "binary:utf8_decode",
+      "extraction_ok": true,
+      "expected_contract_type": "non_contract_legal_form",
+      "actual_contract_type": "non_contract_legal_form",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [],
+      "found_high_risk_ids": [],
+      "tp": [],
+      "fp": [],
+      "fn": [],
+      "precision": 0.0,
+      "recall": 0.0
+    },
+    {
+      "case_id": "household_contract_ru",
+      "relative_path": "contract-risk-scan/services/analysis-engine/golden_set/docs/household_contract.txt",
+      "role": "Подрядчик",
+      "counterparty_role": "Заказчик",
+      "status": "completed",
+      "extractor": "binary:utf8_decode",
+      "extraction_ok": true,
+      "expected_contract_type": "construction_contract",
+      "actual_contract_type": "construction_contract",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [
+        "no_acceptance_deadline",
+        "payment_asymmetry",
+        "payment_conditioned_on_signed_act",
+        "uncapped_daily_penalty",
+        "undefined_acceptance_criteria"
+      ],
+      "found_high_risk_ids": [
+        "no_acceptance_deadline",
+        "payment_asymmetry",
+        "payment_conditioned_on_signed_act",
+        "strict_deadlines_without_dependency_carveout",
+        "uncapped_daily_penalty",
+        "undefined_acceptance_criteria",
+        "vague_material_breach"
+      ],
+      "tp": [
+        "no_acceptance_deadline",
+        "payment_asymmetry",
+        "payment_conditioned_on_signed_act",
+        "uncapped_daily_penalty",
+        "undefined_acceptance_criteria"
+      ],
+      "fp": [
+        "strict_deadlines_without_dependency_carveout",
+        "vague_material_breach"
+      ],
+      "fn": [],
+      "precision": 0.7143,
+      "recall": 1.0
+    },
+    {
+      "case_id": "rent_ru",
+      "relative_path": "contract-risk-scan/services/analysis-engine/golden_set/docs/rent.txt",
+      "role": "Наниматель",
+      "counterparty_role": "Наймодатель",
+      "status": "completed",
+      "extractor": "binary:utf8_decode",
+      "extraction_ok": true,
+      "expected_contract_type": "lease_agreement",
+      "actual_contract_type": "lease_agreement",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [
+        "operating_expenses_shift",
+        "retention_or_deposit_discretion",
+        "uncapped_daily_penalty"
+      ],
+      "found_high_risk_ids": [
+        "operating_expenses_shift",
+        "retention_or_deposit_discretion",
+        "uncapped_daily_penalty"
+      ],
+      "tp": [
+        "operating_expenses_shift",
+        "retention_or_deposit_discretion",
+        "uncapped_daily_penalty"
+      ],
+      "fp": [],
+      "fn": [],
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "case_id": "rent_auto_ru",
+      "relative_path": "contract-risk-scan/services/analysis-engine/golden_set/docs/rent_auto.txt",
+      "role": "Арендатор",
+      "counterparty_role": "Арендодатель",
+      "status": "completed",
+      "extractor": "binary:utf8_decode",
+      "extraction_ok": true,
+      "expected_contract_type": "lease_agreement",
+      "actual_contract_type": "lease_agreement",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [],
+      "found_high_risk_ids": [],
+      "tp": [],
+      "fp": [],
+      "fn": [],
+      "precision": 0.0,
+      "recall": 0.0
+    },
+    {
+      "case_id": "rent_vehicle_ru",
+      "relative_path": "contract-risk-scan/services/analysis-engine/golden_set/docs/rent_vehicle.txt",
+      "role": "Арендатор",
+      "counterparty_role": "Арендодатель",
+      "status": "completed",
+      "extractor": "binary:utf8_decode",
+      "extraction_ok": true,
+      "expected_contract_type": "lease_agreement",
+      "actual_contract_type": "lease_agreement",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [
+        "operating_expenses_shift",
+        "uncapped_daily_penalty"
+      ],
+      "found_high_risk_ids": [
+        "operating_expenses_shift",
+        "uncapped_daily_penalty"
+      ],
+      "tp": [
+        "operating_expenses_shift",
+        "uncapped_daily_penalty"
+      ],
+      "fp": [],
+      "fn": [],
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "case_id": "site_ru",
+      "relative_path": "contract-risk-scan/services/analysis-engine/golden_set/docs/site.txt",
+      "role": "Исполнитель",
+      "counterparty_role": "Заказчик",
+      "status": "completed",
+      "extractor": "binary:utf8_decode",
+      "extraction_ok": true,
+      "expected_contract_type": "non_contract_legal_form",
+      "actual_contract_type": "non_contract_legal_form",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [],
+      "found_high_risk_ids": [],
+      "tp": [],
+      "fp": [],
+      "fn": [],
+      "precision": 0.0,
+      "recall": 0.0
+    },
+    {
+      "case_id": "service_agreement_saas_ru",
+      "relative_path": "contract-risk-scan/services/analysis-engine/golden_set/docs/service_agreement_saas.txt",
+      "role": "Исполнитель",
+      "counterparty_role": "Заказчик",
+      "status": "completed",
+      "extractor": "binary:utf8_decode",
+      "extraction_ok": true,
+      "expected_contract_type": "service_agreement",
+      "actual_contract_type": "service_agreement",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [
+        "long_payment_delay_no_security",
+        "payment_asymmetry",
+        "payment_conditioned_on_signed_act",
+        "uncapped_daily_penalty",
+        "undefined_acceptance_criteria"
+      ],
+      "found_high_risk_ids": [
+        "long_payment_delay_no_security",
+        "one_sided_penalty",
+        "payment_asymmetry",
+        "payment_conditioned_on_signed_act",
+        "uncapped_daily_penalty",
+        "undefined_acceptance_criteria",
+        "unilateral_termination_no_cause"
+      ],
+      "tp": [
+        "long_payment_delay_no_security",
+        "payment_asymmetry",
+        "payment_conditioned_on_signed_act",
+        "uncapped_daily_penalty",
+        "undefined_acceptance_criteria"
+      ],
+      "fp": [
+        "one_sided_penalty",
+        "unilateral_termination_no_cause"
+      ],
+      "fn": [],
+      "precision": 0.7143,
+      "recall": 1.0
+    },
+    {
+      "case_id": "targeted_education_ru",
+      "relative_path": "contract-risk-scan/services/analysis-engine/golden_set/docs/targeted_education_agreement.txt",
+      "role": "Гражданин",
+      "counterparty_role": "Заказчик",
+      "status": "completed",
+      "extractor": "binary:utf8_decode",
+      "extraction_ok": true,
+      "expected_contract_type": "targeted_education_agreement",
+      "actual_contract_type": "targeted_education_agreement",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [
+        "support_reimbursement_after_withdrawal"
+      ],
+      "found_high_risk_ids": [
+        "support_reimbursement_after_withdrawal"
+      ],
+      "tp": [
+        "support_reimbursement_after_withdrawal"
+      ],
+      "fp": [],
+      "fn": [],
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "case_id": "loan_security_ru",
+      "relative_path": "contract-risk-scan/services/analysis-engine/golden_set/docs/loan_security_guarantee.txt",
+      "role": "Заемщик",
+      "counterparty_role": "Кредитор",
+      "status": "completed",
+      "extractor": "binary:utf8_decode",
+      "extraction_ok": true,
+      "expected_contract_type": "loan_security_agreement",
+      "actual_contract_type": "loan_security_agreement",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [
+        "bank_guarantee_on_demand"
+      ],
+      "found_high_risk_ids": [
+        "bank_guarantee_on_demand"
+      ],
+      "tp": [
+        "bank_guarantee_on_demand"
+      ],
+      "fp": [],
+      "fn": [],
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "case_id": "ip_license_ru",
+      "relative_path": "contract-risk-scan/services/analysis-engine/golden_set/docs/ip_license_agreement.txt",
+      "role": "Лицензиат",
+      "counterparty_role": "Лицензиар",
+      "status": "completed",
+      "extractor": "binary:utf8_decode",
+      "extraction_ok": true,
+      "expected_contract_type": "ip_agreement",
+      "actual_contract_type": "ip_agreement",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [
+        "ip_transfer_without_scope"
+      ],
+      "found_high_risk_ids": [
+        "no_warranty_period"
+      ],
+      "tp": [],
+      "fp": [
+        "no_warranty_period"
+      ],
+      "fn": [
+        "ip_transfer_without_scope"
+      ],
+      "precision": 0.0,
+      "recall": 0.0
+    },
+    {
+      "case_id": "supply_ru",
+      "relative_path": "contract-risk-scan/services/analysis-engine/golden_set/docs/supply_agreement.txt",
+      "role": "Поставщик",
+      "counterparty_role": "Покупатель",
+      "status": "completed",
+      "extractor": "binary:utf8_decode",
+      "extraction_ok": true,
+      "expected_contract_type": "supply_agreement",
+      "actual_contract_type": "supply_agreement",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [
+        "one_sided_penalty",
+        "uncapped_daily_penalty"
+      ],
+      "found_high_risk_ids": [
+        "long_payment_delay_no_security",
+        "one_sided_penalty",
+        "payment_asymmetry",
+        "uncapped_daily_penalty",
+        "undefined_acceptance_criteria"
+      ],
+      "tp": [
+        "one_sided_penalty",
+        "uncapped_daily_penalty"
+      ],
+      "fp": [
+        "long_payment_delay_no_security",
+        "payment_asymmetry",
+        "undefined_acceptance_criteria"
+      ],
+      "fn": [],
+      "precision": 0.4,
+      "recall": 1.0
+    },
+    {
+      "case_id": "dogovory_4__obrazets_dogovor_komissii_na_poisk_kontragenta_po_sdelke_s_tsely",
+      "relative_path": "договоры 4/obrazets-dogovor-komissii-na-poisk-kontragenta-po-sdelke-s-tsely.html",
+      "role": "Агент",
+      "counterparty_role": "Принципал",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "agency_agreement",
+      "actual_contract_type": "agency_agreement",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [
+        "uncapped_daily_penalty"
+      ],
+      "found_high_risk_ids": [
+        "uncapped_daily_penalty"
+      ],
+      "tp": [
+        "uncapped_daily_penalty"
+      ],
+      "fp": [],
+      "fn": [],
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "case_id": "dogovory_4__obrazets_dogovor_komissii_na_pokupku_valyuti",
+      "relative_path": "договоры 4/obrazets-dogovor-komissii-na-pokupku-valyuti.html",
+      "role": "Агент",
+      "counterparty_role": "Принципал",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "agency_agreement",
+      "actual_contract_type": "agency_agreement",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [
+        "one_sided_penalty",
+        "uncapped_daily_penalty"
+      ],
+      "found_high_risk_ids": [
+        "uncapped_daily_penalty"
+      ],
+      "tp": [
+        "uncapped_daily_penalty"
+      ],
+      "fp": [],
+      "fn": [
+        "one_sided_penalty"
+      ],
+      "precision": 1.0,
+      "recall": 0.5
+    },
+    {
+      "case_id": "dogovory_4__obrazets_dogovor_komissii_na_sovershenie_sdelki_po_prodazhe_imus",
+      "relative_path": "договоры 4/obrazets-dogovor-komissii-na-sovershenie-sdelki-po-prodazhe-imus.html",
+      "role": "Агент",
+      "counterparty_role": "Принципал",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "agency_agreement",
+      "actual_contract_type": "agency_agreement",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [
+        "one_sided_penalty",
+        "uncapped_daily_penalty"
+      ],
+      "found_high_risk_ids": [
+        "uncapped_daily_penalty"
+      ],
+      "tp": [
+        "uncapped_daily_penalty"
+      ],
+      "fp": [],
+      "fn": [
+        "one_sided_penalty"
+      ],
+      "precision": 1.0,
+      "recall": 0.5
+    },
+    {
+      "case_id": "dogovory_4__obrazets_dogovor_komissii_po_importu",
+      "relative_path": "договоры 4/obrazets-dogovor-komissii-po-importu.html",
+      "role": "Агент",
+      "counterparty_role": "Принципал",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "agency_agreement",
+      "actual_contract_type": "agency_agreement",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [],
+      "found_high_risk_ids": [],
+      "tp": [],
+      "fp": [],
+      "fn": [],
+      "precision": 0.0,
+      "recall": 0.0
+    },
+    {
+      "case_id": "dogovory_4__obrazets_dogovor_komissii_po_prodazhe_tovara",
+      "relative_path": "договоры 4/obrazets-dogovor-komissii-po-prodazhe-tovara.html",
+      "role": "Агент",
+      "counterparty_role": "Принципал",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "agency_agreement",
+      "actual_contract_type": "agency_agreement",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [
+        "retention_or_deposit_discretion"
+      ],
+      "found_high_risk_ids": [
+        "retention_or_deposit_discretion"
+      ],
+      "tp": [
+        "retention_or_deposit_discretion"
+      ],
+      "fp": [],
+      "fn": [],
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "case_id": "dogovory_4__obrazets_dogovor_porucheniya_na_zaklyuchenie_kontrakta_s_inostra",
+      "relative_path": "договоры 4/obrazets-dogovor-porucheniya-na-zaklyuchenie-kontrakta-s-inostra.html",
+      "role": "Агент",
+      "counterparty_role": "Принципал",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "agency_agreement",
+      "actual_contract_type": "agency_agreement",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [],
+      "found_high_risk_ids": [],
+      "tp": [],
+      "fp": [],
+      "fn": [],
+      "precision": 0.0,
+      "recall": 0.0
+    },
+    {
+      "case_id": "dogovory_4__primerniy_litsenzionniy_dogovor_obschego_tipa",
+      "relative_path": "договоры 4/primerniy-litsenzionniy-dogovor-obschego-tipa.html",
+      "role": "Агент",
+      "counterparty_role": "Принципал",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "agency_agreement",
+      "actual_contract_type": "agency_agreement",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [
+        "one_sided_penalty"
+      ],
+      "found_high_risk_ids": [
+        "royalty_reduction_unclear"
+      ],
+      "tp": [],
+      "fp": [
+        "royalty_reduction_unclear"
+      ],
+      "fn": [
+        "one_sided_penalty"
+      ],
+      "precision": 0.0,
+      "recall": 0.0
+    },
+    {
+      "case_id": "dogovory_4__dogovor_na_otkritie_scheta_i_raschetnokassovoe_obsluzhivanie",
+      "relative_path": "договоры 4/dogovor-na-otkritie-scheta-i-raschetnokassovoe-obsluzhivanie.html",
+      "role": "Исполнитель",
+      "counterparty_role": "Заказчик",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "consulting_agreement",
+      "actual_contract_type": "consulting_agreement",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [
+        "payment_asymmetry",
+        "strict_deadlines_without_dependency_carveout"
+      ],
+      "found_high_risk_ids": [
+        "payment_asymmetry",
+        "strict_deadlines_without_dependency_carveout"
+      ],
+      "tp": [
+        "payment_asymmetry",
+        "strict_deadlines_without_dependency_carveout"
+      ],
+      "fp": [],
+      "fn": [],
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "case_id": "dogovory_4__dogovor_o_poryadke_obsluzhivaniya_dokumentooborota_po_valyutnomu",
+      "relative_path": "договоры 4/dogovor-o-poryadke-obsluzhivaniya-dokumentooborota-po-valyutnomu.html",
+      "role": "Исполнитель",
+      "counterparty_role": "Заказчик",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "consulting_agreement",
+      "actual_contract_type": "consulting_agreement",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [
+        "ip_transfer_without_scope",
+        "long_payment_delay_no_security",
+        "payment_asymmetry",
+        "strict_deadlines_without_dependency_carveout"
+      ],
+      "found_high_risk_ids": [
+        "long_payment_delay_no_security",
+        "payment_asymmetry"
+      ],
+      "tp": [
+        "long_payment_delay_no_security",
+        "payment_asymmetry"
+      ],
+      "fp": [],
+      "fn": [
+        "ip_transfer_without_scope",
+        "strict_deadlines_without_dependency_carveout"
+      ],
+      "precision": 1.0,
+      "recall": 0.5
+    },
+    {
+      "case_id": "dogovory_4__dogovor_ob_otkritii_tekuschego_valyutnogo_scheta_i_raschetnokass",
+      "relative_path": "договоры 4/dogovor-ob-otkritii-tekuschego-valyutnogo-scheta-i-raschetnokass.html",
+      "role": "Исполнитель",
+      "counterparty_role": "Заказчик",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "consulting_agreement",
+      "actual_contract_type": "consulting_agreement",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [
+        "long_payment_delay_no_security",
+        "payment_asymmetry",
+        "strict_deadlines_without_dependency_carveout"
+      ],
+      "found_high_risk_ids": [
+        "long_payment_delay_no_security",
+        "payment_asymmetry",
+        "strict_deadlines_without_dependency_carveout"
+      ],
+      "tp": [
+        "long_payment_delay_no_security",
+        "payment_asymmetry",
+        "strict_deadlines_without_dependency_carveout"
+      ],
+      "fp": [],
+      "fn": [],
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "case_id": "dogovory_4__obrazets_dogovor_porucheniya_rossiyskogo_fonda_federalnogo_imusc",
+      "relative_path": "договоры 4/obrazets-dogovor-porucheniya-rossiyskogo-fonda-federalnogo-imusc.html",
+      "role": "Исполнитель",
+      "counterparty_role": "Заказчик",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "consulting_agreement",
+      "actual_contract_type": "consulting_agreement",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [
+        "strict_deadlines_without_dependency_carveout"
+      ],
+      "found_high_risk_ids": [
+        "strict_deadlines_without_dependency_carveout"
+      ],
+      "tp": [
+        "strict_deadlines_without_dependency_carveout"
+      ],
+      "fp": [],
+      "fn": [],
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "case_id": "dogovory_4__obrazets_dogovor_obyazatelnogo_lichnogo_strahovaniya_passazhirov",
+      "relative_path": "договоры 4/obrazets-dogovor-obyazatelnogo-lichnogo-strahovaniya-passazhirov.html",
+      "role": "Страхователь",
+      "counterparty_role": "Страховщик",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "insurance_agreement",
+      "actual_contract_type": "insurance_agreement",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [],
+      "found_high_risk_ids": [],
+      "tp": [],
+      "fp": [],
+      "fn": [],
+      "precision": 0.0,
+      "recall": 0.0
+    },
+    {
+      "case_id": "dogovory_4__obrazets_dogovor_sberegatelnogo_strahovaniya_zhizni_strahovatel",
+      "relative_path": "договоры 4/obrazets-dogovor-sberegatelnogo-strahovaniya-zhizni-strahovatel-.html",
+      "role": "Страхователь",
+      "counterparty_role": "Страховщик",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "insurance_agreement",
+      "actual_contract_type": "insurance_agreement",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [
+        "vague_material_breach"
+      ],
+      "found_high_risk_ids": [
+        "vague_material_breach"
+      ],
+      "tp": [
+        "vague_material_breach"
+      ],
+      "fp": [],
+      "fn": [],
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "case_id": "dogovory_4__obrazets_dogovor_smeshannogo_strahovaniya_zhizni_obekt_strahovan",
+      "relative_path": "договоры 4/obrazets-dogovor-smeshannogo-strahovaniya-zhizni-obekt-strahovan.html",
+      "role": "Страхователь",
+      "counterparty_role": "Страховщик",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "insurance_agreement",
+      "actual_contract_type": "insurance_agreement",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [
+        "vague_material_breach"
+      ],
+      "found_high_risk_ids": [
+        "vague_material_breach"
+      ],
+      "tp": [
+        "vague_material_breach"
+      ],
+      "fp": [],
+      "fn": [],
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "case_id": "dogovory_4__obrazets_dogovor_smeshannogo_strahovaniya_zhizni",
+      "relative_path": "договоры 4/obrazets-dogovor-smeshannogo-strahovaniya-zhizni.html",
+      "role": "Страхователь",
+      "counterparty_role": "Страховщик",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "insurance_agreement",
+      "actual_contract_type": "insurance_agreement",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [
+        "vague_material_breach"
+      ],
+      "found_high_risk_ids": [
+        "vague_material_breach"
+      ],
+      "tp": [
+        "vague_material_breach"
+      ],
+      "fp": [],
+      "fn": [],
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "case_id": "dogovory_4__obrazets_dogovor_strahovaniya_imuschestva_strahovatel_yuridiches",
+      "relative_path": "договоры 4/obrazets-dogovor-strahovaniya-imuschestva-strahovatel-yuridiches.html",
+      "role": "Страхователь",
+      "counterparty_role": "Страховщик",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "insurance_agreement",
+      "actual_contract_type": "insurance_agreement",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [
+        "vague_material_breach"
+      ],
+      "found_high_risk_ids": [
+        "vague_material_breach"
+      ],
+      "tp": [
+        "vague_material_breach"
+      ],
+      "fp": [],
+      "fn": [],
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "case_id": "dogovory_4__obrazets_dogovor_strahovaniya_lekarstvennogo_obespecheniya_raspo",
+      "relative_path": "договоры 4/obrazets-dogovor-strahovaniya-lekarstvennogo-obespecheniya-raspo.html",
+      "role": "Страхователь",
+      "counterparty_role": "Страховщик",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "insurance_agreement",
+      "actual_contract_type": "insurance_agreement",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [],
+      "found_high_risk_ids": [],
+      "tp": [],
+      "fp": [],
+      "fn": [],
+      "precision": 0.0,
+      "recall": 0.0
+    },
+    {
+      "case_id": "dogovory_4__obrazets_dogovor_strahovaniya_otvetstvennosti_litsa_za_vred_pric",
+      "relative_path": "договоры 4/obrazets-dogovor-strahovaniya-otvetstvennosti-litsa-za-vred-pric.html",
+      "role": "Страхователь",
+      "counterparty_role": "Страховщик",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "insurance_agreement",
+      "actual_contract_type": "insurance_agreement",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [
+        "vague_material_breach"
+      ],
+      "found_high_risk_ids": [
+        "vague_material_breach"
+      ],
+      "tp": [
+        "vague_material_breach"
+      ],
+      "fp": [],
+      "fn": [],
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "case_id": "dogovory_4__obrazets_dogovor_strahovaniya_otvetstvennosti_zastrahovannogo_1",
+      "relative_path": "договоры 4/obrazets-dogovor-strahovaniya-otvetstvennosti-zastrahovannogo--1.html",
+      "role": "Страхователь",
+      "counterparty_role": "Страховщик",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "insurance_agreement",
+      "actual_contract_type": "insurance_agreement",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [
+        "vague_material_breach"
+      ],
+      "found_high_risk_ids": [
+        "vague_material_breach"
+      ],
+      "tp": [
+        "vague_material_breach"
+      ],
+      "fp": [],
+      "fn": [],
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "case_id": "dogovory_4__obrazets_dogovor_strahovaniya_otvetstvennosti_zastrahovannogo_3",
+      "relative_path": "договоры 4/obrazets-dogovor-strahovaniya-otvetstvennosti-zastrahovannogo--3.html",
+      "role": "Страхователь",
+      "counterparty_role": "Страховщик",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "insurance_agreement",
+      "actual_contract_type": "insurance_agreement",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [
+        "vague_material_breach"
+      ],
+      "found_high_risk_ids": [
+        "vague_material_breach"
+      ],
+      "tp": [
+        "vague_material_breach"
+      ],
+      "fp": [],
+      "fn": [],
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "case_id": "dogovory_4__obrazets_dogovor_strahovaniya_otvetstvennosti_zastrahovannogo_4",
+      "relative_path": "договоры 4/obrazets-dogovor-strahovaniya-otvetstvennosti-zastrahovannogo--4.html",
+      "role": "Страхователь",
+      "counterparty_role": "Страховщик",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "insurance_agreement",
+      "actual_contract_type": "insurance_agreement",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [
+        "vague_material_breach"
+      ],
+      "found_high_risk_ids": [
+        "vague_material_breach"
+      ],
+      "tp": [
+        "vague_material_breach"
+      ],
+      "fp": [],
+      "fn": [],
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "case_id": "dogovory_4__obrazets_dogovor_strahovaniya_otvetstvennosti_zastrahovannogo_5",
+      "relative_path": "договоры 4/obrazets-dogovor-strahovaniya-otvetstvennosti-zastrahovannogo--5.html",
+      "role": "Страхователь",
+      "counterparty_role": "Страховщик",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "insurance_agreement",
+      "actual_contract_type": "insurance_agreement",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [
+        "vague_material_breach"
+      ],
+      "found_high_risk_ids": [
+        "vague_material_breach"
+      ],
+      "tp": [
+        "vague_material_breach"
+      ],
+      "fp": [],
+      "fn": [],
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "case_id": "dogovory_4__obrazets_dogovor_strahovaniya_otvetstvennosti_zastrahovannogo_za",
+      "relative_path": "договоры 4/obrazets-dogovor-strahovaniya-otvetstvennosti-zastrahovannogo-za.html",
+      "role": "Страхователь",
+      "counterparty_role": "Страховщик",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "insurance_agreement",
+      "actual_contract_type": "insurance_agreement",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [
+        "vague_material_breach"
+      ],
+      "found_high_risk_ids": [
+        "vague_material_breach"
+      ],
+      "tp": [
+        "vague_material_breach"
+      ],
+      "fp": [],
+      "fn": [],
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "case_id": "dogovory_4__obrazets_dogovor_strahovaniya_professionalnoy_otvetstvennosti_ch",
+      "relative_path": "договоры 4/obrazets-dogovor-strahovaniya-professionalnoy-otvetstvennosti-ch.html",
+      "role": "Страхователь",
+      "counterparty_role": "Страховщик",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "insurance_agreement",
+      "actual_contract_type": "insurance_agreement",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [
+        "vague_material_breach"
+      ],
+      "found_high_risk_ids": [
+        "vague_material_breach"
+      ],
+      "tp": [
+        "vague_material_breach"
+      ],
+      "fp": [],
+      "fn": [],
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "case_id": "dogovory_2__dogovor_na_pravo_polzovaniya_sluzhebnoy_zhiloy_ploschadyu_priloz",
+      "relative_path": "договоры 2/dogovor-na-pravo-polzovaniya-sluzhebnoy-zhiloy-ploschadyu-priloz.html",
+      "role": "Работник",
+      "counterparty_role": "Работодатель",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "labor_contract",
+      "actual_contract_type": "labor_contract",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [],
+      "found_high_risk_ids": [],
+      "tp": [],
+      "fp": [],
+      "fn": [],
+      "precision": 0.0,
+      "recall": 0.0
+    },
+    {
+      "case_id": "dogovory_4__dogovor_na_sozdanie_i_peredachu_ntp_na_mezhotraslevoy_osnove",
+      "relative_path": "договоры 4/dogovor-na-sozdanie-i-peredachu-ntp-na-mezhotraslevoy-osnove.html",
+      "role": "Работник",
+      "counterparty_role": "Работодатель",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "labor_contract",
+      "actual_contract_type": "labor_contract",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [],
+      "found_high_risk_ids": [],
+      "tp": [],
+      "fp": [],
+      "fn": [],
+      "precision": 0.0,
+      "recall": 0.0
+    },
+    {
+      "case_id": "dogovory_4__obrazets_dogovor_komissii_na_prodazhu_dollarov_ssha",
+      "relative_path": "договоры 4/obrazets-dogovor-komissii-na-prodazhu-dollarov-ssha.html",
+      "role": "Работник",
+      "counterparty_role": "Работодатель",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "labor_contract",
+      "actual_contract_type": "labor_contract",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [],
+      "found_high_risk_ids": [],
+      "tp": [],
+      "fp": [],
+      "fn": [],
+      "precision": 0.0,
+      "recall": 0.0
+    },
+    {
+      "case_id": "dogovory_4__obrazets_dogovor_komissii_na_prodazhu_tsennih_bumag",
+      "relative_path": "договоры 4/obrazets-dogovor-komissii-na-prodazhu-tsennih-bumag.html",
+      "role": "Работник",
+      "counterparty_role": "Работодатель",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "labor_contract",
+      "actual_contract_type": "labor_contract",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [],
+      "found_high_risk_ids": [],
+      "tp": [],
+      "fp": [],
+      "fn": [],
+      "precision": 0.0,
+      "recall": 0.0
+    },
+    {
+      "case_id": "dogovory_4__obrazets_dogovor_o_zaloge_prava_na_poluchenie_pokupnoy_tseni_za",
+      "relative_path": "договоры 4/obrazets-dogovor-o-zaloge-prava-na-poluchenie-pokupnoy-tseni-za-.html",
+      "role": "Работник",
+      "counterparty_role": "Работодатель",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "labor_contract",
+      "actual_contract_type": "labor_contract",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [],
+      "found_high_risk_ids": [],
+      "tp": [],
+      "fp": [],
+      "fn": [],
+      "precision": 0.0,
+      "recall": 0.0
+    },
+    {
+      "case_id": "dogovory_4__obrazets_dogovor_porucheniya_na_sovershenie_yuridicheskih_deys_1",
+      "relative_path": "договоры 4/obrazets-dogovor-porucheniya-na-sovershenie-yuridicheskih-deys-1.html",
+      "role": "Работник",
+      "counterparty_role": "Работодатель",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "labor_contract",
+      "actual_contract_type": "labor_contract",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [],
+      "found_high_risk_ids": [],
+      "tp": [],
+      "fp": [],
+      "fn": [],
+      "precision": 0.0,
+      "recall": 0.0
+    },
+    {
+      "case_id": "dogovory_4__obrazets_dogovor_postoyannoy_renti_peredacha_v_sobstvennost_zhil",
+      "relative_path": "договоры 4/obrazets-dogovor-postoyannoy-renti-peredacha-v-sobstvennost-zhil.html",
+      "role": "Работник",
+      "counterparty_role": "Работодатель",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "labor_contract",
+      "actual_contract_type": "loan_security_agreement",
+      "contract_type_match": false,
+      "expected_high_risk_ids": [
+        "all_obligations_security"
+      ],
+      "found_high_risk_ids": [
+        "all_obligations_security"
+      ],
+      "tp": [
+        "all_obligations_security"
+      ],
+      "fp": [],
+      "fn": [],
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "case_id": "dogovory_4__obrazets_dogovor_pozhiznennogo_soderzhaniya_s_izhdiveniem_s_pred",
+      "relative_path": "договоры 4/obrazets-dogovor-pozhiznennogo-soderzhaniya-s-izhdiveniem-s-pred.html",
+      "role": "Работник",
+      "counterparty_role": "Работодатель",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "labor_contract",
+      "actual_contract_type": "labor_contract",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [
+        "unilateral_termination_no_cause"
+      ],
+      "found_high_risk_ids": [
+        "unilateral_termination_no_cause"
+      ],
+      "tp": [
+        "unilateral_termination_no_cause"
+      ],
+      "fp": [],
+      "fn": [],
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "case_id": "dogovory_4__obrazets_dogovor_pozhiznennoy_renti_v_polzu_neskolkih_grazhdan",
+      "relative_path": "договоры 4/obrazets-dogovor-pozhiznennoy-renti-v-polzu-neskolkih-grazhdan.html",
+      "role": "Работник",
+      "counterparty_role": "Работодатель",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "labor_contract",
+      "actual_contract_type": "labor_contract",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [],
+      "found_high_risk_ids": [],
+      "tp": [],
+      "fp": [],
+      "fn": [],
+      "precision": 0.0,
+      "recall": 0.0
+    },
+    {
+      "case_id": "dogovory_4__obrazets_dogovor_zaloga_tsennih_bumag",
+      "relative_path": "договоры 4/obrazets-dogovor-zaloga-tsennih-bumag.html",
+      "role": "Работник",
+      "counterparty_role": "Работодатель",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "labor_contract",
+      "actual_contract_type": "labor_contract",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [],
+      "found_high_risk_ids": [],
+      "tp": [],
+      "fp": [],
+      "fn": [],
+      "precision": 0.0,
+      "recall": 0.0
+    },
+    {
+      "case_id": "dogovory_4__obrazets_primerniy_dogovor_prostogo_tovarischestva_sovmestnaya_d",
+      "relative_path": "договоры 4/obrazets-primerniy-dogovor-prostogo-tovarischestva-sovmestnaya-d.html",
+      "role": "Работник",
+      "counterparty_role": "Работодатель",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "labor_contract",
+      "actual_contract_type": "labor_contract",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [],
+      "found_high_risk_ids": [],
+      "tp": [],
+      "fp": [],
+      "fn": [],
+      "precision": 0.0,
+      "recall": 0.0
+    },
+    {
+      "case_id": "dogovory_4__obrazets_svidetelstvo_o_registratsii_zaloga_zhilih_pomescheniy",
+      "relative_path": "договоры 4/obrazets-svidetelstvo-o-registratsii-zaloga-zhilih-pomescheniy.html",
+      "role": "Работник",
+      "counterparty_role": "Работодатель",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "labor_contract",
+      "actual_contract_type": "labor_contract",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [],
+      "found_high_risk_ids": [],
+      "tp": [],
+      "fp": [],
+      "fn": [],
+      "precision": 0.0,
+      "recall": 0.0
+    },
+    {
+      "case_id": "dogovory__obrazets_trudovoy_dogovor_s_rabotnikom_obschestva_s_ogranichenno",
+      "relative_path": "договоры/obrazets-trudovoy-dogovor-s-rabotnikom-obschestva-s-ogranichenno.html",
+      "role": "Работник",
+      "counterparty_role": "Работодатель",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "labor_contract",
+      "actual_contract_type": "labor_contract",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [],
+      "found_high_risk_ids": [],
+      "tp": [],
+      "fp": [],
+      "fn": [],
+      "precision": 0.0,
+      "recall": 0.0
+    },
+    {
+      "case_id": "dogovory_4__primerniy_dogovor_kontraktatsii_selskohozyaystvennoy_produktsii",
+      "relative_path": "договоры 4/primerniy-dogovor-kontraktatsii-selskohozyaystvennoy-produktsii.html",
+      "role": "Работник",
+      "counterparty_role": "Работодатель",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "labor_contract",
+      "actual_contract_type": "labor_contract",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [],
+      "found_high_risk_ids": [],
+      "tp": [],
+      "fp": [],
+      "fn": [],
+      "precision": 0.0,
+      "recall": 0.0
+    },
+    {
+      "case_id": "dogovory_4__dogovor_bankovskogo_scheta_rezhim_scheta_instruktsiya_gns_rf_ot",
+      "relative_path": "договоры 4/dogovor-bankovskogo-scheta-rezhim-scheta-instruktsiya-gns-rf-ot-.html",
+      "role": "Заемщик",
+      "counterparty_role": "Кредитор",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "loan_security_agreement",
+      "actual_contract_type": "loan_security_agreement",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [
+        "bank_guarantee_on_demand"
+      ],
+      "found_high_risk_ids": [
+        "bank_guarantee_on_demand"
+      ],
+      "tp": [
+        "bank_guarantee_on_demand"
+      ],
+      "fp": [],
+      "fn": [],
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "case_id": "dogovory_4__dogovor_zaloga_aktsiy_dlya_obespecheniya_vozvrata_summi_zayma_po",
+      "relative_path": "договоры 4/dogovor-zaloga-aktsiy-dlya-obespecheniya-vozvrata-summi-zayma-po.html",
+      "role": "Заемщик",
+      "counterparty_role": "Кредитор",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "loan_security_agreement",
+      "actual_contract_type": "loan_security_agreement",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [],
+      "found_high_risk_ids": [],
+      "tp": [],
+      "fp": [],
+      "fn": [],
+      "precision": 0.0,
+      "recall": 0.0
+    },
+    {
+      "case_id": "dogovory_4__dogovor_zaloga_aktsiy",
+      "relative_path": "договоры 4/dogovor-zaloga-aktsiy.html",
+      "role": "Заемщик",
+      "counterparty_role": "Кредитор",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "loan_security_agreement",
+      "actual_contract_type": "loan_security_agreement",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [],
+      "found_high_risk_ids": [],
+      "tp": [],
+      "fp": [],
+      "fn": [],
+      "precision": 0.0,
+      "recall": 0.0
+    },
+    {
+      "case_id": "dogovory_4__obrazets_dogovor_finansirovaniya_pod_ustupku_denezhnogo_trebovan",
+      "relative_path": "договоры 4/obrazets-dogovor-finansirovaniya-pod-ustupku-denezhnogo-trebovan.html",
+      "role": "Заемщик",
+      "counterparty_role": "Кредитор",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "loan_security_agreement",
+      "actual_contract_type": "loan_security_agreement",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [],
+      "found_high_risk_ids": [],
+      "tp": [],
+      "fp": [],
+      "fn": [],
+      "precision": 0.0,
+      "recall": 0.0
+    },
+    {
+      "case_id": "dogovory_4__obrazets_dogovor_o_zaloge_prava_na_avtorskoe_voznagrazhdenie",
+      "relative_path": "договоры 4/obrazets-dogovor-o-zaloge-prava-na-avtorskoe-voznagrazhdenie.html",
+      "role": "Заемщик",
+      "counterparty_role": "Кредитор",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "loan_security_agreement",
+      "actual_contract_type": "loan_security_agreement",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [],
+      "found_high_risk_ids": [],
+      "tp": [],
+      "fp": [],
+      "fn": [],
+      "precision": 0.0,
+      "recall": 0.0
+    },
+    {
+      "case_id": "dogovory_4__obrazets_dogovor_o_zaloge_s_peredachey_zalozhennogo_imuschestva",
+      "relative_path": "договоры 4/obrazets-dogovor-o-zaloge-s-peredachey-zalozhennogo-imuschestva-.html",
+      "role": "Заемщик",
+      "counterparty_role": "Кредитор",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "loan_security_agreement",
+      "actual_contract_type": "loan_security_agreement",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [],
+      "found_high_risk_ids": [],
+      "tp": [],
+      "fp": [],
+      "fn": [],
+      "precision": 0.0,
+      "recall": 0.0
+    },
+    {
+      "case_id": "dogovory_4__obrazets_dogovor_postoyannoy_renti",
+      "relative_path": "договоры 4/obrazets-dogovor-postoyannoy-renti.html",
+      "role": "Заемщик",
+      "counterparty_role": "Кредитор",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "loan_security_agreement",
+      "actual_contract_type": "loan_security_agreement",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [
+        "bank_guarantee_on_demand"
+      ],
+      "found_high_risk_ids": [
+        "bank_guarantee_on_demand"
+      ],
+      "tp": [
+        "bank_guarantee_on_demand"
+      ],
+      "fp": [],
+      "fn": [],
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "case_id": "dogovory_4__obrazets_dogovor_zaloga_kvartiri_prinadlezhaschey_zalogodatelyam",
+      "relative_path": "договоры 4/obrazets-dogovor-zaloga-kvartiri-prinadlezhaschey-zalogodatelyam.html",
+      "role": "Заемщик",
+      "counterparty_role": "Кредитор",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "loan_security_agreement",
+      "actual_contract_type": "loan_security_agreement",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [],
+      "found_high_risk_ids": [],
+      "tp": [],
+      "fp": [],
+      "fn": [],
+      "precision": 0.0,
+      "recall": 0.0
+    },
+    {
+      "case_id": "dogovory_4__affidevit_1",
+      "relative_path": "договоры 4/affidevit-1.html",
+      "role": "Заявитель",
+      "counterparty_role": "Организация",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "non_contract_legal_form",
+      "actual_contract_type": "non_contract_legal_form",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [],
+      "found_high_risk_ids": [],
+      "tp": [],
+      "fp": [],
+      "fn": [],
+      "precision": 0.0,
+      "recall": 0.0
+    },
+    {
+      "case_id": "dogovory_4__dogovor_arendnogo_podryada_mezhdu_predpriyatiem_i_arendnim_kolle",
+      "relative_path": "договоры 4/dogovor-arendnogo-podryada-mezhdu-predpriyatiem-i-arendnim-kolle.html",
+      "role": "Заявитель",
+      "counterparty_role": "Организация",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "non_contract_legal_form",
+      "actual_contract_type": "non_contract_legal_form",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [],
+      "found_high_risk_ids": [],
+      "tp": [],
+      "fp": [],
+      "fn": [],
+      "precision": 0.0,
+      "recall": 0.0
+    },
+    {
+      "case_id": "dogovory_4__dogovor_na_osuschestvlenie_kreditnokassovogo_obsluzhivaniya",
+      "relative_path": "договоры 4/dogovor-na-osuschestvlenie-kreditnokassovogo-obsluzhivaniya.html",
+      "role": "Заявитель",
+      "counterparty_role": "Организация",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "non_contract_legal_form",
+      "actual_contract_type": "non_contract_legal_form",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [],
+      "found_high_risk_ids": [],
+      "tp": [],
+      "fp": [],
+      "fn": [],
+      "precision": 0.0,
+      "recall": 0.0
+    },
+    {
+      "case_id": "dogovory_4__dogovor_na_sozdanie_nauchnotehnicheskoy_ili_proizvodstvennoy_pro",
+      "relative_path": "договоры 4/dogovor-na-sozdanie-nauchnotehnicheskoy-ili-proizvodstvennoy-pro.html",
+      "role": "Заявитель",
+      "counterparty_role": "Организация",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "non_contract_legal_form",
+      "actual_contract_type": "non_contract_legal_form",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [],
+      "found_high_risk_ids": [],
+      "tp": [],
+      "fp": [],
+      "fn": [],
+      "precision": 0.0,
+      "recall": 0.0
+    },
+    {
+      "case_id": "dogovory_4__dogovor_na_sozdanie_peredachu_nauchnotehnicheskoy_produktsii",
+      "relative_path": "договоры 4/dogovor-na-sozdanie-peredachu-nauchnotehnicheskoy-produktsii.html",
+      "role": "Заявитель",
+      "counterparty_role": "Организация",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "non_contract_legal_form",
+      "actual_contract_type": "non_contract_legal_form",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [],
+      "found_high_risk_ids": [],
+      "tp": [],
+      "fp": [],
+      "fn": [],
+      "precision": 0.0,
+      "recall": 0.0
+    },
+    {
+      "case_id": "dogovory_4__dogovor_na_uchastie_v_ustavnih_fondah",
+      "relative_path": "договоры 4/dogovor-na-uchastie-v-ustavnih-fondah.html",
+      "role": "Заявитель",
+      "counterparty_role": "Организация",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "non_contract_legal_form",
+      "actual_contract_type": "non_contract_legal_form",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [],
+      "found_high_risk_ids": [],
+      "tp": [],
+      "fp": [],
+      "fn": [],
+      "precision": 0.0,
+      "recall": 0.0
+    },
+    {
+      "case_id": "dogovory_4__dogovor_na_vipolnenie_nauchnoissledovatelskoy_raboti_polozhenie",
+      "relative_path": "договоры 4/dogovor-na-vipolnenie-nauchnoissledovatelskoy-raboti-polozhenie-.html",
+      "role": "Заявитель",
+      "counterparty_role": "Организация",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "non_contract_legal_form",
+      "actual_contract_type": "non_contract_legal_form",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [],
+      "found_high_risk_ids": [],
+      "tp": [],
+      "fp": [],
+      "fn": [],
+      "precision": 0.0,
+      "recall": 0.0
+    },
+    {
+      "case_id": "dogovory_3__dogovor_o_darenii_avtomashini",
+      "relative_path": "договоры 3/dogovor-o-darenii-avtomashini.html",
+      "role": "Заявитель",
+      "counterparty_role": "Организация",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "non_contract_legal_form",
+      "actual_contract_type": "non_contract_legal_form",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [],
+      "found_high_risk_ids": [],
+      "tp": [],
+      "fp": [],
+      "fn": [],
+      "precision": 0.0,
+      "recall": 0.0
+    },
+    {
+      "case_id": "dogovory_3__dogovor_o_darenii_deneg",
+      "relative_path": "договоры 3/dogovor-o-darenii-deneg.html",
+      "role": "Заявитель",
+      "counterparty_role": "Организация",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "non_contract_legal_form",
+      "actual_contract_type": "non_contract_legal_form",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [],
+      "found_high_risk_ids": [],
+      "tp": [],
+      "fp": [],
+      "fn": [],
+      "precision": 0.0,
+      "recall": 0.0
+    },
+    {
+      "case_id": "dogovory_4__dogovor_ob_upravlenii_sredstvami_v_inostrannoy_valyute",
+      "relative_path": "договоры 4/dogovor-ob-upravlenii-sredstvami-v-inostrannoy-valyute.html",
+      "role": "Заявитель",
+      "counterparty_role": "Организация",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "non_contract_legal_form",
+      "actual_contract_type": "non_contract_legal_form",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [],
+      "found_high_risk_ids": [],
+      "tp": [],
+      "fp": [],
+      "fn": [],
+      "precision": 0.0,
+      "recall": 0.0
+    },
+    {
+      "case_id": "dogovory_4__kontrakt_na_peredachu_knowhow",
+      "relative_path": "договоры 4/kontrakt-na-peredachu-knowhow.html",
+      "role": "Заявитель",
+      "counterparty_role": "Организация",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "non_contract_legal_form",
+      "actual_contract_type": "non_contract_legal_form",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [],
+      "found_high_risk_ids": [],
+      "tp": [],
+      "fp": [],
+      "fn": [],
+      "precision": 0.0,
+      "recall": 0.0
+    },
+    {
+      "case_id": "dogovory_4__lizingoviy_dogovor_bankovskiy",
+      "relative_path": "договоры 4/lizingoviy-dogovor-bankovskiy.html",
+      "role": "Заявитель",
+      "counterparty_role": "Организация",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "non_contract_legal_form",
+      "actual_contract_type": "non_contract_legal_form",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [],
+      "found_high_risk_ids": [],
+      "tp": [],
+      "fp": [],
+      "fn": [],
+      "precision": 0.0,
+      "recall": 0.0
+    },
+    {
+      "case_id": "dogovory_4__obrazets_deklaratsiya_vladeniya",
+      "relative_path": "договоры 4/obrazets-deklaratsiya-vladeniya.html",
+      "role": "Заявитель",
+      "counterparty_role": "Организация",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "non_contract_legal_form",
+      "actual_contract_type": "non_contract_legal_form",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [],
+      "found_high_risk_ids": [],
+      "tp": [],
+      "fp": [],
+      "fn": [],
+      "precision": 0.0,
+      "recall": 0.0
+    },
+    {
+      "case_id": "dogovory_4__obrazets_dogovor_na_peredachu_vo_vremennoe_polzovanie_prav_na_no",
+      "relative_path": "договоры 4/obrazets-dogovor-na-peredachu-vo-vremennoe-polzovanie-prav-na-no.html",
+      "role": "Заявитель",
+      "counterparty_role": "Организация",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "non_contract_legal_form",
+      "actual_contract_type": "non_contract_legal_form",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [],
+      "found_high_risk_ids": [],
+      "tp": [],
+      "fp": [],
+      "fn": [],
+      "precision": 0.0,
+      "recall": 0.0
+    },
+    {
+      "case_id": "dogovory_4__obrazets_dogovor_o_razdele_voznagrazhdeniya",
+      "relative_path": "договоры 4/obrazets-dogovor-o-razdele-voznagrazhdeniya.html",
+      "role": "Заявитель",
+      "counterparty_role": "Организация",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "non_contract_legal_form",
+      "actual_contract_type": "non_contract_legal_form",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [],
+      "found_high_risk_ids": [],
+      "tp": [],
+      "fp": [],
+      "fn": [],
+      "precision": 0.0,
+      "recall": 0.0
+    },
+    {
+      "case_id": "dogovory_4__obrazets_zayavlenie_na_ofitsialnuyu_registratsiyu_programmi_dlya",
+      "relative_path": "договоры 4/obrazets-zayavlenie-na-ofitsialnuyu-registratsiyu-programmi-dlya.html",
+      "role": "Заявитель",
+      "counterparty_role": "Организация",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "non_contract_legal_form",
+      "actual_contract_type": "non_contract_legal_form",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [],
+      "found_high_risk_ids": [],
+      "tp": [],
+      "fp": [],
+      "fn": [],
+      "precision": 0.0,
+      "recall": 0.0
+    },
+    {
+      "case_id": "dogovory_4__obrazets_zayavlenie_o_vidache_evraziyskogo_patenta_na_izobreteni",
+      "relative_path": "договоры 4/obrazets-zayavlenie-o-vidache-evraziyskogo-patenta-na-izobreteni.html",
+      "role": "Заявитель",
+      "counterparty_role": "Организация",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "non_contract_legal_form",
+      "actual_contract_type": "non_contract_legal_form",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [],
+      "found_high_risk_ids": [],
+      "tp": [],
+      "fp": [],
+      "fn": [],
+      "precision": 0.0,
+      "recall": 0.0
+    },
+    {
+      "case_id": "dogovory_4__podtverzhdenie_na_oplatu",
+      "relative_path": "договоры 4/podtverzhdenie-na-oplatu.html",
+      "role": "Заявитель",
+      "counterparty_role": "Организация",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "non_contract_legal_form",
+      "actual_contract_type": "non_contract_legal_form",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [],
+      "found_high_risk_ids": [],
+      "tp": [],
+      "fp": [],
+      "fn": [],
+      "precision": 0.0,
+      "recall": 0.0
+    },
+    {
+      "case_id": "dogovory_4__dogovor_kupliprodazhi_doma_na_usloviyah_pozhiznennogo_soderzhani",
+      "relative_path": "договоры 4/dogovor-kupliprodazhi-doma-na-usloviyah-pozhiznennogo-soderzhani.html",
+      "role": "Продавец",
+      "counterparty_role": "Покупатель",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "purchase_agreement",
+      "actual_contract_type": "purchase_agreement",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [],
+      "found_high_risk_ids": [],
+      "tp": [],
+      "fp": [],
+      "fn": [],
+      "precision": 0.0,
+      "recall": 0.0
+    },
+    {
+      "case_id": "dogovory_4__dogovor_kupliprodazhi_zhilogo_doma_s_pozhiznennim_soderzhaniem",
+      "relative_path": "договоры 4/dogovor-kupliprodazhi-zhilogo-doma-s-pozhiznennim-soderzhaniem.html",
+      "role": "Продавец",
+      "counterparty_role": "Покупатель",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "purchase_agreement",
+      "actual_contract_type": "purchase_agreement",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [],
+      "found_high_risk_ids": [],
+      "tp": [],
+      "fp": [],
+      "fn": [],
+      "precision": 0.0,
+      "recall": 0.0
+    },
+    {
+      "case_id": "dogovory_4__obrazets_dogovor_o_kupleprodazhe_doma_na_usloviyah_pozhiznennogo",
+      "relative_path": "договоры 4/obrazets-dogovor-o-kupleprodazhe-doma-na-usloviyah-pozhiznennogo.html",
+      "role": "Продавец",
+      "counterparty_role": "Покупатель",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "purchase_agreement",
+      "actual_contract_type": "purchase_agreement",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [],
+      "found_high_risk_ids": [],
+      "tp": [],
+      "fp": [],
+      "fn": [],
+      "precision": 0.0,
+      "recall": 0.0
+    },
+    {
+      "case_id": "dogovory_4__obrazets_dogovor_porucheniya_na_brokerskoe_obsluzhivanie",
+      "relative_path": "договоры 4/obrazets-dogovor-porucheniya-na-brokerskoe-obsluzhivanie.html",
+      "role": "Продавец",
+      "counterparty_role": "Покупатель",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "purchase_agreement",
+      "actual_contract_type": "purchase_agreement",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [
+        "one_sided_penalty",
+        "uncapped_daily_penalty"
+      ],
+      "found_high_risk_ids": [
+        "one_sided_penalty",
+        "uncapped_daily_penalty"
+      ],
+      "tp": [
+        "one_sided_penalty",
+        "uncapped_daily_penalty"
+      ],
+      "fp": [],
+      "fn": [],
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "case_id": "dogovory_4__akt_sdachipriemki_produktsii_prilozhenie_k_dogovoru_na_sozdanie",
+      "relative_path": "договоры 4/akt-sdachipriemki-produktsii-prilozhenie-k-dogovoru-na-sozdanie-.html",
+      "role": "Исполнитель",
+      "counterparty_role": "Заказчик",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "service_agreement",
+      "actual_contract_type": "service_agreement",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [
+        "payment_asymmetry",
+        "undefined_acceptance_criteria"
+      ],
+      "found_high_risk_ids": [
+        "payment_asymmetry",
+        "undefined_acceptance_criteria"
+      ],
+      "tp": [
+        "payment_asymmetry",
+        "undefined_acceptance_criteria"
+      ],
+      "fp": [],
+      "fn": [],
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "case_id": "dogovory_4__dogovor_bankovskogo_scheta_s_usloviem_kreditovaniya_etogo_scheta",
+      "relative_path": "договоры 4/dogovor-bankovskogo-scheta-s-usloviem-kreditovaniya-etogo-scheta.html",
+      "role": "Исполнитель",
+      "counterparty_role": "Заказчик",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "service_agreement",
+      "actual_contract_type": "service_agreement",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [
+        "ip_transfer_without_scope",
+        "payment_conditioned_on_signed_act",
+        "strict_deadlines_without_dependency_carveout"
+      ],
+      "found_high_risk_ids": [
+        "ip_transfer_without_scope",
+        "payment_conditioned_on_signed_act",
+        "strict_deadlines_without_dependency_carveout"
+      ],
+      "tp": [
+        "ip_transfer_without_scope",
+        "payment_conditioned_on_signed_act",
+        "strict_deadlines_without_dependency_carveout"
+      ],
+      "fp": [],
+      "fn": [],
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "case_id": "dogovory_4__dogovor_na_raschetnokassovoe_obsluzhivanie_dogovor_raschetnogo_s",
+      "relative_path": "договоры 4/dogovor-na-raschetnokassovoe-obsluzhivanie-dogovor-raschetnogo-s.html",
+      "role": "Исполнитель",
+      "counterparty_role": "Заказчик",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "service_agreement",
+      "actual_contract_type": "service_agreement",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [
+        "one_sided_penalty",
+        "payment_asymmetry",
+        "payment_conditioned_on_signed_act",
+        "strict_deadlines_without_dependency_carveout",
+        "uncapped_daily_penalty"
+      ],
+      "found_high_risk_ids": [
+        "one_sided_penalty",
+        "payment_asymmetry",
+        "payment_conditioned_on_signed_act",
+        "strict_deadlines_without_dependency_carveout",
+        "uncapped_daily_penalty",
+        "vague_material_breach"
+      ],
+      "tp": [
+        "one_sided_penalty",
+        "payment_asymmetry",
+        "payment_conditioned_on_signed_act",
+        "strict_deadlines_without_dependency_carveout",
+        "uncapped_daily_penalty"
+      ],
+      "fp": [
+        "vague_material_breach"
+      ],
+      "fn": [],
+      "precision": 0.8333,
+      "recall": 1.0
+    },
+    {
+      "case_id": "dogovory_4__dogovor_ob_ustanovlenii_korrespondentskih_otnosheniy_dogovor_kor",
+      "relative_path": "договоры 4/dogovor-ob-ustanovlenii-korrespondentskih-otnosheniy-dogovor-kor.html",
+      "role": "Исполнитель",
+      "counterparty_role": "Заказчик",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "service_agreement",
+      "actual_contract_type": "service_agreement",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [
+        "one_sided_penalty",
+        "payment_asymmetry",
+        "payment_conditioned_on_signed_act",
+        "strict_deadlines_without_dependency_carveout",
+        "uncapped_daily_penalty"
+      ],
+      "found_high_risk_ids": [
+        "one_sided_penalty",
+        "payment_asymmetry",
+        "payment_conditioned_on_signed_act",
+        "strict_deadlines_without_dependency_carveout",
+        "uncapped_daily_penalty",
+        "vague_material_breach"
+      ],
+      "tp": [
+        "one_sided_penalty",
+        "payment_asymmetry",
+        "payment_conditioned_on_signed_act",
+        "strict_deadlines_without_dependency_carveout",
+        "uncapped_daily_penalty"
+      ],
+      "fp": [
+        "vague_material_breach"
+      ],
+      "fn": [],
+      "precision": 0.8333,
+      "recall": 1.0
+    },
+    {
+      "case_id": "dogovory_4__obrazets_dogovor_poruchenie_na_kuplyuprodazhu_tovara",
+      "relative_path": "договоры 4/obrazets-dogovor-poruchenie-na-kuplyuprodazhu-tovara.html",
+      "role": "Поставщик",
+      "counterparty_role": "Покупатель",
+      "status": "completed",
+      "extractor": "html:regex",
+      "extraction_ok": true,
+      "expected_contract_type": "supply_agreement",
+      "actual_contract_type": "supply_agreement",
+      "contract_type_match": true,
+      "expected_high_risk_ids": [
+        "one_sided_penalty",
+        "payment_asymmetry",
+        "payment_conditioned_on_signed_act",
+        "strict_deadlines_without_dependency_carveout",
+        "uncapped_daily_penalty"
+      ],
+      "found_high_risk_ids": [
+        "one_sided_penalty",
+        "payment_asymmetry",
+        "payment_conditioned_on_signed_act",
+        "uncapped_daily_penalty"
+      ],
+      "tp": [
+        "one_sided_penalty",
+        "payment_asymmetry",
+        "payment_conditioned_on_signed_act",
+        "uncapped_daily_penalty"
+      ],
+      "fp": [],
+      "fn": [
+        "strict_deadlines_without_dependency_carveout"
+      ],
+      "precision": 1.0,
+      "recall": 0.8
+    }
+  ]
+}

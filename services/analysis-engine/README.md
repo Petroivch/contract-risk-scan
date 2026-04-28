@@ -1,72 +1,117 @@
-# Contract Risk Scanner: Analysis Engine (FastAPI)
+# Contract Risk Scanner: Analysis Engine
 
-## Зона ответственности
-Этот сервис отвечает за пайплайн анализа договора в MVP:
-- принимает задачу анализа через `POST /analysis/run`
-- отслеживает жизненный цикл задачи через `GET /analysis/{job_id}/status`
-- возвращает структурированный результат через `GET /analysis/{job_id}/result`
-- определяет, можно ли обработать документ в `local_first`, или нужен `server_assist`
+FastAPI service for contract ingestion, extraction, classification, risk scoring, and corpus evaluation.
 
-## Что реализовано сейчас
-Текущая версия уже выполняет рабочий эвристический анализ договора:
-- мультиязычный вывод: `ru`, `en`, `it`, `fr`
-- язык по умолчанию и fallback: `ru`
-- полностью конфигурируемый пайплайн без бизнес-хардкода в Python-коде
-- стабильный `run -> status -> result` flow
-- role-focused summary с приоритизацией выбранной роли
-- `contract_brief`, который кратко объясняет, кто и кому что должен, где оплата, сроки и санкции
-- rules-first извлечение рисков и спорных формулировок
-- `execution_plan` в каждом ответе для mobile/core-api
-- in-memory job store для MVP-стадии
-- API-тесты на контракт, локализацию и содержательный результат анализа
+## Scope
 
-## Ключевые принципы
-- `no-hardcode`: правила, тексты, fallback и лимиты живут в конфиге
-- `local-first`: легкие сценарии обрабатываются без обязательного offload
-- совместимость с mobile/core-api по полям `language` и `locale`
-- детерминированный fallback: пустые массивы и неинтерпретируемые ответы не допускаются
+- `POST /analysis/run` starts analysis
+- `GET /analysis/{job_id}/status` returns job status
+- `GET /analysis/{job_id}/result` returns the final structured result
+- `app/services/ingestion.py` extracts text from `.doc`, `.docx`, `.pdf`, `.html`, `.txt`
+- `tools/corpus_run.py` runs the engine over a corpus
+- `tools/evaluate.py` measures HIGH-risk precision and recall against `tests/golden_set`
 
-## Где что лежит
-- `app/main.py` — точка входа FastAPI
-- `app/api/routers/analysis.py` — HTTP-роуты анализа
-- `app/schemas/analysis.py` — request/response и доменные схемы
-- `app/localization.py` — нормализация языка и выбор локализованных значений
-- `app/config/analysis_config.json` — главный runtime-конфиг пайплайна
-- `app/config/models.py` — типизированные модели конфига
-- `app/config/runtime.py` — загрузка и валидация runtime-конфига
-- `app/services/analysis_orchestrator.py` — orchestration всего пайплайна
-- `app/services/contract_brief.py` — генерация краткого объяснения договора
-- `app/services/risk_scoring.py` — rules-first риски и спорные пункты
-- `app/services/summary_generation.py` — role-focused summary
-- `tests/` — API и flow tests
+## Layout
 
-## Локальный запуск
+- `app/main.py` — FastAPI entrypoint
+- `app/api/routers/analysis.py` — API routes
+- `app/schemas/analysis.py` — request/response schemas
+- `app/config/analysis_config.json` — runtime config and taxonomy
+- `app/services/ingestion.py` — document extraction and metadata
+- `app/services/risk_scoring.py` — rules engine
+- `app/services/contract_analysis.py` — contract type detection and role aliasing
+- `tools/corpus_run.py` — corpus runner
+- `tools/evaluate.py` — evaluator
+- `tests/golden_set/cases.json` — canonical golden set manifest
+- `reports/corpus_evaluation.json` / `reports/corpus_evaluation.md` — latest evaluation report
+
+## Setup
+
 ```bash
 python -m venv .venv
 .venv\Scripts\activate
 pip install -r requirements.txt
+```
+
+Run the API:
+
+```bash
 uvicorn app.main:app --reload --port 8010
 ```
 
-## Быстрая проверка
+## Native Dependencies
+
+Preferred Windows setup for legacy `.doc`:
+
+- Microsoft Word installed locally
+- `pywin32` installed from `requirements.txt`
+
+Optional fallbacks for `.doc` if Word is unavailable:
+
+- LibreOffice (`soffice`)
+- `antiword`
+- `catdoc`
+- `textract` with its native backends
+
+Optional OCR stack for image-only inputs:
+
+- Tesseract OCR
+- `pytesseract`
+- `Pillow`
+
+Current behavior:
+
+- `.doc` prefers Word COM, then falls back to `soffice`, `antiword`, `catdoc`, `textract`
+- `.docx` prefers `mammoth`, then `python-docx`, then XML fallback
+- `.pdf` prefers `pdfplumber`, then `pypdf`
+- OCR is used only for `image/*`
+
+## Validation
+
 ```bash
 python -m pytest -q
 ```
 
-## Пример запроса
+## Corpus Run
+
+Run against the local corpus folders:
+
 ```bash
-curl -X POST http://127.0.0.1:8010/analysis/run \
-  -H "Content-Type: application/json" \
-  -d '{
-    "document_name": "contract.txt",
-    "role_context": {"role": "исполнитель", "counterparty_role": "заказчик"},
-    "document_text": "Исполнитель обязан выполнить работы в срок 10 дней. Заказчик обязан оплатить услуги в течение 5 банковских дней. Штраф за просрочку 1%.",
-    "language": "ru"
-  }'
+python corpus_run.py --input-dirs "договоры,договоры 2,договоры 3,договоры 4" --output-dir artifacts/corpus_results --call-analysis-api http://localhost:8010/analysis/run
 ```
 
-## Ограничения текущей стадии
-- OCR пока stub-based
-- хранилище задач пока in-memory
-- анализ остается эвристическим, без тяжелой semantic/LLM-модели
-- для production нужны persistent queue/store, наблюдаемость и интеграционные тесты с core-api/mobile
+Local in-process mode without the API:
+
+```bash
+python corpus_run.py --input-dirs "договоры,договоры 2,договоры 3,договоры 4" --output-dir artifacts/corpus_results
+```
+
+Run against the canonical golden set:
+
+```bash
+python corpus_run.py --manifest tests/golden_set/cases.json --output-dir artifacts/corpus_results_iter2
+```
+
+## Evaluation
+
+```bash
+python evaluate.py --golden tests/golden_set --results artifacts/corpus_results_iter2 --out reports/corpus_evaluation.json
+```
+
+The Markdown summary is written next to the JSON report as `reports/corpus_evaluation.md`.
+
+`artifacts/corpus_results_iter2` is the checked-in golden-set run used for the published precision/recall metrics.
+`artifacts/corpus_results` is the wider 447-file coverage run across `договоры*` and is intended for extraction/coverage inspection, not for the published golden-set scorecard.
+
+## Current Metrics
+
+Latest golden-set evaluation:
+
+- HIGH-risk precision: `0.8642`
+- HIGH-risk recall: `0.8974`
+- Contract type accuracy: `0.9886`
+
+See:
+
+- `reports/corpus_evaluation.json`
+- `reports/corpus_evaluation.md`

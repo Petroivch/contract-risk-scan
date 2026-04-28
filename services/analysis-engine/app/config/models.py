@@ -38,6 +38,9 @@ class SegmentationConfig(BaseModel):
 
 class IngestionConfig(BaseModel):
     empty_text_placeholder: dict[str, str]
+    extractors_enabled: dict[str, bool] = Field(default_factory=dict)
+    extraction_timeout_seconds: float = Field(default=20.0, gt=0)
+    fallback_to_server_assist: bool = False
 
 
 class PipelineErrorsConfig(BaseModel):
@@ -74,14 +77,54 @@ class ExecutionStrategyConfig(BaseModel):
     reasons: ExecutionStrategyReasonsConfig
 
 
+class ContractTypeConfig(BaseModel):
+    id: str
+    ru_name: str
+    en_name: str | None = None
+    keywords: list[str] = Field(default_factory=list)
+    markers: list[str] = Field(default_factory=list)
+    legal_framework: str = ""
+    characteristic_clauses: list[str] = Field(default_factory=list)
+    high_priority_risks: list[str] = Field(default_factory=list)
+    legal_notes: str | None = None
+
+
+class DetectionLogicConfig(BaseModel):
+    type: str = "keyword_any"
+    patterns: list[str] = Field(default_factory=list)
+    all_patterns: list[str] = Field(default_factory=list)
+    any_patterns: list[str] = Field(default_factory=list)
+    absent_patterns: list[str] = Field(default_factory=list)
+    actor_patterns: dict[str, list[str]] = Field(default_factory=dict)
+    timeline_patterns: dict[str, list[str]] = Field(default_factory=dict)
+    min_matches: int = Field(default=1, ge=1)
+    source: str = "clause"
+    description: str | None = None
+    negate: bool = False
+
+
+class RoleEscalationEntryConfig(BaseModel):
+    escalate_to: str
+    reason_ru: str | None = None
+    reason_en: str | None = None
+    reason_it: str | None = None
+    reason_fr: str | None = None
+
+
 class RiskRuleConfig(BaseModel):
     id: str
     source_ref: str
-    keywords: list[str]
-    severity: str
+    keywords: list[str] = Field(default_factory=list)
+    severity: str | None = None
+    severity_base: str | None = None
+    legal_basis: str | None = None
+    affected_contract_types: list[str] = Field(default_factory=list)
+    detection_logic: DetectionLogicConfig | None = None
+    role_escalation: dict[str, RoleEscalationEntryConfig] = Field(default_factory=dict)
     title: dict[str, str]
     description: dict[str, str]
     mitigation: dict[str, str]
+    examples: list[str] = Field(default_factory=list)
 
 
 class DisputeMarkerConfig(BaseModel):
@@ -107,15 +150,26 @@ class RoleRelevanceTemplatesConfig(BaseModel):
     role_generic: dict[str, str]
 
 
+class TruncationConfig(BaseModel):
+    max_chars: int = Field(..., gt=0)
+    preserve_word_boundary: bool = True
+    ensure_sentence_end: bool = True
+    fallback_ending: str = "..."
+
+
 class RiskScoringConfig(BaseModel):
     risk_id_prefix: str
-    max_clause_excerpt_chars: int = Field(..., gt=0)
+    max_clause_excerpt_chars: int = Field(default=300, gt=0)
     fallback_dispute_confidence: float = Field(..., ge=0.0, le=1.0)
     severity_labels: dict[str, dict[str, str]]
     role_relevance_templates: RoleRelevanceTemplatesConfig
     risk_rules: list[RiskRuleConfig]
     dispute_markers: list[DisputeMarkerConfig]
     fallback: RiskFallbackConfig
+    truncation: TruncationConfig | None = None
+    role_escalation_matrix: dict[str, dict[str, dict[str, RoleEscalationEntryConfig]]] = Field(
+        default_factory=dict
+    )
 
 
 class SummaryFallbackConfig(BaseModel):
@@ -163,5 +217,6 @@ class AnalysisRuntimeConfig(BaseModel):
     pipeline: PipelineConfig
     execution_strategy: ExecutionStrategyConfig
     templates: TemplatesConfig
+    contract_types: list[ContractTypeConfig] = Field(default_factory=list)
     risk_scoring: RiskScoringConfig
     summary_generation: SummaryGenerationConfig

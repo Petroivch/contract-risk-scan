@@ -1,0 +1,43 @@
+{
+  "generated_at": "2026-04-28T15:36:15.882427+00:00",
+  "manifest_path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\contract-risk-scan\\services\\analysis-engine\\golden_set\\cases.json",
+  "output_dir": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\contract-risk-scan\\services\\analysis-engine\\artifacts\\corpus_results\\20260428T153603Z",
+  "total_cases": 15,
+  "completed_cases": 15,
+  "failed_cases": 0,
+  "contract_type_counts": {
+    "agency_agreement": 2,
+    "labor_contract": 1,
+    "non_contract_legal_form": 3,
+    "construction_contract": 1,
+    "lease_agreement": 3,
+    "service_agreement": 1,
+    "targeted_education_agreement": 1,
+    "loan_security_agreement": 1,
+    "ip_agreement": 1,
+    "supply_agreement": 1
+  },
+  "severity_counts": {
+    "critical": 20,
+    "medium": 6,
+    "high": 10,
+    "low": 4
+  },
+  "case_ids": [
+    "agency_goods_ru",
+    "autstaffing_ru",
+    "commission_ru",
+    "contractor_ru",
+    "dealer_ru",
+    "household_contract_ru",
+    "rent_ru",
+    "rent_auto_ru",
+    "rent_vehicle_ru",
+    "site_ru",
+    "service_agreement_saas_ru",
+    "targeted_education_ru",
+    "loan_security_ru",
+    "ip_license_ru",
+    "supply_ru"
+  ]
+}

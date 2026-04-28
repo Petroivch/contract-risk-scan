@@ -1,0 +1,201 @@
+{
+  "case_id": "договоры 4__dogovor-arendnogo-podryada-mezhdu-predpriyatiem-i-arendnim-kolle_html",
+  "relative_path": "договоры 4/dogovor-arendnogo-podryada-mezhdu-predpriyatiem-i-arendnim-kolle.html",
+  "document_path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\договоры 4\\dogovor-arendnogo-podryada-mezhdu-predpriyatiem-i-arendnim-kolle.html",
+  "document_name": "dogovor-arendnogo-podryada-mezhdu-predpriyatiem-i-arendnim-kolle.html",
+  "role": "Подрядчик",
+  "counterparty_role": "Заказчик",
+  "language": "ru",
+  "mime_type": "text/html",
+  "tags": [
+    "ad_hoc"
+  ],
+  "source_group": "договоры 4",
+  "expected": {},
+  "started_at": "2026-04-28T16:18:16.277144+00:00",
+  "status": "completed",
+  "request": {
+    "document_name": "dogovor-arendnogo-podryada-mezhdu-predpriyatiem-i-arendnim-kolle.html",
+    "role_context": {
+      "role": "Подрядчик",
+      "counterparty_role": "Заказчик"
+    },
+    "document_text": null,
+    "document_base64": "PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMDEgVHJhbnNpdGlvbmFsLy9FTiI+DQo8aHRtbD4NCjxoZWFkPg0KPGJhc2UgaHJlZj0iaHR0cHM6Ly9kb2dvdm9yLXVyaXN0LnJ1LyI+DQo8dGl0bGU+0JTQvtCz0L7QstC+0YAg0LDRgNC10L3QtNC90L7Qs9C+INC/0L7QtNGA0Y/QtNCwINC80LXQttC00YMg0L/RgNC10LTQv9GA0LjRj9GC0LjQtdC8INC4INCw0YDQtdC90LTQvdGL0LwgICDQutC+0LvQu9C10LrRgtC40LLQvtC8IC0g0LLQtdGA0YHQuNGPINC00LvRjyDQv9C10YfQsNGC0LguIDIwMjYuINCe0LHRgNCw0LfRhtGLINC00L7Qs9C+0LLQvtGA0L7Qsiwg0YLQuNC/0L7QstGL0LUg0LTQvtCz0L7QstC+0YDQsCwg0LDQutGC0YPQsNC70YzQvdGL0LUg0LTQvtC60YPQvNC10L3RgtGLLCDRjtGA0LjQtNC40YfQtdGB0LrQuNC8INC4INGE0LjQt9C40YfQtdGB0LrQuNC8INC70LjRhtCw0Lw8L3RpdGxlPg0KPG1ldGEgY29udGVudD0iIiBuYW1lPSJrZXl3b3JkcyI+DQo8bWV0YSBjb250ZW50PSIiIG5hbWU9ImRlc2NyaXB0aW9uIj4NCjxtZXRhIG5hbWU9InJvYm90cyIgY29udGVudD0ibm9pbmRleCxub2ZvbGxvdyI+DQo8bWV0YSBodHRwLWVxdWl2PSJDb250ZW50LVR5cGUiIGNvbnRlbnQ9InRleHQvaHRtbDsgY2hhcnNldD11dGYtOCI+DQo8bGluayByZWw9InN0eWxlc2hlZXQiIGhyZWY9Ii9pbWFnZXMvc3R5bGUuY3NzIiB0eXBlPSJ0ZXh0L2NzcyI+DQo8L2hlYWQ+DQo8Ym9keT4NCjxkaXYgY2xhc3M9ImRvY3VtZW50VGV4dCI+DQo8cHJlPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg0JTQntCT0J7QktCe0KANCiAgICAgICAgICAgICAgICAgINCQ0KDQldCd0JTQndCe0JPQniDQn9Ce0JTQoNCv0JTQkCDQnNCV0JbQlNCjINCf0KDQldCU0J/QoNCY0K/QotCY0JXQnA0KICAgICAgICAgICAgICAgICAgICAgICAgINCYINCQ0KDQldCd0JTQndCr0Jwg0JrQntCb0JvQldCa0KLQmNCS0J7QnA0KDQogICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fICwgINC40LzQtdC90YPQtdC80L7QtSDQsiDQtNCw0LvRjNC90LXQuS0NCiAgICAgICAgICAo0L/QvtC70L3QvtC1INC90LDQuNC80LXQvdC+0LLQsNC90LjQtSDQv9GA0LXQtNC/0YDQuNGP0YLQuNGPKQ0K0YjQtdC8INCf0YDQtdC00L/RgNC40Y/RgtC40LUsINCyINC70LjRhtC1INC00LjRgNC10LrRgtC+0YDQsCAo0LfQsNC80LXRgdGC0LjRgtC10LvRjykgX19fX19fX19fX19fX19fX19fX19fX19fXw0K0Lgg0LDRgNC10L3QtNC90YvQuSDQutC+0LvQu9C10LrRgtC40LIgX19fX19fX19fX19fX19fX19fX19fX19fXywgINC40LzQtdC90YPQtdC80YvQuSAg0LIgINC00LDQu9GM0L3QtdC50YjQtdC8DQogICAgICAgICAgICAgICAgICAgICAgICAgKNGG0LXRhdCwLCDRg9GH0LDRgdGC0LrQsCkNCtCQ0YDQtdC90LTQvdGL0Lkg0LrQvtC70LvQtdC60YLQuNCyLCDQsiDQu9C40YbQtSBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18sDQrRgNGD0LrQvtCy0L7QtNGB0YLQstGD0Y/RgdGMINC00LXQudGB0YLQstGD0Y7RidC40Lwg0LfQsNC60L7QvdC+0LTQsNGC0LXQu9GM0YHRgtCy0L7QvCwg0KPRgdGC0LDQstC+0Lwg0L/RgNC10LTQv9GA0LjRj9GC0LjRjyDQuCDQuNC90YvQvNC4DQrQvdC+0YDQvNCw0YLQuNCy0L3Ri9C80Lgg0LDQutGC0LDQvNC4LCDQt9Cw0LrQu9GO0YfQuNC70Lgg0LTQvtCz0L7QstC+0YAg0L4g0L3QuNC20LXRgdC70LXQtNGD0Y7RidC10Lw6DQoNCiAgICAgMS4g0J/RgNC10LTQvNC10YIg0LTQvtCz0L7QstC+0YDQsA0KDQogICAgIDEuMS4g0J/RgNC10LTQv9GA0LjRj9GC0LjQtSDQv9C+0YDRg9GH0LDQtdGCLCAg0LAg0JDRgNC10L3QtNC90YvQuSDQutC+0LvQu9C10LrRgtC40LIg0L/RgNC40L3QuNC80LDQtdGCICDQvdCwICDRgdC10LHRjw0K0LfQsNC60LDQtyDQvdCwINC/0YDQvtC40LfQstC+0LTRgdGC0LLQviBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCtC4INC/0LXRgNC10LTQsNC10YIg0L/RgNC10LTQv9GA0LjRj9GC0LjRjiAo0LvQuNCx0L4g0YDQtdCw0LvQuNC30YPQtdGCINC/0L4g0LXQs9C+INGD0LrQsNC30LDQvdC40Y4g0LTRgNGD0LPQuNC8INC/0YDQtdC00L/RgNC40Y/RgtC4LQ0K0Y/QvCDQuNC70Lgg0LPRgNCw0LbQtNCw0L3QsNC8KS4NCiAgICAgMS4yLiDQn9GA0LXQtNC/0YDQuNGP0YLQuNC1INC00LvRjyDQvtCx0LXRgdC/0LXRh9C10L3QuNGPINC/0YDQvtC40LfQstC+0LTRgdGC0LLQtdC90L3QvtC5INC00LXRj9GC0LXQu9GM0L3QvtGB0YLQuCAg0LfQsNC6LQ0K0YDQtdC/0LvRj9C10YIg0LfQsCDQkNGA0LXQvdC00L3Ri9C8INC60L7Qu9C70LXQutGC0LjQstC+0Lwg0L/QvtC80LXRidC10L3QuNGPLCDQvtCx0L7RgNGD0LTQvtCy0LDQvdC40LUg0Lgg0LTRgNGD0LPQuNC1INC+0YHQvdC+0LLQvdGL0LUNCtC4INC+0LHQvtGA0L7RgtC90YvQtSDRgdGA0LXQtNGB0YLQstCwINGB0L7Qs9C70LDRgdC90L4g0LDQutGC0YMgTiBfX19fX19fINC+0YIgX19fX19fX19fX19fX19fXywgINGP0LLQu9GP0Y4tDQrRidC10LzRg9GB0Y8g0L7QsdGP0LfQsNGC0LXQu9GM0L3Ri9C8INC/0YDQuNC70L7QttC10L3QuNC10Lwg0Log0LTQvtCz0L7QstC+0YDRgy4NCiAgICAgMS4zLiDQl9CwICDQv9C+0LvRjNC30L7QstCw0L3QuNC1ICDQt9Cw0LrRgNC10L/Qu9C10L3QvdGL0LwgINC40LzRg9GJ0LXRgdGC0LLQvtC8ICDQkNGA0LXQvdC00L3Ri9C5ICAg0LrQvtC70LvQtdC60YLQuNCyDQrQstC90L7RgdC40YIg0J/RgNC10LTQv9GA0LjRj9GC0LjRjiDQsNGA0LXQvdC00L3Rg9GOINC/0LvQsNGC0YMg0LIg0YDQsNC30LzQtdGA0LUgX19fX19fX19fX19fX19fX19fX19fX19fX19fLg0KICAgICAxLjQuINCSINC/0L7RgNGP0LTQutC1INGD0YfQsNGB0YLQuNGPINCyINC/0LvQsNGC0LXQttCw0YUg0LggINGA0LDRgdGF0L7QtNCw0YUgINCf0YDQtdC00L/RgNC40Y/RgtC40Y8gINCQ0YDQtdC90LTQvdGL0LkNCtC60L7Qu9C70LXQutGC0LjQsiDQstC90L7RgdC40YIgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCiAgICAgICAgICAgICAgICAgICAgICAo0YPQutCw0LfRi9Cy0LDRjtGC0YHRjyDQstGB0LUg0LLQuNC00Ysg0L/Qu9Cw0YLQtdC20LXQuSDQuCDQvtGC0YfQuNGB0LvQtdC90LjQuSkqDQogICAgIDEuNS4g0J7RgdGC0LDRjtGJ0LjQudGB0Y8gINGDICDQkNGA0LXQvdC00L3QvtCz0L4gINC60L7Qu9C70LXQutGC0LjQstCwICDQtNC+0YXQvtC0INC40YHQv9C+0LvRjNC30YPQtdGC0YHRjyDQuNC8INGB0LAtDQrQvNC+0YHRgtC+0Y/RgtC10LvRjNC90L4g0Lgg0LjQt9GK0Y/RgtC40Y4g0L3QtSDQv9C+0LTQu9C10LbQuNGCLg0KDQogICAgIDIuINCe0LHRj9C30LDQvdC90L7RgdGC0Lgg0YHRgtC+0YDQvtC9DQoNCiAgICAg0JDRgNC10L3QtNC90YvQuSDQutC+0LvQu9C10LrRgtC40LIg0L7QsdGP0LfRg9C10YLRgdGPOg0KICAgICAyLjEuINCe0LHQtdGB0L/QtdGH0LjRgtGMICDQstGL0L/QvtC70L3QtdC90LjQtSDQt9Cw0LrQsNC30LAg0J/RgNC10LTQv9GA0LjRj9GC0LjRjyDQsiDQv9C+0LvQvdC+0Lwg0L7QsdGK0LXQvNC1LCAg0L3Qvi0NCtC80LXQvdC60LvQsNGC0YPRgNC1INC4INC30LDQtNCw0L3QvdGL0LUg0YHRgNC+0LrQuCwg0LPQsNGA0LDQvdGC0LjRgNC+0LLQsNGC0Ywg0LrQsNGH0LXRgdGC0LLQviAg0LLRi9C/0YPRgdC60LDQtdC80L7QuSAg0L/RgNC+0LTRg9C6LQ0K0YbQuNC4Lg0KICAgICAyLjIuINCh0LLQvtC10LLRgNC10LzQtdC90L3QviAg0L/RgNC+0LjQt9Cy0L7QtNC40YLRjCAg0YLQtdC60YPRidC40Lkg0YDQtdC80L7QvdGCINC30LDQutGA0LXQv9C70LXQvdC90YvRhSDQt9C00LDQvdC40LkgLA0K0YHQvtC+0YDRg9C20LXQvdC40LksINGA0LXQvNC+0L3RgiDQvtCx0L7RgNGD0LTQvtCy0LDQvdC40Y8sICDQvtGB0L3QsNGB0YLQutC4LCDQuNC90LLQtdC90YLQsNGA0Y8uINCe0YHRg9GJ0LXRgdGC0LLQu9GP0YLRjCDQutCw0L/QuC0NCtGC0LDQu9GM0L3Ri9C5INGA0LXQvNC+0L3RgiAg0L7RgdC90L7QstC90YvRhSAg0YTQvtC90LTQvtCyICjRgdC70LXQtNGD0LXRgiDRg9C60LDQt9Cw0YLRjCwgINC30LAg0YHRh9C10YIg0LrQsNC60LjRhSDRgdGA0LXQtNGB0YLQsg0K0L/RgNC+0LjQt9Cy0L7QtNGP0YLRgdGPINGN0YLQuCDQstC40LTRiyDRgNC10LzQvtC90YLQsCwgINC60LDQv9C40YLQsNC70YzQvdGL0Lkg0YDQtdC80L7QvdGCINC+0YHQvdC+0LLQvdGL0YUg0YTQvtC90LTQvtCyICDQvNC+0LbQtdGCDQrQsdGL0YLRjCDQstC+0LfQu9C+0LbQtdC9INC90LAg0J/RgNC10LTQv9GA0LjRj9GC0LjQtSkuDQogICAgIDIuMy4g0J/RgNC+0LLQvtC00LjRgtGMINC+0YDQs9Cw0L3QuNC30LDRhtC40L7QvdC90L4t0YLQtdGF0L3QuNGH0LXRgdC60LjQtSDQvNC10YDQvtC/0YDQuNGP0YLQuNGPLCAg0L3QsNC/0YDQsNCy0LvQtdC90L3Ri9C1DQrQvdCwINC/0L7QstGL0YjQtdC90LjQtSAg0L/RgNC+0LjQt9Cy0L7QtNC40YLQtdC70YzQvdC+0YHRgtC4INGC0YDRg9C00LAg0Lgg0YHQvdC40LbQtdC90LjQtSDRgdC10LHQtdGB0YLQvtC40LzQvtGB0YLQuCDQstGL0L/Rg9GB0LrQsNC1LQ0K0LzQvtC5INC/0YDQvtC00YPQutGG0LjQuC4NCiAgICAgMi40LiDQodC+0LHQu9GO0LTQsNGC0Ywg0L/RgNCw0LLQuNC70LAg0L/QviDQvtGF0YDQsNC90LUg0YLRgNGD0LTQsCwg0YLQtdGF0L3QuNC60LUg0LHQtdC30L7Qv9Cw0YHQvdC+0YHRgtC4LiDQn9GA0L7QstC+LQ0K0LTQuNGC0Ywg0LzQtdGA0L7Qv9GA0LjRj9GC0LjRjyDQv9C+INGD0LvRg9GH0YjQtdC90LjRjiDRg9GB0LvQvtCy0LjQuSDRgtGA0YPQtNCwOyDQvtCx0LXRgdC/0LXRh9C40YLRjCDRgdC+0LfQtNCw0L3QuNC1INC30LTQvtGA0L7QstGL0YUNCtC4INCx0LXQt9C+0L/QsNGB0L3Ri9GFINGD0YHQu9C+0LLQuNC5INGC0YDRg9C00LAg0YDQsNCx0L7RgtC90LjQutC+0LIg0JDRgNC10L3QtNC90L7Qs9C+INC60L7Qu9C70LXQutGC0LjQstCwLg0KICAgICAyLjUuINCh0LLQvtC10LLRgNC10LzQtdC90L3QviDQv9GA0L7QuNC30LLQvtC00LjRgtGMINGBINCf0YDQtdC00L/RgNC40Y/RgtC40LXQvCDQvdC10L7QsdGF0L7QtNC40LzRi9C1INGA0LDRgdGH0LXRgtGLLg0KICAgICAyLjYuINCh0L7QsdC70Y7QtNCw0YLRjCAg0L/QvtGA0Y/QtNC+0Log0YDQtdCz0YPQu9C40YDQvtCy0LDQvdC40Y8g0YDQsNC30LzQtdGA0LAg0YHRgNC10LTRgdGC0LIsICDQvdCw0L/RgNCw0LLQu9GP0LXQvNGL0YUNCtC90LAg0L7Qv9C70LDRgtGDINGC0YDRg9C00LAgKNGD0LrQsNC30LDRgtGMLCAg0LrQsNC60L7QuSDQv9C+0YDRj9C00L7QuiDRg9GB0YLQsNC90L7QstC70LXQvSDQtNC70Y8g0LTQsNC90L3QvtCz0L4g0JDRgNC10L3QtNC90L7Qs9C+DQrQutC+0LvQu9C10LrRgtC40LLQsCkuDQogICAgINCf0YDQtdC00L/RgNC40Y/RgtC40LUg0L7QsdGP0LfRg9C10YLRgdGPOg0KICAgICAyLjcuINCS0YvQtNCw0LLQsNGC0YwgINCQ0YDQtdC90LTQvdC+0LzRgyAg0LrQvtC70LvQtdC60YLQuNCy0YMg0LfQsNC60LDQtyDQvdCwINC/0YDQvtC40LfQstC+0LTRgdGC0LLQviDQv9GA0L7QtNGD0LrRhtC40LgNCijRgNCw0LHQvtGCLCDRg9GB0LvRg9CzKSwgINGD0YHRgtCw0L3QvtCy0LvQuNCy0LDRgtGMINC00YDRg9Cz0LjQtSDQv9C70LDQvdC+0LLRi9C1INC/0L7QutCw0LfQsNGC0LXQu9C4INC90LUg0L/QvtC30LTQvdC10LUgINGH0LXQvA0K0LfQsCBfX19fX19fINC00L3QtdC5INC00L4g0L3QsNGH0LDQu9CwINC/0LvQsNC90LjRgNGD0LXQvNC+0LPQviDQv9C10YDQuNC+0LTQsDogX19fX19fX19fX19fX19fX19fX19fX19fXw0KICAgICAgICAgICAgICAgICAgICAgICAgICAgKNC/0LXRgNC10YfQuNGB0LvRj9GO0YLRgdGPINCy0YHQtSDQstC40LTRiyDQt9Cw0LTQsNC90LjQuSDQuCDQv9C+0LrQsNC30LDRgtC10LvQtdC5KQ0KICAgICAyLjguINCe0LHQtdGB0L/QtdGH0LjQstCw0YLRjCDQvNCw0YLQtdGA0LjQsNC70YzQvdGL0LzQuCwgINGC0L7Qv9C70LjQstC90L4t0Y3QvdC10YDQs9C10YLQuNGH0LXRgdC60LjQvNC4INGA0LXRgdGD0YDRgdCw0LzQuA0K0Lgg0LTRgNGD0LPQuNC80Lgg0LzQsNGC0LXRgNC40LDQu9Cw0LzQuCwgINC90LXQvtCx0YXQvtC00LjQvNGL0LzQuCDQtNC70Y8g0L/RgNC+0LjQt9Cy0L7QtNGB0YLQstCwICDQv9GA0L7QtNGD0LrRhtC40LggICjRgNCw0LHQvtGCLA0K0YPRgdC70YPQsykuDQogICAgIDIuOS4g0J/RgNC+0LjQt9Cy0L7QtNC40YLRjCDRgNC10LrQvtC90YHRgtGA0YPQutGG0LjRjiwgINGA0LDRgdGI0LjRgNC10L3QuNC1ICDQuNC70LggINC/0LXRgNC10L/RgNC+0YTQuNC70LjRgNC+0LLQsNC90LjQtQ0K0L/RgNC+0LjQt9Cy0L7QtNGB0YLQstCwINC30LAg0YHRh9C10YIg0YHRgNC10LTRgdGC0LIg0YbQtdC90YLRgNCw0LvQuNC30L7QstCw0L3QvdGL0YUg0YTQvtC90LTQvtCyINCf0YDQtdC00L/RgNC40Y/RgtC40Y8uDQogICAgIDIuMTAuINCSINGN0YLQvtC8INC/0YPQvdC60YLQtSDRgdC70LXQtNGD0LXRgiDRg9C60LDQt9Cw0YLRjCDQvtCx0Y/Qt9Cw0L3QvdC+0YHRgtC4INCf0YDQtdC00L/RgNC40Y/RgtC40Y8g0L/QviDRgdC+0YbQuC0NCtCw0LvRjNC90L7QvNGDINGA0LDQt9Cy0LjRgtC40Y4g0Lgg0L7QsdC10YHQv9C10YfQtdC90LjRjiDQkNGA0LXQvdC00L3QvtCz0L4g0LrQvtC70LvQtdC60YLQuNCy0LAg0Lgg0LXQs9C+INGH0LvQtdC90L7QsiDQuNC3INGG0LXQvdGCLQ0K0YDQsNC70LjQt9C+0LLQsNC90L3QvtCz0L4g0YTQvtC90LTQsC4NCg0KICAgICAzLiDQn9GA0LDQstCwINCQ0YDQtdC90LTQvdC+0LPQviDQutC+0LvQu9C10LrRgtC40LLQsA0KDQogICAgINCQ0YDQtdC90LTQvdGL0Lkg0LrQvtC70LvQtdC60YLQuNCyINC40LzQtdC10YIg0L/RgNCw0LLQvjoNCiAgICAgMy4xLiDQodCw0LzQvtGB0YLQvtGP0YLQtdC70YzQvdC+INC+0L/RgNC10LTQtdC70Y/RgtGMINGE0L7RgNC80Ysg0Lgg0YHQuNGB0YLQtdC80Ysg0L7Qv9C70LDRgtGLINGC0YDRg9C00LAsICDRgNCw0YHQv9C+LQ0K0YDRj9C00L7QuiDRgNCw0LHQvtGH0LXQs9C+INC00L3Rjywg0YHQvNC10L3QvdC+0YHRgtGMINGA0LDQsdC+0YLRiywg0L/RgNC40L3QuNC80LDRgtGMINGA0LXRiNC10L3QuNC1INC+INCy0LLQtdC00LXQvdC40Lgg0YHRg9C80LzQuC0NCtGA0L7QstCw0L3QvdC+0LPQviDRg9GH0LXRgtCwICDRgNCw0LHQvtGH0LXQs9C+ICDQstGA0LXQvNC10L3QuCwgINGD0YHRgtCw0L3QsNCy0LvQuNCy0LDRgtGMINC/0L7RgNGP0LTQvtC6INC/0YDQtdC00L7RgdGC0LDQstC70LXQvdC40Y8NCtCy0YvRhdC+0LTQvdGL0YUg0LTQvdC10Lkg0LHQtdC3INC90LDRgNGD0YjQtdC90LjRjyDQvdC10L7QsdGF0L7QtNC40LzQvtC5INGB0L7Qs9C70LDRgdC+0LLQsNC90L3QvtGB0YLQuCDQtNC10LnRgdGC0LLQuNC5ICDRgNCw0LfQu9C40YctDQrQvdGL0YUg0L/QvtC00YDQsNC30LTQtdC70LXQvdC40Lkg0J/RgNC10LTQv9GA0LjRj9GC0LjRjy4NCiAgICAgMy4yLiDQoNCw0YHQv9C+0YDRj9C20LDRgtGM0YHRjyDQv9C+INGB0LLQvtC10LzRgyDRg9GB0LzQvtGC0YDQtdC90LjRjiDQv9GA0L7QtNGD0LrRhtC40LXQuSAo0YDQsNCx0L7RgtCw0LzQuCwgINGD0YHQu9GDLQ0K0LPQsNC80LgpICwg0L/RgNC+0LjQt9Cy0LXQtNC10L3QvdC+0Lkg0YHQstC10YDRhSDQvtCx0YrQtdC80LAsINGD0LrQsNC30LDQvdC90L7Qs9C+INCyINC90LDRgdGC0L7Rj9GJ0LXQvCDQtNC+0LPQvtCy0L7RgNC1Lg0KICAgICAzLjMuINCf0L7Qu9GD0YfQsNGC0YwgINC+0YIgINGB0YLRgNGD0LrRgtGD0YDQvdGL0YUgINC/0L7QtNGA0LDQt9C00LXQu9C10L3QuNC5ICDQuCAg0YHQu9GD0LbQsSAg0J/RgNC10LTQv9GA0LjRj9GC0LjRjw0K0LrQvtC90YHRg9C70YzRgtCw0YLQuNCy0L3Rg9GOINC4INC40L3Rg9GOINC/0L7QvNC+0YnRjCwg0LIg0YLQvtC8INGH0LjRgdC70LUg0Lgg0L0g0LTQvtCz0L7QstC+0YDQvdC+0Lkg0L7RgdC90L7QstC1Lg0KICAgICAzLjQuINCX0LDQutC70Y7Rh9Cw0YLRjCDRhdC+0LfRj9C50YHRgtCy0LXQvdC90YvQtSDQtNC+0LPQvtCy0L7RgNGLINC+0YIg0LjQvNC10L3QuCDQn9GA0LXQtNC/0YDQuNGP0YLQuNGPINC4ICDQvtGC0LrRgNGLLQ0K0LLQsNGC0Ywg0YHRh9C10YIg0LIgX19fX19fX19fX19fX19fX19fX19fX19fX18g0L7RgtC00LXQu9C10L3QuNC4IF9fX19fX19fX19fX19fX19fX19fX19fXw0K0LHQsNC90LrQsCDQsy5fX19fX19fX19fX19fX19fLg0KDQogICAgIDQuINCe0YLQstC10YLRgdGC0LLQtdC90L3QvtGB0YLRjCDRgdGC0L7RgNC+0L0NCg0KICAgICDQl9CwINC90LXQuNGB0L/QvtC70L3QtdC90LjQtSDQuNC70Lgg0L3QtdC90LDQtNC70LXQttCw0YnQtdC1INC40YHQv9C+0LvQvdC10L3QuNC1INGD0YHQu9C+0LLQuNC5INC90LDRgdGC0L7Rj9GJ0LXQs9C+INC00L7Qs9C+LQ0K0LLQvtGA0LAg0J/RgNC10LTQv9GA0LjRj9GC0LjQtSAg0LggINCQ0YDQtdC90LTQvdGL0LkgINC60L7Qu9C70LXQutGC0LjQsiAg0L3QtdGB0YPRgiAg0L7RgtCy0LXRgtGB0YLQstC10L3QvdC+0YHRgtGMICDQsiDRgdC+0L7Rgi0NCtCy0LXRgtGB0YLQstC40LggX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KICAgICAgICAgICjRg9C60LDQt9Cw0YLRjCDQtNC10LnRgdGC0LLRg9GO0YnQuNC1ICAg0L3QsCAg0J/RgNC10LTQv9GA0LjRj9GC0LjQuCAg0L3QvtGA0LzQsNGC0LjQstC90YvQtSAg0LTQvtC60YPQvNC10L3RgtGLLA0KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0K0YPRgdGC0LDQvdCw0LLQu9C40LLQsNGO0YnQuNC1INGN0LrQvtC90L7QvNC40YfQtdGB0LrRg9GOINC+0YLQstC10YLRgdGC0LLQtdC90L3QvtGB0YLRjCDQuCDQv9C+0YDRj9C00L7QuiDRgNCw0YHRgdC80L7RgtGA0LXQvdC40Y8g0YHQv9C+LQ0KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXy4NCtGA0L7QsiDQvNC10LbQtNGDINCf0YDQtdC00L/RgNC40Y/RgtC40LXQvCDQuCDQkNGA0LXQvdC00L3Ri9C8INC60L7Qu9C70LXQutGC0LjQstC+0LwpDQoNCiAgICAgNS4g0KHRgNC+0Log0LTQtdC50YHRgtCy0LjRjyDQtNC+0LPQvtCy0L7RgNCwINGBIF9fX19fX19fX19fX19fX18g0L/QviBfX19fX19fX19fX19fXy4NCg0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQ0KICAgICAqINCe0LHRj9C30LDRgtC10LvRjNC90YvQtSDQv9C70LDRgtC10LbQuCDQuCDQvtGC0YfQuNGB0LvQtdC90LjRjyDQvNC+0LPRg9GCINCy0LrQu9GO0YfQsNGC0YzRgdGPINCyINGB0L7RgdGC0LDQsiDQsNGA0LXQvdC0LQ0K0L3QvtC5INC/0LvQsNGC0YsuDQoNCg0KICANCjwvcHJlPjwvZGl2Pg0KPC9ib2R5Pg0KPC9odG1sPg==",
+    "mime_type": "text/html",
+    "language": "ru",
+    "locale": "ru"
+  },
+  "ingestion_preflight": {
+    "mime_type": "text/html",
+    "extractor": "html:regex",
+    "extraction_source": "html:regex",
+    "extraction_ok": true,
+    "error": null,
+    "extraction_error": null,
+    "sha256": "c991a533e0a2fc18079afa9f5e1d9261be4cffa275db583a181b8e0b93fe9eac"
+  },
+  "metrics": {
+    "risk_count": 1,
+    "high_risk_count": 0,
+    "disputed_clause_count": 1,
+    "asymmetry_signal_count": 0,
+    "contract_type": "non_contract_legal_form"
+  },
+  "analysis": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'dogovor-arendnogo-podryada-mezhdu-predpriyatiem-i-arendnim-kolle. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Подрядчик'. Определен тип договора: Иной юридический документ (уверенность 43%, правовая рамка: Вне типовой contract taxonomy). Ключевые обязательства по договору для роли 'Подрядчик': Обязанности сторон Арендный коллектив обязуется: 2; Обеспечить выполнение заказа Предприятия в полном объеме, но- менклатуре и заданные сроки, гарантировать качество выпускаемой продук- ции; обеспечить создание здоровых и безопасных условий труда работников Арендного коллектива. Условия оплаты: Осуществлять капи- тальный ремонт основных фондов (следует указать, за счет каких средств производятся эти виды ремонта, капитальный ремонт основных фондов может быть возложен на Предприятие); Своевременно производить с Предприятием необходимые расчеты; Соблюдать порядок регулирования размера средств, направляемых на оплату труда (указать, какой порядок установлен для данного Арендного коллектива). Сроки и дедлайны: Обеспечить выполнение заказа Предприятия в полном объеме, но- менклатуре и заданные сроки, гарантировать качество выпускаемой продук- ции; Выдавать Арендному коллективу заказ на производство продукции (работ, услуг), установливать другие плановые показатели не позднее чем за _______ дней до начала планируемого периода: _________________________ (перечисляются все виды заданий и показателей) 2; Самостоятельно определять формы и системы оплаты труда, распо- рядок рабочего дня, сменность работы, принимать решение о введении сумми- рованного учета рабочего времени, устанавливать порядок предоставления выходных дней без нарушения необходимой согласованности действий различ- ных подразделений Предприятия. Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Подрядчик'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Договор арендного подряда между предприятием и арендным коллективом - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР АРЕНДНОГО ПОДРЯДА МЕЖДУ ПРЕДПРИЯТИЕМ И АРЕНДНЫМ КОЛЛЕКТИВОМ ____________________________________________ , именуемое в дальней- (полное наименование предприятия) шем Предприятие, в лице директора (заместителя) _________________________ и арендный коллектив _________________________, именуемый в дальнейшем...",
+        "dispute_reason": "Явные маркеры спорных формулировок не обнаружены.",
+        "possible_consequence": "Скрытые спорные моменты требуют дополнительной юридической проверки.",
+        "confidence": 0.35
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Подрядчик",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Подрядчик'.",
+      "must_do": [
+        "Обязанности сторон Арендный коллектив обязуется: 2.",
+        "Обеспечить выполнение заказа Предприятия в полном объеме, но- менклатуре и заданные сроки, гарантировать качество выпускаемой продук- ции.",
+        "обеспечить создание здоровых и безопасных условий труда работников Арендного коллектива.",
+        "Предприятие обязуется: 2.",
+        "В этом пункте следует указать обязанности Предприятия по соци- альному развитию и обеспечению Арендного коллектива и его членов из цент- рализованного фонда."
+      ],
+      "should_review": [
+        "Осуществлять капи- тальный ремонт основных фондов (следует указать, за счет каких средств производятся эти виды ремонта, капитальный ремонт основных фондов может быть возложен на Предприятие)."
+      ],
+      "payment_terms": [
+        "Осуществлять капи- тальный ремонт основных фондов (следует указать, за счет каких средств производятся эти виды ремонта, капитальный ремонт основных фондов может быть возложен на Предприятие).",
+        "Своевременно производить с Предприятием необходимые расчеты.",
+        "Соблюдать порядок регулирования размера средств, направляемых на оплату труда (указать, какой порядок установлен для данного Арендного коллектива).",
+        "Производить реконструкцию, расширение или перепрофилирование производства за счет средств централизованных фондов Предприятия.",
+        "Самостоятельно определять формы и системы оплаты труда, распо- рядок рабочего дня, сменность работы, принимать решение о введении сумми- рованного учета рабочего времени, устанавливать порядок предоставления выходных дней без нарушения необходимой согласованности действий различ- ных подразделений Предприятия.",
+        "Заключать хозяйственные договоры от имени Предприятия и откры- вать счет в __________________________ отделении ________________________ банка г."
+      ],
+      "deadlines": [
+        "Обеспечить выполнение заказа Предприятия в полном объеме, но- менклатуре и заданные сроки, гарантировать качество выпускаемой продук- ции.",
+        "Выдавать Арендному коллективу заказ на производство продукции (работ, услуг), установливать другие плановые показатели не позднее чем за _______ дней до начала планируемого периода: _________________________ (перечисляются все виды заданий и показателей) 2.",
+        "Самостоятельно определять формы и системы оплаты труда, распо- рядок рабочего дня, сменность работы, принимать решение о введении сумми- рованного учета рабочего времени, устанавливать порядок предоставления выходных дней без нарушения необходимой согласованности действий различ- ных подразделений Предприятия.",
+        "Срок действия договора с ________________ по ______________."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "c991a533e0a2fc18079afa9f5e1d9261be4cffa275db583a181b8e0b93fe9eac"
+    },
+    "contract_type": {
+      "type_id": "non_contract_legal_form",
+      "confidence": 0.43,
+      "ru_name": "Иной юридический документ",
+      "legal_framework": "Вне типовой contract taxonomy"
+    },
+    "asymmetry_signals": []
+  },
+  "result": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'dogovor-arendnogo-podryada-mezhdu-predpriyatiem-i-arendnim-kolle. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Подрядчик'. Определен тип договора: Иной юридический документ (уверенность 43%, правовая рамка: Вне типовой contract taxonomy). Ключевые обязательства по договору для роли 'Подрядчик': Обязанности сторон Арендный коллектив обязуется: 2; Обеспечить выполнение заказа Предприятия в полном объеме, но- менклатуре и заданные сроки, гарантировать качество выпускаемой продук- ции; обеспечить создание здоровых и безопасных условий труда работников Арендного коллектива. Условия оплаты: Осуществлять капи- тальный ремонт основных фондов (следует указать, за счет каких средств производятся эти виды ремонта, капитальный ремонт основных фондов может быть возложен на Предприятие); Своевременно производить с Предприятием необходимые расчеты; Соблюдать порядок регулирования размера средств, направляемых на оплату труда (указать, какой порядок установлен для данного Арендного коллектива). Сроки и дедлайны: Обеспечить выполнение заказа Предприятия в полном объеме, но- менклатуре и заданные сроки, гарантировать качество выпускаемой продук- ции; Выдавать Арендному коллективу заказ на производство продукции (работ, услуг), установливать другие плановые показатели не позднее чем за _______ дней до начала планируемого периода: _________________________ (перечисляются все виды заданий и показателей) 2; Самостоятельно определять формы и системы оплаты труда, распо- рядок рабочего дня, сменность работы, принимать решение о введении сумми- рованного учета рабочего времени, устанавливать порядок предоставления выходных дней без нарушения необходимой согласованности действий различ- ных подразделений Предприятия. Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Подрядчик'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Договор арендного подряда между предприятием и арендным коллективом - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР АРЕНДНОГО ПОДРЯДА МЕЖДУ ПРЕДПРИЯТИЕМ И АРЕНДНЫМ КОЛЛЕКТИВОМ ____________________________________________ , именуемое в дальней- (полное наименование предприятия) шем Предприятие, в лице директора (заместителя) _________________________ и арендный коллектив _________________________, именуемый в дальнейшем...",
+        "dispute_reason": "Явные маркеры спорных формулировок не обнаружены.",
+        "possible_consequence": "Скрытые спорные моменты требуют дополнительной юридической проверки.",
+        "confidence": 0.35
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Подрядчик",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Подрядчик'.",
+      "must_do": [
+        "Обязанности сторон Арендный коллектив обязуется: 2.",
+        "Обеспечить выполнение заказа Предприятия в полном объеме, но- менклатуре и заданные сроки, гарантировать качество выпускаемой продук- ции.",
+        "обеспечить создание здоровых и безопасных условий труда работников Арендного коллектива.",
+        "Предприятие обязуется: 2.",
+        "В этом пункте следует указать обязанности Предприятия по соци- альному развитию и обеспечению Арендного коллектива и его членов из цент- рализованного фонда."
+      ],
+      "should_review": [
+        "Осуществлять капи- тальный ремонт основных фондов (следует указать, за счет каких средств производятся эти виды ремонта, капитальный ремонт основных фондов может быть возложен на Предприятие)."
+      ],
+      "payment_terms": [
+        "Осуществлять капи- тальный ремонт основных фондов (следует указать, за счет каких средств производятся эти виды ремонта, капитальный ремонт основных фондов может быть возложен на Предприятие).",
+        "Своевременно производить с Предприятием необходимые расчеты.",
+        "Соблюдать порядок регулирования размера средств, направляемых на оплату труда (указать, какой порядок установлен для данного Арендного коллектива).",
+        "Производить реконструкцию, расширение или перепрофилирование производства за счет средств централизованных фондов Предприятия.",
+        "Самостоятельно определять формы и системы оплаты труда, распо- рядок рабочего дня, сменность работы, принимать решение о введении сумми- рованного учета рабочего времени, устанавливать порядок предоставления выходных дней без нарушения необходимой согласованности действий различ- ных подразделений Предприятия.",
+        "Заключать хозяйственные договоры от имени Предприятия и откры- вать счет в __________________________ отделении ________________________ банка г."
+      ],
+      "deadlines": [
+        "Обеспечить выполнение заказа Предприятия в полном объеме, но- менклатуре и заданные сроки, гарантировать качество выпускаемой продук- ции.",
+        "Выдавать Арендному коллективу заказ на производство продукции (работ, услуг), установливать другие плановые показатели не позднее чем за _______ дней до начала планируемого периода: _________________________ (перечисляются все виды заданий и показателей) 2.",
+        "Самостоятельно определять формы и системы оплаты труда, распо- рядок рабочего дня, сменность работы, принимать решение о введении сумми- рованного учета рабочего времени, устанавливать порядок предоставления выходных дней без нарушения необходимой согласованности действий различ- ных подразделений Предприятия.",
+        "Срок действия договора с ________________ по ______________."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "c991a533e0a2fc18079afa9f5e1d9261be4cffa275db583a181b8e0b93fe9eac"
+    },
+    "contract_type": {
+      "type_id": "non_contract_legal_form",
+      "confidence": 0.43,
+      "ru_name": "Иной юридический документ",
+      "legal_framework": "Вне типовой contract taxonomy"
+    },
+    "asymmetry_signals": []
+  },
+  "finished_at": "2026-04-28T16:18:16.379145+00:00",
+  "duration_ms": 101.89
+}

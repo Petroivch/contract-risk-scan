@@ -1,0 +1,207 @@
+{
+  "case_id": "договоры 4__dogovor-na-sozdanie-peredachu-nauchnotehnicheskoy-produktsii_html",
+  "relative_path": "договоры 4/dogovor-na-sozdanie-peredachu-nauchnotehnicheskoy-produktsii.html",
+  "document_path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\договоры 4\\dogovor-na-sozdanie-peredachu-nauchnotehnicheskoy-produktsii.html",
+  "document_name": "dogovor-na-sozdanie-peredachu-nauchnotehnicheskoy-produktsii.html",
+  "role": "Исполнитель",
+  "counterparty_role": "Заказчик",
+  "language": "ru",
+  "mime_type": "text/html",
+  "tags": [
+    "ad_hoc"
+  ],
+  "source_group": "договоры 4",
+  "expected": {},
+  "started_at": "2026-04-28T16:18:26.807303+00:00",
+  "status": "completed",
+  "request": {
+    "document_name": "dogovor-na-sozdanie-peredachu-nauchnotehnicheskoy-produktsii.html",
+    "role_context": {
+      "role": "Исполнитель",
+      "counterparty_role": "Заказчик"
+    },
+    "document_text": null,
+    "document_base64": "PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMDEgVHJhbnNpdGlvbmFsLy9FTiI+DQo8aHRtbD4NCjxoZWFkPg0KPGJhc2UgaHJlZj0iaHR0cHM6Ly9kb2dvdm9yLXVyaXN0LnJ1LyI+DQo8dGl0bGU+0JTQvtCz0L7QstC+0YAg0L3QsCAgINGB0L7Qt9C00LDQvdC40LUgKNC/0LXRgNC10LTQsNGH0YMpINC90LDRg9GH0L3Qvi3RgtC10YXQvdC40YfQtdGB0LrQvtC5INC/0YDQvtC00YPQutGG0LjQuCAtINCy0LXRgNGB0LjRjyDQtNC70Y8g0L/QtdGH0LDRgtC4LiAyMDI2LiDQntCx0YDQsNC30YbRiyDQtNC+0LPQvtCy0L7RgNC+0LIsINGC0LjQv9C+0LLRi9C1INC00L7Qs9C+0LLQvtGA0LAsINCw0LrRgtGD0LDQu9GM0L3Ri9C1INC00L7QutGD0LzQtdC90YLRiywg0Y7RgNC40LTQuNGH0LXRgdC60LjQvCDQuCDRhNC40LfQuNGH0LXRgdC60LjQvCDQu9C40YbQsNC8PC90aXRsZT4NCjxtZXRhIGNvbnRlbnQ9IiIgbmFtZT0ia2V5d29yZHMiPg0KPG1ldGEgY29udGVudD0iIiBuYW1lPSJkZXNjcmlwdGlvbiI+DQo8bWV0YSBuYW1lPSJyb2JvdHMiIGNvbnRlbnQ9Im5vaW5kZXgsbm9mb2xsb3ciPg0KPG1ldGEgaHR0cC1lcXVpdj0iQ29udGVudC1UeXBlIiBjb250ZW50PSJ0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgiPg0KPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSIvaW1hZ2VzL3N0eWxlLmNzcyIgdHlwZT0idGV4dC9jc3MiPg0KPC9oZWFkPg0KPGJvZHk+DQo8ZGl2IGNsYXNzPSJkb2N1bWVudFRleHQiPg0KPHByZT7QlNCe0JPQntCS0J7QoA0K0L3QsCDRgdC+0LfQtNCw0L3QuNC1ICjQv9C10YDQtdC00LDRh9GDKSDQvdCw0YPRh9C90L4t0YLQtdGF0L3QuNGH0LXRgdC60L7QuQ0K0L/RgNC+0LTRg9C60YbQuNC4DQoNCtCzLl9fX19fX19fX19fICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICJfX18iX19fX19fX19fMjAwX1/Qsy4NCg0KICAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KKNC90LDQuNC80LXQvdC+0LLQsNC90LjQtSAg0L7QsdGK0LXQtNC40L3QtdC90LjRjywgICDQvtGA0LPQsNC90LjQt9Cw0YbQuNC4LCAg0L/RgNC10LTQv9GA0LjRj9GC0LjRjyksICDQuNC80LXQvdGD0LXQvNC+0LUgINCyDQrQtNCw0LvRjNC90LXQudGI0LXQvCDQmNGB0L/QvtC70L3QuNGC0LXQu9GMLCAg0LIg0LvQuNGG0LUgX19fX19fX19fX19fX19fX19fICjQtNC+0LvQttC90L7RgdGC0YwsINCkLtCYLtCeLiksDQrQtNC10LnRgdGC0LLRg9GO0YnQtdCz0L4g0L3QsCAg0L7RgdC90L7QstCw0L3QuNC4IF9fX19fX19fX19fX19fX19fX19fX18gINGBICDQvtC00L3QvtC5ICDRgdGC0L7RgNC+0L3RiyAg0LgNCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQoo0L3QsNC40LzQtdC90L7QstCw0L3QuNC1ICDQvtCx0YrQtdC00LjQvdC10L3QuNGPLCAgINC+0YDQs9Cw0L3QuNC30LDRhtC40LgsICDQv9GA0LXQtNC/0YDQuNGP0YLQuNGPKSwgINC40LzQtdC90YPQtdC80L7QtSAg0LINCtC00LDQu9GM0L3QtdC50YjQtdC8ICDQl9Cw0LrQsNC30YfQuNC6LCAgINCyICDQu9C40YbQtSAgIF9fX19fX19fX19fX19fX19fX19fX19fXyAgKNC00L7Qu9C20L3QvtGB0YLRjCwNCtCkLtCYLtCeKSwg0LTQtdC50YHRgtCy0YPRjtGJ0LXQs9C+ICDQvdCwINC+0YHQvdC+0LLQsNC90LjQuCAgX19fX19fX19fX19fX19fLCDRgSAg0LTRgNGD0LPQvtC5ICDRgdGC0L7RgNC+0L3Riw0K0LfQsNC60LvRjtGH0LjQu9C4INC90LDRgdGC0L7Rj9GJ0LjQuSDQtNC+0LPQvtCy0L7RgCDQviDQvdC40LbQtdGB0LvQtdC00YPRjtGJ0LXQvDoNCg0KICAgICBJLiDQn9GA0LXQtNC80LXRgiDQtNC+0LPQvtCy0L7RgNCwDQogICAgIDEuINCX0LDQutCw0LfRh9C40LogINC/0L7RgNGD0YfQsNC10YIgKNC/0YDQuNC90LjQvNCw0LXRgiksINCwINCY0YHQv9C+0LvQvdC40YLQtdC70Ywg0L/RgNC40L3QuNC80LDQtdGCINC90LAg0YHQtdCx0Y8NCijQv9C10YDQtdC00LDQtdGCKSBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCijQvdCw0LjQvNC10L3QvtCy0LDQvdC40LUg0L3QsNGD0YfQvdC+LdGC0LXRhdC90LjRh9C10YHQutC+0Lkg0L/RgNC+0LTRg9C60YbQuNC4KS4NCiAgICAgMi4g0J3QsNGD0YfQvdGL0LUsICDRgtC10YXQvdC40YfQtdGB0LrQuNC1LCAg0Y3QutC+0L3QvtC80LjRh9C10YHQutC40LUgINC4ICDQtNGA0YPQs9C40LUgINGC0YDQtdCx0L7QstCw0L3QuNGPICDQug0K0L3QsNGD0YfQvdC+LdGC0LXRhdC90LjRh9C10YHQutC+0LkgICAg0L/RgNC+0LTRg9C60YbQuNC4LCAgICDRj9Cy0LvRj9GO0YnQtdC50YHRjyAgICDQv9GA0LXQtNC80LXRgtC+0LwgICAg0LTQvtCz0L7QstC+0YDQsA0KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCijRgdC+0LTQtdGA0LbQsNC90LjQtSDRgtGA0LXQsdC+0LLQsNC90LjQuSAg0LjQu9C4ICDQvdCw0LjQvNC10L3QvtCy0LDQvdC40LUsICDQvdC+0LzQtdGALCAg0LTQsNGC0LAgINC00L7QutGD0LzQtdC90YLQsCwgINCyDQrQutC+0YLQvtGA0L7QvCDQvtC90Lgg0L7RgtGA0LDQttC10L3RiykuDQogICAgIDMuINCh0YDQvtC6INGB0LTQsNGH0Lgg0YDQsNCx0L7RgiDQv9C+INC00L7Qs9C+0LLQvtGA0YMgX19fX19fX19fXzIwX19f0LMuDQogICAgIDQuINCh0L7QtNC10YDQttCw0L3QuNC1ICDQuCDRgdGA0L7QutC4ICDQstGL0L/QvtC70L3QtdC90LjRjyAg0L7RgdC90L7QstC90YvRhSAg0Y3RgtCw0L/QvtCyICDQvtC/0YDQtdC00LXQu9GP0Y7RgtGB0Y8NCtC60LDQu9C10L3QtNCw0YDQvdGL0LwgINC/0LvQsNC90L7QvCwgICDRgdC+0YHRgtCw0LLQu9GP0Y7RidC40LwgICDQvdC10L7RgtGK0LXQvNC70LXQvNGD0Y4gICDRh9Cw0YHRgtGMICAg0L3QsNGB0YLQvtGP0YnQtdCz0L4NCtC00L7Qs9C+0LLQvtGA0LAuDQogICAgIDUuINCf0YDQuNC10LzQutCwICDQuCDQvtGG0LXQvdC60LAg0L3QsNGD0YfQvdC+LdGC0LXRhdC90LjRh9C10YHQutC+0Lkg0L/RgNC+0LTRg9C60YbQuNC4INC+0YHRg9GJ0LXRgdGC0LLQu9GP0Y7RgtGB0Y8g0LINCtGB0L7QvtGC0LLQtdGC0YHRgtCy0LjQuCDRgSDRgtGA0LXQsdC+0LLQsNC90LjRj9C80Lgg0YLQtdGF0L3QuNGH0LXRgdC60L7Qs9C+INC30LDQtNCw0L3QuNGPINC40LvQuCDQuNC90L7Qs9C+INC00L7QutGD0LzQtdC90YLQsCDQvdCwDQrQv9GA0L7QstC10LTQtdC90LjQtSDRgNCw0LHQvtGCICBfX19fX19fX19fX19fXyAo0L3QsNC40LzQtdC90L7QstCw0L3QuNC1LCAgTiwg0YfQuNGB0LvQviwgINC80LXRgdGP0YYsICDQs9C+0LQNCtGD0YLQstC10YDQttC00LXQvdC40Y8pINC+0YIgIl9fXyJfX19fXzIwX19f0LMuIE5fX19fX18sINGP0LLQu9GP0Y7RidC10LPQvtGB0Y8g0YfQsNGB0YLRjNGOINC00L7Qs9C+0LLQvtGA0LAuDQogICAgIDYuICDQmNGB0L/QvtC70YzQt9C+0LLQsNC90LjQtSAgINC90LDRg9GH0L3Qvi3RgtC10YXQvdC40YfQtdGB0LrQvtC5ICDQv9GA0L7QtNGD0LrRhtC40LggICDQvtGB0YPRidC10YHRgtCy0LvRj9C10YLRgdGPDQrQt9Cw0LrQsNC30YfQuNC60L7QvCAg0L3QsCAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KKNGD0LrQsNC30LDRgtGMINC/0YDQtdC00L/RgNC40Y/RgtC40LUsINC+0YDQs9Cw0L3QuNC30LDRhtC40Y4pINC/0YPRgtC10LwgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQoo0YPQutCw0LfQsNGC0YwsINC60LDQutC40LwgINC+0LHRgNCw0LfQvtC8LCDQutC+0LPQtNCwICDQsdGD0LTQtdGCINC40YHQv9C+0LvRjNC30L7QstCw0L3QsCAg0L3QsNGD0YfQvdC+LdGC0LXRhdC90LjRh9C10YHQutCw0Y8NCtC/0YDQvtC00YPQutGG0LjRjyAtICDQvtGB0LLQvtC10L3QuNC1INGB0LXRgNC40LnQvdC+0LPQviAg0LLRi9C/0YPRgdC60LAsINC/0YDQuNC80LXQvdC10L3QuNC1INCyINC60LDRh9C10YHRgtCy0LUg0YLRgNGD0LTQsCDQuA0K0YIu0L8uKQ0KDQogICAgIElJLiDQodGC0L7QuNC80L7RgdGC0Ywg0YDQsNCx0L7RgiDQuCDQv9C+0YDRj9C00L7QuiDRgNCw0YHRh9C10YLQvtCyDQogICAgIDcuINCX0LAg0LLRi9C/0L7Qu9C90LXQvdC90YPRjiDQvdCw0YPRh9C90L4t0YLQtdGF0L3QuNGH0LXRgdC60YPRjiDQv9GA0L7QtNGD0LrRhtC40Y4g0YHQvtCz0LvQsNGB0L3QviDQvdCw0YHRgtC+0Y/RidC10LzRgw0K0LTQvtCz0L7QstC+0YDRgyDQl9Cw0LrQsNC30YfQuNC6INC/0LXRgNC10YfQuNGB0LvRj9C10YIg0JjRgdC/0L7Qu9C90LjRgtC10LvRjiDQsiDRgdC+0L7RgtCy0LXRgtGB0YLQstC40Lgg0YEg0L/RgNC+0YLQvtC60L7Qu9C+0Lwg0L4NCtC00L7Qs9C+0LLQvtGA0L3QvtC5INGG0LXQvdC1IF9fX19fXyAo0YHRg9C80LzQsCDQv9GA0L7Qv9C40YHRjNGOKSDRgNGD0LHQu9C10LkuDQogICAgIDguINCe0L/Qu9Cw0YLQsCAg0L/RgNC+0LjQt9Cy0L7QtNC40YLRgdGPIF9fX19fX19fXyAgKNC10LTQuNC90L7QstGA0LXQvNC10L3QvdC+ICDQt9CwICDQt9Cw0LrQvtC90YfQtdC90L3Rg9GODQrRgNCw0LHQvtGC0YMsINC/0L7RjdGC0LDQv9C90L4gINGBINCw0LLQsNC90YHQvtCy0YvQvCAg0L/Qu9Cw0YLQtdC20L7QvCwgINC90LAgINC+0YHQvdC+0LLQtSAg0LTRgNGD0LPQuNGFICDQv9GA0LjQvdGG0LjQv9C+0LINCtGB0L7Qs9C70LDRgdC90L4g0LTQvtCz0L7QstC+0YDQtdC90L3QvtGB0YLQuCDQl9Cw0LrQsNC30YfQuNC60LAg0Lgg0JjRgdC/0L7Qu9C90LjRgtC10LvRjykuDQogICAgIDkuICDQodGH0LXRgtCwICDQmNGB0L/QvtC70L3QuNGC0LXQu9GPICDQvtC/0LvQsNGH0LjQstCw0Y7RgtGB0Y8gINCX0LDQutCw0LfRh9C40LrQvtC8ICDQsiAg0YPRgdGC0LDQvdC+0LLQu9C10L3QvdC+0LwNCtC/0L7RgNGP0LTQutC1Lg0KDQogICAgIElJSS4g0J/QvtGA0Y/QtNC+0Log0YHQtNCw0YfQuCDQuCDQv9GA0LjQtdC80LrQuCDRgNCw0LHQvtGCDQogICAgIDEwLiDQn9C10YDQtdGH0LXQvdGMINC90LDRg9GH0L3Qvi3RgtC10YXQvdC40YfQtdGB0LrQvtC5ICDQuCDQtNGA0YPQs9C+0Lkg0LTQvtC60YPQvNC10L3RgtCw0YbQuNC4LCDQv9C+0LTQu9C10LbQsNGJ0LXQuQ0K0L7RhNC+0YDQvNC70LXQvdC40Y4gINC4ICAg0YHQtNCw0YfQtSAg0JjRgdC/0L7Qu9C90LjRgtC10LvQtdC8ICAg0JfQsNC60LDQt9GH0LjQutGDICDQvdCwICAg0L7RgtC00LXQu9GM0L3Ri9GFICDRjdGC0LDQv9Cw0YUNCtCy0YvQv9C+0LvQvdC10L3QuNGPINC4ICDQv9C+ICDQvtC60L7QvdGH0LDQvdC40LggINC00L7Qs9C+0LLQvtGA0LAsICDQv9C+0YDRj9C00L7QuiAg0L/RgNC+0LLQtdC00LXQvdC40Y8gINC/0YDQuNC10LzQvtGH0L3Ri9GFDQrQuNGB0L/Ri9GC0LDQvdC40Lkg0L7Qv9GL0YLQvdGL0YUgINC+0LHRgNCw0LfRhtC+0LIgKNC/0LDRgNGC0LjQuSkgINC90L7QstC+0Lkg0YLQtdGF0L3QuNC60LgsICDQuNC30LPQvtGC0LDQstC70LjQstCw0LXQvNGL0YUg0LINCtGB0L7QvtGC0LLQtdGC0YHRgtCy0LjQuCDRgSDQtNC+0LPQvtCy0L7RgNC+0LwsINC+0L/RgNC10LTQtdC70LXQvSBfX19fX19fX19fX19fX19fX19fX18gKNC90LDQuNC80LXQvdC+0LLQsNC90LjQtQ0K0LTQvtC60YPQvNC10L3RgtCwKSDQvtGCIF9fX19fX19fX19fXyBOX19fX19fX19fX18sINGP0LLQu9GP0Y7RidC10LPQvtGB0Y8g0YfQsNGB0YLRjNGOINC00L7Qs9C+0LLQvtGA0LAuDQogICAgIDExLiDQn9C10YDQtdC00LDRh9CwICDQvtGE0L7RgNC80LvQtdC90L3QvtC5INCyICDRg9GB0YLQsNC90L7QstC70LXQvdC90L7QvCDQv9C+0YDRj9C00LrQtSDQtNC+0LrRg9C80LXQvdGC0LDRhtC40Lgg0L/Qvg0K0L7RgtC00LXQu9GM0L3Ri9C8INGN0YLQsNC/0LDQvCAg0LTQvtCz0L7QstC+0YDQsCDQvtGB0YPRidC10YHRgtCy0LvRj9C10YLRgdGPINGB0L7Qv9GA0L7QstC+0LTQuNGC0LXQu9GM0L3Ri9C80Lgg0LTQvtC60YPQvNC10L3RgtCw0LzQuA0K0JjRgdC/0L7Qu9C90LjRgtC10LvRjy4NCiAgICAgMTIuINCf0YDQuCAg0LfQsNCy0LXRgNGI0LXQvdC40Lgg0YDQsNCx0L7RgiAg0JjRgdC/0L7Qu9C90LjRgtC10LvRjCDQv9GA0LXQtNGB0YLQsNCy0LvRj9C10YIgINCX0LDQutCw0LfRh9C40LrRgyDQsNC60YINCtGB0LTQsNGH0Lgt0L/RgNC40LXQvNC60Lgg0L3QsNGD0YfQvdC+LdGC0LXRhdC90LjRh9C10YHQutC+0Lkg0L/RgNC+0LTRg9C60YbQuNC4INGBINC/0YDQuNC70L7QttC10L3QuNC10Lwg0Log0L3QtdC80YM6DQogICAgINC60L7QvNC/0LvQtdC60YLQsCDQvdCw0YPRh9C90L7QuS3RgtC10YXQvdC40YfQtdGB0LrQvtC5INC4INC00YDRg9Cz0L7QuSDQtNC+0LrRg9C80LXQvdGC0LDRhtC40LgsINC/0YDQtdC00YPRgdC80L7RgtGA0LXQvS0NCtC90L7QuSDRgtC10YXQvdC40YfQtdGB0LrQuNC8INC30LDQtNCw0L3QuNC10Lwg0Lgg0YPRgdC70L7QstC40Y/QvNC4INC00L7Qs9C+0LLQvtGA0LA7DQogICAgINC/0YDQvtGC0L7QutC+0LvQsCDQutC+0LzQuNGB0YHQuNC4ICDQv9C+INC/0YDQuNC10LzQutC1ICDQvtC/0YvRgtC90YvRhSAg0L7QsdGA0LDQt9GG0L7QsiAgKNC/0LDRgNGC0LjQuSkgINC90L7QstC+0LkNCtGC0LXRhdC90LjQutC4LCDQuNC30LPQvtGC0L7QstC70LXQvdC90YvRhSAg0L/QviDQtNC+0LPQvtCy0L7RgNGDICAo0YLQvtC70YzQutC+INC00LvRjyAg0LTQvtCz0L7QstC+0YDQvtCyLCDQstGL0L/QvtC70L3QtdC90LjQtQ0K0LrQvtGC0L7RgNGL0YUg0L/RgNC10LTRg9GB0LzQsNGC0YDQuNCy0LDQtdGCICDQv9GA0LjQtdC80L7Rh9C90YvQtSDQuNGB0L/Ri9GC0LDQvdC40Y8g0L7Qv9GL0YLQvdGL0YUg0L7QsdGA0LDQt9GG0L7QsiAo0L/QsNGA0YLQuNC5KQ0K0L3QvtCy0L7QuSDRgtC10YXQvdC40LrQuCk7DQogICAgINC60L7Qv9C40LggICDQv9GA0L7RgtC+0LrQvtC70LAgICDQvdCw0YPRh9C90L4t0YLQtdGF0L3QuNGH0LXRgdC60L7Qs9C+ICAg0YHQvtCy0LXRgtCwICAg0JjRgdC/0L7Qu9C90LjRgtC10LvRjyAgINGBDQrQt9Cw0LrQu9GO0YfQtdC90LjQtdC8INC+INGB0L7QvtGC0LLQtdGC0YHRgtCy0LjQuCDQstGL0L/QvtC70L3QtdC90L3QvtC5INGA0LDQsdC+0YLRiyDRgtC10YXQvdC40YfQtdGB0LrQvtC80YMg0LfQsNC00LDQvdC40Y4gKNC40LvQuA0K0LjQvdC+0LzRgyDQtNC+0LrRg9C80LXQvdGC0YMpINC90LAg0LXQtSDQv9GA0L7QstC10LTQtdC90LjQtSBfX19fX19fX18gKNC90LDQuNC80LXQvdC+0LLQsNC90LjQtSwg0YfQuNGB0LvQviwg0LzQtdGB0Y/Rhg0K0Lgg0LPQvtC0INGD0YLQstC10YDQttC00LXQvdC40Y8pLg0KICAgICAxMy4qKSDQl9Cw0LrQsNC30YfQuNC6ICDQvtCx0Y/Qt9Cw0L0g0LIgINGB0YDQvtC6INC00L4gIF9fX19fX19fX19fICjRh9C40YHQu9C+LCAg0LzQtdGB0Y/RhiwgINCz0L7QtCkNCtGD0YLQstC10YDQtNC40YLRjCAg0LggICDRgdC+0L7QsdGJ0LjRgtGMICDQmNGB0L/QvtC70L3QuNGC0LXQu9GOICAg0YHQvtGB0YLQsNCyICDQutC+0LzQuNGB0YHQuNC4ICDQv9C+ICDQv9GA0L7QstC10LTQtdC90LjRjg0K0L/RgNC40LXQvNC+0YfQvdGL0YUg0LjRgdC/0YvRgtCw0L3QuNC5ICDQvtC/0YvRgtC90YvRhSDQvtCx0YDQsNC30YbQvtCyLCAg0LjQt9Cz0L7RgtC+0LLQu9C10L3QvdGL0YUg0LIg0YHQvtC+0YLQstC10YLRgdGC0LLQuNC4INGBDQrQv9C70LDQvdC+0Lwg0YDQsNCx0L7RgiDQv9C+INC00L7Qs9C+0LLQvtGA0YMuDQogICAgIDE0LiopINCY0YHQv9C+0LvQvdC40YLQtdC70YwgINC+0LHRj9C30LDQvSDQsiAg0YHRgNC+0Log0LTQviAgX19fX19fX19fICjRh9C40YHQu9C+LCAg0LzQtdGB0Y/Rhiwg0LPQvtC0KQ0K0YPQstC10LTQvtC80LjRgtGMINCX0LDQutCw0LfRh9C40LrQsCAg0L4g0LPQvtGC0L7QstC90L7RgdGC0LggINC40LfQs9C+0YLQvtCy0LvQtdC90L3Ri9GFINC+0LHRgNCw0LfRhtC+0LIgINC6INC/0YDQvtCy0LXQtNC10L3QuNGODQrQv9GA0LjQtdC80L7Rh9C90YvRhSAg0LjRgdC/0YvRgtCw0L3QuNC5ICAo0YDQsNGB0YHQvNC+0YLRgNC10L3QuNGOICDRgNC10LfRg9C70YzRgtCw0YLQvtCyICDQt9Cw0LrQvtC90YfQtdC90L3QvtC5ICDQvdCw0YPRh9C90L4tDQrQuNGB0YHQu9C10LTQvtCy0LDRgtC10LvRjNGB0LrQvtC5INGA0LDQsdC+0YLRiyDQvdCw0YPRh9C90L4t0YLQtdGF0L3QuNGH0LXRgdC60LjQvCDRgdC+0LLQtdGC0L7QvCkuDQogICAgIDE1LiDQl9Cw0LrQsNC30YfQuNC6ICDQsiDRgtC10YfQtdC90LjQtSAgX19fX18g0LTQvdC10LkgINGB0L4g0LTQvdGPICDQv9C+0LvRg9GH0LXQvdC40Y8g0LDQutGC0LAg0YHQtNCw0YfQuC0NCtC/0YDQuNC10LzQutC4INGA0LDQsdC+0YIgINC4ICDQvtGC0YfQtdGC0L3Ri9GFICDQtNC+0LrRg9C80LXQvdGC0L7QsiwgINGD0LrQsNC30LDQvdC90YvRhSAg0LIgINC/LjEyINC90LDRgdGC0L7Rj9GJ0LXQs9C+DQrQtNC+0LPQvtCy0L7RgNCwLCDQvtCx0Y/Qt9Cw0L0gINC90LDQv9GA0LDQstC40YLRjCDQmNGB0L/QvtC70L3QuNGC0LXQu9GOICDQv9C+0LTQv9C40YHQsNC90L3Ri9C5INCw0LrRgiAg0YHQtNCw0YfQuC3Qv9GA0LjQtdC80LrQuA0K0L3QsNGD0YfQvdC+LdGC0LXRhdC90LjRh9C10YHQutC+0Lkg0L/RgNC+0LTRg9C60YbQuNC4INC40LvQuCDQvNC+0YLQuNCy0LjRgNC+0LLQsNC90L3Ri9C5INC+0YLQutCw0Lcg0L7RgiDQv9GA0LjQtdC80LrQuCDRgNCw0LHQvtGCLg0KICAgICAxNi4gINCSICAg0YHQu9GD0YfQsNC1ICAg0LzQvtGC0LjQstC40YDQvtCy0LDQvdC90L7Qs9C+ICAg0L7RgtC60LDQt9CwICAg0JfQsNC60LDQt9GH0LjQutCwICAg0YHRgtC+0YDQvtC90LDQvNC4DQrRgdC+0YHRgtCw0LLQu9GP0LXRgtGB0Y8g0LTQstGD0YXRgdGC0L7RgNC+0L3QvdC40LkgINCw0LrRgiDRgSAg0L/QtdGA0LXRh9C40YHQu9C10L3QuNC10Lwg0L3QtdC+0LHRhdC+0LTQuNC80YvRhSDQtNC+0YDQsNCx0L7RgtC+0LosDQrRgdGA0L7QutC+0LIg0LjQtyDQstGL0L/QvtC70L3QtdC90LjRjy4NCiAgICAgMTcuINCSICDRgdC70YPRh9Cw0LUg0LTQvtGB0YDQvtGH0L3QvtCz0L4g0LLRi9C/0L7Qu9C90LXQvdC40Y8g0YDQsNCx0L7RgiDQl9Cw0LrQsNC30YfQuNC6INCy0L/RgNCw0LLQtSDQtNC+0YHRgNC+0YfQvdC+DQrQv9GA0LjQvdGP0YLRjCDQuCDQvtC/0LvQsNGC0LjRgtGMINGA0LDQsdC+0YLRiyDQv9C+INC00L7Qs9C+0LLQvtGA0L3QvtC5INGG0LXQvdC1Lg0KICAgICAxOC4g0J/RgNC4ICDRgdC+0LrRgNCw0YnQtdC90LjQuCDRgdGA0L7QutC+0LIgINCy0YvQv9C+0LvQvdC10L3QuNGPINGA0LDQsdC+0YIsICDRg9C70YPRh9GI0LXQvdC40Y8gINGC0LXRhdC90LjQutC+LQ0K0Y3QutC+0L3QvtC80LjRh9C10YHQutC40YUg0L/QsNGA0LDQvNC10YLRgNC+0LIgINGA0LDQt9GA0LDQsdC+0YLQutC4LCDQv9C+0LLRi9GI0LXQvdC40Y8g0Y3QutGB0L/QvtGA0YLQvdGL0YUg0LLQvtC30LzQvtC20L3QvtGB0YLQtdC5DQrQl9Cw0LrQsNC30YfQuNC60LAg0L7RgiAg0LLQvdC10LTRgNC10L3QuNGPINGA0LDQsdC+0YIgINC30LAgINC/0YDQvtCy0LXQtNC10L3QuNC1ICDQmNGB0L/QvtC70L3QuNGC0LXQu9C10LwgINCy0LDRgNC40LDQvdGC0L3Ri9GFDQrQuNGB0YHQu9C10LTQvtCy0LDQvdC40LksINGN0LrRgdC/0LXRgNC40LzQtdC90YLQvtCyICDQuCDRgNCw0LHQvtGCICDQv9C+INC00LjQt9Cw0LnQvdGDINGBINGG0LXQu9GM0Y4g0YPQtNC+0LLQu9C10YLQstC+0YDQtdC90LjRjw0K0YHQv9C10YbQuNCw0LvRjNC90YvRhSDRgtGA0LXQsdC+0LLQsNC90LjQuSAg0YPRgdGC0LDQvdCw0LLQu9C40LLQsNC10YLRgdGPINC00L7Qv9C70LDRgtCwICDQuiAg0LTQvtCz0L7QstC+0YDQvdC+0LkgINGG0LXQvdC1ICDQsg0K0YDQsNC30LzQtdGA0LUgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXyAo0YHRg9C80LzQsCDQv9GA0L7Qv9C40YHRjNGOKQ0KICAgICAxOS4g0JXRgdC70LggINCyICDQv9GA0L7RhtC10YHRgdC1ICDQstGL0L/QvtC70L3QtdC90LjRjyAg0YDQsNCx0L7RgiAg0LLRi9GP0YHQvdGP0LXRgtGB0Y8gINC90LXQuNC30LHQtdC20L3QvtGB0YLRjA0K0L/QvtC70YPRh9C10L3QuNGPINC+0YLRgNC40YbQsNGC0LXQu9GM0L3QvtCz0L4gINGA0LXQt9GD0LvRjNGC0LDRgtCwINC40LvQuCDQvdC10YbQtdC70LXRgdC+0L7QsdGA0LDQt9C90L7RgdGC0Ywg0LTQsNC70YzQvdC10LnRiNC10LPQvg0K0L/RgNC+0LLQtdC00LXQvdC40Y8g0YDQsNCx0L7Rgiwg0JjRgdC/0L7Qu9C90LjRgtC10LvRjCDQvtCx0Y/Qt9Cw0L0g0L/RgNC40L7RgdGC0LDQvdC+0LLQuNGC0Ywg0LXQtSwg0L/QvtGB0YLQsNCy0LjQsiDQvtCxINGN0YLQvtC8DQrQsiAg0LjQt9Cy0LXRgdGC0L3QvtGB0YLRjCAg0JfQsNC60LDQt9GH0LjQutCwICDQsiAgX19fX9C00L3QtdCy0L3Ri9C5ICDRgdGA0L7QuiAg0L/QvtGB0LvQtSAg0L/RgNC40L7RgdGC0LDQvdC+0LLQu9C10L3QuNGPDQrRgNCw0LHQvtGC0YsuDQogICAgICAgICAg0JIg0Y3RgtC+0LwgINGB0LvRg9GH0LAg0YHRgtC+0YDQvtC90Ysg0L7QsdGP0LfQsNC90Ysg0LIgX19fX1/QtNC90LXQstC90YvQuSDRgdGA0L7QuiDRgNCw0YHRgdC80L7RgtGA0LXRgtGMDQrQstC+0L/RgNC+0YEg0L4g0YbQtdC70LXRgdC+0L7QsdGA0LDQt9C90L7RgdGC0Lgg0Lgg0L3QsNC/0YDQsNCy0LvQtdC90LjRj9GFINC/0YDQvtC00L7Qu9C20LXQvdC40Y8g0YDQsNCx0L7Rgi4NCg0KICAgICBJVi4g0J7RgtCy0LXRgtGB0YLQstC10L3QvdC+0YHRgtGMINGB0YLQvtGA0L7QvQ0KICAgICAyMC4g0JfQsCAg0L3QtdCy0YvQv9C+0LvQvdC10L3QuNC1INC40LvQuCAg0L3QtdC90LDQtNC70LXQttCw0YnQtdC1INCy0YvQv9C+0LvQvdC10L3QuNC1ICDQvtCx0Y/Qt9Cw0YLQtdC70YzRgdGC0LIg0L/Qvg0K0L3QsNGB0YLQvtGP0YnQtdC80YMg0LTQvtCz0L7QstC+0YDRgyAg0JjRgdC/0L7Qu9C90LjRgtC10LvRjCDQuCAg0JfQsNC60LDQt9GH0LjQuiAg0L3QtdGB0YPRgiAg0L7RgtCy0LXRgtGB0YLQstC10L3QvdC+0YHRgtGMICDQsg0K0YHQvtC+0YLQstC10YLRgdGC0LLQuNC4INGBINC00LXQudGB0YLQstGD0Y7RidC40Lwg0LfQsNC60L7QvdC+0LTQsNGC0LXQu9GM0YHRgtCy0L7QvC4NCiAgICAgMjEuINCU0L7Qv9C+0LvQvdC40YLQtdC70YzQvdGL0LUsICDQvdC1INGD0YHRgtCw0L3QvtCy0LvQtdC90L3Ri9C1INC30LDQutC+0L3QvtC00LDRgtC10LvRjNGB0YLQstC+0Lwg0YHQsNC90LrRhtC40Lgg0LfQsA0K0L3QtdC40YHQv9C+0LvQvdC10L3QuNC1ICAgICAgICAgICDQuNC70LggICAgICAgICAgICDQvdC10L3QsNC00LvQtdC20LDRidC10LUgICAgICAgICAgINC40YHQv9C+0LvQvdC10L3QuNC1DQrQvtCx0Y/Qt9Cw0YLQtdC70YzRgdGC0LJfX19fX19fX19fX19fX19fX19fX19fX19fX19fDQoNCiAgICAgVi4g0J/RgNC+0YfQuNC1INGD0YHQu9C+0LLQuNGPDQogICAgIDIyLiDQo9GB0LvQvtCy0LjRjyAg0YHQvtCx0LvRjtC00LXQvdC40Y8g0L/RgNCw0LIgINGB0YLQvtGA0L7QvSDQvdCwINGB0L7Qt9C00LDQstCw0LXQvNGD0Y4gKNC/0LXRgNC10LTQsNCy0LDQtdC80YPRjikNCtC90LDRg9GH0L3Qvi3RgtC10YXQvdC40YfQtdGB0LrRg9GOINC/0YDQvtC00YPQutGG0LjRjl9fX19fX19fX19fDQogICAgIDIzLiDQlNGA0YPQs9C40LUg0YPRgdC70L7QstC40Y8g0L/QviDRg9GB0LzQvtGC0YDQtdC90LjRjiDRgdGC0L7RgNC+0L1fX19fX19fXw0KDQogICAgIFZJLiDQodGA0L7QuiDQtNC10LnRgdGC0LLQuNGPINC00L7Qs9C+0LLQvtGA0LAg0Lgg0Y7RgNC40LTQuNGH0LXRgdC60LjQtSDQsNC00YDQtdGB0LAg0YHRgtC+0YDQvtC9DQogICAgIDI0LiAgINCh0YDQvtC6ICAgINC00LXQudGB0YLQstC40Y8gICAg0LTQvtCz0L7QstC+0YDQsCAgICDRgSAgICAiX19fIl9fX19fXzIwX19f0LMuICAgINC/0L4NCiJfX18iX19fX19fMjBfX1/Qsy4NCiAgICAgMjUuICAgINCQ0LTRgNC10YHQsCAgICAg0LggICAg0YDQsNGB0YfQtdGC0L3Ri9C1ICAgINGB0YfQtdGC0LAgICAg0YHRgtC+0YDQvtC9ICAgINCY0YHQv9C+0LvQvdC40YLQtdC70Y8NCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQoo0L/QvtGH0YLQvtCy0YvQuSDQuCAg0YLQtdC70LXQs9GA0LDRhNC90YvQuSDQuNC90LTQtdC60YEgINC4INCw0LTRgNC10YEgINCY0YHQv9C+0LvQvdC40YLQtdC70Y8g0Lgg0LHQsNC90LrQsCAo0YHRh9C10YIpKSwNCtCX0LDQutCw0LfRh9C40LrQsCBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQooKNC/0L7Rh9GC0L7QstGL0Lkg0Lgg0YLQtdC70LXQs9GA0LDRhNC90YvQuSDQuNC90LTQtdC60YEg0Lgg0LDQtNGA0LXRgSDQl9Cw0LrQsNC30YfQuNC60LAg0Lgg0LHQsNC90LrQsCAo0YHRh9C10YIpKS4NCiAgICAgMjYuINCaINC90LDRgdGC0L7Rj9GJ0LXQvNGDINC00L7Qs9C+0LLQvtGA0YMg0L/RgNC40LvQsNCz0LDRjtGC0YHRjzpfX19fX19fDQogICAgINCh0L7QstC10YDRiNC10L3QviDQsiAgX19fX19fX18gIl9fXyJfX19fX19fMjBfX1/Qsy4gINCyINC00LLRg9GFICDRjdC60LfQtdC80L/Qu9GP0YDQsNGFOiAg0L/Qvg0K0L7QtNC90L7QvNGDINC00LvRjyAg0LrQsNC20LTQvtC5INC40LcgINGB0YLQvtGA0L7QvSwg0L/RgNC40YfQtdC8ICDQvtCx0LAg0Y3QutC30LXQvNC/0LvRj9GA0LAgINC40LzQtdGO0YIg0L7QtNC40L3QsNC60L7QstGD0Y4NCtGB0LjQu9GDLg0KDQrQmNGB0L/QvtC70L3QuNGC0LXQu9GMICAgICAgICAgICAgICAgICAgINCX0LDQutCw0LfRh9C40LoNCl9fX19fX19fX19fICAgICAgICAgICAgICAgICAgIF9fX19fX19fX18NCg0KICAg0Jwu0J8uICAgICAgICAgICAgICAgICAgICAgICAgICDQnC7Qny4NCg0KKikg0JTQu9GPINC00L7Qs9C+0LLQvtGA0L7Qsiwg0LLRi9C/0L7Qu9C90LXQvdC40LUg0LrQvtGC0L7RgNGL0YUg0L/RgNC10LTRg9GB0LzQsNGC0YDQuNCy0LDQtdGCINC/0YDQuNC10LzQvtGH0L3Ri9C1INC40YHQv9GL0YLQsNC90LjRjw0KICAg0L7Qv9GL0YLQvdGL0YUg0L7QsdGA0LDQt9GG0L7QsiAo0L/QsNGA0YLQuNC5KSDQvdC+0LLQvtC5INGC0LXRhdC90LjQutC4DQoNCi4NCiAgDQo8L3ByZT48L2Rpdj4NCjwvYm9keT4NCjwvaHRtbD4=",
+    "mime_type": "text/html",
+    "language": "ru",
+    "locale": "ru"
+  },
+  "ingestion_preflight": {
+    "mime_type": "text/html",
+    "extractor": "html:regex",
+    "extraction_source": "html:regex",
+    "extraction_ok": true,
+    "error": null,
+    "extraction_error": null,
+    "sha256": "6c4ada00bb1d5c5caaab9a123efe418e4d02563618edb7776588680d610f35bb"
+  },
+  "metrics": {
+    "risk_count": 1,
+    "high_risk_count": 0,
+    "disputed_clause_count": 1,
+    "asymmetry_signal_count": 0,
+    "contract_type": "non_contract_legal_form"
+  },
+  "analysis": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'dogovor-na-sozdanie-peredachu-nauchnotehnicheskoy-produktsii. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Исполнитель'. Определен тип договора: Иной юридический документ (уверенность 52%, правовая рамка: Вне типовой contract taxonomy). Что должен Исполнитель: *) Исполнитель обязан в срок до _________ (число, месяц, год) уведомить Заказчика о готовности изготовленных образцов к проведению приемочных испытаний (рассмотрению результатов законченной научно- исследовательской работы научно-техническим советом); Если в процессе выполнения работ выясняется неизбежность получения отрицательного результата или нецелесообразность дальнейшего проведения работ, Исполнитель обязан приостановить ее, поставив об этом в известность Заказчика в ____дневный срок после приостановления работы. Что должен Заказчик: *) Заказчик обязан в срок до ___________ (число, месяц, год) утвердить и сообщить Исполнителю состав комиссии по проведению приемочных испытаний опытных образцов, изготовленных в соответствии с планом работ по договору; *) Исполнитель обязан в срок до _________ (число, месяц, год) уведомить Заказчика о готовности изготовленных образцов к проведению приемочных испытаний (рассмотрению результатов законченной научно- исследовательской работы научно-техническим советом); Если в процессе выполнения работ выясняется неизбежность получения отрицательного результата или нецелесообразность дальнейшего проведения работ, Исполнитель обязан приостановить ее, поставив об этом в известность Заказчика в ____дневный срок после приостановления работы. Условия оплаты: Стоимость работ и порядок расчетов 7; Оплата производится _________ (единовременно за законченную работу, поэтапно с авансовым платежом, на основе других принципов согласно договоренности Заказчика и Исполнителя); Счета Исполнителя оплачиваются Заказчиком в установленном порядке. Сроки и дедлайны: Срок сдачи работ по договору __________20___г; Содержание и сроки выполнения основных этапов определяются календарным планом, составляющим неотъемлемую часть настоящего договора; *) Заказчик обязан в срок до ___________ (число, месяц, год) утвердить и сообщить Исполнителю состав комиссии по проведению приемочных испытаний опытных образцов, изготовленных в соответствии с планом работ по договору. Штрафы и санкции: Дополнительные, не установленные законодательством санкции за неисполнение или ненадлежащее исполнение обязательств____________________________ V. Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Исполнитель'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Договор на создание (передачу) научно-технической продукции - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР на создание (передачу) научно-технической продукции г. ___________ \"___\"_________200__г. _________________________________________________________________ (наименование объединения, организации, предприятия), именуемое в дальнейшем Исполнитель, в лице __________________ (должность, Ф. И. О.",
+        "dispute_reason": "Одна из сторон получила дискреционное право без достаточных ограничителей.",
+        "possible_consequence": "Это может привести к одностороннему применению условия и спору о пределах такого права.",
+        "confidence": 0.76
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Исполнитель",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Исполнитель'.",
+      "must_do": [
+        "*) Исполнитель обязан в срок до _________ (число, месяц, год) уведомить Заказчика о готовности изготовленных образцов к проведению приемочных испытаний (рассмотрению результатов законченной научно- исследовательской работы научно-техническим советом).",
+        "Если в процессе выполнения работ выясняется неизбежность получения отрицательного результата или нецелесообразность дальнейшего проведения работ, Исполнитель обязан приостановить ее, поставив об этом в известность Заказчика в ____дневный срок после приостановления работы.",
+        "*) Заказчик обязан в срок до ___________ (число, месяц, год) утвердить и сообщить Исполнителю состав комиссии по проведению приемочных испытаний опытных образцов, изготовленных в соответствии с планом работ по договору.",
+        "12 настоящего договора, обязан направить Исполнителю подписанный акт сдачи-приемки научно-технической продукции или мотивированный отказ от приемки работ.",
+        "В этом случа стороны обязаны в _____дневный срок рассмотреть вопрос о целесообразности и направлениях продолжения работ."
+      ],
+      "should_review": [
+        "В случае досрочного выполнения работ Заказчик вправе досрочно принять и оплатить работы по договорной цене.",
+        "Другие условия по усмотрению сторон________ VI."
+      ],
+      "payment_terms": [
+        "Оплата производится _________ (единовременно за законченную работу, поэтапно с авансовым платежом, на основе других принципов согласно договоренности Заказчика и Исполнителя).",
+        "Счета Исполнителя оплачиваются Заказчиком в установленном порядке.",
+        "В случае досрочного выполнения работ Заказчик вправе досрочно принять и оплатить работы по договорной цене.",
+        "При сокращении сроков выполнения работ, улучшения технико- экономических параметров разработки, повышения экспортных возможностей Заказчика от внедрения работ за проведение Исполнителем вариантных исследований, экспериментов и работ по дизайну с целью удовлетворения специальных требований устанавливается доплата к договорной цене в размере ___________________________________________ (сумма прописью) 19.",
+        "Адреса и расчетные счета сторон Исполнителя _______________________________________________________________________ (почтовый и телеграфный индекс и адрес Исполнителя и банка (счет)), Заказчика _____________________________________________________________ ((почтовый и телеграфный индекс и адрес Заказчика и банка (счет)).",
+        "Стоимость работ и порядок расчетов 7."
+      ],
+      "deadlines": [
+        "*) Заказчик обязан в срок до ___________ (число, месяц, год) утвердить и сообщить Исполнителю состав комиссии по проведению приемочных испытаний опытных образцов, изготовленных в соответствии с планом работ по договору.",
+        "*) Исполнитель обязан в срок до _________ (число, месяц, год) уведомить Заказчика о готовности изготовленных образцов к проведению приемочных испытаний (рассмотрению результатов законченной научно- исследовательской работы научно-техническим советом).",
+        "Заказчик в течение _____ дней со дня получения акта сдачи- приемки работ и отчетных документов, указанных в п.",
+        "В случае мотивированного отказа Заказчика сторонами составляется двухсторонний акт с перечислением необходимых доработок, сроков из выполнения.",
+        "При сокращении сроков выполнения работ, улучшения технико- экономических параметров разработки, повышения экспортных возможностей Заказчика от внедрения работ за проведение Исполнителем вариантных исследований, экспериментов и работ по дизайну с целью удовлетворения специальных требований устанавливается доплата к договорной цене в размере ___________________________________________ (сумма прописью) 19.",
+        "Если в процессе выполнения работ выясняется неизбежность получения отрицательного результата или нецелесообразность дальнейшего проведения работ, Исполнитель обязан приостановить ее, поставив об этом в известность Заказчика в ____дневный срок после приостановления работы."
+      ],
+      "penalties": [
+        "Дополнительные, не установленные законодательством санкции за неисполнение или ненадлежащее исполнение обязательств____________________________ V."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "6c4ada00bb1d5c5caaab9a123efe418e4d02563618edb7776588680d610f35bb"
+    },
+    "contract_type": {
+      "type_id": "non_contract_legal_form",
+      "confidence": 0.52,
+      "ru_name": "Иной юридический документ",
+      "legal_framework": "Вне типовой contract taxonomy"
+    },
+    "asymmetry_signals": []
+  },
+  "result": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'dogovor-na-sozdanie-peredachu-nauchnotehnicheskoy-produktsii. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Исполнитель'. Определен тип договора: Иной юридический документ (уверенность 52%, правовая рамка: Вне типовой contract taxonomy). Что должен Исполнитель: *) Исполнитель обязан в срок до _________ (число, месяц, год) уведомить Заказчика о готовности изготовленных образцов к проведению приемочных испытаний (рассмотрению результатов законченной научно- исследовательской работы научно-техническим советом); Если в процессе выполнения работ выясняется неизбежность получения отрицательного результата или нецелесообразность дальнейшего проведения работ, Исполнитель обязан приостановить ее, поставив об этом в известность Заказчика в ____дневный срок после приостановления работы. Что должен Заказчик: *) Заказчик обязан в срок до ___________ (число, месяц, год) утвердить и сообщить Исполнителю состав комиссии по проведению приемочных испытаний опытных образцов, изготовленных в соответствии с планом работ по договору; *) Исполнитель обязан в срок до _________ (число, месяц, год) уведомить Заказчика о готовности изготовленных образцов к проведению приемочных испытаний (рассмотрению результатов законченной научно- исследовательской работы научно-техническим советом); Если в процессе выполнения работ выясняется неизбежность получения отрицательного результата или нецелесообразность дальнейшего проведения работ, Исполнитель обязан приостановить ее, поставив об этом в известность Заказчика в ____дневный срок после приостановления работы. Условия оплаты: Стоимость работ и порядок расчетов 7; Оплата производится _________ (единовременно за законченную работу, поэтапно с авансовым платежом, на основе других принципов согласно договоренности Заказчика и Исполнителя); Счета Исполнителя оплачиваются Заказчиком в установленном порядке. Сроки и дедлайны: Срок сдачи работ по договору __________20___г; Содержание и сроки выполнения основных этапов определяются календарным планом, составляющим неотъемлемую часть настоящего договора; *) Заказчик обязан в срок до ___________ (число, месяц, год) утвердить и сообщить Исполнителю состав комиссии по проведению приемочных испытаний опытных образцов, изготовленных в соответствии с планом работ по договору. Штрафы и санкции: Дополнительные, не установленные законодательством санкции за неисполнение или ненадлежащее исполнение обязательств____________________________ V. Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Исполнитель'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Договор на создание (передачу) научно-технической продукции - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР на создание (передачу) научно-технической продукции г. ___________ \"___\"_________200__г. _________________________________________________________________ (наименование объединения, организации, предприятия), именуемое в дальнейшем Исполнитель, в лице __________________ (должность, Ф. И. О.",
+        "dispute_reason": "Одна из сторон получила дискреционное право без достаточных ограничителей.",
+        "possible_consequence": "Это может привести к одностороннему применению условия и спору о пределах такого права.",
+        "confidence": 0.76
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Исполнитель",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Исполнитель'.",
+      "must_do": [
+        "*) Исполнитель обязан в срок до _________ (число, месяц, год) уведомить Заказчика о готовности изготовленных образцов к проведению приемочных испытаний (рассмотрению результатов законченной научно- исследовательской работы научно-техническим советом).",
+        "Если в процессе выполнения работ выясняется неизбежность получения отрицательного результата или нецелесообразность дальнейшего проведения работ, Исполнитель обязан приостановить ее, поставив об этом в известность Заказчика в ____дневный срок после приостановления работы.",
+        "*) Заказчик обязан в срок до ___________ (число, месяц, год) утвердить и сообщить Исполнителю состав комиссии по проведению приемочных испытаний опытных образцов, изготовленных в соответствии с планом работ по договору.",
+        "12 настоящего договора, обязан направить Исполнителю подписанный акт сдачи-приемки научно-технической продукции или мотивированный отказ от приемки работ.",
+        "В этом случа стороны обязаны в _____дневный срок рассмотреть вопрос о целесообразности и направлениях продолжения работ."
+      ],
+      "should_review": [
+        "В случае досрочного выполнения работ Заказчик вправе досрочно принять и оплатить работы по договорной цене.",
+        "Другие условия по усмотрению сторон________ VI."
+      ],
+      "payment_terms": [
+        "Оплата производится _________ (единовременно за законченную работу, поэтапно с авансовым платежом, на основе других принципов согласно договоренности Заказчика и Исполнителя).",
+        "Счета Исполнителя оплачиваются Заказчиком в установленном порядке.",
+        "В случае досрочного выполнения работ Заказчик вправе досрочно принять и оплатить работы по договорной цене.",
+        "При сокращении сроков выполнения работ, улучшения технико- экономических параметров разработки, повышения экспортных возможностей Заказчика от внедрения работ за проведение Исполнителем вариантных исследований, экспериментов и работ по дизайну с целью удовлетворения специальных требований устанавливается доплата к договорной цене в размере ___________________________________________ (сумма прописью) 19.",
+        "Адреса и расчетные счета сторон Исполнителя _______________________________________________________________________ (почтовый и телеграфный индекс и адрес Исполнителя и банка (счет)), Заказчика _____________________________________________________________ ((почтовый и телеграфный индекс и адрес Заказчика и банка (счет)).",
+        "Стоимость работ и порядок расчетов 7."
+      ],
+      "deadlines": [
+        "*) Заказчик обязан в срок до ___________ (число, месяц, год) утвердить и сообщить Исполнителю состав комиссии по проведению приемочных испытаний опытных образцов, изготовленных в соответствии с планом работ по договору.",
+        "*) Исполнитель обязан в срок до _________ (число, месяц, год) уведомить Заказчика о готовности изготовленных образцов к проведению приемочных испытаний (рассмотрению результатов законченной научно- исследовательской работы научно-техническим советом).",
+        "Заказчик в течение _____ дней со дня получения акта сдачи- приемки работ и отчетных документов, указанных в п.",
+        "В случае мотивированного отказа Заказчика сторонами составляется двухсторонний акт с перечислением необходимых доработок, сроков из выполнения.",
+        "При сокращении сроков выполнения работ, улучшения технико- экономических параметров разработки, повышения экспортных возможностей Заказчика от внедрения работ за проведение Исполнителем вариантных исследований, экспериментов и работ по дизайну с целью удовлетворения специальных требований устанавливается доплата к договорной цене в размере ___________________________________________ (сумма прописью) 19.",
+        "Если в процессе выполнения работ выясняется неизбежность получения отрицательного результата или нецелесообразность дальнейшего проведения работ, Исполнитель обязан приостановить ее, поставив об этом в известность Заказчика в ____дневный срок после приостановления работы."
+      ],
+      "penalties": [
+        "Дополнительные, не установленные законодательством санкции за неисполнение или ненадлежащее исполнение обязательств____________________________ V."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "6c4ada00bb1d5c5caaab9a123efe418e4d02563618edb7776588680d610f35bb"
+    },
+    "contract_type": {
+      "type_id": "non_contract_legal_form",
+      "confidence": 0.52,
+      "ru_name": "Иной юридический документ",
+      "legal_framework": "Вне типовой contract taxonomy"
+    },
+    "asymmetry_signals": []
+  },
+  "finished_at": "2026-04-28T16:18:26.959318+00:00",
+  "duration_ms": 152.41
+}

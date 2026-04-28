@@ -1,0 +1,183 @@
+{
+  "case_id": "договоры 4__podtverzhdenie-na-oplatu_html",
+  "relative_path": "договоры 4/podtverzhdenie-na-oplatu.html",
+  "document_path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\договоры 4\\podtverzhdenie-na-oplatu.html",
+  "document_name": "podtverzhdenie-na-oplatu.html",
+  "role": "Поставщик",
+  "counterparty_role": "Покупатель",
+  "language": "ru",
+  "mime_type": "text/html",
+  "tags": [
+    "ad_hoc"
+  ],
+  "source_group": "договоры 4",
+  "expected": {},
+  "started_at": "2026-04-28T16:19:02.110652+00:00",
+  "status": "completed",
+  "request": {
+    "document_name": "podtverzhdenie-na-oplatu.html",
+    "role_context": {
+      "role": "Поставщик",
+      "counterparty_role": "Покупатель"
+    },
+    "document_text": null,
+    "document_base64": "PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMDEgVHJhbnNpdGlvbmFsLy9FTiI+DQo8aHRtbD4NCjxoZWFkPg0KPGJhc2UgaHJlZj0iaHR0cHM6Ly9kb2dvdm9yLXVyaXN0LnJ1LyI+DQo8dGl0bGU+0J/QvtC00YLQstC10YDQttC00LXQvdC40LUg0L3QsCAgINC+0L/Qu9Cw0YLRgyAtINCy0LXRgNGB0LjRjyDQtNC70Y8g0L/QtdGH0LDRgtC4LiAyMDI2LiDQntCx0YDQsNC30YbRiyDQtNC+0LPQvtCy0L7RgNC+0LIsINGC0LjQv9C+0LLRi9C1INC00L7Qs9C+0LLQvtGA0LAsINCw0LrRgtGD0LDQu9GM0L3Ri9C1INC00L7QutGD0LzQtdC90YLRiywg0Y7RgNC40LTQuNGH0LXRgdC60LjQvCDQuCDRhNC40LfQuNGH0LXRgdC60LjQvCDQu9C40YbQsNC8PC90aXRsZT4NCjxtZXRhIGNvbnRlbnQ9IiIgbmFtZT0ia2V5d29yZHMiPg0KPG1ldGEgY29udGVudD0iIiBuYW1lPSJkZXNjcmlwdGlvbiI+DQo8bWV0YSBuYW1lPSJyb2JvdHMiIGNvbnRlbnQ9Im5vaW5kZXgsbm9mb2xsb3ciPg0KPG1ldGEgaHR0cC1lcXVpdj0iQ29udGVudC1UeXBlIiBjb250ZW50PSJ0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgiPg0KPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSIvaW1hZ2VzL3N0eWxlLmNzcyIgdHlwZT0idGV4dC9jc3MiPg0KPC9oZWFkPg0KPGJvZHk+DQo8ZGl2IGNsYXNzPSJkb2N1bWVudFRleHQiPg0KPHByZT4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgINCf0YDQuNC70L7QttC10L3QuNC1IE4gMg0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgINC6INC00L7Qs9C+0LLQvtGA0YMg0LvQuNC30LjQvdCz0LAgTiBfX19fX18NCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICDQvtGCICJfX19fIl9fX19fX19fX19fXzIwX19fX9CzLg0KDQogICAgINCb0LjQt9C40L3Qs9C+0LLQsNGPINC60L7QvNC/0LDQvdC40Y8NCg0KICAgICBfX19fX19fX19fX19fX19fX19fDQoNCiAgICAgIl9fX18iX19fX19fX19fX19fXzIwX19fX9CzLiBOIF9fX19fX19fDQoNCiAgICAg0L3QsCDQktCw0YggTiBfX19fX19fX19fX19fXyDQvtGCIF9fX19fX19fX18NCg0KDQoNCiAgICAgICAgICAgICAgICAgICAgICAgINCf0J7QlNCi0JLQldCg0JbQlNCV0J3QmNCVINCd0JAg0J7Qn9Cb0JDQotCjDQoNCg0KICAgICDQmtCw0YHQsNC10YLRgdGPINC00L7Qs9C+0LLQvtGA0LAg0LvQuNC30LjQvdCz0LAgTiBfX19fX19fX19fINC+0YIgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQoNCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQoNCiAgICAg0JDRgNC10L3QtNCw0YLQvtGAOl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQoNCiAgICAg0KHQvtC+0LHRidCw0LXQvCDQktCw0LwsINGH0YLQviDQvdCw0LzQuCDQv9GA0LjQvdGP0YLQsCDQt9Cw0Y/QstC60LAg0L3QsCDQu9C40LfQuNC90LMg0LLRi9GI0LXRg9C60LDQt9Cw0L3QvdC+0LPQviDQkNGA0LXQvdC00LDRgtC+0YDQsA0K0L/QviDRgdC70LXQtNGD0Y7RidC10LzRgyDQvtCx0YrQtdC60YLRgyDRgdC00LXQu9C60Lg6X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQoNCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQoNCiAgICAg0J/QvtC60YPQv9C90LDRjyDRhtC10L3QsCAo0LIg0YLQvtC8INGH0LjRgdC70LUg0L3QsNC70L7QsyDQvdCwINC00L7QsdCw0LLQu9C10L3QvdGD0Y4g0YHRgtC+0LjQvNC+0YHRgtGMIClfX19fX19fX19fX19fDQoNCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQoNCiAgICAg0J/QvtGB0YLQsNCy0LrQsCDQvtGB0YPRidC10YHRgtCy0LvRj9C10YLRgdGPICDQktCw0YjQuNC8INC/0YDQtdC00L/RgNC40Y/RgtC40LXQvCDQv9C+INGB0L7Qs9C70LDRgdC+0LLQsNC90L3QvtC80YMg0YEg0JDRgNC10L3QtNCw0YLQvi0NCtGA0L7QvCDQutC+0L3RgtGA0LDQutGC0YMgKNC00L7Qs9C+0LLQvtGAKSBOIF9fX19fX19fX19fX19fX19fX19fINC+0YJfX19fX19fX19fX19fX19fX19fX19fX19fX19fDQoNCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQogICAgICAgICAgICAgICAgICgg0YPQutCw0LfRi9Cy0LDQtdGC0YHRjyDRgdGA0L7QuiDQvdCw0YfQsNC70LAg0Lgg0LrQvtC90YbQsCDQv9C+0YHRgtCw0LLQutC4ICkNCg0KDQogICAgINCj0YHQu9C+0LLQuNGPINC00LvRjyDQvtC/0LvQsNGC0Ys6DQoNCiAgICAgMS4g0J/QvtGB0YLQsNCy0YnQuNC6INC/0L7RgdGC0LDQstC40YIg0L7QsdGK0LXQutGCINC70LjQt9C40L3Qs9C+0LLQvtC5INGB0LTQtdC70LrQuCDQkNGA0LXQvdC00LDRgtC+0YDRgyDQt9Cw0LHQu9Cw0LPQvtCy0YDQtdC80LXQvdC90L4NCtC4INCyINGB0YLRgNC+0LPQvtC8INGB0L7QvtGC0LLQtdGC0YHRgtCy0LjQuCDRgSDRg9C60LDQt9Cw0L3QvdGL0Lwg0LrQvtC90YLRgNCw0LrRgtC+0LwuDQoNCiAgICAgMi4g0J/QviDRgdC+0LLQtdGA0YjQtdC90LjQuCDQvdCw0LTQu9C10LbQsNGJ0LXQuSDQv9C+0YHRgtCw0LLQutC4INC+0LHRjNC10LrRgtCwINCQ0YDQtdC90LTQsNGC0L7RgNGDINCf0L7RgdGC0LDQstGJ0LjQutC+0Lwg0L/RgNCw0LLQvg0K0YHQvtCx0YHRgtCy0LXQvdC90L7RgdGC0Lgg0L/QtdGA0LXRhdC+0LTQuNGCINC6INC70LjQt9C40L3Qs9C+0LLQvtC5INC60L7QvNC/0LDQvdC40LguDQoNCiAgICAgMy4g0JvQuNC30LjQvdCz0L7QstCw0Y8g0LrQvtC80L/QsNC90LjRjyDRg9GB0YLRg9C/0LDQtdGCINCf0L7RgdGC0LDQstGJ0LjQutGDINCy0YHQtSDQv9GA0LjRh9C40YLQsNGO0YnQuNC10YHRjyAg0LXQvNGDICDQsiAg0LrQsC0NCtGH0LXRgdGC0LLQtSDQstC70LDQtNC10LvRjNGG0LAgINC+0LHRitC10LrRgtCwINC/0YDQtdGC0LXQvdC30LjQuCDQsiDQvtGC0L3QvtGI0LXQvdC40Lgg0JDRgNC10L3QtNCw0YLQvtGA0LAsICDQutC+0YLQvtGA0YvQtSDQstC+0LfQvdC40LrQu9C4INCyDQrRgNC10LfRg9C70YzRgtCw0YLQtSDQvdCw0L/RgNCw0YHQvdC+0Lkg0L/QvtGB0YLQsNCy0LrQuC4gINCe0L3QsCDQvdC1INC+0YLQstC10YfQsNC10YIg0LfQsCAg0L/RgNCw0LLQuNC70YzQvdC+0YHRgtGMLCAg0LLQvtC30LzQvtC20L3QvtGB0YLRjA0K0LjQt9GL0YHQutCw0L3QuNGPLCDRgNCw0LfQsdC40YDQsNGC0LXQu9GM0YHRgtCy0L4g0Lgg0YDQsNGB0YXQvtC00Ysg0LIg0YHQstGP0LfQuCDRgSDQvdCw0L/RgNCw0YHQvdC+0Lkg0L/QvtGB0YLQsNCy0LrQvtC5Lg0KDQogICAgIDQuINCf0L7RgdGC0LDQstGJ0LjQuiDQvtGC0LLQtdGH0LDQtdGCINC90LXQv9C+0YHRgNC10LTRgdGC0LLQtdC90L3QviDQv9C10YDQtdC0INCQ0YDQtdC90LTQsNGC0L7RgNC+0Lwg0LfQsCDQstGB0LUg0L/RgNC10YLQtdC90LfQuNC4LA0K0LrQvtGC0L7RgNGL0LUg0L/QvtGB0LvQtdC00L3QuNC5INCy0L/RgNCw0LLQtSDQv9GA0LXQtNGK0Y/QstC40YLRjCDQsiDRgdC70YPRh9Cw0LUg0L3QtdCy0YvQv9C+0LvQvdC10L3QuNGPICDQuNC70Lgg0L3QtdC60LDRh9C10YHRgtCy0LXQvdC90L7Qs9C+DQrQstGL0L/QvtC70L3QtdC90LjRjyDQv9C+0YHRgtCw0LLQvtC6ICDQn9C+0YHRgtCw0LLRidC40LrQvtC8ICDQsiAg0YHQvtC+0YLQstC10YLRgdGC0LLQuNC4ICDRgSAg0YPQutCw0LfQsNC90L3Ri9C8ICDQutC+0L3RgtGA0LDQutGC0L7QvCAg0LgNCtC00LXQudGB0YLQstGD0Y7RidC40Lwg0L/QvtC70L7QttC10L3QuNC10Lwg0L4g0L/QvtGB0YLQsNCy0LrQtSDQv9GA0L7QtNGD0LrRhtC40Lgg0L/RgNC+0LjQt9Cy0L7QtNGB0YLQstC10L3QvdC+LdGC0LXRhdC90LjRh9C10YHQutC+0LPQviAg0L3QsNC3LQ0K0L3QsNGH0LXQvdC40Y8uDQoNCiAgICAgNS4g0J/QvtGB0YLQsNCy0YnQuNC6ICDQvdC1ICDQuNC80LXQtdGCICDQv9GA0LDQstCwICDQv9GA0LXQtNC+0YHRgtCw0LLQu9GP0YLRjCDQkNGA0LXQvdC00LDRgtC+0YDRgyDQv9GA0LDQstCwINC/0LXRgNC10LTQsNCy0LDRgtGMDQoo0L/RgNC40L3QuNC80LDRgtGMKSDQvtCx0YrQtdC60YIg0L3QsNGB0YLQvtGP0YnQtdC5INGB0LTQtdC70LrQuCDQsdC10Lcg0YHQvtGB0YLQsNCy0LvQtdC90LjRjyDQsNC60YLQsCDQv9GA0LjQtdC80LrQuC4NCg0KICAgICA2LiDQo9GB0LvRg9Cz0Lgg0L/QviDRg9GB0YLQsNC90L7QstC60LUgKNC80L7QvdGC0LDQttGDKSDQvtCx0YzQtdC60YLQsCDQu9C40LfQuNC90LPQsCAg0YMgINCQ0YDQtdC90LTQsNGC0L7RgNCwLCAg0L7QsdGL0YfQvdGL0LwNCtCz0LDRgNCw0L3RgtC40LnQvdGL0Lwg0L7QsdGP0LfQsNGC0LXQu9GM0YHRgtCy0LDQvCwgINGC0LXQutGD0YnQtdC80YMg0YLQtdGF0L3QuNGH0LXRgdC60L7QvNGDINC+0LHRgdC70YPQttC40LLQsNC90LjRjiAo0YHQtdGA0LLQuNGB0YMpINC+0LrQsC0NCtC30YvQstCw0Y7RgtGB0Y8g0JDRgNC10L3QtNCw0YLQvtGA0YMg0L3QsCDQvtGB0L3QvtCy0LUg0L7RgtC00LXQu9GM0L3QvtCz0L4g0LTQvtCz0L7QstC+0YDQsCDQvdC10L/QvtGB0YDQtdC00YHRgtCy0LXQvdC90L4g0J/QvtGB0YLQsNCy0YnQuNC60L7QvC4NCiAgICAg0J/RgNC+0YHQuNC8INCS0LDRgSDQv9C+0YHRgtCw0LLQuNGC0Ywg0L7QsdGK0LXQutGCINC70LjQt9C40L3Qs9C+0LLQvtC5INGB0LTQtdC70LrQuCDQkNGA0LXQvdC00LDRgtC+0YDRgyDQvdCwINGB0L7Qs9C70LDRgdC+0LLQsNC90L3Ri9GFDQrRgSDQvdC40Lwg0L/QviDRg9C60LDQt9Cw0L3QvdC+0LzRgyDQutC+0L3RgtGA0LDQutGC0YMg0YPRgdC70L7QstC40Y/RhSDQuCDQvdCw0L/RgNCw0LLQuNGC0Ywg0L3QsNC8Og0KICAgICAtINGB0L7QvtCx0YnQtdC90LjQtSDQvdCwINC/0L7Qu9GD0YfQtdC90LjQtSDQuCDRgdC+0LPQu9Cw0YHQvtCy0LDQvdC40LUg0L3QsNGB0YLQvtGP0YnQtdCz0L4g0L/QvtC00YLQstC10YDQttC00LXQvdC40Y87DQogICAgIC0g0YHRh9C10YIg0LIg0LTQstGD0YUg0Y3QutC30LXQvNC/0LvRj9GA0LDRhSDQvdCwINC+0L/Qu9Cw0YLRgyDQv9C+0YHRgtCw0LLQu9C10L3QvdC+0LPQviDQvtCx0YzQtdC60YLQsCDQu9C40LfQuNC90LPQsDsNCiAgICAgLSDQuNC30LLQtdGJ0LXQvdC40LUg0L4g0LTQsNGC0LUg0L7RgtCz0YDRg9C30LrQuCDQuCDQutC+0L/QuNC4INC+0YLQs9GA0YPQt9C+0YfQvdGL0YUg0LTQvtC60YPQvNC10L3RgtC+0LI7DQogICAgIC0g0L/QvtC00L/QuNGB0LDQvdC90YvQuSDQktCw0LzQuCDQuCDQkNGA0LXQvdC00LDRgtC+0YDQvtC8INC/0YDQvtGC0L7QutC+0Lsg0L/RgNC40LXQvNC60Lgg0L7QsdGM0LXQutGC0LAg0LvQuNC30LjQvdCz0LAuDQoNCiAgICAg0J/RgNC4INC/0L7Qu9GD0YfQtdC90LjQuCAg0LLRgdC10YUg0YPQutCw0LfQsNC90L3Ri9GFINC00L7QutGD0LzQtdC90YLQvtCyINC90LXQvNC10LTQu9C10L3QvdC+INC/0YDQvtC40LfQstC10LTQtdC8INCS0LDQvCDQvtC/0LvQsNGC0YMNCtGD0LrQsNC30LDQvdC90L7QuSDQstGL0YjQtSDQv9C+0LrRg9C/0L3QvtC5INGG0LXQvdGLLg0KDQogICAgINChINGD0LLQsNC20LXQvdC40LXQvA0KDQoNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg0JPQtdC90LXRgNCw0LvRjNC90YvQuSDQtNC40YDQtdC60YLQvtGADQoNCg0KDQogIA0KPC9wcmU+PC9kaXY+DQo8L2JvZHk+DQo8L2h0bWw+",
+    "mime_type": "text/html",
+    "language": "ru",
+    "locale": "ru"
+  },
+  "ingestion_preflight": {
+    "mime_type": "text/html",
+    "extractor": "html:regex",
+    "extraction_source": "html:regex",
+    "extraction_ok": true,
+    "error": null,
+    "extraction_error": null,
+    "sha256": "02c80e6f112ab680f7df04d48d1446004e169dcc0e96bcc15e153f40a6fc48e7"
+  },
+  "metrics": {
+    "risk_count": 1,
+    "high_risk_count": 0,
+    "disputed_clause_count": 1,
+    "asymmetry_signal_count": 0,
+    "contract_type": "non_contract_legal_form"
+  },
+  "analysis": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'podtverzhdenie-na-oplatu. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Поставщик'. Определен тип договора: Иной юридический документ (уверенность 52%, правовая рамка: Вне типовой contract taxonomy). Условия оплаты: Подтверждение на оплату - версия для печати; N ________ на Ваш N ______________ от __________ ПОДТВЕРЖДЕНИЕ НА ОПЛАТУ Касается договора лизинга N __________ от ______________________________ _____________________________________________________________________________ Арендатор: ______________________________________________________________ Сообщаем Вам, что нами принята заявка на лизинг вышеуказанного Арендатора по следующему объекту сделки: ________________________________________________ _____________________________________________________________________________ Покупная цена (в том числе налог на добавленную стоимость )_____________ _____________________________________________________________________________ Поставка осуществляется Вашим предприятием по согласованному с Арендато- ром контракту (договор) N ____________________ от____________________________ _____________________________________________________________________________ ( указывается срок начала и конца поставки ) Условия для оплаты: 1; - счет в двух экземплярах на оплату поставленного обьекта лизинга. Сроки и дедлайны: N ________ на Ваш N ______________ от __________ ПОДТВЕРЖДЕНИЕ НА ОПЛАТУ Касается договора лизинга N __________ от ______________________________ _____________________________________________________________________________ Арендатор: ______________________________________________________________ Сообщаем Вам, что нами принята заявка на лизинг вышеуказанного Арендатора по следующему объекту сделки: ________________________________________________ _____________________________________________________________________________ Покупная цена (в том числе налог на добавленную стоимость )_____________ _____________________________________________________________________________ Поставка осуществляется Вашим предприятием по согласованному с Арендато- ром контракту (договор) N ____________________ от____________________________ _____________________________________________________________________________ ( указывается срок начала и конца поставки ) Условия для оплаты: 1. Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Поставщик'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Подтверждение на оплату - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам Приложение N 2 к договору лизинга N ______ от \"____\"____________20____г. Лизинговая компания ___________________ \"____\"_____________20____г. N ________ на Ваш N ______________ от __________ ПОДТВЕРЖДЕНИЕ НА ОПЛАТУ Касается договора лизинга N __________ от ______________________________...",
+        "dispute_reason": "Одна из сторон получила дискреционное право без достаточных ограничителей.",
+        "possible_consequence": "Это может привести к одностороннему применению условия и спору о пределах такого права.",
+        "confidence": 0.76
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Поставщик",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Поставщик'.",
+      "must_do": [
+        "Конфиг не выявил явных обязательств."
+      ],
+      "should_review": [
+        "Поставщик отвечает непосредственно перед Арендатором за все претензии, которые последний вправе предъявить в случае невыполнения или некачественного выполнения поставок Поставщиком в соответствии с указанным контрактом и действующим положением о поставке продукции производственно-технического наз- начения."
+      ],
+      "payment_terms": [
+        "Подтверждение на оплату - версия для печати.",
+        "N ________ на Ваш N ______________ от __________ ПОДТВЕРЖДЕНИЕ НА ОПЛАТУ Касается договора лизинга N __________ от ______________________________ _____________________________________________________________________________ Арендатор: ______________________________________________________________ Сообщаем Вам, что нами принята заявка на лизинг вышеуказанного Арендатора по следующему объекту сделки: ________________________________________________ _____________________________________________________________________________ Покупная цена (в том числе налог на добавленную стоимость )_____________ _____________________________________________________________________________ Поставка осуществляется Вашим предприятием по согласованному с Арендато- ром контракту (договор) N ____________________ от____________________________ _____________________________________________________________________________ ( указывается срок начала и конца поставки ) Условия для оплаты: 1.",
+        "- счет в двух экземплярах на оплату поставленного обьекта лизинга.",
+        "При получении всех указанных документов немедленно произведем Вам оплату указанной выше покупной цены."
+      ],
+      "deadlines": [
+        "N ________ на Ваш N ______________ от __________ ПОДТВЕРЖДЕНИЕ НА ОПЛАТУ Касается договора лизинга N __________ от ______________________________ _____________________________________________________________________________ Арендатор: ______________________________________________________________ Сообщаем Вам, что нами принята заявка на лизинг вышеуказанного Арендатора по следующему объекту сделки: ________________________________________________ _____________________________________________________________________________ Покупная цена (в том числе налог на добавленную стоимость )_____________ _____________________________________________________________________________ Поставка осуществляется Вашим предприятием по согласованному с Арендато- ром контракту (договор) N ____________________ от____________________________ _____________________________________________________________________________ ( указывается срок начала и конца поставки ) Условия для оплаты: 1."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "02c80e6f112ab680f7df04d48d1446004e169dcc0e96bcc15e153f40a6fc48e7"
+    },
+    "contract_type": {
+      "type_id": "non_contract_legal_form",
+      "confidence": 0.52,
+      "ru_name": "Иной юридический документ",
+      "legal_framework": "Вне типовой contract taxonomy"
+    },
+    "asymmetry_signals": []
+  },
+  "result": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'podtverzhdenie-na-oplatu. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Поставщик'. Определен тип договора: Иной юридический документ (уверенность 52%, правовая рамка: Вне типовой contract taxonomy). Условия оплаты: Подтверждение на оплату - версия для печати; N ________ на Ваш N ______________ от __________ ПОДТВЕРЖДЕНИЕ НА ОПЛАТУ Касается договора лизинга N __________ от ______________________________ _____________________________________________________________________________ Арендатор: ______________________________________________________________ Сообщаем Вам, что нами принята заявка на лизинг вышеуказанного Арендатора по следующему объекту сделки: ________________________________________________ _____________________________________________________________________________ Покупная цена (в том числе налог на добавленную стоимость )_____________ _____________________________________________________________________________ Поставка осуществляется Вашим предприятием по согласованному с Арендато- ром контракту (договор) N ____________________ от____________________________ _____________________________________________________________________________ ( указывается срок начала и конца поставки ) Условия для оплаты: 1; - счет в двух экземплярах на оплату поставленного обьекта лизинга. Сроки и дедлайны: N ________ на Ваш N ______________ от __________ ПОДТВЕРЖДЕНИЕ НА ОПЛАТУ Касается договора лизинга N __________ от ______________________________ _____________________________________________________________________________ Арендатор: ______________________________________________________________ Сообщаем Вам, что нами принята заявка на лизинг вышеуказанного Арендатора по следующему объекту сделки: ________________________________________________ _____________________________________________________________________________ Покупная цена (в том числе налог на добавленную стоимость )_____________ _____________________________________________________________________________ Поставка осуществляется Вашим предприятием по согласованному с Арендато- ром контракту (договор) N ____________________ от____________________________ _____________________________________________________________________________ ( указывается срок начала и конца поставки ) Условия для оплаты: 1. Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Поставщик'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Подтверждение на оплату - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам Приложение N 2 к договору лизинга N ______ от \"____\"____________20____г. Лизинговая компания ___________________ \"____\"_____________20____г. N ________ на Ваш N ______________ от __________ ПОДТВЕРЖДЕНИЕ НА ОПЛАТУ Касается договора лизинга N __________ от ______________________________...",
+        "dispute_reason": "Одна из сторон получила дискреционное право без достаточных ограничителей.",
+        "possible_consequence": "Это может привести к одностороннему применению условия и спору о пределах такого права.",
+        "confidence": 0.76
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Поставщик",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Поставщик'.",
+      "must_do": [
+        "Конфиг не выявил явных обязательств."
+      ],
+      "should_review": [
+        "Поставщик отвечает непосредственно перед Арендатором за все претензии, которые последний вправе предъявить в случае невыполнения или некачественного выполнения поставок Поставщиком в соответствии с указанным контрактом и действующим положением о поставке продукции производственно-технического наз- начения."
+      ],
+      "payment_terms": [
+        "Подтверждение на оплату - версия для печати.",
+        "N ________ на Ваш N ______________ от __________ ПОДТВЕРЖДЕНИЕ НА ОПЛАТУ Касается договора лизинга N __________ от ______________________________ _____________________________________________________________________________ Арендатор: ______________________________________________________________ Сообщаем Вам, что нами принята заявка на лизинг вышеуказанного Арендатора по следующему объекту сделки: ________________________________________________ _____________________________________________________________________________ Покупная цена (в том числе налог на добавленную стоимость )_____________ _____________________________________________________________________________ Поставка осуществляется Вашим предприятием по согласованному с Арендато- ром контракту (договор) N ____________________ от____________________________ _____________________________________________________________________________ ( указывается срок начала и конца поставки ) Условия для оплаты: 1.",
+        "- счет в двух экземплярах на оплату поставленного обьекта лизинга.",
+        "При получении всех указанных документов немедленно произведем Вам оплату указанной выше покупной цены."
+      ],
+      "deadlines": [
+        "N ________ на Ваш N ______________ от __________ ПОДТВЕРЖДЕНИЕ НА ОПЛАТУ Касается договора лизинга N __________ от ______________________________ _____________________________________________________________________________ Арендатор: ______________________________________________________________ Сообщаем Вам, что нами принята заявка на лизинг вышеуказанного Арендатора по следующему объекту сделки: ________________________________________________ _____________________________________________________________________________ Покупная цена (в том числе налог на добавленную стоимость )_____________ _____________________________________________________________________________ Поставка осуществляется Вашим предприятием по согласованному с Арендато- ром контракту (договор) N ____________________ от____________________________ _____________________________________________________________________________ ( указывается срок начала и конца поставки ) Условия для оплаты: 1."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "02c80e6f112ab680f7df04d48d1446004e169dcc0e96bcc15e153f40a6fc48e7"
+    },
+    "contract_type": {
+      "type_id": "non_contract_legal_form",
+      "confidence": 0.52,
+      "ru_name": "Иной юридический документ",
+      "legal_framework": "Вне типовой contract taxonomy"
+    },
+    "asymmetry_signals": []
+  },
+  "finished_at": "2026-04-28T16:19:02.187654+00:00",
+  "duration_ms": 76.47
+}

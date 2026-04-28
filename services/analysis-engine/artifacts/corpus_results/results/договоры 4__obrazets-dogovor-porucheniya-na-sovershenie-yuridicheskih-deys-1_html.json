@@ -1,0 +1,197 @@
+{
+  "case_id": "договоры 4__obrazets-dogovor-porucheniya-na-sovershenie-yuridicheskih-deys-1_html",
+  "relative_path": "договоры 4/obrazets-dogovor-porucheniya-na-sovershenie-yuridicheskih-deys-1.html",
+  "document_path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\договоры 4\\obrazets-dogovor-porucheniya-na-sovershenie-yuridicheskih-deys-1.html",
+  "document_name": "obrazets-dogovor-porucheniya-na-sovershenie-yuridicheskih-deys-1.html",
+  "role": "Исполнитель",
+  "counterparty_role": "Заказчик",
+  "language": "ru",
+  "mime_type": "text/html",
+  "tags": [
+    "ad_hoc"
+  ],
+  "source_group": "договоры 4",
+  "expected": {},
+  "started_at": "2026-04-28T16:18:53.238673+00:00",
+  "status": "completed",
+  "request": {
+    "document_name": "obrazets-dogovor-porucheniya-na-sovershenie-yuridicheskih-deys-1.html",
+    "role_context": {
+      "role": "Исполнитель",
+      "counterparty_role": "Заказчик"
+    },
+    "document_text": null,
+    "document_base64": "PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMDEgVHJhbnNpdGlvbmFsLy9FTiI+DQo8aHRtbD4NCjxoZWFkPg0KPGJhc2UgaHJlZj0iaHR0cHM6Ly9kb2dvdm9yLXVyaXN0LnJ1LyI+DQo8dGl0bGU+0J7QsdGA0LDQt9C10YYuINCU0L7Qs9C+0LLQvtGAICAg0L/QvtGA0YPRh9C10L3QuNGPINC90LAg0YHQvtCy0LXRgNGI0LXQvdC40LUg0Y7RgNC40LTQuNGH0LXRgdC60LjRhSDQtNC10LnRgdGC0LLQuNC5IC0g0LLQtdGA0YHQuNGPINC00LvRjyDQv9C10YfQsNGC0LguIDIwMjYuINCe0LHRgNCw0LfRhtGLINC00L7Qs9C+0LLQvtGA0L7Qsiwg0YLQuNC/0L7QstGL0LUg0LTQvtCz0L7QstC+0YDQsCwg0LDQutGC0YPQsNC70YzQvdGL0LUg0LTQvtC60YPQvNC10L3RgtGLLCDRjtGA0LjQtNC40YfQtdGB0LrQuNC8INC4INGE0LjQt9C40YfQtdGB0LrQuNC8INC70LjRhtCw0Lw8L3RpdGxlPg0KPG1ldGEgY29udGVudD0iIiBuYW1lPSJrZXl3b3JkcyI+DQo8bWV0YSBjb250ZW50PSIiIG5hbWU9ImRlc2NyaXB0aW9uIj4NCjxtZXRhIG5hbWU9InJvYm90cyIgY29udGVudD0ibm9pbmRleCxub2ZvbGxvdyI+DQo8bWV0YSBodHRwLWVxdWl2PSJDb250ZW50LVR5cGUiIGNvbnRlbnQ9InRleHQvaHRtbDsgY2hhcnNldD11dGYtOCI+DQo8bGluayByZWw9InN0eWxlc2hlZXQiIGhyZWY9Ii9pbWFnZXMvc3R5bGUuY3NzIiB0eXBlPSJ0ZXh0L2NzcyI+DQo8L2hlYWQ+DQo8Ym9keT4NCjxkaXYgY2xhc3M9ImRvY3VtZW50VGV4dCI+DQo8cHJlPiAgICAgICAgICAgICAgICAgICAgICAgICDQlNCe0JPQntCS0J7QoCDQn9Ce0KDQo9Cn0JXQndCY0K8gTtC+LiBfX19fXw0KDQogICAg0LMuIF9fX19fX19fX19fX19fX18gICAgICAgICAgICAgICAgICAgICAgICAgICAgIl9fXyJfX19fX19fX18gMjBfXyDQsy4NCg0KICAgICAgICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLCDQuNC80LXQvdGD0LXQvF9fX18NCiAgICAgICAgICAgICAgICAgICAo0L3QsNC40LzQtdC90L7QstCw0L3QuNC1INC/0YDQtdC00L/RgNC40Y/RgtC40Y8pDQoNCiAgICDQsiDQtNCw0LvRjNC90LXQudGI0LXQvCAi0J/QvtCy0LXRgNC10L3QvdGL0LkiLCDQsiDQu9C40YbQtSBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAo0LTQvtC70LbQvdC+0YHRgtGMLCDRhC7QuC7Qvi4pDQoNCiAgICDQtNC10LnRgdGC0LLRg9GO0YnQtdCz0L4g0L3QsCDQvtGB0L3QvtCy0LDQvdC40LggX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXywg0YEg0L7QtNC90L7QuQ0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICjQo9GB0YLQsNCy0LAsINC/0L7Qu9C+0LbQtdC90LjRjywg0LTQvtCy0LXRgNC10L3QvdC+0YHRgtC4KQ0KDQogICAg0YHRgtC+0YDQvtC90YssINC4IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXywg0LjQvNC10L3Rg9C10LxfXyDQsg0KICAgICAgICAgICAgICAgICAgICAgICAgKNC90LDQuNC80LXQvdC+0LLQsNC90LjQtSDQv9GA0LXQtNC/0YDQuNGP0YLQuNGPKQ0KDQogICAg0LIg0LTQsNC70YzQvdC10LnRiNC10LwgItCU0L7QstC10YDQuNGC0LXQu9GMIiwg0LIg0LvQuNGG0LUgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXywNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAo0LTQvtC70LbQvdC+0YHRgtGMLCDRhC7QuC7Qvi4pDQoNCiAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18sINGBINC00YDRg9Cz0L7QuSAg0YHRgtC+0YDQvtC90YssICDQuNC80LXQvdGD0LXQvNGL0LUg0LINCiAgICAgKNCj0YHRgtCw0LLQsCwg0L/QvtC70L7QttC10L3QuNGPLCDQtNC+0LLQtdGA0LXQvdC90L7RgdGC0LgpDQoNCiAgICDQtNCw0LvRjNC90LXQudGI0LXQvCAi0KHRgtC+0YDQvtC90YsiLCAg0LfQsNC60LvRjtGH0LjQu9C4INC90LDRgdGC0L7Rj9GJ0LjQuSDQtNC+0LPQvtCy0L7RgCDQviDQvdC40LbQtdGB0LvQtdC00YPRjtGJ0LXQvDoNCg0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAxLiDQn9GA0LXQtNC80LXRgiDQtNC+0LPQvtCy0L7RgNCwDQoNCiAgICAgICAgIDEuMS4g0J/QviAg0L3QsNGB0YLQvtGP0YnQtdC80YMgINC00L7Qs9C+0LLQvtGA0YMg0J/QvtCy0LXRgNC10L3QvdGL0Lkg0L7QsdGP0LfRg9C10YLRgdGPINC+0YIg0LjQvNC10L3QuCDQuCDQt9CwDQogICAg0YHRh9C10YIg0JTQvtCy0LXRgNC40YLQtdC70Y8g0YHQvtCy0LXRgNGI0LjRgtGMINGB0LvQtdC00YPRjtGJ0LjQtSDRjtGA0LjQtNC40YfQtdGB0LrQuNC1INC00LXQudGB0YLQstC40Y86IF9fX19fX19fX19fDQogICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQogICAgICAgICAgICAgICAgICAgICAgKNC/0LXRgNC10YfQuNGB0LvQuNGC0Ywg0Y7RgNC40LTQuNGH0LXRgdC60LjQtSDQtNC10LnRgdGC0LLQuNGPKQ0KDQogICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQogICAgICAgICAxLjIuINCX0LAgINGB0L7QstC10YDRiNC10L3QuNC1INC00LXQudGB0YLQstC40LksICDRg9C60LDQt9Cw0L3QvdGL0YUg0LIg0L/Rg9C90LrRgtC1IDEuMSDQvdCw0YHRgtC+0Y/RidC10LPQvg0KICAgINC00L7Qs9C+0LLQvtGA0LAsICDQlNC+0LLQtdGA0LjRgtC10LvRjCDQvtCx0Y/Qt9GD0LXRgtGB0Y8g0YPQv9C70LDRgtC40YLRjCDQn9C+0LLQtdGA0LXQvdC90L7QvNGDINCy0L7Qt9C90LDQs9GA0LDQttC00LXQvdC40LUg0LINCiAgICDRgNCw0LfQvNC10YDQtTogX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18uDQogICAgICAgICAxLjMuINCSINGB0LvRg9GH0LDQtSwgINC10YHQu9C4INCf0L7QstC10YDQtdC90L3Ri9C5INGB0L7QstC10YDRiNC40YIg0YPQutCw0LfQsNC90L3Ri9C1INCyINC/0YPQvdC60YLQtSAgMS4xDQogICAg0L3QsNGB0YLQvtGP0YnQtdCz0L4gINC00L7Qs9C+0LLQvtGA0LAgINGO0YDQuNC00LjRh9C10YHQutC40LUgINC00LXQudGB0YLQstC40Y8gINC90LAgINCx0L7Qu9C10LUgINCy0YvQs9C+0LTQvdGL0YUgINC00LvRjw0KICAgINCU0L7QstC10YDQuNGC0LXQu9GPINGD0YHQu9C+0LLQuNGP0YUsINCU0L7QstC10YDQuNGC0LXQu9GMINCf0L7QstC10YDQtdC90L3QvtC80YMg0YPQv9C70LDRh9C40LLQsNC10YIg0LTQvtC/0L7Qu9C90LjRgtC10LvRjNC90L7QtQ0KICAgINCy0L7Qt9C90LDQs9GA0LDQttC00LXQvdC40LUg0LIg0YDQsNC30LzQtdGA0LUgX19fX19fINC/0YDQvtGG0LXQvdGC0L7QsiDQvtGCINC/0L7Qu9GD0YfQtdC90L3QvtC5INCy0YvQs9C+0LTRiy4NCg0KICAgICAgICAgICAgICAgICAgICAgICAgICAgIDIuINCe0LHRj9C30LDQvdC90L7RgdGC0Lgg0YHRgtC+0YDQvtC9DQoNCiAgICAgICAgIDIuMS4g0J/QvtCy0LXRgNC10L3QvdGL0LkgINC/0YDQuNC90LjQvNCw0LXRgiAg0L3QsCAg0YHQtdCx0Y8g0L7QsdGP0LfQsNGC0LXQu9GM0YHRgtCy0LA6DQogICAgICAgICAtINC40YHQv9C+0LvQvdC40YLRjCDQtNCw0L3QvdC+0LUg0LXQvNGDINC/0L7RgNGD0YfQtdC90LjQtSDQsiDRgdC+0L7RgtCy0LXRgtGB0YLQstC40Lgg0YEg0YLRgNC10LHQvtCy0LDQvdC40Y/QvNC4DQogICAg0JTQvtCy0LXRgNC40YLQtdC70Y8g0L3QsCDRg9GB0LvQvtCy0LjRj9GFLCDQvdCw0LjQsdC+0LvQtdC1INCy0YvQs9C+0LTQvdGL0YUg0LTQu9GPINCU0L7QstC10YDQuNGC0LXQu9GPOw0KICAgICAgICAgLSDRgdC+0L7QsdGJ0LDRgtGMINCU0L7QstC10YDQuNGC0LXQu9GOINC/0L4g0LXQs9C+ICDRgtGA0LXQsdC+0LLQsNC90LjRjiAg0LLRgdC1ICDRgdCy0LXQtNC10L3QuNGPICDQviAg0YXQvtC00LUNCiAgICDQuNGB0L/QvtC70L3QtdC90LjRjyDQv9C+0YDRg9GH0LXQvdC40Y87DQogICAgICAgICAtINC/0YDQuNCy0LvQtdC60LDRgtGMLCAg0L/RgNC4ICDQvdC10L7QsdGF0L7QtNC40LzQvtGB0YLQuCAgINC/0L7Qu9C90L7QvNC+0YfQvdGL0YUgICDQv9GA0LXQtNGB0YLQsNCy0LjRgtC10LvQtdC5DQogICAg0JTQvtCy0LXRgNC40YLQtdC70Y8g0Log0LLRi9C/0L7Qu9C90LXQvdC40Y4g0J/QvtGA0YPRh9C10L3QuNGPOw0KICAgICAgICAgLSDQv9C10YDQtdC00LDRgtGMINCx0LXQtyDQv9GA0L7QvNC10LTQu9C10L3QuNGPINCy0YHQtSDQv9C+0LvRg9GH0LXQvdC90L7QtSDQsiDRgdCy0Y/Qt9C4INGBICDQstGL0L/QvtC70L3QtdC90LjQtdC8DQogICAg0L/QvtGA0YPRh9C10L3QuNGPLg0KICAgICAgICAgMi4yLiDQlNC+0LLQtdGA0LjRgtC10LvRjCDQv9GA0LjQvdC40LzQsNC10YIg0L3QsCDRgdC10LHRjyDQvtCx0Y/Qt9Cw0YLQtdC70YzRgdGC0LLQsDoNCiAgICAgICAgIC0g0LLRi9C00LDRgtGMICAg0LTQvtCy0LXRgNC10L3QvdC+0YHRgtGMICAg0L3QsCAg0YHQvtCy0LXRgNGI0LXQvdC40LUgINGO0YDQuNC00LjRh9C10YHQutC40YUgINC00LXQudGB0YLQstC40LksDQogICAg0L7QsdC10YHQv9C10YfQuNGC0YwgICDQn9C+0LLQtdGA0LXQvdC90L7Qs9C+ICAg0LTRgNGD0LPQuNC80LggICDRgdGA0LXQtNGB0YLQstCw0LzQuCwgICDQvdC10L7QsdGF0L7QtNC40LzRi9C80LggICDQtNC70Y8NCiAgICDQuNGB0L/QvtC70L3QtdC90LjRjyDQv9C+0YDRg9GH0LXQvdC40Y86IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQogICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQogICAgICAgICAtINCy0L7Qt9C80LXRgdGC0LjRgtGMICDQn9C+0LLQtdGA0LXQvdC90L7QvNGDICDQvdC10L7QsdGF0L7QtNC40LzRi9C1ICDQtNC70Y8gINC40YHQv9C+0LvQvdC10L3QuNGPICAg0YHQstC+0LXQs9C+DQogICAg0L/QvtGA0YPRh9C10L3QuNGPINGA0LDRgdGF0L7QtNGLOw0KICAgICAgICAgLSDQstGL0L/Qu9Cw0YLQuNGC0YwgINCf0L7QstC10YDQtdC90L3QvtC80YMgINC/0YDQuNGH0LjRgtCw0Y7RidC10LXRgdGPICDQtdC80YMgINCyICDRgdC+0L7RgtCy0LXRgtGB0YLQstC40LggINGBDQogICAg0L/Rg9C90LrRgtCw0LzQuCAxLjIg0LggMS4zINC90LDRgdGC0L7Rj9GJ0LXQs9C+INC00L7Qs9C+0LLQvtGA0LAg0LLQvtC30L3QsNCz0YDQsNC20LTQtdC90LjQtTsNCiAgICAgICAgIC0g0L7QsdC10YHQv9C10YfQuNGC0YwsICAg0L/RgNC4ICDQvdC10L7QsdGF0L7QtNC40LzQvtGB0YLQuCwgINGD0YfQsNGB0YLQuNC1ICDRgdCy0L7QuNGFICDQv9C+0LvQvdC+0LzQvtGH0L3Ri9GFDQogICAg0L/RgNC10LTRgdGC0LDQstC40YLQtdC70LXQuSDQsiDQstGL0L/QvtC70L3QtdC90LjQuCDQv9C+0YDRg9GH0LXQvdC40Y87DQogICAgICAgICAtINC/0YDQuNC90Y/RgtGMICAg0LHQtdC3ICAg0L/RgNC+0LzQtdC00LvQtdC90LjRjyAg0L7RgiAg0J/QvtCy0LXRgNC10L3QvdC+0LPQviAg0LLRgdC1ICDQuNGB0L/QvtC70L3QtdC90L3QvtC1DQogICAg0L/QvtGB0LvQtdC00L3QuNC8INCyINGB0L7QvtGC0LLQtdGC0YHRgtCy0LjQuCDRgSDQvdCw0YHRgtC+0Y/RidC40Lwg0LTQvtCz0L7QstC+0YDQvtC8Lg0KDQogICAgICAgICAgICAgICAgICAgICAgICAgIDMuINCe0YLQstC10YLRgdGC0LLQtdC90L3QvtGB0YLRjCDRgdGC0L7RgNC+0L0NCg0KICAgICAgICAgMy4xLiDQl9CwINC90LXQuNGB0L/QvtC70L3QtdC90LjQtSDQuNC70Lgg0L3QtdC90LDQtNC70LXQttCw0YnQtdC1INC40YHQv9C+0LvQvdC10L3QuNC1INC+0LHRj9C30LDRgtC10LvRjNGB0YLQsiDQv9C+DQogICAg0LTQvtCz0L7QstC+0YDRgyDQlNC+0LLQtdGA0LjRgtC10LvRjCDQuCDQn9C+0LLQtdGA0LXQvdC90YvQuSDQvdC10YHRg9GCINC+0YLQstC10YLRgdGC0LLQtdC90L3QvtGB0YLRjCDQsiDRgdC+0L7RgtCy0LXRgtGB0YLQstC40LgNCiAgICDRgSDQtNC10LnRgdGC0LLRg9GO0YnQuNC8INC30LDQutC+0L3QvtC00LDRgtC10LvRjNGB0YLQstC+0LwuDQogICAgICAgICAzLjIuINCU0L7Qv9C+0LvQvdC40YLQtdC70YzQvdCw0Y8g0L7RgtCy0LXRgtGB0YLQstC10L3QvdC+0YHRgtGMOiBfX19fX19fX19fX19fX19fX19fX19fX19fX18NCiAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCiAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCg0KICAgICAgICAgICAgICAgICAgICAgICAgICA0LiDQl9Cw0LrQu9GO0YfQuNGC0LXQu9GM0L3Ri9C1INGD0YHQu9C+0LLQuNGPDQoNCiAgICAgICAgIDQuMS4g0J3QsNGB0YLQvtGP0YnQuNC5ICDQtNC+0LPQvtCy0L7RgCDQstGB0YLRg9C/0LDQtdGCINCyINGB0LjQu9GDINGBINC80L7QvNC10L3RgtCwINC10LPQviDQv9C+0LTQv9C40YHQsNC90LjRjw0KICAgINC4INCx0YPQtNC10YIg0LTQtdC50YHRgtCy0L7QstCw0YLRjCAg0LIgINGC0LXRh9C10L3QuNC1ICDRgdGA0L7QutCwICDQstGL0L/QvtC70L3QtdC90LjRjyAg0J/QvtCy0LXRgNC10L3QvdGL0LwgINGB0LLQvtC40YUNCiAgICDQvtCx0Y/Qt9Cw0YLQtdC70YzRgdGC0LIgINC4ICDRg9GA0LXQs9GD0LvQuNGA0L7QstCw0L3QuNC4ICDQstGB0LXRhSAg0YDQsNGB0YfQtdGC0L7QsiAg0LzQtdC20LTRgyAg0JTQvtCy0LXRgNC40YLQtdC70LXQvCDQuA0KICAgINCf0L7QstC10YDQtdC90L3Ri9C8Lg0KICAgICAgICAgNC4yLiDQkiDRgdC70YPRh9Cw0LUg0LLQvtC30L3QuNC60L3QvtCy0LXQvdC40Y8g0YHQv9C+0YDQvtCyINC/0L4g0LLQvtC/0YDQvtGB0LDQvCwgINC/0YDQtdC00YPRgdC80L7RgtGA0LXQvdC90YvQvA0KICAgINC90LDRgdGC0L7Rj9GJ0LjQvCDQtNC+0LPQvtCy0L7RgNC+0Lwg0LjQu9C4INCyINGB0LLRj9C30Lgg0YEg0L3QuNC8LCAg0KHRgtC+0YDQvtC90Ysg0L/RgNC40LzRg9GCINCy0YHQtSDQvNC10YDRiyDQuiAg0LjRhQ0KICAgINGA0LDQt9GA0LXRiNC10L3QuNGOICDQv9GD0YLQtdC8ICDQv9C10YDQtdCz0L7QstC+0YDQvtCyLiAg0JIgINGB0LvRg9GH0LDQtSAg0L3QtdCy0L7Qt9C80L7QttC90L7RgdGC0LggINGA0LDQt9GA0LXRiNC10L3QuNGPDQogICAg0YPQutCw0LfQsNC90L3Ri9GFINGB0L/QvtGA0L7QsiDQv9GD0YLQtdC8INC/0LXRgNC10LPQvtCy0L7RgNC+0LIsICDQvtC90Lgg0LHRg9C00YPRgiDRgNCw0LfRgNC10YjQsNGC0YzRgdGPINCyINC/0L7RgNGP0LTQutC1LA0KICAgINGD0YHRgtCw0L3QvtCy0LvQtdC90L3QvtC8INC30LDQutC+0L3QvtC00LDRgtC10LvRjNGB0YLQstC+0LwuDQogICAgICAgICA0LjMuINCS0L4g0LLRgdC10Lwg0LjQvdC+0LwsICDRh9GC0L4g0L3QtSAg0L/RgNC10LTRg9GB0LzQvtGC0YDQtdC90L4gINC90LDRgdGC0L7Rj9GJ0LjQvCAg0LTQvtCz0L7QstC+0YDQvtC8LA0KICAgINCx0YPQtNGD0YIg0L/RgNC40LzQtdC90Y/RgtGM0YHRjyDQvdC+0YDQvNGLINC00LXQudGB0YLQstGD0Y7RidC10LPQviDQt9Cw0LrQvtC90L7QtNCw0YLQtdC70YzRgdGC0LLQsCwgINGA0LXQs9GD0LvQuNGA0YPRjtGJ0LXQs9C+DQogICAg0L7RgtC90L7RiNC10L3QuNGPINC/0L4g0LTQvtCz0L7QstC+0YDRgyDQv9C+0YDRg9GH0LXQvdC40Y8uDQogICAgICAgICA0LjQuINCd0LDRgdGC0L7Rj9GJ0LjQuSDQtNC+0LPQvtCy0L7RgCDRgdC+0YHRgtCw0LLQu9C10L0g0LIgX19fX19fX19fX18g0Y3QutC30LXQvNC/0LvRj9GA0LDRhS4NCiAgICAgICAgIDQuNS4g0K7RgNC40LTQuNGH0LXRgdC60LjQtSDQsNC00YDQtdGB0LAg0Lgg0YDQsNGB0YfQtdGC0L3Ri9C1INGB0YfQtdGC0LAg0KHRgtC+0YDQvtC9Og0KDQogICAgICAgICDQlNC+0LLQtdGA0LjRgtC10LvRjDogX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KDQogICAgICAgICDQn9C+0LLQtdGA0LXQvdC90YvQuTogX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg0J/QvtC00L/QuNGB0Lgg0YHRgtC+0YDQvtC9Og0KDQogICAgICAgICAg0JTQvtCy0LXRgNC40YLQtdC70Yw6ICAgICAgICAgICAgICAgICAgICAgICAgICAgINCf0L7QstC10YDQtdC90L3Ri9C5Og0KDQogICAgIF9fX19fX19fX19fX19fX19fX19fX18gICAgICAgICAgICAgICAgICBfX19fX19fX19fX19fX19fX19fX19fDQogICAgICAgICAgICAg0Jwu0J8uICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgINCcLtCfLg0KDQogIA0KPC9wcmU+PC9kaXY+DQo8L2JvZHk+DQo8L2h0bWw+",
+    "mime_type": "text/html",
+    "language": "ru",
+    "locale": "ru"
+  },
+  "ingestion_preflight": {
+    "mime_type": "text/html",
+    "extractor": "html:regex",
+    "extraction_source": "html:regex",
+    "extraction_ok": true,
+    "error": null,
+    "extraction_error": null,
+    "sha256": "4ca3c514d476cd9f22d5bc237513bb9da65f86cd3e88135ebd8a9742b6fc8dc4"
+  },
+  "metrics": {
+    "risk_count": 1,
+    "high_risk_count": 0,
+    "disputed_clause_count": 1,
+    "asymmetry_signal_count": 0,
+    "contract_type": "labor_contract"
+  },
+  "analysis": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'obrazets-dogovor-porucheniya-na-sovershenie-yuridicheskih-deys-1. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Исполнитель'. Определен тип договора: Трудовой договор (уверенность 54%, правовая рамка: ТК РФ). Ключевые обязательства по договору для роли 'Исполнитель': По настоящему договору Поверенный обязуется от имени и за счет Доверителя совершить следующие юридические действия: ___________ _____________________________________________________________________ (перечислить юридические действия) _____________________________________________________________________ 1; 1 настоящего договора, Доверитель обязуется уплатить Поверенному вознаграждение в размере: ___________________________________________________________; Обязанности сторон 2. Условия оплаты: По настоящему договору Поверенный обязуется от имени и за счет Доверителя совершить следующие юридические действия: ___________ _____________________________________________________________________ (перечислить юридические действия) _____________________________________________________________________ 1; 1 настоящего договора, Доверитель обязуется уплатить Поверенному вознаграждение в размере: ___________________________________________________________; 1 настоящего договора юридические действия на более выгодных для Доверителя условиях, Доверитель Поверенному уплачивает дополнительное вознаграждение в размере ______ процентов от полученной выгоды. Сроки и дедлайны: Настоящий договор вступает в силу с момента его подписания и будет действовать в течение срока выполнения Поверенным своих обязательств и урегулировании всех расчетов между Доверителем и Поверенным. Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Исполнитель'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Образец. Договор поручения на совершение юридических действий - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР ПОРУЧЕНИЯ Nо. _____ г. ________________ \"___\"_________ 20__ г. ___________________________________________________, именуем____ (наименование предприятия) в дальнейшем \"Поверенный\", в лице __________________________________, (должность, ф. и. о.",
+        "dispute_reason": "Формулировка зависит от будущего согласования и не содержит исполнимого критерия.",
+        "possible_consequence": "При исполнении может возникнуть спор о том, что именно стороны должны были согласовать.",
+        "confidence": 0.79
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Исполнитель",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Исполнитель'.",
+      "must_do": [
+        "По настоящему договору Поверенный обязуется от имени и за счет Доверителя совершить следующие юридические действия: ___________ _____________________________________________________________________ (перечислить юридические действия) _____________________________________________________________________ 1.",
+        "1 настоящего договора, Доверитель обязуется уплатить Поверенному вознаграждение в размере: ___________________________________________________________.",
+        "Обязанности сторон 2.",
+        "Доверитель принимает на себя обязательства: - выдать доверенность на совершение юридических действий, обеспечить Поверенного другими средствами, необходимыми для исполнения поручения: _______________________________________________ _____________________________________________________________________ - возместить Поверенному необходимые для исполнения своего поручения расходы.",
+        "- обеспечить, при необходимости, участие своих полномочных представителей в выполнении поручения."
+      ],
+      "should_review": [
+        "- привлекать, при необходимости полномочных представителей Доверителя к выполнению Поручения.",
+        "- обеспечить, при необходимости, участие своих полномочных представителей в выполнении поручения."
+      ],
+      "payment_terms": [
+        "По настоящему договору Поверенный обязуется от имени и за счет Доверителя совершить следующие юридические действия: ___________ _____________________________________________________________________ (перечислить юридические действия) _____________________________________________________________________ 1.",
+        "1 настоящего договора, Доверитель обязуется уплатить Поверенному вознаграждение в размере: ___________________________________________________________.",
+        "1 настоящего договора юридические действия на более выгодных для Доверителя условиях, Доверитель Поверенному уплачивает дополнительное вознаграждение в размере ______ процентов от полученной выгоды.",
+        "3 настоящего договора вознаграждение.",
+        "Настоящий договор вступает в силу с момента его подписания и будет действовать в течение срока выполнения Поверенным своих обязательств и урегулировании всех расчетов между Доверителем и Поверенным.",
+        "Юридические адреса и расчетные счета Сторон: Доверитель: ____________________________________________________ _____________________________________________________________________ Поверенный: ____________________________________________________ _____________________________________________________________________ Подписи сторон: Доверитель: Поверенный: ______________________ ______________________ М."
+      ],
+      "deadlines": [
+        "Настоящий договор вступает в силу с момента его подписания и будет действовать в течение срока выполнения Поверенным своих обязательств и урегулировании всех расчетов между Доверителем и Поверенным."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "4ca3c514d476cd9f22d5bc237513bb9da65f86cd3e88135ebd8a9742b6fc8dc4"
+    },
+    "contract_type": {
+      "type_id": "labor_contract",
+      "confidence": 0.54,
+      "ru_name": "Трудовой договор",
+      "legal_framework": "ТК РФ"
+    },
+    "asymmetry_signals": []
+  },
+  "result": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'obrazets-dogovor-porucheniya-na-sovershenie-yuridicheskih-deys-1. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Исполнитель'. Определен тип договора: Трудовой договор (уверенность 54%, правовая рамка: ТК РФ). Ключевые обязательства по договору для роли 'Исполнитель': По настоящему договору Поверенный обязуется от имени и за счет Доверителя совершить следующие юридические действия: ___________ _____________________________________________________________________ (перечислить юридические действия) _____________________________________________________________________ 1; 1 настоящего договора, Доверитель обязуется уплатить Поверенному вознаграждение в размере: ___________________________________________________________; Обязанности сторон 2. Условия оплаты: По настоящему договору Поверенный обязуется от имени и за счет Доверителя совершить следующие юридические действия: ___________ _____________________________________________________________________ (перечислить юридические действия) _____________________________________________________________________ 1; 1 настоящего договора, Доверитель обязуется уплатить Поверенному вознаграждение в размере: ___________________________________________________________; 1 настоящего договора юридические действия на более выгодных для Доверителя условиях, Доверитель Поверенному уплачивает дополнительное вознаграждение в размере ______ процентов от полученной выгоды. Сроки и дедлайны: Настоящий договор вступает в силу с момента его подписания и будет действовать в течение срока выполнения Поверенным своих обязательств и урегулировании всех расчетов между Доверителем и Поверенным. Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Исполнитель'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Образец. Договор поручения на совершение юридических действий - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР ПОРУЧЕНИЯ Nо. _____ г. ________________ \"___\"_________ 20__ г. ___________________________________________________, именуем____ (наименование предприятия) в дальнейшем \"Поверенный\", в лице __________________________________, (должность, ф. и. о.",
+        "dispute_reason": "Формулировка зависит от будущего согласования и не содержит исполнимого критерия.",
+        "possible_consequence": "При исполнении может возникнуть спор о том, что именно стороны должны были согласовать.",
+        "confidence": 0.79
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Исполнитель",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Исполнитель'.",
+      "must_do": [
+        "По настоящему договору Поверенный обязуется от имени и за счет Доверителя совершить следующие юридические действия: ___________ _____________________________________________________________________ (перечислить юридические действия) _____________________________________________________________________ 1.",
+        "1 настоящего договора, Доверитель обязуется уплатить Поверенному вознаграждение в размере: ___________________________________________________________.",
+        "Обязанности сторон 2.",
+        "Доверитель принимает на себя обязательства: - выдать доверенность на совершение юридических действий, обеспечить Поверенного другими средствами, необходимыми для исполнения поручения: _______________________________________________ _____________________________________________________________________ - возместить Поверенному необходимые для исполнения своего поручения расходы.",
+        "- обеспечить, при необходимости, участие своих полномочных представителей в выполнении поручения."
+      ],
+      "should_review": [
+        "- привлекать, при необходимости полномочных представителей Доверителя к выполнению Поручения.",
+        "- обеспечить, при необходимости, участие своих полномочных представителей в выполнении поручения."
+      ],
+      "payment_terms": [
+        "По настоящему договору Поверенный обязуется от имени и за счет Доверителя совершить следующие юридические действия: ___________ _____________________________________________________________________ (перечислить юридические действия) _____________________________________________________________________ 1.",
+        "1 настоящего договора, Доверитель обязуется уплатить Поверенному вознаграждение в размере: ___________________________________________________________.",
+        "1 настоящего договора юридические действия на более выгодных для Доверителя условиях, Доверитель Поверенному уплачивает дополнительное вознаграждение в размере ______ процентов от полученной выгоды.",
+        "3 настоящего договора вознаграждение.",
+        "Настоящий договор вступает в силу с момента его подписания и будет действовать в течение срока выполнения Поверенным своих обязательств и урегулировании всех расчетов между Доверителем и Поверенным.",
+        "Юридические адреса и расчетные счета Сторон: Доверитель: ____________________________________________________ _____________________________________________________________________ Поверенный: ____________________________________________________ _____________________________________________________________________ Подписи сторон: Доверитель: Поверенный: ______________________ ______________________ М."
+      ],
+      "deadlines": [
+        "Настоящий договор вступает в силу с момента его подписания и будет действовать в течение срока выполнения Поверенным своих обязательств и урегулировании всех расчетов между Доверителем и Поверенным."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "4ca3c514d476cd9f22d5bc237513bb9da65f86cd3e88135ebd8a9742b6fc8dc4"
+    },
+    "contract_type": {
+      "type_id": "labor_contract",
+      "confidence": 0.54,
+      "ru_name": "Трудовой договор",
+      "legal_framework": "ТК РФ"
+    },
+    "asymmetry_signals": []
+  },
+  "finished_at": "2026-04-28T16:18:53.342672+00:00",
+  "duration_ms": 103.87
+}

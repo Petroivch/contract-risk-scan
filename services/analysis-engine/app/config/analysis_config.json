@@ -1,17 +1,22 @@
-﻿{
+{
   "meta": {
-    "config_version": "1.0.0",
+    "config_version": "2.0.0",
     "rule_source_registry": "docs/backend-ai/rule-source-registry.md"
   },
   "service_metadata": {
     "title": "Contract Risk Scanner - Analysis Engine",
-    "description": "AI analysis service for contract risk extraction and role-focused summary.",
-    "version": "0.3.0"
+    "description": "Role-aware legal analysis service for contract and legal-form risk extraction.",
+    "version": "0.5.0"
   },
   "language_behavior": {
     "default_language": "ru",
     "fallback_language": "ru",
-    "supported_languages": ["ru", "en", "it", "fr"]
+    "supported_languages": [
+      "ru",
+      "en",
+      "it",
+      "fr"
+    ]
   },
   "pipeline": {
     "timeouts": {
@@ -36,7 +41,19 @@
         "en": "Document text is empty after ingestion stage.",
         "it": "Il testo del documento e vuoto dopo la fase di ingestion.",
         "fr": "Le texte du document est vide apres l'etape d'ingestion."
-      }
+      },
+      "extractors_enabled": {
+        "docx_mammoth": true,
+        "docx_python_docx": true,
+        "pdf_pdfplumber": true,
+        "doc_word_com": true,
+        "doc_soffice": true,
+        "doc_antiword": true,
+        "doc_catdoc": true,
+        "doc_textract": false
+      },
+      "extraction_timeout_seconds": 25,
+      "fallback_to_server_assist": true
     },
     "segmentation": {
       "primary_separator": "\n\n",
@@ -88,8 +105,12 @@
     "document_text_mode": "local_first",
     "document_base64_mode": "server_assist",
     "allow_server_assist": true,
-    "offline_capable_modes": ["local_first"],
-    "network_required_modes": ["server_assist"],
+    "offline_capable_modes": [
+      "local_first"
+    ],
+    "network_required_modes": [
+      "server_assist"
+    ],
     "mime_type_overrides": {
       "text/plain": "local_first",
       "application/pdf": "server_assist",
@@ -121,17 +142,17 @@
   },
   "templates": {
     "contract_brief": {
-      "ru": "Договор '{document_name}' обработан конфигурируемым пайплайном. Обнаружено {clauses_count} пунктов. Фокус анализа по роли '{role}'.",
-      "en": "Contract '{document_name}' was processed by configurable pipeline. {clauses_count} clauses were detected. Analysis is focused on role '{role}'.",
-      "it": "Il contratto '{document_name}' e stato elaborato dal pipeline configurabile. Sono state rilevate {clauses_count} clausole. L'analisi e focalizzata sul ruolo '{role}'.",
-      "fr": "Le contrat '{document_name}' a ete traite par un pipeline configurable. {clauses_count} clauses ont ete detectees. L'analyse est axee sur le role '{role}'."
+      "ru": "Договор '{document_name}' обработан обновленным rule engine. Обнаружено {clauses_count} пунктов. Фокус анализа по роли '{role}'.",
+      "en": "Contract '{document_name}' was processed by the upgraded rule engine. {clauses_count} clauses were detected. Analysis is focused on role '{role}'.",
+      "it": "Contract '{document_name}' was processed by the upgraded rule engine. {clauses_count} clauses were detected. Analysis is focused on role '{role}'.",
+      "fr": "Contract '{document_name}' was processed by the upgraded rule engine. {clauses_count} clauses were detected. Analysis is focused on role '{role}'."
     },
     "contract_brief_sections": {
       "intro": {
-        "ru": "Договор '{document_name}' разобран на {clauses_count} пунктов. Ниже кратко показано, что важно для роли '{role}'.",
-        "en": "Contract '{document_name}' was split into {clauses_count} clauses. The brief below highlights what matters for role '{role}'.",
-        "it": "Il contratto '{document_name}' e stato suddiviso in {clauses_count} clausole. Il riepilogo seguente evidenzia cio che conta per il ruolo '{role}'.",
-        "fr": "Le contrat '{document_name}' a ete decoupe en {clauses_count} clauses. Le resume ci-dessous montre ce qui est important pour le role '{role}'."
+        "ru": "Договор '{document_name}' разобран на {clauses_count} пунктов. Ниже показано, что действительно важно для роли '{role}'.",
+        "en": "Contract '{document_name}' was split into {clauses_count} clauses. Below is what matters most for role '{role}'.",
+        "it": "Contract '{document_name}' was split into {clauses_count} clauses. Below is what matters most for role '{role}'.",
+        "fr": "Contract '{document_name}' was split into {clauses_count} clauses. Below is what matters most for role '{role}'."
       },
       "role_obligations": {
         "ru": "Что должен {role}: {statements}.",
@@ -179,7 +200,7 @@
   },
   "risk_scoring": {
     "risk_id_prefix": "risk-",
-    "max_clause_excerpt_chars": 300,
+    "max_clause_excerpt_chars": 500,
     "fallback_dispute_confidence": 0.35,
     "severity_labels": {
       "ru": {
@@ -223,206 +244,2556 @@
     },
     "risk_rules": [
       {
-        "id": "risk_rule_penalty",
-        "source_ref": "RSK-001",
-        "keywords": ["штраф", "penalty", "penale", "penalite"],
-        "severity": "high",
+        "id": "payment_asymmetry",
+        "source_ref": "RSK-PAY-001",
+        "keywords": [
+          "в течение\\s+\\d{1,3}\\s*(?:рабоч|календар|банков|дн)",
+          "через\\s+\\d{1,3}\\s*(?:рабоч|календар|банков|дн)",
+          "после\\s+(?:подписания|поставки|оказания|приемки)",
+          "после\\s+окончательной\\s+приемки",
+          "предоплат|аванс",
+          "within\\s+\\d{1,3}\\s+days",
+          "after\\s+(?:delivery|acceptance|signature|invoice)",
+          "advance payment|prepayment"
+        ],
+        "severity_base": "high",
+        "legal_basis": "Синхронность встречного исполнения, статья 328 ГК РФ",
+        "affected_contract_types": [
+          "service_agreement",
+          "consulting_agreement",
+          "purchase_agreement",
+          "supply_agreement",
+          "construction_contract"
+        ],
+        "detection_logic": {
+          "type": "pattern_search",
+          "patterns": [
+            "в течение\\s+\\d{1,3}\\s*(?:рабоч|календар|банков|дн)",
+            "через\\s+\\d{1,3}\\s*(?:рабоч|календар|банков|дн)",
+            "после\\s+(?:подписания|поставки|оказания|приемки)",
+            "после\\s+окончательной\\s+приемки",
+            "предоплат|аванс",
+            "within\\s+\\d{1,3}\\s+days",
+            "after\\s+(?:delivery|acceptance|signature|invoice)",
+            "advance payment|prepayment"
+          ],
+          "all_patterns": [],
+          "min_matches": 1,
+          "source": "clause"
+        },
+        "role_escalation": {
+          "executor": {
+            "escalate_to": "critical",
+            "reason_ru": "Для исполнителя это прямой риск финансировать проект за свой счет.",
+            "reason_en": "Для исполнителя это прямой риск финансировать проект за свой счет.",
+            "reason_it": "Для исполнителя это прямой риск финансировать проект за свой счет.",
+            "reason_fr": "Для исполнителя это прямой риск финансировать проект за свой счет."
+          },
+          "client": {
+            "escalate_to": "low",
+            "reason_ru": "Для заказчика это обычный защитный механизм.",
+            "reason_en": "Для заказчика это обычный защитный механизм.",
+            "reason_it": "Для заказчика это обычный защитный механизм.",
+            "reason_fr": "Для заказчика это обычный защитный механизм."
+          },
+          "worker": {
+            "escalate_to": "medium",
+            "reason_ru": "Для работника подобная логика менее типична, но может смещать баланс.",
+            "reason_en": "Для работника подобная логика менее типична, но может смещать баланс.",
+            "reason_it": "Для работника подобная логика менее типична, но может смещать баланс.",
+            "reason_fr": "Для работника подобная логика менее типична, но может смещать баланс."
+          },
+          "tenant": {
+            "escalate_to": "medium",
+            "reason_ru": "Для арендатора это может создавать разрыв между обязанностями и оплатой.",
+            "reason_en": "Для арендатора это может создавать разрыв между обязанностями и оплатой.",
+            "reason_it": "Для арендатора это может создавать разрыв между обязанностями и оплатой.",
+            "reason_fr": "Для арендатора это может создавать разрыв между обязанностями и оплатой."
+          }
+        },
         "title": {
-          "ru": "условие о штрафных санкциях",
-          "en": "penalty clause",
-          "it": "clausola di penale",
-          "fr": "clause de penalite"
+          "ru": "Платежная асимметрия: исполнение до оплаты",
+          "en": "Платежная асимметрия: исполнение до оплаты",
+          "it": "Платежная асимметрия: исполнение до оплаты",
+          "fr": "Платежная асимметрия: исполнение до оплаты"
         },
         "description": {
-          "ru": "Обнаружен пункт о штрафах или санкциях.",
-          "en": "A penalty or sanction clause was detected.",
-          "it": "E stata rilevata una clausola su penali o sanzioni.",
-          "fr": "Une clause de penalite ou de sanction a ete detectee."
+          "ru": "Одна сторона обязана начать исполнение раньше, чем получает деньги, что создает кассовый разрыв и риск неоплаты.",
+          "en": "Одна сторона обязана начать исполнение раньше, чем получает деньги, что создает кассовый разрыв и риск неоплаты.",
+          "it": "Одна сторона обязана начать исполнение раньше, чем получает деньги, что создает кассовый разрыв и риск неоплаты.",
+          "fr": "Одна сторона обязана начать исполнение раньше, чем получает деньги, что создает кассовый разрыв и риск неоплаты."
         },
         "mitigation": {
-          "ru": "Проверьте лимиты и условия применения штрафа.",
-          "en": "Verify caps and trigger conditions for penalties.",
-          "it": "Verificare limiti e condizioni di applicazione della penale.",
-          "fr": "Verifier les plafonds et conditions de declenchement des penalites."
-        }
+          "ru": "Согласуйте аванс, этапные платежи или право приостановить исполнение до поступления оплаты.",
+          "en": "Согласуйте аванс, этапные платежи или право приостановить исполнение до поступления оплаты.",
+          "it": "Согласуйте аванс, этапные платежи или право приостановить исполнение до поступления оплаты.",
+          "fr": "Согласуйте аванс, этапные платежи или право приостановить исполнение до поступления оплаты."
+        },
+        "examples": [
+          "Исполнитель выполняет работы в 10 дней, а заказчик платит через 45 банковских дней после акта."
+        ]
       },
       {
-        "id": "risk_rule_liquidated_damages",
-        "source_ref": "RSK-002",
-        "keywords": ["неустойк", "liquidated damages", "danni liquidati", "dommages-interets"],
-        "severity": "high",
+        "id": "long_payment_delay_no_security",
+        "source_ref": "RSK-PAY-002",
+        "keywords": [
+          "в течение\\s+(30|45|60|90)\\s*(?:рабоч|календар|банков|дн)",
+          "через\\s+(30|45|60|90)\\s*(?:рабоч|календар|банков|дн)",
+          "безусловн.*оплат",
+          "после получения счета",
+          "после\\s+окончательной\\s+приемки"
+        ],
+        "severity_base": "high",
+        "legal_basis": "Добросовестность сторон и коммерчески разумный баланс риска",
+        "affected_contract_types": [
+          "service_agreement",
+          "consulting_agreement",
+          "purchase_agreement",
+          "supply_agreement",
+          "construction_contract"
+        ],
+        "detection_logic": {
+          "type": "pattern_search",
+          "patterns": [
+            "в течение\\s+(30|45|60|90)\\s*(?:рабоч|календар|банков|дн)",
+            "через\\s+(30|45|60|90)\\s*(?:рабоч|календар|банков|дн)",
+            "безусловн.*оплат",
+            "после получения счета",
+            "после\\s+окончательной\\s+приемки"
+          ],
+          "all_patterns": [],
+          "min_matches": 1,
+          "source": "clause"
+        },
+        "role_escalation": {
+          "executor": {
+            "escalate_to": "critical",
+            "reason_ru": "Длинная отсрочка оплаты бьет по оборотному капиталу исполнителя.",
+            "reason_en": "Длинная отсрочка оплаты бьет по оборотному капиталу исполнителя.",
+            "reason_it": "Длинная отсрочка оплаты бьет по оборотному капиталу исполнителя.",
+            "reason_fr": "Длинная отсрочка оплаты бьет по оборотному капиталу исполнителя."
+          },
+          "client": {
+            "escalate_to": "low",
+            "reason_ru": "Для заказчика условие выгодно и редко несет самостоятельный риск.",
+            "reason_en": "Для заказчика условие выгодно и редко несет самостоятельный риск.",
+            "reason_it": "Для заказчика условие выгодно и редко несет самостоятельный риск.",
+            "reason_fr": "Для заказчика условие выгодно и редко несет самостоятельный риск."
+          }
+        },
         "title": {
-          "ru": "условие о неустойке",
-          "en": "liquidated damages clause",
-          "it": "clausola di danni liquidati",
-          "fr": "clause de dommages fixes"
+          "ru": "Длинная отсрочка платежа без обеспечений",
+          "en": "Длинная отсрочка платежа без обеспечений",
+          "it": "Длинная отсрочка платежа без обеспечений",
+          "fr": "Длинная отсрочка платежа без обеспечений"
         },
         "description": {
-          "ru": "Обнаружено обязательство по неустойке.",
-          "en": "A liquidated damages obligation was detected.",
-          "it": "E stato rilevato un obbligo di danni liquidati.",
-          "fr": "Une obligation de dommages forfaitaires a ete detectee."
+          "ru": "Договор закладывает длительную отсрочку оплаты без аванса, банковской гарантии или права остановить исполнение.",
+          "en": "Договор закладывает длительную отсрочку оплаты без аванса, банковской гарантии или права остановить исполнение.",
+          "it": "Договор закладывает длительную отсрочку оплаты без аванса, банковской гарантии или права остановить исполнение.",
+          "fr": "Договор закладывает длительную отсрочку оплаты без аванса, банковской гарантии или права остановить исполнение."
         },
         "mitigation": {
-          "ru": "Проверьте соразмерность и условия пересмотра неустойки.",
-          "en": "Validate proportionality and renegotiation conditions.",
-          "it": "Convalidare proporzionalita e condizioni di rinegoziazione.",
-          "fr": "Valider la proportionnalite et les conditions de renegociation."
-        }
+          "ru": "Сократите срок оплаты, добавьте аванс, лимит дебиторки или договорное обеспечение.",
+          "en": "Сократите срок оплаты, добавьте аванс, лимит дебиторки или договорное обеспечение.",
+          "it": "Сократите срок оплаты, добавьте аванс, лимит дебиторки или договорное обеспечение.",
+          "fr": "Сократите срок оплаты, добавьте аванс, лимит дебиторки или договорное обеспечение."
+        },
+        "examples": []
       },
       {
-        "id": "risk_rule_unilateral",
-        "source_ref": "RSK-003",
-        "keywords": ["односторон", "unilateral", "unilaterale"],
-        "severity": "critical",
+        "id": "payment_conditioned_on_signed_act",
+        "source_ref": "RSK-PAY-003",
+        "keywords": [
+          "оплат.*после.*подписан.*акт",
+          "после подписания акта",
+          "акт.*основани.*оплат"
+        ],
+        "severity_base": "high",
+        "legal_basis": "Порядок сдачи и приемки результата, статьи 720 и 753 ГК РФ",
+        "affected_contract_types": [
+          "service_agreement",
+          "consulting_agreement",
+          "construction_contract",
+          "supply_agreement"
+        ],
+        "detection_logic": {
+          "type": "pattern_search",
+          "patterns": [
+            "оплат.*после.*подписан.*акт",
+            "после подписания акта",
+            "акт.*основани.*оплат"
+          ],
+          "all_patterns": [],
+          "min_matches": 1,
+          "source": "clause"
+        },
+        "role_escalation": {
+          "executor": {
+            "escalate_to": "critical",
+            "reason_ru": "Контрагент может бесконечно задерживать оплату, не подписывая акт.",
+            "reason_en": "Контрагент может бесконечно задерживать оплату, не подписывая акт.",
+            "reason_it": "Контрагент может бесконечно задерживать оплату, не подписывая акт.",
+            "reason_fr": "Контрагент может бесконечно задерживать оплату, не подписывая акт."
+          },
+          "client": {
+            "escalate_to": "low",
+            "reason_ru": "Для заказчика условие повышает контроль над приемкой.",
+            "reason_en": "Для заказчика условие повышает контроль над приемкой.",
+            "reason_it": "Для заказчика условие повышает контроль над приемкой.",
+            "reason_fr": "Для заказчика условие повышает контроль над приемкой."
+          }
+        },
         "title": {
-          "ru": "одностороннее изменение/расторжение",
-          "en": "unilateral change or termination",
-          "it": "modifica o risoluzione unilaterale",
-          "fr": "modification ou resiliation unilaterale"
+          "ru": "Оплата поставлена в зависимость от акта другой стороны",
+          "en": "Оплата поставлена в зависимость от акта другой стороны",
+          "it": "Оплата поставлена в зависимость от акта другой стороны",
+          "fr": "Оплата поставлена в зависимость от акта другой стороны"
         },
         "description": {
-          "ru": "Обнаружена односторонняя формулировка изменения или расторжения.",
-          "en": "Unilateral change or termination language was detected.",
-          "it": "E stato rilevato un linguaggio di modifica o risoluzione unilaterale.",
-          "fr": "Un libelle de modification ou de resiliation unilaterale a ete detecte."
+          "ru": "Деньги подлежат выплате только после подписания акта контрагентом, но срок на мотивированный отказ не определен.",
+          "en": "Деньги подлежат выплате только после подписания акта контрагентом, но срок на мотивированный отказ не определен.",
+          "it": "Деньги подлежат выплате только после подписания акта контрагентом, но срок на мотивированный отказ не определен.",
+          "fr": "Деньги подлежат выплате только после подписания акта контрагентом, но срок на мотивированный отказ не определен."
         },
         "mitigation": {
-          "ru": "Добавьте требование двустороннего согласования.",
-          "en": "Require bilateral approval for material changes.",
-          "it": "Richiedere approvazione bilaterale per modifiche sostanziali.",
-          "fr": "Exiger une approbation bilaterale pour les modifications substantielles."
-        }
+          "ru": "Добавьте срок проверки и правило, что молчание считается либо акцептом, либо мотивированный отказ обязателен.",
+          "en": "Добавьте срок проверки и правило, что молчание считается либо акцептом, либо мотивированный отказ обязателен.",
+          "it": "Добавьте срок проверки и правило, что молчание считается либо акцептом, либо мотивированный отказ обязателен.",
+          "fr": "Добавьте срок проверки и правило, что молчание считается либо акцептом, либо мотивированный отказ обязателен."
+        },
+        "examples": []
       },
       {
-        "id": "risk_rule_confidentiality",
-        "source_ref": "RSK-004",
-        "keywords": ["конфиден", "confidential", "riservat", "confident"],
-        "severity": "medium",
+        "id": "invoice_dependency_for_payment",
+        "source_ref": "RSK-PAY-004",
+        "keywords": [
+          "счет-фактур",
+          "счет на оплату",
+          "комплект документов",
+          "после получения .* документов"
+        ],
+        "severity_base": "medium",
+        "legal_basis": "Надлежащее исполнение денежного обязательства",
+        "affected_contract_types": [
+          "service_agreement",
+          "purchase_agreement",
+          "supply_agreement",
+          "agency_agreement"
+        ],
+        "detection_logic": {
+          "type": "pattern_search",
+          "patterns": [
+            "счет-фактур",
+            "счет на оплату",
+            "комплект документов",
+            "после получения .* документов"
+          ],
+          "all_patterns": [],
+          "min_matches": 1,
+          "source": "clause"
+        },
+        "role_escalation": {
+          "executor": {
+            "escalate_to": "high",
+            "reason_ru": "Формальный документооборот может использоваться для затягивания оплаты.",
+            "reason_en": "Формальный документооборот может использоваться для затягивания оплаты.",
+            "reason_it": "Формальный документооборот может использоваться для затягивания оплаты.",
+            "reason_fr": "Формальный документооборот может использоваться для затягивания оплаты."
+          },
+          "client": {
+            "escalate_to": "low",
+            "reason_ru": "Для покупателя это стандартный контрольный барьер.",
+            "reason_en": "Для покупателя это стандартный контрольный барьер.",
+            "reason_it": "Для покупателя это стандартный контрольный барьер.",
+            "reason_fr": "Для покупателя это стандартный контрольный барьер."
+          }
+        },
         "title": {
-          "ru": "обязательства по конфиденциальности",
-          "en": "confidentiality obligations",
-          "it": "obblighi di riservatezza",
-          "fr": "obligations de confidentialite"
+          "ru": "Платеж зависит от формальностей по счетам и документам",
+          "en": "Платеж зависит от формальностей по счетам и документам",
+          "it": "Платеж зависит от формальностей по счетам и документам",
+          "fr": "Платеж зависит от формальностей по счетам и документам"
         },
         "description": {
-          "ru": "Обнаружены положения о конфиденциальности.",
-          "en": "Confidentiality provisions were detected.",
-          "it": "Sono state rilevate clausole di riservatezza.",
-          "fr": "Des dispositions de confidentialite ont ete detectees."
+          "ru": "Обязанность оплатить отложена до выставления счета, счета-фактуры или иного документа без понятного порядка исправления ошибок.",
+          "en": "Обязанность оплатить отложена до выставления счета, счета-фактуры или иного документа без понятного порядка исправления ошибок.",
+          "it": "Обязанность оплатить отложена до выставления счета, счета-фактуры или иного документа без понятного порядка исправления ошибок.",
+          "fr": "Обязанность оплатить отложена до выставления счета, счета-фактуры или иного документа без понятного порядка исправления ошибок."
         },
         "mitigation": {
-          "ru": "Проверьте срок действия и исключения по раскрытию.",
-          "en": "Confirm duration and disclosure exceptions are explicit.",
-          "it": "Confermare durata ed eccezioni alla divulgazione.",
-          "fr": "Confirmer la duree et les exceptions de divulgation."
-        }
+          "ru": "Зафиксируйте исчерпывающий перечень документов и срок на уведомление о недостатках пакета.",
+          "en": "Зафиксируйте исчерпывающий перечень документов и срок на уведомление о недостатках пакета.",
+          "it": "Зафиксируйте исчерпывающий перечень документов и срок на уведомление о недостатках пакета.",
+          "fr": "Зафиксируйте исчерпывающий перечень документов и срок на уведомление о недостатках пакета."
+        },
+        "examples": []
       },
       {
-        "id": "risk_rule_indemnification",
-        "source_ref": "RSK-005",
-        "keywords": ["возмещен", "indemn", "manlev", "indemnis"],
-        "severity": "medium",
+        "id": "unilateral_price_change",
+        "source_ref": "RSK-CHG-001",
+        "keywords": [
+          "вправе изменить цену",
+          "односторонн.*измен.*цен",
+          "стоимость может быть изменена",
+          "unilaterally change the price",
+          "price may be changed"
+        ],
+        "severity_base": "high",
+        "legal_basis": "Существенные условия и изменение договора по соглашению сторон",
+        "affected_contract_types": [
+          "service_agreement",
+          "consulting_agreement",
+          "purchase_agreement",
+          "supply_agreement",
+          "lease_agreement"
+        ],
+        "detection_logic": {
+          "type": "pattern_search",
+          "patterns": [
+            "вправе изменить цену",
+            "односторонн.*измен.*цен",
+            "стоимость может быть изменена",
+            "unilaterally change the price",
+            "price may be changed"
+          ],
+          "all_patterns": [],
+          "min_matches": 1,
+          "source": "clause"
+        },
+        "role_escalation": {
+          "client": {
+            "escalate_to": "high",
+            "reason_ru": "Для заказчика или покупателя это риск роста стоимости без управляемых критериев.",
+            "reason_en": "Для заказчика или покупателя это риск роста стоимости без управляемых критериев.",
+            "reason_it": "Для заказчика или покупателя это риск роста стоимости без управляемых критериев.",
+            "reason_fr": "Для заказчика или покупателя это риск роста стоимости без управляемых критериев."
+          },
+          "executor": {
+            "escalate_to": "low",
+            "reason_ru": "Для исполнителя условие обычно выгодно.",
+            "reason_en": "Для исполнителя условие обычно выгодно.",
+            "reason_it": "Для исполнителя условие обычно выгодно.",
+            "reason_fr": "Для исполнителя условие обычно выгодно."
+          }
+        },
         "title": {
-          "ru": "условия возмещения убытков",
-          "en": "indemnification terms",
-          "it": "termini di manleva",
-          "fr": "conditions d'indemnisation"
+          "ru": "Одностороннее изменение цены",
+          "en": "Одностороннее изменение цены",
+          "it": "Одностороннее изменение цены",
+          "fr": "Одностороннее изменение цены"
         },
         "description": {
-          "ru": "Обнаружены условия компенсации/возмещения.",
-          "en": "Compensation or indemnification terms were detected.",
-          "it": "Sono stati rilevati termini di compensazione o manleva.",
-          "fr": "Des clauses de compensation ou d'indemnisation ont ete detectees."
+          "ru": "Одна сторона оставила за собой право менять цену без встречного согласия или прозрачной формулы пересчета.",
+          "en": "Одна сторона оставила за собой право менять цену без встречного согласия или прозрачной формулы пересчета.",
+          "it": "Одна сторона оставила за собой право менять цену без встречного согласия или прозрачной формулы пересчета.",
+          "fr": "Одна сторона оставила за собой право менять цену без встречного согласия или прозрачной формулы пересчета."
         },
         "mitigation": {
-          "ru": "Уточните лимиты ответственности и триггеры применения.",
-          "en": "Clarify liability caps and triggering events.",
-          "it": "Chiarire limiti di responsabilita ed eventi attivanti.",
-          "fr": "Preciser les plafonds de responsabilite et les evenements declencheurs."
-        }
+          "ru": "Закрепите закрытый перечень оснований изменения цены и обязанность подписывать дополнительное соглашение.",
+          "en": "Закрепите закрытый перечень оснований изменения цены и обязанность подписывать дополнительное соглашение.",
+          "it": "Закрепите закрытый перечень оснований изменения цены и обязанность подписывать дополнительное соглашение.",
+          "fr": "Закрепите закрытый перечень оснований изменения цены и обязанность подписывать дополнительное соглашение."
+        },
+        "examples": []
+      },
+      {
+        "id": "unilateral_scope_change",
+        "source_ref": "RSK-CHG-002",
+        "keywords": [
+          "вправе изменить объем",
+          "изменить техническое задание",
+          "спецификация может быть изменена",
+          "дополнительные работы по требованию",
+          "change the scope",
+          "change the deadlines",
+          "without contractor approval"
+        ],
+        "severity_base": "high",
+        "legal_basis": "Эквивалентность встречного предоставления",
+        "affected_contract_types": [
+          "service_agreement",
+          "consulting_agreement",
+          "construction_contract",
+          "supply_agreement",
+          "ip_agreement"
+        ],
+        "detection_logic": {
+          "type": "pattern_search",
+          "patterns": [
+            "вправе изменить объем",
+            "изменить техническое задание",
+            "спецификация может быть изменена",
+            "дополнительные работы по требованию",
+            "change the scope",
+            "change the deadlines",
+            "without contractor approval"
+          ],
+          "all_patterns": [],
+          "min_matches": 1,
+          "source": "clause"
+        },
+        "role_escalation": {
+          "executor": {
+            "escalate_to": "critical",
+            "reason_ru": "Для исполнителя это риск бесконечного расширения объема без доплаты.",
+            "reason_en": "Для исполнителя это риск бесконечного расширения объема без доплаты.",
+            "reason_it": "Для исполнителя это риск бесконечного расширения объема без доплаты.",
+            "reason_fr": "Для исполнителя это риск бесконечного расширения объема без доплаты."
+          },
+          "client": {
+            "escalate_to": "low",
+            "reason_ru": "Для заказчика это управленческий рычаг, а не его риск.",
+            "reason_en": "Для заказчика это управленческий рычаг, а не его риск.",
+            "reason_it": "Для заказчика это управленческий рычаг, а не его риск.",
+            "reason_fr": "Для заказчика это управленческий рычаг, а не его риск."
+          }
+        },
+        "title": {
+          "ru": "Одностороннее изменение объема или спецификации",
+          "en": "Одностороннее изменение объема или спецификации",
+          "it": "Одностороннее изменение объема или спецификации",
+          "fr": "Одностороннее изменение объема или спецификации"
+        },
+        "description": {
+          "ru": "Контрагент может менять объем работ, состав услуг или спецификацию товара без соразмерной корректировки цены и сроков.",
+          "en": "Контрагент может менять объем работ, состав услуг или спецификацию товара без соразмерной корректировки цены и сроков.",
+          "it": "Контрагент может менять объем работ, состав услуг или спецификацию товара без соразмерной корректировки цены и сроков.",
+          "fr": "Контрагент может менять объем работ, состав услуг или спецификацию товара без соразмерной корректировки цены и сроков."
+        },
+        "mitigation": {
+          "ru": "Добавьте обязательную корректировку бюджета и дедлайнов при изменении объема.",
+          "en": "Добавьте обязательную корректировку бюджета и дедлайнов при изменении объема.",
+          "it": "Добавьте обязательную корректировку бюджета и дедлайнов при изменении объема.",
+          "fr": "Добавьте обязательную корректировку бюджета и дедлайнов при изменении объема."
+        },
+        "examples": []
+      },
+      {
+        "id": "one_sided_penalty",
+        "source_ref": "RSK-PEN-001",
+        "keywords": [
+          "пеня",
+          "штраф",
+          "неустойк",
+          "penalty",
+          "liquidated damages"
+        ],
+        "severity_base": "high",
+        "legal_basis": "Статья 330 ГК РФ и судебная практика о соразмерности неустойки",
+        "affected_contract_types": [
+          "service_agreement",
+          "purchase_agreement",
+          "supply_agreement",
+          "lease_agreement",
+          "construction_contract"
+        ],
+        "detection_logic": {
+          "type": "pattern_search",
+          "patterns": [
+            "пеня",
+            "штраф",
+            "неустойк",
+            "penalty",
+            "liquidated damages"
+          ],
+          "all_patterns": [],
+          "min_matches": 1,
+          "source": "clause"
+        },
+        "role_escalation": {
+          "executor": {
+            "escalate_to": "high",
+            "reason_ru": "Исполнитель несет санкции, не имея симметричных средств давления.",
+            "reason_en": "Исполнитель несет санкции, не имея симметричных средств давления.",
+            "reason_it": "Исполнитель несет санкции, не имея симметричных средств давления.",
+            "reason_fr": "Исполнитель несет санкции, не имея симметричных средств давления."
+          },
+          "client": {
+            "escalate_to": "medium",
+            "reason_ru": "Даже выгодная односторонняя санкция может вызвать спор о соразмерности.",
+            "reason_en": "Даже выгодная односторонняя санкция может вызвать спор о соразмерности.",
+            "reason_it": "Даже выгодная односторонняя санкция может вызвать спор о соразмерности.",
+            "reason_fr": "Даже выгодная односторонняя санкция может вызвать спор о соразмерности."
+          }
+        },
+        "title": {
+          "ru": "Неустойка предусмотрена только для одной стороны",
+          "en": "Неустойка предусмотрена только для одной стороны",
+          "it": "Неустойка предусмотрена только для одной стороны",
+          "fr": "Неустойка предусмотрена только для одной стороны"
+        },
+        "description": {
+          "ru": "Санкции за нарушение детально описаны только для одной стороны, что создает асимметричный договорный баланс.",
+          "en": "Санкции за нарушение детально описаны только для одной стороны, что создает асимметричный договорный баланс.",
+          "it": "Санкции за нарушение детально описаны только для одной стороны, что создает асимметричный договорный баланс.",
+          "fr": "Санкции за нарушение детально описаны только для одной стороны, что создает асимметричный договорный баланс."
+        },
+        "mitigation": {
+          "ru": "Сделайте ответственность зеркальной или обоснуйте, почему санкция односторонняя и ограниченная.",
+          "en": "Сделайте ответственность зеркальной или обоснуйте, почему санкция односторонняя и ограниченная.",
+          "it": "Сделайте ответственность зеркальной или обоснуйте, почему санкция односторонняя и ограниченная.",
+          "fr": "Сделайте ответственность зеркальной или обоснуйте, почему санкция односторонняя и ограниченная."
+        },
+        "examples": []
+      },
+      {
+        "id": "uncapped_daily_penalty",
+        "source_ref": "RSK-PEN-002",
+        "keywords": [
+          "за каждый день просрочки",
+          "ежедневн",
+          "0,1%",
+          "0,5%",
+          "for each day of delay",
+          "per day"
+        ],
+        "severity_base": "critical",
+        "legal_basis": "Статьи 330 и 333 ГК РФ",
+        "affected_contract_types": [
+          "service_agreement",
+          "purchase_agreement",
+          "supply_agreement",
+          "lease_agreement",
+          "construction_contract",
+          "agency_agreement"
+        ],
+        "detection_logic": {
+          "type": "pattern_search",
+          "patterns": [
+            "за каждый день просрочки",
+            "ежедневн",
+            "0,1%",
+            "0,5%",
+            "for each day of delay",
+            "per day"
+          ],
+          "all_patterns": [],
+          "min_matches": 1,
+          "source": "clause"
+        },
+        "role_escalation": {
+          "executor": {
+            "escalate_to": "critical",
+            "reason_ru": "Неограниченная пеня быстро превращается в непропорциональную ответственность.",
+            "reason_en": "Неограниченная пеня быстро превращается в непропорциональную ответственность.",
+            "reason_it": "Неограниченная пеня быстро превращается в непропорциональную ответственность.",
+            "reason_fr": "Неограниченная пеня быстро превращается в непропорциональную ответственность."
+          },
+          "client": {
+            "escalate_to": "low",
+            "reason_ru": "Для заказчика это выгодное условие.",
+            "reason_en": "Для заказчика это выгодное условие.",
+            "reason_it": "Для заказчика это выгодное условие.",
+            "reason_fr": "Для заказчика это выгодное условие."
+          },
+          "tenant": {
+            "escalate_to": "critical",
+            "reason_ru": "Для арендатора ежедневная пеня без лимита быстро становится несоразмерной.",
+            "reason_en": "Для арендатора ежедневная пеня без лимита быстро становится несоразмерной.",
+            "reason_it": "Для арендатора ежедневная пеня без лимита быстро становится несоразмерной.",
+            "reason_fr": "Для арендатора ежедневная пеня без лимита быстро становится несоразмерной."
+          },
+          "landlord": {
+            "escalate_to": "low",
+            "reason_ru": "Для арендодателя это защитный механизм, а не его собственный риск.",
+            "reason_en": "Для арендодателя это защитный механизм, а не его собственный риск.",
+            "reason_it": "Для арендодателя это защитный механизм, а не его собственный риск.",
+            "reason_fr": "Для арендодателя это защитный механизм, а не его собственный риск."
+          }
+        },
+        "title": {
+          "ru": "Ежедневная пеня без верхнего лимита",
+          "en": "Ежедневная пеня без верхнего лимита",
+          "it": "Ежедневная пеня без верхнего лимита",
+          "fr": "Ежедневная пеня без верхнего лимита"
+        },
+        "description": {
+          "ru": "Договор содержит ежедневную пеню, но не ограничивает ее общий размер или период начисления.",
+          "en": "Договор содержит ежедневную пеню, но не ограничивает ее общий размер или период начисления.",
+          "it": "Договор содержит ежедневную пеню, но не ограничивает ее общий размер или период начисления.",
+          "fr": "Договор содержит ежедневную пеню, но не ограничивает ее общий размер или период начисления."
+        },
+        "mitigation": {
+          "ru": "Установите cap по общей сумме неустойки и предельный период начисления.",
+          "en": "Установите cap по общей сумме неустойки и предельный период начисления.",
+          "it": "Установите cap по общей сумме неустойки и предельный период начисления.",
+          "fr": "Установите cap по общей сумме неустойки и предельный период начисления."
+        },
+        "examples": []
+      },
+      {
+        "id": "penalty_plus_full_damages",
+        "source_ref": "RSK-PEN-003",
+        "keywords": [
+          "убытки в полном объеме",
+          "сверх неустойки",
+          "штраф .* не освобождает"
+        ],
+        "severity_base": "high",
+        "legal_basis": "Статьи 394 и 330 ГК РФ",
+        "affected_contract_types": [
+          "service_agreement",
+          "purchase_agreement",
+          "supply_agreement",
+          "construction_contract",
+          "agency_agreement",
+          "ip_agreement"
+        ],
+        "detection_logic": {
+          "type": "pattern_search",
+          "patterns": [
+            "убытки в полном объеме",
+            "сверх неустойки",
+            "штраф .* не освобождает"
+          ],
+          "all_patterns": [],
+          "min_matches": 1,
+          "source": "clause"
+        },
+        "role_escalation": {
+          "executor": {
+            "escalate_to": "critical",
+            "reason_ru": "Одновременное взыскание неустойки и убытков резко повышает размер возможных потерь.",
+            "reason_en": "Одновременное взыскание неустойки и убытков резко повышает размер возможных потерь.",
+            "reason_it": "Одновременное взыскание неустойки и убытков резко повышает размер возможных потерь.",
+            "reason_fr": "Одновременное взыскание неустойки и убытков резко повышает размер возможных потерь."
+          },
+          "client": {
+            "escalate_to": "low",
+            "reason_ru": "Для заказчика это усиление позиции.",
+            "reason_en": "Для заказчика это усиление позиции.",
+            "reason_it": "Для заказчика это усиление позиции.",
+            "reason_fr": "Для заказчика это усиление позиции."
+          }
+        },
+        "title": {
+          "ru": "Неустойка плюс полные убытки сверх нее",
+          "en": "Неустойка плюс полные убытки сверх нее",
+          "it": "Неустойка плюс полные убытки сверх нее",
+          "fr": "Неустойка плюс полные убытки сверх нее"
+        },
+        "description": {
+          "ru": "Помимо неустойки договор позволяет взыскать убытки в полном объеме, что удваивает риск ответственности.",
+          "en": "Помимо неустойки договор позволяет взыскать убытки в полном объеме, что удваивает риск ответственности.",
+          "it": "Помимо неустойки договор позволяет взыскать убытки в полном объеме, что удваивает риск ответственности.",
+          "fr": "Помимо неустойки договор позволяет взыскать убытки в полном объеме, что удваивает риск ответственности."
+        },
+        "mitigation": {
+          "ru": "Пропишите, что неустойка зачитывается в счет убытков или установите лимит совокупной ответственности.",
+          "en": "Пропишите, что неустойка зачитывается в счет убытков или установите лимит совокупной ответственности.",
+          "it": "Пропишите, что неустойка зачитывается в счет убытков или установите лимит совокупной ответственности.",
+          "fr": "Пропишите, что неустойка зачитывается в счет убытков или установите лимит совокупной ответственности."
+        },
+        "examples": []
+      },
+      {
+        "id": "unlimited_liability",
+        "source_ref": "RSK-LIAB-001",
+        "keywords": [
+          "несет полную ответственность",
+          "в полном объеме возмещает",
+          "без ограничения"
+        ],
+        "severity_base": "critical",
+        "legal_basis": "Общие пределы договорной ответственности и принцип соразмерности",
+        "affected_contract_types": [
+          "labor_contract",
+          "service_agreement",
+          "consulting_agreement",
+          "construction_contract",
+          "loan_security_agreement",
+          "partnership_agreement"
+        ],
+        "detection_logic": {
+          "type": "pattern_search",
+          "patterns": [
+            "несет полную ответственность",
+            "в полном объеме возмещает",
+            "без ограничения"
+          ],
+          "all_patterns": [],
+          "min_matches": 1,
+          "source": "clause"
+        },
+        "role_escalation": {
+          "worker": {
+            "escalate_to": "critical",
+            "reason_ru": "Для работника неограниченная ответственность особенно токсична.",
+            "reason_en": "Для работника неограниченная ответственность особенно токсична.",
+            "reason_it": "Для работника неограниченная ответственность особенно токсична.",
+            "reason_fr": "Для работника неограниченная ответственность особенно токсична."
+          },
+          "executor": {
+            "escalate_to": "critical",
+            "reason_ru": "Для исполнителя это риск несоразмерных потерь.",
+            "reason_en": "Для исполнителя это риск несоразмерных потерь.",
+            "reason_it": "Для исполнителя это риск несоразмерных потерь.",
+            "reason_fr": "Для исполнителя это риск несоразмерных потерь."
+          },
+          "employer": {
+            "escalate_to": "low",
+            "reason_ru": "Для работодателя это защитная формулировка.",
+            "reason_en": "Для работодателя это защитная формулировка.",
+            "reason_it": "Для работодателя это защитная формулировка.",
+            "reason_fr": "Для работодателя это защитная формулировка."
+          }
+        },
+        "title": {
+          "ru": "Неограниченная имущественная ответственность",
+          "en": "Неограниченная имущественная ответственность",
+          "it": "Неограниченная имущественная ответственность",
+          "fr": "Неограниченная имущественная ответственность"
+        },
+        "description": {
+          "ru": "Ответственность сформулирована без cap и может покрывать весь спектр убытков и расходов.",
+          "en": "Ответственность сформулирована без cap и может покрывать весь спектр убытков и расходов.",
+          "it": "Ответственность сформулирована без cap и может покрывать весь спектр убытков и расходов.",
+          "fr": "Ответственность сформулирована без cap и может покрывать весь спектр убытков и расходов."
+        },
+        "mitigation": {
+          "ru": "Добавьте лимит ответственности: сумма договора, процент от цены или иной измеримый потолок.",
+          "en": "Добавьте лимит ответственности: сумма договора, процент от цены или иной измеримый потолок.",
+          "it": "Добавьте лимит ответственности: сумма договора, процент от цены или иной измеримый потолок.",
+          "fr": "Добавьте лимит ответственности: сумма договора, процент от цены или иной измеримый потолок."
+        },
+        "examples": []
+      },
+      {
+        "id": "no_liability_cap_for_indirect_losses",
+        "source_ref": "RSK-LIAB-002",
+        "keywords": [
+          "упущенн.*выгод",
+          "косвенн.*убыт",
+          "репутационн"
+        ],
+        "severity_base": "high",
+        "legal_basis": "Предсказуемость и ограниченность договорной ответственности",
+        "affected_contract_types": [
+          "service_agreement",
+          "consulting_agreement",
+          "ip_agreement",
+          "partnership_agreement"
+        ],
+        "detection_logic": {
+          "type": "pattern_search",
+          "patterns": [
+            "упущенн.*выгод",
+            "косвенн.*убыт",
+            "репутационн"
+          ],
+          "all_patterns": [],
+          "min_matches": 1,
+          "source": "clause"
+        },
+        "role_escalation": {
+          "executor": {
+            "escalate_to": "high",
+            "reason_ru": "Исполнитель рискует отвечать за плохо предсказуемые убытки контрагента.",
+            "reason_en": "Исполнитель рискует отвечать за плохо предсказуемые убытки контрагента.",
+            "reason_it": "Исполнитель рискует отвечать за плохо предсказуемые убытки контрагента.",
+            "reason_fr": "Исполнитель рискует отвечать за плохо предсказуемые убытки контрагента."
+          },
+          "client": {
+            "escalate_to": "low",
+            "reason_ru": "Для заказчика это усиление рычагов, а не его самостоятельный риск.",
+            "reason_en": "Для заказчика это усиление рычагов, а не его самостоятельный риск.",
+            "reason_it": "Для заказчика это усиление рычагов, а не его самостоятельный риск.",
+            "reason_fr": "Для заказчика это усиление рычагов, а не его самостоятельный риск."
+          }
+        },
+        "title": {
+          "ru": "Нет carve-out для косвенных потерь",
+          "en": "Нет carve-out для косвенных потерь",
+          "it": "Нет carve-out для косвенных потерь",
+          "fr": "Нет carve-out для косвенных потерь"
+        },
+        "description": {
+          "ru": "Договор не отделяет прямые убытки от косвенных потерь, упущенной выгоды и репутационного вреда.",
+          "en": "Договор не отделяет прямые убытки от косвенных потерь, упущенной выгоды и репутационного вреда.",
+          "it": "Договор не отделяет прямые убытки от косвенных потерь, упущенной выгоды и репутационного вреда.",
+          "fr": "Договор не отделяет прямые убытки от косвенных потерь, упущенной выгоды и репутационного вреда."
+        },
+        "mitigation": {
+          "ru": "Ограничьте возмещаемые потери прямыми документально подтвержденными убытками.",
+          "en": "Ограничьте возмещаемые потери прямыми документально подтвержденными убытками.",
+          "it": "Ограничьте возмещаемые потери прямыми документально подтвержденными убытками.",
+          "fr": "Ограничьте возмещаемые потери прямыми документально подтвержденными убытками."
+        },
+        "examples": []
+      },
+      {
+        "id": "undefined_acceptance_criteria",
+        "source_ref": "RSK-ACPT-001",
+        "keywords": [
+          "приемк",
+          "считается выполненным",
+          "по мнению заказчика",
+          "соответствует требованиям",
+          "acceptance",
+          "accepted if",
+          "in customer opinion"
+        ],
+        "severity_base": "high",
+        "legal_basis": "Статьи 720 и 753 ГК РФ",
+        "affected_contract_types": [
+          "service_agreement",
+          "consulting_agreement",
+          "construction_contract",
+          "ip_agreement",
+          "targeted_education_agreement",
+          "supply_agreement"
+        ],
+        "detection_logic": {
+          "type": "pattern_search",
+          "patterns": [
+            "приемк",
+            "считается выполненным",
+            "по мнению заказчика",
+            "соответствует требованиям",
+            "acceptance",
+            "accepted if",
+            "in customer opinion"
+          ],
+          "all_patterns": [],
+          "min_matches": 1,
+          "source": "clause"
+        },
+        "role_escalation": {
+          "executor": {
+            "escalate_to": "critical",
+            "reason_ru": "Без критериев приемки исполнитель зависит от субъективного мнения заказчика.",
+            "reason_en": "Без критериев приемки исполнитель зависит от субъективного мнения заказчика.",
+            "reason_it": "Без критериев приемки исполнитель зависит от субъективного мнения заказчика.",
+            "reason_fr": "Без критериев приемки исполнитель зависит от субъективного мнения заказчика."
+          },
+          "client": {
+            "escalate_to": "medium",
+            "reason_ru": "Для заказчика размытая приемка тоже риск спора и потери управляемости.",
+            "reason_en": "Для заказчика размытая приемка тоже риск спора и потери управляемости.",
+            "reason_it": "Для заказчика размытая приемка тоже риск спора и потери управляемости.",
+            "reason_fr": "Для заказчика размытая приемка тоже риск спора и потери управляемости."
+          }
+        },
+        "title": {
+          "ru": "Неопределенные критерии приемки",
+          "en": "Неопределенные критерии приемки",
+          "it": "Неопределенные критерии приемки",
+          "fr": "Неопределенные критерии приемки"
+        },
+        "description": {
+          "ru": "В договоре есть приемка результата, но отсутствуют объективные критерии качества, чек-листы, метрики или ссылка на полное ТЗ.",
+          "en": "В договоре есть приемка результата, но отсутствуют объективные критерии качества, чек-листы, метрики или ссылка на полное ТЗ.",
+          "it": "В договоре есть приемка результата, но отсутствуют объективные критерии качества, чек-листы, метрики или ссылка на полное ТЗ.",
+          "fr": "В договоре есть приемка результата, но отсутствуют объективные критерии качества, чек-листы, метрики или ссылка на полное ТЗ."
+        },
+        "mitigation": {
+          "ru": "Опишите, что именно считается готовым результатом и по каким тестам или документам это проверяется.",
+          "en": "Опишите, что именно считается готовым результатом и по каким тестам или документам это проверяется.",
+          "it": "Опишите, что именно считается готовым результатом и по каким тестам или документам это проверяется.",
+          "fr": "Опишите, что именно считается готовым результатом и по каким тестам или документам это проверяется."
+        },
+        "examples": [
+          "Работа считается принятой, если соответствует требованиям заказчика."
+        ]
+      },
+      {
+        "id": "no_acceptance_deadline",
+        "source_ref": "RSK-ACPT-002",
+        "keywords": [
+          "мотивированн.*отказ",
+          "срок приемки",
+          "подписать акт"
+        ],
+        "severity_base": "high",
+        "legal_basis": "Разумный срок приемки результата работ и услуг",
+        "affected_contract_types": [
+          "service_agreement",
+          "consulting_agreement",
+          "construction_contract",
+          "supply_agreement"
+        ],
+        "detection_logic": {
+          "type": "pattern_with_context",
+          "patterns": [
+            "мотивированн.*отказ",
+            "срок приемки",
+            "подписать акт"
+          ],
+          "all_patterns": [],
+          "min_matches": 2,
+          "source": "clause"
+        },
+        "role_escalation": {
+          "executor": {
+            "escalate_to": "critical",
+            "reason_ru": "Без срока приемки оплата и закрытие этапа могут зависнуть на неопределенное время.",
+            "reason_en": "Без срока приемки оплата и закрытие этапа могут зависнуть на неопределенное время.",
+            "reason_it": "Без срока приемки оплата и закрытие этапа могут зависнуть на неопределенное время.",
+            "reason_fr": "Без срока приемки оплата и закрытие этапа могут зависнуть на неопределенное время."
+          },
+          "client": {
+            "escalate_to": "low",
+            "reason_ru": "Для заказчика условие выгодно, но усиливает спорность документа.",
+            "reason_en": "Для заказчика условие выгодно, но усиливает спорность документа.",
+            "reason_it": "Для заказчика условие выгодно, но усиливает спорность документа.",
+            "reason_fr": "Для заказчика условие выгодно, но усиливает спорность документа."
+          }
+        },
+        "title": {
+          "ru": "Нет срока на приемку или мотивированный отказ",
+          "en": "Нет срока на приемку или мотивированный отказ",
+          "it": "Нет срока на приемку или мотивированный отказ",
+          "fr": "Нет срока на приемку или мотивированный отказ"
+        },
+        "description": {
+          "ru": "Контрагент может долго не подтверждать приемку, потому что срок проверки и форма возражений не зафиксированы.",
+          "en": "Контрагент может долго не подтверждать приемку, потому что срок проверки и форма возражений не зафиксированы.",
+          "it": "Контрагент может долго не подтверждать приемку, потому что срок проверки и форма возражений не зафиксированы.",
+          "fr": "Контрагент может долго не подтверждать приемку, потому что срок проверки и форма возражений не зафиксированы."
+        },
+        "mitigation": {
+          "ru": "Добавьте 3-5 рабочих дней на приемку и требование мотивированного письменного отказа.",
+          "en": "Добавьте 3-5 рабочих дней на приемку и требование мотивированного письменного отказа.",
+          "it": "Добавьте 3-5 рабочих дней на приемку и требование мотивированного письменного отказа.",
+          "fr": "Добавьте 3-5 рабочих дней на приемку и требование мотивированного письменного отказа."
+        },
+        "examples": []
+      },
+      {
+        "id": "silent_acceptance",
+        "source_ref": "RSK-ACPT-003",
+        "keywords": [
+          "считается принятым",
+          "если в течение .* не направлен",
+          "фактическое использование"
+        ],
+        "severity_base": "medium",
+        "legal_basis": "Распределение риска приемки результата",
+        "affected_contract_types": [
+          "service_agreement",
+          "consulting_agreement",
+          "supply_agreement",
+          "construction_contract"
+        ],
+        "detection_logic": {
+          "type": "pattern_search",
+          "patterns": [
+            "считается принятым",
+            "если в течение .* не направлен",
+            "фактическое использование"
+          ],
+          "all_patterns": [],
+          "min_matches": 1,
+          "source": "clause"
+        },
+        "role_escalation": {
+          "client": {
+            "escalate_to": "high",
+            "reason_ru": "Для заказчика молчаливая приемка опасна потерей права на возражения.",
+            "reason_en": "Для заказчика молчаливая приемка опасна потерей права на возражения.",
+            "reason_it": "Для заказчика молчаливая приемка опасна потерей права на возражения.",
+            "reason_fr": "Для заказчика молчаливая приемка опасна потерей права на возражения."
+          },
+          "executor": {
+            "escalate_to": "low",
+            "reason_ru": "Для исполнителя это скорее защитный механизм.",
+            "reason_en": "Для исполнителя это скорее защитный механизм.",
+            "reason_it": "Для исполнителя это скорее защитный механизм.",
+            "reason_fr": "Для исполнителя это скорее защитный механизм."
+          }
+        },
+        "title": {
+          "ru": "Молчаливая или фактическая приемка",
+          "en": "Молчаливая или фактическая приемка",
+          "it": "Молчаливая или фактическая приемка",
+          "fr": "Молчаливая или фактическая приемка"
+        },
+        "description": {
+          "ru": "Документ допускает признание результата принятым по умолчанию, по пользованию результатом или по истечении срока без замечаний.",
+          "en": "Документ допускает признание результата принятым по умолчанию, по пользованию результатом или по истечении срока без замечаний.",
+          "it": "Документ допускает признание результата принятым по умолчанию, по пользованию результатом или по истечении срока без замечаний.",
+          "fr": "Документ допускает признание результата принятым по умолчанию, по пользованию результатом или по истечении срока без замечаний."
+        },
+        "mitigation": {
+          "ru": "Проверьте, не слишком ли короткий срок на возражения, и сохраните право на скрытые дефекты.",
+          "en": "Проверьте, не слишком ли короткий срок на возражения, и сохраните право на скрытые дефекты.",
+          "it": "Проверьте, не слишком ли короткий срок на возражения, и сохраните право на скрытые дефекты.",
+          "fr": "Проверьте, не слишком ли короткий срок на возражения, и сохраните право на скрытые дефекты."
+        },
+        "examples": []
+      },
+      {
+        "id": "no_warranty_period",
+        "source_ref": "RSK-WARR-001",
+        "keywords": [
+          "гарант",
+          "гарантийн"
+        ],
+        "severity_base": "medium",
+        "legal_basis": "Статьи 722 и 724 ГК РФ",
+        "affected_contract_types": [
+          "service_agreement",
+          "consulting_agreement",
+          "construction_contract",
+          "purchase_agreement",
+          "supply_agreement",
+          "ip_agreement"
+        ],
+        "detection_logic": {
+          "type": "negative_pattern",
+          "patterns": [
+            "гарант",
+            "гарантийн"
+          ],
+          "all_patterns": [],
+          "min_matches": 1,
+          "source": "clause"
+        },
+        "role_escalation": {
+          "client": {
+            "escalate_to": "high",
+            "reason_ru": "Заказчик рискует остаться без механизма бесплатного устранения дефектов.",
+            "reason_en": "Заказчик рискует остаться без механизма бесплатного устранения дефектов.",
+            "reason_it": "Заказчик рискует остаться без механизма бесплатного устранения дефектов.",
+            "reason_fr": "Заказчик рискует остаться без механизма бесплатного устранения дефектов."
+          },
+          "executor": {
+            "escalate_to": "low",
+            "reason_ru": "Для исполнителя отсутствие гарантии обычно выгодно.",
+            "reason_en": "Для исполнителя отсутствие гарантии обычно выгодно.",
+            "reason_it": "Для исполнителя отсутствие гарантии обычно выгодно.",
+            "reason_fr": "Для исполнителя отсутствие гарантии обычно выгодно."
+          }
+        },
+        "title": {
+          "ru": "Отсутствует гарантийный период",
+          "en": "Отсутствует гарантийный период",
+          "it": "Отсутствует гарантийный период",
+          "fr": "Отсутствует гарантийный период"
+        },
+        "description": {
+          "ru": "В договоре про результат, дефекты и сопровождение ничего не сказано о гарантийном сроке.",
+          "en": "В договоре про результат, дефекты и сопровождение ничего не сказано о гарантийном сроке.",
+          "it": "В договоре про результат, дефекты и сопровождение ничего не сказано о гарантийном сроке.",
+          "fr": "В договоре про результат, дефекты и сопровождение ничего не сказано о гарантийном сроке."
+        },
+        "mitigation": {
+          "ru": "Добавьте гарантийный период и отдельно опишите, что входит в бесплатное исправление дефектов.",
+          "en": "Добавьте гарантийный период и отдельно опишите, что входит в бесплатное исправление дефектов.",
+          "it": "Добавьте гарантийный период и отдельно опишите, что входит в бесплатное исправление дефектов.",
+          "fr": "Добавьте гарантийный период и отдельно опишите, что входит в бесплатное исправление дефектов."
+        },
+        "examples": []
+      },
+      {
+        "id": "unlimited_defect_cure",
+        "source_ref": "RSK-WARR-002",
+        "keywords": [
+          "устранить дефекты за свой счет",
+          "устраняет недостатки",
+          "в период гарантийной эксплуатации"
+        ],
+        "severity_base": "high",
+        "legal_basis": "Пределы гарантийных обязательств",
+        "affected_contract_types": [
+          "construction_contract",
+          "service_agreement",
+          "consulting_agreement",
+          "ip_agreement"
+        ],
+        "detection_logic": {
+          "type": "pattern_search",
+          "patterns": [
+            "устранить дефекты за свой счет",
+            "устраняет недостатки",
+            "в период гарантийной эксплуатации"
+          ],
+          "all_patterns": [],
+          "min_matches": 1,
+          "source": "clause"
+        },
+        "role_escalation": {
+          "executor": {
+            "escalate_to": "critical",
+            "reason_ru": "Исполнитель может нести бесконечные пост-работы без доплаты.",
+            "reason_en": "Исполнитель может нести бесконечные пост-работы без доплаты.",
+            "reason_it": "Исполнитель может нести бесконечные пост-работы без доплаты.",
+            "reason_fr": "Исполнитель может нести бесконечные пост-работы без доплаты."
+          },
+          "client": {
+            "escalate_to": "low",
+            "reason_ru": "Для заказчика это выгодное усиление гарантии.",
+            "reason_en": "Для заказчика это выгодное усиление гарантии.",
+            "reason_it": "Для заказчика это выгодное усиление гарантии.",
+            "reason_fr": "Для заказчика это выгодное усиление гарантии."
+          }
+        },
+        "title": {
+          "ru": "Исправление дефектов без пределов по сроку и объему",
+          "en": "Исправление дефектов без пределов по сроку и объему",
+          "it": "Исправление дефектов без пределов по сроку и объему",
+          "fr": "Исправление дефектов без пределов по сроку и объему"
+        },
+        "description": {
+          "ru": "Обязанность устранять дефекты сформулирована широко и не ограничена ни гарантийным сроком, ни числом итераций, ни характером недостатков.",
+          "en": "Обязанность устранять дефекты сформулирована широко и не ограничена ни гарантийным сроком, ни числом итераций, ни характером недостатков.",
+          "it": "Обязанность устранять дефекты сформулирована широко и не ограничена ни гарантийным сроком, ни числом итераций, ни характером недостатков.",
+          "fr": "Обязанность устранять дефекты сформулирована широко и не ограничена ни гарантийным сроком, ни числом итераций, ни характером недостатков."
+        },
+        "mitigation": {
+          "ru": "Ограничьте период, перечень покрываемых дефектов и процедуру фиксации замечаний.",
+          "en": "Ограничьте период, перечень покрываемых дефектов и процедуру фиксации замечаний.",
+          "it": "Ограничьте период, перечень покрываемых дефектов и процедуру фиксации замечаний.",
+          "fr": "Ограничьте период, перечень покрываемых дефектов и процедуру фиксации замечаний."
+        },
+        "examples": []
+      },
+      {
+        "id": "strict_deadlines_without_dependency_carveout",
+        "source_ref": "RSK-DEAD-001",
+        "keywords": [
+          "(?:оказать|выполнить|поставить|передать)\\s+.*в течение\\s+\\d{1,3}\\s*(?:рабоч|календар|банков|дн)",
+          "срок\\s+(?:оказания|выполнения|поставки|передачи)",
+          "не позднее"
+        ],
+        "severity_base": "high",
+        "legal_basis": "Причинная связь между просрочкой и действиями сторон",
+        "affected_contract_types": [
+          "service_agreement",
+          "consulting_agreement",
+          "construction_contract",
+          "supply_agreement",
+          "targeted_education_agreement"
+        ],
+        "detection_logic": {
+          "type": "pattern_search",
+          "patterns": [
+            "(?:оказать|выполнить|поставить|передать)\\s+.*в течение\\s+\\d{1,3}\\s*(?:рабоч|календар|банков|дн)",
+            "срок\\s+(?:оказания|выполнения|поставки|передачи)",
+            "не позднее"
+          ],
+          "all_patterns": [],
+          "min_matches": 1,
+          "source": "clause"
+        },
+        "role_escalation": {
+          "executor": {
+            "escalate_to": "high",
+            "reason_ru": "Исполнитель отвечает за сроки, которые частично контролирует контрагент.",
+            "reason_en": "Исполнитель отвечает за сроки, которые частично контролирует контрагент.",
+            "reason_it": "Исполнитель отвечает за сроки, которые частично контролирует контрагент.",
+            "reason_fr": "Исполнитель отвечает за сроки, которые частично контролирует контрагент."
+          },
+          "worker": {
+            "escalate_to": "high",
+            "reason_ru": "Для гражданина или работника жесткие сроки без исключений повышают риск санкций.",
+            "reason_en": "Для гражданина или работника жесткие сроки без исключений повышают риск санкций.",
+            "reason_it": "Для гражданина или работника жесткие сроки без исключений повышают риск санкций.",
+            "reason_fr": "Для гражданина или работника жесткие сроки без исключений повышают риск санкций."
+          }
+        },
+        "title": {
+          "ru": "Жесткие сроки без оговорки о зависимостях",
+          "en": "Жесткие сроки без оговорки о зависимостях",
+          "it": "Жесткие сроки без оговорки о зависимостях",
+          "fr": "Жесткие сроки без оговорки о зависимостях"
+        },
+        "description": {
+          "ru": "Сроки для одной стороны установлены жестко, но не учитывают задержки по исходным данным, доступам, согласованиям и приемке со стороны контрагента.",
+          "en": "Сроки для одной стороны установлены жестко, но не учитывают задержки по исходным данным, доступам, согласованиям и приемке со стороны контрагента.",
+          "it": "Сроки для одной стороны установлены жестко, но не учитывают задержки по исходным данным, доступам, согласованиям и приемке со стороны контрагента.",
+          "fr": "Сроки для одной стороны установлены жестко, но не учитывают задержки по исходным данным, доступам, согласованиям и приемке со стороны контрагента."
+        },
+        "mitigation": {
+          "ru": "Пропишите, что сроки автоматически сдвигаются на период задержки зависимых действий другой стороны.",
+          "en": "Пропишите, что сроки автоматически сдвигаются на период задержки зависимых действий другой стороны.",
+          "it": "Пропишите, что сроки автоматически сдвигаются на период задержки зависимых действий другой стороны.",
+          "fr": "Пропишите, что сроки автоматически сдвигаются на период задержки зависимых действий другой стороны."
+        },
+        "examples": []
+      },
+      {
+        "id": "missing_schedule_or_appendix",
+        "source_ref": "RSK-DEAD-002",
+        "keywords": [
+          "согласно приложению",
+          "по графику",
+          "спецификация является неотъемлемой частью"
+        ],
+        "severity_base": "medium",
+        "legal_basis": "Согласованность существенных условий",
+        "affected_contract_types": [
+          "service_agreement",
+          "construction_contract",
+          "supply_agreement",
+          "partnership_agreement"
+        ],
+        "detection_logic": {
+          "type": "pattern_search",
+          "patterns": [
+            "согласно приложению",
+            "по графику",
+            "спецификация является неотъемлемой частью"
+          ],
+          "all_patterns": [],
+          "min_matches": 1,
+          "source": "clause"
+        },
+        "role_escalation": {
+          "executor": {
+            "escalate_to": "medium",
+            "reason_ru": "Неопределенные приложения создают риск спорить о сроках и объеме.",
+            "reason_en": "Неопределенные приложения создают риск спорить о сроках и объеме.",
+            "reason_it": "Неопределенные приложения создают риск спорить о сроках и объеме.",
+            "reason_fr": "Неопределенные приложения создают риск спорить о сроках и объеме."
+          },
+          "client": {
+            "escalate_to": "medium",
+            "reason_ru": "Заказчик тоже теряет управляемость исполнения.",
+            "reason_en": "Заказчик тоже теряет управляемость исполнения.",
+            "reason_it": "Заказчик тоже теряет управляемость исполнения.",
+            "reason_fr": "Заказчик тоже теряет управляемость исполнения."
+          }
+        },
+        "title": {
+          "ru": "Ключевые сроки вынесены в пустые приложения",
+          "en": "Ключевые сроки вынесены в пустые приложения",
+          "it": "Ключевые сроки вынесены в пустые приложения",
+          "fr": "Ключевые сроки вынесены в пустые приложения"
+        },
+        "description": {
+          "ru": "Существенные условия зависят от приложений, графиков или спецификаций, которые в тексте не заполнены или не приложены.",
+          "en": "Существенные условия зависят от приложений, графиков или спецификаций, которые в тексте не заполнены или не приложены.",
+          "it": "Существенные условия зависят от приложений, графиков или спецификаций, которые в тексте не заполнены или не приложены.",
+          "fr": "Существенные условия зависят от приложений, графиков или спецификаций, которые в тексте не заполнены или не приложены."
+        },
+        "mitigation": {
+          "ru": "Проверьте, что все приложения существуют, подписаны и однозначно связаны с договором.",
+          "en": "Проверьте, что все приложения существуют, подписаны и однозначно связаны с договором.",
+          "it": "Проверьте, что все приложения существуют, подписаны и однозначно связаны с договором.",
+          "fr": "Проверьте, что все приложения существуют, подписаны и однозначно связаны с договором."
+        },
+        "examples": []
+      },
+      {
+        "id": "unilateral_termination_no_cause",
+        "source_ref": "RSK-TERM-001",
+        "keywords": [
+          "в одностороннем порядке отказаться",
+          "вправе расторгнуть",
+          "может отказаться от договора",
+          "unilaterally terminate",
+          "terminate the contract at any time",
+          "may terminate the contract"
+        ],
+        "severity_base": "critical",
+        "legal_basis": "Расторжение договора и принцип добросовестности",
+        "affected_contract_types": [
+          "labor_contract",
+          "service_agreement",
+          "consulting_agreement",
+          "lease_agreement",
+          "agency_agreement",
+          "targeted_education_agreement"
+        ],
+        "detection_logic": {
+          "type": "pattern_search",
+          "patterns": [
+            "в одностороннем порядке отказаться",
+            "вправе расторгнуть",
+            "может отказаться от договора",
+            "unilaterally terminate",
+            "terminate the contract at any time",
+            "may terminate the contract"
+          ],
+          "all_patterns": [],
+          "min_matches": 1,
+          "source": "clause"
+        },
+        "role_escalation": {
+          "worker": {
+            "escalate_to": "critical",
+            "reason_ru": "Для работника или гражданина это риск внезапной потери статуса и дохода.",
+            "reason_en": "Для работника или гражданина это риск внезапной потери статуса и дохода.",
+            "reason_it": "Для работника или гражданина это риск внезапной потери статуса и дохода.",
+            "reason_fr": "Для работника или гражданина это риск внезапной потери статуса и дохода."
+          },
+          "executor": {
+            "escalate_to": "critical",
+            "reason_ru": "Исполнитель может потерять проект без компенсации.",
+            "reason_en": "Исполнитель может потерять проект без компенсации.",
+            "reason_it": "Исполнитель может потерять проект без компенсации.",
+            "reason_fr": "Исполнитель может потерять проект без компенсации."
+          },
+          "client": {
+            "escalate_to": "low",
+            "reason_ru": "Для заказчика условие выгодно и не является его риском.",
+            "reason_en": "Для заказчика условие выгодно и не является его риском.",
+            "reason_it": "Для заказчика условие выгодно и не является его риском.",
+            "reason_fr": "Для заказчика условие выгодно и не является его риском."
+          },
+          "employer": {
+            "escalate_to": "low",
+            "reason_ru": "Для работодателя это усиление позиции.",
+            "reason_en": "Для работодателя это усиление позиции.",
+            "reason_it": "Для работодателя это усиление позиции.",
+            "reason_fr": "Для работодателя это усиление позиции."
+          }
+        },
+        "title": {
+          "ru": "Одностороннее расторжение без четких оснований",
+          "en": "Одностороннее расторжение без четких оснований",
+          "it": "Одностороннее расторжение без четких оснований",
+          "fr": "Одностороннее расторжение без четких оснований"
+        },
+        "description": {
+          "ru": "Одна сторона получила право отказаться от договора в одностороннем порядке без перечня существенных нарушений или разумного срока уведомления.",
+          "en": "Одна сторона получила право отказаться от договора в одностороннем порядке без перечня существенных нарушений или разумного срока уведомления.",
+          "it": "Одна сторона получила право отказаться от договора в одностороннем порядке без перечня существенных нарушений или разумного срока уведомления.",
+          "fr": "Одна сторона получила право отказаться от договора в одностороннем порядке без перечня существенных нарушений или разумного срока уведомления."
+        },
+        "mitigation": {
+          "ru": "Добавьте закрытый список оснований, срок уведомления и право другой стороны устранить нарушение.",
+          "en": "Добавьте закрытый список оснований, срок уведомления и право другой стороны устранить нарушение.",
+          "it": "Добавьте закрытый список оснований, срок уведомления и право другой стороны устранить нарушение.",
+          "fr": "Добавьте закрытый список оснований, срок уведомления и право другой стороны устранить нарушение."
+        },
+        "examples": []
+      },
+      {
+        "id": "vague_material_breach",
+        "source_ref": "RSK-TERM-002",
+        "keywords": [
+          "ненадлежащ.*исполн",
+          "существенн.*наруш",
+          "по усмотрению"
+        ],
+        "severity_base": "high",
+        "legal_basis": "Определенность основания для отказа от договора",
+        "affected_contract_types": [
+          "service_agreement",
+          "construction_contract",
+          "insurance_agreement",
+          "partnership_agreement",
+          "targeted_education_agreement"
+        ],
+        "detection_logic": {
+          "type": "pattern_search",
+          "patterns": [
+            "ненадлежащ.*исполн",
+            "существенн.*наруш",
+            "по усмотрению"
+          ],
+          "all_patterns": [],
+          "min_matches": 1,
+          "source": "clause"
+        },
+        "role_escalation": {
+          "executor": {
+            "escalate_to": "high",
+            "reason_ru": "Широкое основание позволяет прекратить договор по субъективной оценке.",
+            "reason_en": "Широкое основание позволяет прекратить договор по субъективной оценке.",
+            "reason_it": "Широкое основание позволяет прекратить договор по субъективной оценке.",
+            "reason_fr": "Широкое основание позволяет прекратить договор по субъективной оценке."
+          },
+          "client": {
+            "escalate_to": "medium",
+            "reason_ru": "Даже выгодная расплывчатость потом ухудшает взыскание и судебную перспективу.",
+            "reason_en": "Даже выгодная расплывчатость потом ухудшает взыскание и судебную перспективу.",
+            "reason_it": "Даже выгодная расплывчатость потом ухудшает взыскание и судебную перспективу.",
+            "reason_fr": "Даже выгодная расплывчатость потом ухудшает взыскание и судебную перспективу."
+          }
+        },
+        "title": {
+          "ru": "Расторжение привязано к расплывчатому нарушению",
+          "en": "Расторжение привязано к расплывчатому нарушению",
+          "it": "Расторжение привязано к расплывчатому нарушению",
+          "fr": "Расторжение привязано к расплывчатому нарушению"
+        },
+        "description": {
+          "ru": "Основание для расторжения описано общими словами вроде 'ненадлежащее исполнение' без порога существенности и процедуры фиксации.",
+          "en": "Основание для расторжения описано общими словами вроде 'ненадлежащее исполнение' без порога существенности и процедуры фиксации.",
+          "it": "Основание для расторжения описано общими словами вроде 'ненадлежащее исполнение' без порога существенности и процедуры фиксации.",
+          "fr": "Основание для расторжения описано общими словами вроде 'ненадлежащее исполнение' без порога существенности и процедуры фиксации."
+        },
+        "mitigation": {
+          "ru": "Уточните, какие нарушения считаются существенными, и дайте срок на устранение.",
+          "en": "Уточните, какие нарушения считаются существенными, и дайте срок на устранение.",
+          "it": "Уточните, какие нарушения считаются существенными, и дайте срок на устранение.",
+          "fr": "Уточните, какие нарушения считаются существенными, и дайте срок на устранение."
+        },
+        "examples": []
+      },
+      {
+        "id": "retention_or_deposit_discretion",
+        "source_ref": "RSK-SEC-001",
+        "keywords": [
+          "обеспечительн.*платеж",
+          "депозит",
+          "вправе удержать"
+        ],
+        "severity_base": "high",
+        "legal_basis": "Назначение обеспечительного платежа и пределы его удержания",
+        "affected_contract_types": [
+          "lease_agreement",
+          "agency_agreement",
+          "service_agreement"
+        ],
+        "detection_logic": {
+          "type": "pattern_search",
+          "patterns": [
+            "обеспечительн.*платеж",
+            "депозит",
+            "вправе удержать"
+          ],
+          "all_patterns": [],
+          "min_matches": 1,
+          "source": "clause"
+        },
+        "role_escalation": {
+          "tenant": {
+            "escalate_to": "critical",
+            "reason_ru": "Для арендатора удержание депозита напрямую влияет на возврат денег.",
+            "reason_en": "Для арендатора удержание депозита напрямую влияет на возврат денег.",
+            "reason_it": "Для арендатора удержание депозита напрямую влияет на возврат денег.",
+            "reason_fr": "Для арендатора удержание депозита напрямую влияет на возврат денег."
+          },
+          "executor": {
+            "escalate_to": "high",
+            "reason_ru": "Для исполнителя удержание обеспечения ухудшает расчет по договору.",
+            "reason_en": "Для исполнителя удержание обеспечения ухудшает расчет по договору.",
+            "reason_it": "Для исполнителя удержание обеспечения ухудшает расчет по договору.",
+            "reason_fr": "Для исполнителя удержание обеспечения ухудшает расчет по договору."
+          },
+          "landlord": {
+            "escalate_to": "low",
+            "reason_ru": "Для арендодателя это средство защиты.",
+            "reason_en": "Для арендодателя это средство защиты.",
+            "reason_it": "Для арендодателя это средство защиты.",
+            "reason_fr": "Для арендодателя это средство защиты."
+          }
+        },
+        "title": {
+          "ru": "Удержание депозита или обеспечительного платежа по усмотрению одной стороны",
+          "en": "Удержание депозита или обеспечительного платежа по усмотрению одной стороны",
+          "it": "Удержание депозита или обеспечительного платежа по усмотрению одной стороны",
+          "fr": "Удержание депозита или обеспечительного платежа по усмотрению одной стороны"
+        },
+        "description": {
+          "ru": "Возврат депозита или обеспечения зависит от односторонней оценки арендодателя, заказчика или принципала.",
+          "en": "Возврат депозита или обеспечения зависит от односторонней оценки арендодателя, заказчика или принципала.",
+          "it": "Возврат депозита или обеспечения зависит от односторонней оценки арендодателя, заказчика или принципала.",
+          "fr": "Возврат депозита или обеспечения зависит от односторонней оценки арендодателя, заказчика или принципала."
+        },
+        "mitigation": {
+          "ru": "Опишите исчерпывающие основания удержания, порядок расчета и срок возврата остатка.",
+          "en": "Опишите исчерпывающие основания удержания, порядок расчета и срок возврата остатка.",
+          "it": "Опишите исчерпывающие основания удержания, порядок расчета и срок возврата остатка.",
+          "fr": "Опишите исчерпывающие основания удержания, порядок расчета и срок возврата остатка."
+        },
+        "examples": []
+      },
+      {
+        "id": "broad_access_rights",
+        "source_ref": "RSK-SEC-002",
+        "keywords": [
+          "право осмотра",
+          "доступ к помещению",
+          "доступ к оборудованию",
+          "контроль деятельности"
+        ],
+        "severity_base": "medium",
+        "legal_basis": "Неприкосновенность владения и разумные пределы контроля",
+        "affected_contract_types": [
+          "lease_agreement",
+          "service_agreement",
+          "construction_contract",
+          "ip_agreement"
+        ],
+        "detection_logic": {
+          "type": "pattern_search",
+          "patterns": [
+            "право осмотра",
+            "доступ к помещению",
+            "доступ к оборудованию",
+            "контроль деятельности"
+          ],
+          "all_patterns": [],
+          "min_matches": 1,
+          "source": "clause"
+        },
+        "role_escalation": {
+          "tenant": {
+            "escalate_to": "high",
+            "reason_ru": "Для арендатора или исполнителя это риск вмешательства в деятельность.",
+            "reason_en": "Для арендатора или исполнителя это риск вмешательства в деятельность.",
+            "reason_it": "Для арендатора или исполнителя это риск вмешательства в деятельность.",
+            "reason_fr": "Для арендатора или исполнителя это риск вмешательства в деятельность."
+          },
+          "executor": {
+            "escalate_to": "medium",
+            "reason_ru": "Доступ без границ может мешать исполнению и безопасности данных.",
+            "reason_en": "Доступ без границ может мешать исполнению и безопасности данных.",
+            "reason_it": "Доступ без границ может мешать исполнению и безопасности данных.",
+            "reason_fr": "Доступ без границ может мешать исполнению и безопасности данных."
+          }
+        },
+        "title": {
+          "ru": "Широкое право доступа, осмотра или контроля",
+          "en": "Широкое право доступа, осмотра или контроля",
+          "it": "Широкое право доступа, осмотра или контроля",
+          "fr": "Широкое право доступа, осмотра или контроля"
+        },
+        "description": {
+          "ru": "Одна сторона получает широкое право доступа к помещению, оборудованию, данным или процессам без графика и ограничений.",
+          "en": "Одна сторона получает широкое право доступа к помещению, оборудованию, данным или процессам без графика и ограничений.",
+          "it": "Одна сторона получает широкое право доступа к помещению, оборудованию, данным или процессам без графика и ограничений.",
+          "fr": "Одна сторона получает широкое право доступа к помещению, оборудованию, данным или процессам без графика и ограничений."
+        },
+        "mitigation": {
+          "ru": "Ограничьте доступ рабочими часами, целями проверки и требованиями к уведомлению.",
+          "en": "Ограничьте доступ рабочими часами, целями проверки и требованиями к уведомлению.",
+          "it": "Ограничьте доступ рабочими часами, целями проверки и требованиями к уведомлению.",
+          "fr": "Ограничьте доступ рабочими часами, целями проверки и требованиями к уведомлению."
+        },
+        "examples": []
+      },
+      {
+        "id": "operating_expenses_shift",
+        "source_ref": "RSK-LEASE-001",
+        "keywords": [
+          "коммуналь",
+          "капитальн.*ремонт",
+          "текущ.*ремонт",
+          "эксплуатационн.*расход"
+        ],
+        "severity_base": "high",
+        "legal_basis": "Разграничение обязанностей по содержанию имущества",
+        "affected_contract_types": [
+          "lease_agreement",
+          "construction_contract"
+        ],
+        "detection_logic": {
+          "type": "pattern_search",
+          "patterns": [
+            "коммуналь",
+            "капитальн.*ремонт",
+            "текущ.*ремонт",
+            "эксплуатационн.*расход"
+          ],
+          "all_patterns": [],
+          "min_matches": 1,
+          "source": "clause"
+        },
+        "role_escalation": {
+          "tenant": {
+            "escalate_to": "critical",
+            "reason_ru": "Для арендатора смешение расходов почти всегда означает переплату.",
+            "reason_en": "Для арендатора смешение расходов почти всегда означает переплату.",
+            "reason_it": "Для арендатора смешение расходов почти всегда означает переплату.",
+            "reason_fr": "Для арендатора смешение расходов почти всегда означает переплату."
+          },
+          "landlord": {
+            "escalate_to": "low",
+            "reason_ru": "Для арендодателя это выгодная модель распределения расходов.",
+            "reason_en": "Для арендодателя это выгодная модель распределения расходов.",
+            "reason_it": "Для арендодателя это выгодная модель распределения расходов.",
+            "reason_fr": "Для арендодателя это выгодная модель распределения расходов."
+          }
+        },
+        "title": {
+          "ru": "Расходы на содержание и ремонт переложены без разграничения",
+          "en": "Расходы на содержание и ремонт переложены без разграничения",
+          "it": "Расходы на содержание и ремонт переложены без разграничения",
+          "fr": "Расходы на содержание и ремонт переложены без разграничения"
+        },
+        "description": {
+          "ru": "Арендатор или подрядчик принимает на себя коммунальные, эксплуатационные и ремонтные расходы без разделения текущего и капитального ремонта.",
+          "en": "Арендатор или подрядчик принимает на себя коммунальные, эксплуатационные и ремонтные расходы без разделения текущего и капитального ремонта.",
+          "it": "Арендатор или подрядчик принимает на себя коммунальные, эксплуатационные и ремонтные расходы без разделения текущего и капитального ремонта.",
+          "fr": "Арендатор или подрядчик принимает на себя коммунальные, эксплуатационные и ремонтные расходы без разделения текущего и капитального ремонта."
+        },
+        "mitigation": {
+          "ru": "Разделите типы расходов и закрепите, какие из них покрываются арендной платой, а какие оплачиваются отдельно.",
+          "en": "Разделите типы расходов и закрепите, какие из них покрываются арендной платой, а какие оплачиваются отдельно.",
+          "it": "Разделите типы расходов и закрепите, какие из них покрываются арендной платой, а какие оплачиваются отдельно.",
+          "fr": "Разделите типы расходов и закрепите, какие из них покрываются арендной платой, а какие оплачиваются отдельно."
+        },
+        "examples": []
+      },
+      {
+        "id": "early_risk_transfer",
+        "source_ref": "RSK-RISK-001",
+        "keywords": [
+          "риск случайной гибели",
+          "переходит с момента передачи перевозчику",
+          "с момента отгрузки"
+        ],
+        "severity_base": "high",
+        "legal_basis": "Статья 459 ГК РФ и смежные нормы о переходе риска",
+        "affected_contract_types": [
+          "purchase_agreement",
+          "supply_agreement",
+          "lease_agreement"
+        ],
+        "detection_logic": {
+          "type": "pattern_search",
+          "patterns": [
+            "риск случайной гибели",
+            "переходит с момента передачи перевозчику",
+            "с момента отгрузки"
+          ],
+          "all_patterns": [],
+          "min_matches": 1,
+          "source": "clause"
+        },
+        "role_escalation": {
+          "client": {
+            "escalate_to": "critical",
+            "reason_ru": "Покупатель или арендатор может отвечать за объект до реального контроля над ним.",
+            "reason_en": "Покупатель или арендатор может отвечать за объект до реального контроля над ним.",
+            "reason_it": "Покупатель или арендатор может отвечать за объект до реального контроля над ним.",
+            "reason_fr": "Покупатель или арендатор может отвечать за объект до реального контроля над ним."
+          },
+          "executor": {
+            "escalate_to": "low",
+            "reason_ru": "Для продавца или поставщика условие чаще выгодно.",
+            "reason_en": "Для продавца или поставщика условие чаще выгодно.",
+            "reason_it": "Для продавца или поставщика условие чаще выгодно.",
+            "reason_fr": "Для продавца или поставщика условие чаще выгодно."
+          }
+        },
+        "title": {
+          "ru": "Риск случайной гибели переходит слишком рано",
+          "en": "Риск случайной гибели переходит слишком рано",
+          "it": "Риск случайной гибели переходит слишком рано",
+          "fr": "Риск случайной гибели переходит слишком рано"
+        },
+        "description": {
+          "ru": "Документ передает риск случайной гибели товара или результата до оплаты либо до полноценной приемки.",
+          "en": "Документ передает риск случайной гибели товара или результата до оплаты либо до полноценной приемки.",
+          "it": "Документ передает риск случайной гибели товара или результата до оплаты либо до полноценной приемки.",
+          "fr": "Документ передает риск случайной гибели товара или результата до оплаты либо до полноценной приемки."
+        },
+        "mitigation": {
+          "ru": "Сместите переход риска на момент подписания передаточного документа или фактической приемки.",
+          "en": "Сместите переход риска на момент подписания передаточного документа или фактической приемки.",
+          "it": "Сместите переход риска на момент подписания передаточного документа или фактической приемки.",
+          "fr": "Сместите переход риска на момент подписания передаточного документа или фактической приемки."
+        },
+        "examples": []
+      },
+      {
+        "id": "uncontrolled_subcontracting",
+        "source_ref": "RSK-SUB-001",
+        "keywords": [
+          "третьих лиц",
+          "субподряд",
+          "вправе привлекать"
+        ],
+        "severity_base": "medium",
+        "legal_basis": "Личное исполнение и ответственность за привлеченных лиц",
+        "affected_contract_types": [
+          "service_agreement",
+          "construction_contract",
+          "consulting_agreement",
+          "agency_agreement"
+        ],
+        "detection_logic": {
+          "type": "pattern_search",
+          "patterns": [
+            "третьих лиц",
+            "субподряд",
+            "вправе привлекать"
+          ],
+          "all_patterns": [],
+          "min_matches": 1,
+          "source": "clause"
+        },
+        "role_escalation": {
+          "client": {
+            "escalate_to": "medium",
+            "reason_ru": "Заказчик рискует потерять контроль над тем, кто реально исполняет договор.",
+            "reason_en": "Заказчик рискует потерять контроль над тем, кто реально исполняет договор.",
+            "reason_it": "Заказчик рискует потерять контроль над тем, кто реально исполняет договор.",
+            "reason_fr": "Заказчик рискует потерять контроль над тем, кто реально исполняет договор."
+          },
+          "executor": {
+            "escalate_to": "medium",
+            "reason_ru": "Полный запрет на субподряд может сделать исполнение нереалистичным.",
+            "reason_en": "Полный запрет на субподряд может сделать исполнение нереалистичным.",
+            "reason_it": "Полный запрет на субподряд может сделать исполнение нереалистичным.",
+            "reason_fr": "Полный запрет на субподряд может сделать исполнение нереалистичным."
+          }
+        },
+        "title": {
+          "ru": "Субподряд или привлечение третьих лиц описаны неясно",
+          "en": "Субподряд или привлечение третьих лиц описаны неясно",
+          "it": "Субподряд или привлечение третьих лиц описаны неясно",
+          "fr": "Субподряд или привлечение третьих лиц описаны неясно"
+        },
+        "description": {
+          "ru": "Либо привлечение третьих лиц запрещено без разумных исключений, либо разрешено без контроля, уведомления и ответственности за качество.",
+          "en": "Либо привлечение третьих лиц запрещено без разумных исключений, либо разрешено без контроля, уведомления и ответственности за качество.",
+          "it": "Либо привлечение третьих лиц запрещено без разумных исключений, либо разрешено без контроля, уведомления и ответственности за качество.",
+          "fr": "Либо привлечение третьих лиц запрещено без разумных исключений, либо разрешено без контроля, уведомления и ответственности за качество."
+        },
+        "mitigation": {
+          "ru": "Уточните, когда третьи лица допустимы, нужно ли согласие и кто отвечает за их ошибки.",
+          "en": "Уточните, когда третьи лица допустимы, нужно ли согласие и кто отвечает за их ошибки.",
+          "it": "Уточните, когда третьи лица допустимы, нужно ли согласие и кто отвечает за их ошибки.",
+          "fr": "Уточните, когда третьи лица допустимы, нужно ли согласие и кто отвечает за их ошибки."
+        },
+        "examples": []
+      },
+      {
+        "id": "confidentiality_without_exceptions",
+        "source_ref": "RSK-CONF-001",
+        "keywords": [
+          "конфиденц",
+          "не разглаш",
+          "коммерческ.*тайн"
+        ],
+        "severity_base": "medium",
+        "legal_basis": "Разумные пределы обязательств по конфиденциальности",
+        "affected_contract_types": [
+          "service_agreement",
+          "consulting_agreement",
+          "agency_agreement",
+          "ip_agreement",
+          "partnership_agreement"
+        ],
+        "detection_logic": {
+          "type": "pattern_search",
+          "patterns": [
+            "конфиденц",
+            "не разглаш",
+            "коммерческ.*тайн"
+          ],
+          "all_patterns": [],
+          "min_matches": 1,
+          "source": "clause"
+        },
+        "role_escalation": {
+          "executor": {
+            "escalate_to": "medium",
+            "reason_ru": "Исполнитель рискует нарушить чрезмерно широкую конфиденциальность.",
+            "reason_en": "Исполнитель рискует нарушить чрезмерно широкую конфиденциальность.",
+            "reason_it": "Исполнитель рискует нарушить чрезмерно широкую конфиденциальность.",
+            "reason_fr": "Исполнитель рискует нарушить чрезмерно широкую конфиденциальность."
+          },
+          "client": {
+            "escalate_to": "medium",
+            "reason_ru": "Заказчик тоже может столкнуться с неприменимой или оспоримой оговоркой.",
+            "reason_en": "Заказчик тоже может столкнуться с неприменимой или оспоримой оговоркой.",
+            "reason_it": "Заказчик тоже может столкнуться с неприменимой или оспоримой оговоркой.",
+            "reason_fr": "Заказчик тоже может столкнуться с неприменимой или оспоримой оговоркой."
+          }
+        },
+        "title": {
+          "ru": "Конфиденциальность без carve-outs и разумных исключений",
+          "en": "Конфиденциальность без carve-outs и разумных исключений",
+          "it": "Конфиденциальность без carve-outs и разумных исключений",
+          "fr": "Конфиденциальность без carve-outs и разумных исключений"
+        },
+        "description": {
+          "ru": "Обязанность по конфиденциальности сформулирована широко, но не содержит исключений для общедоступной информации, законных запросов и ранее известных данных.",
+          "en": "Обязанность по конфиденциальности сформулирована широко, но не содержит исключений для общедоступной информации, законных запросов и ранее известных данных.",
+          "it": "Обязанность по конфиденциальности сформулирована широко, но не содержит исключений для общедоступной информации, законных запросов и ранее известных данных.",
+          "fr": "Обязанность по конфиденциальности сформулирована широко, но не содержит исключений для общедоступной информации, законных запросов и ранее известных данных."
+        },
+        "mitigation": {
+          "ru": "Добавьте стандартные carve-outs и ограничьте ответственность за непредотвратимое раскрытие.",
+          "en": "Добавьте стандартные carve-outs и ограничьте ответственность за непредотвратимое раскрытие.",
+          "it": "Добавьте стандартные carve-outs и ограничьте ответственность за непредотвратимое раскрытие.",
+          "fr": "Добавьте стандартные carve-outs и ограничьте ответственность за непредотвратимое раскрытие."
+        },
+        "examples": []
+      },
+      {
+        "id": "ip_transfer_without_scope",
+        "source_ref": "RSK-IP-001",
+        "keywords": [
+          "исключительн.*лиценз",
+          "исключительн.*прав",
+          "результат интеллектуальной деятельности",
+          "права на результаты",
+          "переходит.*исключительн.*прав"
+        ],
+        "severity_base": "high",
+        "legal_basis": "Часть IV ГК РФ",
+        "affected_contract_types": [
+          "consulting_agreement",
+          "ip_agreement",
+          "service_agreement",
+          "construction_contract"
+        ],
+        "detection_logic": {
+          "type": "pattern_search",
+          "patterns": [
+            "исключительн.*лиценз",
+            "исключительн.*прав",
+            "результат интеллектуальной деятельности",
+            "права на результаты",
+            "переходит.*исключительн.*прав"
+          ],
+          "all_patterns": [],
+          "min_matches": 1,
+          "source": "clause"
+        },
+        "role_escalation": {
+          "executor": {
+            "escalate_to": "high",
+            "reason_ru": "Исполнитель может непреднамеренно отдать больше прав, чем планировал.",
+            "reason_en": "Исполнитель может непреднамеренно отдать больше прав, чем планировал.",
+            "reason_it": "Исполнитель может непреднамеренно отдать больше прав, чем планировал.",
+            "reason_fr": "Исполнитель может непреднамеренно отдать больше прав, чем планировал."
+          },
+          "client": {
+            "escalate_to": "medium",
+            "reason_ru": "Покупатель прав тоже рискует получить нечеткий и трудно защищаемый объем.",
+            "reason_en": "Покупатель прав тоже рискует получить нечеткий и трудно защищаемый объем.",
+            "reason_it": "Покупатель прав тоже рискует получить нечеткий и трудно защищаемый объем.",
+            "reason_fr": "Покупатель прав тоже рискует получить нечеткий и трудно защищаемый объем."
+          }
+        },
+        "title": {
+          "ru": "Передача IP без точного объема прав",
+          "en": "Передача IP без точного объема прав",
+          "it": "Передача IP без точного объема прав",
+          "fr": "Передача IP без точного объема прав"
+        },
+        "description": {
+          "ru": "Договор говорит о передаче результатов, прав или лицензии, но не фиксирует территорию, срок, способ использования или исключительность.",
+          "en": "Договор говорит о передаче результатов, прав или лицензии, но не фиксирует территорию, срок, способ использования или исключительность.",
+          "it": "Договор говорит о передаче результатов, прав или лицензии, но не фиксирует территорию, срок, способ использования или исключительность.",
+          "fr": "Договор говорит о передаче результатов, прав или лицензии, но не фиксирует территорию, срок, способ использования или исключительность."
+        },
+        "mitigation": {
+          "ru": "Опишите объект, объем прав, территорию, срок и момент перехода прав отдельными формулировками.",
+          "en": "Опишите объект, объем прав, территорию, срок и момент перехода прав отдельными формулировками.",
+          "it": "Опишите объект, объем прав, территорию, срок и момент перехода прав отдельными формулировками.",
+          "fr": "Опишите объект, объем прав, территорию, срок и момент перехода прав отдельными формулировками."
+        },
+        "examples": []
+      },
+      {
+        "id": "royalty_reduction_unclear",
+        "source_ref": "RSK-IP-002",
+        "keywords": [
+          "роялти",
+          "вознаграждение может быть уменьшено",
+          "по усмотрению правообладателя",
+          "по результатам оценки"
+        ],
+        "severity_base": "medium",
+        "legal_basis": "Определенность цены и встречного предоставления",
+        "affected_contract_types": [
+          "agency_agreement",
+          "ip_agreement",
+          "partnership_agreement"
+        ],
+        "detection_logic": {
+          "type": "pattern_search",
+          "patterns": [
+            "роялти",
+            "вознаграждение может быть уменьшено",
+            "по усмотрению правообладателя",
+            "по результатам оценки"
+          ],
+          "all_patterns": [],
+          "min_matches": 1,
+          "source": "clause"
+        },
+        "role_escalation": {
+          "executor": {
+            "escalate_to": "high",
+            "reason_ru": "Сторона, ожидающая вознаграждение, теряет предсказуемость дохода.",
+            "reason_en": "Сторона, ожидающая вознаграждение, теряет предсказуемость дохода.",
+            "reason_it": "Сторона, ожидающая вознаграждение, теряет предсказуемость дохода.",
+            "reason_fr": "Сторона, ожидающая вознаграждение, теряет предсказуемость дохода."
+          },
+          "client": {
+            "escalate_to": "low",
+            "reason_ru": "Плательщик вознаграждения обычно выигрывает от такой формулировки.",
+            "reason_en": "Плательщик вознаграждения обычно выигрывает от такой формулировки.",
+            "reason_it": "Плательщик вознаграждения обычно выигрывает от такой формулировки.",
+            "reason_fr": "Плательщик вознаграждения обычно выигрывает от такой формулировки."
+          }
+        },
+        "title": {
+          "ru": "Снижение роялти или вознаграждения по нечетким основаниям",
+          "en": "Снижение роялти или вознаграждения по нечетким основаниям",
+          "it": "Снижение роялти или вознаграждения по нечетким основаниям",
+          "fr": "Снижение роялти или вознаграждения по нечетким основаниям"
+        },
+        "description": {
+          "ru": "Размер вознаграждения может быть уменьшен по оценочным критериям без прозрачной формулы расчета.",
+          "en": "Размер вознаграждения может быть уменьшен по оценочным критериям без прозрачной формулы расчета.",
+          "it": "Размер вознаграждения может быть уменьшен по оценочным критериям без прозрачной формулы расчета.",
+          "fr": "Размер вознаграждения может быть уменьшен по оценочным критериям без прозрачной формулы расчета."
+        },
+        "mitigation": {
+          "ru": "Зафиксируйте формулу расчета, источники данных и период пересмотра вознаграждения.",
+          "en": "Зафиксируйте формулу расчета, источники данных и период пересмотра вознаграждения.",
+          "it": "Зафиксируйте формулу расчета, источники данных и период пересмотра вознаграждения.",
+          "fr": "Зафиксируйте формулу расчета, источники данных и период пересмотра вознаграждения."
+        },
+        "examples": []
+      },
+      {
+        "id": "all_obligations_security",
+        "source_ref": "RSK-SEC-003",
+        "keywords": [
+          "все обязательства",
+          "обеспечивает исполнение любых обязательств",
+          "в полном объеме обязательств"
+        ],
+        "severity_base": "critical",
+        "legal_basis": "Определенность предмета обеспечения",
+        "affected_contract_types": [
+          "loan_security_agreement",
+          "partnership_agreement"
+        ],
+        "detection_logic": {
+          "type": "pattern_search",
+          "patterns": [
+            "все обязательства",
+            "обеспечивает исполнение любых обязательств",
+            "в полном объеме обязательств"
+          ],
+          "all_patterns": [],
+          "min_matches": 1,
+          "source": "clause"
+        },
+        "role_escalation": {
+          "borrower": {
+            "escalate_to": "critical",
+            "reason_ru": "Для должника или залогодателя это риск неограниченного охвата обеспечением.",
+            "reason_en": "Для должника или залогодателя это риск неограниченного охвата обеспечением.",
+            "reason_it": "Для должника или залогодателя это риск неограниченного охвата обеспечением.",
+            "reason_fr": "Для должника или залогодателя это риск неограниченного охвата обеспечением."
+          },
+          "lender": {
+            "escalate_to": "low",
+            "reason_ru": "Для кредитора это выгодный защитный механизм.",
+            "reason_en": "Для кредитора это выгодный защитный механизм.",
+            "reason_it": "Для кредитора это выгодный защитный механизм.",
+            "reason_fr": "Для кредитора это выгодный защитный механизм."
+          }
+        },
+        "title": {
+          "ru": "Обеспечение покрывает все обязательства без точных рамок",
+          "en": "Обеспечение покрывает все обязательства без точных рамок",
+          "it": "Обеспечение покрывает все обязательства без точных рамок",
+          "fr": "Обеспечение покрывает все обязательства без точных рамок"
+        },
+        "description": {
+          "ru": "Залог, поручительство или иное обеспечение распространяется на 'все обязательства' без суммы, срока или перечня покрываемых требований.",
+          "en": "Залог, поручительство или иное обеспечение распространяется на 'все обязательства' без суммы, срока или перечня покрываемых требований.",
+          "it": "Залог, поручительство или иное обеспечение распространяется на 'все обязательства' без суммы, срока или перечня покрываемых требований.",
+          "fr": "Залог, поручительство или иное обеспечение распространяется на 'все обязательства' без суммы, срока или перечня покрываемых требований."
+        },
+        "mitigation": {
+          "ru": "Ограничьте обеспечение конкретным долгом, суммой, сроком и набором обязательств.",
+          "en": "Ограничьте обеспечение конкретным долгом, суммой, сроком и набором обязательств.",
+          "it": "Ограничьте обеспечение конкретным долгом, суммой, сроком и набором обязательств.",
+          "fr": "Ограничьте обеспечение конкретным долгом, суммой, сроком и набором обязательств."
+        },
+        "examples": []
+      },
+      {
+        "id": "favorable_jurisdiction_or_dispute_clause",
+        "source_ref": "RSK-DISP-001",
+        "keywords": [
+          "подсудн",
+          "арбитражн",
+          "претензионн.*поряд",
+          "по месту нахождения"
+        ],
+        "severity_base": "medium",
+        "legal_basis": "Процессуальный баланс и исполнимость оговорки о спорах",
+        "affected_contract_types": [
+          "service_agreement",
+          "purchase_agreement",
+          "supply_agreement",
+          "lease_agreement",
+          "insurance_agreement",
+          "ip_agreement"
+        ],
+        "detection_logic": {
+          "type": "pattern_search",
+          "patterns": [
+            "подсудн",
+            "арбитражн",
+            "претензионн.*поряд",
+            "по месту нахождения"
+          ],
+          "all_patterns": [],
+          "min_matches": 1,
+          "source": "clause"
+        },
+        "role_escalation": {
+          "executor": {
+            "escalate_to": "medium",
+            "reason_ru": "Удаленная подсудность повышает стоимость защиты интересов исполнителя.",
+            "reason_en": "Удаленная подсудность повышает стоимость защиты интересов исполнителя.",
+            "reason_it": "Удаленная подсудность повышает стоимость защиты интересов исполнителя.",
+            "reason_fr": "Удаленная подсудность повышает стоимость защиты интересов исполнителя."
+          },
+          "client": {
+            "escalate_to": "medium",
+            "reason_ru": "Покупатель или заказчик тоже может столкнуться с трудновыполнимой процедурой.",
+            "reason_en": "Покупатель или заказчик тоже может столкнуться с трудновыполнимой процедурой.",
+            "reason_it": "Покупатель или заказчик тоже может столкнуться с трудновыполнимой процедурой.",
+            "reason_fr": "Покупатель или заказчик тоже может столкнуться с трудновыполнимой процедурой."
+          }
+        },
+        "title": {
+          "ru": "Подсудность и споры сформулированы в пользу одной стороны",
+          "en": "Подсудность и споры сформулированы в пользу одной стороны",
+          "it": "Подсудность и споры сформулированы в пользу одной стороны",
+          "fr": "Подсудность и споры сформулированы в пользу одной стороны"
+        },
+        "description": {
+          "ru": "Порядок разрешения споров делает защиту неудобной: удаленная подсудность, сложный претензионный порядок или неопределенный арбитраж.",
+          "en": "Порядок разрешения споров делает защиту неудобной: удаленная подсудность, сложный претензионный порядок или неопределенный арбитраж.",
+          "it": "Порядок разрешения споров делает защиту неудобной: удаленная подсудность, сложный претензионный порядок или неопределенный арбитраж.",
+          "fr": "Порядок разрешения споров делает защиту неудобной: удаленная подсудность, сложный претензионный порядок или неопределенный арбитраж."
+        },
+        "mitigation": {
+          "ru": "Проверьте применимое право, подсудность, сроки претензии и выполнимость выбранного способа защиты.",
+          "en": "Проверьте применимое право, подсудность, сроки претензии и выполнимость выбранного способа защиты.",
+          "it": "Проверьте применимое право, подсудность, сроки претензии и выполнимость выбранного способа защиты.",
+          "fr": "Проверьте применимое право, подсудность, сроки претензии и выполнимость выбранного способа защиты."
+        },
+        "examples": []
+      },
+      {
+        "id": "conflicting_obligations",
+        "source_ref": "RSK-CNF-001",
+        "keywords": [
+          "не позднее",
+          "одновременно",
+          "при этом",
+          "в то же время"
+        ],
+        "severity_base": "medium",
+        "legal_basis": "Определенность договорных условий",
+        "affected_contract_types": [
+          "partnership_agreement",
+          "service_agreement",
+          "construction_contract",
+          "targeted_education_agreement"
+        ],
+        "detection_logic": {
+          "type": "pattern_with_context",
+          "patterns": [
+            "не позднее",
+            "одновременно",
+            "при этом",
+            "в то же время"
+          ],
+          "all_patterns": [],
+          "min_matches": 3,
+          "source": "clause"
+        },
+        "role_escalation": {
+          "executor": {
+            "escalate_to": "medium",
+            "reason_ru": "Исполнитель рискует быть нарушителем при любой трактовке противоречащих пунктов.",
+            "reason_en": "Исполнитель рискует быть нарушителем при любой трактовке противоречащих пунктов.",
+            "reason_it": "Исполнитель рискует быть нарушителем при любой трактовке противоречащих пунктов.",
+            "reason_fr": "Исполнитель рискует быть нарушителем при любой трактовке противоречащих пунктов."
+          },
+          "worker": {
+            "escalate_to": "medium",
+            "reason_ru": "Для гражданина конфликтные обязанности повышают риск санкций.",
+            "reason_en": "Для гражданина конфликтные обязанности повышают риск санкций.",
+            "reason_it": "Для гражданина конфликтные обязанности повышают риск санкций.",
+            "reason_fr": "Для гражданина конфликтные обязанности повышают риск санкций."
+          }
+        },
+        "title": {
+          "ru": "В договоре есть конфликтующие или несогласованные обязанности",
+          "en": "В договоре есть конфликтующие или несогласованные обязанности",
+          "it": "В договоре есть конфликтующие или несогласованные обязанности",
+          "fr": "В договоре есть конфликтующие или несогласованные обязанности"
+        },
+        "description": {
+          "ru": "Разные пункты задают несовместимые сроки, объемы или последствия нарушения, поэтому неясно, какое условие имеет приоритет.",
+          "en": "Разные пункты задают несовместимые сроки, объемы или последствия нарушения, поэтому неясно, какое условие имеет приоритет.",
+          "it": "Разные пункты задают несовместимые сроки, объемы или последствия нарушения, поэтому неясно, какое условие имеет приоритет.",
+          "fr": "Разные пункты задают несовместимые сроки, объемы или последствия нарушения, поэтому неясно, какое условие имеет приоритет."
+        },
+        "mitigation": {
+          "ru": "Сведите взаимосвязанные условия в единую таблицу обязательств и определите приоритет документов.",
+          "en": "Сведите взаимосвязанные условия в единую таблицу обязательств и определите приоритет документов.",
+          "it": "Сведите взаимосвязанные условия в единую таблицу обязательств и определите приоритет документов.",
+          "fr": "Сведите взаимосвязанные условия в единую таблицу обязательств и определите приоритет документов."
+        },
+        "examples": []
+      },
+      {
+        "id": "post_training_employment_obligation",
+        "source_ref": "RSK-EDU-001",
+        "keywords": [
+          "осуществить трудовую деятельность",
+          "после завершения освоения",
+          "обеспечить трудоустройство"
+        ],
+        "severity_base": "high",
+        "legal_basis": "Свобода труда и пределы обязательств по целевому обучению",
+        "affected_contract_types": [
+          "targeted_education_agreement"
+        ],
+        "detection_logic": {
+          "type": "pattern_search",
+          "patterns": [
+            "осуществить трудовую деятельность",
+            "после завершения освоения",
+            "обеспечить трудоустройство"
+          ],
+          "all_patterns": [],
+          "min_matches": 1,
+          "source": "clause"
+        },
+        "role_escalation": {
+          "worker": {
+            "escalate_to": "critical",
+            "reason_ru": "Для гражданина это ключевой риск ограничения свободы выбора работы.",
+            "reason_en": "Для гражданина это ключевой риск ограничения свободы выбора работы.",
+            "reason_it": "Для гражданина это ключевой риск ограничения свободы выбора работы.",
+            "reason_fr": "Для гражданина это ключевой риск ограничения свободы выбора работы."
+          },
+          "client": {
+            "escalate_to": "low",
+            "reason_ru": "Для заказчика это целевой результат договора.",
+            "reason_en": "Для заказчика это целевой результат договора.",
+            "reason_it": "Для заказчика это целевой результат договора.",
+            "reason_fr": "Для заказчика это целевой результат договора."
+          }
+        },
+        "title": {
+          "ru": "Обязательство отработать после обучения сформулировано жестко",
+          "en": "Обязательство отработать после обучения сформулировано жестко",
+          "it": "Обязательство отработать после обучения сформулировано жестко",
+          "fr": "Обязательство отработать после обучения сформулировано жестко"
+        },
+        "description": {
+          "ru": "Гражданин обязан отработать после окончания обучения, но условия трудоустройства, место, функция или срок конкретизированы слабо либо односторонне заказчиком.",
+          "en": "Гражданин обязан отработать после окончания обучения, но условия трудоустройства, место, функция или срок конкретизированы слабо либо односторонне заказчиком.",
+          "it": "Гражданин обязан отработать после окончания обучения, но условия трудоустройства, место, функция или срок конкретизированы слабо либо односторонне заказчиком.",
+          "fr": "Гражданин обязан отработать после окончания обучения, но условия трудоустройства, место, функция или срок конкретизированы слабо либо односторонне заказчиком."
+        },
+        "mitigation": {
+          "ru": "Проверьте срок обязательной работы, конкретику должности и основания освобождения от отработки.",
+          "en": "Проверьте срок обязательной работы, конкретику должности и основания освобождения от отработки.",
+          "it": "Проверьте срок обязательной работы, конкретику должности и основания освобождения от отработки.",
+          "fr": "Проверьте срок обязательной работы, конкретику должности и основания освобождения от отработки."
+        },
+        "examples": []
+      },
+      {
+        "id": "support_reimbursement_after_withdrawal",
+        "source_ref": "RSK-EDU-002",
+        "keywords": [
+          "меры поддержки",
+          "возместить расходы",
+          "вернуть средства",
+          "при расторжении договора"
+        ],
+        "severity_base": "high",
+        "legal_basis": "Соразмерность санкций и определенность расчета",
+        "affected_contract_types": [
+          "targeted_education_agreement"
+        ],
+        "detection_logic": {
+          "type": "pattern_search",
+          "patterns": [
+            "меры поддержки",
+            "возместить расходы",
+            "вернуть средства",
+            "при расторжении договора"
+          ],
+          "all_patterns": [],
+          "min_matches": 1,
+          "source": "clause"
+        },
+        "role_escalation": {
+          "worker": {
+            "escalate_to": "critical",
+            "reason_ru": "Для гражданина возврат затрат может стать существенной финансовой нагрузкой.",
+            "reason_en": "Для гражданина возврат затрат может стать существенной финансовой нагрузкой.",
+            "reason_it": "Для гражданина возврат затрат может стать существенной финансовой нагрузкой.",
+            "reason_fr": "Для гражданина возврат затрат может стать существенной финансовой нагрузкой."
+          },
+          "client": {
+            "escalate_to": "low",
+            "reason_ru": "Для заказчика это способ защитить инвестиции в обучение.",
+            "reason_en": "Для заказчика это способ защитить инвестиции в обучение.",
+            "reason_it": "Для заказчика это способ защитить инвестиции в обучение.",
+            "reason_fr": "Для заказчика это способ защитить инвестиции в обучение."
+          }
+        },
+        "title": {
+          "ru": "Возврат мер поддержки и расходов при нарушении договора",
+          "en": "Возврат мер поддержки и расходов при нарушении договора",
+          "it": "Возврат мер поддержки и расходов при нарушении договора",
+          "fr": "Возврат мер поддержки и расходов при нарушении договора"
+        },
+        "description": {
+          "ru": "При расторжении или неисполнении обязанностей гражданин может вернуть меры поддержки, обучение и иные расходы без прозрачного расчета и исключений.",
+          "en": "При расторжении или неисполнении обязанностей гражданин может вернуть меры поддержки, обучение и иные расходы без прозрачного расчета и исключений.",
+          "it": "При расторжении или неисполнении обязанностей гражданин может вернуть меры поддержки, обучение и иные расходы без прозрачного расчета и исключений.",
+          "fr": "При расторжении или неисполнении обязанностей гражданин может вернуть меры поддержки, обучение и иные расходы без прозрачного расчета и исключений."
+        },
+        "mitigation": {
+          "ru": "Уточните формулу возврата, перечень расходов и случаи, когда возврат не применяется.",
+          "en": "Уточните формулу возврата, перечень расходов и случаи, когда возврат не применяется.",
+          "it": "Уточните формулу возврата, перечень расходов и случаи, когда возврат не применяется.",
+          "fr": "Уточните формулу возврата, перечень расходов и случаи, когда возврат не применяется."
+        },
+        "examples": []
+      },
+      {
+        "id": "salary_reduction_unilateral",
+        "source_ref": "RSK-LAB-001",
+        "keywords": [
+          "заработная плата может быть изменена",
+          "работодатель вправе изменить оклад",
+          "размер оплаты труда определяется работодателем"
+        ],
+        "severity_base": "critical",
+        "legal_basis": "ТК РФ",
+        "affected_contract_types": [
+          "labor_contract"
+        ],
+        "detection_logic": {
+          "type": "pattern_search",
+          "patterns": [
+            "заработная плата может быть изменена",
+            "работодатель вправе изменить оклад",
+            "размер оплаты труда определяется работодателем"
+          ],
+          "all_patterns": [],
+          "min_matches": 1,
+          "source": "clause"
+        },
+        "role_escalation": {
+          "worker": {
+            "escalate_to": "critical",
+            "reason_ru": "Для работника это прямой риск потери дохода.",
+            "reason_en": "Для работника это прямой риск потери дохода.",
+            "reason_it": "Для работника это прямой риск потери дохода.",
+            "reason_fr": "Для работника это прямой риск потери дохода."
+          },
+          "employer": {
+            "escalate_to": "low",
+            "reason_ru": "Для работодателя это выгодная, но спорная формулировка.",
+            "reason_en": "Для работодателя это выгодная, но спорная формулировка.",
+            "reason_it": "Для работодателя это выгодная, но спорная формулировка.",
+            "reason_fr": "Для работодателя это выгодная, но спорная формулировка."
+          }
+        },
+        "title": {
+          "ru": "Одностороннее уменьшение оплаты труда",
+          "en": "Одностороннее уменьшение оплаты труда",
+          "it": "Одностороннее уменьшение оплаты труда",
+          "fr": "Одностороннее уменьшение оплаты труда"
+        },
+        "description": {
+          "ru": "Трудовой блок позволяет работодателю менять размер выплат без четкого законного основания и процедуры.",
+          "en": "Трудовой блок позволяет работодателю менять размер выплат без четкого законного основания и процедуры.",
+          "it": "Трудовой блок позволяет работодателю менять размер выплат без четкого законного основания и процедуры.",
+          "fr": "Трудовой блок позволяет работодателю менять размер выплат без четкого законного основания и процедуры."
+        },
+        "mitigation": {
+          "ru": "Исключите возможность одностороннего уменьшения оплаты или привяжите ее к предусмотренным законом основаниям.",
+          "en": "Исключите возможность одностороннего уменьшения оплаты или привяжите ее к предусмотренным законом основаниям.",
+          "it": "Исключите возможность одностороннего уменьшения оплаты или привяжите ее к предусмотренным законом основаниям.",
+          "fr": "Исключите возможность одностороннего уменьшения оплаты или привяжите ее к предусмотренным законом основаниям."
+        },
+        "examples": []
+      },
+      {
+        "id": "trial_period_abuse",
+        "source_ref": "RSK-LAB-002",
+        "keywords": [
+          "испытательн.*срок",
+          "по результатам испытания"
+        ],
+        "severity_base": "medium",
+        "legal_basis": "ТК РФ",
+        "affected_contract_types": [
+          "labor_contract"
+        ],
+        "detection_logic": {
+          "type": "pattern_search",
+          "patterns": [
+            "испытательн.*срок",
+            "по результатам испытания"
+          ],
+          "all_patterns": [],
+          "min_matches": 1,
+          "source": "clause"
+        },
+        "role_escalation": {
+          "worker": {
+            "escalate_to": "high",
+            "reason_ru": "Размытый испытательный срок облегчает увольнение по субъективным причинам.",
+            "reason_en": "Размытый испытательный срок облегчает увольнение по субъективным причинам.",
+            "reason_it": "Размытый испытательный срок облегчает увольнение по субъективным причинам.",
+            "reason_fr": "Размытый испытательный срок облегчает увольнение по субъективным причинам."
+          },
+          "employer": {
+            "escalate_to": "low",
+            "reason_ru": "Для работодателя это рабочий механизм оценки сотрудника.",
+            "reason_en": "Для работодателя это рабочий механизм оценки сотрудника.",
+            "reason_it": "Для работодателя это рабочий механизм оценки сотрудника.",
+            "reason_fr": "Для работодателя это рабочий механизм оценки сотрудника."
+          }
+        },
+        "title": {
+          "ru": "Испытательный срок описан без защитных границ",
+          "en": "Испытательный срок описан без защитных границ",
+          "it": "Испытательный срок описан без защитных границ",
+          "fr": "Испытательный срок описан без защитных границ"
+        },
+        "description": {
+          "ru": "Испытательный срок указан, но отсутствуют критерии оценки, порядок уведомления и иные защитные элементы.",
+          "en": "Испытательный срок указан, но отсутствуют критерии оценки, порядок уведомления и иные защитные элементы.",
+          "it": "Испытательный срок указан, но отсутствуют критерии оценки, порядок уведомления и иные защитные элементы.",
+          "fr": "Испытательный срок указан, но отсутствуют критерии оценки, порядок уведомления и иные защитные элементы."
+        },
+        "mitigation": {
+          "ru": "Проверьте срок испытания, критерии оценки и соблюдение требований ТК РФ.",
+          "en": "Проверьте срок испытания, критерии оценки и соблюдение требований ТК РФ.",
+          "it": "Проверьте срок испытания, критерии оценки и соблюдение требований ТК РФ.",
+          "fr": "Проверьте срок испытания, критерии оценки и соблюдение требований ТК РФ."
+        },
+        "examples": []
+      },
+      {
+        "id": "bank_guarantee_on_demand",
+        "source_ref": "RSK-BANK-001",
+        "keywords": [
+          "по письменному требованию",
+          "банковская гарантия",
+          "бенефициар"
+        ],
+        "severity_base": "critical",
+        "legal_basis": "Независимая гарантия, глава 23 ГК РФ",
+        "affected_contract_types": [
+          "loan_security_agreement"
+        ],
+        "detection_logic": {
+          "type": "pattern_search",
+          "patterns": [
+            "по письменному требованию",
+            "банковская гарантия",
+            "бенефициар"
+          ],
+          "all_patterns": [],
+          "min_matches": 1,
+          "source": "clause"
+        },
+        "role_escalation": {
+          "borrower": {
+            "escalate_to": "critical",
+            "reason_ru": "Для принципала или гаранта это максимальный риск быстрой реализации обеспечения.",
+            "reason_en": "Для принципала или гаранта это максимальный риск быстрой реализации обеспечения.",
+            "reason_it": "Для принципала или гаранта это максимальный риск быстрой реализации обеспечения.",
+            "reason_fr": "Для принципала или гаранта это максимальный риск быстрой реализации обеспечения."
+          },
+          "lender": {
+            "escalate_to": "low",
+            "reason_ru": "Для бенефициара это целевой защитный инструмент.",
+            "reason_en": "Для бенефициара это целевой защитный инструмент.",
+            "reason_it": "Для бенефициара это целевой защитный инструмент.",
+            "reason_fr": "Для бенефициара это целевой защитный инструмент."
+          }
+        },
+        "title": {
+          "ru": "Банковская гарантия по первому требованию",
+          "en": "Банковская гарантия по первому требованию",
+          "it": "Банковская гарантия по первому требованию",
+          "fr": "Банковская гарантия по первому требованию"
+        },
+        "description": {
+          "ru": "Гарант обязан платить по письменному требованию бенефициара при минимальном наборе документов, что делает взыскание почти автоматическим.",
+          "en": "Гарант обязан платить по письменному требованию бенефициара при минимальном наборе документов, что делает взыскание почти автоматическим.",
+          "it": "Гарант обязан платить по письменному требованию бенефициара при минимальном наборе документов, что делает взыскание почти автоматическим.",
+          "fr": "Гарант обязан платить по письменному требованию бенефициара при минимальном наборе документов, что делает взыскание почти автоматическим."
+        },
+        "mitigation": {
+          "ru": "Проверьте перечень документов, основания требования и лимит суммы гарантии.",
+          "en": "Проверьте перечень документов, основания требования и лимит суммы гарантии.",
+          "it": "Проверьте перечень документов, основания требования и лимит суммы гарантии.",
+          "fr": "Проверьте перечень документов, основания требования и лимит суммы гарантии."
+        },
+        "examples": []
       }
     ],
     "dispute_markers": [
       {
         "id": "dispute_marker_future_agreement",
         "source_ref": "DSP-001",
-        "markers": ["по соглашению сторон", "by agreement of the parties", "di comune accordo", "d'un commun accord"],
+        "markers": [
+          "по соглашению сторон",
+          "по дополнительному согласованию",
+          "при необходимости"
+        ],
         "reason": {
-          "ru": "Формулировка расплывчатая и зависит от будущего соглашения.",
-          "en": "The wording is vague and depends on future agreement.",
-          "it": "La formulazione e vaga e dipende da un accordo futuro.",
-          "fr": "La formulation est vague et depend d'un accord ulterieur."
+          "ru": "Формулировка зависит от будущего согласования и не содержит исполнимого критерия.",
+          "en": "Формулировка зависит от будущего согласования и не содержит исполнимого критерия.",
+          "it": "Формулировка зависит от будущего согласования и не содержит исполнимого критерия.",
+          "fr": "Формулировка зависит от будущего согласования и не содержит исполнимого критерия."
         },
         "consequence": {
-          "ru": "Возможны споры из-за отсутствия четких критериев исполнения.",
-          "en": "Execution disputes may arise due to undefined criteria.",
-          "it": "Possono emergere controversie per criteri non definiti.",
-          "fr": "Des litiges d'execution peuvent survenir faute de criteres definis."
+          "ru": "При исполнении может возникнуть спор о том, что именно стороны должны были согласовать.",
+          "en": "При исполнении может возникнуть спор о том, что именно стороны должны были согласовать.",
+          "it": "При исполнении может возникнуть спор о том, что именно стороны должны были согласовать.",
+          "fr": "При исполнении может возникнуть спор о том, что именно стороны должны были согласовать."
         },
-        "confidence": 0.72
+        "confidence": 0.79
       },
       {
         "id": "dispute_marker_discretionary_right",
         "source_ref": "DSP-002",
-        "markers": ["вправе", "is entitled", "ha facolta", "est autorise"],
+        "markers": [
+          "вправе",
+          "по усмотрению",
+          "может по своему усмотрению"
+        ],
         "reason": {
-          "ru": "Есть дискреционное право одной стороны.",
-          "en": "A discretionary right of one party is present.",
-          "it": "E presente un diritto discrezionale di una parte.",
-          "fr": "Un droit discretionnaire d'une partie est present."
+          "ru": "Одна из сторон получила дискреционное право без достаточных ограничителей.",
+          "en": "Одна из сторон получила дискреционное право без достаточных ограничителей.",
+          "it": "Одна из сторон получила дискреционное право без достаточных ограничителей.",
+          "fr": "Одна из сторон получила дискреционное право без достаточных ограничителей."
         },
         "consequence": {
-          "ru": "Риск разногласий при толковании или одностороннем применении.",
-          "en": "There is a risk of interpretation conflict or unilateral use.",
-          "it": "Esiste rischio di conflitto interpretativo o uso unilaterale.",
-          "fr": "Risque de conflit d'interpretation ou d'usage unilateral."
+          "ru": "Это может привести к одностороннему применению условия и спору о пределах такого права.",
+          "en": "Это может привести к одностороннему применению условия и спору о пределах такого права.",
+          "it": "Это может привести к одностороннему применению условия и спору о пределах такого права.",
+          "fr": "Это может привести к одностороннему применению условия и спору о пределах такого права."
         },
-        "confidence": 0.69
+        "confidence": 0.76
       },
       {
         "id": "dispute_marker_reasonable_time",
         "source_ref": "DSP-003",
-        "markers": ["разумный срок", "reasonable time", "termine ragionevole", "delai raisonnable"],
+        "markers": [
+          "разумный срок",
+          "в кратчайший срок",
+          "незамедлительно"
+        ],
         "reason": {
-          "ru": "Есть субъективный срок без точной границы.",
-          "en": "A subjective timeline term is used without precise limits.",
-          "it": "E usato un termine temporale soggettivo senza limiti precisi.",
-          "fr": "Un delai subjectif est utilise sans limites precises."
+          "ru": "Срок задан оценочно и может толковаться сторонами по-разному.",
+          "en": "Срок задан оценочно и может толковаться сторонами по-разному.",
+          "it": "Срок задан оценочно и может толковаться сторонами по-разному.",
+          "fr": "Срок задан оценочно и может толковаться сторонами по-разному."
         },
         "consequence": {
-          "ru": "Возможен спор по срокам и моменту надлежащего исполнения.",
-          "en": "Timeline disputes may arise about proper performance timing.",
-          "it": "Possono nascere controversie sui tempi di adempimento.",
-          "fr": "Des litiges peuvent survenir sur les delais d'execution."
+          "ru": "Стороны могут спорить о моменте надлежащего исполнения и начале просрочки.",
+          "en": "Стороны могут спорить о моменте надлежащего исполнения и начале просрочки.",
+          "it": "Стороны могут спорить о моменте надлежащего исполнения и начале просрочки.",
+          "fr": "Стороны могут спорить о моменте надлежащего исполнения и начале просрочки."
         },
-        "confidence": 0.74
+        "confidence": 0.77
+      },
+      {
+        "id": "dispute_marker_appendix_dependency",
+        "source_ref": "DSP-004",
+        "markers": [
+          "согласно приложению",
+          "по графику",
+          "в соответствии со спецификацией"
+        ],
+        "reason": {
+          "ru": "Существенное условие вынесено в приложение или график, который может быть не заполнен.",
+          "en": "Существенное условие вынесено в приложение или график, который может быть не заполнен.",
+          "it": "Существенное условие вынесено в приложение или график, который может быть не заполнен.",
+          "fr": "Существенное условие вынесено в приложение или график, который может быть не заполнен."
+        },
+        "consequence": {
+          "ru": "Если приложение отсутствует или неполно, стороны будут спорить о содержании обязательства.",
+          "en": "Если приложение отсутствует или неполно, стороны будут спорить о содержании обязательства.",
+          "it": "Если приложение отсутствует или неполно, стороны будут спорить о содержании обязательства.",
+          "fr": "Если приложение отсутствует или неполно, стороны будут спорить о содержании обязательства."
+        },
+        "confidence": 0.8
+      },
+      {
+        "id": "dispute_marker_subjective_quality",
+        "source_ref": "DSP-005",
+        "markers": [
+          "по мнению заказчика",
+          "по оценке заказчика",
+          "достаточное качество"
+        ],
+        "reason": {
+          "ru": "Качество или готовность результата завязаны на субъективную оценку.",
+          "en": "Качество или готовность результата завязаны на субъективную оценку.",
+          "it": "Качество или готовность результата завязаны на субъективную оценку.",
+          "fr": "Качество или готовность результата завязаны на субъективную оценку."
+        },
+        "consequence": {
+          "ru": "Это увеличивает риск отказа в приемке без проверяемых критериев.",
+          "en": "Это увеличивает риск отказа в приемке без проверяемых критериев.",
+          "it": "Это увеличивает риск отказа в приемке без проверяемых критериев.",
+          "fr": "Это увеличивает риск отказа в приемке без проверяемых критериев."
+        },
+        "confidence": 0.83
+      },
+      {
+        "id": "dispute_marker_conflict",
+        "source_ref": "DSP-006",
+        "markers": [
+          "при этом",
+          "одновременно",
+          "в то же время"
+        ],
+        "reason": {
+          "ru": "Маркер указывает на возможный конфликт между несколькими обязанностями или сроками.",
+          "en": "Маркер указывает на возможный конфликт между несколькими обязанностями или сроками.",
+          "it": "Маркер указывает на возможный конфликт между несколькими обязанностями или сроками.",
+          "fr": "Маркер указывает на возможный конфликт между несколькими обязанностями или сроками."
+        },
+        "consequence": {
+          "ru": "При исполнении может оказаться, что условия невозможно соблюсти одновременно.",
+          "en": "При исполнении может оказаться, что условия невозможно соблюсти одновременно.",
+          "it": "При исполнении может оказаться, что условия невозможно соблюсти одновременно.",
+          "fr": "При исполнении может оказаться, что условия невозможно соблюсти одновременно."
+        },
+        "confidence": 0.66
       }
     ],
     "fallback": {
       "risk_title": {
-        "ru": "Низкий риск: явные маркеры не обнаружены",
-        "en": "Low risk: no explicit markers detected",
-        "it": "Rischio basso: nessun marcatore esplicito rilevato",
-        "fr": "Risque faible: aucun marqueur explicite detecte"
+        "ru": "Низкий риск: явные критические маркеры не обнаружены",
+        "en": "Low risk: no explicit critical markers found",
+        "it": "Low risk: no explicit critical markers found",
+        "fr": "Low risk: no explicit critical markers found"
       },
       "risk_description": {
-        "ru": "Конфигурируемый сканер не нашел явных высокорисковых паттернов.",
-        "en": "The configurable scanner did not detect explicit high-risk patterns.",
-        "it": "Lo scanner configurabile non ha rilevato pattern ad alto rischio espliciti.",
-        "fr": "Le scanner configurable n'a pas detecte de motifs explicites a haut risque."
+        "ru": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "en": "The system did not detect explicit high-risk patterns, but hidden legal risks may still depend on the full context.",
+        "it": "The system did not detect explicit high-risk patterns, but hidden legal risks may still depend on the full context.",
+        "fr": "The system did not detect explicit high-risk patterns, but hidden legal risks may still depend on the full context."
       },
       "role_relevance": {
         "ru": "Базовый вывод для роли '{role}'.",
         "en": "Baseline output for role '{role}'.",
-        "it": "Output di base per il ruolo '{role}'.",
-        "fr": "Sortie de base pour le role '{role}'."
+        "it": "Baseline output for role '{role}'.",
+        "fr": "Baseline output for role '{role}'."
       },
       "mitigation": {
-        "ru": "Включите расширенную NLP/LLM модель на следующем этапе при необходимости.",
-        "en": "Enable advanced NLP/LLM model in the next stage when needed.",
-        "it": "Abilitare un modello NLP/LLM avanzato nella fase successiva se necessario.",
-        "fr": "Activer un modele NLP/LLM avance a l'etape suivante si necessaire."
+        "ru": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную.",
+        "en": "Review the scope, payment flow, acceptance criteria, liability and termination rights manually.",
+        "it": "Review the scope, payment flow, acceptance criteria, liability and termination rights manually.",
+        "fr": "Review the scope, payment flow, acceptance criteria, liability and termination rights manually."
       },
       "dispute_reason": {
         "ru": "Явные маркеры спорных формулировок не обнаружены.",
@@ -436,23 +2807,246 @@
         "it": "Punti controversi nascosti possono richiedere ulteriore revisione legale.",
         "fr": "Des points litigieux caches peuvent necessiter une revue juridique supplementaire."
       }
+    },
+    "truncation": {
+      "max_chars": 500,
+      "preserve_word_boundary": true,
+      "ensure_sentence_end": true,
+      "fallback_ending": "..."
+    },
+    "role_escalation_matrix": {
+      "service_agreement": {
+        "payment_asymmetry": {
+          "executor": {
+            "escalate_to": "critical",
+            "reason_ru": "Исполнитель вынужден кредитовать заказчика.",
+            "reason_en": "Исполнитель вынужден кредитовать заказчика.",
+            "reason_it": "Исполнитель вынужден кредитовать заказчика.",
+            "reason_fr": "Исполнитель вынужден кредитовать заказчика."
+          },
+          "client": {
+            "escalate_to": "low",
+            "reason_ru": "Для заказчика это выгодное условие.",
+            "reason_en": "Для заказчика это выгодное условие.",
+            "reason_it": "Для заказчика это выгодное условие.",
+            "reason_fr": "Для заказчика это выгодное условие."
+          }
+        },
+        "undefined_acceptance_criteria": {
+          "executor": {
+            "escalate_to": "critical",
+            "reason_ru": "Исполнитель зависит от субъективной приемки.",
+            "reason_en": "Исполнитель зависит от субъективной приемки.",
+            "reason_it": "Исполнитель зависит от субъективной приемки.",
+            "reason_fr": "Исполнитель зависит от субъективной приемки."
+          },
+          "client": {
+            "escalate_to": "medium",
+            "reason_ru": "Заказчик тоже рискует спором из-за размытых критериев.",
+            "reason_en": "Заказчик тоже рискует спором из-за размытых критериев.",
+            "reason_it": "Заказчик тоже рискует спором из-за размытых критериев.",
+            "reason_fr": "Заказчик тоже рискует спором из-за размытых критериев."
+          }
+        }
+      },
+      "labor_contract": {
+        "unilateral_termination_no_cause": {
+          "worker": {
+            "escalate_to": "critical",
+            "reason_ru": "Для работника это потеря дохода и статуса.",
+            "reason_en": "Для работника это потеря дохода и статуса.",
+            "reason_it": "Для работника это потеря дохода и статуса.",
+            "reason_fr": "Для работника это потеря дохода и статуса."
+          },
+          "employer": {
+            "escalate_to": "low",
+            "reason_ru": "Для работодателя это управленческий рычаг.",
+            "reason_en": "Для работодателя это управленческий рычаг.",
+            "reason_it": "Для работодателя это управленческий рычаг.",
+            "reason_fr": "Для работодателя это управленческий рычаг."
+          }
+        },
+        "salary_reduction_unilateral": {
+          "worker": {
+            "escalate_to": "critical",
+            "reason_ru": "Оплата труда не должна уменьшаться произвольно.",
+            "reason_en": "Оплата труда не должна уменьшаться произвольно.",
+            "reason_it": "Оплата труда не должна уменьшаться произвольно.",
+            "reason_fr": "Оплата труда не должна уменьшаться произвольно."
+          },
+          "employer": {
+            "escalate_to": "low",
+            "reason_ru": "Для работодателя условие выгодно, но спорно.",
+            "reason_en": "Для работодателя условие выгодно, но спорно.",
+            "reason_it": "Для работодателя условие выгодно, но спорно.",
+            "reason_fr": "Для работодателя условие выгодно, но спорно."
+          }
+        }
+      },
+      "lease_agreement": {
+        "retention_or_deposit_discretion": {
+          "tenant": {
+            "escalate_to": "critical",
+            "reason_ru": "Арендатор рискует потерять обеспечительный платеж.",
+            "reason_en": "Арендатор рискует потерять обеспечительный платеж.",
+            "reason_it": "Арендатор рискует потерять обеспечительный платеж.",
+            "reason_fr": "Арендатор рискует потерять обеспечительный платеж."
+          },
+          "landlord": {
+            "escalate_to": "low",
+            "reason_ru": "Для арендодателя это защита от неисполнения.",
+            "reason_en": "Для арендодателя это защита от неисполнения.",
+            "reason_it": "Для арендодателя это защита от неисполнения.",
+            "reason_fr": "Для арендодателя это защита от неисполнения."
+          }
+        },
+        "operating_expenses_shift": {
+          "tenant": {
+            "escalate_to": "critical",
+            "reason_ru": "Арендатор может нести непредсказуемые расходы.",
+            "reason_en": "Арендатор может нести непредсказуемые расходы.",
+            "reason_it": "Арендатор может нести непредсказуемые расходы.",
+            "reason_fr": "Арендатор может нести непредсказуемые расходы."
+          },
+          "landlord": {
+            "escalate_to": "low",
+            "reason_ru": "Для арендодателя это выгодно.",
+            "reason_en": "Для арендодателя это выгодно.",
+            "reason_it": "Для арендодателя это выгодно.",
+            "reason_fr": "Для арендодателя это выгодно."
+          }
+        }
+      },
+      "loan_security_agreement": {
+        "all_obligations_security": {
+          "borrower": {
+            "escalate_to": "critical",
+            "reason_ru": "Охват обеспечения слишком широк.",
+            "reason_en": "Охват обеспечения слишком широк.",
+            "reason_it": "Охват обеспечения слишком широк.",
+            "reason_fr": "Охват обеспечения слишком широк."
+          },
+          "lender": {
+            "escalate_to": "low",
+            "reason_ru": "Для кредитора это усиление обеспечения.",
+            "reason_en": "Для кредитора это усиление обеспечения.",
+            "reason_it": "Для кредитора это усиление обеспечения.",
+            "reason_fr": "Для кредитора это усиление обеспечения."
+          }
+        },
+        "bank_guarantee_on_demand": {
+          "borrower": {
+            "escalate_to": "critical",
+            "reason_ru": "Требование может быть предъявлено быстро и формально.",
+            "reason_en": "Требование может быть предъявлено быстро и формально.",
+            "reason_it": "Требование может быть предъявлено быстро и формально.",
+            "reason_fr": "Требование может быть предъявлено быстро и формально."
+          },
+          "lender": {
+            "escalate_to": "low",
+            "reason_ru": "Для бенефициара это целевой механизм защиты.",
+            "reason_en": "Для бенефициара это целевой механизм защиты.",
+            "reason_it": "Для бенефициара это целевой механизм защиты.",
+            "reason_fr": "Для бенефициара это целевой механизм защиты."
+          }
+        }
+      },
+      "targeted_education_agreement": {
+        "post_training_employment_obligation": {
+          "worker": {
+            "escalate_to": "critical",
+            "reason_ru": "Гражданин ограничен в выборе работодателя после обучения.",
+            "reason_en": "Гражданин ограничен в выборе работодателя после обучения.",
+            "reason_it": "Гражданин ограничен в выборе работодателя после обучения.",
+            "reason_fr": "Гражданин ограничен в выборе работодателя после обучения."
+          },
+          "client": {
+            "escalate_to": "low",
+            "reason_ru": "Для заказчика это нормальная экономическая цель договора.",
+            "reason_en": "Для заказчика это нормальная экономическая цель договора.",
+            "reason_it": "Для заказчика это нормальная экономическая цель договора.",
+            "reason_fr": "Для заказчика это нормальная экономическая цель договора."
+          }
+        },
+        "support_reimbursement_after_withdrawal": {
+          "worker": {
+            "escalate_to": "critical",
+            "reason_ru": "Возврат мер поддержки может быть несоразмерным.",
+            "reason_en": "Возврат мер поддержки может быть несоразмерным.",
+            "reason_it": "Возврат мер поддержки может быть несоразмерным.",
+            "reason_fr": "Возврат мер поддержки может быть несоразмерным."
+          },
+          "client": {
+            "escalate_to": "low",
+            "reason_ru": "Для заказчика это защита инвестиций в обучение.",
+            "reason_en": "Для заказчика это защита инвестиций в обучение.",
+            "reason_it": "Для заказчика это защита инвестиций в обучение.",
+            "reason_fr": "Для заказчика это защита инвестиций в обучение."
+          }
+        }
+      }
     }
   },
   "summary_generation": {
     "markers": {
-      "must_do": ["обязан", "должен", "обязуется", "must", "shall", "undertakes", "obblig", "deve", "doit", "devra"],
-      "should_review": ["вправе", "может", "may", "entitled", "reserve", "facolta", "puo", "peut", "est autorise"],
-      "payment_terms": ["оплат", "оплатить", "вознагражден", "цена", "payment", "pay", "paid", "fee", "price", "invoice", "pagamento", "pagare", "corrispettivo", "prix", "paiement", "payer"],
-      "deadlines": ["срок", "дней", "календар", "deadline", "days", "within", "termine", "giorni", "delai", "jours"],
-      "penalties": ["штраф", "неустойк", "пен", "penalty", "liquidated", "damages", "penale", "penalite", "sanction"]
+      "must_do": [
+        "обязан",
+        "должен",
+        "обязуется",
+        "обеспечить",
+        "предоставить",
+        "освоить",
+        "must",
+        "shall",
+        "undertakes"
+      ],
+      "should_review": [
+        "вправе",
+        "может",
+        "по усмотрению",
+        "при необходимости",
+        "may",
+        "entitled"
+      ],
+      "payment_terms": [
+        "оплат",
+        "аванс",
+        "предоплат",
+        "счет",
+        "счет-фактур",
+        "вознагражден",
+        "pay",
+        "paid",
+        "price",
+        "payment",
+        "invoice",
+        "fee"
+      ],
+      "deadlines": [
+        "срок",
+        "в течение",
+        "дней",
+        "рабочих дней",
+        "банковских дней",
+        "deadline",
+        "days"
+      ],
+      "penalties": [
+        "штраф",
+        "неустойк",
+        "пеня",
+        "санкц",
+        "penalty",
+        "liquidated damages"
+      ]
     },
-    "max_items_per_section": 5,
-    "max_line_length": 240,
+    "max_items_per_section": 6,
+    "max_line_length": 420,
     "overview_templates": {
-      "ru": "Договор содержит {clauses_count} пунктов и {risks_count} обнаруженных рисков. Фокус краткого вывода смещен на роль '{role}'.",
-      "en": "The contract contains {clauses_count} clauses and {risks_count} identified risks. The summary is focused on role '{role}'.",
-      "it": "Il contratto contiene {clauses_count} clausole e {risks_count} rischi identificati. Il riepilogo e focalizzato sul ruolo '{role}'.",
-      "fr": "Le contrat contient {clauses_count} clauses et {risks_count} risques identifies. Le resume est axe sur le role '{role}'."
+      "ru": "Договор содержит {clauses_count} пунктов и {risks_count} выявленных рисков. Краткий вывод сфокусирован на роли '{role}'.",
+      "en": "The contract contains {clauses_count} clauses and {risks_count} detected risks. The short summary is focused on role '{role}'.",
+      "it": "The contract contains {clauses_count} clauses and {risks_count} detected risks. The short summary is focused on role '{role}'.",
+      "fr": "The contract contains {clauses_count} clauses and {risks_count} detected risks. The short summary is focused on role '{role}'."
     },
     "fallback_values": {
       "must_do": {
@@ -486,5 +3080,391 @@
         "fr": "L'extracteur configure n'a detecte aucune penalite explicite."
       }
     }
-  }
+  },
+  "contract_types": [
+    {
+      "id": "non_contract_legal_form",
+      "ru_name": "Иной юридический документ",
+      "en_name": "Other legal form",
+      "keywords": [
+        "исковое заявление",
+        "уведомление",
+        "протокол",
+        "акт",
+        "претензия",
+        "жалоба"
+      ],
+      "markers": [
+        "заявитель",
+        "ответчик",
+        "истец",
+        "акт выполненных работ"
+      ],
+      "legal_framework": "Вне типовой contract taxonomy",
+      "characteristic_clauses": [
+        "прошу суд",
+        "акт приема-передачи",
+        "претензия"
+      ],
+      "high_priority_risks": [
+        "non_contract_document"
+      ],
+      "legal_notes": "Документ не является самостоятельным договором и требует отдельного сценария разбора."
+    },
+    {
+      "id": "targeted_education_agreement",
+      "ru_name": "Договор о целевом обучении",
+      "en_name": "Targeted education agreement",
+      "keywords": [
+        "договор о целевом обучении",
+        "целевом обучении",
+        "образовательная программа",
+        "гражданин",
+        "образовательная организация"
+      ],
+      "markers": [
+        "меры поддержки",
+        "трудовая деятельность",
+        "после завершения обучения"
+      ],
+      "legal_framework": "ФЗ об образовании, ГК РФ, локальные акты работодателя",
+      "characteristic_clauses": [
+        "освоить образовательную программу",
+        "обеспечить трудоустройство",
+        "возврат мер поддержки"
+      ],
+      "high_priority_risks": [
+        "post_training_employment_obligation",
+        "support_reimbursement_after_withdrawal"
+      ]
+    },
+    {
+      "id": "labor_contract",
+      "ru_name": "Трудовой договор",
+      "en_name": "Labor agreement",
+      "keywords": [
+        "трудовой договор",
+        "работник",
+        "работодатель",
+        "заработная плата",
+        "рабочее время"
+      ],
+      "markers": [
+        "должность",
+        "трудовая функция",
+        "испытательный срок"
+      ],
+      "legal_framework": "ТК РФ",
+      "characteristic_clauses": [
+        "оплата труда",
+        "режим рабочего времени",
+        "расторжение договора"
+      ],
+      "high_priority_risks": [
+        "unilateral_termination_no_cause",
+        "salary_reduction_unilateral",
+        "unlimited_liability"
+      ]
+    },
+    {
+      "id": "service_agreement",
+      "ru_name": "Договор оказания услуг",
+      "en_name": "Service agreement",
+      "keywords": [
+        "договор оказания услуг",
+        "оказание услуг",
+        "исполнитель",
+        "заказчик"
+      ],
+      "markers": [
+        "услуги",
+        "акт оказанных услуг",
+        "стоимость услуг"
+      ],
+      "legal_framework": "ГК РФ, глава 39",
+      "characteristic_clauses": [
+        "порядок оказания услуг",
+        "стоимость услуг",
+        "приемка услуг"
+      ],
+      "high_priority_risks": [
+        "payment_asymmetry",
+        "undefined_acceptance_criteria",
+        "no_warranty_period"
+      ]
+    },
+    {
+      "id": "consulting_agreement",
+      "ru_name": "Консалтинговый договор",
+      "en_name": "Consulting agreement",
+      "keywords": [
+        "консультационные услуги",
+        "аналитический отчет",
+        "консалтинг",
+        "advisory"
+      ],
+      "markers": [
+        "рекомендации",
+        "отчет",
+        "экспертное заключение"
+      ],
+      "legal_framework": "ГК РФ, глава 39",
+      "characteristic_clauses": [
+        "результат консультации",
+        "конфиденциальность",
+        "интеллектуальные права"
+      ],
+      "high_priority_risks": [
+        "payment_asymmetry",
+        "undefined_acceptance_criteria",
+        "ip_transfer_without_scope"
+      ]
+    },
+    {
+      "id": "purchase_agreement",
+      "ru_name": "Договор купли-продажи",
+      "en_name": "Purchase agreement",
+      "keywords": [
+        "договор купли-продажи",
+        "покупатель",
+        "продавец",
+        "товар"
+      ],
+      "markers": [
+        "переход права собственности",
+        "цена товара",
+        "поставка товара"
+      ],
+      "legal_framework": "ГК РФ, глава 30",
+      "characteristic_clauses": [
+        "ассортимент товара",
+        "качество товара",
+        "переход риска"
+      ],
+      "high_priority_risks": [
+        "early_risk_transfer",
+        "payment_asymmetry",
+        "warranty_disclaimer"
+      ]
+    },
+    {
+      "id": "supply_agreement",
+      "ru_name": "Договор поставки",
+      "en_name": "Supply agreement",
+      "keywords": [
+        "договор поставки",
+        "поставка",
+        "поставщик",
+        "покупатель"
+      ],
+      "markers": [
+        "спецификация",
+        "отгрузка",
+        "приемка товара"
+      ],
+      "legal_framework": "ГК РФ, глава 30",
+      "characteristic_clauses": [
+        "партия товара",
+        "график поставки",
+        "товаросопроводительные документы"
+      ],
+      "high_priority_risks": [
+        "payment_asymmetry",
+        "strict_deadlines_without_dependency_carveout",
+        "silent_acceptance"
+      ]
+    },
+    {
+      "id": "lease_agreement",
+      "ru_name": "Договор аренды",
+      "en_name": "Lease agreement",
+      "keywords": [
+        "договор аренды",
+        "арендодатель",
+        "арендатор",
+        "найм"
+      ],
+      "markers": [
+        "арендная плата",
+        "обеспечительный платеж",
+        "помещение"
+      ],
+      "legal_framework": "ГК РФ, глава 34",
+      "characteristic_clauses": [
+        "коммунальные платежи",
+        "возврат депозита",
+        "досрочное расторжение"
+      ],
+      "high_priority_risks": [
+        "retention_or_deposit_discretion",
+        "operating_expenses_shift",
+        "broad_access_rights"
+      ]
+    },
+    {
+      "id": "construction_contract",
+      "ru_name": "Договор подряда / строительства",
+      "en_name": "Construction contract",
+      "keywords": [
+        "договор подряда",
+        "подрядчик",
+        "строительно",
+        "ремонт",
+        "монтаж"
+      ],
+      "markers": [
+        "смета",
+        "этап работ",
+        "результат работ",
+        "дефекты"
+      ],
+      "legal_framework": "ГК РФ, главы 37 и 38",
+      "characteristic_clauses": [
+        "гарантийный срок",
+        "устранение дефектов",
+        "приемка этапов"
+      ],
+      "high_priority_risks": [
+        "undefined_acceptance_criteria",
+        "unlimited_defect_cure",
+        "strict_deadlines_without_dependency_carveout"
+      ]
+    },
+    {
+      "id": "agency_agreement",
+      "ru_name": "Агентский / комиссионный договор",
+      "en_name": "Agency agreement",
+      "keywords": [
+        "агентский договор",
+        "комиссионер",
+        "комитент",
+        "агент"
+      ],
+      "markers": [
+        "агентское вознаграждение",
+        "от своего имени",
+        "в интересах принципала"
+      ],
+      "legal_framework": "ГК РФ, главы 51 и 52",
+      "characteristic_clauses": [
+        "отчет агента",
+        "вознаграждение",
+        "конфиденциальность"
+      ],
+      "high_priority_risks": [
+        "royalty_reduction_unclear",
+        "one_sided_penalty",
+        "confidentiality_without_exceptions"
+      ]
+    },
+    {
+      "id": "loan_security_agreement",
+      "ru_name": "Договор займа / залога / гарантии",
+      "en_name": "Loan and security agreement",
+      "keywords": [
+        "договор займа",
+        "кредитор",
+        "заемщик",
+        "залог",
+        "поручительство",
+        "банковская гарантия"
+      ],
+      "markers": [
+        "проценты",
+        "обеспечение исполнения",
+        "бенефициар"
+      ],
+      "legal_framework": "ГК РФ, главы 23, 42, 43",
+      "characteristic_clauses": [
+        "все обязательства",
+        "по первому требованию",
+        "предмет залога"
+      ],
+      "high_priority_risks": [
+        "all_obligations_security",
+        "bank_guarantee_on_demand",
+        "unlimited_liability"
+      ]
+    },
+    {
+      "id": "insurance_agreement",
+      "ru_name": "Договор страхования",
+      "en_name": "Insurance agreement",
+      "keywords": [
+        "договор страхования",
+        "страхователь",
+        "страховщик",
+        "страховой случай"
+      ],
+      "markers": [
+        "страховая премия",
+        "исключения из покрытия"
+      ],
+      "legal_framework": "ГК РФ, глава 48",
+      "characteristic_clauses": [
+        "страховая сумма",
+        "франшиза",
+        "порядок урегулирования убытков"
+      ],
+      "high_priority_risks": [
+        "vague_material_breach",
+        "favorable_jurisdiction_or_dispute_clause"
+      ]
+    },
+    {
+      "id": "ip_agreement",
+      "ru_name": "Договор об интеллектуальных правах",
+      "en_name": "IP agreement",
+      "keywords": [
+        "лицензионный договор",
+        "патент",
+        "исключительное право",
+        "роялти",
+        "ноу-хау"
+      ],
+      "markers": [
+        "объект интеллектуальной собственности",
+        "право использования",
+        "исключительная лицензия"
+      ],
+      "legal_framework": "ГК РФ, часть IV",
+      "characteristic_clauses": [
+        "территория использования",
+        "срок лицензии",
+        "результаты интеллектуальной деятельности"
+      ],
+      "high_priority_risks": [
+        "ip_transfer_without_scope",
+        "royalty_reduction_unclear",
+        "confidentiality_without_exceptions"
+      ]
+    },
+    {
+      "id": "partnership_agreement",
+      "ru_name": "Договор о совместной деятельности",
+      "en_name": "Partnership agreement",
+      "keywords": [
+        "совместная деятельность",
+        "простое товарищество",
+        "совместно",
+        "доли участия"
+      ],
+      "markers": [
+        "общие расходы",
+        "распределение прибыли",
+        "вклад сторон"
+      ],
+      "legal_framework": "ГК РФ, глава 55",
+      "characteristic_clauses": [
+        "порядок управления",
+        "совместные расходы",
+        "выход участника"
+      ],
+      "high_priority_risks": [
+        "conflicting_obligations",
+        "vague_material_breach",
+        "unlimited_liability"
+      ]
+    }
+  ]
 }

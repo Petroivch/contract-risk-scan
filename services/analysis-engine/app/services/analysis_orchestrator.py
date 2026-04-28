@@ -4,8 +4,16 @@ import asyncio
 
 from app.config.runtime import get_runtime_config
 from app.localization import normalize_analysis_language
-from app.schemas.analysis import AnalysisOutput, AnalysisRunRequest
+from app.schemas.analysis import (
+    AnalysisOutput,
+    AnalysisRunRequest,
+    AsymmetrySignalItem,
+    ContractTypeMetadata,
+    IngestionMetadata,
+)
+from app.services.asymmetry_detector import AsymmetryDetector
 from app.services.clause_segmentation import ClauseSegmentationService
+from app.services.contract_analysis import ContractTypeDetector
 from app.services.contract_brief import ContractBriefGenerationService
 from app.services.execution_strategy import ExecutionStrategyService
 from app.services.ingestion import IngestionService
@@ -28,6 +36,8 @@ class AnalysisOrchestrator:
         summary_generation_service: SummaryGenerationService | None = None,
         contract_brief_generation_service: ContractBriefGenerationService | None = None,
         execution_strategy_service: ExecutionStrategyService | None = None,
+        contract_type_detector: ContractTypeDetector | None = None,
+        asymmetry_detector: AsymmetryDetector | None = None,
     ) -> None:
         self.store = store
         self._runtime_config = get_runtime_config()
@@ -40,6 +50,8 @@ class AnalysisOrchestrator:
             contract_brief_generation_service or ContractBriefGenerationService()
         )
         self.execution_strategy_service = execution_strategy_service or ExecutionStrategyService()
+        self.contract_type_detector = contract_type_detector or ContractTypeDetector()
+        self.asymmetry_detector = asymmetry_detector or AsymmetryDetector()
 
     async def process_job(self, job_id: str, request: AnalysisRunRequest) -> None:
         self.store.mark_processing(job_id)
@@ -53,11 +65,24 @@ class AnalysisOrchestrator:
                     ocr_result = await self.ocr_service.extract_text(ingestion_payload)
 
                 clauses = self.clause_segmentation_service.segment(ocr_result.text, language)
+                detected_contract_type = self.contract_type_detector.detect(
+                    ocr_result.text,
+                    request.document_name,
+                )
+                asymmetry_signals = self.asymmetry_detector.detect_asymmetries(clauses)
 
                 risks = self.risk_scoring_service.score(
                     clauses,
                     request.role_context.role,
                     language,
+                    contract_type=(
+                        detected_contract_type.type_id
+                        if detected_contract_type.type_id != "general_contract"
+                        else None
+                    ),
+                    document_text=ocr_result.text,
+                    counterparty_role=request.role_context.counterparty_role,
+                    asymmetry_signals=asymmetry_signals,
                 )
                 disputed_clauses = self.risk_scoring_service.extract_disputed_clauses(clauses, language)
                 role_focused_summary = self.summary_generation_service.generate(
@@ -77,6 +102,7 @@ class AnalysisOrchestrator:
                     counterparty_role=request.role_context.counterparty_role,
                     language=language,
                     disputed_clauses=disputed_clauses,
+                    detected_contract_type=detected_contract_type,
                 )
 
                 output = AnalysisOutput(
@@ -87,6 +113,29 @@ class AnalysisOrchestrator:
                     risks=risks,
                     disputed_clauses=disputed_clauses,
                     role_focused_summary=role_focused_summary,
+                    ingestion=IngestionMetadata(
+                        extraction_source=ingestion_payload.extraction_source,
+                        extraction_ok=ingestion_payload.extraction_ok,
+                        extraction_error=ingestion_payload.extraction_error,
+                        sha256=ingestion_payload.sha256,
+                    ),
+                    contract_type=ContractTypeMetadata(
+                        type_id=detected_contract_type.type_id,
+                        confidence=detected_contract_type.confidence,
+                        ru_name=detected_contract_type.ru_name,
+                        legal_framework=detected_contract_type.legal_framework,
+                    ),
+                    asymmetry_signals=[
+                        AsymmetrySignalItem(
+                            risk_id=signal.risk_id,
+                            clause_id=signal.clause_id,
+                            summary=signal.summary,
+                            details=signal.details,
+                            severity_hint=signal.severity_hint,
+                            affected_roles=signal.affected_roles,
+                        )
+                        for signal in asymmetry_signals
+                    ],
                 )
 
                 self.store.mark_completed(job_id, output.model_dump())

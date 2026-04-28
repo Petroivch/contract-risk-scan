@@ -1,0 +1,187 @@
+{
+  "case_id": "договоры 4__obrazets-dogovor-komissii-po-importu_html",
+  "relative_path": "договоры 4/obrazets-dogovor-komissii-po-importu.html",
+  "document_path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\договоры 4\\obrazets-dogovor-komissii-po-importu.html",
+  "document_name": "obrazets-dogovor-komissii-po-importu.html",
+  "role": "Исполнитель",
+  "counterparty_role": "Заказчик",
+  "language": "ru",
+  "mime_type": "text/html",
+  "tags": [
+    "ad_hoc"
+  ],
+  "source_group": "договоры 4",
+  "expected": {},
+  "started_at": "2026-04-28T16:18:51.461319+00:00",
+  "status": "completed",
+  "request": {
+    "document_name": "obrazets-dogovor-komissii-po-importu.html",
+    "role_context": {
+      "role": "Исполнитель",
+      "counterparty_role": "Заказчик"
+    },
+    "document_text": null,
+    "document_base64": "PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMDEgVHJhbnNpdGlvbmFsLy9FTiI+DQo8aHRtbD4NCjxoZWFkPg0KPGJhc2UgaHJlZj0iaHR0cHM6Ly9kb2dvdm9yLXVyaXN0LnJ1LyI+DQo8dGl0bGU+0J7QsdGA0LDQt9C10YYuINCU0L7Qs9C+0LLQvtGAINC60L7QvNC40YHRgdC40Lgg0L/QviDQuNC80L/QvtGA0YLRgyAtINCy0LXRgNGB0LjRjyDQtNC70Y8g0L/QtdGH0LDRgtC4LiAyMDI2LiDQntCx0YDQsNC30YbRiyDQtNC+0LPQvtCy0L7RgNC+0LIsINGC0LjQv9C+0LLRi9C1INC00L7Qs9C+0LLQvtGA0LAsINCw0LrRgtGD0LDQu9GM0L3Ri9C1INC00L7QutGD0LzQtdC90YLRiywg0Y7RgNC40LTQuNGH0LXRgdC60LjQvCDQuCDRhNC40LfQuNGH0LXRgdC60LjQvCDQu9C40YbQsNC8PC90aXRsZT4NCjxtZXRhIGNvbnRlbnQ9IiIgbmFtZT0ia2V5d29yZHMiPg0KPG1ldGEgY29udGVudD0iIiBuYW1lPSJkZXNjcmlwdGlvbiI+DQo8bWV0YSBuYW1lPSJyb2JvdHMiIGNvbnRlbnQ9Im5vaW5kZXgsbm9mb2xsb3ciPg0KPG1ldGEgaHR0cC1lcXVpdj0iQ29udGVudC1UeXBlIiBjb250ZW50PSJ0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgiPg0KPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSIvaW1hZ2VzL3N0eWxlLmNzcyIgdHlwZT0idGV4dC9jc3MiPg0KPC9oZWFkPg0KPGJvZHk+DQo8ZGl2IGNsYXNzPSJkb2N1bWVudFRleHQiPg0KPHByZT4gICAgICAgICAgICAgICAgICAgICAgICAgICAgINCf0KDQmNCc0JXQoNCd0KvQmSDQlNCe0JPQntCS0J7QoA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICDQutC+0LzQuNGB0YHQuNC4INC/0L4g0LjQvNC/0L7RgNGC0YMNCg0KICAgICAgICAg0LMuIF9fX19fX19fX19fX19fX19fX19fX18gICAgICAgICAgICAgICAgICJfX18iX19fX19fX19fXzIwX19fX9CzLg0KDQogICAgICAgICAxLiDQktC90LXRiNC90LXRjdC60L7QvdC+0LzQuNGH0LXRgdC60LDRjyDQvtGA0LPQsNC90LjQt9Cw0YbQuNGPICjQmtC+0LzQuNGB0YHQuNC+0L3QtdGAKSDQuCDQtdC1INCw0LTRgNC10YE6DQogICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQoNCiAgICAgICAgIDIuINCg0LDRgdGH0LXRgtC90YvQuSDRgdGH0LXRgiDQuCDQvdCw0LjQvNC10L3QvtCy0LDQvdC40LUg0LHQsNC90LrQsDogX19fX19fX19fX19fX19fX19fX19fX19fDQoNCiAgICAgICAgIDMuINCX0LDQutCw0LfRh9C40LogKNCa0L7QvNC40YLQtdC90YIpINC4INC10LPQviDQsNC00YDQtdGBOiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fDQoNCiAgICAgICAgIDQuINCT0YDRg9C30L7Qv9C+0LvRg9GH0LDRgtC10LvRjCDQuCDQtdCz0L4g0LDQtNGA0LXRgTogX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCg0KICAgICAgICAgNS4g0J/Qu9Cw0YLQtdC70YzRidC40Log0Lgg0LXQs9C+INCw0LTRgNC10YE6IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCg0KICAgICAgICAgNi4g0KDQsNGB0YfQtdGC0L3Ri9C5INGB0YfQtdGCINCf0LvQsNGC0LXQu9GM0YnQuNC60LAg0Lgg0L3QsNC40LzQtdC90L7QstCw0L3QuNC1INCx0LDQvdC60LA6IF9fX19fX19fX19fXw0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KDQogICAgICAgICA3LiDQmNC90L7RgdGC0YDQsNC90L3QsNGPICDRhNC40YDQvNCwLCDRgdGC0YDQsNC90LA6IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KDQogICAgICAgICA4LiDQo9GB0LvQvtCy0LjRjyDQv9C+0YHRgtCw0LLQutC4INC/0L4g0LjQvNC/0L7RgNGC0YM6IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQoNCiAgICAgICAgIDkuINCS0LDQu9GO0YLQsCDQuCDRg9GB0LvQvtCy0LjRjyDQv9C70LDRgtC10LbQsDogX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCg0KICAgICAgICAgMTAuINCe0YHQvdC+0LLQsNC90LjQtSDQt9Cw0LrQu9GO0YfQtdC90LjRjyDQvdCw0YHRgtC+0Y/RidC10LPQviDQtNC+0LPQvtCy0L7RgNCwOiBfX19fX19fX19fX19fX19fX18NCg0KICAgICAgICAgMTEuDQogICAgLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tDQogICAgICAg0J3QsNC40LzQtdC90L7QstCw0L3QuNC1INGC0L7QstCw0YDQsCAgICAgIMKmINCc0LDRgNC60LAsINCy0LjQtCDQuCDQtNGALiDCpiDQmtC+0Lst0LLQviDCpiDQptC10L3QsA0KICAgIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0rLS0tLS0tLS0tLS0tLS0tLS0tKy0tLS0tLS0tKy0tLS0tLS0tLS0tLQ0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICDCpiAo0JzQvtCz0YPRgiDQsdGL0YLRjCAgICAgIMKmICAgICAgICDCpg0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICDCpiAg0L7Qv9GA0LXQtNC10LvQtdC90Ysg0LIgICAgwqYgICAgICAgIMKmDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIMKmICDRgdC/0LXRhtC40YTQuNC60LDRhtC40LgpICAgwqYgICAgICAgIMKmDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIMKmICAgICAgICAgICAgICAgICAgwqYgICAgICAgIMKmDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIMKmICAgICAgICAgICAgICAgICAgwqYgICAgICAgIMKmDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIMKmICAgICAgICAgICAgICAgICAgwqYgICAgICAgIMKmDQoNCiAgICAgICAgIDEyLiDQntGC0LLQtdGC0YHRgtCy0LXQvdC90YvQuSDQv9GA0LXQtNGB0YLQsNCy0LjRgtC10LvRjCDQl9Cw0LrQsNC30YfQuNC60LAsICAgICAgICDRg9C/0L7Qu9C90L7QvNC+0YfQtdC90L3Ri9C5DQogICAg0LLQuNC30LjRgNC+0LLQsNGC0Ywg0LrQvtC90YLRgNCw0LrRgjogX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQoNCiAgICAgICAgIDEzLiDQptC10L3QsCwg0YHRg9C80LzQsCDQt9Cw0LrRg9C/0LrQuDogX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQoNCiAgICAgICAgIDE0LiDQodGA0L7QuiDQstCy0L7Qt9CwINGC0L7QstCw0YDQsDogX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCg0KICAgICAgICAgMTUuINCa0L7QvNC40YHRgdC40L7QvdC90L7QtSDQstC+0LfQvdCw0LPRgNCw0LbQtNC10L3QuNC1OiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQoNCiAgICAgICAgIDE2LiDQn9C70LDRgtC10LvRjNGJ0LjQuiAg0LPQsNGA0LDQvdGC0LjRgNGD0LXRgiAg0L/QtdGA0LXQstC+0LQgINC/0LvQsNGC0LXQttCwICDQsiAg0LLQsNC70Y7RgtC1INC90LAg0YHRh9C10YINCiAgICDQktC90LXRiNC90LXRjdC60L7QvdC+0LzQuNGH0LXRgdC60L7QuSDQvtGA0LPQsNC90LjQt9Cw0YbQuNC4OiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCg0KICAgICAgICAgMTcuINCf0LvQsNGC0LXQu9GM0YnQuNC6INCz0LDRgNCw0L3RgtC40YDRg9C10YIg0L7Qv9C70LDRgtGDINC60L7QvNC40YHRgdC40L7QvdC90L7Qs9C+INCy0L7Qt9C90LDQs9GA0LDQttC00LXQvdC40Y86DQogICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQoNCiAgICAgICAgIDE4LiDQodGA0L7QuiDQtNC10LnRgdGC0LLQuNGPINC00L7Qs9C+0LLQvtGA0LA6IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KDQogICAgICAgICAxOS4g0KHRgtC+0YDQvtC90YsgINCz0LDRgNCw0L3RgtC40YDRg9GO0YIgINGB0L7QsdC70Y7QtNC10L3QuNC1ICDQntGB0L3QvtCy0L3Ri9GFICDRg9GB0LvQvtCy0LjQuSDQtNC+0LPQvtCy0L7RgNCwDQogICAg0LrQvtC80LjRgdGB0LjQuCwg0LjQt9C70L7QttC10L3QvdGL0YUg0LIg0J/RgNC40LvQvtC20LXQvdC40LggTm8uIDEg0Log0L3QsNGB0YLQvtGP0YnQtdC80YMg0LTQvtCz0L7QstC+0YDRgy4NCg0KDQogICAgICAgICDQn9C+0LTQv9C40YHQuCDQuCDQv9C10YfQsNGC0Lgg0KHRgtC+0YDQvtC9Lg0KDQogIA0KPC9wcmU+PC9kaXY+DQo8L2JvZHk+DQo8L2h0bWw+",
+    "mime_type": "text/html",
+    "language": "ru",
+    "locale": "ru"
+  },
+  "ingestion_preflight": {
+    "mime_type": "text/html",
+    "extractor": "html:regex",
+    "extraction_source": "html:regex",
+    "extraction_ok": true,
+    "error": null,
+    "extraction_error": null,
+    "sha256": "f0975891979f7fb94fe9af4de4e103eb41d82632807b885b5e8772f267ec3f75"
+  },
+  "metrics": {
+    "risk_count": 1,
+    "high_risk_count": 0,
+    "disputed_clause_count": 1,
+    "asymmetry_signal_count": 0,
+    "contract_type": "agency_agreement"
+  },
+  "analysis": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'obrazets-dogovor-komissii-po-importu. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Исполнитель'. Определен тип договора: Агентский / комиссионный договор (уверенность 77%, правовая рамка: ГК РФ, главы 51 и 52). Условия оплаты: Расчетный счет и наименование банка: ________________________ 3; Расчетный счет Плательщика и наименование банка: ____________ _____________________________________________________________________ 7; Комиссионное вознаграждение: _______________________________ 16. Сроки и дедлайны: Срок ввоза товара: _________________________________________ 15; Срок действия договора: ____________________________________ 19. Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Исполнитель'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Образец. Договор комиссии по импорту - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ПРИМЕРНЫЙ ДОГОВОР комиссии по импорту г. ______________________ \"___\"__________20____г. 1. Внешнеэкономическая организация (Комиссионер) и ее адрес: _____________________________________________________________________ 2. Расчетный счет и наименование банка: ________________________ 3.",
+        "dispute_reason": "Явные маркеры спорных формулировок не обнаружены.",
+        "possible_consequence": "Скрытые спорные моменты требуют дополнительной юридической проверки.",
+        "confidence": 0.35
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Исполнитель",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Исполнитель'.",
+      "must_do": [
+        "Конфиг не выявил явных обязательств."
+      ],
+      "should_review": [
+        "Конфиг не выявил явных дискреционных условий."
+      ],
+      "payment_terms": [
+        "Расчетный счет и наименование банка: ________________________ 3.",
+        "Расчетный счет Плательщика и наименование банка: ____________ _____________________________________________________________________ 7.",
+        "Комиссионное вознаграждение: _______________________________ 16.",
+        "Плательщик гарантирует перевод платежа в валюте на счет Внешнеэкономической организации: ____________________________________ 17.",
+        "Плательщик гарантирует оплату комиссионного вознаграждения: _____________________________________________________________________ 18."
+      ],
+      "deadlines": [
+        "Срок ввоза товара: _________________________________________ 15.",
+        "Срок действия договора: ____________________________________ 19."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "f0975891979f7fb94fe9af4de4e103eb41d82632807b885b5e8772f267ec3f75"
+    },
+    "contract_type": {
+      "type_id": "agency_agreement",
+      "confidence": 0.77,
+      "ru_name": "Агентский / комиссионный договор",
+      "legal_framework": "ГК РФ, главы 51 и 52"
+    },
+    "asymmetry_signals": []
+  },
+  "result": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'obrazets-dogovor-komissii-po-importu. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Исполнитель'. Определен тип договора: Агентский / комиссионный договор (уверенность 77%, правовая рамка: ГК РФ, главы 51 и 52). Условия оплаты: Расчетный счет и наименование банка: ________________________ 3; Расчетный счет Плательщика и наименование банка: ____________ _____________________________________________________________________ 7; Комиссионное вознаграждение: _______________________________ 16. Сроки и дедлайны: Срок ввоза товара: _________________________________________ 15; Срок действия договора: ____________________________________ 19. Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Исполнитель'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Образец. Договор комиссии по импорту - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ПРИМЕРНЫЙ ДОГОВОР комиссии по импорту г. ______________________ \"___\"__________20____г. 1. Внешнеэкономическая организация (Комиссионер) и ее адрес: _____________________________________________________________________ 2. Расчетный счет и наименование банка: ________________________ 3.",
+        "dispute_reason": "Явные маркеры спорных формулировок не обнаружены.",
+        "possible_consequence": "Скрытые спорные моменты требуют дополнительной юридической проверки.",
+        "confidence": 0.35
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Исполнитель",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Исполнитель'.",
+      "must_do": [
+        "Конфиг не выявил явных обязательств."
+      ],
+      "should_review": [
+        "Конфиг не выявил явных дискреционных условий."
+      ],
+      "payment_terms": [
+        "Расчетный счет и наименование банка: ________________________ 3.",
+        "Расчетный счет Плательщика и наименование банка: ____________ _____________________________________________________________________ 7.",
+        "Комиссионное вознаграждение: _______________________________ 16.",
+        "Плательщик гарантирует перевод платежа в валюте на счет Внешнеэкономической организации: ____________________________________ 17.",
+        "Плательщик гарантирует оплату комиссионного вознаграждения: _____________________________________________________________________ 18."
+      ],
+      "deadlines": [
+        "Срок ввоза товара: _________________________________________ 15.",
+        "Срок действия договора: ____________________________________ 19."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "f0975891979f7fb94fe9af4de4e103eb41d82632807b885b5e8772f267ec3f75"
+    },
+    "contract_type": {
+      "type_id": "agency_agreement",
+      "confidence": 0.77,
+      "ru_name": "Агентский / комиссионный договор",
+      "legal_framework": "ГК РФ, главы 51 и 52"
+    },
+    "asymmetry_signals": []
+  },
+  "finished_at": "2026-04-28T16:18:51.529376+00:00",
+  "duration_ms": 67.78
+}

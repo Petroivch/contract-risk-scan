@@ -1,0 +1,278 @@
+{
+  "case_id": "rent_ru",
+  "relative_path": "contract-risk-scan/services/analysis-engine/golden_set/docs/rent.txt",
+  "document_path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\contract-risk-scan\\services\\analysis-engine\\golden_set\\docs\\rent.txt",
+  "document_name": "rent.txt",
+  "role": "Наниматель",
+  "counterparty_role": "Наймодатель",
+  "language": "ru",
+  "mime_type": "text/plain",
+  "tags": [
+    "real-corpus",
+    "lease",
+    "housing"
+  ],
+  "source_group": "manifest",
+  "expected": {
+    "contract_type": "lease_agreement",
+    "min_contract_type_confidence": 0.9,
+    "min_risk_count": 3,
+    "min_disputed_clause_count": 2,
+    "risk_title_fragments_any": [
+      "депозита",
+      "расходы на содержание"
+    ],
+    "execution_mode": "local_first",
+    "expected_high_risk_ids": [
+      "uncapped_daily_penalty",
+      "retention_or_deposit_discretion",
+      "operating_expenses_shift"
+    ]
+  },
+  "started_at": "2026-04-28T16:12:21.935621+00:00",
+  "status": "completed",
+  "request": {
+    "document_name": "rent.txt",
+    "role_context": {
+      "role": "Наниматель",
+      "counterparty_role": "Наймодатель"
+    },
+    "document_text": null,
+    "document_base64": "77u/0JTQntCT0J7QktCe0KAKICAgICAgINCd0JDQmdCc0JAg0JbQmNCb0J7Qk9CeINCf0J7QnNCV0KnQldCd0JjQryAKCgrQsy4gX19fX19fX19fX19fX19fX19fICAgICAgICAgICAgICAgICAgICAgIAkgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg4oCcX19fX19f4oCdIF9fX19fX19fX19fX19fX18gX19fX19fX1/QsyAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIArQnNGLLCDQndC40LbQtdC/0L7QtNC/0LjRgdCw0LLRiNC40LXRgdGPOiAgCtCTLdC9Ly3QttCwIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fICwg0LTQsNC70LXQtSDQuNC80LXQvdGD0LXQvNGL0Lkg4oCc0J3QsNC50LzQvtC00LDRgtC10LvRjOKAnSwg0YEg0L7QtNC90L7QuSDRgdGC0L7RgNC+0L3Riywg0Lgg0JMt0L0vLdC20LAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18gLCDQtNCw0LvQtdC1INC40LzQtdC90YPQtdC80YvQuSDigJzQndCw0L3QuNC80LDRgtC10LvRjOKAnSwg0YEg0LTRgNGD0LPQvtC5INGB0YLQvtGA0L7QvdGLLCAg0LfQsNC60LvRjtGH0LjQu9C4INC90LDRgdGC0L7Rj9GJ0LjQuSDQlNC+0LPQvtCy0L7RgCDQviDQvdC40LbQtdGB0LvQtdC00YPRjtGJ0LXQvDoKCjEuINCf0KDQldCU0JzQldCiINCd0JDQodCi0J7Qr9Cp0JXQk9CeINCU0J7Qk9Ce0JLQntCg0JAKLgoxLjEuINCd0LDQudC80L7QtNCw0YLQtdC70Ywg0L/RgNC10LTQvtGB0YLQsNCy0LvRj9C10YIg0J3QsNC90LjQvNCw0YLQtdC70Y4g0L/QvtC80LXRidC10L3QuNC1LCDRgdC+0YHRgtC+0Y/RidC10LUg0LjQtyBfX19fINC60L7QvNC90LDRgiAo0YspLCAo0LIgX19fX19fINC60L7QvNC90LDRgtC90L7QuSDQutCy0LDRgNGC0LjRgNC1KSDRgNCw0YHQv9C+0LvQvtC20LXQvdC90L7QtSAg0L/QviDQsNC00YDQtdGB0YMg0LMuIF9fX19fX19fX19fX19fX19fX18sINGD0LvQuNGG0LAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18g0LTQvtC8wqAgX19fXyDQutC+0YDQv9GD0YEgX19fICDQtNGA0L7QsdGMIF9fXyDRgdGC0YDQvtC10L3QuNC1IF9fX18g0LrQstCw0YDRgtC40YDQsCBfX19fX18g0LfQsCDQv9C70LDRgtGDLCDQstC+INCy0YDQtdC80LXQvdC90L7QtSDQv9C+0LvRjNC30L7QstCw0L3QuNC1INCyINGG0LXQu9GP0YUg0L/RgNC+0LbQuNCy0LDQvdC40Y8uIAoxLjIuINCf0L7QvNC10YnQtdC90LjQtSDQv9GA0LjQvdCw0LTQu9C10LbQuNGCINCd0LDQudC80L7QtNCw0YLQtdC70Y4g0L3QsCDQvtGB0L3QvtCy0LDQvdC40Lg6Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXyAKMS4zLiDQkiDRgtC10YfQtdC90LjQtSDQstGB0LXQs9C+INGB0YDQvtC60LAg0L3QsNC50LzQsCDRgdC+0LLQvNC10YHRgtC90L4g0YEg0J3QsNC90LjQvNCw0YLQtdC70LXQvCDQsiDQutCy0LDRgNGC0LjRgNC1INCx0YPQtNGD0YIg0L/RgNC+0LbQuNCy0LDRgtGMOiAKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fIApfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18gCjEuNC4g0KHRgNC+0Log0L3QsNC50LzQsCDRg9C60LDQt9Cw0L3QvdC+0LPQviDQv9C+0LzQtdGJ0LXQvdC40Y8g0YPRgdGC0LDQvdCw0LLQu9C40LLQsNC10YLRgdGPINGBIF9fX19fIF9fX19fX19fX19fX18yMCBfX18g0LMuIArQv9C+IF9fX19fIF9fX19fX19fX19fXzIwX19f0LMuIAoxLjUuINCSINGB0LvRg9GH0LDQtSDRgdC+0LPQu9Cw0YHQuNGPINGB0YLQvtGA0L7QvSwg0YHRgNC+0Log0JTQvtCz0L7QstC+0YDQsCDQv9GA0L7QtNC70LXQstCw0LXRgtGB0Y8g0YHQsNC80L7RgdGC0L7Rj9GC0LXQu9GM0L3Qvi4gCsKgCjIuINCf0KDQkNCS0JAg0Jgg0J7QkdCv0JfQkNCd0J3QntCh0KLQmCDQodCi0J7QoNCe0J0uCsKgCjIuMS4g0J3QkNCZ0JzQntCU0JDQotCV0JvQrCDQntCR0K/Ql9Cj0JXQotCh0K86IArCoArQn9GA0LXQtNC+0YHRgtCw0LLQuNGC0Ywg0YPQutCw0LfQsNC90L3QvtC1INC/0L7QvNC10YnQtdC90LjQtSDQndCw0L3QuNC80LDRgtC10LvRjiDRgSBfX19fXyDCoF9fX19fX19fX19fXyAyMCBfXyDQs9C+0LTQsC4gCtCe0LHQtdGB0L/QtdGH0LjRgtGMINGB0LLQvtCx0L7QtNC90YvQuSDQtNC+0YHRgtGD0L8g0J3QsNC90LjQvNCw0YLQtdC70Y4g0LIg0L/QvtC80LXRidC10L3QuNC1OyAK0J/QvtGB0LXRidCw0YLRjCDQv9C+0LzQtdGJ0LXQvdC40LUg0L3QtSDQsdC+0LvQtdC1INC+0LTQvdC+0LPQviDRgNCw0LfQsCDQsiDQvNC10YHRj9GGLCDRgSDRg9Cy0LXQtNC+0LzQu9C10L3QuNC10Lwg0J3QsNC90LjQvNCw0YLQtdC70Y8gINC90LUg0LzQtdC90LXQtSDRh9C10Lwg0LfQsCAyNCDRh9Cw0YHQsCDQtNC+INC/0YDQtdC00L/QvtC70LDQs9Cw0LXQvNC+0LPQviDQv9C+0YHQtdGJ0LXQvdC40Y87IArQn9GA0Lgg0LLRi9C10LfQtNC1INCd0LDQvdC40LzQsNGC0LXQu9GPINCy0L7Qt9Cy0YDQsNGC0LjRgtGMINCyINC+0LHRj9C30LDRgtC10LvRjNC90L7QvCDQv9C+0YDRj9C00LrQtSDRgdGD0LzQvNGDINCz0LDRgNCw0L3RgtC40LnQvdC+0LPQviDQv9C70LDRgtC10LbQsCAo0LfQsNC70L7Qs9CwKSAg0L/RgNC4INC40YHQv9C+0LvQvdC10L3QuNC4ICDQndCw0L3QuNC80LDRgtC10LvQtdC8ICDQvy7Qvy4gMS40OyAyLjI7IDMuMjsgMy43LCAzLjg7IDMuOS4gCgoyLjIuICDQndCQ0J3QmNCc0JDQotCV0JvQrCDQntCR0K/Ql9Cj0JXQotCh0K86CsKgCtCY0YHQv9C+0LvRjNC30L7QstCw0YLRjCDQtNCw0L3QvdC+0LUg0L/QvtC80LXRidC10L3QuNC1INGC0L7Qu9GM0LrQviDQv9C+INC90LDQt9C90LDRh9C10L3QuNGOLCDRg9C60LDQt9Cw0L3QvdC+0Lwg0LIg0L/Rg9C90LrRgtC1IDEuMS4gCtCd0LUg0YHQtNCw0LLQsNGC0Ywg0L/QvtC80LXRidC10L3QuNC1INCyINGB0YPQsdCw0YDQtdC90LTRgyDQuCDQvdC1INC/0LXRgNC10LTQsNCy0LDRgtGMINC/0YDQsNCy0LAg0L/QvtC70YzQt9C+0LLQsNC90LjRjyDRgtGA0LXRgtGM0LjQvCDQu9C40YbQsNC8LCDQsCDRgtCw0LrQttC1INC90LUg0L/QvtC00YHQtdC70Y/RgtGMINC40L3Ri9GFINC70LjRhiDQsdC10Lcg0YHQvtCz0LvQsNGB0LjRjyDQndCw0LnQvNC+0LTQsNGC0LXQu9GPOyAK0J/QvtC70YPRh9C40YLRjCDQv9C40YHRjNC80LXQvdC90L7QtSDRgNCw0LfRgNC10YjQtdC90LjQtSDigJzQndCw0LnQvNC+0LTQsNGC0LXQu9GP4oCdINC90LAg0YHQvtC00LXRgNC20LDQvdC40LUg0LbQuNCy0L7RgtC90YvRhSDQsiDQutCy0LDRgNGC0LjRgNC1LCDQv9GA0Lgg0Y3RgtC+0Lwg4oCc0J3QsNC90LjQvNCw0YLQtdC70YzigJ0g0L3QtdGB0LXRgiDQv9C+0LvQvdGD0Y4g0L7RgtCy0LXRgtGB0YLQstC10L3QvdC+0YHRgtGMINC30LAg0YPRidC10YDQsSwg0L3QsNC90LXRgdC10L3QvdGL0Lkg0LrQstCw0YDRgtC40YDQtSDQtdCz0L4g0LTQvtC80LDRiNC90LjQvNC4INC20LjQstC+0YLQvdGL0LzQuC4K0J3QtSDQv9GA0L7QuNC30LLQvtC00LjRgtGMINC/0LXRgNC10L/Qu9Cw0L3QuNGA0L7QstC+0Log0Lgg0L/QtdGA0LXQvtCx0L7RgNGD0LTQvtCy0LDQvdC40Y8g0LHQtdC3INC/0LjRgdGM0LzQtdC90L3QvtCz0L4g0YDQsNC30YDQtdGI0LXQvdC40Y8g0J3QsNC50LzQvtC00LDRgtC10LvRjzsgCtCd0LUg0YPRgdGC0LDQvdCw0LLQu9C40LLQsNGC0Ywg0LrQsNC60L7QtS3Qu9C40LHQviDQvtCx0L7RgNGD0LTQvtCy0LDQvdC40LUgKNC30LDQvNC10L3QsCDQt9Cw0LzQutC+0LIsINC70LjRh9C40L3QvtC6INC30LDQvNC60LAsINGD0LrRgNC10L/Qu9C10L3QuNC1INC00LLQtdGA0LXQuSwg0YPRgdGC0LDQvdC+0LLQutCwINGB0LjQs9C90LDQu9C40LfQsNGG0LjQuCwg0Lgg0YIu0L8uKSDQsdC10Lcg0L/RgNC10LTQstCw0YDQuNGC0LXQu9GM0L3QvtCz0L4g0YHQvtCz0LvQsNGB0LjRjyDRgSDQndCw0LnQvNC+0LTQsNGC0LXQu9C10LwuIArQn9GA0LjQvdGP0YLRjCDQvdCwINGB0LXQsdGPINC/0L7Qu9C90YPRjiDQvNCw0YLQtdGA0LjQsNC70YzQvdGD0Y4g0L7RgtCy0LXRgtGB0YLQstC10L3QvdC+0YHRgtGMICDQsiDRgdC70YPRh9Cw0LUg0YHQstC+0LXQuSDQsdC10LfRg9GB0LvQvtCy0L3QvtC5INCy0LjQvdGLINC30LAg0LLQt9GP0YLQvtC1INCy0L3QsNC10Lwg0LjQu9C4INC/0L7Qu9GM0LfQvtCy0LDQvdC40LUg0LTQsNC90L3QvtC1INC20LjQu9C+0LUg0L/QvtC80LXRidC10L3QuNC1INC4INC30LAg0LLRgdC1INCy0L7Qt9C80L7QttC90YvQtSDQv9C+0YHQu9C10LTRgdGC0LLQuNGPINC90LDRgdGC0L7Rj9GJ0LXQs9C+INC90LDQudC80LAg0LjQu9C4INC/0L7Qu9GM0LfQvtCy0LDQvdC40Y8sINC40YHQutC70Y7Rh9Cw0Y8g0L/RgNC4INGN0YLQvtC8INGE0L7RgNGBLdC80LDQttC+0YDQvdGL0LUg0L7QsdGB0YLQvtGP0YLQtdC70YzRgdGC0LLQsCwg0LLQvtC30L3QuNC60YjQuNC1INCyINGB0L7QvtGC0LLQtdGC0YHRgtCy0LjQuCDRgSDQvy4gNS4yOwrQn9GA0LjQvdGP0YLRjCDQvdCwINGB0LXQsdGPINC/0L7Qu9C90YPRjiDQvNCw0YLQtdGA0LjQsNC70YzQvdGD0Y4g0L7RgtCy0LXRgtGB0YLQstC10L3QvdC+0YHRgtGMINC30LAg0LLRgdC1INC/0LXRgNC10LTQsNC90L3QvtC1INC10LzRgyDQuNC80YPRidC10YHRgtCy0L4sINC90LDRhdC+0LTRj9GJ0LXQtdGB0Y8g0LIg0L/QvtC80LXRidC10L3QuNC4LCDRgdC+0LTQtdGA0LbQsNGC0Ywg0LXQs9C+INCyINC40YHQv9GA0LDQstC90L7RgdGC0Lgg0Lgg0YfQuNGB0YLQvtGC0LUuIArQodC+0LHQu9GO0LTQsNGC0Ywg0L/RgNCw0LLQuNC70LAg0L/QvtC20LDRgNC90L7QuSDQsdC10LfQvtC/0LDRgdC90L7RgdGC0Lg7ICAKCjMuINCf0JvQkNCi0JXQltCYINCYINCg0JDQodCn0JXQotCrCgozLjEuINCc0LXRgdGP0YfQvdCw0Y8g0L7Qv9C70LDRgtCwINC30LAg0LjRgdC/0L7Qu9GM0LfQvtCy0LDQvdC40LUg0L/QvtC80LXRidC10L3QuNGPINGB0L7RgdGC0LDQstC70Y/QtdGCIF9fX19fX19fX19fKF9fX19fX19fX19fX19fX19fX19fX19fX19fX18pIArRgNGD0LHQu9C10Lkg0KDQpCwg0LLRgdC1INGA0LDRgdGH0LXRgtGLINC/0YDQvtC40LfQstC+0LTRj9GC0YHRjyDQsiDRgNGD0LHQu9GP0YUg0KDQpC4KMy4yLiDQkiDQtNCw0LvRjNC90LXQudGI0LXQvCDQvtC/0LvQsNGC0LAg0LHRg9C00LXRgiDQv9GA0L7QuNC30LLQvtC00LjRgtGM0YHRjyDQtdC20LXQvNC10YHRj9GH0L3Qviwg0LTQsNC70LXQtSDQvdC1INC/0L7Qt9C00L3QtdC1X19fXyDRh9C40YHQu9CwINC60LDQttC00L7Qs9C+INGC0LXQutGD0YnQtdCz0L4g0LzQtdGB0Y/RhtCwLiAKMy4zLiDQkiDQutCw0YfQtdGB0YLQstC1INCz0LDRgNCw0L3RgtC40LnQvdC+0LPQviDQv9C70LDRgtC10LbQsCAo0LfQsNC70L7Qs9CwKSwg0J3QsNC90LjQvNCw0YLQtdC70LXQvCDQstC90LXRgdC10L3QsCDRgdGD0LzQvNCwINCyINGA0LDQt9C80LXRgNC1IApfX19fX19fX19fX18oX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXykg0YDRg9Cx0LvQtdC5INCg0KQuCjMuMy4xLiDQk9Cw0YDQsNC90YLQuNC50L3Ri9C8INC/0LvQsNGC0LXQttC+0LwgKNC30LDQu9C+0LPQvtC8KSDRgdGH0LjRgtCw0YLRjCAo0LvQuNGI0L3QtdC1INCy0YvRh9C10YDQutC90YPRgtGMKToKICAgICAgICAgICAtINCQ0LLQsNC90YHQuNGA0YPQtdC80LDRjyAg0LDRgNC10L3QtNC90LDRjyAg0L/Qu9Cw0YLQsCDQsiDQutCw0YfQtdGB0YLQstC1INC/0L7RgdC70LXQtNC90LXQs9C+INC80LXRgdGP0YbQsCDQv9GA0L7QttC40LLQsNC90LjRjyDQv9GA0Lgg0YHQvtCx0LvRjtC00LXQvdC40Lgg0J3QsNC90LjQvNCw0YLQtdC70LXQvCDQvy4gMS40OyAyLjI7IDMuNzsgMy44OyAzLjkuCiAgICAgICAgICAgLSDQodGC0YDQsNGF0L7QstC+0Lkg0LTQtdC/0L7Qt9C40YIsINCy0L7Qt9Cy0YDQsNGJ0LDQtdC80YvQuSDQndCw0LnQvNC+0LTQsNGC0LXQu9C10Lwg0L/QviDQuNGB0YLQtdGH0LXQvdC40Lgg0YHRgNC+0LrQsCDQv9GA0L7QttC40LLQsNC90LjRjyDQv9GA0Lgg0YHQvtCx0LvRjtC00LXQvdC40Lgg0J3QsNC90LjQvNCw0YLQtdC70LXQvCDQvy4gMS40OyAyLjI7IDMuNzsgMy44OyAzLjkuCjMuNC4g0J3QsCDQvNC+0LzQtdC90YIg0L/QvtC00L/QuNGB0LDQvdC40Y8g0L3QsNGB0YLQvtGP0YnQtdCz0L4g0JTQvtCz0L7QstC+0YDQsCwg0J3QsNC90LjQvNCw0YLQtdC70Ywg0L/QtdGA0LXQtNCw0Lsg0J3QsNC50LzQvtC00LDRgtC10LvRjiDRgdGD0LzQvNGDINCyINGA0LDQt9C80LXRgNC1IF9fX19fX19fX19fXyhfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXykg0YDRg9Cx0LvQtdC5INCg0KQuIAozLjUuINCg0LDQt9C80LXRgCDQsNGA0LXQvdC00L3QvtC5INC/0LvQsNGC0Ysg0L3QtSDQv9C+0LTQu9C10LbQuNGCINC40LfQvNC10L3QtdC90LjRjiDQsdC10Lcg0L/QuNGB0YzQvNC10L3QvdC+0LPQviDRgdC+0LPQu9Cw0YjQtdC90LjRjyDQvtCx0LXQuNGFINGB0YLQvtGA0L7QvS4gCjMuNi4g0JrQvtC80LzRg9C90LDQu9GM0L3Ri9C1INC/0LvQsNGC0LXQttC4INC+0YHRg9GJ0LXRgdGC0LLQu9GP0LXRgiBfX19fX19fX19fX19fX19fXy4gCjMuNy4g0J7Qv9C70LDRgtGDINC80LXQttC00YPQs9C+0YDQvtC00L3QuNGFLCDQvNC10LbQtNGD0L3QsNGA0L7QtNC90YvRhSwgINC80L7QsdC40LvRjNC90YvRhSDRgtC10LvQtdGE0L7QvdC90YvRhSDQv9C10YDQtdCz0L7QstC+0YDQvtCyLCDQuNC90YvRhSDQv9C70LDRgtC90YvRhSDRg9GB0LvRg9CzINGC0LXQu9C10YTQvtC90L3QvtC5INGB0LLRj9C30LgsINCyINGC0L7QvCDRh9C40YHQu9C1INC40L3RgtC10YDQvdC10YLQsCDQvtC/0LvQsNGH0LjQstCw0LXRgiBfX19fX19fX19fX19fX19fXy4KMy44LiDQkNCx0L7QvdC10L3RgtGB0LrRg9GOINC/0LvQsNGC0YMg0LfQsCDQuNGB0L/QvtC70YzQt9C+0LLQsNC90LjQtSDRgtC10LvQtdGE0L7QvdC90L7QuSDQu9C40L3QuNC4INC+0L/Qu9Cw0YfQuNCy0LDQtdGCIF9fX19fX19fX19fX19fX19fX19fX19fCjMuOC4xLiDQkNCx0L7QvdC10L3RgtGB0LrRg9GOINC/0LvQsNGC0YMg0LfQsCDQstC90YPRgtGA0LjRgdC10YLQtdCy0YvQtSDRgtC10LvQtdGE0L7QvdC90YvQtSDRgdC+0LXQtNC40L3QtdC90LjRjyDRgdC+0LPQu9Cw0YHQvdC+INGD0YHRgtCw0L3QvtCy0LvQtdC90L3QvtC80YMg0YLQsNGA0LjRhNGDINC4INCy0YvRgdGC0LDQstC70LXQvdC90L7QvNGDINGB0YfQtdGC0YMgINC+0L/Qu9Cw0YfQuNCy0LDQtdGCICBfX19fX19fX19fX19fX19fX19fX19fXwozLjkuICDQrdC70LXQutGC0YDQvtGN0L3QtdGA0LPQuNGOINC+0L/Qu9Cw0YfQuNCy0LDQtdGCIF9fX19fX19fX19fX19fX19fCgo0LiDQntCi0JLQldCi0KHQotCS0JXQndCd0J7QodCi0Kwg0KHQotCe0KDQntCdCsKgCjQuMS4g0J/RgNC4INC00L7RgdGA0L7Rh9C90L7QvCDQv9GA0LXQutGA0LDRidC10L3QuNC4INC90LDQudC80LAg0Lgg0YDQsNGB0YLQvtGA0LbQtdC90LjQuCDQvdCw0YHRgtC+0Y/RidC10LPQviDQlNC+0LPQvtCy0L7RgNCwLCDQutCw0LbQtNCw0Y8g0YHRgtC+0YDQvtC90LAg0L7QsdGP0LfQsNC90LAg0L/RgNC10LTRg9C/0YDQtdC00LjRgtGMINC00YDRg9Cz0YPRjiDRgdGC0L7RgNC+0L3RgyDQvdC1INC/0L7Qt9C00L3QtdC1LCDRh9C10Lwg0LfQsCBfX19fX19fXyhfX19fX19fX18pINC60LDQu9C10L3QtNCw0YDQvdGL0YUg0LTQvdC10Lkg0LTQviDQtNCw0YLRiyDQv9GA0LXQtNC/0L7Qu9Cw0LPQsNC10LzQvtCz0L4g0L/RgNC10LrRgNCw0YnQtdC90LjRjyDQvdCw0LnQvNCwLiAKNC4yLiDQlNC+0YHRgNC+0YfQvdC+0LUg0L/RgNC10LrRgNCw0YnQtdC90LjQtSDQvdCw0LnQvNCwINC4INGA0LDRgdGC0L7RgNC20LXQvdC40LUg0LTQsNC90L3QvtCz0L4g0JTQvtCz0L7QstC+0YDQsCDQstC+0LfQvNC+0LbQvdC+INCyINGB0LvRg9GH0LDRj9GFINC90LDRgNGD0YjQtdC90LjRjyDQndCw0LnQvNC+0LTQsNGC0LXQu9C10Lwg0LjQu9C4INCd0LDQvdC40LzQsNGC0LXQu9C10Lwg0YHQstC+0LjRhSDQvtCx0Y/Qt9Cw0YLQtdC70YzRgdGC0LIg0L/QviDQvdCw0YHRgtC+0Y/RidC10LzRgyDQlNC+0LPQvtCy0L7RgNGDLiAKNC4zLiDQkiDRgdC70YPRh9Cw0LUg0LTQvtGB0YDQvtGH0L3QvtCz0L4g0YDQsNGB0YLQvtGA0LbQtdC90LjRjyDQvdCw0YHRgtC+0Y/RidC10LPQviDQlNC+0LPQvtCy0L7RgNCwINC/0L4g0LjQvdC40YbQuNCw0YLQuNCy0LUg0J3QsNC50LzQvtC00LDRgtC10LvRjywg0YDQsNC90L3QtdC1INGD0LrQsNC30LDQvdC90L7Qs9C+INGB0YDQvtC60LAg0LjRgdGC0LXRh9C10L3QuNGPLCDQsiDRgdC40LvRgyDQtdCz0L4g0LvQuNGH0L3Ri9GFLCDQvdC10L/RgNC10LTQstC40LTQtdC90L3Ri9GFINC+0LHRgdGC0L7Rj9GC0LXQu9GM0YHRgtCyLCDQvdC+INC/0YDQuCDRgdC+0LHQu9GO0LTQtdC90LjQuCDQndCw0L3QuNC80LDRgtC10LvQtdC8INCy0YHQtdGFINC10LPQviDQvtCx0Y/Qt9Cw0YLQtdC70YzRgdGC0LIsINGD0LrQsNC30LDQvdC90YvRhSDQsiDQv9GD0L3QutGC0LDRhSAxLjQ7IDIuMjsgMy4yOyAzLjc7IDMuODsgMy45LCDQndCw0LnQvNC+0LTQsNGC0LXQu9GMINC+0LHRj9C30YPQtdGC0YHRjyDQstC10YDQvdGD0YLRjCDQndCw0L3QuNC80LDRgtC10LvRjiDRh9Cw0YHRgtGMINGA0LDQvdC10LUg0LLQvdC10YHQtdC90L3QvtC5INC+0L/Qu9Cw0YLRiyDQv9C+0LvRjNC30L7QstCw0L3QuNGPINC20LjQu9GL0Lwg0L/QvtC80LXRidC10L3QuNC10Lwg0LfQsCDRhNCw0LrRgtC40YfQtdGB0LrQuCDQvdC10L/RgNC+0LbQuNGC0L7QtSDQstGA0LXQvNGPLCAg0LAg0YLQsNC60LbQtSAg0LfQsNC70L7QsyAo0L8uIDMuMyksINC/0YDQuCDRjdGC0L7QvCDQndCw0LnQvNC+0LTQsNGC0LXQu9GMINC+0LHRj9C30LDQvSDQv9GA0LXQtNC+0YHRgtCw0LLQuNGC0Ywg0J3QsNC90LjQvNCw0YLQtdC70Y4g0L/RgNC+0LbQuNCy0LDRgtGMICDQsiDQutCy0LDRgNGC0LjRgNC1INCyINGC0LXRh9C10L3QuNC1INC/0Y/RgtC90LDQtNGG0LDRgtC4INC60LDQu9C10L3QtNCw0YDQvdGL0YUg0LTQvdC10Lkg0YHQstC10YDRhSDQvtC/0LvQsNGH0LXQvdC90L7Qs9C+INC/0LXRgNC40L7QtNCwINC90LAg0LHQtdC30LLQvtC30LzQtdC30LTQvdC+0Lkg0L7RgdC90L7QstC1Lgo0LjQuINCSINGB0LvRg9GH0LDQtSDQtNC+0YHRgNC+0YfQvdC+0LPQviDRgNCw0YHRgtC+0YDQttC10L3QuNGPINC90LDRgdGC0L7Rj9GJ0LXQs9C+INCU0L7Qs9C+0LLQvtGA0LAg0L/QviDQuNC90LjRhtC40LDRgtC40LLQtSDQndCw0L3QuNC80LDRgtC10LvRjywg0L3QviDQv9GA0Lgg0YHQvtCx0LvRjtC00LXQvdC40Lgg0J3QsNC50LzQvtC00LDRgtC10LvQtdC8INCy0YHQtdGFINC10LPQviDQvtCx0Y/Qt9Cw0YLQtdC70YzRgdGC0LIsINGD0LrQsNC30LDQvdC90YvRhSDQsiDQv9GD0L3QutGC0LDRhcKgIDEuNDsgMi4xO8KgMy41LCDQsNCy0LDQvdGB0LjRgNGD0LXQvNCw0Y8g0LDRgNC10L3QtNC90LDRjyDQv9C70LDRgtCwLCDQt9CwINC90LXQv9GA0L7QttC40YLRi9C1LCDQv9GA0LXQtNC+0L/Qu9Cw0YfQtdC90L3Ri9C1wqDQtNC90Lgg0J3QsNC90LjQvNCw0YLQtdC70Y4g0L3QtSDQstC+0LfQstGA0LDRidCw0LXRgtGB0Y8uCjQuNS4g0JfQsCDQvdC10YHQstC+0LXQstGA0LXQvNC10L3QvdGD0Y4g0L7Qv9C70LDRgtGDINC90LDQudC80LAg0J3QsNC90LjQvNCw0YLQtdC70Ywg0L7Qv9C70LDRh9C40LLQsNC10YIg0L/QtdC90Lgg0LjQtyDRgNCw0YHRh9C10YLQsCBfXyhfXyklINC+0YIg0L/RgNC+0YHRgNC+0YfQtdC90L3QvtC5INGB0YPQvNC80Ysg0LfQsCDQutCw0LbQtNGL0Lkg0LTQtdC90Ywg0L/RgNC+0YHRgNC+0YfQutC4LiDQkiDRgdC70YPRh9Cw0LUg0L/RgNC+0YHRgNC+0YfQutC4INC+0L/Qu9Cw0YLRiyDQsdC+0LvQtdC1INC00LXRgdGP0YLQuCDQtNC90LXQuSDQndCw0LnQvNC+0LTQsNGC0LXQu9GMINC40LzQtdC10YIg0L/RgNCw0LLQviDRgNCw0YHRgtC+0YDQs9C90YPRgtGMINCU0L7Qs9C+0LLQvtGAINCyINC+0LTQvdC+0YHRgtC+0YDQvtC90L3QtdC8INC/0L7RgNGP0LTQutC1CjQuNi4g0KHRgtC+0YDQvtC90Ysg0L/RgNC+0LjQt9Cy0LXQu9C4INCy0LfQsNC40LzQvdGD0Y4g0L/RgNC+0LLQtdGA0LrRgyDQu9C40YfQvdGL0YUg0LTQvtC60YPQvNC10L3RgtC+0LIg0Lgg0LTQvtC60YPQvNC10L3RgtC+0LIsINC/0L7QtNGC0LLQtdGA0LbQtNCw0Y7RidC40YUg0L/RgNCw0LLQviDRgNCw0YHQv9C+0YDRj9C20LDRgtGM0YHRjyDQtNCw0L3QvdC+0Lkg0LrQstCw0YDRgtC40YDQvtC5LiAKNC43LiDQndCw0LnQvNC+0LTQsNGC0LXQu9GMINC/0L7QtNGC0LLQtdGA0LbQtNCw0LXRgiDRgdC+0LPQu9Cw0YHQuNC1INC70LjRhiwg0L/RgNC+0L/QuNGB0LDQvdC90YvRhSDQuNC70Lgg0LjQvNC10Y7RidC40YUg0L/RgNCw0LLQviDRgNCw0YHQv9C+0YDRj9C20LDRgtGM0YHRjyDQtNCw0L3QvdC+0Lkg0LrQstCw0YDRgtC40YDQvtC5INGBINGD0YHQu9C+0LLQuNGP0LzQuCDQvdCw0YHRgtC+0Y/RidC10LPQviDQlNC+0LPQvtCy0L7RgNCwLCDQsCDRgtCw0Log0LbQtSwg0YfRgtC+INC00LDQvdC90L7QtSDQv9C+0LzQtdGJ0LXQvdC40LUg0L3QtSDQv9GA0L7QtNCw0L3Qviwg0L3QtSDQt9Cw0LvQvtC20LXQvdC+LCDQvdC1INGP0LLQu9GP0LXRgtGB0Y8g0L/RgNC10LTQvNC10YLQvtC8INGB0YPQtNC10LHQvdC+0LPQviDRgdC/0L7RgNCwINC4INC90LUg0L3QsNGF0L7QtNC40YLRgdGPINC/0L7QtCDQsNGA0LXRgdGC0L7QvC4gCjQuOC7QodGC0L7RgNC+0L3RiyDQv9C+0LTRgtCy0LXRgNC20LTQsNGO0YIsINGH0YLQviDQvtC30L3QsNC60L7QvNC70LXQvdGLINGB0L4g0LLRgdC10LzQuCDRg9GB0LvQvtCy0LjRj9C80Lgg0L3QsNGB0YLQvtGP0YnQtdCz0L4g0JTQvtCz0L7QstC+0YDQsCwg0L/QvtC70L3QvtGB0YLRjNGOINGB0L7Qs9C70LDRgdC90Ysg0YEg0L3QuNC80Lgg0Lgg0LvQuNGH0L3QviDQvdC10YHRg9GCINC+0YLQstC10YLRgdGC0LLQtdC90L3QvtGB0YLRjCDQt9CwINC40YUg0YHQvtCx0LvRjtC00LXQvdC40LUuIAoKNS4g0J7QodCe0JHQq9CVINCj0KHQm9Ce0JLQmNCvCgo1LjEuINCf0YDQuCDQstC+0LfQvdC40LrQvdC+0LLQtdC90LjQuCDRgdC/0L7RgNC90YvRhSDRgdC40YLRg9Cw0YbQuNC5LCDQvdC1INC/0YDQtdC00YPRgdC80L7RgtGA0LXQvdC90YvRhSDRg9GB0LvQvtCy0LjRj9C80Lgg0L3QsNGB0YLQvtGP0YnQtdCz0L4g0JTQvtCz0L7QstC+0YDQsCwg0J3QsNC50LzQvtC00LDRgtC10LvRjCDQuCDQndCw0L3QuNC80LDRgtC10LvRjCDRgNC10YjQsNGO0YIg0LjRhSDRgdCw0LzQvtGB0YLQvtGP0YLQtdC70YzQvdC+INC/0YPRgtC10Lwg0L7QsdC+0Y7QtNC90L7QuSDQtNC+0LPQvtCy0L7RgNC10L3QvdC+0YHRgtC4INC40LvQuCDQsiDRg9GB0YLQsNC90L7QstC70LXQvdC90L7QvCDQt9Cw0LrQvtC90L7QvCDQv9C+0YDRj9C00LrQtS4gCjUuMi4g0J/RgNC4INCy0L7Qt9C90LjQutC90L7QstC10L3QuNC4INGE0L7RgNGBLdC80LDQttC+0YDQvdGL0YUg0L7QsdGB0YLQvtGP0YLQtdC70YzRgdGC0LIsINCwINC40LzQtdC90L3Qvjog0LLQstC10LTQtdC90LjQtSDQstC+0LXQvdC90L7Qs9C+INC70LjQsdC+INGH0YDQtdC30LLRi9GH0LDQudC90L7Qs9C+INC/0L7Qu9C+0LbQtdC90LjRjywg0YHRgtC40YXQuNC50L3Ri9C1INCx0LXQtNGB0YLQstC40Y8sINC40LfQvNC10L3QtdC90LjRjyDQsiDQtNC10LnRgdGC0LLRg9GO0YnQtdC8INC30LDQutC+0L3QvtC00LDRgtC10LvRjNGB0YLQstC1LCDQtNC10LvQsNGO0YnQuNGFINC90LXQstC+0LfQvNC+0LbQvdGL0Lwg0LjRgdC/0L7Qu9C90LXQvdC40LUg0YHRgtC+0YDQvtC90LDQvNC4INC+0LHRj9C30LDRgtC10LvRjNGB0YLQsiDQv9C+INC90LDRgdGC0L7Rj9GJ0LXQvNGDINCU0L7Qs9C+0LLQvtGA0YMg0LjQu9C4INGB0YPRidC10YHRgtCy0LXQvdC90L4g0LLQu9C40Y/RjtGJ0LjRhSDQvdCwINC40YUg0LjRgdC/0L7Qu9C90LXQvdC40LUsINCwINGC0LDQutC20LUg0LTQtdC50YHRgtCy0LjQtSDQuNC90L7QuSDQvdC10L/RgNC10L7QtNC+0LvQuNC80L7QuSDRgdC40LvRiywg0YHRgtC+0YDQvtC90Ysg0L3QtSDQvdC10YHRg9GCINC+0YLQstC10YLRgdGC0LLQtdC90L3QvtGB0YLQuCDQt9CwINC40YHQv9C+0LvQvdC10L3QuNC1INGB0LLQvtC40YUg0L7QsdGP0LfQsNGC0LXQu9GM0YHRgtCyINC/0L4g0L3QsNGB0YLQvtGP0YnQtdC80YMg0JTQvtCz0L7QstC+0YDRgy4KNS4zLiDQn9C10YDQtdGH0LjRgdC70LXQvdC90YvQtSDQsiDQv9GD0L3QutGC0LUgMS4zLiDQvdCw0YHRgtC+0Y/RidC10LPQviDQlNC+0LPQvtCy0L7RgNCwINC70LjRhtCwLCDQv9GA0L7QttC40LLQsNGO0YnQuNC1INGB0L7QstC80LXRgdGC0L3QviDRgSDQndCw0L3QuNC80LDRgtC10LvQtdC8LCDQvdC10YHRg9GCINCy0YHQtSDQvtCx0Y/Qt9Cw0L3QvdC+0YHRgtC4INC/0L4g0LXQs9C+INC40YHQv9C+0LvQvdC10L3QuNGOINC90LDRgNCw0LLQvdC1INGBINCd0LDQvdC40LzQsNGC0LXQu9C10LwuCjUuNC4g0J3QsNGB0YLQvtGP0YnQuNC5INCU0L7Qs9C+0LLQvtGAINGB0L7RgdGC0LDQstC70LXQvSDQsiBfX18oX19fKSDRjdC60LfQtdC80L/Qu9GP0YDQsNGFLCDQuNC80LXRjtGJ0LjRhSDQvtC00LjQvdCw0LrQvtCy0YPRjiDRjtGA0LjQtNC40YfQtdGB0LrRg9GOINGB0LjQu9GDLCDQv9C+INC+0LTQvdC+0LzRgyDQtNC70Y8g0LrQsNC20LTQvtC5INC40Lcg0YHRgtC+0YDQvtC9LgoKNi4g0JTQntCf0J7Qm9Cd0JjQotCV0JvQrNCd0KvQlSDQo9Ch0JvQntCS0JjQrwpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18gCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXyAKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fIAoKNy4g0J/QntCU0J/QmNCh0Jgg0KHQotCe0KDQntCdCgrigJzQndCw0L3QuNC80LDRgtC10LvRjOKAnQoKB+KAnNCd0LDQudC80L7QtNCw0YLQtdC70YzigJ0KBwoH0KTQmNCeOl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwrQn9Cw0YHQv9C+0YDRgjpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwrQktGL0LTQsNC9Ol9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCtCX0LDRgNC10LPQuNGB0YLRgNC40YDQvtCy0LDQvSDQv9C+INCw0LTRgNC10YHRgzpfX19fX19fX19fX19fX18gX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K0KLQtdC70LXRhNC+0L1fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K0J/QvtC00L/QuNGB0YwKB9Ck0JjQnjpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K0J/QsNGB0L/QvtGA0YI6X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K0JLRi9C00LDQvTpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCtCX0LDRgNC10LPQuNGB0YLRgNC40YDQvtCy0LDQvSDQv9C+INCw0LTRgNC10YHRgzpfX19fX19fX19fX19fX18gX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K0KLQtdC70LXRhNC+0L1fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwrQn9C+0LTQv9C40YHRjAoHCgcKDNCf0YDQuNC70L7QttC10L3QuNC1IOKEll9fINC6INC00L7Qs9C+0LLQvtGA0YMg0L3QsNC50LzQsCDQutCy0LDRgNGC0LjRgNGLIOKEliBfX18gKF9fX19fX19fX19fX19fXyksIArRgNCw0YHQv9C+0LvQvtC20LXQvdC90L7QuSDQv9C+INCw0LTRgNC10YHRgzoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXyAK0LQuIF9fX19fX19fXywg0LrQvtGA0L8uIF9fX18gLCDQvtGCICDCq19fX19fwrtfX19fX19fX19fX19fX18gMjBfX19f0LMuCgoK0JDQmtCiINCf0JXQoNCV0JTQkNCn0Jgg0JjQnNCj0KnQldCh0KLQktCQCgrQndCw0LnQvNC+0LTQsNGC0LXQu9GMINC/0LXRgNC10LTQsNC10YIsINCwINCd0LDQvdC40LzQsNGC0LXQu9GMINC/0YDQuNC90LjQvNCw0LXRgiDQmtCy0LDRgNGC0LjRgNGDINGBINC90LDRhdC+0LTRj9GJ0LjQvNGB0Y8g0LIg0L3QtdC5INC40LzRg9GJ0LXRgdGC0LLQvtC8ICjQvdGD0LbQvdC+0LUg0L/QvtC00YfQtdGA0LrQvdGD0YLRjCk6CtC/0L4g0YHQvtCz0LvQsNGB0L7QstCw0L3QuNGOINGB0YLQvtGA0L7QvSDQvtC/0LjRgdGMINC40LzRg9GJ0LXRgdGC0LLQsCDQvdC1INGB0L7RgdGC0LDQstC70Y/Qu9Cw0YHRjCwgCtCa0LLQsNGA0YLQuNGA0LAg0YHQtNCw0LXRgtGB0Y8g0LHQtdC3INC80LXQsdC10LvQuCwgIArQsiAg0L7Qv9C40YHRjCAgINCy0LrQu9GO0YfQtdC90L46Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fIArQndCw0LnQvNC+0LTQsNGC0LXQu9GMINC/0LXRgNC10LTQsNC10YIsINCwINCd0LDQvdC40LzQsNGC0LXQu9GMINC/0YDQuNC90LjQvNCw0LXRgiDQmtCy0LDRgNGC0LjRgNGDINGB0L4g0YHQu9C10LTRg9GO0YnQuNC80Lgg0L/QvtC60LDQt9Cw0YLQtdC70Y/QvNC4OgrQn9C+0LrQsNC30LDQvdC40Y8g0Y3Qu9C10LrRgtGA0L7RgdGH0LXRgtGH0LjQutCwINC90LAg0LzQvtC80LXQvdGCINC/0LXRgNC10LTQsNGH0Lg6IArQlNC90LXQstC90L7QuSDRgtCw0YDQuNGEIC0gX19fX19fX19fX19fX19fX18g0J3QvtGH0L3QvtC5INGC0LDRgNC40YQgLSBfX19fX19fX19fX19fX19fXwrQn9C+0LrQsNC30LDQvdC40Y8g0YHRh9C10YLRh9C40LrQsCDQstC+0LTRiyDQvdCwINC80L7QvNC10L3RgiDQv9C10YDQtdC00LDRh9C4OiAgICAgCiAgICAgICAg0JPQvtGA0Y/Rh9Cw0Y8g0LLQvtC00LAgLSBfX19fX19fX19fX19fX19fXyDQpdC+0LvQvtC00L3QsNGPINCy0L7QtNCwIC0gX19fX19fX19fX19fX19fX18K0KHQsNC90YLQtdGF0L3QuNGH0LXRgdC60L7QtSDQvtCx0L7RgNGD0LTQvtCy0LDQvdC40LUgKNC90YPQttC90L7QtSDQv9C+0LTRh9C10YDQutC90YPRgtGMKTogCtC40YHQv9GA0LDQstC90L4sIArRgtGA0LXQsdGD0LXRgiDRgNC10LzQvtC90YLQsCDQuNC70Lgg0LfQsNC80LXQvdGLLArQtNGA0YPQs9C+0LUKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwrQrdC70LXQutGC0YDQvtC/0YDQvtCy0L7QtNC60LAg0Lgg0L7QsdC+0YDRg9C00L7QstCw0L3QuNC1ICjQvdGD0LbQvdC+0LUg0L/QvtC00YfQtdGA0LrQvdGD0YLRjCk6IArQuNGB0L/RgNCw0LLQvdC+LCAK0YLRgNC10LHRg9C10YIg0YDQtdC80L7QvdGC0LAg0LjQu9C4INC30LDQvNC10L3RiywK0LTRgNGD0LPQvtC1Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K0KLQtdC70LXRhNC+0L3QvdGL0Lkg0LrQsNCx0LXQu9GMINC4INGC0LXQuy4g0YDQvtC30LXRgtC60LggKNC90YPQttC90L7QtSDQv9C+0LTRh9C10YDQutC90YPRgtGMKTogCtC40YHQv9GA0LDQstC90L4sIArQvtGC0YHRg9GC0YHRgtCy0YPQtdGCLArRgtGA0LXQsdGD0LXRgiDRgNC10LzQvtC90YLQsCDQuNC70Lgg0LfQsNC80LXQvdGLLArQtNGA0YPQs9C+0LUKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwrQotC10LvQtdCy0LjQt9C40L7QvdC90YvQuSDQutCw0LHQtdC70YwgKNC90YPQttC90L7QtSDQv9C+0LTRh9C10YDQutC90YPRgtGMKTogCtC40YHQv9GA0LDQstC90L4sIArQvtGC0YHRg9GC0YHRgtCy0YPQtdGCLArRgtGA0LXQsdGD0LXRgiDRgNC10LzQvtC90YLQsCDQuNC70Lgg0LfQsNC80LXQvdGLLArQtNGA0YPQs9C+0LUKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwrQntCx0YnQtdC1INGB0L7RgdGC0L7Rj9C90LjQtSDQmtCy0LDRgNGC0LjRgNGLICjQvdGD0LbQvdC+0LUg0L/QvtC00YfQtdGA0LrQvdGD0YLRjCk6IArRgdCy0LXQttC40Lkg0YDQtdC80L7QvdGCLCAK0L3QtSDRgtGA0LXQsdGD0LXRgiDRgNC10LzQvtC90YLQsCwgCtGB0L7QvtGC0LLQtdGC0YHRgtCy0YPQtdGCINGB0LDQvdC40YLQsNGA0L3Ri9C8INC90L7RgNC80LDQvCwK0YLRgNC10LHRg9C10YIg0YDQtdC80L7QvdGC0LAsCtC00YDRg9Cz0L7QtSAgCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwrQndCw0LnQvNC+0LTQsNGC0LXQu9GMINC/0LXRgNC10LTQsNC10YIsINCwINCd0LDQvdC40LzQsNGC0LXQu9GMINC/0YDQuNC90LjQvNCw0LXRgiBfX19fX19fKF9fX18pINC/0L7Qu9C90YvRhSDQutC+0LzQv9C70LXQutGC0L7QsiDQutC70Y7Rh9C10Lkg0L7RgiDQmtCy0LDRgNGC0LjRgNGLLgoKCtCd0LDQvdC40LzQsNGC0LXQu9GMICjQpC7QmC7Qni4pIF9fX19fX19fX19fX18K0J/QvtC00L/QuNGB0YwgX19fX19fX19fX18KB9Cd0LDQudC80L7QtNCw0YLQtdC70YwgKNCkLtCYLtCeLikgX19fX19fX19fX19fXwrQn9C+0LTQv9C40YHRjCBfX19fX19fX19fXwoHCgcKCgoKCg0K",
+    "mime_type": "text/plain",
+    "language": "ru",
+    "locale": "ru"
+  },
+  "ingestion_preflight": {
+    "mime_type": "text/plain",
+    "extractor": "binary:utf8_decode",
+    "extraction_source": "binary:utf8_decode",
+    "extraction_ok": true,
+    "error": null,
+    "extraction_error": null,
+    "sha256": "e283c9a9c5aef2f03ab6f81ef30967da33d16095c79c43c98700fd7264293e3b"
+  },
+  "metrics": {
+    "risk_count": 3,
+    "high_risk_count": 3,
+    "disputed_clause_count": 2,
+    "asymmetry_signal_count": 0,
+    "contract_type": "lease_agreement"
+  },
+  "analysis": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "local_first",
+      "offline_capable": true,
+      "network_required": false,
+      "policy_source": "mime_type:text/plain",
+      "reason": "Mime type документа перевел задачу в более безопасный lightweight/offload режим согласно policy."
+    },
+    "contract_brief": "Договор 'rent. txt' разобран на 24 пунктов. Ниже показано, что действительно важно для роли 'Наниматель'. Определен тип договора: Договор аренды (уверенность 99%, правовая рамка: ГК РФ, глава 34). Что должен Наниматель: НАНИМАТЕЛЬ ОБЯЗУЕТСЯ: ; НАНИМАТЕЛЬ ОБЯЗУЕТСЯ: . Что должен Наймодатель: НАЙМОДАТЕЛЬ ОБЯЗУЕТСЯ: ; 9, Наймодатель обязуется вернуть Нанимателю часть ранее внесенной оплаты пользования жилым помещением за фактически непрожитое время, а также залог (п; 3), при этом Наймодатель обязан предоставить Нанимателю проживать в квартире в течение пятнадцати календарных дней сверх оплаченного периода на безвозмездной основе. . Условия оплаты: ПЛАТЕЖИ И РАСЧЕТЫ; Месячная оплата за использование помещения составляет ___________(____________________________); рублей РФ, все расчеты производятся в рублях РФ. . Сроки и дедлайны: В течение всего срока найма совместно с Нанимателем в квартире будут проживать: ; Срок найма указанного помещения устанавливается с _____ _____________20 ___ г. ; В случае согласия сторон, срок Договора продлевается самостоятельно. . Найдено спорных или расплывчатых пунктов: 2.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "uncapped_daily_penalty",
+        "title": "Критический риск: Ежедневная пеня без верхнего лимита",
+        "severity": "critical",
+        "clause_id": "clause-13",
+        "description": "Договор содержит ежедневную пеню, но не ограничивает ее общий размер или период начисления. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: 4. 1. При досрочном прекращении найма и расторжении настоящего Договора, каждая сторона обязана предупредить другую сторону не позднее, чем за ________(_________) календарных дней до даты предполагаемого прекращения найма.\n4. 2. Досрочное прекращение найма и расторжение данного Договора возможно в случаях нарушения Наймодателем или Нанимателем своих обязательств по настоящему Договору.\n4. 3.",
+        "role_relevance": "Риск потенциально влияет на роль 'Наниматель'. Наиболее вероятный конфликт интересов со стороной 'Наймодатель'.",
+        "mitigation": "Установите cap по общей сумме неустойки и предельный период начисления."
+      },
+      {
+        "risk_id": "risk-2",
+        "rule_id": "retention_or_deposit_discretion",
+        "title": "Высокий риск: Удержание депозита или обеспечительного платежа по усмотрению одной стороны",
+        "severity": "high",
+        "clause_id": "clause-11",
+        "description": "Возврат депозита или обеспечения зависит от односторонней оценки арендодателя, заказчика или принципала. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: 3. 1. Месячная оплата за использование помещения составляет ___________(____________________________)\nрублей РФ, все расчеты производятся в рублях РФ.\n3. 2. В дальнейшем оплата будет производиться ежемесячно, далее не позднее____ числа каждого текущего месяца.\n3. 3. В качестве гарантийного платежа (залога), Нанимателем внесена сумма в размере\n____________(_________________________________________________) рублей РФ.\n3. 3. 1.",
+        "role_relevance": "Риск потенциально влияет на роль 'Наниматель'. Наиболее вероятный конфликт интересов со стороной 'Наймодатель'.",
+        "mitigation": "Опишите исчерпывающие основания удержания, порядок расчета и срок возврата остатка."
+      },
+      {
+        "risk_id": "risk-3",
+        "rule_id": "operating_expenses_shift",
+        "title": "Высокий риск: Расходы на содержание и ремонт переложены без разграничения",
+        "severity": "high",
+        "clause_id": "clause-11",
+        "description": "Арендатор или подрядчик принимает на себя коммунальные, эксплуатационные и ремонтные расходы без разделения текущего и капитального ремонта. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: 3. 1. Месячная оплата за использование помещения составляет ___________(____________________________)\nрублей РФ, все расчеты производятся в рублях РФ.\n3. 2. В дальнейшем оплата будет производиться ежемесячно, далее не позднее____ числа каждого текущего месяца.\n3. 3. В качестве гарантийного платежа (залога), Нанимателем внесена сумма в размере\n____________(_________________________________________________) рублей РФ.\n3. 3. 1.",
+        "role_relevance": "Риск потенциально влияет на роль 'Наниматель'. Наиболее вероятный конфликт интересов со стороной 'Наймодатель'.",
+        "mitigation": "Разделите типы расходов и закрепите, какие из них покрываются арендной платой, а какие оплачиваются отдельно."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-9",
+        "clause_excerpt": "Использовать данное помещение только по назначению, указанном в пункте 1. 1.\nНе сдавать помещение в субаренду и не передавать права пользования третьим лицам, а также не подселять иных лиц без согласия Наймодателя;\nПолучить письменное разрешение “Наймодателя” на содержание животных в квартире, при этом “Наниматель” несет полную ответственность за ущерб, нанесенный квартире его домашними животными.",
+        "dispute_reason": "Маркер указывает на возможный конфликт между несколькими обязанностями или сроками.",
+        "possible_consequence": "При исполнении может оказаться, что условия невозможно соблюсти одновременно.",
+        "confidence": 0.66
+      },
+      {
+        "clause_id": "clause-13",
+        "clause_excerpt": "4. 1. При досрочном прекращении найма и расторжении настоящего Договора, каждая сторона обязана предупредить другую сторону не позднее, чем за ________(_________) календарных дней до даты предполагаемого прекращения найма.\n4. 2. Досрочное прекращение найма и расторжение данного Договора возможно в случаях нарушения Наймодателем или Нанимателем своих обязательств по настоящему Договору.\n4. 3.",
+        "dispute_reason": "Маркер указывает на возможный конфликт между несколькими обязанностями или сроками.",
+        "possible_consequence": "При исполнении может оказаться, что условия невозможно соблюсти одновременно.",
+        "confidence": 0.66
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Наниматель",
+      "overview": "Договор содержит 24 пунктов и 3 выявленных рисков. Краткий вывод сфокусирован на роли 'Наниматель'. Обнаружено 3 пунктов с высоким уровнем риска; их стоит перепроверить вручную.",
+      "must_do": [
+        "НАНИМАТЕЛЬ ОБЯЗУЕТСЯ: .",
+        "НАНИМАТЕЛЬ ОБЯЗУЕТСЯ: .",
+        "ПРАВА И ОБЯЗАННОСТИ СТОРОН. .",
+        "НАЙМОДАТЕЛЬ ОБЯЗУЕТСЯ: .",
+        "Предоставить указанное помещение Нанимателю с _____ ____________ 20 __ года. .",
+        "Обеспечить свободный доступ Нанимателю в помещение."
+      ],
+      "should_review": [
+        "Конфиг не выявил явных дискреционных условий."
+      ],
+      "payment_terms": [
+        "9, Наймодатель обязуется вернуть Нанимателю часть ранее внесенной оплаты пользования жилым помещением за фактически непрожитое время, а также залог (п.",
+        "За несвоевременную оплату найма Наниматель оплачивает пени из расчета __(__)% от просроченной суммы за каждый день просрочки.",
+        "В случае просрочки оплаты более десяти дней Наймодатель имеет право расторгнуть Договор в одностороннем порядке.",
+        "ПЛАТЕЖИ И РАСЧЕТЫ.",
+        "Месячная оплата за использование помещения составляет ___________(____________________________).",
+        "рублей РФ, все расчеты производятся в рублях РФ. ."
+      ],
+      "deadlines": [
+        "3), при этом Наймодатель обязан предоставить Нанимателю проживать в квартире в течение пятнадцати календарных дней сверх оплаченного периода на безвозмездной основе. .",
+        "В случае просрочки оплаты более десяти дней Наймодатель имеет право расторгнуть Договор в одностороннем порядке.",
+        "В течение всего срока найма совместно с Нанимателем в квартире будут проживать: .",
+        "Срок найма указанного помещения устанавливается с _____ _____________20 ___ г. .",
+        "В случае согласия сторон, срок Договора продлевается самостоятельно. .",
+        "- Страховой депозит, возвращаемый Наймодателем по истечении срока проживания при соблюдении Нанимателем п."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "binary:utf8_decode",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "e283c9a9c5aef2f03ab6f81ef30967da33d16095c79c43c98700fd7264293e3b"
+    },
+    "contract_type": {
+      "type_id": "lease_agreement",
+      "confidence": 0.99,
+      "ru_name": "Договор аренды",
+      "legal_framework": "ГК РФ, глава 34"
+    },
+    "asymmetry_signals": []
+  },
+  "result": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "local_first",
+      "offline_capable": true,
+      "network_required": false,
+      "policy_source": "mime_type:text/plain",
+      "reason": "Mime type документа перевел задачу в более безопасный lightweight/offload режим согласно policy."
+    },
+    "contract_brief": "Договор 'rent. txt' разобран на 24 пунктов. Ниже показано, что действительно важно для роли 'Наниматель'. Определен тип договора: Договор аренды (уверенность 99%, правовая рамка: ГК РФ, глава 34). Что должен Наниматель: НАНИМАТЕЛЬ ОБЯЗУЕТСЯ: ; НАНИМАТЕЛЬ ОБЯЗУЕТСЯ: . Что должен Наймодатель: НАЙМОДАТЕЛЬ ОБЯЗУЕТСЯ: ; 9, Наймодатель обязуется вернуть Нанимателю часть ранее внесенной оплаты пользования жилым помещением за фактически непрожитое время, а также залог (п; 3), при этом Наймодатель обязан предоставить Нанимателю проживать в квартире в течение пятнадцати календарных дней сверх оплаченного периода на безвозмездной основе. . Условия оплаты: ПЛАТЕЖИ И РАСЧЕТЫ; Месячная оплата за использование помещения составляет ___________(____________________________); рублей РФ, все расчеты производятся в рублях РФ. . Сроки и дедлайны: В течение всего срока найма совместно с Нанимателем в квартире будут проживать: ; Срок найма указанного помещения устанавливается с _____ _____________20 ___ г. ; В случае согласия сторон, срок Договора продлевается самостоятельно. . Найдено спорных или расплывчатых пунктов: 2.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "uncapped_daily_penalty",
+        "title": "Критический риск: Ежедневная пеня без верхнего лимита",
+        "severity": "critical",
+        "clause_id": "clause-13",
+        "description": "Договор содержит ежедневную пеню, но не ограничивает ее общий размер или период начисления. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: 4. 1. При досрочном прекращении найма и расторжении настоящего Договора, каждая сторона обязана предупредить другую сторону не позднее, чем за ________(_________) календарных дней до даты предполагаемого прекращения найма.\n4. 2. Досрочное прекращение найма и расторжение данного Договора возможно в случаях нарушения Наймодателем или Нанимателем своих обязательств по настоящему Договору.\n4. 3.",
+        "role_relevance": "Риск потенциально влияет на роль 'Наниматель'. Наиболее вероятный конфликт интересов со стороной 'Наймодатель'.",
+        "mitigation": "Установите cap по общей сумме неустойки и предельный период начисления."
+      },
+      {
+        "risk_id": "risk-2",
+        "rule_id": "retention_or_deposit_discretion",
+        "title": "Высокий риск: Удержание депозита или обеспечительного платежа по усмотрению одной стороны",
+        "severity": "high",
+        "clause_id": "clause-11",
+        "description": "Возврат депозита или обеспечения зависит от односторонней оценки арендодателя, заказчика или принципала. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: 3. 1. Месячная оплата за использование помещения составляет ___________(____________________________)\nрублей РФ, все расчеты производятся в рублях РФ.\n3. 2. В дальнейшем оплата будет производиться ежемесячно, далее не позднее____ числа каждого текущего месяца.\n3. 3. В качестве гарантийного платежа (залога), Нанимателем внесена сумма в размере\n____________(_________________________________________________) рублей РФ.\n3. 3. 1.",
+        "role_relevance": "Риск потенциально влияет на роль 'Наниматель'. Наиболее вероятный конфликт интересов со стороной 'Наймодатель'.",
+        "mitigation": "Опишите исчерпывающие основания удержания, порядок расчета и срок возврата остатка."
+      },
+      {
+        "risk_id": "risk-3",
+        "rule_id": "operating_expenses_shift",
+        "title": "Высокий риск: Расходы на содержание и ремонт переложены без разграничения",
+        "severity": "high",
+        "clause_id": "clause-11",
+        "description": "Арендатор или подрядчик принимает на себя коммунальные, эксплуатационные и ремонтные расходы без разделения текущего и капитального ремонта. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: 3. 1. Месячная оплата за использование помещения составляет ___________(____________________________)\nрублей РФ, все расчеты производятся в рублях РФ.\n3. 2. В дальнейшем оплата будет производиться ежемесячно, далее не позднее____ числа каждого текущего месяца.\n3. 3. В качестве гарантийного платежа (залога), Нанимателем внесена сумма в размере\n____________(_________________________________________________) рублей РФ.\n3. 3. 1.",
+        "role_relevance": "Риск потенциально влияет на роль 'Наниматель'. Наиболее вероятный конфликт интересов со стороной 'Наймодатель'.",
+        "mitigation": "Разделите типы расходов и закрепите, какие из них покрываются арендной платой, а какие оплачиваются отдельно."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-9",
+        "clause_excerpt": "Использовать данное помещение только по назначению, указанном в пункте 1. 1.\nНе сдавать помещение в субаренду и не передавать права пользования третьим лицам, а также не подселять иных лиц без согласия Наймодателя;\nПолучить письменное разрешение “Наймодателя” на содержание животных в квартире, при этом “Наниматель” несет полную ответственность за ущерб, нанесенный квартире его домашними животными.",
+        "dispute_reason": "Маркер указывает на возможный конфликт между несколькими обязанностями или сроками.",
+        "possible_consequence": "При исполнении может оказаться, что условия невозможно соблюсти одновременно.",
+        "confidence": 0.66
+      },
+      {
+        "clause_id": "clause-13",
+        "clause_excerpt": "4. 1. При досрочном прекращении найма и расторжении настоящего Договора, каждая сторона обязана предупредить другую сторону не позднее, чем за ________(_________) календарных дней до даты предполагаемого прекращения найма.\n4. 2. Досрочное прекращение найма и расторжение данного Договора возможно в случаях нарушения Наймодателем или Нанимателем своих обязательств по настоящему Договору.\n4. 3.",
+        "dispute_reason": "Маркер указывает на возможный конфликт между несколькими обязанностями или сроками.",
+        "possible_consequence": "При исполнении может оказаться, что условия невозможно соблюсти одновременно.",
+        "confidence": 0.66
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Наниматель",
+      "overview": "Договор содержит 24 пунктов и 3 выявленных рисков. Краткий вывод сфокусирован на роли 'Наниматель'. Обнаружено 3 пунктов с высоким уровнем риска; их стоит перепроверить вручную.",
+      "must_do": [
+        "НАНИМАТЕЛЬ ОБЯЗУЕТСЯ: .",
+        "НАНИМАТЕЛЬ ОБЯЗУЕТСЯ: .",
+        "ПРАВА И ОБЯЗАННОСТИ СТОРОН. .",
+        "НАЙМОДАТЕЛЬ ОБЯЗУЕТСЯ: .",
+        "Предоставить указанное помещение Нанимателю с _____ ____________ 20 __ года. .",
+        "Обеспечить свободный доступ Нанимателю в помещение."
+      ],
+      "should_review": [
+        "Конфиг не выявил явных дискреционных условий."
+      ],
+      "payment_terms": [
+        "9, Наймодатель обязуется вернуть Нанимателю часть ранее внесенной оплаты пользования жилым помещением за фактически непрожитое время, а также залог (п.",
+        "За несвоевременную оплату найма Наниматель оплачивает пени из расчета __(__)% от просроченной суммы за каждый день просрочки.",
+        "В случае просрочки оплаты более десяти дней Наймодатель имеет право расторгнуть Договор в одностороннем порядке.",
+        "ПЛАТЕЖИ И РАСЧЕТЫ.",
+        "Месячная оплата за использование помещения составляет ___________(____________________________).",
+        "рублей РФ, все расчеты производятся в рублях РФ. ."
+      ],
+      "deadlines": [
+        "3), при этом Наймодатель обязан предоставить Нанимателю проживать в квартире в течение пятнадцати календарных дней сверх оплаченного периода на безвозмездной основе. .",
+        "В случае просрочки оплаты более десяти дней Наймодатель имеет право расторгнуть Договор в одностороннем порядке.",
+        "В течение всего срока найма совместно с Нанимателем в квартире будут проживать: .",
+        "Срок найма указанного помещения устанавливается с _____ _____________20 ___ г. .",
+        "В случае согласия сторон, срок Договора продлевается самостоятельно. .",
+        "- Страховой депозит, возвращаемый Наймодателем по истечении срока проживания при соблюдении Нанимателем п."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "binary:utf8_decode",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "e283c9a9c5aef2f03ab6f81ef30967da33d16095c79c43c98700fd7264293e3b"
+    },
+    "contract_type": {
+      "type_id": "lease_agreement",
+      "confidence": 0.99,
+      "ru_name": "Договор аренды",
+      "legal_framework": "ГК РФ, глава 34"
+    },
+    "asymmetry_signals": []
+  },
+  "finished_at": "2026-04-28T16:12:22.409850+00:00",
+  "duration_ms": 474.69
+}

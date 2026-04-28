@@ -1,0 +1,179 @@
+{
+  "case_id": "договоры 4__obrazets-dogovor-o-zaloge-prava-na-poluchenie-pokupnoy-tseni-za-_html",
+  "relative_path": "договоры 4/obrazets-dogovor-o-zaloge-prava-na-poluchenie-pokupnoy-tseni-za-.html",
+  "document_path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\договоры 4\\obrazets-dogovor-o-zaloge-prava-na-poluchenie-pokupnoy-tseni-za-.html",
+  "document_name": "obrazets-dogovor-o-zaloge-prava-na-poluchenie-pokupnoy-tseni-za-.html",
+  "role": "Поставщик",
+  "counterparty_role": "Покупатель",
+  "language": "ru",
+  "mime_type": "text/html",
+  "tags": [
+    "ad_hoc"
+  ],
+  "source_group": "договоры 4",
+  "expected": {},
+  "started_at": "2026-04-28T16:18:52.082679+00:00",
+  "status": "completed",
+  "request": {
+    "document_name": "obrazets-dogovor-o-zaloge-prava-na-poluchenie-pokupnoy-tseni-za-.html",
+    "role_context": {
+      "role": "Поставщик",
+      "counterparty_role": "Покупатель"
+    },
+    "document_text": null,
+    "document_base64": "PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMDEgVHJhbnNpdGlvbmFsLy9FTiI+DQo8aHRtbD4NCjxoZWFkPg0KPGJhc2UgaHJlZj0iaHR0cHM6Ly9kb2dvdm9yLXVyaXN0LnJ1LyI+DQo8dGl0bGU+0J7QsdGA0LDQt9C10YYuINCU0L7Qs9C+0LLQvtGAINC+INC30LDQu9C+0LPQtSDQv9GA0LDQstCwINC90LAg0L/QvtC70YPRh9C10L3QuNC1ICAg0L/QvtC60YPQv9C90L7QuSDRhtC10L3RiyDQt9CwINC/0YDQvtC00LDQvdC90L7QtSDQuNC80YPRidC10YHRgtCy0L4gLSDQstC10YDRgdC40Y8g0LTQu9GPINC/0LXRh9Cw0YLQuC4gMjAyNi4g0J7QsdGA0LDQt9GG0Ysg0LTQvtCz0L7QstC+0YDQvtCyLCDRgtC40L/QvtCy0YvQtSDQtNC+0LPQvtCy0L7RgNCwLCDQsNC60YLRg9Cw0LvRjNC90YvQtSDQtNC+0LrRg9C80LXQvdGC0YssINGO0YDQuNC00LjRh9C10YHQutC40Lwg0Lgg0YTQuNC30LjRh9C10YHQutC40Lwg0LvQuNGG0LDQvDwvdGl0bGU+DQo8bWV0YSBjb250ZW50PSIiIG5hbWU9ImtleXdvcmRzIj4NCjxtZXRhIGNvbnRlbnQ9IiIgbmFtZT0iZGVzY3JpcHRpb24iPg0KPG1ldGEgbmFtZT0icm9ib3RzIiBjb250ZW50PSJub2luZGV4LG5vZm9sbG93Ij4NCjxtZXRhIGh0dHAtZXF1aXY9IkNvbnRlbnQtVHlwZSIgY29udGVudD0idGV4dC9odG1sOyBjaGFyc2V0PXV0Zi04Ij4NCjxsaW5rIHJlbD0ic3R5bGVzaGVldCIgaHJlZj0iL2ltYWdlcy9zdHlsZS5jc3MiIHR5cGU9InRleHQvY3NzIj4NCjwvaGVhZD4NCjxib2R5Pg0KPGRpdiBjbGFzcz0iZG9jdW1lbnRUZXh0Ij4NCjxwcmU+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICDQlNCe0JPQntCS0J7QoCBO0L4uIF9fX19fXw0KICAgICAgICAgICAgICAgICAg0J4g0JfQkNCb0J7Qk9CVINCf0KDQkNCS0JAg0J3QkCDQn9Ce0JvQo9Cn0JXQndCY0JUg0J/QntCa0KPQn9Cd0J7QmSDQptCV0J3Qqw0KICAgICAgICAgICAgICAgICAgICAgICAgICAg0JfQkCDQn9Cg0J7QlNCQ0J3QndCe0JUg0JjQnNCj0KnQldCh0KLQktCeDQoNCiAgICDQsy4gX19fX19fX19fX19fX19fX18gICAgICAgICAgICAgICAgICAgICAgICAgICAgIl9fXyJfX19fX19fXyAyMF9fINCzLg0KDQoNCiAgICAgICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18sINC40LzQtdC90YPQtdC80L7QtSDQsiDQtNCw0LvRjNC90LXQudGI0LXQvA0KICAgICAgICAgICAgICAgKNC90LDQuNC80LXQvdC+0LLQsNC90LjQtSDQv9GA0LXQtNC/0YDQuNGP0YLQuNGPKQ0KDQogICAg0JfQsNC70L7Qs9C+0LTQsNGC0LXQu9GMLCDQsiDQu9C40YbQtSBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXywNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAo0LTQvtC70LbQvdC+0YHRgtGMLCDQpC7QmC7Qni4pDQoNCiAgICDQtNC10LnRgdGC0LLRg9GO0YnQtdCz0L4g0L3QsCDQvtGB0L3QvtCy0LDQvdC40LggX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgKNCj0YHRgtCw0LLQsCwg0LTQvtCy0LXRgNC10L3QvdC+0YHRgtC4IChOby4sINC00LDRgtCwINCy0YvQtNCw0YfQuCkNCg0KICAgINGBINC+0LTQvdC+0Lkg0YHRgtC+0YDQvtC90YssINC4IF9fX19fX19fX19fX19fX19fX19fX19fX19fLCDQuNC80LXQvdGD0LXQvNC+0LUg0LIg0LTQsNC70YzQvdC10LnRiNC10LwNCiAgICAgICAgICAgICAgICAgICAgICAgKNC90LDQuNC80LXQvdC+0LLQsNC90LjQtSDQv9GA0LXQtNC/0YDQuNGP0YLQuNC1KQ0KDQogICAg0JfQsNC70L7Qs9C+0LTQtdGA0LbQsNGC0LXQu9GMLCDQsiDQu9C40YbQtSBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXywNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAo0LTQvtC70LbQvdC+0YHRgtGMLCDQpC7QmC7Qni4pDQoNCiAgICDQtNC10LnRgdGC0LLRg9GO0YnQtdCz0L4g0L3QsCDQvtGB0L3QvtCy0LDQvdC40LggX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICjQo9GB0YLQsNCy0LAsINC00L7QstC10YDQtdC90L3QvtGB0YLQuCAoTm8uLCDQtNCw0YLQsCDQstGL0LTQsNGH0LgpDQoNCiAgICDQt9Cw0LrQu9GO0YfQuNC70Lgg0L3QsNGB0YLQvtGP0YnQuNC5INC00L7Qs9C+0LLQvtGAINC+INC90LjQttC10YHQu9C10LTRg9GO0YnQtdC8Og0KDQogICAgICAgICAxLiDQn9C+ICDQtNC+0LPQvtCy0L7RgNGDICDQv9C+0LTRgNGP0LTQsCBO0L4uICBfX19fINC90LAg0LrQsNC/0LjRgtCw0LvRjNC90L7QtSDRgdGC0YDQvtC40YLQtdC70YzRgdGC0LLQviwNCiAgICDQt9Cw0LrQu9GO0YfQtdC90L3QvtC80YMg0LzQtdC20LTRgyDRgdGC0L7RgNC+0L3QsNC80LggIl9fXyJfX19fX19fX19fIDIwX18g0LMuLCDQl9Cw0LvQvtCz0L7QtNC10YDQttCw0YLQtdC70YwNCiAgICDQvtCx0Y/Qt9Cw0LvRgdGPICAg0LjQtyAgINGB0LLQvtC40YUgICDQvNCw0YLQtdGA0LjQsNC70L7QsiAgINC/0L7RgdGC0YDQvtC40YLRjCAg0LggINGB0LTQsNGC0YwgINC90LUgINC/0L7Qt9C00L3QtdC1DQogICAgIl9fXyJfX19fX19fXyAyMF9fINCzLiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICjQvdCw0LjQvNC10L3QvtCy0LDQvdC40LUg0L7QsdGK0LXQutGC0LApDQoNCiAgICDQsCDQl9Cw0LvQvtCz0L7QtNCw0YLQtdC70YwgINC+0LHRj9C30LDQu9GB0Y8gINC/0YDQuNC90Y/RgtGMICDRg9C60LDQt9Cw0L3QvdGL0LkgICDQvtCx0YrQtdC60YIgICDQuCAgINCy0YvQv9C70LDRgtC40YLRjA0KICAgINCX0LDQu9C+0LPQvtC00LXRgNC20LDRgtC10LvRjiDQsiAg0YHRgNC+0LogINC00L4gIl9fXyJfX19fX19fX19fIDIwX18g0LMuICDQstC+0LfQvdCw0LPRgNCw0LbQtNC10L3QuNC1INCyDQogICAg0YDQsNC30LzQtdGA0LUgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18g0YDRg9CxLg0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgKNC/0YDQvtC/0LjRgdGM0Y4pDQoNCiAgICAgICAgIDIuINCe0LHRj9C30LDRgtC10LvRjNGB0YLQstC+LCAg0YPQutCw0LfQsNC90L3QvtC1INCyICDQv9GD0L3QutGC0LUgIDEgINC90LDRgdGC0L7Rj9GJ0LXQs9C+ICDQtNC+0LPQvtCy0L7RgNCwLA0KICAgINC+0LHQtdGB0L/QtdGH0LjQstCw0LXRgtGB0Y8g0LfQsNC70L7Qs9C+0LwgINC/0YDQuNC90LDQtNC70LXQttCw0YnQtdCz0L4gINCX0LDQu9C+0LPQvtC00LDRgtC10LvRjiAg0L/RgNCw0LLQsCDQv9C+0LvRg9GH0LXQvdC40Y8NCiAgICDQv9C+0LrRg9C/0L3QvtC5INGG0LXQvdGLINC30LAg0L/RgNC+0LTQsNC90L3Rg9GOINC40LwgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICjQvdCw0LjQvNC10L3QvtCy0LDQvdC40LUg0YLRgNC10YLRjNC10LPQviDQu9C40YbQsCAtINC/0L7QutGD0L/QsNGC0LXQu9GPKQ0KDQogICAg0L/RgNC+0LTRg9C60YbQuNGOINC/0YDQvtC40LfQstC+0LTRgdGC0LLQtdC90L3Qvi3RgtC10YXQvdC40YfQtdGB0LrQvtCz0L4g0L3QsNC30L3QsNGH0LXQvdC40Y8uDQogICAgICAgICDQn9C+INGD0LrQsNC30LDQvdC90L7QvNGDICAg0LTQvtCz0L7QstC+0YDRgyAgINC60YPQv9C70Lgt0L/RgNC+0LTQsNC20LggICDQv9C+0LrRg9C/0LDRgtC10LvRjCAgINC+0LHRj9C30LDQu9GB0Y8NCiAgICDRg9C/0LvQsNGC0LjRgtGMINC/0YDQvtC00LDQstGG0YMgKNCX0LDQu9C+0LPQvtC00LDRgtC10LvRjiAtINC/0L4g0L3QsNGB0YLQvtGP0YnQtdC80YMgINC00L7Qs9C+0LLQvtGA0YMpICDRgNGD0LHQu9C10LkgINCyDQogICAg0YHRgNC+0Log0LTQviBfX19fX19fX19fX19fX18uDQogICAgICAgICDQmtC+0L/QuNGPINC00L7Qs9C+0LLQvtGA0LAg0LrRg9C/0LvQuC3Qv9GA0L7QtNCw0LbQuCDQv9GA0LjQu9Cw0LPQsNC10YLRgdGPLg0KICAgICAgICAgMy4g0JIgICDQvtGB0YLQsNC70YzQvdC+0LwsICAg0L3QtSAgINC/0YDQtdC00YPRgdC80L7RgtGA0LXQvdC90L7QvCAgINC90LDRgdGC0L7Rj9GJ0LjQvCAg0LTQvtCz0L7QstC+0YDQvtC8LA0KICAgINC+0YLQvdC+0YjQtdC90LjRjyDRgdGC0L7RgNC+0L0g0YDQtdCz0YPQu9C40YDRg9GO0YLRgdGPINCX0LDQutC+0L3QvtC8INCg0KQgItCeINC30LDQu9C+0LPQtSIuDQogICAgICAgICA0LiDQlNC+0LPQvtCy0L7RgCAg0YHQvtGB0YLQsNCy0LvQtdC9ICDQsiAg0LTQstGD0YUg0Y3QutC30LXQvNC/0LvRj9GA0LDRhSAtINC/0L4g0L7QtNC90L7QvNGDINC60LDQttC00L7QuSDQuNC3DQogICAg0YHRgtC+0YDQvtC9Lg0KICAgICAgICAgNS4g0K7RgNC40LTQuNGH0LXRgdC60LjQtSDQsNC00YDQtdGB0LAg0Lgg0YDQtdC60LLQuNC30LjRgtGLINGB0YLQvtGA0L7QvToNCg0KICAgICAgICDQl9Cw0LvQvtCz0L7QtNC10YDQttCw0YLQtdC70Yw6ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg0JfQsNC70L7Qs9C+0LTQsNGC0LXQu9GMOg0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX18gICAgICAgICAgICAgICAgICAgICBfX19fX19fX19fX19fX19fX19fX19fXw0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX18gICAgICAgICAgICAgICAgICAgICBfX19fX19fX19fX19fX19fX19fX19fXw0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX18gICAgICAgICAgICAgICAgICAgICBfX19fX19fX19fX19fX19fX19fX19fXw0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX18gICAgICAgICAgICAgICAgICAgICBfX19fX19fX19fX19fX19fX19fX19fXw0KDQogICAgX19fX19fX19fX19fX19fX19fX19fX19fXyAgICAgICAgICAgICAgICAgICAgIF9fX19fX19fX19fX19fX19fX19fX19fDQogICAgINCcLtCfLiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgINCcLtCfLg0KDQogIA0KPC9wcmU+PC9kaXY+DQo8L2JvZHk+DQo8L2h0bWw+",
+    "mime_type": "text/html",
+    "language": "ru",
+    "locale": "ru"
+  },
+  "ingestion_preflight": {
+    "mime_type": "text/html",
+    "extractor": "html:regex",
+    "extraction_source": "html:regex",
+    "extraction_ok": true,
+    "error": null,
+    "extraction_error": null,
+    "sha256": "dcdee90e551b3b7a562f2804df7efc4855acbc1ff6f84bd3a8b622a20f41ffbd"
+  },
+  "metrics": {
+    "risk_count": 1,
+    "high_risk_count": 0,
+    "disputed_clause_count": 1,
+    "asymmetry_signal_count": 0,
+    "contract_type": "labor_contract"
+  },
+  "analysis": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'obrazets-dogovor-o-zaloge-prava-na-poluchenie-pokupnoy-tseni-za-. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Поставщик'. Определен тип договора: Трудовой договор (уверенность 54%, правовая рамка: ТК РФ). Условия оплаты: вознаграждение в размере ________________________________________________________ руб. Сроки и дедлайны: ______________________________________________, (наименование объекта) а Залогодатель обязался принять указанный объект и выплатить Залогодержателю в срок до \"___\"__________ 20__ г; По указанному договору купли-продажи покупатель обязался уплатить продавцу (Залогодателю - по настоящему договору) рублей в срок до _______________. Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Поставщик'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Образец. Договор о залоге права на получение покупной цены за проданное имущество - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР Nо. ______ О ЗАЛОГЕ ПРАВА НА ПОЛУЧЕНИЕ ПОКУПНОЙ ЦЕНЫ ЗА ПРОДАННОЕ ИМУЩЕСТВО г. _________________ \"___\"________ 20__ г. ________________________________________, именуемое в дальнейшем (наименование предприятия) Залогодатель, в лице _______________________________________________, (должность,...",
+        "dispute_reason": "Явные маркеры спорных формулировок не обнаружены.",
+        "possible_consequence": "Скрытые спорные моменты требуют дополнительной юридической проверки.",
+        "confidence": 0.35
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Поставщик",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Поставщик'.",
+      "must_do": [
+        "Конфиг не выявил явных обязательств."
+      ],
+      "should_review": [
+        "Конфиг не выявил явных дискреционных условий."
+      ],
+      "payment_terms": [
+        "вознаграждение в размере ________________________________________________________ руб."
+      ],
+      "deadlines": [
+        "По указанному договору купли-продажи покупатель обязался уплатить продавцу (Залогодателю - по настоящему договору) рублей в срок до _______________.",
+        "______________________________________________, (наименование объекта) а Залогодатель обязался принять указанный объект и выплатить Залогодержателю в срок до \"___\"__________ 20__ г."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "dcdee90e551b3b7a562f2804df7efc4855acbc1ff6f84bd3a8b622a20f41ffbd"
+    },
+    "contract_type": {
+      "type_id": "labor_contract",
+      "confidence": 0.54,
+      "ru_name": "Трудовой договор",
+      "legal_framework": "ТК РФ"
+    },
+    "asymmetry_signals": []
+  },
+  "result": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'obrazets-dogovor-o-zaloge-prava-na-poluchenie-pokupnoy-tseni-za-. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Поставщик'. Определен тип договора: Трудовой договор (уверенность 54%, правовая рамка: ТК РФ). Условия оплаты: вознаграждение в размере ________________________________________________________ руб. Сроки и дедлайны: ______________________________________________, (наименование объекта) а Залогодатель обязался принять указанный объект и выплатить Залогодержателю в срок до \"___\"__________ 20__ г; По указанному договору купли-продажи покупатель обязался уплатить продавцу (Залогодателю - по настоящему договору) рублей в срок до _______________. Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Поставщик'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Образец. Договор о залоге права на получение покупной цены за проданное имущество - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР Nо. ______ О ЗАЛОГЕ ПРАВА НА ПОЛУЧЕНИЕ ПОКУПНОЙ ЦЕНЫ ЗА ПРОДАННОЕ ИМУЩЕСТВО г. _________________ \"___\"________ 20__ г. ________________________________________, именуемое в дальнейшем (наименование предприятия) Залогодатель, в лице _______________________________________________, (должность,...",
+        "dispute_reason": "Явные маркеры спорных формулировок не обнаружены.",
+        "possible_consequence": "Скрытые спорные моменты требуют дополнительной юридической проверки.",
+        "confidence": 0.35
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Поставщик",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Поставщик'.",
+      "must_do": [
+        "Конфиг не выявил явных обязательств."
+      ],
+      "should_review": [
+        "Конфиг не выявил явных дискреционных условий."
+      ],
+      "payment_terms": [
+        "вознаграждение в размере ________________________________________________________ руб."
+      ],
+      "deadlines": [
+        "По указанному договору купли-продажи покупатель обязался уплатить продавцу (Залогодателю - по настоящему договору) рублей в срок до _______________.",
+        "______________________________________________, (наименование объекта) а Залогодатель обязался принять указанный объект и выплатить Залогодержателю в срок до \"___\"__________ 20__ г."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "dcdee90e551b3b7a562f2804df7efc4855acbc1ff6f84bd3a8b622a20f41ffbd"
+    },
+    "contract_type": {
+      "type_id": "labor_contract",
+      "confidence": 0.54,
+      "ru_name": "Трудовой договор",
+      "legal_framework": "ТК РФ"
+    },
+    "asymmetry_signals": []
+  },
+  "finished_at": "2026-04-28T16:18:52.168584+00:00",
+  "duration_ms": 85.83
+}

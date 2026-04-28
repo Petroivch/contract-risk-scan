@@ -1,0 +1,343 @@
+{
+  "version": "2.0",
+  "cases": [
+    {
+      "case_id": "agency_goods_ru",
+      "document_path": "../../golden_set/docs/agency_goods.txt",
+      "role": "Агент",
+      "counterparty_role": "Предприятие",
+      "language": "ru",
+      "tags": [
+        "real-corpus",
+        "agency"
+      ],
+      "expected": {
+        "contract_type": "agency_agreement",
+        "min_contract_type_confidence": 0.9,
+        "min_risk_count": 2,
+        "min_disputed_clause_count": 1,
+        "risk_title_fragments_any": [
+          "пеня",
+          "конфиденциальность"
+        ],
+        "execution_mode": "local_first"
+      }
+    },
+    {
+      "case_id": "autstaffing_ru",
+      "document_path": "../../golden_set/docs/autstaffing.txt",
+      "role": "Исполнитель",
+      "counterparty_role": "Заказчик",
+      "language": "ru",
+      "tags": [
+        "real-corpus",
+        "labor"
+      ],
+      "expected": {
+        "contract_type": "labor_contract",
+        "min_contract_type_confidence": 0.9,
+        "min_risk_count": 1,
+        "min_disputed_clause_count": 4,
+        "risk_title_fragments_any": [
+          "неограниченная имущественная ответственность"
+        ],
+        "required_asymmetry_signal_ids": [
+          "undefined_acceptance_criteria"
+        ],
+        "execution_mode": "local_first"
+      }
+    },
+    {
+      "case_id": "commission_ru",
+      "document_path": "../../golden_set/docs/commission.txt",
+      "role": "Комиссионер",
+      "counterparty_role": "Комитент",
+      "language": "ru",
+      "tags": [
+        "real-corpus",
+        "agency",
+        "commission"
+      ],
+      "expected": {
+        "contract_type": "agency_agreement",
+        "min_contract_type_confidence": 0.9,
+        "min_risk_count": 2,
+        "min_disputed_clause_count": 2,
+        "risk_title_fragments_any": [
+          "неустойка",
+          "пеня"
+        ],
+        "required_asymmetry_signal_ids": [
+          "undefined_acceptance_criteria"
+        ],
+        "execution_mode": "local_first"
+      }
+    },
+    {
+      "case_id": "contractor_ru",
+      "document_path": "../../golden_set/docs/contractor.txt",
+      "role": "Подрядчик",
+      "counterparty_role": "Заказчик",
+      "language": "ru",
+      "tags": [
+        "real-corpus",
+        "non-contract"
+      ],
+      "expected": {
+        "contract_type": "non_contract_legal_form",
+        "min_contract_type_confidence": 0.8,
+        "min_risk_count": 1,
+        "min_disputed_clause_count": 5,
+        "risk_title_fragments_any": [
+          "низкий риск"
+        ],
+        "execution_mode": "local_first"
+      }
+    },
+    {
+      "case_id": "dealer_ru",
+      "document_path": "../../golden_set/docs/dealer.txt",
+      "role": "Дилер",
+      "counterparty_role": "Фирма",
+      "language": "ru",
+      "tags": [
+        "real-corpus",
+        "non-contract",
+        "dealer"
+      ],
+      "expected": {
+        "contract_type": "non_contract_legal_form",
+        "min_contract_type_confidence": 0.5,
+        "min_risk_count": 1,
+        "min_disputed_clause_count": 3,
+        "risk_title_fragments_any": [
+          "низкий риск"
+        ],
+        "execution_mode": "local_first"
+      }
+    },
+    {
+      "case_id": "household_contract_ru",
+      "document_path": "../../golden_set/docs/household_contract.txt",
+      "role": "Подрядчик",
+      "counterparty_role": "Заказчик",
+      "language": "ru",
+      "tags": [
+        "real-corpus",
+        "construction"
+      ],
+      "expected": {
+        "contract_type": "construction_contract",
+        "min_contract_type_confidence": 0.9,
+        "min_risk_count": 8,
+        "min_disputed_clause_count": 3,
+        "risk_title_fragments_any": [
+          "платежная асимметрия",
+          "акт другой стороны"
+        ],
+        "execution_mode": "local_first"
+      }
+    },
+    {
+      "case_id": "rent_ru",
+      "document_path": "../../golden_set/docs/rent.txt",
+      "role": "Наниматель",
+      "counterparty_role": "Наймодатель",
+      "language": "ru",
+      "tags": [
+        "real-corpus",
+        "lease",
+        "housing"
+      ],
+      "expected": {
+        "contract_type": "lease_agreement",
+        "min_contract_type_confidence": 0.9,
+        "min_risk_count": 3,
+        "min_disputed_clause_count": 2,
+        "risk_title_fragments_any": [
+          "депозита",
+          "расходы на содержание"
+        ],
+        "execution_mode": "local_first"
+      }
+    },
+    {
+      "case_id": "rent_auto_ru",
+      "document_path": "../../golden_set/docs/rent_auto.txt",
+      "role": "Арендатор",
+      "counterparty_role": "Арендодатель",
+      "language": "ru",
+      "tags": [
+        "real-corpus",
+        "lease",
+        "auto"
+      ],
+      "expected": {
+        "contract_type": "lease_agreement",
+        "min_contract_type_confidence": 0.9,
+        "min_risk_count": 1,
+        "min_disputed_clause_count": 2,
+        "risk_title_fragments_any": [
+          "низкий риск"
+        ],
+        "execution_mode": "local_first"
+      }
+    },
+    {
+      "case_id": "rent_vehicle_ru",
+      "document_path": "../../golden_set/docs/rent_vehicle.txt",
+      "role": "Арендатор",
+      "counterparty_role": "Арендодатель",
+      "language": "ru",
+      "tags": [
+        "real-corpus",
+        "lease",
+        "vehicle"
+      ],
+      "expected": {
+        "contract_type": "lease_agreement",
+        "min_contract_type_confidence": 0.9,
+        "min_risk_count": 2,
+        "min_disputed_clause_count": 3,
+        "risk_title_fragments_any": [
+          "пеня",
+          "расходы на содержание"
+        ],
+        "execution_mode": "local_first"
+      }
+    },
+    {
+      "case_id": "site_ru",
+      "document_path": "../../golden_set/docs/site.txt",
+      "role": "Исполнитель",
+      "counterparty_role": "Заказчик",
+      "language": "ru",
+      "tags": [
+        "real-corpus",
+        "non-contract",
+        "site"
+      ],
+      "expected": {
+        "contract_type": "non_contract_legal_form",
+        "min_contract_type_confidence": 0.5,
+        "min_risk_count": 1,
+        "min_disputed_clause_count": 3,
+        "risk_title_fragments_any": [
+          "низкий риск"
+        ],
+        "execution_mode": "local_first"
+      }
+    },
+    {
+      "case_id": "service_agreement_saas_ru",
+      "document_path": "../../golden_set/docs/service_agreement_saas.txt",
+      "role": "Исполнитель",
+      "counterparty_role": "Заказчик",
+      "language": "ru",
+      "tags": [
+        "synthetic",
+        "service",
+        "saas"
+      ],
+      "expected": {
+        "contract_type": "service_agreement",
+        "min_contract_type_confidence": 0.9,
+        "min_risk_count": 8,
+        "min_disputed_clause_count": 2,
+        "risk_title_fragments_any": [
+          "одностороннее расторжение",
+          "платежная асимметрия"
+        ],
+        "execution_mode": "local_first"
+      }
+    },
+    {
+      "case_id": "targeted_education_ru",
+      "document_path": "../../golden_set/docs/targeted_education_agreement.txt",
+      "role": "Гражданин",
+      "counterparty_role": "Заказчик",
+      "language": "ru",
+      "tags": [
+        "synthetic",
+        "education"
+      ],
+      "expected": {
+        "contract_type": "targeted_education_agreement",
+        "min_contract_type_confidence": 0.9,
+        "min_risk_count": 1,
+        "min_disputed_clause_count": 1,
+        "risk_title_fragments_any": [
+          "возврат мер поддержки"
+        ],
+        "execution_mode": "local_first"
+      }
+    },
+    {
+      "case_id": "loan_security_ru",
+      "document_path": "../../golden_set/docs/loan_security_guarantee.txt",
+      "role": "Заемщик",
+      "counterparty_role": "Кредитор",
+      "language": "ru",
+      "tags": [
+        "synthetic",
+        "loan",
+        "security"
+      ],
+      "expected": {
+        "contract_type": "loan_security_agreement",
+        "min_contract_type_confidence": 0.9,
+        "min_risk_count": 1,
+        "min_disputed_clause_count": 1,
+        "risk_title_fragments_any": [
+          "банковская гарантия по первому требованию"
+        ],
+        "execution_mode": "local_first"
+      }
+    },
+    {
+      "case_id": "ip_license_ru",
+      "document_path": "../../golden_set/docs/ip_license_agreement.txt",
+      "role": "Лицензиат",
+      "counterparty_role": "Лицензиар",
+      "language": "ru",
+      "tags": [
+        "synthetic",
+        "ip",
+        "license"
+      ],
+      "expected": {
+        "contract_type": "ip_agreement",
+        "min_contract_type_confidence": 0.9,
+        "min_risk_count": 4,
+        "min_disputed_clause_count": 1,
+        "risk_title_fragments_any": [
+          "передача ip",
+          "гарантийный период"
+        ],
+        "execution_mode": "local_first"
+      }
+    },
+    {
+      "case_id": "supply_ru",
+      "document_path": "../../golden_set/docs/supply_agreement.txt",
+      "role": "Поставщик",
+      "counterparty_role": "Покупатель",
+      "language": "ru",
+      "tags": [
+        "synthetic",
+        "supply"
+      ],
+      "expected": {
+        "contract_type": "supply_agreement",
+        "min_contract_type_confidence": 0.9,
+        "min_risk_count": 2,
+        "min_disputed_clause_count": 3,
+        "risk_title_fragments_any": [
+          "неустойка",
+          "гарантийный период"
+        ],
+        "execution_mode": "local_first"
+      }
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "source_path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\договоры\\Brachnyy-dogovor-osnovnoy-rejim-imuschestva-dolevaya-sobstvennost.doc",
+  "relative_path": "договоры\\Brachnyy-dogovor-osnovnoy-rejim-imuschestva-dolevaya-sobstvennost.doc",
+  "mime_type": "application/msword",
+  "role_context": {
+    "role": "Исполнитель",
+    "counterparty_role": "Заказчик"
+  },
+  "ingestion_preflight": {
+    "extraction_source": "doc:none",
+    "extraction_ok": false,
+    "extraction_error": "_extract_doc_via_word_com: Command '['powershell', '-NoProfile', '-Command', \"$ErrorActionPreference='Stop';$input='C:\\\\Users\\\\user\\\\AppData\\\\Local\\\\Temp\\\\analysis-doc-bqqac24o\\\\source.doc';$output='C:\\\\Users\\\\user\\\\AppData\\\\Local\\\\Temp\\\\analysis-doc-bqqac24o\\\\word-com-output.docx';$word=New-Object -ComObject Word.Application;$word.Visible=$false;try {$doc=$word.Documents.Open($input,$false,$true);$doc.SaveAs([ref]$output,[ref]16);$doc.Close();} finally {$word.Quit();}\"]' timed out after 25.0 seconds; soffice not found; antiword not found; catdoc not found; textract extractor disabled",
+    "sha256": "8c921dffca524e077f9fb09fde9c3ac08cf4553a62b73d62045a04a9888e0f7c",
+    "text_length": 43
+  },
+  "timings": {
+    "analysis_seconds": 25.63,
+    "total_seconds": 51.266
+  },
+  "analysis": {
+    "job_id": "42edf114-6464-47db-986c-4ab5ee262609",
+    "status": "completed",
+    "result": {
+      "language": "ru",
+      "locale": "ru",
+      "execution_plan": {
+        "mode": "server_assist",
+        "offline_capable": false,
+        "network_required": true,
+        "policy_source": "mime_type:application/msword",
+        "reason": "Mime type документа перевел задачу в более безопасный lightweight/offload режим согласно policy."
+      },
+      "contract_brief": "Договор 'Brachnyy-dogovor-osnovnoy-rejim-imuschestva-dolevaya-sobstvennost. doc' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Исполнитель'. Найдено спорных или расплывчатых пунктов: 1.",
+      "risks": [
+        {
+          "risk_id": "risk-1",
+          "rule_id": "fallback_low_risk",
+          "title": "Низкий риск: явные критические маркеры не обнаружены",
+          "severity": "low",
+          "clause_id": null,
+          "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+          "role_relevance": "Базовый вывод для роли 'Исполнитель'.",
+          "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+        }
+      ],
+      "disputed_clauses": [
+        {
+          "clause_id": "clause-1",
+          "clause_excerpt": "Текст документа пуст после этапа ingestion.",
+          "dispute_reason": "Явные маркеры спорных формулировок не обнаружены.",
+          "possible_consequence": "Скрытые спорные моменты требуют дополнительной юридической проверки.",
+          "confidence": 0.35
+        }
+      ],
+      "role_focused_summary": {
+        "role": "Исполнитель",
+        "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Исполнитель'.",
+        "must_do": [
+          "Конфиг не выявил явных обязательств."
+        ],
+        "should_review": [
+          "Конфиг не выявил явных дискреционных условий."
+        ],
+        "payment_terms": [
+          "Конфиг не выявил явных условий оплаты."
+        ],
+        "deadlines": [
+          "Конфиг не выявил явных сроков."
+        ],
+        "penalties": [
+          "Конфиг не выявил явных штрафных санкций."
+        ]
+      },
+      "ingestion": {
+        "extraction_source": "doc:none",
+        "extraction_ok": false,
+        "extraction_error": "_extract_doc_via_word_com: Command '['powershell', '-NoProfile', '-Command', \"$ErrorActionPreference='Stop';$input='C:\\\\Users\\\\user\\\\AppData\\\\Local\\\\Temp\\\\analysis-doc-yyy8ss3z\\\\source.doc';$output='C:\\\\Users\\\\user\\\\AppData\\\\Local\\\\Temp\\\\analysis-doc-yyy8ss3z\\\\word-com-output.docx';$word=New-Object -ComObject Word.Application;$word.Visible=$false;try {$doc=$word.Documents.Open($input,$false,$true);$doc.SaveAs([ref]$output,[ref]16);$doc.Close();} finally {$word.Quit();}\"]' timed out after 25.0 seconds; soffice not found; antiword not found; catdoc not found; textract extractor disabled",
+        "sha256": "8c921dffca524e077f9fb09fde9c3ac08cf4553a62b73d62045a04a9888e0f7c"
+      },
+      "contract_type": {
+        "type_id": "general_contract",
+        "confidence": 0.0,
+        "ru_name": "Договор",
+        "legal_framework": "Общие нормы ГК РФ"
+      },
+      "asymmetry_signals": []
+    },
+    "error_message": null
+  }
+}

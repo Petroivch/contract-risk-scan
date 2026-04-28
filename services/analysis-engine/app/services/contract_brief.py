@@ -1,15 +1,15 @@
 from __future__ import annotations
 
-import re
-
 from app.config.runtime import get_runtime_config
 from app.localization import normalize_analysis_language, resolve_localized_text
 from app.schemas.analysis import DisputedClauseItem
 from app.services.clause_segmentation import ClauseSegment
+from app.services.contract_analysis import DetectedContractType
+from app.services.text_normalization import normalize_contract_text, split_into_sentences
 
 
 class ContractBriefGenerationService:
-    """Builds a readable brief that explains who owes what and where the main tension points are."""
+    """Builds a readable brief with complete sentences and contract context."""
 
     def __init__(self) -> None:
         runtime_config = get_runtime_config()
@@ -26,10 +26,11 @@ class ContractBriefGenerationService:
         counterparty_role: str | None,
         language: str,
         disputed_clauses: list[DisputedClauseItem],
+        detected_contract_type: DetectedContractType | None = None,
     ) -> str:
         resolved_language = normalize_analysis_language(language)
         statements = self._candidate_statements(document_text, clauses)
-        max_items = min(2, self._summary_config.max_items_per_section)
+        max_items = min(3, self._summary_config.max_items_per_section)
 
         role_obligations = self._collect_statements(
             statements,
@@ -68,13 +69,19 @@ class ContractBriefGenerationService:
             max_items=max_items,
         )
 
-        sections = [
-            resolve_localized_text(self._templates.intro, resolved_language).format(
-                document_name=document_name,
-                clauses_count=len(clauses),
-                role=role,
+        sections = []
+        intro = resolve_localized_text(self._templates.intro, resolved_language).format(
+            document_name=document_name,
+            clauses_count=len(clauses),
+            role=role,
+        )
+        if detected_contract_type and detected_contract_type.type_id != "general_contract":
+            intro += (
+                f" Определен тип договора: {detected_contract_type.ru_name}"
+                f" (уверенность {int(detected_contract_type.confidence * 100)}%,"
+                f" правовая рамка: {detected_contract_type.legal_framework})."
             )
-        ]
+        sections.append(self._ensure_complete_sentence(intro))
 
         if role_obligations:
             sections.append(
@@ -134,7 +141,7 @@ class ContractBriefGenerationService:
                 role=role,
             )
 
-        return " ".join(section for section in sections if section)
+        return " ".join(self._ensure_complete_sentence(section) for section in sections if section)
 
     def _candidate_statements(self, document_text: str, clauses: list[ClauseSegment]) -> list[str]:
         raw_segments = [document_text, *(clause.text for clause in clauses)]
@@ -142,17 +149,12 @@ class ContractBriefGenerationService:
         seen: set[str] = set()
 
         for raw_segment in raw_segments:
-            for part in re.split(r"[\n\r.;]+", raw_segment):
-                statement = part.strip()
-                if not statement:
-                    continue
-
+            for statement in split_into_sentences(raw_segment):
                 normalized_key = statement.casefold()
                 if normalized_key in seen:
                     continue
-
                 seen.add(normalized_key)
-                candidates.append(statement[: self._summary_config.max_line_length])
+                candidates.append(self._ensure_complete_sentence(statement))
 
         return candidates
 
@@ -213,4 +215,11 @@ class ContractBriefGenerationService:
 
     @staticmethod
     def _join_statements(statements: list[str]) -> str:
-        return "; ".join(statements)
+        return "; ".join(normalize_contract_text(statement).rstrip(".!?") for statement in statements)
+
+    @staticmethod
+    def _ensure_complete_sentence(text: str) -> str:
+        cleaned = normalize_contract_text(text)
+        if cleaned and cleaned[-1] not in ".!?":
+            cleaned = f"{cleaned}."
+        return cleaned

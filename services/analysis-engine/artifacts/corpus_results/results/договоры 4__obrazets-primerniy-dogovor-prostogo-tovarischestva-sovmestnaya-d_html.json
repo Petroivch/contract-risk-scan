@@ -1,0 +1,177 @@
+{
+  "case_id": "договоры 4__obrazets-primerniy-dogovor-prostogo-tovarischestva-sovmestnaya-d_html",
+  "relative_path": "договоры 4/obrazets-primerniy-dogovor-prostogo-tovarischestva-sovmestnaya-d.html",
+  "document_path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\договоры 4\\obrazets-primerniy-dogovor-prostogo-tovarischestva-sovmestnaya-d.html",
+  "document_name": "obrazets-primerniy-dogovor-prostogo-tovarischestva-sovmestnaya-d.html",
+  "role": "Поставщик",
+  "counterparty_role": "Покупатель",
+  "language": "ru",
+  "mime_type": "text/html",
+  "tags": [
+    "ad_hoc"
+  ],
+  "source_group": "договоры 4",
+  "expected": {},
+  "started_at": "2026-04-28T16:19:00.925258+00:00",
+  "status": "completed",
+  "request": {
+    "document_name": "obrazets-primerniy-dogovor-prostogo-tovarischestva-sovmestnaya-d.html",
+    "role_context": {
+      "role": "Поставщик",
+      "counterparty_role": "Покупатель"
+    },
+    "document_text": null,
+    "document_base64": "PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMDEgVHJhbnNpdGlvbmFsLy9FTiI+DQo8aHRtbD4NCjxoZWFkPg0KPGJhc2UgaHJlZj0iaHR0cHM6Ly9kb2dvdm9yLXVyaXN0LnJ1LyI+DQo8dGl0bGU+0J7QsdGA0LDQt9C10YYuINCf0YDQuNC80LXRgNC90YvQuSDQtNC+0LPQvtCy0L7RgCDQv9GA0L7RgdGC0L7Qs9C+INGC0L7QstCw0YDQuNGJ0LXRgdGC0LLQsCAo0YHQvtCy0LzQtdGB0YLQvdCw0Y8gICDQtNC10Y/RgtC10LvRjNC90L7RgdGC0YwpIC0g0LLQtdGA0YHQuNGPINC00LvRjyDQv9C10YfQsNGC0LguIDIwMjYuINCe0LHRgNCw0LfRhtGLINC00L7Qs9C+0LLQvtGA0L7Qsiwg0YLQuNC/0L7QstGL0LUg0LTQvtCz0L7QstC+0YDQsCwg0LDQutGC0YPQsNC70YzQvdGL0LUg0LTQvtC60YPQvNC10L3RgtGLLCDRjtGA0LjQtNC40YfQtdGB0LrQuNC8INC4INGE0LjQt9C40YfQtdGB0LrQuNC8INC70LjRhtCw0Lw8L3RpdGxlPg0KPG1ldGEgY29udGVudD0iIiBuYW1lPSJrZXl3b3JkcyI+DQo8bWV0YSBjb250ZW50PSIiIG5hbWU9ImRlc2NyaXB0aW9uIj4NCjxtZXRhIG5hbWU9InJvYm90cyIgY29udGVudD0ibm9pbmRleCxub2ZvbGxvdyI+DQo8bWV0YSBodHRwLWVxdWl2PSJDb250ZW50LVR5cGUiIGNvbnRlbnQ9InRleHQvaHRtbDsgY2hhcnNldD11dGYtOCI+DQo8bGluayByZWw9InN0eWxlc2hlZXQiIGhyZWY9Ii9pbWFnZXMvc3R5bGUuY3NzIiB0eXBlPSJ0ZXh0L2NzcyI+DQo8L2hlYWQ+DQo8Ym9keT4NCjxkaXYgY2xhc3M9ImRvY3VtZW50VGV4dCI+DQo8cHJlPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAg0J/QoNCY0JzQldCg0J3Qq9CZINCU0J7Qk9Ce0JLQntCgDQogICAgICAgICAgICAgINC/0YDQvtGB0YLQvtCz0L4g0YLQvtCy0LDRgNC40YnQtdGB0YLQstCwICjRgdC+0LLQvNC10YHRgtC90LDRjyDQtNC10Y/RgtC10LvRjNC90L7RgdGC0YwpDQogICANCiAgICAg0LMuIF9fX19fX19fX19fX19fX18gICAgICAgICAgICAgICAgICAgICJfX19fIl9fX19fX19fX19fX19fXzIwX19fINCzLg0KICAgDQogICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18sDQogICAgICAgICAgICAgICjQvdCw0LjQvNC10L3QvtCy0LDQvdC40LUg0L/RgNC10LTQv9GA0LjRj9GC0LjRjy1JINGD0YfQsNGB0YLQvdC40LrQsCkNCiAgIA0KICAgINC40LzQtdC90YPQtdC80L7QtSDQsiDQtNCw0LvRjNC90LXQudGI0LXQvCAiSSDRg9GH0LDRgdGC0L3QuNC6Iiwg0LIg0LvQuNGG0LUgX19fX19fX19fX19fX19fX19fX19fX19fXw0KICAgDQogICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18sDQogICAgICAgICAgICAgICAgICAgICAgICAgKNC00L7Qu9C20L3QvtGB0YLRjCwg0KQu0Jgu0J4uKQ0KICAgDQogICAg0LTQtdC50YHRgtCy0YPRjtGJ0LXQs9C+INC90LAg0L7RgdC90L7QstCw0L3QuNC4IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXywNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAo0YPRgdGC0LDQstCwLCDQv9C+0LvQvtC20LXQvdC40Y8pDQogICANCiAgICDRgSDQvtC00L3QvtC5INGB0YLQvtGA0L7QvdGLLCDQuCBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICjQvdCw0LjQvNC10L3QvtCy0LDQvdC40LUg0L/RgNC10LTQv9GA0LjRj9GC0LjRjy1JSSDRg9GH0LDRgdGC0L3QuNC60LApDQogICANCiAgICDQuNC80LXQvdGD0LXQvNC+0LUg0LIg0LTQsNC70YzQvdC10LnRiNC10LwgIklJINGD0YfQsNGB0YLQvdC40LoiLCDQsiDQu9C40YbQtSBfX19fX19fX19fX19fX19fX19fX19fX18NCiAgIA0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLA0KICAgICAgICAgICAgICAgICAgICAgICAgKNC00L7Qu9C20L3QvtGB0YLRjCwg0KQu0Jgu0J4uKQ0KICAgDQogICAg0LTQtdC50YHRgtCy0YPRjtGJ0LXQs9C+INC90LAg0L7RgdC90L7QstCw0L3QuNC4IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXywNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICjRg9GB0YLQsNCy0LAsINC/0L7Qu9C+0LbQtdC90LjRjykNCiAgIA0KICAgINGBINC00YDRg9Cz0L7QuSAgINGB0YLQvtGA0L7QvdGLLCAgINC40LzQtdC90YPQtdC80YvQtSAg0LIgINC00LDQu9GM0L3QtdC50YjQtdC8ICAi0KHRgtC+0YDQvtC90YsiLCAg0LfQsNC60LvRjtGH0LjQu9C4DQogICAg0L3QsNGB0YLQvtGP0YnQuNC5INC00L7Qs9C+0LLQvtGAINC+INC90LjQttC10YHQu9C10LTRg9GO0YnQtdC8Lg0KICAgDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgIEkuINCf0YDQtdC00LzQtdGCINC00L7Qs9C+0LLQvtGA0LANCiAgIA0KICAgICAgICAgMS4xLiDQodC+0LPQu9Cw0YHQvdC+INC90LDRgdGC0L7Rj9GJ0LXQvNGDINC00L7Qs9C+0LLQvtGA0YMgSSAg0LggIElJICDQo9GH0LDRgdGC0L3QuNC60LggINC+0LHRj9C30YPRjtGC0YHRjw0KICAgINGB0L7QtdC00LjQvdC40YLRjCDRgdCy0L7QuCAgINCy0LrQu9Cw0LTRiyAgINC4ICDRgdC+0LLQvNC10YHRgtC90L4gINC00LXQudGB0YLQstC+0LLQsNGC0YwgINCx0LXQtyAg0L7QsdGA0LDQt9C+0LLQsNC90LjRjw0KICAgINGO0YDQuNC00LjRh9C10YHQutC+0LPQviDQu9C40YbQsCDQtNC70Y8g0LjQt9Cy0LvQtdGH0LXQvdC40Y8g0L/RgNC40LHRi9C70LguDQogICAgICAgICAxLjIuINCS0LrQu9Cw0LTQvtC8IEkg0KPRh9Cw0YHRgtC90LjQutCwINGP0LLQu9GP0LXRgtGB0Y86IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQogICANCiAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXy4NCiAgIA0KICAgICAgICAgMS4zLiDQktC60LvQsNC00L7QvCBJSSDQo9GH0LDRgdGC0L3QuNC60LAg0Y/QstC70Y/QtdGC0YHRjzogX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KICAgDQogICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18uDQogICANCiAgICAgICAgIDEuNC4g0JLQutC70LDQtCBJINCj0YfQsNGB0YLQvdC40LrQsCDQvtGG0LXQvdC10L0g0KHRgtC+0YDQvtC90LDQvNC4INCyIF9fX19fX19fX19fX19fX19fX19fX18NCiAgIA0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLg0KICAgDQogICAgICAgICAxLjUuINCS0LrQu9Cw0LQgSUkg0KPRh9Cw0YHRgtC90LjQutCwINC+0YbQtdC90LXQvSDQodGC0L7RgNC+0L3QsNC80Lgg0LIgX19fX19fX19fX19fX19fX19fX19fDQogICANCiAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXy4NCiAgIA0KICAgICAgICAgMS42LiDQodGC0L7RgNC+0L3RiyDQvtCx0Y/Qt9GD0Y7RgtGB0Y8g0LLQvdC10YHRgtC4INGB0LLQvtC4INCy0LrQu9Cw0LTRiyDQvdC1INC/0L7Qt9C00L3QtdC1IF9fX19fX19fX19fDQogICANCiAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXy4NCiAgIA0KICAgICAgICAgICAgICAgICAgICAgICAgSUkuINCe0LHRidC10LUg0LjQvNGD0YnQtdGB0YLQstC+INGC0L7QstCw0YDQuNGJ0LXQuQ0KICAgDQogICAgICAgICAyLjEuINCS0L3QtdGB0LXQvdC90L7QtSAg0KHRgtC+0YDQvtC90LDQvNC4ICDQuNC80YPRidC10YHRgtCy0L4sICDQutC+0YLQvtGA0YvQvCAg0L7QvdC4ICDQvtCx0LvQsNC00LDQu9C4INC90LANCiAgICDQv9GA0LDQstC1INGB0L7QsdGB0YLQstC10L3QvdC+0YHRgtC4LCAg0LAg0YLQsNC60LbQtSDQv9GA0L7QuNC30LLQtdC00LXQvdC90LDRjyDQsiAg0YDQtdC30YPQu9GM0YLQsNGC0LUgINGB0L7QstC80LXRgdGC0L3QvtC5DQogICAg0LTQtdGP0YLQtdC70YzQvdC+0YHRgtC4INC/0YDQvtC00YPQutGG0LjRjyAg0LggINC/0L7Qu9GD0YfQtdC90L3Ri9C1ICDQvtGCICDRgtCw0LrQvtC5INC00LXRj9GC0LXQu9GM0L3QvtGB0YLQuCDQv9C70L7QtNGLINC4DQogICAg0LTQvtGF0L7QtNGLINC/0YDQuNC30L3QsNGO0YLRgdGPINC40YUg0L7QsdGJ0LXQuSDQtNC+0LvQtdCy0L7QuSDRgdC+0LHRgdGC0LLQtdC90L3QvtGB0YLRjNGOLg0KICAgICAgICAgMi4yLiDQktC90LXRgdC10L3QvdC+0LUgINCh0YLQvtGA0L7QvdCw0LzQuCAg0LjQvNGD0YnQtdGB0YLQstC+LCAg0LrQvtGC0L7RgNGL0LwgINC+0L3QuCAg0L7QsdC70LDQtNCw0LvQuCDQv9C+DQogICAg0L7RgdC90L7QstCw0L3QuNGP0LwsINC+0YLQu9C40YfQvdGL0Lwg0L7RgiDQv9GA0LDQstCwINGB0L7QsdGB0YLQstC10L3QvdC+0YHRgtC4LCDQuNGB0L/QvtC70YzQt9GD0LXRgtGB0Y8g0LIg0LjQvdGC0LXRgNC10YHQsNGFDQogICAg0KHRgtC+0YDQvtC9INC4ICDRgdC+0YHRgtCw0LLQu9GP0LXRgiwgINC90LDRgNGP0LTRgyAg0YEgINC40LzRg9GJ0LXRgdGC0LLQvtC8LCAg0L3QsNGF0L7QtNGP0YnQuNC80YHRjyDQsiDQuNGFINC+0LHRidC10LkNCiAgICDRgdC+0LHRgdGC0LLQtdC90L3QvtGB0YLQuCwg0L7QsdGJ0LXQtSDQuNC80YPRidC10YHRgtCy0L4g0KHRgtC+0YDQvtC9Lg0KICAgICAgICAgMi4zLiDQktC10LTQtdC90LjQtSAgINCx0YPRhdCz0LDQu9GC0LXRgNGB0LrQvtCz0L4gICDRg9GH0LXRgtCwICDQvtCx0YnQtdCz0L4gINC40LzRg9GJ0LXRgdGC0LLQsCAg0KHRgtC+0YDQvtC9DQogICAg0L/QvtGA0YPRh9Cw0LXRgtGB0Y86IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLg0KICAgDQogICAgICAgICAyLjQuINCf0L7Qu9GM0LfQvtCy0LDQvdC40LUg0L7QsdGJ0LjQvCDQuNC80YPRidC10YHRgtCy0L7QvCDQodGC0L7RgNC+0L0gINC+0YHRg9GJ0LXRgdGC0LLQu9GP0LXRgtGB0Y8gINC/0L4gINC40YUNCiAgICDQvtCx0YnQtdC80YMg0YHQvtCz0LvQsNGB0LjRjiwgICDQsCAgINC/0YDQuCAgINC90LXQtNC+0YHRgtC40LbQtdC90LjQuCAgINGB0L7Qs9C70LDRgdC40Y8gICAtICDQsiAg0L/QvtGA0Y/QtNC60LUsDQogICAg0YPRgdGC0LDQvdCw0LLQu9C40LLQsNC10LzQvtC8INGB0YPQtNC+0LwuDQogICAgICAgICAyLjUuINCe0LHRj9C30LDQvdC90L7RgdGC0Lgg0KHRgtC+0YDQvtC9INC/0L4g0YHQvtC00LXRgNC20LDQvdC40Y4g0L7QsdGJ0LXQs9C+INC40LzRg9GJ0LXRgdGC0LLQsCDQuCDQv9C+0YDRj9C00L7Qug0KICAgINCy0L7Qt9C80LXRidC10L3QuNGPINGA0LDRgdGF0L7QtNC+0LIsICDRgdCy0Y/Qt9Cw0L3QvdGL0YUgINGBICDQstGL0L/QvtC70L3QtdC90LjQtdC8ICDRjdGC0LjRhSAgINC+0LHRj9C30LDQvdC90L7RgdGC0LXQuSwNCiAgICDQvtC/0YDQtdC00LXQu9GP0Y7RgtGB0Y8g0LIg0YHQu9C10LTRg9GO0YnQtdC8INC/0L7RgNGP0LTQutC1OiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KICAgDQogICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18uDQogICANCiAgICAgICAgICAgICAgICAgICAgICBJSUkuINCS0LXQtNC10L3QuNC1INC+0LHRidC40YUg0LTQtdC7INGC0L7QstCw0YDQuNGJ0LXQuS4NCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAg0J/RgNCw0LLQviDQvdCwINC40L3RhNC+0YDQvNCw0YbQuNGODQogICANCiAgICAgICAgIDMuMS4g0J/RgNC4INCy0LXQtNC10L3QuNC4INC+0LHRidC40YUg0LTQtdC7INC60LDQttC00LDRjyDQodGC0L7RgNC+0L3QsCDQstC/0YDQsNCy0LUg0LTQtdC50YHRgtCy0L7QstCw0YLRjCAg0L7Rgg0KICAgINGB0LLQvtC10LPQviDQuNC80LXQvdC4Lg0KICAgICAgICAgMy4yLiDQkiDQvtGC0L3QvtGI0LXQvdC40Y/RhSDRgSDRgtGA0LXRgtGM0LjQvNC4INC70LjRhtCw0LzQuCDQv9C+0LvQvdC+0LzQvtGH0LjQtSDQodGC0L7RgNC+0L3RiyDRgdC+0LLQtdGA0YjQsNGC0YwNCiAgICDRgdC00LXQu9C60Lgg0L7RgiDQuNC80LXQvdC4INCh0YLQvtGA0L7QvSDRg9C00L7RgdGC0L7QstC10YDRj9C10YLRgdGPINGB0L7QvtGC0LLQtdGC0YHRgtCy0YPRjtGJ0LXQuSDQtNC+0LLQtdGA0LXQvdC90L7RgdGC0YzRji4NCiAgICAgICAgIDMuMy4g0KHRgtC+0YDQvtC90YsgINC40LzQtdGO0YIgINGA0LDQstC90L7QtSAg0L/RgNCw0LLQviAg0L3QsCAg0L7Qt9C90LDQutC+0LzQu9C10L3QuNC1ICAg0YHQviAgINCy0YHQtdC5DQogICAg0LTQvtC60YPQvNC10L3RgtCw0YbQuNC10Lkg0L/QviDQstC10LTQtdC90LjRjiDQtNC10LsuDQogICANCiAgICAgICAgICAgICAgICAgICAgICAgICAgICBJVi4g0KDQsNGB0YXQvtC00Ysg0Lgg0YPQsdGL0YLQutC4DQogICANCiAgICAgICAgIDQuMS4g0KHRgtC+0YDQvtC90Ysg0L3QtdGB0YPRgiDRgNCw0YHRhdC+0LTRiyDQuCDRg9Cx0YvRgtC60Lgg0L/RgNC+0L/QvtGA0YbQuNC+0L3QsNC70YzQvdC+INC40YUg0LLQutC70LDQtNCw0Lwg0LINCiAgICDQvtCx0YnQtdC1INC00LXQu9C+Lg0KICAgICAgICAgNC4yLiDQn9GA0LjQsdGL0LvRjCwgINC/0L7Qu9GD0YfQtdC90L3QsNGPICDQsiDRgNC10LfRg9C70YzRgtCw0YLQtSDRgdC+0LLQvNC10YHRgtC90L7QuSDQtNC10Y/RgtC10LvRjNC90L7RgdGC0LgsDQogICAg0YDQsNGB0L/RgNC10LTQtdC70Y/QtdGC0YHRjyDQv9GA0L7Qv9C+0YDRhtC40L7QvdCw0LvRjNC90L4g0YHRgtC+0LjQvNC+0YHRgtC4INCy0LrQu9Cw0LTQvtCyINCh0YLQvtGA0L7QvSDQsiDQvtCx0YnQtdC1INC00LXQu9C+Lg0KICAgDQogICAgICAgICAgICAgICAgICAgICAgICAgVi4g0JfQsNC60LvRjtGH0LjRgtC10LvRjNC90YvQtSDQv9C+0LvQvtC20LXQvdC40Y8NCiAgIA0KICAgICAgICAgNS4xLiDQktC+INCy0YHQtdC8INC40L3QvtC8LCAg0L3QtSAg0YPRgNC10LPRg9C70LjRgNC+0LLQsNC90L3QvtC8ICDQsiAg0L3QsNGB0YLQvtGP0YnQtdC8ICDQtNC+0LPQvtCy0L7RgNC1LA0KICAgINCh0YLQvtGA0L7QvdGLINCx0YPQtNGD0YIg0YDRg9C60L7QstC+0LTRgdGC0LLQvtCy0LDRgtGM0YHRjyDQv9C+0LvQvtC20LXQvdC40Y/QvNC4INC00LXQudGB0YLQstGD0Y7RidC10LPQviDQs9GA0LDQttC00LDQvdGB0LrQvtCz0L4NCiAgICDQt9Cw0LrQvtC90L7QtNCw0YLQtdC70YzRgdGC0LLQsCDQoNC+0YHRgdC40LguDQogICAgICAgICA1LjIuINCd0LDRgdGC0L7Rj9GJ0LjQuSDQtNC+0LPQvtCy0L7RgCDQt9Cw0LrQu9GO0YfQtdC9INCx0LXRgdGB0YDQvtGH0L3Qvi4NCiAgICAgICAgIDUuMy4g0JTQvtCz0L7QstC+0YAg0YHQvtGB0YLQsNCy0LvQtdC9INCyIDIt0YUg0Y3QutC30LXQvNC/0LvRj9GA0LDRhS4NCiAgICAgICAgIDUuNC4g0JDQtNGA0LXRgdCwINC4INCx0LDQvdC60L7QstGB0LrQuNC1INGA0LXQutCy0LjQt9C40YLRiyDQodGC0L7RgNC+0L0uDQogICANCiAgICAgICAgIEkg0KPRh9Cw0YHRgtC90LjQujogX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KICAgDQogICAgICAgICBJSSDQo9GH0LDRgdGC0L3QuNC6OiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCiAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCiAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCiAgIA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg0J/QvtC00L/QuNGB0Lgg0YHRgtC+0YDQvtC9Og0KICAgDQogICANCiAgICAgICAgICBJINCj0YfQsNGB0YLQvdC40Lo6ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBJSSDQo9GH0LDRgdGC0L3QuNC6Og0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fICAgICAgICAgICAgICAgICAgICAgICAgX19fX19fX19fX19fX19fX19fX19fXw0KICAgICAgICAgICAg0Jwu0J8uICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgINCcLtCfLg0KDQogIA0KPC9wcmU+PC9kaXY+DQo8L2JvZHk+DQo8L2h0bWw+",
+    "mime_type": "text/html",
+    "language": "ru",
+    "locale": "ru"
+  },
+  "ingestion_preflight": {
+    "mime_type": "text/html",
+    "extractor": "html:regex",
+    "extraction_source": "html:regex",
+    "extraction_ok": true,
+    "error": null,
+    "extraction_error": null,
+    "sha256": "ec343145a71cc0b0c0da7cd0aba8ed5be530b3ccae89d0d9ebaffd91167a96f6"
+  },
+  "metrics": {
+    "risk_count": 1,
+    "high_risk_count": 0,
+    "disputed_clause_count": 1,
+    "asymmetry_signal_count": 0,
+    "contract_type": "labor_contract"
+  },
+  "analysis": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'obrazets-primerniy-dogovor-prostogo-tovarischestva-sovmestnaya-d. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Поставщик'. Определен тип договора: Трудовой договор (уверенность 52%, правовая рамка: ТК РФ). Ключевые обязательства по договору для роли 'Поставщик': Обязанности Сторон по содержанию общего имущества и порядок возмещения расходов, связанных с выполнением этих обязанностей, определяются в следующем порядке: ___________________________________ ____________________________________________________________________. Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Поставщик'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Образец. Примерный договор простого товарищества (совместная деятельность) - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ПРИМЕРНЫЙ ДОГОВОР простого товарищества (совместная деятельность) г. ________________ \"____\"_______________20___ г. ____________________________________________________________________, (наименование предприятия-I участника) именуемое в дальнейшем \"I участник\", в лице _________________________...",
+        "dispute_reason": "Одна из сторон получила дискреционное право без достаточных ограничителей.",
+        "possible_consequence": "Это может привести к одностороннему применению условия и спору о пределах такого права.",
+        "confidence": 0.76
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Поставщик",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Поставщик'.",
+      "must_do": [
+        "Обязанности Сторон по содержанию общего имущества и порядок возмещения расходов, связанных с выполнением этих обязанностей, определяются в следующем порядке: ___________________________________ ____________________________________________________________________."
+      ],
+      "should_review": [
+        "При ведении общих дел каждая Сторона вправе действовать от своего имени."
+      ],
+      "payment_terms": [
+        "Конфиг не выявил явных условий оплаты."
+      ],
+      "deadlines": [
+        "Конфиг не выявил явных сроков."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "ec343145a71cc0b0c0da7cd0aba8ed5be530b3ccae89d0d9ebaffd91167a96f6"
+    },
+    "contract_type": {
+      "type_id": "labor_contract",
+      "confidence": 0.52,
+      "ru_name": "Трудовой договор",
+      "legal_framework": "ТК РФ"
+    },
+    "asymmetry_signals": []
+  },
+  "result": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'obrazets-primerniy-dogovor-prostogo-tovarischestva-sovmestnaya-d. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Поставщик'. Определен тип договора: Трудовой договор (уверенность 52%, правовая рамка: ТК РФ). Ключевые обязательства по договору для роли 'Поставщик': Обязанности Сторон по содержанию общего имущества и порядок возмещения расходов, связанных с выполнением этих обязанностей, определяются в следующем порядке: ___________________________________ ____________________________________________________________________. Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Поставщик'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Образец. Примерный договор простого товарищества (совместная деятельность) - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ПРИМЕРНЫЙ ДОГОВОР простого товарищества (совместная деятельность) г. ________________ \"____\"_______________20___ г. ____________________________________________________________________, (наименование предприятия-I участника) именуемое в дальнейшем \"I участник\", в лице _________________________...",
+        "dispute_reason": "Одна из сторон получила дискреционное право без достаточных ограничителей.",
+        "possible_consequence": "Это может привести к одностороннему применению условия и спору о пределах такого права.",
+        "confidence": 0.76
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Поставщик",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Поставщик'.",
+      "must_do": [
+        "Обязанности Сторон по содержанию общего имущества и порядок возмещения расходов, связанных с выполнением этих обязанностей, определяются в следующем порядке: ___________________________________ ____________________________________________________________________."
+      ],
+      "should_review": [
+        "При ведении общих дел каждая Сторона вправе действовать от своего имени."
+      ],
+      "payment_terms": [
+        "Конфиг не выявил явных условий оплаты."
+      ],
+      "deadlines": [
+        "Конфиг не выявил явных сроков."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "ec343145a71cc0b0c0da7cd0aba8ed5be530b3ccae89d0d9ebaffd91167a96f6"
+    },
+    "contract_type": {
+      "type_id": "labor_contract",
+      "confidence": 0.52,
+      "ru_name": "Трудовой договор",
+      "legal_framework": "ТК РФ"
+    },
+    "asymmetry_signals": []
+  },
+  "finished_at": "2026-04-28T16:19:01.028257+00:00",
+  "duration_ms": 102.54
+}

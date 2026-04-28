@@ -1,0 +1,223 @@
+{
+  "case_id": "dogovory_4__dogovor_na_sozdanie_nauchnotehnicheskoy_ili_proizvodstvennoy_pro",
+  "relative_path": "договоры 4/dogovor-na-sozdanie-nauchnotehnicheskoy-ili-proizvodstvennoy-pro.html",
+  "document_path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\договоры 4\\dogovor-na-sozdanie-nauchnotehnicheskoy-ili-proizvodstvennoy-pro.html",
+  "document_name": "dogovor-na-sozdanie-nauchnotehnicheskoy-ili-proizvodstvennoy-pro.html",
+  "role": "Заявитель",
+  "counterparty_role": "Организация",
+  "language": "ru",
+  "mime_type": "text/html",
+  "tags": [
+    "workspace-corpus",
+    "html",
+    "dogovory_4",
+    "non_contract_legal_form"
+  ],
+  "source_group": "manifest",
+  "expected": {
+    "contract_type": "non_contract_legal_form",
+    "min_contract_type_confidence": 0.37,
+    "min_risk_count": 0,
+    "min_disputed_clause_count": 0,
+    "execution_mode": "local_first",
+    "expected_high_risk_ids": []
+  },
+  "started_at": "2026-04-28T16:12:37.631815+00:00",
+  "status": "completed",
+  "request": {
+    "document_name": "dogovor-na-sozdanie-nauchnotehnicheskoy-ili-proizvodstvennoy-pro.html",
+    "role_context": {
+      "role": "Заявитель",
+      "counterparty_role": "Организация"
+    },
+    "document_text": null,
+    "document_base64": "PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMDEgVHJhbnNpdGlvbmFsLy9FTiI+DQo8aHRtbD4NCjxoZWFkPg0KPGJhc2UgaHJlZj0iaHR0cHM6Ly9kb2dvdm9yLXVyaXN0LnJ1LyI+DQo8dGl0bGU+0JTQvtCz0L7QstC+0YAg0L3QsCDRgdC+0LfQtNCw0L3QuNC1INC90LDRg9GH0L3Qvi3RgtC10YXQvdC40YfQtdGB0LrQvtC5INC40LvQuCDQv9GA0L7QuNC30LLQvtC00YHRgtCy0LXQvdC90L7QuSAgINC/0YDQvtC00YPQutGG0LjQuCAtINCy0LXRgNGB0LjRjyDQtNC70Y8g0L/QtdGH0LDRgtC4LiAyMDI2LiDQntCx0YDQsNC30YbRiyDQtNC+0LPQvtCy0L7RgNC+0LIsINGC0LjQv9C+0LLRi9C1INC00L7Qs9C+0LLQvtGA0LAsINCw0LrRgtGD0LDQu9GM0L3Ri9C1INC00L7QutGD0LzQtdC90YLRiywg0Y7RgNC40LTQuNGH0LXRgdC60LjQvCDQuCDRhNC40LfQuNGH0LXRgdC60LjQvCDQu9C40YbQsNC8PC90aXRsZT4NCjxtZXRhIGNvbnRlbnQ9IiIgbmFtZT0ia2V5d29yZHMiPg0KPG1ldGEgY29udGVudD0iIiBuYW1lPSJkZXNjcmlwdGlvbiI+DQo8bWV0YSBuYW1lPSJyb2JvdHMiIGNvbnRlbnQ9Im5vaW5kZXgsbm9mb2xsb3ciPg0KPG1ldGEgaHR0cC1lcXVpdj0iQ29udGVudC1UeXBlIiBjb250ZW50PSJ0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgiPg0KPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSIvaW1hZ2VzL3N0eWxlLmNzcyIgdHlwZT0idGV4dC9jc3MiPg0KPC9oZWFkPg0KPGJvZHk+DQo8ZGl2IGNsYXNzPSJkb2N1bWVudFRleHQiPg0KPHByZT7QlNCe0JPQntCS0J7QoA0K0L3QsCDRgdC+0LfQtNCw0L3QuNC1INC90LDRg9GH0L3Qvi3RgtC10YXQvdC40YfQtdGB0LrQvtC5INC40LvQuCDQv9GA0L7QuNC30LLQvtC00YHRgtCy0LXQvdC90L7QuQ0K0L/RgNC+0LTRg9C60YbQuNC4DQoNCtCzLl9fX19fX19fX19fXyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICJfX18iX19fX19fMjAwX1/Qsy4NCg0KICAgICDQl9Cw0LLQvtC0IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KKNC90LDQuNC80LXQvdC+0LLQsNC90LjQtSAg0LfQsNCy0L7QtNCwKSwgICDQtNC10LnRgdGC0LLRg9GO0YnQuNC5ICDQvdCwICAg0L7RgdC90L7QstCw0L3QuNC4ICDQo9GB0YLQsNCy0LAgICDQt9Cw0LLQvtC00LAsDQrQuNC80LXQvdGD0LXQvNGL0LkgINCyICAg0LTQsNC70YzQvdC10LnRiNC10LwgINCf0YDQtdC00L/RgNC40Y/RgtC40LUsICAg0LIgICDQu9C40YbQtSAgINC00LjRgNC10LrRgtC+0YDQsCAgINC30LDQstC+0LTQsA0KX19fX19fX19fX19fICjQpC7QmC7Qni4pLCDQvdCw0YPRh9C90L4t0L/RgNC+0LjQt9Cy0L7QtNGB0YLQstC10L3QvdC+0LUgX19fX19fX19fX19fX19fX19fX19fX19fDQoo0L3QsNC40LzQtdC90L7QstCw0L3QuNC1ICDQvtCx0YrQtdC00LjQvdC10L3QuNGPKSwgINC00LXQudGB0YLQstGD0Y7RidC10LUgINC90LAgINC+0YHQvdC+0LLQsNC90LjQuCAg0L/QvtC70L7QttC10L3QuNGPICDQvtCxDQrQvtCx0YrQtdC00LjQvdC10L3QuNC4LCDQuNC80LXQvdGD0LXQvNC+0LUg0LIg0LTQsNC70YzQvdC10LnRiNC10Lwg0J7QsdGK0LXQtNC40L3QtdC90LjQtSwg0LIg0LvQuNGG0LUgX19fX19fX19fX19fX19fDQoo0KQu0Jgu0J4uLCAgICDQtNC+0LvQttC90L7RgdGC0YwpLCAgICAgINC4ICAgINCd0LDRg9GH0L3Qvi3QuNGB0YHQu9C10LTQvtCy0LDRgtC10LvRjNGB0LrQuNC5ICAgICDQuNC90YHRgtC40YLRg9GCDQpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQoo0L3QsNC40LzQtdC90L7QstCw0L3QuNC1ICDQuNC90YHRgtC40YLRg9GC0LApLCAgINC00LXQudGB0YLQstGD0Y7RidC40LkgINC90LAgICDQvtGB0L3QvtCy0LDQvdC40LggINC/0L7Qu9C+0LbQtdC90LjRjyAg0L7QsQ0K0L7QsdGK0LXQtNC40L3QtdC90LjQuCwg0LjQvNC10L3Rg9C10LzRi9C5INCyINC00LDQu9GM0L3QtdC50YjQtdC8INCY0L3RgdGC0LjRgtGD0YIsINCyINC70LjRhtC1IF9fX19fX19fX19fX19fX19fXw0KKNCkLtCYLtCeLiwg0LTQvtC70LbQvdC+0YHRgtGMKSwg0LfQsNC60LvRjtGH0LjQu9C4INC90LDRgdGC0L7Rj9GJ0LjQuSDQtNC+0LPQvtCy0L7RgCDQviDQvdC40LbQtdGB0LvQtdC00YPRjtGJ0LXQvDoNCg0KICAgICBJLiDQn9GA0LXQtNC80LXRgiDQtNC+0LPQvtCy0L7RgNCwDQogICAgIDEuINCf0YDQtdC00L/RgNC40Y/RgtC40LUgINC4INCe0LHRitC10LTQuNC90LXQvdC40LUgINC/0L7RgNGD0YfQsNGO0YIsINCwICDQmNC90YHRgtC40YLRg9GCINC/0YDQuNC90LjQvNCw0LXRgiAg0L3QsA0K0YHQtdCx0Y8gINC40LfQs9C+0YLQvtCy0LvQtdC90LjQtSAgINC/0YDQvtC10LrRgtC90L4t0YHQvNC10YLQvdC+0LkgINC00L7QutGD0LzQtdC90YLQsNGG0LjQuCAgINC90LAgICDQuNC30LPQvtGC0L7QstC70LXQvdC40LUNCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQoo0L3QsNC40LzQtdC90L7QstCw0L3QuNC1INC90LDRg9GH0L3Qvi3RgtC10YXQvdC40YfQtdGB0LrQvtC5INC40LvQuCDQv9GA0L7QuNC30LLQvtC00YHRgtCy0LXQvdC90L7QuSDQv9GA0L7QtNGD0LrRhtC40LgpLg0KICAgICAyLiDQndCw0YPRh9C90YvQtSwgINGC0LXRhdC90LjRh9C10YHQutC40LUsICDRjdC60L7QvdC+0LzQuNGH0LXRgdC60LjQtSAg0LggINC00YDRg9Cz0LjQtSAg0YLRgNC10LHQvtCy0LDQvdC40Y8gINC6DQrQvdCw0YPRh9C90L4t0YLQtdGF0L3QuNGH0LXRgdC60L7QuSAgINC/0YDQvtC00YPQutGG0LjQuCwgICAg0Y/QstC70Y/RjtGJ0LXQudGB0Y8gICAg0L/RgNC10LTQvNC10YLQvtC8ICAgINC00L7Qs9C+0LLQvtGA0LAsDQrQvtC/0YDQtdC00LXQu9GP0Y7RgtGB0Y8g0YLQtdGF0L3QuNGH0LXRgdC60LjQvCDQt9Cw0LTQsNC90LjQtdC8ICjQv9GA0LjQu9C+0LbQtdC90LjQtSDQuiDQtNC+0LPQvtCy0L7RgNGDKS4NCiAgICAgMy4g0KHRgNC+0LogINGB0LTQsNGH0Lgg0YDQsNCx0L7RgiDQv9C+INC40LfQs9C+0YLQvtCy0LvQtdC90LjRjiDQv9GA0L7QtdC60YLQvdC+LdGB0LzQtdGC0L3QvtC5INC00L7QutGD0LzQtdC90YLQsNGG0LjQuA0KX19fX19fX19fX19fXzIwX19f0LMuDQogICAgIDQuICDQodC+0LTQtdGA0LbQsNC90LjQtSAg0LggINGB0YDQvtC60LggINCy0YvQv9C+0LvQvdC10L3QuNGPICDQvtGB0L3QvtCy0L3Ri9GFICDRjdGC0LDQv9C+0LIgINGA0LDQsdC+0YLRiyAg0L/Qvg0K0LTQvtCz0L7QstC+0YDRgyAg0L7Qv9GA0LXQtNC10LvRj9GO0YLRgdGPICAg0YLQtdGF0L3QuNGH0LXRgdC60LjQvCAg0LfQsNC00LDQvdC40LXQvCAg0LggINC60LDQu9C10L3QtNCw0YDQvdGL0LwgINC/0LvQsNC90L7QvCwNCtGB0L7RgdGC0LDQstC70Y/RjtGJ0LjQvNC4INC90LXQvtGC0YrQtdC80LvQtdC80YPRjiDRh9Cw0YHRgtGMINC90LDRgdGC0L7Rj9GJ0LXQs9C+INC00L7Qs9C+0LLQvtGA0LAuDQogICAgIDUuINCf0YDQuNC10LzQutCwICDQuCDQvtGG0LXQvdC60LAg0L3QsNGD0YfQvdC+LdGC0LXRhdC90LjRh9C10YHQutC+0Lkg0L/RgNC+0LTRg9C60YbQuNC4INC+0YHRg9GJ0LXRgdGC0LLQu9GP0LXRgtGB0Y8g0LINCtGB0L7QvtGC0LLQtdGC0YHRgtCy0LjQuCDRgSDRgtGA0LXQsdC+0LLQsNC90LjRj9C80Lgg0YLQtdGF0L3QuNGH0LXRgdC60L7Qs9C+INC30LDQtNCw0L3QuNGPLg0KICAgICA2LiAgINCf0YDQtdC00L/RgNC40Y/RgtC40LUgICAg0LHQtdGA0LXRgiAgINC90LAgICAg0YHQtdCx0Y8gICAg0L7QsdGP0LfQsNGC0LXQu9GM0YHRgtCy0L4gICAg0LLRi9C/0YPRgdC60LANCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQoo0L3QsNC40LzQtdC90L7QstCw0L3QuNC1INC90LDRg9GH0L3Qvi3RgtC10YXQvdC40YfQtdGB0LrQvtC5INC40LvQuCDQv9GA0L7QuNC30LLQvtC00YHRgtCy0LXQvdC90L7QuSDQv9GA0L7QtNGD0LrRhtC40LgpLg0KICAgICA3LiDQntCx0YrQtdC00LjQvdC10L3QuNC1INCx0LXRgNC10YIg0L3QsCDRgdC10LHRjyDQvtCx0Y/Qt9Cw0YLQtdC70YzRgdGC0LLQviDQv9C+0YHRgtCw0LLQu9GP0YLRjCDQt9Cw0LLQvtC00YMgX19fX18NCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQoo0L3QsNC40LzQtdC90L7QstCw0L3QuNC1INGD0LfQu9C+0LIg0LjQu9C4INC00LXRgtCw0LvQtdC5INC/0YDQvtC40LfQstC+0LTRgdGC0LLQtdC90L3QvtC5INC/0YDQvtC00YPQutGG0LjQuCkNCiAgICAgOC4g0KHRgNC+0Log0Lgg0L7QsdGK0LXQvCDQstGL0L/Rg9GB0LrQsCDQn9GA0LXQtNC/0YDQuNGP0YLQuNC10LwgX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCijQvdCw0LjQvNC10L3QvtCy0LDQvdC40LUgINC90LDRg9GH0L3Qvi3RgtC10YXQvdC40YfQtdGB0LrQvtC5ICAg0LjQu9C4ICAg0L/RgNC+0LjQt9Cy0L7QtNGB0YLQstC10L3QvdC+0LkgICDQv9GA0L7QtNGD0LrRhtC40LgpDQpfX19fX19fX19fXyAo0LTQsNGC0LApLg0KDQogICAgIElJLiDQn9C+0YDRj9C00L7QuiDRgdC00LDRh9C4INC4INC/0YDQuNC10LzQutC4INGA0LDQsdC+0YINCiAgICAgOS4gICAg0J/QtdGA0LXRh9C10L3RjCAgICAg0YHQvtGB0YLQsNCy0L3Ri9GFICAgICDRh9Cw0YHRgtC10LkgICAgINC4ICAgICDRgtGA0LXQsdC+0LLQsNC90LjRjyAgICAg0LoNCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQoo0L3QsNC40LzQtdC90L7QstCw0L3QuNC1ICDQvdCw0YPRh9C90L4t0YLQtdGF0L3QuNGH0LXRgdC60L7QuSAgINC40LvQuCAgINC/0YDQvtC40LfQstC+0LTRgdGC0LLQtdC90L3QvtC5ICAg0L/RgNC+0LTRg9C60YbQuNC4KQ0K0L/QvtC00LvQtdC20LDRidC10LkgINC+0YTQvtGA0LzQu9C10L3QuNGOICAg0LggINGB0LTQsNGH0LUsICAg0L7Qv9GA0LXQtNC10LvQtdC9ICDQotC10YXQvdC40YfQtdGB0LrQuNC8ICAg0LfQsNC00LDQvdC40LXQvCwNCtGP0LLQu9GP0Y7RidC40LzRgdGPINGH0LDRgdGC0YzRjiDQtNC+0LPQvtCy0L7RgNCwLg0KICAgICAxMC4g0J/RgNC4ICDQt9Cw0LLQtdGA0YjQtdC90LjQuCAg0YDQsNCx0L7RgiAg0JjQvdGB0YLQuNGC0YPRgiAg0LggINCe0LHRitC10LTQuNC90LXQvdC40LUgINC/0YDQtdC00YHRgtCw0LLQu9GP0Y7Rgg0K0J/RgNC10LTQv9GA0LjRj9GC0LjRjiDQsNC60YIgINGB0LTQsNGH0Lgt0L/RgNC40LXQvNC60Lgg0LggINC60L7QvNC/0LvQtdC60YLQsCAg0YHQvtGB0YLQsNCy0L3Ri9GFICDRh9Cw0YHRgtC10LkgINC90LDRg9GH0L3Qvi0NCtGC0LXRhdC90LjRh9C10YHQutC+0Lkg0L/RgNC+0LTRg9C60YbQuNC4LCDQv9GA0LXQtNGD0YHQvNC+0YLRgNC10L3QvdGL0YUg0KLQtdGF0L3QuNGH0LXRgdC60LjQvCDQt9Cw0LTQsNC90LjQtdC8INC4INGD0YHQu9C+0LLQuNGP0LzQuA0K0LTQvtCz0L7QstC+0YDQsC4NCiAgICAgMTEuICDQn9GA0LXQtNC/0YDQuNGP0YLQuNC1ICAg0LIgINGC0LXRh9C10L3QuNC1ICAg0YLRgNC10YUgICDQtNC90LXQuSAgINGB0L4gICDQtNC90Y8gICDQv9C+0LvRg9GH0LXQvdC40Y8NCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQoo0L3QsNC40LzQtdC90L7QstCw0L3QuNC1INC90LDRg9GH0L3Qvi3RgtC10YXQvdC40YfQtdGB0LrQvtC5INC40LvQuCDQv9GA0L7QuNC30LLQvtC00YHRgtCy0LXQvdC90L7QuSDQv9GA0L7QtNGD0LrRhtC40LgpINC+0LHRj9C30LDQvQ0K0L3QsNC/0YDQsNCy0LjRgtGMICDQmNC90YHRgtC40YLRg9GC0YMgICDQuCAg0J7QsdGK0LXQtNC40L3QtdC90LjRjiAgINC/0L7QtNC/0LjRgdCw0L3QvdGL0LkgINCw0LrRgiAg0YHQtNCw0YfQuC3Qv9GA0LjQtdC80LrQuA0K0L/RgNC+0LTRg9C60YbQuNC4INC40LvQuCDQvNC+0YLQuNCy0LjRgNC+0LLQsNC90L3Ri9C5INC+0YLQutCw0Lcg0L7RgiDQv9GA0LjQtdC80LrQuCDRgNCw0LHQvtGCLg0KICAgICAxMi4gINCSICAg0YHQu9GD0YfQsNC1ICDQvNC+0YLQuNCy0LjRgNC+0LLQsNC90L3QvtCz0L4gICDQvtGC0LrQsNC30LAgINCf0YDQtdC00L/RgNC40Y/RgtC40Y8gICDRgdGC0L7RgNC+0L3QsNC80LgNCtGB0L7RgdGC0LDQstC70Y/QtdGC0YHRjyAg0LDQutGCICAg0YEgINC/0LXRgNC10YfQvdC10LwgICDQvdC10L7QsdGF0L7QtNC40LzRi9GFICDQtNC+0YDQsNCx0L7RgtC+0LosICAg0YHRgNC+0LrQvtCyICAg0LjRhQ0K0LLRi9C/0L7Qu9C90LXQvdC40Y8uDQogICAgIDEzLiDQkiAg0YHQu9GD0YfQsNC1ICDQtNC+0YHRgNC+0YfQvdC+0LPQviAg0LLRi9C/0L7Qu9C90LXQvdC40Y8gINGA0LDQsdC+0YIgINCf0YDQtdC00L/RgNC40Y/RgtC40LUgINC+0LHRj9C30LDQvdC+DQrQtNC+0YHRgNC+0YfQvdC+INC/0YDQuNC90Y/RgtGMINC4INC+0L/Qu9Cw0YLQuNGC0Ywg0YDQsNCx0L7RgtGLINC/0L4g0LTQvtCz0L7QstC+0YDQvdC+0Lkg0YbQtdC90LUuDQogICAgIDE0LiDQldGB0LvQuCDQsiDQv9GA0L7RhtC10YHRgdC1INCy0YvQv9C+0LvQvdC10L3QuNGPINGA0LDQsdC+0YIg0LLRi9GP0YHQvdGP0LXRgtGB0Y8g0L3QtdGG0LXQu9C10YHQvtC+0LHRgNCw0LfQvdC+0YHRgtGMDQrQtNCw0LvRjNC90LXQudGI0LXQs9C+ICDQv9GA0L7QstC10LTQtdC90LjRjyAgINGA0LDQsdC+0YIsICAg0JjQvdGB0YLQuNGC0YPRgiAgINC4ICAg0J7QsdGK0LXQtNC40L3QtdC90LjQtSAgINC+0LHRj9C30LDQvdGLDQrQv9GA0LjQvtGB0YLQsNC90L7QstC40YLRjCDQtdC1LCAg0L/QvtGB0YLQsNCy0LjQsiDQvtCxINGN0YLQvtC8INCyINC40LfQstC10YHRgtC90L7RgdGC0Ywg0YHRgtC+0YDQvtC90Ysg0LIg0YHQtdC80LjQtNC90LXQstC90YvQuQ0K0YHRgNC+0Log0L/QvtGB0LvQtSAg0L/RgNC40L7RgdGC0LDQvdC+0LLQu9C10L3QuNGPINGA0LDQsdC+0YLRiy4g0JIg0Y3RgtC+0Lwg0YHQu9GD0YfQsNC1INGB0YLQvtGA0L7QvdGLINC+0LHRj9C30LDQvdGLINCyIDEwLQ0K0LTQvdC10LLQvdGL0Lkg0YHRgNC+0LogINGA0LDRgdGB0LzQvtGC0YDQtdGC0YwgINCy0L7Qv9GA0L7RgSAg0L4gINGG0LXQu9C10YHQvtC+0LHRgNCw0LfQvdC+0YHRgtC4ICDQuCAg0L3QsNC/0YDQsNCy0LvQtdC90LjRj9GFDQrQv9GA0L7QtNC+0LvQttC10L3QuNGPINGA0LDQsdC+0YIuDQoNCiAgICAgSUlJLiDQn9C+0YDRj9C00L7QuiDRgNCw0YHRh9C10YLQvtCyDQogICAgIDE1LiDQl9CwICDQstGL0L/QvtC70L3QtdC90L3Rg9GOIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCijQvdCw0LjQvNC10L3QvtCy0LDQvdC40LUgINC90LDRg9GH0L3Qvi3RgtC10YXQvdC40YfQtdGB0LrQvtC5ICAg0LjQu9C4ICAg0L/RgNC+0LjQt9Cy0L7QtNGB0YLQstC10L3QvdC+0LkgICDQv9GA0L7QtNGD0LrRhtC40LgpDQrQn9GA0LXQtNC/0YDQuNGP0YLQuNC1INC/0LXRgNC10YfQuNGB0LvRj9C10YIgINCY0L3RgdGC0LjRgtGD0YLRgyBfX19fX19fX19fX19fX19fXyAo0YHRg9C80LzQsCwg0L/QvtC00LvQtdC20LDRidCw0Y8NCtCy0YvQv9C70LDRgtC1KS4NCiAgICAgMTYuINCX0LAg0LLRi9C/0L7Qu9C90LXQvdC90YPRjiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KKNC90LDQuNC80LXQvdC+0LLQsNC90LjQtSAg0L3QsNGD0YfQvdC+LdGC0LXRhdC90LjRh9C10YHQutC+0LkgICDQuNC70LggICDQv9GA0L7QuNC30LLQvtC00YHRgtCy0LXQvdC90L7QuSAgINC/0YDQvtC00YPQutGG0LjQuCkNCtCf0YDQtdC00L/RgNC40Y/RgtC40LUg0L/QtdGA0LXRh9C40YHQu9GP0LXRgiDQntCx0YrQtdC00LjQvdC10L3QuNGOIF9fX19fX19fX19fX19fX18gKNGB0YPQvNC80LAsINC/0L7QtNC70LXQttCw0YnQsNGPDQrQstGL0L/Qu9Cw0YLQtS4pDQogICAgIDE3LiDQntC/0LvQsNGC0LAgINC/0YDQvtC40LfQstC+0LTQuNGC0YHRjyBfX19fX19fX19fICAo0L/QvtGN0YLQsNC/0L3QviDQuNC70LggINC/0L7RgdC70LUg0L/RgNC40L3Rj9GC0LjRjw0K0L/RgNC+0LXQutGC0L3Qvi3RgdC80LXRgtC90L7QuSDQtNC+0LrRg9C80LXQvdGC0LDRhtC40LgpLg0KICAgICAxOC4g0JTQvtC/0LvQsNGC0LAg0Log0LTQvtCz0L7QstC+0YDQvdC+0Lkg0YbQtdC90LUg0LIg0YDQsNC30LzQtdGA0LUgX19fX19fX18gKNGB0YPQvNC80LAg0L/RgNC+0L/QuNGB0YzRjikuDQoNCiAgICAgSVYuINCe0YLQstC10YLRgdGC0LLQtdC90L3QvtGB0YLRjCDRgdGC0L7RgNC+0L0NCiAgICAgMTkuINCX0LAg0L3QsNGA0YPRiNC10L3QuNC1INGB0YDQvtC60L7QsiDQstGL0L/QvtC70L3QtdC90LjRjyDQvtGC0LTQtdC70YzQvdGL0YUg0Y3RgtCw0L/QvtCyINC40LvQuCDQv9C+0YDRg9GH0LXQvdC90L7QuQ0K0YDQsNCx0L7RgtGLINCyICDRhtC10LvQvtC8INCy0LjQvdC+0LLQvdCw0Y8gINGB0YLQvtGA0L7QvdCwINGD0L/Qu9Cw0YfQuNCy0LDQtdGCICDQtNCy0YPQvCDQtNGA0YPQs9C40LwgINGB0YLQvtGA0L7QvdCw0LwuINCX0LANCtC/0YDQvtGB0YDQvtGH0LrRgyDQtNC+IDEg0LzQtdGB0Y/RhtCwINC90LXRg9GB0YLQvtC50LrRgyDQsiDRgNCw0LfQvNC10YDQtSBfX19fLCDQsCDQv9GA0Lgg0L/RgNC+0YHRgNC+0YfQutC1INGB0LLRi9GI0LUgMQ0K0LzQtdGBLiAtINC90LXRg9GB0YLQvtC50LrRgyDQsiDRgNCw0LfQvNC10YDQtSBfX19fINGB0YLQvtC40LzQvtGB0YLQuCDQvdC10LLRi9C/0L7Qu9C90LXQvdC90YvRhSDRgNCw0LHQvtGCLg0KICAgICAyMC4gINCSICAg0YHQu9GD0YfQsNC1ICDQvdC10YPRgdGC0YDQsNC90LXQvdC40Y8gICDQtNC10YTQtdC60YLQvtCyICDQsiAgINGB0YDQvtC6LCAg0YHQvtCz0LvQsNGB0L7QstCw0L3QvdGL0LkNCtGB0YLQvtGA0L7QvdCw0LzQuCwg0LLQuNC90L7QstC90LDRjyAg0YHRgtC+0YDQvtC90LAg0YPQv9C70LDRh9C40LLQsNC10YIgINC00YDRg9Cz0LjQvCAg0YHRgtC+0YDQvtC90LDQvCAg0L3QtdGD0YHRgtC+0LnQutGDICDQsg0K0YDQsNC30LzQtdGA0LUgIF9fX19fXyAgINGB0YLQvtC40LzQvtGB0YLQuCAg0YDQsNCx0L7RgiwgICDQv9C+0LTQu9C10LbQsNGJ0LjRhSAg0LjRgdC/0YDQsNCy0LvQtdC90LjRji4gICDQo9C/0LvQsNGC0LANCtC90LXRg9GB0YLQvtC50LrQuCDQvdC1INC+0YHQstC+0LHQvtC20LTQsNC10YIg0LLQuNC90L7QstC90L7Qs9C+INC+0YIg0YPRgdGC0YDQsNC90LXQvdC40Y8g0LTQtdGE0LXQutGC0LAuDQogICAgIDIxLiDQl9CwICDQvdC10YHQstC+0LXQstGA0LXQvNC10L3QvdGD0Y4g0L/RgNC40LXQvNC60YMgINGA0LXQt9GD0LvRjNGC0LDRgtC+0LIg0L7RgtC00LXQu9GM0L3Ri9GFICDRjdGC0LDQv9C+0LIg0LjQu9C4DQrRgNCw0LHQvtGC0Ysg0LIgINGG0LXQu9C+0Lwg0LLQuNC90L7QstC90LDRjyDRgdGC0L7RgNC+0L3QsCDRg9C/0LvQsNGH0LjQstCw0LXRgiDQtNGA0YPQs9C40Lwg0YHRgtC+0YDQvtC90LDQvCDQvdC10YPRgdGC0L7QudC60YMg0LINCtGA0LDQt9C80LXRgNC1IF9fX18gINGB0YLQvtC40LzQvtGB0YLQuCDQstGL0L/QvtC70L3QtdC90L3Ri9GFICDRgNCw0LHQvtGCINC30LAg0LrQsNC20LTRi9C5INC00LXQvdGMINC/0YDQvtGB0YDQvtGH0LrQuCwg0L3Qvg0K0L3QtSDRgdCy0YvRiNC1INGB0YPQvNC80Ysg0LTQvtCz0L7QstC+0YDQsC4NCiAgICAgMjIuINCX0LAgINC/0YDQvtGB0YDQvtGH0LrRgyDQvtC/0LvQsNGC0Ysg0YHRh9C10YLQsCDQuNC70Lgg0L/QtdGA0LXRh9C40YHQu9C10L3QuNGPINCw0LLQsNC90YHQsCDQn9GA0LXQtNC/0YDQuNGP0YLQuNC1DQrRg9C/0LvQsNGH0LjQstCw0LXRgiAg0JjQvdGB0YLQuNGC0YPRgtGDICAg0LjQu9C4ICDQntCx0YrQtdC00LjQvdC10L3QuNGOICDQv9C10L3RjiAg0LIgINGA0LDQt9C80LXRgNC1ICBfX19fICDRgdGD0LzQvNGLDQrQv9GA0L7RgdGA0L7Rh9C10L3QvdC+0LPQviDQv9C70LDRgtC10LbQsCDQt9CwINC60LDQttC00YvQuSDQtNC10L3RjCDQv9GA0L7RgdGA0L7Rh9C60LguDQogICAgIDIzLiAg0JfQsCDQvdC10L7QsdC+0YHQvdC+0LLQsNC90L3Ri9C5ICDQv9C+0LvQvdGL0LkgINC40LvQuCAg0YfQsNGB0YLQuNGH0L3Ri9C5ICDQvtGC0LrQsNC3ICDQvtGCICDQsNC60YbQtdC/0YLQsA0K0J/RgNC10LTQv9GA0LjRj9GC0LjQtSAg0YPQv9C70LDRh9C40LLQsNC10YIgICDQntCx0YrQtdC00LjQvdC10L3QuNGOICDQuNC70LggINCY0L3RgdGC0LjRgtGD0YLRgyAg0L3QtdGD0YHRgtC+0LnQutGDICBfX19fXw0K0L3QtdCy0YvQv9C70LDRh9C10L3QvdC+0Lkg0YHRg9C80LzRiyAg0LfQsCAg0LrQsNC20LTRi9C5ICDQtNC10L3RjCAg0L/RgNC+0YHRgNC+0YfQutC4LCAg0L3QviAg0L3QtSAg0YHQstGL0YjQtSAg0YHRg9C80LzRiw0K0LTQvtCz0L7QstC+0YDQsC4NCg0KICAgICBWLiDQn9GA0L7Rh9C40LUg0YPRgdC70L7QstC40Y8NCiAgICAgMjQuINCj0YHQu9C+0LLQuNGPICDRgdC+0LHQu9GO0LTQtdC90LjRjyDQv9GA0LDQsiAg0YHRgtC+0YDQvtC9INC90LAg0YHQvtC30LTQsNCy0LDQtdC80YPRjiAo0L/QtdGA0LXQtNCw0LLQsNC10LzRg9GOKQ0K0L3QsNGD0YfQvdC+LdGC0LXRhdC90LjRh9C10YHQutGD0Y4g0LjQu9C4INC/0YDQvtC40LfQstC+0LTRgdGC0LLQtdC90L3Rg9GOINC/0YDQvtC00YPQutGG0LjRjiBfX19fX19fX19fX19fX19fX19fX18NCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQoo0L/RgNC40L3QsNC00LvQtdC20L3QvtGB0YLRjCDQv9GA0L7QtNGD0LrRhtC40Lgg0L/QvtGB0LvQtSDQvdCw0YfQsNC70LAg0LLRi9C/0YPRgdC60LApLg0KICAgICAyNS4g0JTRgNGD0LPQuNC1INGD0YHQu9C+0LLQuNGPINC/0L4g0YPRgdC80L7RgtGA0LXQvdC40Y4g0YHRgtC+0YDQvtC9Lg0KICAgICAyNi4g0KHQv9C+0YDRiyAg0L/QviDQvdCw0YHRgtC+0Y/RidC10LzRgyAg0LTQvtCz0L7QstC+0YDRgyDRgNCw0YHRgdC80LDRgtGA0LjQstCw0Y7RgtGB0Y8gINCyICDQkNGA0LHQuNGC0YDQsNC20L3QvtC8DQrRgdGD0LTQtS4g0KHQv9C+0YDRiywgINGB0LLRj9C30LDQvdC90YvQtSDRgSAg0LLQvtC/0YDQvtGB0LDQvNC4INC90LDRg9GH0L3Qvi3RgtC10YXQvdC40YfQtdGB0LrQvtCz0L4gINGF0LDRgNCw0LrRgtC10YDQsCwgINCyDQrQtNC+0LDRgNCx0LjRgtGA0LDQttC90L7QvCDQv9C+0YDRj9C00LrQtSAg0YDQtdCz0YPQu9C40YDRg9GO0YLRgdGPINC/0YPRgtC10LwgINGB0L7Qt9C00LDQvdC40Y8g0Y3QutGB0L/QtdGA0YLQvdC+0Lkg0LrQvtC80LjRgdGB0LjQuA0K0LjQtyDQv9GA0LXQtNGB0YLQsNCy0LjRgtC10LvQtdC5INGB0YLQvtGA0L7QvSDRgSDQv9GA0LjQstC70LXRh9C10L3QuNC10Lwg0L3QtdC30LDQuNC90YLQtdGA0LXRgdC+0LLQsNC90L3QvtC5INGB0YLQvtGA0L7QvdGLLg0KDQogICAgIFZJLiDQodGA0L7QutC4INC00LXQudGB0YLQstC40Y8g0LTQvtCz0L7QstC+0YDQsA0KICAgICAyNy4g0KHRgNC+0Log0LTQtdC50YHRgtCy0LjRjyDQtNC+0LPQvtCy0L7RgNCwOg0KICAgICDQvdCw0YfQsNC70L4gX19fX19fX19fXzIwX19f0LMuDQogICAgINC+0LrQvtC90YfQsNC90LjQtSBfX19fX19fXzIwX19f0LMuDQogICAgIDI4LiDQmiDQvdCw0YHRgtC+0Y/RidC10LzRgyDQtNC+0LPQvtCy0L7RgNGDINC/0YDQuNC70LDQs9Cw0Y7RgtGB0Y86DQogICAgINCi0LXRhdC90LjRh9C10YHQutC+0LUg0LfQsNC00LDQvdC40LUgKNCf0YDQuNC70L7QttC10L3QuNC1IE4xKQ0KICAgICDQmtCw0LvQtdC90LTQsNGA0L3Ri9C5INC/0LvQsNC9ICjQn9GA0LjQu9C+0LbQtdC90LjQtSBOMikNCiAgICAg0J/RgNC+0YLQvtC60L7QuyDRgdC+0LPQu9Cw0YjQtdC90LjRjyDQviDQtNC+0LPQvtCy0L7RgNC90L7QuSDRhtC10L3QtSAo0J/RgNC40LvQvtC20LXQvdC40LUgTjMpDQogICAgINCU0LDRgtGLINC90LAg0LLQuNC00Ysg0YDQsNCx0L7RgiAo0J/RgNC40LvQvtC20LXQvdC40LUgTjQpLg0KDQogICAgIFZJSS4g0K7RgNC40LTQuNGH0LXRgdC60LjQtSDQsNC00YDQtdGB0LAg0Lgg0YDQsNGB0YfQtdGC0L3Ri9C1INGB0YfQtdGC0LAg0YHRgtC+0YDQvtC9DQogICAgINCf0YDQtdC00L/RgNC40Y/RgtC40LVfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQogICAgINCe0LHRitC10LTQuNC90LXQvdC40LVfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQogICAgINCY0L3RgdGC0LjRgtGD0YJfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQoNCtCU0LjRgNC10LrRgtC+0YAg0LfQsNCy0L7QtNCwICAgICDQndCw0YfQsNC70YzQvdC40Log0L7QsdGK0LXQtNC40L3QtdC90LjRjyAgICDQlNC40YDQtdC60YLQvtGAINCd0JjQmA0KDQogINCcLtCfLiAgICAgICAgICAgICAgICDQnC7Qny4gICAgICAgICAgICAgICAgICAgICDQnC7Qny4NCg0KICANCjwvcHJlPjwvZGl2Pg0KPC9ib2R5Pg0KPC9odG1sPg==",
+    "mime_type": "text/html",
+    "language": "ru",
+    "locale": "ru"
+  },
+  "ingestion_preflight": {
+    "mime_type": "text/html",
+    "extractor": "html:regex",
+    "extraction_source": "html:regex",
+    "extraction_ok": true,
+    "error": null,
+    "extraction_error": null,
+    "sha256": "810182b34d21626dd177b9b62c0f9ccd22ed0dadadeceb4f95e48fb074fec130"
+  },
+  "metrics": {
+    "risk_count": 1,
+    "high_risk_count": 0,
+    "disputed_clause_count": 1,
+    "asymmetry_signal_count": 0,
+    "contract_type": "non_contract_legal_form"
+  },
+  "analysis": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'dogovor-na-sozdanie-nauchnotehnicheskoy-ili-proizvodstvennoy-pro. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Заявитель'. Определен тип договора: Иной юридический документ (уверенность 52%, правовая рамка: Вне типовой contract taxonomy). Ключевые обязательства по договору для роли 'Заявитель': Предприятие в течение трех дней со дня получения _______________________________________________________________________ (наименование научно-технической или производственной продукции) обязан направить Институту и Объединению подписанный акт сдачи-приемки продукции или мотивированный отказ от приемки работ; В случае досрочного выполнения работ Предприятие обязано досрочно принять и оплатить работы по договорной цене; Если в процессе выполнения работ выясняется нецелесообразность дальнейшего проведения работ, Институт и Объединение обязаны приостановить ее, поставив об этом в известность стороны в семидневный срок после приостановления работы. Условия оплаты: В случае досрочного выполнения работ Предприятие обязано досрочно принять и оплатить работы по договорной цене; Порядок расчетов 15; Оплата производится __________ (поэтапно или после принятия проектно-сметной документации). Сроки и дедлайны: Срок сдачи работ по изготовлению проектно-сметной документации _____________20___г; Содержание и сроки выполнения основных этапов работы по договору определяются техническим заданием и календарным планом, составляющими неотъемлемую часть настоящего договора; Срок и объем выпуска Предприятием _____________________________ (наименование научно-технической или производственной продукции) ___________ (дата). Штрафы и санкции: За просрочку до 1 месяца неустойку в размере ____, а при просрочке свыше 1 мес; - неустойку в размере ____ стоимости невыполненных работ; В случае неустранения дефектов в срок, согласованный сторонами, виновная сторона уплачивает другим сторонам неустойку в размере ______ стоимости работ, подлежащих исправлению. Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Заявитель'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Договор на создание научно-технической или производственной продукции - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР на создание научно-технической или производственной продукции г. ____________ \"___\"______200__г. Завод ____________________________________________________________ (наименование завода), действующий на основании Устава завода, именуемый в дальнейшем Предприятие, в лице директора завода ____________ (Ф.",
+        "dispute_reason": "Одна из сторон получила дискреционное право без достаточных ограничителей.",
+        "possible_consequence": "Это может привести к одностороннему применению условия и спору о пределах такого права.",
+        "confidence": 0.76
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Заявитель",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Заявитель'.",
+      "must_do": [
+        "Предприятие в течение трех дней со дня получения _______________________________________________________________________ (наименование научно-технической или производственной продукции) обязан направить Институту и Объединению подписанный акт сдачи-приемки продукции или мотивированный отказ от приемки работ.",
+        "В случае досрочного выполнения работ Предприятие обязано досрочно принять и оплатить работы по договорной цене.",
+        "Если в процессе выполнения работ выясняется нецелесообразность дальнейшего проведения работ, Институт и Объединение обязаны приостановить ее, поставив об этом в известность стороны в семидневный срок после приостановления работы.",
+        "В этом случае стороны обязаны в 10- дневный срок рассмотреть вопрос о целесообразности и направлениях продолжения работ."
+      ],
+      "should_review": [
+        "Другие условия по усмотрению сторон."
+      ],
+      "payment_terms": [
+        "В случае досрочного выполнения работ Предприятие обязано досрочно принять и оплатить работы по договорной цене.",
+        "Порядок расчетов 15.",
+        "Оплата производится __________ (поэтапно или после принятия проектно-сметной документации).",
+        "Доплата к договорной цене в размере ________ (сумма прописью).",
+        "За просрочку оплаты счета или перечисления аванса Предприятие уплачивает Институту или Объединению пеню в размере ____ суммы просроченного платежа за каждый день просрочки.",
+        "Юридические адреса и расчетные счета сторон Предприятие_______________________________________________________ Объединение_______________________________________________________ Институт__________________________________________________________ Директор завода Начальник объединения Директор НИИ М."
+      ],
+      "deadlines": [
+        "Срок сдачи работ по изготовлению проектно-сметной документации _____________20___г.",
+        "Содержание и сроки выполнения основных этапов работы по договору определяются техническим заданием и календарным планом, составляющими неотъемлемую часть настоящего договора.",
+        "Срок и объем выпуска Предприятием _____________________________ (наименование научно-технической или производственной продукции) ___________ (дата).",
+        "Предприятие в течение трех дней со дня получения _______________________________________________________________________ (наименование научно-технической или производственной продукции) обязан направить Институту и Объединению подписанный акт сдачи-приемки продукции или мотивированный отказ от приемки работ.",
+        "В случае мотивированного отказа Предприятия сторонами составляется акт с перечнем необходимых доработок, сроков их выполнения.",
+        "Если в процессе выполнения работ выясняется нецелесообразность дальнейшего проведения работ, Институт и Объединение обязаны приостановить ее, поставив об этом в известность стороны в семидневный срок после приостановления работы."
+      ],
+      "penalties": [
+        "За просрочку до 1 месяца неустойку в размере ____, а при просрочке свыше 1 мес.",
+        "- неустойку в размере ____ стоимости невыполненных работ.",
+        "В случае неустранения дефектов в срок, согласованный сторонами, виновная сторона уплачивает другим сторонам неустойку в размере ______ стоимости работ, подлежащих исправлению.",
+        "Уплата неустойки не освобождает виновного от устранения дефекта.",
+        "За несвоевременную приемку результатов отдельных этапов или работы в целом виновная сторона уплачивает другим сторонам неустойку в размере ____ стоимости выполненных работ за каждый день просрочки, но не свыше суммы договора.",
+        "За необоснованный полный или частичный отказ от акцепта Предприятие уплачивает Объединению или Институту неустойку _____ невыплаченной суммы за каждый день просрочки, но не свыше суммы договора."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "810182b34d21626dd177b9b62c0f9ccd22ed0dadadeceb4f95e48fb074fec130"
+    },
+    "contract_type": {
+      "type_id": "non_contract_legal_form",
+      "confidence": 0.52,
+      "ru_name": "Иной юридический документ",
+      "legal_framework": "Вне типовой contract taxonomy"
+    },
+    "asymmetry_signals": []
+  },
+  "result": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'dogovor-na-sozdanie-nauchnotehnicheskoy-ili-proizvodstvennoy-pro. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Заявитель'. Определен тип договора: Иной юридический документ (уверенность 52%, правовая рамка: Вне типовой contract taxonomy). Ключевые обязательства по договору для роли 'Заявитель': Предприятие в течение трех дней со дня получения _______________________________________________________________________ (наименование научно-технической или производственной продукции) обязан направить Институту и Объединению подписанный акт сдачи-приемки продукции или мотивированный отказ от приемки работ; В случае досрочного выполнения работ Предприятие обязано досрочно принять и оплатить работы по договорной цене; Если в процессе выполнения работ выясняется нецелесообразность дальнейшего проведения работ, Институт и Объединение обязаны приостановить ее, поставив об этом в известность стороны в семидневный срок после приостановления работы. Условия оплаты: В случае досрочного выполнения работ Предприятие обязано досрочно принять и оплатить работы по договорной цене; Порядок расчетов 15; Оплата производится __________ (поэтапно или после принятия проектно-сметной документации). Сроки и дедлайны: Срок сдачи работ по изготовлению проектно-сметной документации _____________20___г; Содержание и сроки выполнения основных этапов работы по договору определяются техническим заданием и календарным планом, составляющими неотъемлемую часть настоящего договора; Срок и объем выпуска Предприятием _____________________________ (наименование научно-технической или производственной продукции) ___________ (дата). Штрафы и санкции: За просрочку до 1 месяца неустойку в размере ____, а при просрочке свыше 1 мес; - неустойку в размере ____ стоимости невыполненных работ; В случае неустранения дефектов в срок, согласованный сторонами, виновная сторона уплачивает другим сторонам неустойку в размере ______ стоимости работ, подлежащих исправлению. Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Заявитель'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Договор на создание научно-технической или производственной продукции - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР на создание научно-технической или производственной продукции г. ____________ \"___\"______200__г. Завод ____________________________________________________________ (наименование завода), действующий на основании Устава завода, именуемый в дальнейшем Предприятие, в лице директора завода ____________ (Ф.",
+        "dispute_reason": "Одна из сторон получила дискреционное право без достаточных ограничителей.",
+        "possible_consequence": "Это может привести к одностороннему применению условия и спору о пределах такого права.",
+        "confidence": 0.76
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Заявитель",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Заявитель'.",
+      "must_do": [
+        "Предприятие в течение трех дней со дня получения _______________________________________________________________________ (наименование научно-технической или производственной продукции) обязан направить Институту и Объединению подписанный акт сдачи-приемки продукции или мотивированный отказ от приемки работ.",
+        "В случае досрочного выполнения работ Предприятие обязано досрочно принять и оплатить работы по договорной цене.",
+        "Если в процессе выполнения работ выясняется нецелесообразность дальнейшего проведения работ, Институт и Объединение обязаны приостановить ее, поставив об этом в известность стороны в семидневный срок после приостановления работы.",
+        "В этом случае стороны обязаны в 10- дневный срок рассмотреть вопрос о целесообразности и направлениях продолжения работ."
+      ],
+      "should_review": [
+        "Другие условия по усмотрению сторон."
+      ],
+      "payment_terms": [
+        "В случае досрочного выполнения работ Предприятие обязано досрочно принять и оплатить работы по договорной цене.",
+        "Порядок расчетов 15.",
+        "Оплата производится __________ (поэтапно или после принятия проектно-сметной документации).",
+        "Доплата к договорной цене в размере ________ (сумма прописью).",
+        "За просрочку оплаты счета или перечисления аванса Предприятие уплачивает Институту или Объединению пеню в размере ____ суммы просроченного платежа за каждый день просрочки.",
+        "Юридические адреса и расчетные счета сторон Предприятие_______________________________________________________ Объединение_______________________________________________________ Институт__________________________________________________________ Директор завода Начальник объединения Директор НИИ М."
+      ],
+      "deadlines": [
+        "Срок сдачи работ по изготовлению проектно-сметной документации _____________20___г.",
+        "Содержание и сроки выполнения основных этапов работы по договору определяются техническим заданием и календарным планом, составляющими неотъемлемую часть настоящего договора.",
+        "Срок и объем выпуска Предприятием _____________________________ (наименование научно-технической или производственной продукции) ___________ (дата).",
+        "Предприятие в течение трех дней со дня получения _______________________________________________________________________ (наименование научно-технической или производственной продукции) обязан направить Институту и Объединению подписанный акт сдачи-приемки продукции или мотивированный отказ от приемки работ.",
+        "В случае мотивированного отказа Предприятия сторонами составляется акт с перечнем необходимых доработок, сроков их выполнения.",
+        "Если в процессе выполнения работ выясняется нецелесообразность дальнейшего проведения работ, Институт и Объединение обязаны приостановить ее, поставив об этом в известность стороны в семидневный срок после приостановления работы."
+      ],
+      "penalties": [
+        "За просрочку до 1 месяца неустойку в размере ____, а при просрочке свыше 1 мес.",
+        "- неустойку в размере ____ стоимости невыполненных работ.",
+        "В случае неустранения дефектов в срок, согласованный сторонами, виновная сторона уплачивает другим сторонам неустойку в размере ______ стоимости работ, подлежащих исправлению.",
+        "Уплата неустойки не освобождает виновного от устранения дефекта.",
+        "За несвоевременную приемку результатов отдельных этапов или работы в целом виновная сторона уплачивает другим сторонам неустойку в размере ____ стоимости выполненных работ за каждый день просрочки, но не свыше суммы договора.",
+        "За необоснованный полный или частичный отказ от акцепта Предприятие уплачивает Объединению или Институту неустойку _____ невыплаченной суммы за каждый день просрочки, но не свыше суммы договора."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "810182b34d21626dd177b9b62c0f9ccd22ed0dadadeceb4f95e48fb074fec130"
+    },
+    "contract_type": {
+      "type_id": "non_contract_legal_form",
+      "confidence": 0.52,
+      "ru_name": "Иной юридический документ",
+      "legal_framework": "Вне типовой contract taxonomy"
+    },
+    "asymmetry_signals": []
+  },
+  "finished_at": "2026-04-28T16:12:37.808838+00:00",
+  "duration_ms": 176.31
+}
