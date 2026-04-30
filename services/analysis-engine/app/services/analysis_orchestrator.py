@@ -9,11 +9,19 @@ from app.schemas.analysis import (
     AnalysisRunRequest,
     AsymmetrySignalItem,
     ContractTypeMetadata,
+    DetectedRoleItem,
     IngestionMetadata,
+    RoleFocusedSummary,
+    TextOffset,
 )
 from app.services.asymmetry_detector import AsymmetryDetector
 from app.services.clause_segmentation import ClauseSegmentationService
-from app.services.contract_analysis import ContractTypeDetector
+from app.services.contract_analysis import (
+    ContractTypeDetector,
+    DetectedRole,
+    extract_roles_from_text,
+    find_role_matches,
+)
 from app.services.contract_brief import ContractBriefGenerationService
 from app.services.execution_strategy import ExecutionStrategyService
 from app.services.ingestion import IngestionService
@@ -69,41 +77,64 @@ class AnalysisOrchestrator:
                     ocr_result.text,
                     request.document_name,
                 )
-                asymmetry_signals = self.asymmetry_detector.detect_asymmetries(clauses)
-
-                risks = self.risk_scoring_service.score(
-                    clauses,
-                    request.role_context.role,
-                    language,
-                    contract_type=(
-                        detected_contract_type.type_id
-                        if detected_contract_type.type_id != "general_contract"
-                        else None
-                    ),
-                    document_text=ocr_result.text,
-                    counterparty_role=request.role_context.counterparty_role,
-                    asymmetry_signals=asymmetry_signals,
-                )
-                disputed_clauses = self.risk_scoring_service.extract_disputed_clauses(clauses, language)
-                role_focused_summary = self.summary_generation_service.generate(
-                    ocr_result.text,
-                    clauses,
-                    risks,
-                    request.role_context.role,
-                    request.role_context.counterparty_role,
-                    language,
+                detected_roles = extract_roles_from_text(ocr_result.text)
+                selected_role_matches = find_role_matches(request.role_context.role, ocr_result.text)
+                role_not_found = bool(request.role_context.role.strip()) and bool(detected_roles) and not selected_role_matches
+                message = (
+                    self._build_role_not_found_message(request.role_context.role, detected_roles)
+                    if role_not_found
+                    else None
                 )
 
-                contract_brief = self.contract_brief_generation_service.generate(
-                    document_name=request.document_name,
-                    document_text=ocr_result.text,
-                    clauses=clauses,
-                    role=request.role_context.role,
-                    counterparty_role=request.role_context.counterparty_role,
-                    language=language,
-                    disputed_clauses=disputed_clauses,
-                    detected_contract_type=detected_contract_type,
-                )
+                if role_not_found:
+                    asymmetry_signals = []
+                    risks = []
+                    disputed_clauses = []
+                    role_focused_summary = RoleFocusedSummary(
+                        role=request.role_context.role,
+                        overview=message or "",
+                        must_do=[],
+                        should_review=[],
+                        payment_terms=[],
+                        deadlines=[],
+                        penalties=[],
+                    )
+                    contract_brief = message or ""
+                else:
+                    asymmetry_signals = self.asymmetry_detector.detect_asymmetries(clauses)
+                    risks = self.risk_scoring_service.score(
+                        clauses,
+                        request.role_context.role,
+                        language,
+                        contract_type=(
+                            detected_contract_type.type_id
+                            if detected_contract_type.type_id != "general_contract"
+                            else None
+                        ),
+                        document_text=ocr_result.text,
+                        counterparty_role=request.role_context.counterparty_role,
+                        asymmetry_signals=asymmetry_signals,
+                    )
+                    disputed_clauses = self.risk_scoring_service.extract_disputed_clauses(clauses, language)
+                    role_focused_summary = self.summary_generation_service.generate(
+                        ocr_result.text,
+                        clauses,
+                        risks,
+                        request.role_context.role,
+                        request.role_context.counterparty_role,
+                        language,
+                    )
+
+                    contract_brief = self.contract_brief_generation_service.generate(
+                        document_name=request.document_name,
+                        document_text=ocr_result.text,
+                        clauses=clauses,
+                        role=request.role_context.role,
+                        counterparty_role=request.role_context.counterparty_role,
+                        language=language,
+                        disputed_clauses=disputed_clauses,
+                        detected_contract_type=detected_contract_type,
+                    )
 
                 output = AnalysisOutput(
                     language=language,
@@ -118,6 +149,26 @@ class AnalysisOrchestrator:
                         extraction_ok=ingestion_payload.extraction_ok,
                         extraction_error=ingestion_payload.extraction_error,
                         sha256=ingestion_payload.sha256,
+                        roles=[
+                            {
+                                "role": detected_role.role,
+                                "canonical_role": detected_role.canonical_role,
+                                "start_offset": detected_role.offset_start,
+                                "end_offset": detected_role.offset_end,
+                            }
+                            for detected_role in detected_roles
+                        ],
+                        detected_roles=[
+                            DetectedRoleItem(
+                                role=detected_role.role,
+                                canonical_role=detected_role.canonical_role,
+                                offset=TextOffset(
+                                    start=detected_role.offset_start,
+                                    end=detected_role.offset_end,
+                                ),
+                            )
+                            for detected_role in detected_roles
+                        ],
                     ),
                     contract_type=ContractTypeMetadata(
                         type_id=detected_contract_type.type_id,
@@ -136,8 +187,33 @@ class AnalysisOrchestrator:
                         )
                         for signal in asymmetry_signals
                     ],
+                    role_not_found=role_not_found,
+                    message=message,
                 )
 
                 self.store.mark_completed(job_id, output.model_dump())
         except Exception as exc:  # pragma: no cover - defensive fallback
             self.store.mark_failed(job_id, str(exc))
+
+    @staticmethod
+    def _build_role_not_found_message(selected_role: str, detected_roles: list[DetectedRole]) -> str:
+        visible_roles: list[str] = []
+        seen: set[str] = set()
+
+        for detected_role in detected_roles:
+            normalized_role = detected_role.role.casefold()
+            if normalized_role in seen:
+                continue
+            seen.add(normalized_role)
+            visible_roles.append(detected_role.role)
+
+        if visible_roles:
+            return (
+                f"Выбранная роль '{selected_role}' не найдена в тексте договора. "
+                f"Найдены роли: {', '.join(visible_roles)}."
+            )
+
+        return (
+            f"Выбранная роль '{selected_role}' не найдена в тексте договора. "
+            "В тексте не удалось определить роли сторон."
+        )

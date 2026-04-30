@@ -19,6 +19,7 @@ from pypdf import PdfReader
 from app.config.runtime import get_runtime_config
 from app.localization import resolve_localized_text
 from app.schemas.analysis import AnalysisRunRequest
+from app.services.contract_analysis import DetectedRole, extract_roles_from_text
 from app.services.text_normalization import normalize_contract_text
 
 
@@ -27,6 +28,7 @@ class IngestionPayload:
     document_name: str
     mime_type: str | None
     text: str
+    detected_roles: list[DetectedRole]
     extraction_source: str
     extraction_ok: bool
     extraction_error: str | None
@@ -92,11 +94,13 @@ class IngestionService:
                 self._runtime_config.pipeline.ingestion.empty_text_placeholder,
                 request.language,
             )
+        detected_roles = extract_roles_from_text(text)
 
         return IngestionPayload(
             document_name=request.document_name,
             mime_type=request.mime_type,
             text=text,
+            detected_roles=detected_roles,
             extraction_source=extracted.extraction_source,
             extraction_ok=extracted.extraction_ok,
             extraction_error=extracted.extraction_error,

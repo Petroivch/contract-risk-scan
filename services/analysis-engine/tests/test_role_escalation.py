@@ -61,3 +61,29 @@ def test_targeted_education_reimbursement_escalates_for_citizen() -> None:
 
     assert citizen_risk.severity.value == "critical"
     assert not any("меры поддержки" in risk.description.casefold() for risk in customer_risks)
+
+
+def test_role_filter_excludes_risk_that_mentions_only_other_party() -> None:
+    scorer = RiskScoringService()
+    clauses = [
+        ClauseSegment(
+            clause_id="clause-1",
+            text="Заказчик несет полную ответственность без ограничения по настоящему договору.",
+        )
+    ]
+
+    executor_risks = scorer.score(
+        clauses,
+        role="исполнитель",
+        language="ru",
+        contract_type="service_agreement",
+    )
+    client_risks = scorer.score(
+        clauses,
+        role="заказчик",
+        language="ru",
+        contract_type="service_agreement",
+    )
+
+    assert all(risk.rule_id != "unlimited_liability" for risk in executor_risks)
+    assert any(risk.rule_id == "unlimited_liability" for risk in client_risks)

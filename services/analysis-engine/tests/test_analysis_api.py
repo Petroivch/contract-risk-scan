@@ -334,6 +334,54 @@ def test_status_and_result_flow_returns_meaningful_contract_analysis() -> None:
     assert result["disputed_clauses"]
 
 
+def test_completed_result_marks_missing_selected_role_without_breaking_async_flow() -> None:
+    client = TestClient(app)
+    payload = {
+        "document_name": "missing-role.txt",
+        "role_context": {"role": "арендатор", "counterparty_role": "арендодатель"},
+        "document_text": TEXT_CONTRACT_RU,
+        "language": "en",
+        "mime_type": "text/plain",
+    }
+
+    run_body = _run_job(client, payload)
+    assert run_body["status"] == "queued"
+
+    status_body = _wait_for_terminal_status(client, run_body["job_id"])
+    assert status_body["status"] == "completed"
+
+    result_response = client.get(f"/analysis/{run_body['job_id']}/result")
+    assert result_response.status_code == 200
+    result = result_response.json()["result"]
+
+    assert result["role_not_found"] is True
+    assert result["message"] == (
+        "Выбранная роль 'арендатор' не найдена в тексте договора. "
+        "Найдены роли: Исполнитель, Заказчик."
+    )
+    assert result["contract_brief"] == result["message"]
+    assert result["risks"] == []
+    assert result["disputed_clauses"] == []
+    assert result["asymmetry_signals"] == []
+    assert result["role_focused_summary"]["overview"] == result["message"]
+    assert result["role_focused_summary"]["must_do"] == []
+    assert result["role_focused_summary"]["should_review"] == []
+    assert result["role_focused_summary"]["payment_terms"] == []
+    assert result["role_focused_summary"]["deadlines"] == []
+    assert result["role_focused_summary"]["penalties"] == []
+    assert result["ingestion"]["detected_roles"][0] == {
+        "role": "Исполнитель",
+        "canonical_role": "executor",
+        "offset": {"start": 0, "end": len("Исполнитель")},
+    }
+    assert result["ingestion"]["roles"][0] == {
+        "role": "Исполнитель",
+        "canonical_role": "executor",
+        "start_offset": 0,
+        "end_offset": len("Исполнитель"),
+    }
+
+
 def test_docx_base64_payload_is_parsed_as_document_text() -> None:
     client = TestClient(app)
 
@@ -496,6 +544,40 @@ def test_missing_job_error_can_be_localized_via_query_locale() -> None:
 
     assert response.status_code == 404
     assert response.json()["detail"] == "Analysis job was not found"
+
+
+def test_missing_role_returns_role_not_found_payload_and_empty_risks() -> None:
+    client = TestClient(app)
+
+    result = _get_completed_result(
+        client,
+        {
+            "document_name": "role-not-found.txt",
+            "role_context": {"role": "Finance reviewer", "counterparty_role": "Seller"},
+            "document_text": "\n".join(
+                [
+                    "Seller shall deliver the goods within 5 days.",
+                    "Buyer must pay the invoice within 10 days.",
+                    "Penalty 1% applies for delay.",
+                ]
+            ),
+            "language": "en",
+            "mime_type": "text/plain",
+        },
+    )
+
+    assert result["role_not_found"] is True
+    assert result["message"] == (
+        "Выбранная роль 'Finance reviewer' не найдена в тексте договора. "
+        "Найдены роли: Seller, Buyer."
+    )
+    assert result["risks"] == []
+    assert result["contract_brief"] == result["message"]
+    assert result["ingestion"]["detected_roles"]
+    assert {item["canonical_role"] for item in result["ingestion"]["detected_roles"]} >= {
+        "executor",
+        "client",
+    }
 
 
 @pytest.mark.parametrize(

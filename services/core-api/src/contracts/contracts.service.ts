@@ -402,32 +402,38 @@ export class ContractsService {
   ): ContractReportDto {
     const locale = normalizeLocale(remoteResult.locale);
     const textPolicy = getContractReportText(locale);
+    const roleNotFound = remoteResult.role_not_found === true;
+    const roleMessage = remoteResult.message ?? null;
 
-    const obligations: ContractObligationDto[] = [
-      ...remoteResult.role_focused_summary.must_do.map((item) =>
-        this.buildObligation(contract.role, item, textPolicy.mustDoDueCondition)
-      ),
-      ...remoteResult.role_focused_summary.payment_terms.map((item) =>
-        this.buildObligation(contract.role, item, textPolicy.paymentDueCondition)
-      ),
-      ...remoteResult.role_focused_summary.deadlines.map((item) =>
-        this.buildObligation(contract.role, item, textPolicy.deadlineDueCondition)
-      ),
-      ...remoteResult.role_focused_summary.should_review.map((item) =>
-        this.buildObligation(contract.role, item, textPolicy.reviewDueCondition)
-      )
-    ];
+    const obligations: ContractObligationDto[] = roleNotFound
+      ? []
+      : [
+          ...remoteResult.role_focused_summary.must_do.map((item) =>
+            this.buildObligation(contract.role, item, textPolicy.mustDoDueCondition)
+          ),
+          ...remoteResult.role_focused_summary.payment_terms.map((item) =>
+            this.buildObligation(contract.role, item, textPolicy.paymentDueCondition)
+          ),
+          ...remoteResult.role_focused_summary.deadlines.map((item) =>
+            this.buildObligation(contract.role, item, textPolicy.deadlineDueCondition)
+          ),
+          ...remoteResult.role_focused_summary.should_review.map((item) =>
+            this.buildObligation(contract.role, item, textPolicy.reviewDueCondition)
+          )
+        ];
 
     const summary: ContractSummaryDto = {
       title: contract.contractLabel || contract.originalFileName || textPolicy.defaultTitle,
       contractType: this.resolveContractTypeLabel(contract.fileMimeType, locale),
-      shortDescription: remoteResult.contract_brief,
-      obligationsForSelectedRole: this.uniqueStrings([
-        ...remoteResult.role_focused_summary.must_do,
-        ...remoteResult.role_focused_summary.payment_terms,
-        ...remoteResult.role_focused_summary.deadlines,
-        ...remoteResult.role_focused_summary.penalties
-      ])
+      shortDescription: roleMessage || remoteResult.contract_brief,
+      obligationsForSelectedRole: roleNotFound
+        ? []
+        : this.uniqueStrings([
+            ...remoteResult.role_focused_summary.must_do,
+            ...remoteResult.role_focused_summary.payment_terms,
+            ...remoteResult.role_focused_summary.deadlines,
+            ...remoteResult.role_focused_summary.penalties
+          ])
     };
 
     const risks: ContractRiskDto[] = remoteResult.risks.map((risk) => ({
@@ -457,10 +463,12 @@ export class ContractsService {
       roleFocus: contract.role,
       selectedRole: contract.role,
       summary,
-      summaryText: remoteResult.contract_brief,
+      summaryText: roleMessage || remoteResult.contract_brief,
       obligations,
       risks,
       disputedClauses,
+      roleNotFound,
+      message: roleMessage,
       generatedAt: new Date().toISOString(),
       generationNotes: contract.focusNotes ?? null
     };

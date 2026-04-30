@@ -119,6 +119,17 @@ export class ContractReportDto {
   @ApiProperty({ type: DisputedClauseDto, isArray: true })
   disputedClauses!: DisputedClauseDto[];
 
+  @ApiProperty({ example: false, required: false })
+  roleNotFound?: boolean;
+
+  @ApiProperty({
+    required: false,
+    nullable: true,
+    example:
+      "Выбранная роль 'Finance reviewer' не найдена в тексте договора. Найдены роли: Seller, Buyer."
+  })
+  message?: string | null;
+
   @ApiProperty({ example: '2026-04-20T10:20:00.000Z' })
   generatedAt!: string;
 

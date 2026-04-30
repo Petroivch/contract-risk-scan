@@ -57,6 +57,25 @@ export interface AnalysisEngineRoleFocusedSummary {
   penalties: string[];
 }
 
+export interface AnalysisEngineTextOffset {
+  start: number;
+  end: number;
+}
+
+export interface AnalysisEngineDetectedRoleItem {
+  role: string;
+  canonical_role: string;
+  offset: AnalysisEngineTextOffset;
+}
+
+export interface AnalysisEngineIngestionMetadata {
+  extraction_source: string;
+  extraction_ok: boolean;
+  extraction_error?: string | null;
+  sha256?: string | null;
+  detected_roles: AnalysisEngineDetectedRoleItem[];
+}
+
 export interface AnalysisEngineExecutionPlan {
   mode: string;
   offline_capable: boolean;
@@ -73,6 +92,9 @@ export interface AnalysisEngineOutput {
   risks: AnalysisEngineRiskItem[];
   disputed_clauses: AnalysisEngineDisputedClauseItem[];
   role_focused_summary: AnalysisEngineRoleFocusedSummary;
+  ingestion?: AnalysisEngineIngestionMetadata;
+  role_not_found?: boolean;
+  message?: string | null;
 }
 
 interface RemoteResultResponse {

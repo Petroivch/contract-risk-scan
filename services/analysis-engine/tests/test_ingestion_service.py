@@ -81,6 +81,14 @@ def test_ingest_preserves_document_metadata_for_text_payload() -> None:
     assert payload.extraction_error is None
     assert payload.sha256 is not None
     assert payload.binary_payload is None
+    assert [(item.role, item.canonical_role) for item in payload.detected_roles] == [
+        ("Contractor", "executor"),
+        ("Customer", "client"),
+    ]
+    assert payload.detected_roles[0].offset_start == 0
+    assert payload.detected_roles[0].offset_end == len("Contractor")
+    assert payload.detected_roles[1].offset_start == payload.text.index("Customer")
+    assert payload.detected_roles[1].offset_end == payload.detected_roles[1].offset_start + len("Customer")
 
 
 def test_ingest_uses_filename_metadata_to_parse_docx_without_explicit_mime_type() -> None:
@@ -138,6 +146,7 @@ def test_ingest_uses_localized_placeholder_when_docx_extraction_returns_empty_te
     assert payload.extraction_ok is False
     assert payload.extraction_error
     assert payload.binary_payload is not None
+    assert payload.detected_roles == []
 
 
 def test_extract_pdf_skips_pages_that_fail_extraction(monkeypatch) -> None:

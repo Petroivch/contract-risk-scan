@@ -556,6 +556,17 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/DisputedClause'
+        roleNotFound:
+          type: boolean
+          description: |
+            `true`, если выбранная роль не найдена в тексте договора. В этом случае `risks`
+            и `obligations` возвращаются пустыми, а `message` объясняет причину.
+          example: true
+        message:
+          type: string
+          nullable: true
+          description: Локализованное пояснение, почему анализ по выбранной роли не был сформирован.
+          example: Выбранная роль 'Finance reviewer' не найдена в тексте договора. Найдены роли: Seller, Buyer.
         generatedAt:
           type: string
           format: date-time

@@ -126,6 +126,17 @@ class RiskItem(BaseModel):
     mitigation: str
 
 
+class TextOffset(BaseModel):
+    start: int = Field(..., ge=0)
+    end: int = Field(..., ge=0)
+
+
+class DetectedRoleItem(BaseModel):
+    role: str
+    canonical_role: str
+    offset: TextOffset
+
+
 class DisputedClauseItem(BaseModel):
     clause_id: str
     clause_excerpt: str
@@ -144,11 +155,20 @@ class RoleFocusedSummary(BaseModel):
     penalties: list[str]
 
 
+class ExtractedRoleItem(BaseModel):
+    role: str
+    canonical_role: str
+    start_offset: int = Field(..., ge=0)
+    end_offset: int = Field(..., ge=0)
+
+
 class IngestionMetadata(BaseModel):
     extraction_source: str
     extraction_ok: bool
     extraction_error: str | None = None
     sha256: str | None = None
+    roles: list[ExtractedRoleItem] = Field(default_factory=list)
+    detected_roles: list[DetectedRoleItem] = Field(default_factory=list)
 
 
 class ContractTypeMetadata(BaseModel):
@@ -199,6 +219,8 @@ class AnalysisOutput(BaseModel):
     ingestion: IngestionMetadata | None = None
     contract_type: ContractTypeMetadata | None = None
     asymmetry_signals: list[AsymmetrySignalItem] = Field(default_factory=list)
+    role_not_found: bool = False
+    message: str | None = None
 
 
 class AnalysisResultResponse(BaseModel):

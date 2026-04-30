@@ -9,7 +9,7 @@ from app.localization import normalize_analysis_language, resolve_localized_text
 from app.schemas.analysis import DisputedClauseItem, RiskItem, RiskSeverity
 from app.services.asymmetry_detector import AsymmetrySignal
 from app.services.clause_segmentation import ClauseSegment
-from app.services.contract_analysis import canonicalize_role
+from app.services.contract_analysis import canonicalize_role, extract_roles_from_text, find_role_matches
 from app.services.text_normalization import normalize_contract_text
 
 
@@ -19,6 +19,15 @@ class RuleMatch:
     excerpt: str
     matched_patterns: list[str]
     source: str
+
+
+@dataclass(slots=True)
+class RankedRiskCandidate:
+    severity_rank: int
+    clause_rank: int
+    risk: RiskItem
+    source_has_roles: bool
+    role_mentioned: bool
 
 
 class RiskScoringService:
@@ -46,7 +55,7 @@ class RiskScoringService:
             document_text if document_text is not None else "\n".join(clause.text for clause in normalized_clauses)
         ).casefold()
         clause_index_by_id = {clause.clause_id: index for index, clause in enumerate(normalized_clauses)}
-        risks_with_rank: list[tuple[int, int, RiskItem]] = []
+        risks_with_rank: list[RankedRiskCandidate] = []
         seen_pairs: set[tuple[str, str | None]] = set()
 
         signal_map = self._group_asymmetry_signals(asymmetry_signals or [])
@@ -83,10 +92,10 @@ class RiskScoringService:
                     description = f"{description} Найденный фрагмент: {match.excerpt}"
 
                 risks_with_rank.append(
-                    (
-                        self._severity_rank(severity),
-                        self._resolve_clause_rank(rule, match.clause_id, clause_index_by_id),
-                        RiskItem(
+                    RankedRiskCandidate(
+                        severity_rank=self._severity_rank(severity),
+                        clause_rank=self._resolve_clause_rank(rule, match.clause_id, clause_index_by_id),
+                        risk=RiskItem(
                             risk_id="",
                             rule_id=rule.id,
                             title=risk_title,
@@ -98,13 +107,15 @@ class RiskScoringService:
                                 role=role,
                                 counterparty_role=counterparty_role,
                                 severity=severity,
-                                role_mentioned=canonical_role in match.source,
+                                role_mentioned=bool(find_role_matches(role, match.source)),
                                 escalation_reason=escalation_reason,
                             ),
                             mitigation=self._ensure_complete_sentence(
                                 resolve_localized_text(rule.mitigation, resolved_language)
                             ),
                         ),
+                        source_has_roles=bool(extract_roles_from_text(match.source)),
+                        role_mentioned=bool(find_role_matches(role, match.source)),
                     )
                 )
 
@@ -117,104 +128,11 @@ class RiskScoringService:
                 seen_pairs=seen_pairs,
             )
         )
-        risks_with_rank.sort(key=lambda item: (-item[0], item[1]))
+        risks_with_rank = self._filter_risks_for_selected_role(risks_with_rank, canonical_role)
+        risks_with_rank.sort(key=lambda item: (-item.severity_rank, item.clause_rank))
         risks = [
-            risk.model_copy(update={"risk_id": f"{self._config.risk_id_prefix}{index}"})
-            for index, (_, _, risk) in enumerate(risks_with_rank, start=1)
-        ]
-
-        if not risks:
-            risks.append(
-                RiskItem(
-                    risk_id=f"{self._config.risk_id_prefix}1",
-                    rule_id="fallback_low_risk",
-                    title=resolve_localized_text(self._config.fallback.risk_title, resolved_language),
-                    severity=RiskSeverity.LOW,
-                    clause_id=None,
-                    description=resolve_localized_text(self._config.fallback.risk_description, resolved_language),
-                    role_relevance=resolve_localized_text(
-                        self._config.fallback.role_relevance,
-                        resolved_language,
-                    ).format(role=role),
-                    mitigation=resolve_localized_text(self._config.fallback.mitigation, resolved_language),
-                )
-            )
-
-        return risks
-
-        signal_map = self._group_asymmetry_signals(asymmetry_signals or [])
-        for clause_index, clause in enumerate(normalized_clauses):
-            for rule in self._config.risk_rules:
-                if not self._rule_applies_to_contract_type(rule, contract_type):
-                    continue
-
-                matches = self._match_rule(
-                    rule=rule,
-                    clauses=normalized_clauses,
-                    combined_text=combined_text,
-                    preferred_clause=clause,
-                )
-                if not matches:
-                    continue
-
-                for match in matches:
-                    dedupe_key = (rule.id, match.clause_id)
-                    if dedupe_key in seen_pairs:
-                        continue
-
-                    severity, escalation_reason = self._escalate_severity(rule, canonical_role, contract_type)
-                    if self._should_skip_risk(rule, canonical_role, severity, combined_text):
-                        continue
-
-                    seen_pairs.add(dedupe_key)
-                    risk_title = self._format_risk_title(
-                        language=resolved_language,
-                        severity=severity,
-                        title_fragment=resolve_localized_text(rule.title, resolved_language),
-                    )
-                    description = resolve_localized_text(rule.description, resolved_language)
-                    if match.excerpt and match.excerpt not in description:
-                        description = f"{description} Найденный фрагмент: {match.excerpt}"
-
-                    risks_with_rank.append(
-                        (
-                            self._severity_rank(severity),
-                            clause_index,
-                            RiskItem(
-                                risk_id="",
-                                rule_id=rule.id,
-                                title=risk_title,
-                                severity=severity,
-                                clause_id=match.clause_id,
-                                description=self._ensure_complete_sentence(description),
-                                role_relevance=self._build_role_relevance(
-                                    language=resolved_language,
-                                    role=role,
-                                    counterparty_role=counterparty_role,
-                                    severity=severity,
-                                    role_mentioned=canonical_role in match.source,
-                                    escalation_reason=escalation_reason,
-                                ),
-                                mitigation=self._ensure_complete_sentence(
-                                    resolve_localized_text(rule.mitigation, resolved_language)
-                                ),
-                            ),
-                        )
-                    )
-
-        risks_with_rank.extend(
-            self._build_asymmetry_risks(
-                signal_map=signal_map,
-                role=role,
-                canonical_role=canonical_role,
-                language=resolved_language,
-                seen_pairs=seen_pairs,
-            )
-        )
-        risks_with_rank.sort(key=lambda item: (-item[0], item[1]))
-        risks = [
-            risk.model_copy(update={"risk_id": f"{self._config.risk_id_prefix}{index}"})
-            for index, (_, _, risk) in enumerate(risks_with_rank, start=1)
+            candidate.risk.model_copy(update={"risk_id": f"{self._config.risk_id_prefix}{index}"})
+            for index, candidate in enumerate(risks_with_rank, start=1)
         ]
 
         if not risks:
@@ -515,8 +433,8 @@ class RiskScoringService:
         canonical_role: str,
         language: str,
         seen_pairs: set[tuple[str, str | None]],
-    ) -> list[tuple[int, int, RiskItem]]:
-        risks_with_rank: list[tuple[int, int, RiskItem]] = []
+    ) -> list[RankedRiskCandidate]:
+        risks_with_rank: list[RankedRiskCandidate] = []
         for signal_group in signal_map.values():
             for signal in signal_group:
                 if canonical_role and signal.affected_roles and canonical_role not in signal.affected_roles:
@@ -528,10 +446,10 @@ class RiskScoringService:
                 severity = RiskSeverity(signal.severity_hint)
                 title = self._format_risk_title(language, severity, signal.summary)
                 risks_with_rank.append(
-                    (
-                        self._severity_rank(severity),
-                        0,
-                        RiskItem(
+                    RankedRiskCandidate(
+                        severity_rank=self._severity_rank(severity),
+                        clause_rank=0,
+                        risk=RiskItem(
                             risk_id="",
                             rule_id=signal.risk_id,
                             title=title,
@@ -543,9 +461,25 @@ class RiskScoringService:
                             ),
                             mitigation=self._default_mitigation_for_signal(signal.risk_id),
                         ),
+                        source_has_roles=bool(signal.affected_roles),
+                        role_mentioned=not canonical_role or canonical_role in signal.affected_roles,
                     )
                 )
         return risks_with_rank
+
+    @staticmethod
+    def _filter_risks_for_selected_role(
+        risks_with_rank: list[RankedRiskCandidate],
+        canonical_role: str,
+    ) -> list[RankedRiskCandidate]:
+        if not canonical_role:
+            return risks_with_rank
+
+        return [
+            candidate
+            for candidate in risks_with_rank
+            if candidate.role_mentioned or not candidate.source_has_roles
+        ]
 
     @staticmethod
     def _group_asymmetry_signals(signals: list[AsymmetrySignal]) -> dict[str, list[AsymmetrySignal]]:
