@@ -1,9 +1,16 @@
 import re
 
-from app.schemas.analysis import DisputedClauseItem, RiskItem, RiskSeverity
+from app.schemas.analysis import (
+    DisputedClauseItem,
+    RiskItem,
+    RiskSeverity,
+    SourceFragmentProvenance,
+    TextOffset,
+)
 from app.services.clause_segmentation import ClauseSegment
 from app.services.contract_brief import ContractBriefGenerationService
 from app.services.risk_scoring import RiskScoringService
+from app.services.summary_record_formatter import smart_truncate_text
 from app.services.summary_generation import SummaryGenerationService
 
 
@@ -30,7 +37,7 @@ def test_disputed_clause_excerpt_keeps_sentence_boundary() -> None:
     assert "заказчика" in disputed[0].clause_excerpt.casefold()
 
 
-def test_summary_overview_ends_with_recommendation_for_high_risks() -> None:
+def test_summary_overview_ends_with_concrete_recommendation_for_high_risks() -> None:
     service = SummaryGenerationService()
     clauses = [
         ClauseSegment(clause_id="clause-1", text="Contractor must provide the service within 5 days."),
@@ -57,7 +64,17 @@ def test_summary_overview_ends_with_recommendation_for_high_risks() -> None:
         language="en",
     )
 
-    assert summary.overview.endswith("should be reviewed manually.")
+    overview_sentences = [
+        sentence
+        for sentence in re.split(r"(?<=[.!?])\s+", summary.overview)
+        if sentence
+    ]
+
+    assert len(overview_sentences) >= 3
+    assert "Review the high-risk clauses manually." in summary.overview
+    assert "Confirm the payment trigger" in summary.overview
+    assert "key deadlines before signing." in summary.overview
+    assert summary.overview.endswith("before signing.")
     assert any("45 days" in line for line in summary.payment_terms)
 
 
@@ -114,10 +131,18 @@ def test_contract_brief_records_use_structured_schema_and_wrapped_evidence() -> 
     disputed_clauses = [
         DisputedClauseItem(
             clause_id="clause-4",
+            text="Customer may interpret service quality at its sole discretion.",
+            offset=TextOffset(start=0, end=59),
+            rule_id="discretionary-quality",
             clause_excerpt="Customer may interpret service quality at its sole discretion.",
             dispute_reason="Quality criteria are discretionary.",
             possible_consequence="The contractor may face subjective acceptance disputes.",
             confidence=0.76,
+            provenance=SourceFragmentProvenance(
+                source="normalized_document_text",
+                text="Customer may interpret service quality at its sole discretion.",
+                offset=TextOffset(start=0, end=59),
+            ),
         )
     ]
 
@@ -143,3 +168,14 @@ def test_contract_brief_records_use_structured_schema_and_wrapped_evidence() -> 
         for evidence in record.evidence:
             assert evidence.endswith(".")
             assert evidence.startswith("\u0424\u0440\u0430\u0433\u043c\u0435\u043d\u0442")
+
+
+def test_smart_truncate_text_prefers_complete_sentence_boundary() -> None:
+    text = (
+        "Contractor must maintain an audit log for thirty six months. "
+        "The second sentence continues with extra implementation detail that should be trimmed."
+    )
+
+    truncated = smart_truncate_text(text, max_chars=90)
+
+    assert truncated == "Contractor must maintain an audit log for thirty six months."

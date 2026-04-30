@@ -3643,24 +3643,39 @@
       "id": "loan_security_agreement",
       "ru_name": "Договор займа / залога / гарантии",
       "en_name": "Loan and security agreement",
+      "aliases": [
+        "договор залога",
+        "договор поручительства",
+        "договор банковской гарантии"
+      ],
+      "title_markers": [
+        "договор залога доли",
+        "договор залога",
+        "договор поручительства"
+      ],
       "keywords": [
         "договор займа",
         "кредитор",
         "заемщик",
         "залог",
+        "залогодатель",
+        "залогодержатель",
         "поручительство",
         "банковская гарантия"
       ],
       "markers": [
         "проценты",
         "обеспечение исполнения",
-        "бенефициар"
+        "бенефициар",
+        "обратить взыскание",
+        "внесудебном порядке"
       ],
       "legal_framework": "ГК РФ, главы 23, 42, 43",
       "characteristic_clauses": [
         "все обязательства",
         "по первому требованию",
-        "предмет залога"
+        "предмет залога",
+        "обратить взыскание"
       ],
       "high_priority_risks": [
         "all_obligations_security",
@@ -3747,6 +3762,398 @@
         "vague_material_breach",
         "unlimited_liability"
       ]
+    },
+    {
+      "id": "nda_agreement",
+      "ru_name": "Соглашение о конфиденциальности / NDA",
+      "en_name": "Non-disclosure agreement",
+      "aliases": [
+        "соглашение о неразглашении",
+        "nda",
+        "non-disclosure agreement"
+      ],
+      "title_markers": [
+        "соглашение о конфиденциальности",
+        "соглашение о неразглашении",
+        "nda"
+      ],
+      "keywords": [
+        "конфиденциальная информация",
+        "неразглашение",
+        "коммерческая тайна",
+        "disclosing party",
+        "receiving party"
+      ],
+      "markers": [
+        "режим конфиденциальности",
+        "раскрывающая сторона",
+        "принимающая сторона"
+      ],
+      "required_markers": [
+        "конфиденциаль"
+      ],
+      "legal_framework": "ГК РФ, Федеральный закон о коммерческой тайне",
+      "characteristic_clauses": [
+        "исключения из конфиденциальной информации",
+        "срок обязательства о неразглашении",
+        "возврат носителей информации"
+      ],
+      "high_priority_risks": [
+        "confidentiality_without_exceptions",
+        "favorable_jurisdiction_or_dispute_clause"
+      ],
+      "minimum_score": 5.0
+    },
+    {
+      "id": "franchise_agreement",
+      "ru_name": "Договор коммерческой концессии / франчайзинга",
+      "en_name": "Franchise agreement",
+      "aliases": [
+        "договор коммерческой концессии",
+        "франчайзинг",
+        "franchise agreement"
+      ],
+      "title_markers": [
+        "договор коммерческой концессии",
+        "франчайзинг",
+        "franchise agreement"
+      ],
+      "keywords": [
+        "коммерческая концессия",
+        "франчайзи",
+        "франчайзер",
+        "паушальный взнос",
+        "товарный знак"
+      ],
+      "markers": [
+        "роялти",
+        "право использования бренда",
+        "стандарты сети"
+      ],
+      "legal_framework": "ГК РФ, глава 54",
+      "characteristic_clauses": [
+        "территория франшизы",
+        "маркетинговый сбор",
+        "инструкции правообладателя"
+      ],
+      "high_priority_risks": [
+        "royalty_reduction_unclear",
+        "ip_transfer_without_scope",
+        "unilateral_termination_no_cause"
+      ],
+      "minimum_score": 5.0
+    },
+    {
+      "id": "distribution_agreement",
+      "ru_name": "Дистрибьюторский / дилерский договор",
+      "en_name": "Distribution agreement",
+      "aliases": [
+        "дистрибьюторский договор",
+        "дилерский договор",
+        "distribution agreement"
+      ],
+      "title_markers": [
+        "дистрибьюторский договор",
+        "дилерский договор",
+        "distribution agreement"
+      ],
+      "keywords": [
+        "дистрибьютор",
+        "дилер",
+        "реселлер",
+        "эксклюзивная территория",
+        "минимальный объем закупки"
+      ],
+      "markers": [
+        "канал продаж",
+        "дилерская скидка",
+        "план закупок"
+      ],
+      "legal_framework": "ГК РФ, смешанная договорная конструкция",
+      "characteristic_clauses": [
+        "территория продаж",
+        "эксклюзивность поставок",
+        "минимальный объем перепродажи"
+      ],
+      "high_priority_risks": [
+        "one_sided_penalty",
+        "early_risk_transfer",
+        "unilateral_termination_no_cause"
+      ],
+      "minimum_score": 5.0
+    },
+    {
+      "id": "transportation_agreement",
+      "ru_name": "Договор перевозки / транспортной экспедиции",
+      "en_name": "Transportation agreement",
+      "aliases": [
+        "договор перевозки",
+        "договор транспортной экспедиции",
+        "freight forwarding agreement"
+      ],
+      "title_markers": [
+        "договор перевозки",
+        "договор транспортной экспедиции",
+        "freight forwarding agreement"
+      ],
+      "keywords": [
+        "перевозчик",
+        "грузоотправитель",
+        "грузополучатель",
+        "экспедитор",
+        "коносамент"
+      ],
+      "markers": [
+        "товарно-транспортная накладная",
+        "маршрут перевозки",
+        "срок доставки"
+      ],
+      "legal_framework": "ГК РФ, главы 40 и 41",
+      "characteristic_clauses": [
+        "ответственность за утрату груза",
+        "подача транспортного средства",
+        "экспедиторское вознаграждение"
+      ],
+      "high_priority_risks": [
+        "strict_deadlines_without_dependency_carveout",
+        "one_sided_penalty",
+        "early_risk_transfer"
+      ],
+      "minimum_score": 5.0
+    },
+    {
+      "id": "storage_agreement",
+      "ru_name": "Договор хранения / складского хранения",
+      "en_name": "Storage agreement",
+      "aliases": [
+        "договор хранения",
+        "ответственное хранение",
+        "warehousing agreement"
+      ],
+      "title_markers": [
+        "договор хранения",
+        "ответственное хранение",
+        "warehousing agreement"
+      ],
+      "keywords": [
+        "хранитель",
+        "поклажедатель",
+        "складское свидетельство",
+        "ответственное хранение"
+      ],
+      "markers": [
+        "условия хранения",
+        "возврат имущества",
+        "учет остатков"
+      ],
+      "legal_framework": "ГК РФ, глава 47",
+      "characteristic_clauses": [
+        "складская обработка",
+        "режим доступа к складу",
+        "компенсация за утрату имущества"
+      ],
+      "high_priority_risks": [
+        "unlimited_liability",
+        "broad_access_rights",
+        "one_sided_penalty"
+      ],
+      "minimum_score": 5.0
+    },
+    {
+      "id": "factoring_agreement",
+      "ru_name": "Договор факторинга / уступки денежного требования",
+      "en_name": "Factoring agreement",
+      "aliases": [
+        "договор факторинга",
+        "финансирование под уступку денежного требования",
+        "factoring agreement"
+      ],
+      "title_markers": [
+        "договор факторинга",
+        "финансирование под уступку денежного требования",
+        "factoring agreement"
+      ],
+      "keywords": [
+        "факторинг",
+        "финансовый агент",
+        "денежное требование",
+        "дебитор"
+      ],
+      "markers": [
+        "уступка требования",
+        "реестр требований",
+        "комиссия фактора"
+      ],
+      "legal_framework": "ГК РФ, глава 43",
+      "characteristic_clauses": [
+        "финансирование поставщика",
+        "регресс к клиенту",
+        "уведомление должника"
+      ],
+      "high_priority_risks": [
+        "payment_asymmetry",
+        "one_sided_penalty",
+        "favorable_jurisdiction_or_dispute_clause"
+      ],
+      "minimum_score": 5.0
+    },
+    {
+      "id": "escrow_agreement",
+      "ru_name": "Договор эскроу",
+      "en_name": "Escrow agreement",
+      "aliases": [
+        "договор эскроу",
+        "escrow agreement"
+      ],
+      "title_markers": [
+        "договор эскроу",
+        "escrow agreement"
+      ],
+      "keywords": [
+        "эскроу-агент",
+        "депонент",
+        "бенефициар",
+        "условия раскрытия эскроу"
+      ],
+      "markers": [
+        "депонирование денежных средств",
+        "блокировка средств",
+        "release conditions"
+      ],
+      "required_markers": [
+        "эскроу"
+      ],
+      "legal_framework": "ГК РФ, глава 47.1",
+      "characteristic_clauses": [
+        "порядок раскрытия счета эскроу",
+        "условия выдачи депонированного имущества",
+        "возврат депонирования"
+      ],
+      "high_priority_risks": [
+        "payment_asymmetry",
+        "vague_material_breach",
+        "favorable_jurisdiction_or_dispute_clause"
+      ],
+      "minimum_score": 5.0
+    },
+    {
+      "id": "settlement_agreement",
+      "ru_name": "Мировое соглашение / соглашение об урегулировании спора",
+      "en_name": "Settlement agreement",
+      "aliases": [
+        "мировое соглашение",
+        "соглашение об урегулировании спора",
+        "settlement agreement"
+      ],
+      "title_markers": [
+        "мировое соглашение",
+        "соглашение об урегулировании спора",
+        "settlement agreement"
+      ],
+      "keywords": [
+        "мировое соглашение",
+        "урегулирование спора",
+        "взаимные уступки",
+        "отказ от исковых требований"
+      ],
+      "markers": [
+        "прекращение судебного спора",
+        "исполнение обязательств по графику",
+        "утверждение судом"
+      ],
+      "legal_framework": "АПК РФ, ГПК РФ, ГК РФ",
+      "characteristic_clauses": [
+        "отказ от претензий",
+        "график погашения задолженности",
+        "последствия неисполнения мирового соглашения"
+      ],
+      "high_priority_risks": [
+        "vague_material_breach",
+        "favorable_jurisdiction_or_dispute_clause",
+        "one_sided_penalty"
+      ],
+      "minimum_score": 6.0
+    },
+    {
+      "id": "data_processing_agreement",
+      "ru_name": "Договор поручения на обработку персональных данных / DPA",
+      "en_name": "Data processing agreement",
+      "aliases": [
+        "договор поручения на обработку персональных данных",
+        "data processing agreement",
+        "dpa"
+      ],
+      "title_markers": [
+        "договор поручения на обработку персональных данных",
+        "data processing agreement",
+        "dpa"
+      ],
+      "keywords": [
+        "оператор персональных данных",
+        "обработчик персональных данных",
+        "субъект персональных данных",
+        "трансграничная передача"
+      ],
+      "markers": [
+        "поручение на обработку",
+        "меры безопасности",
+        "инцидент информационной безопасности"
+      ],
+      "required_markers": [
+        "персональных данных"
+      ],
+      "legal_framework": "Федеральный закон о персональных данных, ГК РФ",
+      "characteristic_clauses": [
+        "срок обработки персональных данных",
+        "возврат или удаление персональных данных",
+        "инструкции оператора"
+      ],
+      "high_priority_risks": [
+        "confidentiality_without_exceptions",
+        "broad_access_rights",
+        "favorable_jurisdiction_or_dispute_clause"
+      ],
+      "minimum_score": 5.0
+    },
+    {
+      "id": "shareholders_agreement",
+      "ru_name": "Корпоративный / акционерный договор",
+      "en_name": "Shareholders agreement",
+      "aliases": [
+        "корпоративный договор",
+        "акционерное соглашение",
+        "shareholders agreement"
+      ],
+      "title_markers": [
+        "корпоративный договор",
+        "акционерное соглашение",
+        "shareholders agreement"
+      ],
+      "keywords": [
+        "участник общества",
+        "акционер",
+        "доли участия",
+        "право преимущественной покупки",
+        "drag-along",
+        "tag-along"
+      ],
+      "markers": [
+        "порядок голосования",
+        "выход из капитала",
+        "корпоративное управление"
+      ],
+      "legal_framework": "ГК РФ, Федеральный закон об ООО, Федеральный закон об АО",
+      "characteristic_clauses": [
+        "обязательство голосовать",
+        "ограничение отчуждения долей",
+        "механизм deadlock"
+      ],
+      "high_priority_risks": [
+        "conflicting_obligations",
+        "vague_material_breach",
+        "favorable_jurisdiction_or_dispute_clause"
+      ],
+      "minimum_score": 5.5
     }
   ]
 }

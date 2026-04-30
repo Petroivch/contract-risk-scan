@@ -81,11 +81,23 @@ class ContractTypeConfig(BaseModel):
     id: str
     ru_name: str
     en_name: str | None = None
+    aliases: list[str] = Field(default_factory=list)
+    title_markers: list[str] = Field(default_factory=list)
     keywords: list[str] = Field(default_factory=list)
     markers: list[str] = Field(default_factory=list)
+    required_markers: list[str] = Field(default_factory=list)
+    excluded_markers: list[str] = Field(default_factory=list)
     legal_framework: str = ""
     characteristic_clauses: list[str] = Field(default_factory=list)
     high_priority_risks: list[str] = Field(default_factory=list)
+    default_roles: list[str] = Field(default_factory=list)
+    escalation_multiplier: float = Field(default=1.0, gt=0)
+    minimum_score: float = Field(default=2.0, ge=0.0)
+    keyword_weight: float = Field(default=1.0, ge=0.0)
+    marker_weight: float = Field(default=2.0, ge=0.0)
+    characteristic_clause_weight: float = Field(default=1.5, ge=0.0)
+    title_weight: float = Field(default=3.0, ge=0.0)
+    excluded_marker_penalty: float = Field(default=1.5, ge=0.0)
     legal_notes: str | None = None
 
 

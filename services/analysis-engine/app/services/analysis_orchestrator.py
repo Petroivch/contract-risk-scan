@@ -1,6 +1,7 @@
-﻿from __future__ import annotations
+from __future__ import annotations
 
 import asyncio
+from typing import TYPE_CHECKING
 
 from app.config.runtime import get_runtime_config
 from app.localization import normalize_analysis_language
@@ -28,7 +29,9 @@ from app.services.ingestion import IngestionService
 from app.services.job_store import InMemoryJobStore
 from app.services.ocr import OCRService
 from app.services.risk_scoring import RiskScoringService
-from app.services.summary_generation import SummaryGenerationService
+
+if TYPE_CHECKING:
+    from app.services.summary_generation import SummaryGenerationService
 
 
 class AnalysisOrchestrator:
@@ -53,7 +56,7 @@ class AnalysisOrchestrator:
         self.ocr_service = ocr_service or OCRService()
         self.clause_segmentation_service = clause_segmentation_service or ClauseSegmentationService()
         self.risk_scoring_service = risk_scoring_service or RiskScoringService()
-        self.summary_generation_service = summary_generation_service or SummaryGenerationService()
+        self._summary_generation_service = summary_generation_service
         self.contract_brief_generation_service = (
             contract_brief_generation_service or ContractBriefGenerationService()
         )
@@ -107,6 +110,7 @@ class AnalysisOrchestrator:
                     contract_brief = message or ""
                     contract_brief_records = []
                 else:
+                    summary_generation_service = self.summary_generation_service
                     asymmetry_signals = self.asymmetry_detector.detect_asymmetries(clauses)
                     risks = self.risk_scoring_service.score(
                         clauses,
@@ -122,7 +126,7 @@ class AnalysisOrchestrator:
                         asymmetry_signals=asymmetry_signals,
                     )
                     disputed_clauses = self.risk_scoring_service.extract_disputed_clauses(clauses, language)
-                    role_focused_summary = self.summary_generation_service.generate(
+                    role_focused_summary = summary_generation_service.generate(
                         ocr_result.text,
                         clauses,
                         risks,
@@ -130,7 +134,7 @@ class AnalysisOrchestrator:
                         request.role_context.counterparty_role,
                         language,
                     )
-                    role_focused_summary_records = self.summary_generation_service.generate_records(
+                    role_focused_summary_records = summary_generation_service.generate_records(
                         role_focused_summary,
                         len(clauses),
                         risks,
@@ -216,6 +220,14 @@ class AnalysisOrchestrator:
                 self.store.mark_completed(job_id, output.model_dump())
         except Exception as exc:  # pragma: no cover - defensive fallback
             self.store.mark_failed(job_id, str(exc))
+
+    @property
+    def summary_generation_service(self) -> SummaryGenerationService:
+        if self._summary_generation_service is None:
+            from app.services.summary_generation import SummaryGenerationService
+
+            self._summary_generation_service = SummaryGenerationService()
+        return self._summary_generation_service
 
     @staticmethod
     def _build_role_not_found_message(selected_role: str, detected_roles: list[DetectedRole]) -> str:

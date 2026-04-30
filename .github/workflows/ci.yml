@@ -1,0 +1,75 @@
+name: Backend CI
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/ci.yml"
+      - "services/analysis-engine/**"
+      - "services/core-api/**"
+      - "README.md"
+  push:
+    branches:
+      - develop
+      - "develop/**"
+      - main
+    paths:
+      - ".github/workflows/ci.yml"
+      - "services/analysis-engine/**"
+      - "services/core-api/**"
+      - "README.md"
+
+jobs:
+  analysis-engine-quality:
+    name: Analysis Engine Quality
+    runs-on: windows-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        shell: pwsh
+        working-directory: services/analysis-engine
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install analysis-engine dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run analysis-engine focused regression suite
+        run: python -m pytest tests/test_evaluation_helpers.py tests/test_quality_metrics.py -q
+
+  core-api:
+    name: Core API
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: services/core-api
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: services/core-api/package-lock.json
+
+      - name: Install core-api dependencies
+        run: npm ci
+
+      - name: Lint core-api
+        run: npm run lint
+
+      - name: Test core-api
+        run: npm run test
+
+      - name: Build core-api
+        run: npm run build

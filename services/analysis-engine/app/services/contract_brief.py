@@ -6,8 +6,13 @@ from app.config.runtime import get_runtime_config
 from app.localization import normalize_analysis_language, resolve_localized_text
 from app.schemas.analysis import DisputedClauseItem, SummaryRecord
 from app.services.clause_segmentation import ClauseSegment
-from app.services.contract_analysis import DetectedContractType
-from app.services.summary_record_formatter import SummaryRecordFormatter
+from app.services.contract_analysis import DetectedContractType, role_aliases
+from app.services.summary_record_formatter import (
+    SummaryRecordFormatter,
+    ensure_sentence,
+    sentence_to_fragment,
+    smart_truncate_text,
+)
 from app.services.text_normalization import normalize_contract_text, split_into_sentences
 
 
@@ -57,7 +62,7 @@ class ContractBriefGenerationService:
             detected_contract_type=detected_contract_type,
         )
 
-        sections = [self._ensure_complete_sentence(payload.intro)]
+        sections = [ensure_sentence(payload.intro)]
 
         if payload.role_obligations:
             sections.append(
@@ -117,7 +122,7 @@ class ContractBriefGenerationService:
                 role=role,
             )
 
-        return " ".join(self._ensure_complete_sentence(section) for section in sections if section)
+        return " ".join(ensure_sentence(section) for section in sections if section)
 
     def generate_records(
         self,
@@ -249,11 +254,14 @@ class ContractBriefGenerationService:
 
         for raw_segment in raw_segments:
             for statement in split_into_sentences(raw_segment):
-                normalized_key = statement.casefold()
+                normalized_statement = self._prepare_statement(statement)
+                if not normalized_statement:
+                    continue
+                normalized_key = normalized_statement.casefold()
                 if normalized_key in seen:
                     continue
                 seen.add(normalized_key)
-                candidates.append(self._ensure_complete_sentence(statement))
+                candidates.append(normalized_statement)
 
         return candidates
 
@@ -264,7 +272,7 @@ class ContractBriefGenerationService:
         actor_terms: list[str],
         max_items: int,
     ) -> list[str]:
-        actor_terms_normalized = [term.casefold().strip() for term in actor_terms if term and term.strip()]
+        actor_terms_normalized = self._expand_actor_terms(actor_terms)
         markers_normalized = [marker.casefold() for marker in markers]
 
         prioritized = self._filter_statements(
@@ -371,14 +379,14 @@ class ContractBriefGenerationService:
             role=role,
         )
         if detected_contract_type and detected_contract_type.type_id != "general_contract":
-            intro += (
-                f" Определен тип договора: {detected_contract_type.ru_name}"
-                f" (уверенность {int(detected_contract_type.confidence * 100)}%,"
-                f" правовая рамка: {detected_contract_type.legal_framework})."
+            intro = (
+                f"{intro} Определен тип договора: {detected_contract_type.ru_name} "
+                f"(уверенность {int(detected_contract_type.confidence * 100)}%, "
+                f"правовая рамка: {detected_contract_type.legal_framework})."
             )
 
         return ContractBriefSectionsPayload(
-            intro=self._ensure_complete_sentence(intro),
+            intro=ensure_sentence(intro),
             role_obligations=role_obligations,
             counterparty_obligations=counterparty_obligations,
             general_obligations=general_obligations,
@@ -407,13 +415,30 @@ class ContractBriefGenerationService:
             for index, item in enumerate(items, start=1)
         ]
 
+    def _prepare_statement(self, statement: str) -> str:
+        cleaned = normalize_contract_text(statement)
+        if not cleaned:
+            return ""
+        return smart_truncate_text(cleaned, max_chars=self._summary_config.max_line_length)
+
     @staticmethod
-    def _join_statements(statements: list[str]) -> str:
-        return "; ".join(normalize_contract_text(statement).rstrip(".!?") for statement in statements)
+    def _expand_actor_terms(actor_terms: list[str]) -> list[str]:
+        expanded_terms: set[str] = set()
+
+        for actor_term in actor_terms:
+            if not actor_term or not actor_term.strip():
+                continue
+
+            expanded_terms.add(actor_term.casefold().strip())
+            expanded_terms.update(alias.casefold() for alias in role_aliases(actor_term))
+
+        return sorted(expanded_terms, key=len, reverse=True)
 
     @staticmethod
     def _ensure_complete_sentence(text: str) -> str:
-        cleaned = normalize_contract_text(text)
-        if cleaned and cleaned[-1] not in ".!?":
-            cleaned = f"{cleaned}."
-        return cleaned
+        return ensure_sentence(text)
+
+    @staticmethod
+    def _join_statements(statements: list[str]) -> str:
+        fragments = [sentence_to_fragment(statement) for statement in statements]
+        return "; ".join(fragment for fragment in fragments if fragment)
