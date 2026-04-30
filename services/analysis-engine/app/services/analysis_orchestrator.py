@@ -79,7 +79,11 @@ class AnalysisOrchestrator:
                 )
                 detected_roles = extract_roles_from_text(ocr_result.text)
                 selected_role_matches = find_role_matches(request.role_context.role, ocr_result.text)
-                role_not_found = bool(request.role_context.role.strip()) and bool(detected_roles) and not selected_role_matches
+                role_not_found = (
+                    bool(request.role_context.role.strip())
+                    and bool(detected_roles)
+                    and not selected_role_matches
+                )
                 message = (
                     self._build_role_not_found_message(request.role_context.role, detected_roles)
                     if role_not_found
@@ -99,7 +103,9 @@ class AnalysisOrchestrator:
                         deadlines=[],
                         penalties=[],
                     )
+                    role_focused_summary_records = []
                     contract_brief = message or ""
+                    contract_brief_records = []
                 else:
                     asymmetry_signals = self.asymmetry_detector.detect_asymmetries(clauses)
                     risks = self.risk_scoring_service.score(
@@ -124,8 +130,22 @@ class AnalysisOrchestrator:
                         request.role_context.counterparty_role,
                         language,
                     )
-
+                    role_focused_summary_records = self.summary_generation_service.generate_records(
+                        role_focused_summary,
+                        len(clauses),
+                        risks,
+                    )
                     contract_brief = self.contract_brief_generation_service.generate(
+                        document_name=request.document_name,
+                        document_text=ocr_result.text,
+                        clauses=clauses,
+                        role=request.role_context.role,
+                        counterparty_role=request.role_context.counterparty_role,
+                        language=language,
+                        disputed_clauses=disputed_clauses,
+                        detected_contract_type=detected_contract_type,
+                    )
+                    contract_brief_records = self.contract_brief_generation_service.generate_records(
                         document_name=request.document_name,
                         document_text=ocr_result.text,
                         clauses=clauses,
@@ -141,9 +161,11 @@ class AnalysisOrchestrator:
                     locale=language,
                     execution_plan=self.execution_strategy_service.resolve(request),
                     contract_brief=contract_brief,
+                    contract_brief_records=contract_brief_records,
                     risks=risks,
                     disputed_clauses=disputed_clauses,
                     role_focused_summary=role_focused_summary,
+                    role_focused_summary_records=role_focused_summary_records,
                     ingestion=IngestionMetadata(
                         extraction_source=ingestion_payload.extraction_source,
                         extraction_ok=ingestion_payload.extraction_ok,

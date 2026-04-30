@@ -47,6 +47,14 @@ export interface AnalysisEngineDisputedClauseItem {
   confidence: number;
 }
 
+export interface AnalysisEngineSummaryRecord {
+  id: string;
+  headline: string;
+  description: string;
+  recommendation: string;
+  evidence: string[];
+}
+
 export interface AnalysisEngineRoleFocusedSummary {
   role: string;
   overview: string;
@@ -89,12 +97,14 @@ export interface AnalysisEngineOutput {
   locale: string;
   execution_plan: AnalysisEngineExecutionPlan;
   contract_brief: string;
+  contract_brief_records: AnalysisEngineSummaryRecord[];
   risks: AnalysisEngineRiskItem[];
   disputed_clauses: AnalysisEngineDisputedClauseItem[];
   role_focused_summary: AnalysisEngineRoleFocusedSummary;
   ingestion?: AnalysisEngineIngestionMetadata;
   role_not_found?: boolean;
   message?: string | null;
+  role_focused_summary_records: AnalysisEngineSummaryRecord[];
 }
 
 interface RemoteResultResponse {

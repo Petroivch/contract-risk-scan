@@ -202,9 +202,33 @@ class ContractBriefSectionsConfig(BaseModel):
     disputed_clauses: dict[str, str]
 
 
+class StructuredSummaryRecordTemplateConfig(BaseModel):
+    headline: dict[str, str]
+    description: dict[str, str]
+    recommendation: dict[str, str]
+
+
+class StructuredSummaryRecordsConfig(BaseModel):
+    role_overview: StructuredSummaryRecordTemplateConfig
+    must_do: StructuredSummaryRecordTemplateConfig
+    should_review: StructuredSummaryRecordTemplateConfig
+    payment_terms: StructuredSummaryRecordTemplateConfig
+    deadlines: StructuredSummaryRecordTemplateConfig
+    penalties: StructuredSummaryRecordTemplateConfig
+    contract_intro: StructuredSummaryRecordTemplateConfig
+    contract_role_obligations: StructuredSummaryRecordTemplateConfig
+    contract_counterparty_obligations: StructuredSummaryRecordTemplateConfig
+    contract_general_obligations: StructuredSummaryRecordTemplateConfig
+    contract_payment_terms: StructuredSummaryRecordTemplateConfig
+    contract_deadlines: StructuredSummaryRecordTemplateConfig
+    contract_penalties: StructuredSummaryRecordTemplateConfig
+    contract_disputed_clauses: StructuredSummaryRecordTemplateConfig
+
+
 class TemplatesConfig(BaseModel):
     contract_brief: dict[str, str]
     contract_brief_sections: ContractBriefSectionsConfig
+    structured_summary_records: StructuredSummaryRecordsConfig
 
 
 class ServiceMetadataConfig(BaseModel):

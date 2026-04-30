@@ -109,11 +109,20 @@ Request:
   - `shortDescription`
   - `obligationsForSelectedRole[]`
 - `summaryText`
+- `contractBriefRecords[]`
+- `roleFocusedSummaryRecords[]`
 - `obligations[]`
 - `risks[]`
 - `disputedClauses[]`
 - `generatedAt`
 - `generationNotes`
+
+`summaryText` и `summary.shortDescription` остаются legacy-строками для обратной совместимости.
+`contractBriefRecords[]` и `roleFocusedSummaryRecords[]` добавляются как additive-формат записей
+`{id, headline, description, recommendation, evidence[]}`. Для этих новых записей текст стандартизован:
+- `headline` и `description` — завершенные предложения на русском;
+- `recommendation` — конкретное действие в императиве на русском;
+- `evidence[]` — массив строк с опорными фрагментами договора.
 
 ## Нормализованные lifecycle-статусы для mobile
 - `queued`
@@ -146,7 +155,9 @@ Request:
 - статус job;
 - итоговый `result`, содержащий:
   - `contract_brief`
+  - `contract_brief_records`
   - `role_focused_summary`
+  - `role_focused_summary_records`
   - `risks[]`
   - `disputed_clauses[]`
   - additive-compatible payload keeps legacy `clause_excerpt`, `dispute_reason`, `possible_consequence`

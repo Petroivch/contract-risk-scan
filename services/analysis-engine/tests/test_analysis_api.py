@@ -313,23 +313,35 @@ def test_status_and_result_flow_returns_meaningful_contract_analysis() -> None:
     assert result["execution_plan"]["mode"] == "server_assist"
     assert result["execution_plan"]["offline_capable"] is False
     assert result["contract_brief"]
+    assert result["contract_brief_records"]
     assert "What buyer must do" in result["contract_brief"]
     assert "What seller must do" in result["contract_brief"]
     assert "Payment terms" in result["contract_brief"]
     assert "Deadlines and timing" in result["contract_brief"]
     assert "Penalties and sanctions" in result["contract_brief"]
     assert "Detected disputed or vague clauses" in result["contract_brief"]
+    assert result["contract_brief_records"][0]["id"] == "contract-brief-intro"
+    assert result["contract_brief_records"][0]["headline"].endswith(".")
+    assert result["contract_brief_records"][0]["description"].endswith(".")
+    assert result["contract_brief_records"][0]["recommendation"].startswith(
+        "\u041f\u0440\u043e\u0432\u0435\u0440\u044c\u0442\u0435"
+    )
 
     assert result["risks"]
     assert any(item["severity"] in {"high", "critical"} for item in result["risks"])
     assert not result["risks"][0]["title"].lower().startswith("low risk")
     assert result["role_focused_summary"]["role"] == "buyer"
+    assert result["role_focused_summary_records"]
     assert any("Buyer must pay" in line for line in result["role_focused_summary"]["must_do"])
     assert any("deliver" in line.lower() for line in result["role_focused_summary"]["must_do"])
     assert any("pay" in line.lower() for line in result["role_focused_summary"]["payment_terms"])
     assert any(
         "10 days" in line.lower() or "5 days" in line.lower()
         for line in result["role_focused_summary"]["deadlines"]
+    )
+    assert result["role_focused_summary_records"][0]["id"] == "role-summary-overview"
+    assert result["role_focused_summary_records"][0]["recommendation"].startswith(
+        "\u041f\u0440\u043e\u0432\u0435\u0440\u044c\u0442\u0435"
     )
     assert result["disputed_clauses"]
     first_disputed_clause = result["disputed_clauses"][0]

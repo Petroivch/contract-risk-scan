@@ -28,7 +28,8 @@ import {
   ContractReportDto,
   ContractRiskDto,
   ContractSummaryDto,
-  DisputedClauseDto
+  DisputedClauseDto,
+  StructuredSummaryRecordDto
 } from './dto/contract-report.dto';
 import { ContractStatusResponseDto } from './dto/contract-status-response.dto';
 import { UploadContractDto } from './dto/upload-contract.dto';
@@ -455,6 +456,12 @@ export class ContractsService {
       whyDisputed: clause.dispute_reason,
       suggestedRewrite: textPolicy.disputedRewriteFallback
     }));
+    const contractBriefRecords = remoteResult.contract_brief_records.map((record) =>
+      this.buildStructuredSummaryRecord(record)
+    );
+    const roleFocusedSummaryRecords = remoteResult.role_focused_summary_records.map((record) =>
+      this.buildStructuredSummaryRecord(record)
+    );
 
     return {
       contractId: contract.id,
@@ -469,6 +476,8 @@ export class ContractsService {
       disputedClauses,
       roleNotFound,
       message: roleMessage,
+      contractBriefRecords,
+      roleFocusedSummaryRecords,
       generatedAt: new Date().toISOString(),
       generationNotes: contract.focusNotes ?? null
     };
@@ -483,6 +492,22 @@ export class ContractsService {
       subject,
       action,
       dueCondition
+    };
+  }
+
+  private buildStructuredSummaryRecord(record: {
+    id: string;
+    headline: string;
+    description: string;
+    recommendation: string;
+    evidence: string[];
+  }): StructuredSummaryRecordDto {
+    return {
+      id: record.id,
+      headline: record.headline,
+      description: record.description,
+      recommendation: record.recommendation,
+      evidence: record.evidence
     };
   }
 

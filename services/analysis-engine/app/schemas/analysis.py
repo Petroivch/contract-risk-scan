@@ -166,6 +166,14 @@ class DisputedClauseItem(BaseModel):
     provenance: SourceFragmentProvenance
 
 
+class SummaryRecord(BaseModel):
+    id: str
+    headline: str
+    description: str
+    recommendation: str
+    evidence: list[str] = Field(default_factory=list)
+
+
 class RoleFocusedSummary(BaseModel):
     role: str
     overview: str
@@ -234,9 +242,11 @@ class AnalysisOutput(BaseModel):
     locale: str
     execution_plan: AnalysisExecutionPlan
     contract_brief: str
+    contract_brief_records: list[SummaryRecord] = Field(default_factory=list)
     risks: list[RiskItem]
     disputed_clauses: list[DisputedClauseItem]
     role_focused_summary: RoleFocusedSummary
+    role_focused_summary_records: list[SummaryRecord] = Field(default_factory=list)
     ingestion: IngestionMetadata | None = None
     contract_type: ContractTypeMetadata | None = None
     asymmetry_signals: list[AsymmetrySignalItem] = Field(default_factory=list)

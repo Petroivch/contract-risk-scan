@@ -17,6 +17,16 @@ def _assert_localized_map(name: str, localized_map: dict[str, str], supported_la
         raise ValueError(f"Config map '{name}' is missing languages: {missing_languages}")
 
 
+def _assert_structured_record_template(
+    name: str,
+    template: object,
+    supported_languages: list[str],
+) -> None:
+    _assert_localized_map(f"{name}.headline", template.headline, supported_languages)
+    _assert_localized_map(f"{name}.description", template.description, supported_languages)
+    _assert_localized_map(f"{name}.recommendation", template.recommendation, supported_languages)
+
+
 def _validate_runtime_config(config: AnalysisRuntimeConfig) -> None:
     supported_languages = config.language_behavior.supported_languages
     severity_levels = {"low", "medium", "high", "critical"}
@@ -88,6 +98,77 @@ def _validate_runtime_config(config: AnalysisRuntimeConfig) -> None:
     _assert_localized_map(
         "templates.contract_brief_sections.disputed_clauses",
         brief_sections.disputed_clauses,
+        supported_languages,
+    )
+    structured_records = config.templates.structured_summary_records
+    _assert_structured_record_template(
+        "templates.structured_summary_records.role_overview",
+        structured_records.role_overview,
+        supported_languages,
+    )
+    _assert_structured_record_template(
+        "templates.structured_summary_records.must_do",
+        structured_records.must_do,
+        supported_languages,
+    )
+    _assert_structured_record_template(
+        "templates.structured_summary_records.should_review",
+        structured_records.should_review,
+        supported_languages,
+    )
+    _assert_structured_record_template(
+        "templates.structured_summary_records.payment_terms",
+        structured_records.payment_terms,
+        supported_languages,
+    )
+    _assert_structured_record_template(
+        "templates.structured_summary_records.deadlines",
+        structured_records.deadlines,
+        supported_languages,
+    )
+    _assert_structured_record_template(
+        "templates.structured_summary_records.penalties",
+        structured_records.penalties,
+        supported_languages,
+    )
+    _assert_structured_record_template(
+        "templates.structured_summary_records.contract_intro",
+        structured_records.contract_intro,
+        supported_languages,
+    )
+    _assert_structured_record_template(
+        "templates.structured_summary_records.contract_role_obligations",
+        structured_records.contract_role_obligations,
+        supported_languages,
+    )
+    _assert_structured_record_template(
+        "templates.structured_summary_records.contract_counterparty_obligations",
+        structured_records.contract_counterparty_obligations,
+        supported_languages,
+    )
+    _assert_structured_record_template(
+        "templates.structured_summary_records.contract_general_obligations",
+        structured_records.contract_general_obligations,
+        supported_languages,
+    )
+    _assert_structured_record_template(
+        "templates.structured_summary_records.contract_payment_terms",
+        structured_records.contract_payment_terms,
+        supported_languages,
+    )
+    _assert_structured_record_template(
+        "templates.structured_summary_records.contract_deadlines",
+        structured_records.contract_deadlines,
+        supported_languages,
+    )
+    _assert_structured_record_template(
+        "templates.structured_summary_records.contract_penalties",
+        structured_records.contract_penalties,
+        supported_languages,
+    )
+    _assert_structured_record_template(
+        "templates.structured_summary_records.contract_disputed_clauses",
+        structured_records.contract_disputed_clauses,
         supported_languages,
     )
 

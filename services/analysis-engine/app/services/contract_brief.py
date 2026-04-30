@@ -1,11 +1,26 @@
 from __future__ import annotations
 
+from dataclasses import dataclass
+
 from app.config.runtime import get_runtime_config
 from app.localization import normalize_analysis_language, resolve_localized_text
-from app.schemas.analysis import DisputedClauseItem
+from app.schemas.analysis import DisputedClauseItem, SummaryRecord
 from app.services.clause_segmentation import ClauseSegment
 from app.services.contract_analysis import DetectedContractType
+from app.services.summary_record_formatter import SummaryRecordFormatter
 from app.services.text_normalization import normalize_contract_text, split_into_sentences
+
+
+@dataclass(slots=True)
+class ContractBriefSectionsPayload:
+    intro: str
+    role_obligations: list[str]
+    counterparty_obligations: list[str]
+    general_obligations: list[str]
+    payment_terms: list[str]
+    deadlines: list[str]
+    penalties: list[str]
+    disputed_count: int
 
 
 class ContractBriefGenerationService:
@@ -16,6 +31,8 @@ class ContractBriefGenerationService:
         self._templates = runtime_config.templates.contract_brief_sections
         self._summary_config = runtime_config.summary_generation
         self._fallback_template = runtime_config.templates.contract_brief
+        self._record_formatter = SummaryRecordFormatter()
+        self._record_templates = self._record_formatter.templates
 
     def generate(
         self,
@@ -29,108 +46,67 @@ class ContractBriefGenerationService:
         detected_contract_type: DetectedContractType | None = None,
     ) -> str:
         resolved_language = normalize_analysis_language(language)
-        statements = self._candidate_statements(document_text, clauses)
-        max_items = min(3, self._summary_config.max_items_per_section)
-
-        role_obligations = self._collect_statements(
-            statements,
-            self._summary_config.markers["must_do"],
-            actor_terms=[role],
-            max_items=max_items,
-        )
-        counterparty_obligations = self._collect_statements(
-            statements,
-            self._summary_config.markers["must_do"],
-            actor_terms=[counterparty_role] if counterparty_role else [],
-            max_items=max_items,
-        )
-        general_obligations = self._collect_statements(
-            statements,
-            self._summary_config.markers["must_do"],
-            actor_terms=[],
-            max_items=max_items,
-        )
-        payment_terms = self._collect_statements(
-            statements,
-            self._summary_config.markers["payment_terms"],
-            actor_terms=[],
-            max_items=max_items,
-        )
-        deadlines = self._collect_statements(
-            statements,
-            self._summary_config.markers["deadlines"],
-            actor_terms=[],
-            max_items=max_items,
-        )
-        penalties = self._collect_statements(
-            statements,
-            self._summary_config.markers["penalties"],
-            actor_terms=[],
-            max_items=max_items,
-        )
-
-        sections = []
-        intro = resolve_localized_text(self._templates.intro, resolved_language).format(
+        payload = self._build_sections_payload(
             document_name=document_name,
-            clauses_count=len(clauses),
+            document_text=document_text,
+            clauses=clauses,
             role=role,
+            counterparty_role=counterparty_role,
+            language=resolved_language,
+            disputed_clauses=disputed_clauses,
+            detected_contract_type=detected_contract_type,
         )
-        if detected_contract_type and detected_contract_type.type_id != "general_contract":
-            intro += (
-                f" Определен тип договора: {detected_contract_type.ru_name}"
-                f" (уверенность {int(detected_contract_type.confidence * 100)}%,"
-                f" правовая рамка: {detected_contract_type.legal_framework})."
-            )
-        sections.append(self._ensure_complete_sentence(intro))
 
-        if role_obligations:
+        sections = [self._ensure_complete_sentence(payload.intro)]
+
+        if payload.role_obligations:
             sections.append(
                 resolve_localized_text(self._templates.role_obligations, resolved_language).format(
                     role=role,
-                    statements=self._join_statements(role_obligations),
+                    statements=self._join_statements(payload.role_obligations),
                 )
             )
-        elif general_obligations:
+        elif payload.general_obligations:
             sections.append(
                 resolve_localized_text(self._templates.general_obligations, resolved_language).format(
                     role=role,
-                    statements=self._join_statements(general_obligations),
+                    statements=self._join_statements(payload.general_obligations),
                 )
             )
 
-        if counterparty_role and counterparty_obligations:
+        if counterparty_role and payload.counterparty_obligations:
             sections.append(
                 resolve_localized_text(self._templates.counterparty_obligations, resolved_language).format(
                     counterparty_role=counterparty_role,
-                    statements=self._join_statements(counterparty_obligations),
+                    statements=self._join_statements(payload.counterparty_obligations),
                 )
             )
 
-        if payment_terms:
+        if payload.payment_terms:
             sections.append(
                 resolve_localized_text(self._templates.payment_terms, resolved_language).format(
-                    statements=self._join_statements(payment_terms),
+                    statements=self._join_statements(payload.payment_terms),
                 )
             )
 
-        if deadlines:
+        if payload.deadlines:
             sections.append(
                 resolve_localized_text(self._templates.deadlines, resolved_language).format(
-                    statements=self._join_statements(deadlines),
+                    statements=self._join_statements(payload.deadlines),
                 )
             )
 
-        if penalties:
+        if payload.penalties:
             sections.append(
                 resolve_localized_text(self._templates.penalties, resolved_language).format(
-                    statements=self._join_statements(penalties),
+                    statements=self._join_statements(payload.penalties),
                 )
             )
 
-        if disputed_clauses:
+        if payload.disputed_count:
             sections.append(
                 resolve_localized_text(self._templates.disputed_clauses, resolved_language).format(
-                    count=len(disputed_clauses),
+                    count=payload.disputed_count,
                 )
             )
 
@@ -142,6 +118,129 @@ class ContractBriefGenerationService:
             )
 
         return " ".join(self._ensure_complete_sentence(section) for section in sections if section)
+
+    def generate_records(
+        self,
+        document_name: str,
+        document_text: str,
+        clauses: list[ClauseSegment],
+        role: str,
+        counterparty_role: str | None,
+        language: str,
+        disputed_clauses: list[DisputedClauseItem],
+        detected_contract_type: DetectedContractType | None = None,
+    ) -> list[SummaryRecord]:
+        payload = self._build_sections_payload(
+            document_name=document_name,
+            document_text=document_text,
+            clauses=clauses,
+            role=role,
+            counterparty_role=counterparty_role,
+            language=language,
+            disputed_clauses=disputed_clauses,
+            detected_contract_type=detected_contract_type,
+        )
+        contract_type_name = (
+            detected_contract_type.ru_name
+            if detected_contract_type and detected_contract_type.type_id != "general_contract"
+            else "Общий договор"
+        )
+        legal_framework = (
+            detected_contract_type.legal_framework
+            if detected_contract_type and detected_contract_type.type_id != "general_contract"
+            else "Общие нормы ГК РФ"
+        )
+
+        records: list[SummaryRecord] = [
+            self._record_formatter.build_record(
+                record_id="contract-brief-intro",
+                template=self._record_templates.contract_intro,
+                context={
+                    "document_name": document_name,
+                    "clauses_count": len(clauses),
+                    "role": role,
+                    "contract_type_name": contract_type_name,
+                    "disputed_count": payload.disputed_count,
+                    "legal_framework": legal_framework,
+                },
+                evidence=[
+                    f"Тип договора: {contract_type_name}.",
+                    f"Правовая рамка: {legal_framework}.",
+                    f"Количество спорных пунктов: {payload.disputed_count}.",
+                ],
+            )
+        ]
+
+        if payload.role_obligations:
+            records.extend(
+                self._build_section_records(
+                    section_id="role-obligations",
+                    template=self._record_templates.contract_role_obligations,
+                    items=payload.role_obligations,
+                    context={"role": role},
+                )
+            )
+        elif payload.general_obligations:
+            records.extend(
+                self._build_section_records(
+                    section_id="general-obligations",
+                    template=self._record_templates.contract_general_obligations,
+                    items=payload.general_obligations,
+                    context={"role": role},
+                )
+            )
+
+        if counterparty_role and payload.counterparty_obligations:
+            records.extend(
+                self._build_section_records(
+                    section_id="counterparty-obligations",
+                    template=self._record_templates.contract_counterparty_obligations,
+                    items=payload.counterparty_obligations,
+                    context={"counterparty_role": counterparty_role},
+                )
+            )
+
+        if payload.payment_terms:
+            records.extend(
+                self._build_section_records(
+                    section_id="payment-terms",
+                    template=self._record_templates.contract_payment_terms,
+                    items=payload.payment_terms,
+                    context={"role": role},
+                )
+            )
+
+        if payload.deadlines:
+            records.extend(
+                self._build_section_records(
+                    section_id="deadlines",
+                    template=self._record_templates.contract_deadlines,
+                    items=payload.deadlines,
+                    context={"role": role},
+                )
+            )
+
+        if payload.penalties:
+            records.extend(
+                self._build_section_records(
+                    section_id="penalties",
+                    template=self._record_templates.contract_penalties,
+                    items=payload.penalties,
+                    context={"role": role},
+                )
+            )
+
+        if payload.disputed_count:
+            records.append(
+                self._record_formatter.build_record(
+                    record_id="contract-brief-disputed-clauses",
+                    template=self._record_templates.contract_disputed_clauses,
+                    context={"disputed_count": payload.disputed_count},
+                    evidence=[clause.clause_excerpt for clause in disputed_clauses[:2]],
+                )
+            )
+
+        return records
 
     def _candidate_statements(self, document_text: str, clauses: list[ClauseSegment]) -> list[str]:
         raw_segments = [document_text, *(clause.text for clause in clauses)]
@@ -212,6 +311,101 @@ class ContractBriefGenerationService:
                 break
 
         return results
+
+    def _build_sections_payload(
+        self,
+        *,
+        document_name: str,
+        document_text: str,
+        clauses: list[ClauseSegment],
+        role: str,
+        counterparty_role: str | None,
+        language: str,
+        disputed_clauses: list[DisputedClauseItem],
+        detected_contract_type: DetectedContractType | None,
+    ) -> ContractBriefSectionsPayload:
+        resolved_language = normalize_analysis_language(language)
+        statements = self._candidate_statements(document_text, clauses)
+        max_items = min(3, self._summary_config.max_items_per_section)
+
+        role_obligations = self._collect_statements(
+            statements,
+            self._summary_config.markers["must_do"],
+            actor_terms=[role],
+            max_items=max_items,
+        )
+        counterparty_obligations = self._collect_statements(
+            statements,
+            self._summary_config.markers["must_do"],
+            actor_terms=[counterparty_role] if counterparty_role else [],
+            max_items=max_items,
+        )
+        general_obligations = self._collect_statements(
+            statements,
+            self._summary_config.markers["must_do"],
+            actor_terms=[],
+            max_items=max_items,
+        )
+        payment_terms = self._collect_statements(
+            statements,
+            self._summary_config.markers["payment_terms"],
+            actor_terms=[],
+            max_items=max_items,
+        )
+        deadlines = self._collect_statements(
+            statements,
+            self._summary_config.markers["deadlines"],
+            actor_terms=[],
+            max_items=max_items,
+        )
+        penalties = self._collect_statements(
+            statements,
+            self._summary_config.markers["penalties"],
+            actor_terms=[],
+            max_items=max_items,
+        )
+
+        intro = resolve_localized_text(self._templates.intro, resolved_language).format(
+            document_name=document_name,
+            clauses_count=len(clauses),
+            role=role,
+        )
+        if detected_contract_type and detected_contract_type.type_id != "general_contract":
+            intro += (
+                f" Определен тип договора: {detected_contract_type.ru_name}"
+                f" (уверенность {int(detected_contract_type.confidence * 100)}%,"
+                f" правовая рамка: {detected_contract_type.legal_framework})."
+            )
+
+        return ContractBriefSectionsPayload(
+            intro=self._ensure_complete_sentence(intro),
+            role_obligations=role_obligations,
+            counterparty_obligations=counterparty_obligations,
+            general_obligations=general_obligations,
+            payment_terms=payment_terms,
+            deadlines=deadlines,
+            penalties=penalties,
+            disputed_count=len(disputed_clauses),
+        )
+
+    def _build_section_records(
+        self,
+        *,
+        section_id: str,
+        template: object,
+        items: list[str],
+        context: dict[str, str],
+    ) -> list[SummaryRecord]:
+        total = len(items)
+        return [
+            self._record_formatter.build_record(
+                record_id=f"contract-brief-{section_id}-{index}",
+                template=template,
+                context={**context, "item_number": index, "items_count": total},
+                evidence=[item],
+            )
+            for index, item in enumerate(items, start=1)
+        ]
 
     @staticmethod
     def _join_statements(statements: list[str]) -> str:

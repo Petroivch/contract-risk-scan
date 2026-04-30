@@ -21,6 +21,10 @@
   - `contract_brief`
   - `risks`
   - `role_focused_summary`
+- additive structured-поля, если присутствуют, должны соответствовать формату
+  - `contract_brief_records[]`
+  - `role_focused_summary_records[]`
+  - каждая запись имеет вид `{id, headline, description, recommendation, evidence[]}`
 
 4. Качество locale behavior
 - поддерживаемые языки: `ru`, `en`, `it`, `fr`
@@ -41,6 +45,9 @@
 - `role_focused_summary.role` всегда совпадает с входной ролью
 - хотя бы одна role-oriented рекомендация должна быть в `must_do` или `should_review`
 - `contract_brief` должен объяснять, что важно для выбранной роли и по возможности показывать обязанности обеих сторон
+- additive structured records для summary/brief нормализуются на русском:
+  - `description` всегда завершенное предложение с точкой
+  - `recommendation` всегда конкретное действие в императиве с точкой
 
 7. Ограничение размера сборки и local-first quality
 - вклад AI должен отслеживаться как доля общего build (`ai_assets_mb / total_build_mb`)
