@@ -137,12 +137,33 @@ class DetectedRoleItem(BaseModel):
     offset: TextOffset
 
 
+class SourceFragmentProvenance(BaseModel):
+    source: str = Field(
+        ...,
+        description="Coordinate space used for offsets, for example normalized_document_text.",
+    )
+    source_ref: str | None = Field(
+        default=None,
+        description="Config registry reference for the rule that produced the fragment.",
+    )
+    text: str = Field(..., description="Matched fragment in the configured source text.")
+    offset: TextOffset
+    matched_patterns: list[str] = Field(
+        default_factory=list,
+        description="Patterns that matched the fragment for the selected rule.",
+    )
+
+
 class DisputedClauseItem(BaseModel):
     clause_id: str
+    text: str
+    offset: TextOffset
+    rule_id: str
     clause_excerpt: str
     dispute_reason: str
     possible_consequence: str
     confidence: float = Field(..., ge=0.0, le=1.0)
+    provenance: SourceFragmentProvenance
 
 
 class RoleFocusedSummary(BaseModel):

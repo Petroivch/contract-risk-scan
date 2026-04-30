@@ -332,6 +332,13 @@ def test_status_and_result_flow_returns_meaningful_contract_analysis() -> None:
         for line in result["role_focused_summary"]["deadlines"]
     )
     assert result["disputed_clauses"]
+    first_disputed_clause = result["disputed_clauses"][0]
+    assert {"clause_id", "text", "offset", "rule_id", "confidence", "provenance"}.issubset(
+        first_disputed_clause.keys()
+    )
+    assert {"source", "text", "offset"}.issubset(
+        first_disputed_clause["provenance"].keys()
+    )
 
 
 def test_completed_result_marks_missing_selected_role_without_breaking_async_flow() -> None:
@@ -437,10 +444,25 @@ def test_corrupt_docx_payload_completes_with_fallback_output() -> None:
         resolve_localized_text(runtime_config.summary_generation.fallback_values.must_do, "en")
     ]
     assert result["disputed_clauses"][0]["clause_id"] == "clause-1"
+    assert result["disputed_clauses"][0]["text"] == resolve_localized_text(
+        runtime_config.pipeline.ingestion.empty_text_placeholder,
+        "en",
+    )
+    assert result["disputed_clauses"][0]["offset"] == {
+        "start": 0,
+        "end": len(
+            resolve_localized_text(
+                runtime_config.pipeline.ingestion.empty_text_placeholder,
+                "en",
+            )
+        ),
+    }
+    assert result["disputed_clauses"][0]["rule_id"] == "fallback_disputed_clause"
     assert result["disputed_clauses"][0]["clause_excerpt"] == resolve_localized_text(
         runtime_config.pipeline.ingestion.empty_text_placeholder,
         "en",
     )
+    assert result["disputed_clauses"][0]["provenance"]["source"] == "normalized_document_text"
 
 
 def test_pdf_base64_payload_is_extracted_with_pdf_reader() -> None:

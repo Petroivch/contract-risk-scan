@@ -152,6 +152,14 @@ def _validate_runtime_config(config: AnalysisRuntimeConfig) -> None:
             marker.consequence,
             supported_languages,
         )
+        if not marker.markers and marker.detection_logic is None:
+            raise ValueError(
+                f"Dispute marker '{marker.id}' must define markers or detection_logic"
+            )
+        if marker.fragment_max_chars < marker.fragment_window_chars:
+            raise ValueError(
+                f"Dispute marker '{marker.id}' has fragment_max_chars smaller than fragment_window_chars"
+            )
 
     if config.risk_scoring.truncation and config.risk_scoring.truncation.max_chars < 50:
         raise ValueError("risk_scoring.truncation.max_chars must be at least 50 characters")

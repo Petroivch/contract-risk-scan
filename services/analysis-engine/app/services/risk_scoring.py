@@ -10,6 +10,7 @@ from app.schemas.analysis import DisputedClauseItem, RiskItem, RiskSeverity
 from app.services.asymmetry_detector import AsymmetrySignal
 from app.services.clause_segmentation import ClauseSegment
 from app.services.contract_analysis import canonicalize_role, extract_roles_from_text, find_role_matches
+from app.services.disputed_clause_detector import DisputedClauseDetector
 from app.services.text_normalization import normalize_contract_text
 
 
@@ -37,6 +38,7 @@ class RiskScoringService:
         runtime_config = get_runtime_config()
         self._language_behavior = runtime_config.language_behavior
         self._config = runtime_config.risk_scoring
+        self._disputed_clause_detector = DisputedClauseDetector()
 
     def score(
         self,
@@ -155,50 +157,7 @@ class RiskScoringService:
         return risks
 
     def extract_disputed_clauses(self, clauses: list[ClauseSegment], language: str) -> list[DisputedClauseItem]:
-        resolved_language = normalize_analysis_language(language)
-        disputed: list[DisputedClauseItem] = []
-        seen_pairs: set[tuple[str, str]] = set()
-
-        for clause in clauses:
-            normalized_clause = normalize_contract_text(clause.text).casefold()
-            for marker in self._config.dispute_markers:
-                if not any(item.casefold() in normalized_clause for item in marker.markers):
-                    continue
-                dedupe_key = (clause.clause_id, marker.id)
-                if dedupe_key in seen_pairs:
-                    continue
-                seen_pairs.add(dedupe_key)
-
-                disputed.append(
-                    DisputedClauseItem(
-                        clause_id=clause.clause_id,
-                        clause_excerpt=self._truncate_intelligently(normalize_contract_text(clause.text)),
-                        dispute_reason=self._ensure_complete_sentence(
-                            resolve_localized_text(marker.reason, resolved_language)
-                        ),
-                        possible_consequence=self._ensure_complete_sentence(
-                            resolve_localized_text(marker.consequence, resolved_language)
-                        ),
-                        confidence=marker.confidence,
-                    )
-                )
-
-        if not disputed and clauses:
-            first_clause = normalize_contract_text(clauses[0].text)
-            disputed.append(
-                DisputedClauseItem(
-                    clause_id=clauses[0].clause_id,
-                    clause_excerpt=self._truncate_intelligently(first_clause),
-                    dispute_reason=resolve_localized_text(self._config.fallback.dispute_reason, resolved_language),
-                    possible_consequence=resolve_localized_text(
-                        self._config.fallback.dispute_consequence,
-                        resolved_language,
-                    ),
-                    confidence=self._config.fallback_dispute_confidence,
-                )
-            )
-
-        return disputed
+        return self._disputed_clause_detector.detect(clauses, language)
 
     def _match_rule(
         self,
@@ -525,7 +484,14 @@ class RiskScoringService:
 
     @staticmethod
     def _normalize_clause(clause: ClauseSegment) -> ClauseSegment:
-        return ClauseSegment(clause_id=clause.clause_id, text=normalize_contract_text(clause.text))
+        normalized_text = normalize_contract_text(clause.text)
+        end_offset = clause.end_offset or clause.offset + len(normalized_text)
+        return ClauseSegment(
+            clause_id=clause.clause_id,
+            text=normalized_text,
+            offset=clause.offset,
+            end_offset=end_offset,
+        )
 
     @staticmethod
     def _ensure_complete_sentence(text: str) -> str:

@@ -12,6 +12,8 @@ from app.services.text_normalization import normalize_contract_text
 class ClauseSegment:
     clause_id: str
     text: str
+    offset: int = 0
+    end_offset: int = 0
 
 
 class ClauseSegmentationService:
@@ -48,16 +50,31 @@ class ClauseSegmentationService:
                 ClauseSegment(
                     clause_id=segmentation_config.fallback_clause_id,
                     text=fallback_clause_text,
+                    offset=0,
+                    end_offset=len(fallback_clause_text),
                 )
             ]
 
-        return [
-            ClauseSegment(
-                clause_id=f"{segmentation_config.clause_id_prefix}{index + 1}",
-                text=chunk,
+        segments: list[ClauseSegment] = []
+        cursor = 0
+        for index, chunk in enumerate(chunks):
+            offset = normalized_text.find(chunk, cursor)
+            if offset < 0:
+                offset = normalized_text.find(chunk)
+            if offset < 0:
+                offset = cursor
+            end_offset = offset + len(chunk)
+            segments.append(
+                ClauseSegment(
+                    clause_id=f"{segmentation_config.clause_id_prefix}{index + 1}",
+                    text=chunk,
+                    offset=offset,
+                    end_offset=end_offset,
+                )
             )
-            for index, chunk in enumerate(chunks)
-        ]
+            cursor = end_offset
+
+        return segments
 
     @staticmethod
     def _split_numbered_clauses(text: str) -> list[str]:

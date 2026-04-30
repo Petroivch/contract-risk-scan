@@ -149,6 +149,9 @@ Request:
   - `role_focused_summary`
   - `risks[]`
   - `disputed_clauses[]`
+  - additive-compatible payload keeps legacy `clause_excerpt`, `dispute_reason`, `possible_consequence`
+  - each item now also exposes `clause_id`, `text`, `offset.{start,end}`, `rule_id`, `confidence`
+  - `provenance` carries `source`, `source_ref`, `text`, `offset.{start,end}`, `matched_patterns`
   - `language/locale`
   - `execution_plan`
 

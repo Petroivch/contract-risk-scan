@@ -1,6 +1,6 @@
 # Contract Risk Scanner: Analysis Engine
 
-FastAPI service for contract ingestion, extraction, classification, risk scoring, and corpus evaluation.
+FastAPI service for contract ingestion, extraction, classification, risk scoring, disputed clause detection, and corpus evaluation.
 
 ## Scope
 
@@ -8,22 +8,24 @@ FastAPI service for contract ingestion, extraction, classification, risk scoring
 - `GET /analysis/{job_id}/status` returns job status
 - `GET /analysis/{job_id}/result` returns the final structured result
 - `app/services/ingestion.py` extracts text from `.doc`, `.docx`, `.pdf`, `.html`, `.txt`
+- `app/services/disputed_clause_detector.py` detects disputed and ambiguous clauses from config-driven rules
 - `tools/corpus_run.py` runs the engine over a corpus
 - `tools/evaluate.py` measures HIGH-risk precision and recall against `tests/golden_set`
 
 ## Layout
 
-- `app/main.py` — FastAPI entrypoint
-- `app/api/routers/analysis.py` — API routes
-- `app/schemas/analysis.py` — request/response schemas
-- `app/config/analysis_config.json` — runtime config and taxonomy
-- `app/services/ingestion.py` — document extraction and metadata
-- `app/services/risk_scoring.py` — rules engine
-- `app/services/contract_analysis.py` — contract type detection and role aliasing
-- `tools/corpus_run.py` — corpus runner
-- `tools/evaluate.py` — evaluator
-- `tests/golden_set/cases.json` — canonical golden set manifest
-- `reports/corpus_evaluation.json` / `reports/corpus_evaluation.md` — latest evaluation report
+- `app/main.py` - FastAPI entrypoint
+- `app/api/routers/analysis.py` - API routes
+- `app/schemas/analysis.py` - request/response schemas
+- `app/config/analysis_config.json` - runtime config and taxonomy
+- `app/services/ingestion.py` - document extraction and metadata
+- `app/services/risk_scoring.py` - risk rules engine
+- `app/services/disputed_clause_detector.py` - config-first disputed clause detector with provenance
+- `app/services/contract_analysis.py` - contract type detection and role aliasing
+- `tools/corpus_run.py` - corpus runner
+- `tools/evaluate.py` - evaluator
+- `tests/golden_set/cases.json` - canonical golden set manifest
+- `reports/corpus_evaluation.json` / `reports/corpus_evaluation.md` - latest evaluation report
 
 ## Setup
 
@@ -72,6 +74,18 @@ Current behavior:
 python -m pytest -q
 ```
 
+## Disputed Clause Payload
+
+`result.disputed_clauses[]` keeps the legacy fields and also exposes:
+
+- `text` - normalized full clause text
+- `offset` - clause boundaries as `{start, end}` in normalized document text
+- `rule_id` - config rule identifier from `risk_scoring.dispute_markers`
+- `confidence` - configured detector confidence
+- `provenance` - source fragment metadata with `text`, `offset.{start,end}`, `matched_patterns`, and `source_ref`
+
+Offsets are reported in the normalized document text coordinate space. The exact matched fragment is stored under `provenance`, while `clause_excerpt` remains the backward-compatible preview field.
+
 ## Corpus Run
 
 Run against the local corpus folders:
@@ -100,8 +114,7 @@ python evaluate.py --golden tests/golden_set --results artifacts/corpus_results_
 
 The Markdown summary is written next to the JSON report as `reports/corpus_evaluation.md`.
 
-`artifacts/corpus_results_iter2` is the checked-in golden-set run used for the published precision/recall metrics.
-`artifacts/corpus_results` is the wider 447-file coverage run across `договоры*` and is intended for extraction/coverage inspection, not for the published golden-set scorecard.
+`artifacts/corpus_results_iter2` is the checked-in golden-set run used for the published precision/recall metrics. `artifacts/corpus_results` is the wider coverage run across `договоры*` and is intended for extraction and coverage inspection, not for the published golden-set scorecard.
 
 ## Current Metrics
 

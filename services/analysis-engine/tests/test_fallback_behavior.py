@@ -23,6 +23,13 @@ def test_clause_segmentation_returns_localized_fallback_for_blank_text() -> None
                 runtime_config.pipeline.segmentation.fallback_clause_text,
                 "en",
             ),
+            offset=0,
+            end_offset=len(
+                resolve_localized_text(
+                    runtime_config.pipeline.segmentation.fallback_clause_text,
+                    "en",
+                )
+            ),
         )
     ]
 
@@ -67,6 +74,14 @@ def test_extract_disputed_clauses_returns_fallback_item_when_no_marker_matches()
         "en",
     )
     assert disputed[0].confidence == runtime_config.risk_scoring.fallback_dispute_confidence
+    assert disputed[0].text == "The parties confirm the contract date."
+    assert disputed[0].offset.start == 0
+    assert disputed[0].offset.end == len("The parties confirm the contract date.")
+    assert disputed[0].rule_id == "fallback_disputed_clause"
+    assert disputed[0].provenance.source == "normalized_document_text"
+    assert disputed[0].provenance.text == "The parties confirm the contract date."
+    assert disputed[0].provenance.offset.start == 0
+    assert disputed[0].provenance.offset.end == len("The parties confirm the contract date.")
 
 
 def test_summary_generation_uses_localized_fallback_sections_when_extractors_find_nothing() -> None:

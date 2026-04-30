@@ -18,6 +18,12 @@ def test_disputed_clause_excerpt_keeps_sentence_boundary() -> None:
 
     assert disputed
     assert disputed[0].clause_excerpt[-1] in ".!?"
+    assert disputed[0].text
+    assert disputed[0].rule_id
+    assert disputed[0].offset.start == 0
+    assert disputed[0].offset.end > disputed[0].offset.start
+    assert disputed[0].provenance.offset.start >= disputed[0].offset.start
+    assert disputed[0].provenance.offset.end >= disputed[0].provenance.offset.start
     assert "заказчика" in disputed[0].clause_excerpt.casefold()
 
 

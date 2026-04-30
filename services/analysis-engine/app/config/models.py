@@ -130,7 +130,10 @@ class RiskRuleConfig(BaseModel):
 class DisputeMarkerConfig(BaseModel):
     id: str
     source_ref: str
-    markers: list[str]
+    markers: list[str] = Field(default_factory=list)
+    detection_logic: DetectionLogicConfig | None = None
+    fragment_window_chars: int = Field(default=160, ge=40, le=2000)
+    fragment_max_chars: int = Field(default=320, ge=40, le=4000)
     reason: dict[str, str]
     consequence: dict[str, str]
     confidence: float = Field(..., ge=0.0, le=1.0)
