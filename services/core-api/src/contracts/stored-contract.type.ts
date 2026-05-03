@@ -20,3 +20,8 @@ export interface StoredContract {
   report?: ContractReportDto;
   job: AnalysisJobState;
 }
+
+export interface StoredContractRecord {
+  contract: StoredContract;
+  fileBuffer?: Buffer;
+}

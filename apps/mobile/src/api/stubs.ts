@@ -1,6 +1,7 @@
+﻿import { analyzeContractLocally } from '../analysis/localContractAnalyzer';
+import { localFileCache } from '../data/local/file/LocalFileCache';
 import type { SupportedLanguage } from '../i18n/types';
 import { defaultLanguage } from '../i18n/types';
-import { analyzeContractLocally } from '../analysis/localContractAnalyzer';
 
 import { prepareRequestContext } from './client';
 import type {
@@ -21,6 +22,7 @@ interface StoredAnalysis {
   updatedAt: string;
   completedAt: string;
   language: SupportedLanguage;
+  temporaryFileUri?: string;
   stage?: AnalysisStatus['stage'];
   report?: AnalysisReport;
   errorMessage?: string;
@@ -51,6 +53,7 @@ const clearStoredAnalysis = (analysisId: string): void => {
   }
 
   if (currentAnalysis?.analysisId === analysisId) {
+    void localFileCache.releaseFile(currentAnalysis.temporaryFileUri);
     currentAnalysis = null;
   }
   processingTasks.delete(analysisId);
@@ -78,10 +81,6 @@ const scheduleCleanup = (analysisId: string, delayMs: number): void => {
       clearStoredAnalysis(analysisId);
     }, delayMs),
   );
-};
-
-const resolveStatus = (entity: StoredAnalysis): AnalysisLifecycleStatus => {
-  return entity.status;
 };
 
 const progressByStatus = (
@@ -113,15 +112,14 @@ const progressByStatus = (
 };
 
 const toStatus = (entity: StoredAnalysis): AnalysisStatus => {
-  const status = resolveStatus(entity);
-  const stage = status === 'queued' || status === 'processing' ? entity.stage : undefined;
+  const stage = entity.status === 'queued' || entity.status === 'processing' ? entity.stage : undefined;
   return {
     analysisId: entity.analysisId,
     selectedRole: entity.selectedRole,
-    status,
-    progress: progressByStatus(status, stage, entity.createdAt, entity.completedAt),
+    status: entity.status,
+    progress: progressByStatus(entity.status, stage, entity.createdAt, entity.completedAt),
     stage,
-    updatedAt: status === 'completed' ? entity.completedAt : entity.updatedAt,
+    updatedAt: entity.status === 'completed' ? entity.completedAt : entity.updatedAt,
     errorMessage: entity.errorMessage,
   };
 };
@@ -169,6 +167,8 @@ const scheduleLocalAnalysis = (
       scheduleCleanup(entity.analysisId, failedRetentionMs);
     } finally {
       processingTasks.delete(entity.analysisId);
+      await localFileCache.releaseFile(payload.localFileUri);
+      entity.temporaryFileUri = undefined;
     }
   })();
 
@@ -199,6 +199,7 @@ export const createStubApiClient = (config: StubClientConfig = {}): ContractRisk
       updatedAt: now,
       completedAt: new Date(Date.now() + processingPhaseMs).toISOString(),
       language,
+      temporaryFileUri: payload.localFileUri,
     };
 
     currentAnalysis = entity;

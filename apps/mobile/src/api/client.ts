@@ -198,8 +198,6 @@ const mapRemoteReport = (payload: {
   generatedAt: payload.generatedAt ?? new Date().toISOString(),
 });
 
-// HTTP transport stays disabled at the factory, but the mapper is kept close to the API shape.
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const createHttpApiClient = (config: ApiClientConfig): ContractRiskScannerApi => {
   const baseUrl = ensureBaseUrl(config.baseUrl);
   const timeoutMs = config.timeoutMs ?? appConfig.api.timeoutMs;
@@ -290,7 +288,7 @@ export const createApiClient = (config: ApiClientConfig = {}): ContractRiskScann
   }
 
   if (transport === 'http') {
-    throw new ApiClientNotImplementedError();
+    return createHttpApiClient(config);
   }
 
   throw new ApiClientNotImplementedError(`Unsupported API transport: ${transport}`);

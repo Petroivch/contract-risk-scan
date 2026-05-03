@@ -366,6 +366,7 @@ export class ContractsService {
       updatedAt: job.updatedAt
     };
 
+    await this.contractsRepository.clearStoredFile(contract.id);
     return this.contractsRepository.save(completed);
   }
 
@@ -394,6 +395,7 @@ export class ContractsService {
       updatedAt: job.updatedAt
     };
 
+    await this.contractsRepository.clearStoredFile(contract.id);
     return this.contractsRepository.save(failed);
   }
 
