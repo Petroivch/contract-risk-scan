@@ -199,8 +199,8 @@ const mapRemoteReport = (payload: {
 });
 
 const createHttpApiClient = (config: ApiClientConfig): ContractRiskScannerApi => {
-  const baseUrl = ensureBaseUrl(config.baseUrl);
   const timeoutMs = config.timeoutMs ?? appConfig.api.timeoutMs;
+  const resolveBaseUrl = (): string => ensureBaseUrl(config.baseUrl);
 
   const requestJson = async <T>(
     path: string,
@@ -209,6 +209,7 @@ const createHttpApiClient = (config: ApiClientConfig): ContractRiskScannerApi =>
   ): Promise<T> => {
     const requestContext = prepareRequestContext(meta, config.getLanguage);
     return withTimeout(async (signal) => {
+      const baseUrl = resolveBaseUrl();
       const response = await fetch(joinUrl(baseUrl, path), {
         ...init,
         signal,
