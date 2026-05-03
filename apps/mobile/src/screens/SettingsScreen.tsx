@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 
 import { clearStubRuntimeCache } from '../api/stubs';
 import { ScreenShell } from '../components/layout/ScreenShell';
+import { localFileCache } from '../data/local/file/LocalFileCache';
 import type { RootStackParamList } from '../navigation/types';
 import { colors, radius, shadow, spacing, typography } from '../theme/tokens';
 
@@ -17,7 +18,7 @@ export const SettingsScreen = ({ navigation }: Props): JSX.Element => {
   const clearLocalData = async (): Promise<void> => {
     setIsClearing(true);
     try {
-      await clearStubRuntimeCache();
+      await Promise.all([clearStubRuntimeCache(), localFileCache.clearAll()]);
       Alert.alert(t('settings.clearSuccessTitle'), t('settings.clearSuccessMessage'));
     } catch {
       Alert.alert(t('settings.clearFailedTitle'), t('settings.clearFailedMessage'));

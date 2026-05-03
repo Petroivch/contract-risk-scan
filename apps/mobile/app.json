@@ -25,8 +25,8 @@
       }
     },
     "extra": {
-      "API_BASE_URL": "",
-      "API_TRANSPORT": "local",
+      "API_BASE_URL": "http://10.0.2.2:3000/api/v1/",
+      "API_TRANSPORT": "http",
       "API_TIMEOUT_MS": 15000,
       "STATUS_POLL_INTERVAL_MS": 2000,
       "ENABLE_LOCAL_FIRST_CACHE": false,

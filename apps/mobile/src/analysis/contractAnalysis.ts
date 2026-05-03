@@ -5,7 +5,6 @@ import { defaultLanguage } from '../i18n/types';
 import {
   normalizeExtractedText,
   normalizeSearchText,
-  repairMojibakeText,
   uniqueStrings,
 } from './textNormalization';
 
@@ -105,59 +104,6 @@ interface DisputeCandidate {
 const clauseIdPrefix = 'clause-';
 const maxSummaryItems = 12;
 const maxClauseExcerptLength = 240;
-const shortMojibakeTokenFixes: Record<string, string> = {
-  'Р°': 'а',
-  Рђ: 'А',
-  РІ: 'в',
-  'Р’': 'В',
-  Рё: 'и',
-  'Р': 'И',
-  СЃ: 'с',
-  РЎ: 'С',
-  Рє: 'к',
-  Рљ: 'К',
-  Рѕ: 'о',
-  Рћ: 'О',
-  Сѓ: 'у',
-  РЈ: 'У',
-};
-
-const repairStaticString = (value: string): string => {
-  const repaired = repairMojibakeText(value);
-
-  return repaired.replace(/\S+/gu, (token) => {
-    const match = token.match(
-      /^([^0-9A-Za-zА-Яа-яЁёÀ-ÖØ-öø-ÿ]*)([0-9A-Za-zА-Яа-яЁёÀ-ÖØ-öø-ÿ_]+)([^0-9A-Za-zА-Яа-яЁёÀ-ÖØ-öø-ÿ]*)$/u,
-    );
-    if (!match) {
-      return shortMojibakeTokenFixes[token] ?? token;
-    }
-
-    const [, prefix, core, suffix] = match;
-    return `${prefix}${shortMojibakeTokenFixes[core] ?? core}${suffix}`;
-  });
-};
-
-const repairDeepStrings = <T>(value: T): T => {
-  if (typeof value === 'string') {
-    return repairStaticString(value) as T;
-  }
-
-  if (Array.isArray(value)) {
-    return value.map((item) => repairDeepStrings(item)) as T;
-  }
-
-  if (value && typeof value === 'object') {
-    const repaired: Record<string, unknown> = {};
-    for (const [key, item] of Object.entries(value)) {
-      repaired[key] = repairDeepStrings(item);
-    }
-    return repaired as T;
-  }
-
-  return value;
-};
-
 const appendMappedItems = <TInput, TOutput>(
   source: TInput[],
   mapper: (item: TInput, index: number) => TOutput[],
@@ -171,18 +117,18 @@ const appendMappedItems = <TInput, TOutput>(
   return output;
 };
 
-const localizedStrings: Record<SupportedLanguage, AnalysisLocalization> = repairDeepStrings({
+const localizedStrings: Record<SupportedLanguage, AnalysisLocalization> = {
   ru: {
     contractTypes: {
-      services: 'Р”РѕРіРѕРІРѕСЂ РѕРєР°Р·Р°РЅРёСЏ СѓСЃР»СѓРі',
-      employment: 'РўСЂСѓРґРѕРІРѕР№ РґРѕРіРѕРІРѕСЂ',
-      agency: 'РђРіРµРЅС‚СЃРєРёР№ РґРѕРіРѕРІРѕСЂ',
-      nda: 'РЎРѕРіР»Р°С€РµРЅРёРµ Рѕ РєРѕРЅС„РёРґРµРЅС†РёР°Р»СЊРЅРѕСЃС‚Рё',
-      loan: 'Р”РѕРіРѕРІРѕСЂ Р·Р°Р№РјР°',
-      cession: 'Р”РѕРіРѕРІРѕСЂ С†РµСЃСЃРёРё',
-      supply: 'Р”РѕРіРѕРІРѕСЂ РїРѕСЃС‚Р°РІРєРё',
-      contractWork: 'Р”РѕРіРѕРІРѕСЂ РїРѕРґСЂСЏРґР°',
-      rent: 'Р”РѕРіРѕРІРѕСЂ Р°СЂРµРЅРґС‹',
+      services: 'Договор оказания услуг',
+      employment: 'Трудовой договор',
+      agency: 'Агентский договор',
+      nda: 'Соглашение о конфиденциальности',
+      loan: 'Договор займа',
+      cession: 'Договор цессии',
+      supply: 'Договор поставки',
+      contractWork: 'Договор подряда',
+      rent: 'Договор аренды',
       education: 'Договор целевого обучения',
       pledge: 'Договор залога',
       surety: 'Договор поручительства',
@@ -194,23 +140,23 @@ const localizedStrings: Record<SupportedLanguage, AnalysisLocalization> = repair
       rentLife: 'Договор ренты',
       bankAccount: 'Договор банковского счета',
     },
-    unknownContractType: 'Р”РѕРіРѕРІРѕСЂ РѕР±С‰РµРіРѕ С‚РёРїР°',
-    reportTitle: 'РђРЅР°Р»РёР· РґРѕРіРѕРІРѕСЂР°',
+    unknownContractType: 'Договор общего типа',
+    reportTitle: 'Анализ договора',
     shortDescription:
-      'Р”РѕРєСѓРјРµРЅС‚ СЃРѕРґРµСЂР¶РёС‚ {clausesCount} РїСѓРЅРєС‚РѕРІ. Р”Р»СЏ СЂРѕР»Рё "{role}" РІ С„РѕРєСѓСЃРµ РѕР±СЏР·Р°С‚РµР»СЊСЃС‚РІР°, СЃСЂРѕРєРё, РїР»Р°С‚РµР¶Рё Рё СѓСЃР»РѕРІРёСЏ СЃ РїРѕРІС‹С€РµРЅРЅС‹Рј СЂРёСЃРєРѕРј.',
+      'Документ содержит {clausesCount} пунктов. Для роли "{role}" в фокусе обязательства, сроки, платежи и условия с повышенным риском.',
     obligationsFallback:
-      'РЇРІРЅС‹Рµ РѕР±СЏР·Р°С‚РµР»СЊСЃС‚РІР° РґР»СЏ РІС‹Р±СЂР°РЅРЅРѕР№ СЂРѕР»Рё РЅРµ РЅР°Р№РґРµРЅС‹, РЅСѓР¶РµРЅ СЂСѓС‡РЅРѕР№ РїСЂРѕСЃРјРѕС‚СЂ СЂР°Р·РґРµР»РѕРІ СЃРѕ СЃСЂРѕРєР°РјРё, РѕРїР»Р°С‚РѕР№ Рё РѕС‚РІРµС‚СЃС‚РІРµРЅРЅРѕСЃС‚СЊСЋ.',
+      'Явные обязательства для выбранной роли не найдены, нужен ручной просмотр разделов со сроками, оплатой и ответственностью.',
     disputedFallback:
-      'РЇРІРЅС‹Рµ СЃРїРѕСЂРЅС‹Рµ С„РѕСЂРјСѓР»РёСЂРѕРІРєРё РЅРµ РЅР°Р№РґРµРЅС‹, РЅРѕ РґРѕРіРѕРІРѕСЂ РІСЃРµ СЂР°РІРЅРѕ С‚СЂРµР±СѓРµС‚ СЂСѓС‡РЅРѕР№ СЋСЂРёРґРёС‡РµСЃРєРѕР№ РїСЂРѕРІРµСЂРєРё.',
+      'Явные спорные формулировки не найдены, но договор все равно требует ручной юридической проверки.',
     disputedFallbackSuggestion:
-      'РџСЂРѕРІРµСЂСЊС‚Рµ СЂР°Р·РґРµР»С‹ РѕР± РѕС‚РІРµС‚СЃС‚РІРµРЅРЅРѕСЃС‚Рё, РїСЂРёРµРјРєРµ, РёР·РјРµРЅРµРЅРёРё СѓСЃР»РѕРІРёР№ Рё СЂР°СЃС‚РѕСЂР¶РµРЅРёРё.',
-    lowSignalRiskTitle: 'РќРёР·РєРёР№ СЃРёРіРЅР°Р» СЂРёСЃРєР°',
+      'Проверьте разделы об ответственности, приемке, изменении условий и расторжении.',
+    lowSignalRiskTitle: 'Низкий сигнал риска',
     lowSignalRiskDescription:
-      'РЇРІРЅС‹Рµ РјР°СЂРєРµСЂС‹ РІС‹СЃРѕРєРѕРіРѕ СЂРёСЃРєР° РЅРµ РЅР°Р№РґРµРЅС‹, РЅРѕ РґРѕРєСѓРјРµРЅС‚ С‚СЂРµР±СѓРµС‚ СЂСѓС‡РЅРѕР№ РїСЂРѕРІРµСЂРєРё РѕР±С‰РёС… СѓСЃР»РѕРІРёР№.',
+      'Явные маркеры высокого риска не найдены, но документ требует ручной проверки общих условий.',
     lowSignalRiskRecommendation:
-      'РџСЂРѕРІРµСЂСЊС‚Рµ Р»РёРјРёС‚С‹ РѕС‚РІРµС‚СЃС‚РІРµРЅРЅРѕСЃС‚Рё, РїРѕСЂСЏРґРѕРє РїСЂРёРµРјРєРё, РѕРїР»Р°С‚Сѓ Рё РїСЂР°РІРѕ РѕРґРЅРѕСЃС‚РѕСЂРѕРЅРЅРёС… РґРµР№СЃС‚РІРёР№.',
+      'Проверьте лимиты ответственности, порядок приемки, оплату и право односторонних действий.',
     extractionRiskTitle:
-      'РћРіСЂР°РЅРёС‡РµРЅРЅРѕРµ РєР°С‡РµСЃС‚РІРѕ РёР·РІР»РµС‡РµРЅРёСЏ С‚РµРєСЃС‚Р°',
+      'Ограниченное качество извлечения текста',
     extractionRiskRecommendation:
       'Для более точного офлайн-анализа используйте текстовый PDF, DOCX или TXT-файл.',
   },
@@ -337,9 +283,9 @@ const localizedStrings: Record<SupportedLanguage, AnalysisLocalization> = repair
     extractionRiskRecommendation:
       'Pour une analyse hors ligne plus fiable, utilisez un PDF texte, DOCX ou TXT.',
   },
-});
+};
 
-const summaryMarkers = repairDeepStrings({
+const summaryMarkers = {
   obligations: [
     'обязан',
     'должен',
@@ -440,9 +386,9 @@ const summaryMarkers = repairDeepStrings({
     'undertakes:',
   ],
   payment: [
-    'РѕРїР»Р°С‚',
-    'РІРѕР·РЅР°РіСЂР°Р¶Рґ',
-    'С†РµРЅР°',
+    'оплат',
+    'вознагражд',
+    'цена',
     'payment',
     'payments',
     'price',
@@ -458,9 +404,9 @@ const summaryMarkers = repairDeepStrings({
     'prix',
   ],
   deadlines: [
-    'СЃСЂРѕРє',
-    'РґРЅРµР№',
-    'СЂР°Р±РѕС‡РёС… РґРЅРµР№',
+    'срок',
+    'дней',
+    'рабочих дней',
     'deadline',
     'deadlines',
     'within',
@@ -492,10 +438,10 @@ const summaryMarkers = repairDeepStrings({
     'расчетный счет',
   ],
   liability: [
-    'РѕС‚РІРµС‚СЃС‚РІРµРЅ',
-    'СѓР±С‹С‚',
-    'С€С‚СЂР°С„',
-    'РЅРµСѓСЃС‚РѕР№Рє',
+    'ответствен',
+    'убыт',
+    'штраф',
+    'неустойк',
     'liability',
     'penalty',
     'penalties',
@@ -507,9 +453,9 @@ const summaryMarkers = repairDeepStrings({
     'danni',
     'dommages',
   ],
-});
+};
 
-const roleBenefitMarkers = repairDeepStrings({
+const roleBenefitMarkers = {
   liability: [
     'не несет ответственности',
     'не несет материальной ответственности',
@@ -574,9 +520,9 @@ const roleBenefitMarkers = repairDeepStrings({
     'a sua discrezione',
     'a son unique discretion',
   ],
-});
+};
 
-const genericBenefitMarkers = repairDeepStrings({
+const genericBenefitMarkers = {
   liability: [
     'требовать возмещения',
     'требовать возмещения стоимости',
@@ -592,9 +538,9 @@ const genericBenefitMarkers = repairDeepStrings({
     'взыскать штраф',
     'получить неустойку',
   ],
-});
+};
 
-const hybridSignals = repairDeepStrings({
+const hybridSignals = {
   preciseTimeline: [
     'календарных дней',
     'рабочих дней',
@@ -1402,14 +1348,14 @@ const hybridSignals = repairDeepStrings({
     'third-party services',
     'hardware failure',
   ],
-});
+};
 
-const riskRules: RiskRule[] = repairDeepStrings([
+const riskRules: RiskRule[] = [
   {
     id: 'unilateral',
     severity: 'high',
     keywords: [
-      'РѕРґРЅРѕСЃС‚РѕСЂРѕРЅ',
+      'односторон',
       'unilateral',
       'sole discretion',
       'at its discretion',
@@ -1422,19 +1368,19 @@ const riskRules: RiskRule[] = repairDeepStrings([
       'ad sua discrezione',
     ],
     title: {
-      ru: 'РћРґРЅРѕСЃС‚РѕСЂРѕРЅРЅРµРµ РёР·РјРµРЅРµРЅРёРµ РёР»Рё СЂР°СЃС‚РѕСЂР¶РµРЅРёРµ',
+      ru: 'Одностороннее изменение или расторжение',
       en: 'Unilateral change or termination',
       it: 'Modifica o risoluzione unilaterale',
       fr: 'Modification ou resiliation unilaterale',
     },
     description: {
-      ru: 'РќР°Р№РґРµРЅР° С„РѕСЂРјСѓР»РёСЂРѕРІРєР°, РїРѕР·РІРѕР»СЏСЋС‰Р°СЏ РѕРґРЅРѕР№ СЃС‚РѕСЂРѕРЅРµ РјРµРЅСЏС‚СЊ СѓСЃР»РѕРІРёСЏ РёР»Рё РїСЂРµРєСЂР°С‰Р°С‚СЊ РґРѕРіРѕРІРѕСЂ Р±РµР· СЃРёРјРјРµС‚СЂРёС‡РЅС‹С… РіР°СЂР°РЅС‚РёР№.',
+      ru: 'Найдена формулировка, позволяющая одной стороне менять условия или прекращать договор без симметричных гарантий.',
       en: 'A clause allows one party to change terms or terminate the contract without symmetric safeguards.',
       it: 'Una clausola consente a una parte di modificare termini o risolvere il contratto senza garanzie simmetriche.',
       fr: 'Une clause permet a une partie de modifier les conditions ou de resilier sans garanties symetriques.',
     },
     recommendation: {
-      ru: 'Р—Р°РєСЂРµРїРёС‚Рµ РґРІСѓСЃС‚РѕСЂРѕРЅРЅРµРµ СЃРѕРіР»Р°СЃРѕРІР°РЅРёРµ СЃСѓС‰РµСЃС‚РІРµРЅРЅС‹С… РёР·РјРµРЅРµРЅРёР№ Рё РѕРґРёРЅР°РєРѕРІС‹Р№ СЃСЂРѕРє СѓРІРµРґРѕРјР»РµРЅРёСЏ РґР»СЏ РѕР±РµРёС… СЃС‚РѕСЂРѕРЅ.',
+      ru: 'Закрепите двустороннее согласование существенных изменений и одинаковый срок уведомления для обеих сторон.',
       en: 'Require bilateral approval for material changes and the same notice period for both parties.',
       it: 'Richiedere approvazione bilaterale per modifiche rilevanti e lo stesso preavviso per entrambe le parti.',
       fr: 'Exiger un accord bilaterale pour les changements materiels et le meme preavis pour les deux parties.',
@@ -1444,8 +1390,8 @@ const riskRules: RiskRule[] = repairDeepStrings([
     id: 'penalties',
     severity: 'high',
     keywords: [
-      'С€С‚СЂР°С„',
-      'РЅРµСѓСЃС‚РѕР№Рє',
+      'штраф',
+      'неустойк',
       'penalty',
       'liquidated damages',
       'sanction',
@@ -1455,19 +1401,19 @@ const riskRules: RiskRule[] = repairDeepStrings([
       'moratory',
     ],
     title: {
-      ru: 'РЁС‚СЂР°С„С‹ Рё СЃР°РЅРєС†РёРё',
+      ru: 'Штрафы и санкции',
       en: 'Penalties and sanctions',
       it: 'Penali e sanzioni',
       fr: 'Penalites et sanctions',
     },
     description: {
-      ru: 'РћР±РЅР°СЂСѓР¶РµРЅРѕ СѓСЃР»РѕРІРёРµ Рѕ С€С‚СЂР°С„Р°С…, РЅРµСѓСЃС‚РѕР№РєРµ РёР»Рё РёРЅС‹С… СЃР°РЅРєС†РёСЏС….',
+      ru: 'Обнаружено условие о штрафах, неустойке или иных санкциях.',
       en: 'A penalty, liquidated damages, or similar sanction clause was detected.',
       it: 'E stata rilevata una clausola su penali, danni liquidati o sanzioni simili.',
       fr: 'Une clause de penalite, dommages forfaitaires ou sanction similaire a ete detectee.',
     },
     recommendation: {
-      ru: 'РџСЂРѕРІРµСЂСЊС‚Рµ Р»РёРјРёС‚С‹, РѕСЃРЅРѕРІР°РЅРёСЏ РЅР°С‡РёСЃР»РµРЅРёСЏ Рё СЃРѕСЂР°Р·РјРµСЂРЅРѕСЃС‚СЊ СЃР°РЅРєС†РёР№.',
+      ru: 'Проверьте лимиты, основания начисления и соразмерность санкций.',
       en: 'Review caps, trigger conditions, and proportionality of penalties.',
       it: 'Verificare limiti, condizioni di applicazione e proporzionalita delle penali.',
       fr: 'Verifier plafonds, conditions de declenchement et proportionnalite des penalites.',
@@ -1477,10 +1423,10 @@ const riskRules: RiskRule[] = repairDeepStrings([
     id: 'liability',
     severity: 'medium',
     keywords: [
-      'РѕС‚РІРµС‚СЃС‚РІРµРЅРЅРѕСЃС‚',
+      'ответственност',
       'liability',
       'indemn',
-      'РІРѕР·РјРµС‰РµРЅ',
+      'возмещен',
       'возмещ',
       'убыт',
       'ущерб',
@@ -1492,19 +1438,19 @@ const riskRules: RiskRule[] = repairDeepStrings([
       'dommages',
     ],
     title: {
-      ru: 'РћС‚РІРµС‚СЃС‚РІРµРЅРЅРѕСЃС‚СЊ Рё РІРѕР·РјРµС‰РµРЅРёРµ СѓР±С‹С‚РєРѕРІ',
+      ru: 'Ответственность и возмещение убытков',
       en: 'Liability and indemnification',
       it: 'Responsabilita e manleva',
       fr: 'Responsabilite et indemnisation',
     },
     description: {
-      ru: 'Р’ РґРѕРіРѕРІРѕСЂРµ РµСЃС‚СЊ СѓСЃР»РѕРІРёСЏ РѕР± РѕС‚РІРµС‚СЃС‚РІРµРЅРЅРѕСЃС‚Рё, СѓР±С‹С‚РєР°С… РёР»Рё РІРѕР·РјРµС‰РµРЅРёРё.',
+      ru: 'Р’ договоре есть условия об ответственности, убытках или возмещении.',
       en: 'The contract contains liability, damages, or indemnification language.',
       it: 'Il contratto contiene clausole su responsabilita, danni o manleva.',
       fr: 'Le contrat contient des clauses sur la responsabilite, les dommages ou l indemnisation.',
     },
     recommendation: {
-      ru: 'РЈС‚РѕС‡РЅРёС‚Рµ Р»РёРјРёС‚С‹ РѕС‚РІРµС‚СЃС‚РІРµРЅРЅРѕСЃС‚Рё, РёСЃРєР»СЋС‡РµРЅРёСЏ Рё СЃРѕР±С‹С‚РёСЏ, Р·Р°РїСѓСЃРєР°СЋС‰РёРµ РєРѕРјРїРµРЅСЃР°С†РёСЋ.',
+      ru: 'Уточните лимиты ответственности, исключения и события, запускающие компенсацию.',
       en: 'Clarify liability caps, exclusions, and triggering events for compensation.',
       it: 'Chiarire limiti di responsabilita, esclusioni ed eventi che attivano la compensazione.',
       fr: 'Preciser les plafonds de responsabilite, exclusions et evenements declencheurs.',
@@ -1514,12 +1460,12 @@ const riskRules: RiskRule[] = repairDeepStrings([
     id: 'acceptance',
     severity: 'medium',
     keywords: [
-      'РїСЂРёРµРјРє',
-      'Р°РєС‚ РїСЂРёРµРј',
-      'Р°РєС‚ СЃРґР°С‡',
-      'Р°РєС‚ РѕРєР°Р·Р°РЅ',
-      'РїРѕРґРїРёСЃР°РЅРё Р°РєС‚',
-      'РїРѕРґС‚РІРµСЂР¶РґРµРЅРё РСЂРµР·СѓР»СЊС‚Р°С‚',
+      'приемк',
+      'акт прием',
+      'акт сдач',
+      'акт оказан',
+      'подписани акт',
+      'подтверждени результат',
       'приемк',
       'акт прием',
       'акт сдач',
@@ -1534,19 +1480,19 @@ const riskRules: RiskRule[] = repairDeepStrings([
       'recette',
     ],
     title: {
-      ru: 'РќРµСЏСЃРЅР°СЏ РїСЂРёРµРјРєР° СЂРµР·СѓР»СЊС‚Р°С‚Р°',
+      ru: 'Неясная приемка результата',
       en: 'Unclear acceptance process',
       it: 'Procedura di accettazione poco chiara',
       fr: 'Procedure d acceptation peu claire',
     },
     description: {
-      ru: 'РќР°С€Р»РёСЃСЊ С„РѕСЂРјСѓР»РёСЂРѕРІРєРё Рѕ РїСЂРёРµРјРєРµ, РїРѕРґС‚РІРµСЂР¶РґРµРЅРёРё СЂРµР·СѓР»СЊС‚Р°С‚Р° РёР»Рё РїРѕРґРїРёСЃР°РЅРёРё Р°РєС‚РѕРІ.',
+      ru: 'Нашлись формулировки о приемке, подтверждении результата или подписании актов.',
       en: 'Acceptance, sign-off, or completion confirmation language was detected.',
       it: 'Sono state rilevate formule su accettazione, collaudo o conferma del risultato.',
       fr: 'Des formulations sur l acceptation, la recette ou la confirmation du resultat ont ete detectees.',
     },
     recommendation: {
-      ru: 'Р”РѕР±Р°РІСЊС‚Рµ РёР·РјРµСЂРёРјС‹Рµ РєСЂРёС‚РµСЂРёРё РїСЂРёРµРјРєРё Рё СЃСЂРѕРє РѕС‚РІРµС‚Р° РЅР° Р·Р°РјРµС‡Р°РЅРёСЏ.',
+      ru: 'Добавьте измеримые критерии приемки и срок ответа на замечания.',
       en: 'Define measurable acceptance criteria and a deadline for comments.',
       it: 'Definire criteri misurabili di accettazione e un termine per le osservazioni.',
       fr: 'Definir des criteres d acceptation mesurables et un delai de reponse aux remarques.',
@@ -1613,19 +1559,19 @@ const riskRules: RiskRule[] = repairDeepStrings([
       'renewed automatically',
     ],
     title: {
-      ru: 'РђРІС‚РѕРјР°С‚РёС‡РµСЃРєРѕРµ РїСЂРѕРґР»РµРЅРёРµ',
+      ru: 'Автоматическое продление',
       en: 'Automatic renewal',
       it: 'Rinnovo automatico',
       fr: 'Renouvellement automatique',
     },
     description: {
-      ru: 'РћР±РЅР°СЂСѓР¶РµРЅРѕ СѓСЃР»РѕРІРёРµ РѕР± Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРѕРј РїСЂРѕРґР»РµРЅРёРё РёР»Рё РїСЂРѕР»РѕРЅРіР°С†РёРё.',
+      ru: 'Обнаружено условие об автоматическом продлении или пролонгации.',
       en: 'An automatic renewal or rollover clause was detected.',
       it: 'E stata rilevata una clausola di rinnovo o proroga automatica.',
       fr: 'Une clause de renouvellement ou prorogation automatique a ete detectee.',
     },
     recommendation: {
-      ru: 'Р—Р°С„РёРєСЃРёСЂСѓР№С‚Рµ СЃСЂРѕРє СѓРІРµРґРѕРјР»РµРЅРёСЏ РѕР± РѕС‚РєР°Р·Рµ РѕС‚ РїСЂРѕРґР»РµРЅРёСЏ Рё РїРѕСЃР»РµРґСЃС‚РІРёСЏ РјРѕР»С‡Р°РЅРёСЏ.',
+      ru: 'Зафиксируйте срок уведомления об отказе от продления и последствия молчания.',
       en: 'Specify the opt-out notice period and the consequences of silence.',
       it: 'Specificare il preavviso di disdetta e le conseguenze del silenzio.',
       fr: 'Preciser le preavis de non-renouvellement et les consequences du silence.',
@@ -1955,13 +1901,13 @@ const riskRules: RiskRule[] = repairDeepStrings([
       fr: 'Preciser les responsables des acces et infrastructures, delais de reaction, preuves d incident et effets sur delais et paiement.',
     },
   },
-]);
+];
 
-const disputeMarkers: DisputeMarker[] = repairDeepStrings([
+const disputeMarkers: DisputeMarker[] = [
   {
     id: 'future-agreement',
     markers: [
-      'РїРѕ СЃРѕРіР»Р°С€РµРЅРёСЋ СЃС‚РѕСЂРѕРЅ',
+      'по соглашению сторон',
       'дополнительным соглашением',
       'в дополнительном соглашении',
       'будет согласован',
@@ -1984,13 +1930,13 @@ const disputeMarkers: DisputeMarker[] = repairDeepStrings([
       'a common accord',
     ],
     reason: {
-      ru: 'РЈСЃР»РѕРІРёРµ Р·Р°РІРёСЃРёС‚ РѕС‚ Р±СѓРґСѓС‰РµРіРѕ СЃРѕРіР»Р°С€РµРЅРёСЏ СЃС‚РѕСЂРѕРЅ Рё РЅРµ С„РёРєСЃРёСЂСѓРµС‚ С‡РµС‚РєРёР№ РїРѕСЂСЏРґРѕРє РёСЃРїРѕР»РЅРµРЅРёСЏ.',
+      ru: 'Условие зависит от будущего соглашения сторон и не фиксирует четкий порядок исполнения.',
       en: 'The clause depends on future agreement between the parties and leaves execution mechanics undefined.',
       it: 'La clausola dipende da un accordo futuro tra le parti e non fissa una procedura chiara.',
       fr: 'La clause depend d un accord futur des parties et ne fixe pas de mecanisme d execution clair.',
     },
     suggestion: {
-      ru: 'Р—Р°РєСЂРµРїРёС‚Рµ С‚РѕС‡РЅС‹Р№ РїРѕСЂСЏРґРѕРє, СЃСЂРѕРєРё Рё РѕС‚РІРµС‚СЃС‚РІРµРЅРЅС‹С… Р»РёС† РїСЂСЏРјРѕ РІ С‚РµРєСЃС‚Рµ РґРѕРіРѕРІРѕСЂР°.',
+      ru: 'Закрепите точный порядок, сроки и ответственных лиц прямо в тексте договора.',
       en: 'Specify the exact workflow, deadlines, and responsible persons directly in the contract.',
       it: 'Specificare nel contratto procedura, termini e soggetti responsabili.',
       fr: 'Preciser dans le contrat la procedure, les delais et les responsables.',
@@ -1999,7 +1945,7 @@ const disputeMarkers: DisputeMarker[] = repairDeepStrings([
   {
     id: 'reasonable-time',
     markers: [
-      'СЂР°Р·СѓРјРЅС‹Р№ СЃСЂРѕРє',
+      'разумный срок',
       'reasonable time',
       'reasonable efforts',
       'termine ragionevole',
@@ -2008,13 +1954,13 @@ const disputeMarkers: DisputeMarker[] = repairDeepStrings([
       'dans les meilleurs delais',
     ],
     reason: {
-      ru: 'РЈРєР°Р·Р°РЅ СЃСѓР±СЉРµРєС‚РёРІРЅС‹Р№ СЃСЂРѕРє Р±РµР· С‚РѕС‡РЅРѕР№ РіСЂР°РЅРёС†С‹.',
+      ru: 'Указан субъективный срок без точной границы.',
       en: 'A subjective timeline is used without a precise limit.',
       it: 'Viene usato un termine soggettivo senza limite preciso.',
       fr: 'Un delai subjectif est utilise sans limite precise.',
     },
     suggestion: {
-      ru: 'Р—Р°РјРµРЅРёС‚Рµ С„РѕСЂРјСѓР»РёСЂРѕРІРєСѓ РЅР° РєРѕРЅРєСЂРµС‚РЅРѕРµ С‡РёСЃР»Рѕ СЂР°Р±РѕС‡РёС… РёР»Рё РєР°Р»РµРЅРґР°СЂРЅС‹С… РґРЅРµР№.',
+      ru: 'Замените формулировку на конкретное число рабочих или календарных дней.',
       en: 'Replace the wording with a concrete number of business or calendar days.',
       it: 'Sostituire la formula con un numero preciso di giorni lavorativi o di calendario.',
       fr: 'Remplacer la formule par un nombre precis de jours ouvrables ou calendaires.',
@@ -2023,9 +1969,9 @@ const disputeMarkers: DisputeMarker[] = repairDeepStrings([
   {
     id: 'discretionary-right',
     markers: [
-      'РїРѕ СЃРІРѕРµРјСѓ СѓСЃРјРѕС‚СЂРµРЅРёСЋ',
-      'РїРѕ СЃРѕР±СЃС‚РІРµРЅРЅРѕРјСѓ СѓСЃРјРѕС‚СЂРµРЅРёСЋ',
-      'РЅР° СЃРІРѕРµ СѓСЃРјРѕС‚СЂРµРЅРёРµ',
+      'по своему усмотрению',
+      'по собственному усмотрению',
+      'на свое усмотрение',
       'may at its discretion',
       'sole discretion',
       'at its sole discretion',
@@ -2033,21 +1979,21 @@ const disputeMarkers: DisputeMarker[] = repairDeepStrings([
       'a son unique discretion',
     ],
     reason: {
-      ru: 'РћРґРЅР° РёР· СЃС‚РѕСЂРѕРЅ РїРѕР»СѓС‡РёР»Р° РґРёСЃРєСЂРµС†РёРѕРЅРЅРѕРµ РїСЂР°РІРѕ Р±РµР· РґРѕСЃС‚Р°С‚РѕС‡РЅС‹С… РѕРіСЂР°РЅРёС‡РµРЅРёР№.',
+      ru: 'Одна из сторон получила дискреционное право без достаточных ограничений.',
       en: 'One party received a discretionary right without sufficient boundaries.',
       it: 'Una delle parti ha ottenuto un diritto discrezionale senza limiti sufficienti.',
       fr: 'Une partie dispose d un droit discretionnaire sans limites suffisantes.',
     },
     suggestion: {
-      ru: 'РћРіСЂР°РЅРёС‡СЊС‚Рµ С‚Р°РєРѕРµ РїСЂР°РІРѕ РєСЂРёС‚РµСЂРёСЏРјРё, СЃСЂРѕРєР°РјРё Рё РѕР±СЏР·Р°С‚РµР»СЊРЅС‹Рј СѓРІРµРґРѕРјР»РµРЅРёРµРј РґСЂСѓРіРѕР№ СЃС‚РѕСЂРѕРЅС‹.',
+      ru: 'Ограничьте такое право критериями, сроками и обязательным уведомлением другой стороны.',
       en: 'Limit the right with objective criteria, deadlines, and mandatory notice to the counterparty.',
       it: 'Limitare tale diritto con criteri oggettivi, termini e notifica obbligatoria alla controparte.',
       fr: 'Encadrer ce droit par des criteres objectifs, des delais et une notification obligatoire.',
     },
   },
-]);
+];
 
-const contractTypeDetectors: Record<string, string[]> = repairDeepStrings({
+const contractTypeDetectors: Record<string, string[]> = {
   services: [
     'услуг',
     'оказания услуг',
@@ -2267,7 +2213,7 @@ const contractTypeDetectors: Record<string, string[]> = repairDeepStrings({
     'conto bancario',
     'compte bancaire',
   ],
-});
+};
 
 const normalizeLanguage = (language?: SupportedLanguage): SupportedLanguage => {
   return language && localizedStrings[language] ? language : defaultLanguage;
@@ -3610,7 +3556,7 @@ const commonPartyRoleTerms = uniqueStrings(
   ].flatMap((roleName) => buildSelectedRoleTerms(roleName)),
 ).filter((term) => term.length >= 5);
 
-const counterpartyBurdenMarkers = repairDeepStrings({
+const counterpartyBurdenMarkers = {
   liability: [
     'возмещает',
     'обязан возместить',
@@ -3637,9 +3583,9 @@ const counterpartyBurdenMarkers = repairDeepStrings({
     'must pay a penalty',
     'pays a penalty',
   ],
-});
+};
 
-const recoveryExclusionMarkers = repairDeepStrings([
+const recoveryExclusionMarkers = [
   'возмещению не подлежит',
   'не подлежит возмещению',
   'не возмещается',
@@ -3650,9 +3596,9 @@ const recoveryExclusionMarkers = repairDeepStrings([
   'is not recoverable',
   'not recoverable',
   'not compensated',
-]);
+];
 
-const recoverySubjectMarkers = repairDeepStrings([
+const recoverySubjectMarkers = [
   'упущенная выгода',
   'упущенной выгоды',
   'убытки',
@@ -3664,7 +3610,7 @@ const recoverySubjectMarkers = repairDeepStrings([
   'damages',
   'losses',
   'expenses',
-]);
+];
 
 const getCounterpartyTerms = (roleTerms: string[]): string[] =>
   commonPartyRoleTerms.filter((term) => !roleTerms.some((roleTerm) => roleTerm === term));

@@ -1,9 +1,5 @@
 import { Injectable, InternalServerErrorException } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
-import { mkdir, readFile, readdir, writeFile } from 'node:fs/promises';
 import * as path from 'node:path';
-import { STORAGE_POLICY } from '../common/policies/storage.policy';
-import { AppConfig } from '../config/app-config.type';
 import { StoredContract } from './stored-contract.type';
 
 interface CreateContractInput {
@@ -14,100 +10,55 @@ interface CreateContractInput {
 @Injectable()
 export class ContractsRepository {
   private readonly contracts = new Map<string, StoredContract>();
-  private readonly dataDir: string;
-  private readonly contractsDir: string;
-  private readonly uploadsDir: string;
-  private readonly initialization: Promise<void>;
-
-  constructor(private readonly configService: ConfigService<AppConfig, true>) {
-    this.dataDir = path.resolve(
-      process.cwd(),
-      this.configService.get('storage.dataDir', { infer: true })
-    );
-    this.contractsDir = path.join(this.dataDir, STORAGE_POLICY.CONTRACTS_DIRNAME);
-    this.uploadsDir = path.join(this.dataDir, STORAGE_POLICY.UPLOADS_DIRNAME);
-    this.initialization = this.initialize();
-  }
+  private readonly fileBuffers = new Map<string, Buffer>();
 
   async create(input: CreateContractInput): Promise<StoredContract> {
-    await this.ensureReady();
-
     const storedFileName = this.buildStoredFileName(
       input.contract.id,
       input.file.originalname,
       input.file.mimetype
     );
-    const storedFilePath = path.join(this.uploadsDir, storedFileName);
     const fileBuffer = this.requireFileBuffer(input.file);
-
-    await writeFile(storedFilePath, fileBuffer);
 
     const contract: StoredContract = {
       ...input.contract,
       storedFileName,
-      storedFilePath
+      storedFilePath: ''
     };
 
     this.contracts.set(contract.id, this.clone(contract));
-    await this.persistContract(contract);
+    this.fileBuffers.set(contract.id, Buffer.from(fileBuffer));
 
     return this.clone(contract);
   }
 
   async save(contract: StoredContract): Promise<StoredContract> {
-    await this.ensureReady();
     this.contracts.set(contract.id, this.clone(contract));
-    await this.persistContract(contract);
     return this.clone(contract);
   }
 
   async findById(contractId: string): Promise<StoredContract | undefined> {
-    await this.ensureReady();
     const contract = this.contracts.get(contractId);
     return contract ? this.clone(contract) : undefined;
   }
 
   async list(): Promise<StoredContract[]> {
-    await this.ensureReady();
     return Array.from(this.contracts.values()).map((contract) => this.clone(contract));
   }
 
   async readStoredFile(contractId: string): Promise<Buffer> {
-    await this.ensureReady();
-    const contract = this.contracts.get(contractId);
-    if (!contract) {
+    const fileBuffer = this.fileBuffers.get(contractId);
+    if (!fileBuffer) {
       throw new InternalServerErrorException(
         `Cannot read uploaded file for unknown contract ${contractId}`
       );
     }
 
-    return readFile(contract.storedFilePath);
+    return Buffer.from(fileBuffer);
   }
 
-  private async initialize(): Promise<void> {
-    await mkdir(this.contractsDir, { recursive: true });
-    await mkdir(this.uploadsDir, { recursive: true });
-
-    const entries = await readdir(this.contractsDir, { withFileTypes: true });
-    for (const entry of entries) {
-      if (!entry.isFile() || !entry.name.endsWith('.json')) {
-        continue;
-      }
-
-      const filePath = path.join(this.contractsDir, entry.name);
-      const raw = await readFile(filePath, 'utf8');
-      const contract = JSON.parse(raw) as StoredContract;
-      this.contracts.set(contract.id, this.clone(contract));
-    }
-  }
-
-  private async ensureReady(): Promise<void> {
-    await this.initialization;
-  }
-
-  private async persistContract(contract: StoredContract): Promise<void> {
-    const filePath = path.join(this.contractsDir, `${contract.id}.json`);
-    await writeFile(filePath, JSON.stringify(contract, null, 2), 'utf8');
+  async clearStoredFile(contractId: string): Promise<void> {
+    this.fileBuffers.delete(contractId);
   }
 
   private buildStoredFileName(
