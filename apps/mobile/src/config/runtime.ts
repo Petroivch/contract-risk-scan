@@ -4,30 +4,40 @@ type RuntimeValue = string | number | boolean | undefined;
 
 const extra = (Constants.expoConfig?.extra ?? {}) as Record<string, RuntimeValue>;
 
-const fromProcess = (key: string): string | undefined => {
-  const processEnv = (globalThis as { process?: { env?: Record<string, string | undefined> } }).process?.env;
-  const value = processEnv?.[key];
+const resolveKeys = (key: string): string[] => [key, `EXPO_PUBLIC_${key}`];
 
-  if (typeof value === 'string' && value.trim().length > 0) {
-    return value.trim();
+const fromProcess = (keys: string[]): string | undefined => {
+  const processEnv = (globalThis as { process?: { env?: Record<string, string | undefined> } }).process?.env;
+
+  for (const key of keys) {
+    const value = processEnv?.[key];
+
+    if (typeof value === 'string' && value.trim().length > 0) {
+      return value.trim();
+    }
   }
 
   return undefined;
 };
 
-const fromExtra = (key: string): string | undefined => {
-  const value = extra[key];
-  if (typeof value === 'string' && value.trim().length > 0) {
-    return value.trim();
+const fromExtra = (keys: string[]): string | undefined => {
+  for (const key of keys) {
+    const value = extra[key];
+
+    if (typeof value === 'string' && value.trim().length > 0) {
+      return value.trim();
+    }
+    if (typeof value === 'number' || typeof value === 'boolean') {
+      return String(value);
+    }
   }
-  if (typeof value === 'number' || typeof value === 'boolean') {
-    return String(value);
-  }
+
   return undefined;
 };
 
 const readRaw = (key: string): string | undefined => {
-  return fromProcess(key) ?? fromExtra(key);
+  const keys = resolveKeys(key);
+  return fromProcess(keys) ?? fromExtra(keys);
 };
 
 export const readString = (key: string, fallback: string): string => {
