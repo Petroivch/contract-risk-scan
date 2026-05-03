@@ -4,6 +4,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import { ApiClientProvider } from './src/api/ApiClientProvider';
+import { ConsentGate } from './src/consent/ConsentGate';
 import { colors } from './src/theme/tokens';
 import { i18n } from './src/i18n';
 import { LanguageProvider, useAppLanguage } from './src/i18n/LanguageProvider';
@@ -25,9 +26,11 @@ const AppContent = (): JSX.Element => {
   }
 
   return (
-    <ApiClientProvider>
-      <RootNavigator />
-    </ApiClientProvider>
+    <ConsentGate>
+      <ApiClientProvider>
+        <RootNavigator />
+      </ApiClientProvider>
+    </ConsentGate>
   );
 };
 

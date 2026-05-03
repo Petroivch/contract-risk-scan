@@ -23,6 +23,7 @@ export const appConfig = {
     sqliteDbName: readString('SQLITE_DB_NAME', CONFIG_DEFAULTS.sqliteDbName),
     fileCacheDir: readString('FILE_CACHE_DIR', CONFIG_DEFAULTS.fileCacheDir),
     languagePreferenceKey: readString('LANGUAGE_PREFERENCE_KEY', CONFIG_DEFAULTS.languagePreferenceKey),
+    policyConsentKey: readString('POLICY_CONSENT_KEY', CONFIG_DEFAULTS.policyConsentKey),
   },
   featureFlags: {
     enableLocalFirstCache: readBoolean('ENABLE_LOCAL_FIRST_CACHE', false),

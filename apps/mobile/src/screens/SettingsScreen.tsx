@@ -43,12 +43,6 @@ export const SettingsScreen = ({ navigation }: Props): JSX.Element => {
   return (
     <ScreenShell title={t('settings.title')} subtitle={t('settings.subtitle')} scroll>
       <View style={styles.card}>
-        <Text style={styles.kicker}>{t('privacy.noticeKicker')}</Text>
-        <Text style={styles.title}>{t('privacy.storageTitle')}</Text>
-        <Text style={styles.body}>{t('privacy.storageText')}</Text>
-      </View>
-
-      <View style={styles.card}>
         <Text style={styles.kicker}>{t('legal.noticeKicker')}</Text>
         <Text style={styles.title}>{t('legal.disclaimerTitle')}</Text>
         <Text style={styles.body}>{t('legal.disclaimerText')}</Text>

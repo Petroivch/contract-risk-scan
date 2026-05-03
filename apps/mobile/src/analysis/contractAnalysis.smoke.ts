@@ -70,6 +70,8 @@ const russianAnalysis = buildAnalysisArtifacts({
 
 assert.ok(russianAnalysis.summary.shortDescription.includes('Исполнитель'));
 assert.ok(russianAnalysis.summary.shortDescription.includes('4'));
+assert.ok(russianAnalysis.summary.shortDescription.includes('Ключевая обязанность'));
+assert.ok(russianAnalysis.summary.shortDescription.includes('Главный риск'));
 assert.equal(russianAnalysis.summary.obligationsForSelectedRole[0], 'Исполнитель обязан оказать услуги и предоставить результат.');
 assert.ok(
   russianAnalysis.risks.some((risk) => risk.evidence?.some((line) => line.includes('Заказчик вправе в одностороннем порядке изменить сроки.'))),

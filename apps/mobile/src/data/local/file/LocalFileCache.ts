@@ -20,6 +20,11 @@ const getCacheRoot = (): string => {
 
 const isDocumentPickerUri = (uri: string): boolean => /documentpicker|document-picker|expo-document-picker/i.test(uri);
 
+export interface StagedUploadFile {
+  uri: string;
+  shouldRelease: boolean;
+}
+
 export class LocalFileCache {
   public getRootPath = (): string => getCacheRoot();
 
@@ -33,24 +38,26 @@ export class LocalFileCache {
     return rootPath;
   };
 
-  public stageUploadFile = async (sourceUri: string | undefined, fileName: string): Promise<string | undefined> => {
+  public stageUploadFile = async (
+    sourceUri: string | undefined,
+    fileName: string,
+  ): Promise<StagedUploadFile | undefined> => {
     if (!sourceUri) {
       return undefined;
     }
 
     const rootPath = await this.ensureRoot();
     if (!rootPath) {
-      return sourceUri;
+      return { uri: sourceUri, shouldRelease: false };
     }
 
     const stagedUri = `${rootPath}${Date.now()}-${sanitizeFileName(fileName)}`;
 
     try {
       await FileSystem.copyAsync({ from: sourceUri, to: stagedUri });
-      await this.releaseFile(sourceUri);
-      return stagedUri;
+      return { uri: stagedUri, shouldRelease: true };
     } catch {
-      return sourceUri;
+      return { uri: sourceUri, shouldRelease: false };
     }
   };
 

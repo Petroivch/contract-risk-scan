@@ -3171,7 +3171,21 @@ const buildRussianRoleForms = (token: string): string[] => {
   return [token];
 };
 
-const buildSelectedRoleTerms = (selectedRole: string): string[] => {
+const roleAliasMap: Record<string, string[]> = {
+  заказчик: ['клиент', 'покупатель', 'получатель', 'заявитель'],
+  клиент: ['заказчик'],
+  исполнитель: ['подрядчик', 'поставщик', 'агент', 'исполнитель услуг'],
+  подрядчик: ['исполнитель', 'субподрядчик'],
+  работодатель: ['наниматель', 'заказчик'],
+  работник: ['сотрудник', 'исполнитель'],
+  гражданин: ['обучающийся', 'студент', 'работник'],
+  поставщик: ['исполнитель', 'продавец'],
+  покупатель: ['заказчик', 'клиент'],
+  принципал: ['заказчик'],
+  агент: ['исполнитель'],
+};
+
+const buildSelectedRoleTerms = (selectedRole: string, includeAliases = true): string[] => {
   const normalizedRole = normalizeSearchText(selectedRole);
   const tokens = tokenizeSearchText(selectedRole);
   const terms = new Set<string>();
@@ -3182,7 +3196,10 @@ const buildSelectedRoleTerms = (selectedRole: string): string[] => {
 
   for (const token of tokens) {
     terms.add(token);
-    for (const variant of buildRussianRoleForms(token)) {
+    const aliases = includeAliases ? (roleAliasMap[token] ?? []) : [];
+    for (const variant of [token, ...aliases].flatMap((term) =>
+      buildRussianRoleForms(normalizeSearchText(term)),
+    )) {
       terms.add(normalizeSearchText(variant));
     }
   }
@@ -3191,11 +3208,11 @@ const buildSelectedRoleTerms = (selectedRole: string): string[] => {
 };
 
 const extractRoleTerms = (selectedRole: string): string[] => {
-  return buildSelectedRoleTerms(selectedRole);
+  return buildSelectedRoleTerms(selectedRole, true);
 };
 
 const extractStrictRoleTerms = (selectedRole: string): string[] => {
-  return buildSelectedRoleTerms(selectedRole);
+  return buildSelectedRoleTerms(selectedRole, false);
 };
 
 export const segmentClauses = (text: string): ClauseSegment[] => {
@@ -3889,6 +3906,68 @@ const formatRoleNotFoundRecommendation = (language: SupportedLanguage): string =
   }
 };
 
+const buildRoleFocusedShortDescription = (
+  language: SupportedLanguage,
+  selectedRole: string,
+  clausesCount: number,
+  obligations: string[],
+  risks: RiskItem[],
+): string => {
+  const normalizedLanguage = normalizeLanguage(language);
+  const primaryObligation = obligations.find((item) => item.trim().length > 0);
+  const primaryRisk = risks.find((risk) => risk.groupId !== 'role-missing');
+
+  if (normalizedLanguage === 'ru') {
+    const parts = [
+      `Для роли "${selectedRole}" найдено ${obligations.length} значимых обязанностей в ${clausesCount} пунктах договора.`,
+    ];
+    if (primaryObligation) {
+      parts.push(`Ключевая обязанность: ${primaryObligation}`);
+    }
+    if (primaryRisk) {
+      parts.push(`Главный риск: ${primaryRisk.title}.`);
+    }
+    return parts.join(' ');
+  }
+
+  if (normalizedLanguage === 'it') {
+    const parts = [
+      `Per il ruolo "${selectedRole}" sono stati trovati ${obligations.length} obblighi rilevanti in ${clausesCount} clausole.`,
+    ];
+    if (primaryObligation) {
+      parts.push(`Obbligo principale: ${primaryObligation}`);
+    }
+    if (primaryRisk) {
+      parts.push(`Rischio principale: ${primaryRisk.title}.`);
+    }
+    return parts.join(' ');
+  }
+
+  if (normalizedLanguage === 'fr') {
+    const parts = [
+      `Pour le role "${selectedRole}", ${obligations.length} obligations importantes ont ete detectees dans ${clausesCount} clauses.`,
+    ];
+    if (primaryObligation) {
+      parts.push(`Obligation principale: ${primaryObligation}`);
+    }
+    if (primaryRisk) {
+      parts.push(`Risque principal: ${primaryRisk.title}.`);
+    }
+    return parts.join(' ');
+  }
+
+  const parts = [
+    `For the "${selectedRole}" role, ${obligations.length} relevant obligations were found across ${clausesCount} clauses.`,
+  ];
+  if (primaryObligation) {
+    parts.push(`Key obligation: ${primaryObligation}`);
+  }
+  if (primaryRisk) {
+    parts.push(`Main risk: ${primaryRisk.title}.`);
+  }
+  return parts.join(' ');
+};
+
 const elevateSeverity = (
   severity: RiskItem['severity'],
   occurrences: number,
@@ -4126,17 +4205,22 @@ export const buildAnalysisArtifacts = ({
     });
   }
 
+  const contractType = runAnalysisStage('contract-type', () =>
+    detectContractType(normalizedText, normalizedLanguage),
+  );
+
   return {
     summary: {
       title: `${strings.reportTitle}: ${fileName}`,
-      contractType: runAnalysisStage('contract-type', () =>
-        detectContractType(normalizedText, normalizedLanguage),
-      ),
+      contractType,
       shortDescription: roleFound
-        ? formatTemplate(strings.shortDescription, {
-            clausesCount: clauses.length,
-            role: selectedRole,
-          })
+        ? buildRoleFocusedShortDescription(
+            normalizedLanguage,
+            selectedRole,
+            clauses.length,
+            summaryItems,
+            risks,
+          )
         : formatRoleNotFoundMessage(selectedRole, normalizedLanguage),
       obligationsForSelectedRole:
         summaryItems.length > 0 ? summaryItems : [strings.obligationsFallback],

@@ -167,7 +167,7 @@ const scheduleLocalAnalysis = (
       scheduleCleanup(entity.analysisId, failedRetentionMs);
     } finally {
       processingTasks.delete(entity.analysisId);
-      await localFileCache.releaseFile(payload.localFileUri);
+      await localFileCache.releaseFile(entity.temporaryFileUri);
       entity.temporaryFileUri = undefined;
     }
   })();
@@ -185,6 +185,10 @@ export const createStubApiClient = (config: StubClientConfig = {}): ContractRisk
     const language = payload.language ?? requestContext.language ?? defaultLanguage;
 
     await clearStubRuntimeCache();
+    const stagedFile = await localFileCache.stageUploadFile(payload.localFileUri, payload.fileName);
+    const analysisPayload: UploadContractRequest = stagedFile
+      ? { ...payload, localFileUri: stagedFile.uri }
+      : payload;
 
     const analysisId = `analysis_${Date.now()}`;
     const now = nowIso();
@@ -199,11 +203,11 @@ export const createStubApiClient = (config: StubClientConfig = {}): ContractRisk
       updatedAt: now,
       completedAt: new Date(Date.now() + processingPhaseMs).toISOString(),
       language,
-      temporaryFileUri: payload.localFileUri,
+      temporaryFileUri: stagedFile?.shouldRelease ? stagedFile.uri : undefined,
     };
 
     currentAnalysis = entity;
-    scheduleLocalAnalysis(entity, payload, language);
+    scheduleLocalAnalysis(entity, analysisPayload, language);
     return { analysisId, status: toStatus(entity) };
   },
 
@@ -238,7 +242,7 @@ export const createStubApiClient = (config: StubClientConfig = {}): ContractRisk
     const report = {
       ...entity.report,
       analysisId: input.analysisId,
-      selectedRole: input.selectedRole ?? entity.selectedRole,
+      selectedRole: entity.selectedRole,
       generatedAt: entity.completedAt,
     };
 

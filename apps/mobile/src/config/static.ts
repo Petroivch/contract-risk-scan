@@ -12,5 +12,6 @@ export const CONFIG_DEFAULTS = {
   sqliteDbName: 'contract-risk-scanner.db',
   fileCacheDir: 'contract-file-cache',
   languagePreferenceKey: 'contract-risk-scanner.language',
+  policyConsentKey: 'contract-risk-scanner.policy-consent.v1',
   stubContractFileName: 'service-agreement-draft.pdf',
 } as const;

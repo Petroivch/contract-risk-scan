@@ -22,6 +22,22 @@ const unexpectedAnalysisWarnings: Record<SupportedLanguage, string> = {
   fr: 'L analyseur local a rencontre une erreur lors de la recherche des risques. Le rapport a ete genere en mode sur et necessite une revue manuelle.',
 };
 
+const getUnexpectedExtractionWarning = (language: SupportedLanguage): string => {
+  if (language === 'ru') {
+    return 'Не удалось полностью разобрать файл локально. Отчет сформирован по доступному тексту и служебным признакам документа.';
+  }
+
+  return unexpectedExtractionWarnings[language] ?? unexpectedExtractionWarnings.en;
+};
+
+const getUnexpectedAnalysisWarning = (language: SupportedLanguage): string => {
+  if (language === 'ru') {
+    return 'Локальный анализатор столкнулся с ошибкой при поиске рисков. Отчет сформирован в безопасном режиме и требует ручной проверки.';
+  }
+
+  return unexpectedAnalysisWarnings[language] ?? unexpectedAnalysisWarnings.en;
+};
+
 const buildSafeFallbackReport = (
   analysisId: string,
   payload: UploadContractRequest,
@@ -29,7 +45,7 @@ const buildSafeFallbackReport = (
   warnings: string[],
   error?: unknown,
 ): AnalysisReport => {
-  const warning = unexpectedAnalysisWarnings[language] ?? unexpectedAnalysisWarnings.ru;
+  const warning = getUnexpectedAnalysisWarning(language);
   const errorDetails =
     error instanceof Error
       ? `${error.name}: ${error.message}`
@@ -92,7 +108,7 @@ export const analyzeContractLocally = async (
     extractionWarnings = extracted.warnings;
   } catch {
     extractionWarnings = [
-      unexpectedExtractionWarnings[language] ?? unexpectedExtractionWarnings.ru,
+      getUnexpectedExtractionWarning(language),
     ];
   }
 
