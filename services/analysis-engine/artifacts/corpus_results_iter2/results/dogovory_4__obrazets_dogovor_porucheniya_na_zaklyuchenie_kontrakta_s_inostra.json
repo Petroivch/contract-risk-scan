@@ -1,0 +1,205 @@
+{
+  "case_id": "dogovory_4__obrazets_dogovor_porucheniya_na_zaklyuchenie_kontrakta_s_inostra",
+  "relative_path": "договоры 4/obrazets-dogovor-porucheniya-na-zaklyuchenie-kontrakta-s-inostra.html",
+  "document_path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\договоры 4\\obrazets-dogovor-porucheniya-na-zaklyuchenie-kontrakta-s-inostra.html",
+  "document_name": "obrazets-dogovor-porucheniya-na-zaklyuchenie-kontrakta-s-inostra.html",
+  "role": "Агент",
+  "counterparty_role": "Принципал",
+  "language": "ru",
+  "mime_type": "text/html",
+  "tags": [
+    "workspace-corpus",
+    "html",
+    "dogovory_4",
+    "agency_agreement"
+  ],
+  "source_group": "manifest",
+  "expected": {
+    "contract_type": "agency_agreement",
+    "min_contract_type_confidence": 0.43,
+    "min_risk_count": 0,
+    "min_disputed_clause_count": 1,
+    "execution_mode": "local_first",
+    "expected_high_risk_ids": []
+  },
+  "started_at": "2026-04-28T16:12:25.531295+00:00",
+  "status": "completed",
+  "request": {
+    "document_name": "obrazets-dogovor-porucheniya-na-zaklyuchenie-kontrakta-s-inostra.html",
+    "role_context": {
+      "role": "Агент",
+      "counterparty_role": "Принципал"
+    },
+    "document_text": null,
+    "document_base64": "PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMDEgVHJhbnNpdGlvbmFsLy9FTiI+DQo8aHRtbD4NCjxoZWFkPg0KPGJhc2UgaHJlZj0iaHR0cHM6Ly9kb2dvdm9yLXVyaXN0LnJ1LyI+DQo8dGl0bGU+0J7QsdGA0LDQt9C10YYuINCU0L7Qs9C+0LLQvtGAINC/0L7RgNGD0YfQtdC90LjRjyDQvdCwINC30LDQutC70Y7Rh9C10L3QuNC1INC60L7QvdGC0YDQsNC60YLQsCDRgSDQuNC90L7RgdGC0YDQsNC90L3QvtC5INGE0LjRgNC80L7QuSAgICAtINCy0LXRgNGB0LjRjyDQtNC70Y8g0L/QtdGH0LDRgtC4LiAyMDI2LiDQntCx0YDQsNC30YbRiyDQtNC+0LPQvtCy0L7RgNC+0LIsINGC0LjQv9C+0LLRi9C1INC00L7Qs9C+0LLQvtGA0LAsINCw0LrRgtGD0LDQu9GM0L3Ri9C1INC00L7QutGD0LzQtdC90YLRiywg0Y7RgNC40LTQuNGH0LXRgdC60LjQvCDQuCDRhNC40LfQuNGH0LXRgdC60LjQvCDQu9C40YbQsNC8PC90aXRsZT4NCjxtZXRhIGNvbnRlbnQ9IiIgbmFtZT0ia2V5d29yZHMiPg0KPG1ldGEgY29udGVudD0iIiBuYW1lPSJkZXNjcmlwdGlvbiI+DQo8bWV0YSBuYW1lPSJyb2JvdHMiIGNvbnRlbnQ9Im5vaW5kZXgsbm9mb2xsb3ciPg0KPG1ldGEgaHR0cC1lcXVpdj0iQ29udGVudC1UeXBlIiBjb250ZW50PSJ0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgiPg0KPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSIvaW1hZ2VzL3N0eWxlLmNzcyIgdHlwZT0idGV4dC9jc3MiPg0KPC9oZWFkPg0KPGJvZHk+DQo8ZGl2IGNsYXNzPSJkb2N1bWVudFRleHQiPg0KPHByZT4gICAgICAgICAgICAgICAgICAgICAgICAg0J/QoNCY0JzQldCg0J3Qq9CZINCU0J7Qk9Ce0JLQntCgINCf0J7QoNCj0KfQldCd0JjQrw0KDQogICAgICAgICDQsy4gX19fX19fX19fX19fX18gICAgICAgICAgICAgICAgICAgICAgICAgICJfX18iX19fX19fX19fMjBfX1/Qsy4NCg0KICAgICAgICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLCDQuNC80LXQvdGD0LXQvF9fXyAgINCyDQogICAgICAgICAgICAgICAgICAo0L3QsNC40LzQtdC90L7QstCw0L3QuNC1INC/0YDQtdC00L/RgNC40Y/RgtC40Y8pDQoNCiAgICDQtNCw0LvRjNC90LXQudGI0LXQvCAi0J/RgNC10LTQv9GA0LjRj9GC0LjQtSIsINCyINC70LjRhtC1IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICjQtNC+0LvQttC90L7RgdGC0YwsINGELiDQuC4g0L4uKQ0KDQogICAg0LTQtdC50YHRgtCy0YPRjtGJ0LXQs9C+INC90LAg0L7RgdC90L7QstCw0L3QuNC4IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICjRg9GB0YLQsNCy0LAsINC/0L7Qu9C+0LbQtdC90LjRjyDQu9C40LHQviDQtNC+0LLQtdGA0LXQvdC90L7RgdGC0LgNCg0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fLCDRgSDQvtC00L3QvtC5INGB0YLQvtGA0L7QvdGLLCDQuCBfX19fX19fX19fX19fX19fX19fDQogICAg0YEg0YPQutCw0LfQsNC90LjQtdC8INC10LUg0L3QvtC80LXRgNCwINC4INC00LDRgtGLKSAgICAgICAgICAgICAgICAgICAgICAgKNC90LDQuNC80LXQvdC+0LLQsNC90LjQtQ0KDQogICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLCDQuNC80LXQvdGD0LXQvF9fX18gICDQsiAgINC00LDQu9GM0L3QtdC50YjQtdC8DQogICAgICAg0LLQvdC10YjQvdC10Y3QutC+0L3QvtC80LjRh9C10YHQutC+0Lkg0L7RgNCz0LDQvdC40LfQsNGG0LjQuCkNCg0KICAgICLQktC90LXRiNC90LXRjdC60L7QvdC+0LzQuNGH0LXRgdC60LDRjyDQvtGA0LPQsNC90LjQt9Cw0YbQuNGPIiwg0LIg0LvQuNGG0LUgX19fX19fX19fX19fX19fX19fX19fX19fX18sDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgKNC00L7Qu9C20L3QvtGB0YLRjCwg0YQuINC4LiDQvi4pDQogICAg0LTQtdC50YHRgtCy0YPRjtGJ0LXQs9C+INC90LAg0L7RgdC90L7QstCw0L3QuNC4IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICjRg9GB0YLQsNCy0LAsINC/0L7Qu9C+0LbQtdC90LjRjyDQu9C40LHQviDQtNC+0LLQtdGA0LXQvdC90L7RgdGC0LgNCg0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18sINGBICAgINC00YDRg9Cz0L7QuSAgICDRgdGC0L7RgNC+0L3RiywgICAg0LfQsNC60LvRjtGH0LjQu9C4DQogICAg0YEg0YPQutCw0LfQsNC90LjQtdC8INC10LUg0L3QvtC80LXRgNCwINC4INC00LDRgtGLKQ0KDQogICAg0L3QsNGB0YLQvtGP0YnQuNC5INC00L7Qs9C+0LLQvtGAINC+INC90LjQttC10YHQu9C10LTRg9GO0YnQtdC8Og0KDQogICAgICAgICAxLiDQktC90LXRiNC90LXRjdC60L7QvdC+0LzQuNGH0LXRgdC60LDRjyAgINC+0YDQs9Cw0L3QuNC30LDRhtC40Y8gICDQvtCx0Y/Qt9GD0LXRgtGB0Y8gICDQt9Cw0LrQu9GO0YfQuNGC0YwgICDRgQ0KICAgINC40L3QvtGB0YLRgNCw0L3QvdC+0Lkg0YTQuNGA0LzQvtC5INC+0YIg0LjQvNC10L3QuCwgINC/0L4gINC/0L7RgNGD0YfQtdC90LjRjiAg0LggINC30LAgINGB0YfQtdGCICDQn9GA0LXQtNC/0YDQuNGP0YLQuNGPDQogICAg0LrQvtC90YLRgNCw0LrRgiwg0LLRgdC1INC/0YDQsNCy0LAg0Lgg0L7QsdGP0LfQsNC90L3QvtGB0YLQuCDQv9C+INC60L7RgtC+0YDQvtC80YMg0LLQvtC30L3QuNC60LDRjtGCINGDINCf0YDQtdC00L/RgNC40Y/RgtC40Y8NCiAgICDRgSDQvNC+0LzQtdC90YLQsCDQtdCz0L4g0LfQsNC60LvRjtGH0LXQvdC40Y8uDQogICAgICAgICAyLiDQn9C+0YDRg9GH0LXQvdC40Y8g0J/RgNC10LTQv9GA0LjRj9GC0LjRjyDQstC60LvRjtGH0LDRjtGCLCDQsiDRh9Cw0YHRgtC90L7RgdGC0Lg6DQogICAgICAgICDQodGD0YnQtdGB0YLQstC+INGB0LTQtdC70LrQuDogX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCiAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCiAgICAgICAgICAgICAgICAo0Y3QutGB0L/QvtGA0YIsINC60L7QvdGB0LjQs9C90LDRhtC40Y8sINCw0LPQtdC90YLRgdC60L7QtSDRgdC+0LPQu9Cw0YjQtdC90LjQtSkNCg0KICAgICAgICAg0J/RgNC+0YfQuNC1ICDQutCw0YHQsNGO0YnQuNC10YHRjyAg0YHQtNC10LvQutC4INGD0YHQu9C+0LLQuNGPOiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgKNGA0YvQvdC+0LosINC/0LDRgNGC0L3QtdGALCDQutCw0YLQtdCz0L7RgNC40LgNCiAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX18uDQogICAgICAgICAgICAg0LLQsNC70Y7RgtGLINC4INC00YAuKQ0KDQogICAgICAgICDQotC+0LLQsNGAOiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAo0L3QsNC40LzQtdC90L7QstCw0L3QuNC1KQ0KDQogICAgICAgICDQndC+0LzQtdC90LrQu9Cw0YLRg9GA0LAgKNCw0YHRgdC+0YDRgtC40LzQtdC90YIpIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCiAgICAgICAgINCa0L7Qu9C40YfQtdGB0YLQstC+INC4INC60L7QvNC/0LvQtdC60YLQvdC+0YHRgtGMIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCiAgICAgICAgINCa0LDRh9C10YHRgtCy0LXQvdC90YvQtSDQv9C+0LrQsNC30LDRgtC10LvQuCBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQogICAgICAgICDQodGA0L7QutC4LCDQutC+0YLQvtGA0YvQtSAg0LTQvtC70LbQvdGLICDQsdGL0YLRjCAg0L/RgNC10LTRg9GB0LzQvtGC0YDQtdC90YsgINCS0L3QtdGI0L3QtdGN0LrQvtC90L7QvNC40YfQtdGB0LrQvtC5DQogICAg0L7RgNCz0LDQvdC40LfQsNGG0LjQtdC5INCyINC60L7QvdGC0YDQsNC60YLQtSDRgSDQuNC90L7RgdGC0YDQsNC90L3Ri9C8INC/0LDRgNGC0L3QtdGA0L7QvDogX19fX19fX19fX19fX19fX19fXw0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fXy4NCiAgICAgICAgINCc0LDQutGB0LjQvNCw0LvRjNC90YvQuSAo0LzQuNC90LjQvNCw0LvRjNC90YvQuSkg0YPRgNC+0LLQtdC90Ywg0LrQvtC90YLRgNCw0LrRgtC90YvRhSDRhtC10L06IF9fX19fX19fX19fXw0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXy4NCiAgICAgICAgIDMuINCSICAgICDRgdC70YPRh9Cw0LUgICAgINC90LXQstC+0LfQvNC+0LbQvdC+0YHRgtC4ICAgICDQuNGB0L/QvtC70L3QtdC90LjRjyAgICAgICDQv9C+0YDRg9GH0LXQvdC40Y8NCiAgICDQktC90LXRiNC90LXRjdC60L7QvdC+0LzQuNGH0LXRgdC60LDRjyDQvtGA0LPQsNC90LjQt9Cw0YbQuNGPICAg0L7QsdGP0LfRg9C10YLRgdGPICAg0LIgIF9fX19fX19fX19fX19fICDRgdGA0L7Qug0KICAgINC40L3RhNC+0YDQvNC40YDQvtCy0LDRgtGMINC+0LEg0Y3RgtC+0LwgINCf0YDQtdC00L/RgNC40Y/RgtC40LUsICDQutC+0YLQvtGA0L7QtSAg0LIgICBfX19fX19fX19fX18gICDRgdGA0L7Qug0KICAgINC+0LHRj9C30YPQtdGC0YHRjyDQv9GA0LjQvdGP0YLRjCAg0YDQtdGI0LXQvdC40LUgINC+0LEgINC40LfQvNC10L3QtdC90LjQuCAg0LjQu9C4INGA0LDRgdGC0L7RgNC20LXQvdC40Lgg0L3QsNGB0YLQvtGP0YnQtdCz0L4NCiAgICDQtNC+0LPQvtCy0L7RgNCwLg0KICAgICAgICAgNC4g0J/RgNC10LTQv9GA0LjRj9GC0LjQtSDQstGL0L/Qu9Cw0YfQuNCy0LDQtdGCINCS0L3QtdGI0L3QtdGN0LrQvtC90L7QvNC40YfQtdGB0LrQvtC5INC+0YDQs9Cw0L3QuNC30LDRhtC40LggX19fX18NCiAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fINCy0L7Qt9C90LDQs9GA0LDQttC00LXQvdC40LUg0LIg0YDQsNC30LzQtdGA0LU6IF9fDQogICAgICjRg9C60LDQt9GL0LLQsNC10YLRgdGPINGB0YDQvtC6INC4INC/0L7RgNGP0LTQvtC6INCy0YvQv9C70LDRgtGLKQ0KDQogICAgX19fX19fX19fX19fX19fLiDQn9C+0LzQuNC80L4gICDQstC+0LfQvdCw0LPRgNCw0LbQtNC10L3QuNGPICAgINCyICAgINGD0LrQsNC30LDQvdC90L7QvCAgICDRgNCw0LfQvNC10YDQtQ0KICAgINCf0YDQtdC00L/RgNC40Y/RgtC40LUg0LLQvtC30LzQtdGJ0LDQtdGCINCS0L3QtdGI0L3QtdGN0LrQvtC90L7QvNC40YfQtdGB0LrQvtC5INC+0YDQs9Cw0L3QuNC30LDRhtC40Lgg0LjQt9GA0LDRgdGF0L7QtNC+0LLQsNC90L3Ri9C1DQogICAg0LXRjiDRgdGD0LzQvNGLLCDQvdC10L7QsdGF0L7QtNC40LzRi9C1INC00LvRjyDQuNGB0L/QvtC70L3QtdC90LjRjyDQtNC+0LPQvtCy0L7RgNCwLg0KICAgICAgICAgNS4g0JLQvdC10YjQvdC10Y3QutC+0L3QvtC80LjRh9C10YHQutCw0Y8g0L7RgNCz0LDQvdC40LfQsNGG0LjRjyDQvtCx0Y/Qt9Cw0L3QsCDQstGL0L/QvtC70L3QuNGC0Yw6IF9fX19fX19fX18NCiAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCiAgICAgICjQtNC+0LPQvtCy0L7RgCDRgdCy0L7QuNC80Lgg0YHQuNC70LDQvNC4LCDQstC/0YDQsNCy0LUg0L/QtdGA0LXQtNC+0LLQtdGA0LjRgtGMINC40YHQv9C+0LvQvdC10L3QuNC1INC00L7Qs9C+0LLQvtGA0LANCg0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KICAgICDQtNGA0YPQs9C+0Lkg0L7RgNCz0LDQvdC40LfQsNGG0LjQuCDQstC+INCy0YHQtdGFINGB0LvRg9GH0LDRj9GFLCDQv9C10YDQtdC00L7QstC10YDQuNGC0Ywg0LTRgNGD0LPQvtC5INC+0YDQs9Cw0L3QuNC30LDRhtC40LgNCg0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KICAgICAg0YLQvtC70YzQutC+INCyINGB0LvRg9GH0LDQtSwg0LXRgdC70Lgg0LLRi9C90YPQttC00LXQvdCwINC6INGN0YLQvtC80YMg0YHQuNC70L7RjiDQvtCx0YHRgtC+0Y/RgtC10LvRjNGB0YLQsiDQtNC70Y8NCg0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXyAg0YEg0L7QsdGP0LfQsNGC0LXQu9GM0L3Ri9C8ICAgICDRg9Cy0LXQtNC+0LzQu9C10L3QuNC10LwNCiAgICAg0YHQvtCx0LvRjtC00LXQvdC40Y8g0LjQvdGC0LXRgNC10YHQvtCyINCf0YDQtdC00L/RgNC40Y/RgtC40Y8pDQoNCiAgICDQn9GA0LXQtNC/0YDQuNGP0YLQuNGPINC+INC/0YDQvtC40LfQstC10LTQtdC90L3QvtC8ICAg0L/QtdGA0LXQv9C+0YDRg9GH0LXQvdC40LggINCyICDRgtC10YfQtdC90LjQtSAgX19fX19fX19fX19fDQogICAg0YHRgNC+0LrQsCwg0LAg0YLQsNC60LbQtSDQv9GA0LXQtNC+0YHRgtCw0LLQu9C10L3QuNC10Lw6IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCiAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCiAgICAgICAgICjRg9C60LDQt9GL0LLQsNGO0YLRgdGPINGB0LLQtdC00LXQvdC40Y8sINC60L7RgtC+0YDRi9C1INC+0YDQs9Cw0L3QuNC30LDRhtC40Y8g0LTQvtC70LbQvdCwINGB0L7QvtCx0YnQuNGC0Ywg0L4NCg0KICAgIF9fX19fX19fX19fX19fX19fX19fXy4NCiAgICAgICDQtdC1INC30LDQvNC10YHRgtC40YLQtdC70LUpDQoNCiAgICAgICAgINCf0YDQtdC00L/RgNC40Y/RgtC40LUgINCy0L/RgNCw0LLQtSAgICDQvtGC0LrQsNC30LDRgtGM0YHRjyAgICDQvtGCICAg0LfQsNC80LXQvdGLLCAgINC/0YDQtdC00LvQvtC20LXQvdC90L7QuQ0KICAgINCS0L3QtdGI0L3QtdGN0LrQvtC90L7QvNC40YfQtdGB0LrQvtC5INC+0YDQs9Cw0L3QuNC30LDRhtC40LXQuS4NCiAgICAgICAgIDYuINCd0LDRgdGC0L7Rj9GJ0LjQuSDQtNC+0LPQvtCy0L7RgCDQv9GA0LXQutGA0LDRidCw0LXRgtGB0Y86IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICjRg9C60LDQt9GL0LLQsNGO0YLRgdGPINC+0YHQvdC+0LLQsNC90LjRjw0KDQogICAgX19fX19fX19fX19fX19fX19fX19fX19fXy4NCiAgICAg0L/RgNC10LrRgNCw0YnQtdC90LjRjyDQtNC+0LPQvtCy0L7RgNCwKQ0KDQogICAgICAgICDQkiDRgdC70YPRh9Cw0LUgINC/0YDQtdC60YDQsNGJ0LXQvdC40Y8gICDQtNC+0LPQvtCy0L7RgNCwICDQtNC+INGC0L7Qs9C+LCAg0LrQsNC6INC+0L0g0LHRi9C7INC/0L7Qu9C90L7RgdGC0YzRjg0KICAgINC40YHQv9C+0LvQvdC10L0sINCy0LjQvdC+0LLQvdCw0Y8g0YHRgtC+0YDQvtC90LAgINCy0L7Qt9C80LXRidCw0LXRgiDQtNGA0YPQs9C+0LkgINGB0YLQvtGA0L7QvdC1ICDQv9C+0L3QtdGB0LXQvdC90YvQtSAg0LXRjg0KICAgINGD0LHRi9GC0LrQuC4NCiAgICAgICAgIDcuIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCiAgICAgICAgICAgICAgICAo0LLQutC70Y7Rh9Cw0Y7RgtGB0Y8g0LTRgNGD0LPQuNC1INGD0YHQu9C+0LLQuNGPLCDRgdC+0LPQu9Cw0YHQvtCy0LDQvdC90YvQtSDRgdGC0L7RgNC+0L3QsNC80LgpDQoNCiAgICAgICAgIDguINCaINC00L7Qs9C+0LLQvtGA0YMg0L/RgNC40LvQsNCz0LDRjtGC0YHRjzogX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAo0L/RgNC40LLQvtC00LjRgtGB0Y8g0L/QtdGA0LXRh9C10L3RjCDQv9GA0LjQu9C+0LbQtdC90LjQuSkNCg0KICAgICAgICAgOS4g0K7RgNC40LTQuNGH0LXRgdC60LjQtSDQsNC00YDQtdGB0LAg0Lgg0YDQsNGB0YfQtdGC0L3Ri9C1INGB0YfQtdGC0LAg0YHRgtC+0YDQvtC9Og0KDQogICAgICAgICDQn9GA0LXQtNC/0YDQuNGP0YLQuNGPOiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCiAgICAgICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCiAgICAgICAgINCS0L3QtdGI0L3QtdGN0LrQvtC90L7QvNC40YfQtdGB0LrQvtC5INC+0YDQs9Cw0L3QuNC30LDRhtC40Lg6IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCiAgICAgICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCg0KDQogICAgICAgICDQn9GA0LXQtNC/0YDQuNGP0YLQuNC1ICAgICAgICAgICAgICAgICAgICAgINCS0L3QtdGI0L3QtdGN0LrQvtC90L7QvNC40YfQtdGB0LrQsNGPINC+0YDQs9Cw0L3QuNC30LDRhtC40Y8NCg0KICAgICAgICAgX19fX19fX19fX19fX19fX18gICAgICAgICAgICAgICAgX19fX19fX19fX19fX19fXw0KICAgICAgICAg0Jwu0J8uICAgICAgICAgICAgICAgICAgICAgICAgICAgICDQnC7Qny4NCg0KICANCjwvcHJlPjwvZGl2Pg0KPC9ib2R5Pg0KPC9odG1sPg==",
+    "mime_type": "text/html",
+    "language": "ru",
+    "locale": "ru"
+  },
+  "ingestion_preflight": {
+    "mime_type": "text/html",
+    "extractor": "html:regex",
+    "extraction_source": "html:regex",
+    "extraction_ok": true,
+    "error": null,
+    "extraction_error": null,
+    "sha256": "d90b42b6ade36efb78d1db348842444cb5d15622d88bf5b22f20f5d25145548b"
+  },
+  "metrics": {
+    "risk_count": 1,
+    "high_risk_count": 0,
+    "disputed_clause_count": 1,
+    "asymmetry_signal_count": 0,
+    "contract_type": "agency_agreement"
+  },
+  "analysis": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'obrazets-dogovor-porucheniya-na-zaklyuchenie-kontrakta-s-inostra. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Агент'. Определен тип договора: Агентский / комиссионный договор (уверенность 57%, правовая рамка: ГК РФ, главы 51 и 52). Ключевые обязательства по договору для роли 'Агент': Внешнеэкономическая организация обязуется заключить с иностранной фирмой от имени, по поручению и за счет Предприятия контракт, все права и обязанности по которому возникают у Предприятия с момента его заключения; В случае невозможности исполнения поручения Внешнеэкономическая организация обязуется в ______________ срок информировать об этом Предприятие, которое в ____________ срок обязуется принять решение об изменении или расторжении настоящего договора; Внешнеэкономическая организация обязана выполнить: __________ _____________________________________________________________________ (договор своими силами, вправе передоверить исполнение договора _____________________________________________________________________ другой организации во всех случаях, передоверить другой организации _____________________________________________________________________ только в случае, если вынуждена к этому силою обстоятельств для ____________________________________ с обязательным уведомлением соблюдения интересов Предприятия) Предприятия о произведенном перепоручении в течение ____________ срока, а также предоставлением: _____________________________________ _____________________________________________________________________ (указываются сведения, которые организация должна сообщить о _____________________. Условия оплаты: Внешнеэкономическая организация обязуется заключить с иностранной фирмой от имени, по поручению и за счет Предприятия контракт, все права и обязанности по которому возникают у Предприятия с момента его заключения; Предприятие выплачивает Внешнеэкономической организации _____ ________________________________________ вознаграждение в размере: __ (указывается срок и порядок выплаты) _______________; Помимо вознаграждения в указанном размере Предприятие возмещает Внешнеэкономической организации израсходованные ею суммы, необходимые для исполнения договора. Сроки и дедлайны: ) Товар: _________________________________________________________ (наименование) Номенклатура (ассортимент) _____________________________________ Количество и комплектность _____________________________________ Качественные показатели ________________________________________ Сроки, которые должны быть предусмотрены Внешнеэкономической организацией в контракте с иностранным партнером: ___________________ ___________________________; В случае невозможности исполнения поручения Внешнеэкономическая организация обязуется в ______________ срок информировать об этом Предприятие, которое в ____________ срок обязуется принять решение об изменении или расторжении настоящего договора; Предприятие выплачивает Внешнеэкономической организации _____ ________________________________________ вознаграждение в размере: __ (указывается срок и порядок выплаты) _______________. Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Агент'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Образец. Договор поручения на заключение контракта с иностранной фирмой - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ПРИМЕРНЫЙ ДОГОВОР ПОРУЧЕНИЯ г. ______________ \"___\"_________20___г. ________________________________________________, именуем___ в (наименование предприятия) дальнейшем \"Предприятие\", в лице ___________________________________, (должность, ф. и. о.",
+        "dispute_reason": "Одна из сторон получила дискреционное право без достаточных ограничителей.",
+        "possible_consequence": "Это может привести к одностороннему применению условия и спору о пределах такого права.",
+        "confidence": 0.76
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Агент",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Агент'.",
+      "must_do": [
+        "Внешнеэкономическая организация обязуется заключить с иностранной фирмой от имени, по поручению и за счет Предприятия контракт, все права и обязанности по которому возникают у Предприятия с момента его заключения.",
+        "В случае невозможности исполнения поручения Внешнеэкономическая организация обязуется в ______________ срок информировать об этом Предприятие, которое в ____________ срок обязуется принять решение об изменении или расторжении настоящего договора.",
+        "Внешнеэкономическая организация обязана выполнить: __________ _____________________________________________________________________ (договор своими силами, вправе передоверить исполнение договора _____________________________________________________________________ другой организации во всех случаях, передоверить другой организации _____________________________________________________________________ только в случае, если вынуждена к этому силою обстоятельств для ____________________________________ с обязательным уведомлением соблюдения интересов Предприятия) Предприятия о произведенном перепоручении в течение ____________ срока, а также предоставлением: _____________________________________ _____________________________________________________________________ (указываются сведения, которые организация должна сообщить о _____________________."
+      ],
+      "should_review": [
+        "Внешнеэкономическая организация обязана выполнить: __________ _____________________________________________________________________ (договор своими силами, вправе передоверить исполнение договора _____________________________________________________________________ другой организации во всех случаях, передоверить другой организации _____________________________________________________________________ только в случае, если вынуждена к этому силою обстоятельств для ____________________________________ с обязательным уведомлением соблюдения интересов Предприятия) Предприятия о произведенном перепоручении в течение ____________ срока, а также предоставлением: _____________________________________ _____________________________________________________________________ (указываются сведения, которые организация должна сообщить о _____________________.",
+        "ее заместителе) Предприятие вправе отказаться от замены, предложенной Внешнеэкономической организацией."
+      ],
+      "payment_terms": [
+        "Внешнеэкономическая организация обязуется заключить с иностранной фирмой от имени, по поручению и за счет Предприятия контракт, все права и обязанности по которому возникают у Предприятия с момента его заключения.",
+        "Предприятие выплачивает Внешнеэкономической организации _____ ________________________________________ вознаграждение в размере: __ (указывается срок и порядок выплаты) _______________.",
+        "Помимо вознаграждения в указанном размере Предприятие возмещает Внешнеэкономической организации израсходованные ею суммы, необходимые для исполнения договора.",
+        "Юридические адреса и расчетные счета сторон: Предприятия: ___________________________________________________ ________________________________________________________________ Внешнеэкономической организации: _______________________________ ________________________________________________________________ Предприятие Внешнеэкономическая организация _________________ ________________ М."
+      ],
+      "deadlines": [
+        ") Товар: _________________________________________________________ (наименование) Номенклатура (ассортимент) _____________________________________ Количество и комплектность _____________________________________ Качественные показатели ________________________________________ Сроки, которые должны быть предусмотрены Внешнеэкономической организацией в контракте с иностранным партнером: ___________________ ___________________________.",
+        "В случае невозможности исполнения поручения Внешнеэкономическая организация обязуется в ______________ срок информировать об этом Предприятие, которое в ____________ срок обязуется принять решение об изменении или расторжении настоящего договора.",
+        "Предприятие выплачивает Внешнеэкономической организации _____ ________________________________________ вознаграждение в размере: __ (указывается срок и порядок выплаты) _______________.",
+        "Внешнеэкономическая организация обязана выполнить: __________ _____________________________________________________________________ (договор своими силами, вправе передоверить исполнение договора _____________________________________________________________________ другой организации во всех случаях, передоверить другой организации _____________________________________________________________________ только в случае, если вынуждена к этому силою обстоятельств для ____________________________________ с обязательным уведомлением соблюдения интересов Предприятия) Предприятия о произведенном перепоручении в течение ____________ срока, а также предоставлением: _____________________________________ _____________________________________________________________________ (указываются сведения, которые организация должна сообщить о _____________________."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "d90b42b6ade36efb78d1db348842444cb5d15622d88bf5b22f20f5d25145548b"
+    },
+    "contract_type": {
+      "type_id": "agency_agreement",
+      "confidence": 0.58,
+      "ru_name": "Агентский / комиссионный договор",
+      "legal_framework": "ГК РФ, главы 51 и 52"
+    },
+    "asymmetry_signals": []
+  },
+  "result": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'obrazets-dogovor-porucheniya-na-zaklyuchenie-kontrakta-s-inostra. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Агент'. Определен тип договора: Агентский / комиссионный договор (уверенность 57%, правовая рамка: ГК РФ, главы 51 и 52). Ключевые обязательства по договору для роли 'Агент': Внешнеэкономическая организация обязуется заключить с иностранной фирмой от имени, по поручению и за счет Предприятия контракт, все права и обязанности по которому возникают у Предприятия с момента его заключения; В случае невозможности исполнения поручения Внешнеэкономическая организация обязуется в ______________ срок информировать об этом Предприятие, которое в ____________ срок обязуется принять решение об изменении или расторжении настоящего договора; Внешнеэкономическая организация обязана выполнить: __________ _____________________________________________________________________ (договор своими силами, вправе передоверить исполнение договора _____________________________________________________________________ другой организации во всех случаях, передоверить другой организации _____________________________________________________________________ только в случае, если вынуждена к этому силою обстоятельств для ____________________________________ с обязательным уведомлением соблюдения интересов Предприятия) Предприятия о произведенном перепоручении в течение ____________ срока, а также предоставлением: _____________________________________ _____________________________________________________________________ (указываются сведения, которые организация должна сообщить о _____________________. Условия оплаты: Внешнеэкономическая организация обязуется заключить с иностранной фирмой от имени, по поручению и за счет Предприятия контракт, все права и обязанности по которому возникают у Предприятия с момента его заключения; Предприятие выплачивает Внешнеэкономической организации _____ ________________________________________ вознаграждение в размере: __ (указывается срок и порядок выплаты) _______________; Помимо вознаграждения в указанном размере Предприятие возмещает Внешнеэкономической организации израсходованные ею суммы, необходимые для исполнения договора. Сроки и дедлайны: ) Товар: _________________________________________________________ (наименование) Номенклатура (ассортимент) _____________________________________ Количество и комплектность _____________________________________ Качественные показатели ________________________________________ Сроки, которые должны быть предусмотрены Внешнеэкономической организацией в контракте с иностранным партнером: ___________________ ___________________________; В случае невозможности исполнения поручения Внешнеэкономическая организация обязуется в ______________ срок информировать об этом Предприятие, которое в ____________ срок обязуется принять решение об изменении или расторжении настоящего договора; Предприятие выплачивает Внешнеэкономической организации _____ ________________________________________ вознаграждение в размере: __ (указывается срок и порядок выплаты) _______________. Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Агент'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Образец. Договор поручения на заключение контракта с иностранной фирмой - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ПРИМЕРНЫЙ ДОГОВОР ПОРУЧЕНИЯ г. ______________ \"___\"_________20___г. ________________________________________________, именуем___ в (наименование предприятия) дальнейшем \"Предприятие\", в лице ___________________________________, (должность, ф. и. о.",
+        "dispute_reason": "Одна из сторон получила дискреционное право без достаточных ограничителей.",
+        "possible_consequence": "Это может привести к одностороннему применению условия и спору о пределах такого права.",
+        "confidence": 0.76
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Агент",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Агент'.",
+      "must_do": [
+        "Внешнеэкономическая организация обязуется заключить с иностранной фирмой от имени, по поручению и за счет Предприятия контракт, все права и обязанности по которому возникают у Предприятия с момента его заключения.",
+        "В случае невозможности исполнения поручения Внешнеэкономическая организация обязуется в ______________ срок информировать об этом Предприятие, которое в ____________ срок обязуется принять решение об изменении или расторжении настоящего договора.",
+        "Внешнеэкономическая организация обязана выполнить: __________ _____________________________________________________________________ (договор своими силами, вправе передоверить исполнение договора _____________________________________________________________________ другой организации во всех случаях, передоверить другой организации _____________________________________________________________________ только в случае, если вынуждена к этому силою обстоятельств для ____________________________________ с обязательным уведомлением соблюдения интересов Предприятия) Предприятия о произведенном перепоручении в течение ____________ срока, а также предоставлением: _____________________________________ _____________________________________________________________________ (указываются сведения, которые организация должна сообщить о _____________________."
+      ],
+      "should_review": [
+        "Внешнеэкономическая организация обязана выполнить: __________ _____________________________________________________________________ (договор своими силами, вправе передоверить исполнение договора _____________________________________________________________________ другой организации во всех случаях, передоверить другой организации _____________________________________________________________________ только в случае, если вынуждена к этому силою обстоятельств для ____________________________________ с обязательным уведомлением соблюдения интересов Предприятия) Предприятия о произведенном перепоручении в течение ____________ срока, а также предоставлением: _____________________________________ _____________________________________________________________________ (указываются сведения, которые организация должна сообщить о _____________________.",
+        "ее заместителе) Предприятие вправе отказаться от замены, предложенной Внешнеэкономической организацией."
+      ],
+      "payment_terms": [
+        "Внешнеэкономическая организация обязуется заключить с иностранной фирмой от имени, по поручению и за счет Предприятия контракт, все права и обязанности по которому возникают у Предприятия с момента его заключения.",
+        "Предприятие выплачивает Внешнеэкономической организации _____ ________________________________________ вознаграждение в размере: __ (указывается срок и порядок выплаты) _______________.",
+        "Помимо вознаграждения в указанном размере Предприятие возмещает Внешнеэкономической организации израсходованные ею суммы, необходимые для исполнения договора.",
+        "Юридические адреса и расчетные счета сторон: Предприятия: ___________________________________________________ ________________________________________________________________ Внешнеэкономической организации: _______________________________ ________________________________________________________________ Предприятие Внешнеэкономическая организация _________________ ________________ М."
+      ],
+      "deadlines": [
+        ") Товар: _________________________________________________________ (наименование) Номенклатура (ассортимент) _____________________________________ Количество и комплектность _____________________________________ Качественные показатели ________________________________________ Сроки, которые должны быть предусмотрены Внешнеэкономической организацией в контракте с иностранным партнером: ___________________ ___________________________.",
+        "В случае невозможности исполнения поручения Внешнеэкономическая организация обязуется в ______________ срок информировать об этом Предприятие, которое в ____________ срок обязуется принять решение об изменении или расторжении настоящего договора.",
+        "Предприятие выплачивает Внешнеэкономической организации _____ ________________________________________ вознаграждение в размере: __ (указывается срок и порядок выплаты) _______________.",
+        "Внешнеэкономическая организация обязана выполнить: __________ _____________________________________________________________________ (договор своими силами, вправе передоверить исполнение договора _____________________________________________________________________ другой организации во всех случаях, передоверить другой организации _____________________________________________________________________ только в случае, если вынуждена к этому силою обстоятельств для ____________________________________ с обязательным уведомлением соблюдения интересов Предприятия) Предприятия о произведенном перепоручении в течение ____________ срока, а также предоставлением: _____________________________________ _____________________________________________________________________ (указываются сведения, которые организация должна сообщить о _____________________."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "d90b42b6ade36efb78d1db348842444cb5d15622d88bf5b22f20f5d25145548b"
+    },
+    "contract_type": {
+      "type_id": "agency_agreement",
+      "confidence": 0.58,
+      "ru_name": "Агентский / комиссионный договор",
+      "legal_framework": "ГК РФ, главы 51 и 52"
+    },
+    "asymmetry_signals": []
+  },
+  "finished_at": "2026-04-28T16:12:25.751901+00:00",
+  "duration_ms": 220.71
+}

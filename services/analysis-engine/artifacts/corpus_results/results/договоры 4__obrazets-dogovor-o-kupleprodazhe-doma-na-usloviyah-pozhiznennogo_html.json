@@ -1,0 +1,177 @@
+{
+  "case_id": "договоры 4__obrazets-dogovor-o-kupleprodazhe-doma-na-usloviyah-pozhiznennogo_html",
+  "relative_path": "договоры 4/obrazets-dogovor-o-kupleprodazhe-doma-na-usloviyah-pozhiznennogo.html",
+  "document_path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\договоры 4\\obrazets-dogovor-o-kupleprodazhe-doma-na-usloviyah-pozhiznennogo.html",
+  "document_name": "obrazets-dogovor-o-kupleprodazhe-doma-na-usloviyah-pozhiznennogo.html",
+  "role": "Поставщик",
+  "counterparty_role": "Покупатель",
+  "language": "ru",
+  "mime_type": "text/html",
+  "tags": [
+    "ad_hoc"
+  ],
+  "source_group": "договоры 4",
+  "expected": {},
+  "started_at": "2026-04-28T16:18:51.761316+00:00",
+  "status": "completed",
+  "request": {
+    "document_name": "obrazets-dogovor-o-kupleprodazhe-doma-na-usloviyah-pozhiznennogo.html",
+    "role_context": {
+      "role": "Поставщик",
+      "counterparty_role": "Покупатель"
+    },
+    "document_text": null,
+    "document_base64": "PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMDEgVHJhbnNpdGlvbmFsLy9FTiI+DQo8aHRtbD4NCjxoZWFkPg0KPGJhc2UgaHJlZj0iaHR0cHM6Ly9kb2dvdm9yLXVyaXN0LnJ1LyI+DQo8dGl0bGU+0J7QsdGA0LDQt9C10YYuINCU0L7Qs9C+0LLQvtGAINC+ICAg0LrRg9C/0LvQtS3Qv9GA0L7QtNCw0LbQtSDQtNC+0LzQsCDQvdCwINGD0YHQu9C+0LLQuNGP0YUg0L/QvtC20LjQt9C90LXQvdC90L7Qs9C+INGB0L7QtNC10YDQttCw0L3QuNGPIC0g0LLQtdGA0YHQuNGPINC00LvRjyDQv9C10YfQsNGC0LguIDIwMjYuINCe0LHRgNCw0LfRhtGLINC00L7Qs9C+0LLQvtGA0L7Qsiwg0YLQuNC/0L7QstGL0LUg0LTQvtCz0L7QstC+0YDQsCwg0LDQutGC0YPQsNC70YzQvdGL0LUg0LTQvtC60YPQvNC10L3RgtGLLCDRjtGA0LjQtNC40YfQtdGB0LrQuNC8INC4INGE0LjQt9C40YfQtdGB0LrQuNC8INC70LjRhtCw0Lw8L3RpdGxlPg0KPG1ldGEgY29udGVudD0iIiBuYW1lPSJrZXl3b3JkcyI+DQo8bWV0YSBjb250ZW50PSIiIG5hbWU9ImRlc2NyaXB0aW9uIj4NCjxtZXRhIG5hbWU9InJvYm90cyIgY29udGVudD0ibm9pbmRleCxub2ZvbGxvdyI+DQo8bWV0YSBodHRwLWVxdWl2PSJDb250ZW50LVR5cGUiIGNvbnRlbnQ9InRleHQvaHRtbDsgY2hhcnNldD11dGYtOCI+DQo8bGluayByZWw9InN0eWxlc2hlZXQiIGhyZWY9Ii9pbWFnZXMvc3R5bGUuY3NzIiB0eXBlPSJ0ZXh0L2NzcyI+DQo8L2hlYWQ+DQo8Ym9keT4NCjxkaXYgY2xhc3M9ImRvY3VtZW50VGV4dCI+DQo8cHJlPiAgICAgICAgICAgICAgICAgICAgICAgICDQlNCe0JPQntCS0J7QoCDQniDQmtCj0J/Qm9CVLdCf0KDQntCU0JDQltCVDQogICAgICAgICAgICAgICAgINCU0J7QnNCQINCd0JAg0KPQodCb0J7QktCY0K/QpSDQn9Ce0JbQmNCX0J3QldCd0J3QntCT0J4g0KHQntCU0JXQoNCW0JDQndCY0K8NCg0KIA0KDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg0JTQntCT0J7QktCe0KANCg0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KICAgICAgICAgICAgICAgICjQvNC10YHRgtC+INC4INC00LDRgtCwINC30LDQutC70Y7Rh9C10L3QuNGPINC00L7Qs9C+0LLQvtGA0LAg0L/RgNC+0L/QuNGB0YzRjikNCg0KICAgICAgICAg0JzRiywg0LPRgC4gX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXywg0L3QtdGC0YDRg9C00L7RgdC/0L7RgdC+0LHQvdCw0Y8o0YvQuSkNCiAgICDQv9C+ICAg0LLQvtC30YDQsNGB0YLRgyAgKNC/0L4gINGB0L7RgdGC0L7Rj9C90LjRjiDQt9C00L7RgNC+0LLRjNGPKSwgINC/0YDQvtC20LjQstCw0Y7RidCw0Y8o0LjQuSkgINC/0L4g0LDQtNGA0LXRgdGDOg0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KICAgINC4INCz0YAuIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18sINC/0YDQvtC20LjQstCw0Y7RidCw0Y8o0LjQuSkg0L/Qvg0KICAgINCw0LTRgNC10YHRgzogX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLA0KICAgINC30LDQutC70Y7Rh9C40LvQuCDQvdCw0YHRgtC+0Y/RidC40Lkg0LTQvtCz0L7QstC+0YAg0L4g0L3QuNC20LXRgdC70LXQtNGD0Y7RidC10Lw6DQoNCiAgICAgICAgIDEuINCvLCDQs9GALiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fXywg0L/QtdGA0LXQtNCw0Y4g0LIg0YHQvtCx0YHRgtCy0LXQvdC90L7RgdGC0YwNCiAgICDQs9GALiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fINC/0YDQuNC90LDQtNC70LXQttCw0YnQuNC5INC80L3QtSDQttC40LvQvtC5INC00L7QvA0KICAgINGBINGF0L7Qt9GP0LnRgdGC0LLQtdC90L3Ri9C80Lgg0Lgg0LHRi9GC0L7QstGL0LzQuCDRgdGC0YDQvtC10L3QuNGP0LzQuCwg0L3QsNGF0L7QtNGP0YnQuNC50YHRjyDQv9C+INCw0LTRgNC10YHRgzogX19fX19fDQogICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQogICAg0L/QvtC0INC90L7QvNC10YDQvtC8IF9fX19fX19fX19fX19fINC90LAg0LfQtdC80LXQu9GM0L3QvtC8INGD0YfQsNGB0YLQutC1INGA0LDQt9C80LXRgNC+0LwgX19fX18g0LrQsi4g0LwuDQogICAgICAgICDQndCwINGD0LrQsNC30LDQvdC90L7QvCAgINC30LXQvNC10LvRjNC90L7QvCAgINGD0YfQsNGB0YLQutC1ICAg0YDQsNGB0L/QvtC70L7QttC10L3RizogX19fX19fX19fX19fX18NCiAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXyDQttC40LvQvtC5INC00L7QvA0KICAgICAo0Y3RgtCw0LbQvdC+0YHRgtGMINC4INC80LDRgtC10YDQuNCw0LssINC40Lcg0LrQvtGC0L7RgNC+0LPQviDQv9C+0YHRgtGA0L7QtdC9INC00L7QvCkNCg0KICAgINC+0LHRidC10L/QvtC70LXQt9C90L7QuSDQv9C70L7RidCw0LTRjNGOIF9fX19fKF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXykg0LrQsi4g0LwsDQogICAg0LbQuNC70L7QuSDQv9C70L7RidCw0LTRjNGOIF9fX19fX18oX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fKSDQutCyLiDQvCwg0LAg0YLQsNC60LbQtQ0KICAgINGF0L7Qt9GP0LnRgdGC0LLQtdC90L3Ri9C1INC4INCx0YvRgtC+0LLRi9C1INGB0YLRgNC+0LXQvdC40Y8g0Lgg0YHQvtC+0YDRg9C20LXQvdC40Y86IF9fX19fX19fX19fX19fX19fX19fX18NCiAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCiAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCiAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXywNCiAgICDRh9GC0L4g0L/QvtC00YLQstC10YDQttC00LDQtdGC0YHRjyDRgdC/0YDQsNCy0LrQvtC5IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18g0JHQotCYDQogICAg0L7RgiAiX18iX19fX19fX19fX18gMjBfX18g0LMuIE5vLiBfX19fX19fX19fLg0KDQogICAgICAgICAyLiDQltC40LvQvtC5INC00L7QvCDQv9GA0LjQvdCw0LTQu9C10LbQuNGCINCz0YAuIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQogICAg0L3QsCDQvtGB0L3QvtCy0LDQvdC40Lgg0YHQstC40LTQtdGC0LXQu9GM0YHRgtCy0LAg0L4g0L/RgNCw0LLQtSDQvdCwINC90LDRgdC70LXQtNGB0YLQstC+INC/0L4g0LfQsNC60L7QvdGDLCDQstGL0LTQsNC90L3QvtCz0L4NCiAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXyDQvdC+0YLQsNGA0LjQsNC70YzQvdC+0Lkg0LrQvtC90YLQvtGA0L7QuQ0KICAgICJfXyJfX19fX19fX19fIDIwX19fINCzLiDQv9C+INGA0LXQtdGB0YLRgNGDIE5vLiBfX19fX19fX18g0Lgg0LfQsNGA0LXQs9C40YHRgtGA0LjRgNC+0LLQsNC90L3QvtCz0L4NCiAgICDQsiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fINCR0KLQmCAiX18iX19fX19fX19fX19fXyAyMF9fXyDQsy4NCiAgICBOby4gX19fX19fX19fX18uDQoNCiAgICAgICAgIDMuINCm0LXQvdCwINC+0YLRh9GD0LbQtNCw0LXQvNC+0LPQviDQttC40LvQvtCz0L4g0LTQvtC80LAg0YHQvtGB0YLQsNCy0LvRj9C10YIgX19fX19fX19fX19fX19fX19fX18NCiAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXyDRgNGD0LHQu9C10LkuDQogICAgICAgICAgICAgICAgICjRgdGD0LzQvNCwINC/0YDQvtC/0LjRgdGM0Y4pDQoNCiAgICAgICAgINCY0L3QstC10L3RgtCw0YDQuNC30LDRhtC40L7QvdC90LDRjyDQvtGG0LXQvdC60LAg0LTQvtC80LAg0YHQvtGB0YLQsNCy0LvRj9C10YIgX19fX19fX19fX19fX19fX19fX19fXw0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXyDRgNGD0LHQu9C10LkuDQogICAgICAgICAgICAgICAgICAo0YHRg9C80LzQsCDQv9GA0L7Qv9C40YHRjNGOKQ0KDQogICAgICAgICA0LiDQrywg0LPRgC4gX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLCDQvtCx0Y/Qt9GD0Y7RgdGMINC/0L7QttC40LfQvdC10L3QvdC+DQogICAg0L/QvtC70L3QvtGB0YLRjNGOINGB0L7QtNC10YDQttCw0YLRjCDQs9GALiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXywg0L7QsdC10YHQv9C10YfQuNCy0LDRjw0KICAgINC/0LjRgtCw0L3QuNC10LwsICDQvtC00LXQttC00L7QuSwgINGD0YXQvtC00L7QvCwgINC90LXQvtCx0YXQvtC00LjQvNC+0Lkg0L/QvtC80L7RidGM0Y4gINC4ICDRgdC+0YXRgNCw0L3QuNCyICDQsiAg0LXQtQ0KICAgINCx0LXRgdC/0LvQsNGC0L3QvtC8INC/0L7QttC40LfQvdC10L3QvdC+0Lwg0L/QvtC70YzQt9C+0LLQsNC90LjQuCDQvtC00L3RgyDQttC40LvRg9GOINC60L7QvNC90LDRgtGDINGA0LDQt9C80LXRgNC+0LwgX19fX19fDQogICAg0LrQsi4g0LwuDQoNCiAgICAgICAgIDUuINCh0YLQvtC40LzQvtGB0YLRjCDQvNCw0YLQtdGA0LjQsNC70YzQvdC+0LPQviDQvtCx0LXRgdC/0LXRh9C10L3QuNGPICjQv9C40YLQsNC90LjRjywg0L7QtNC10LbQtNGLLCDRg9GF0L7QtNCwINC4DQogICAg0L3QtdC+0LHRhdC+0LTQuNC80L7QuSDQv9C+0LzQvtGJ0LgpINC+0L/RgNC10LTQtdC70LXQvdCwINGB0YLQvtGA0L7QvdCw0LzQuCDQsiDRgNCw0LfQvNC10YDQtSBfX19fX19fX19fX19fX19fX18NCiAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fINGA0YPQsdC70LXQuSDQsiDQvNC10YHRj9GGLg0KDQogICAgICAgICA2LiDQndCw0YHRgtC+0Y/RidC40Lkg0LTQvtCz0L7QstC+0YAg0LzQvtC20LXRgiDQsdGL0YLRjCDRgNCw0YHRgtC+0YDQs9C90YPRgiDQv9C+INGB0L7Qs9C70LDRiNC10L3QuNGOINGB0YLQvtGA0L7QvSwNCiAgICDQsiDRgdC70YPRh9Cw0LUgINC90LXQstGL0L/QvtC70L3QtdC90LjRjyAg0YPRgdC70L7QstC40LkgINC00L7Qs9C+0LLQvtGA0LAg0L7QtNC90L7QuSDQuNC3INGB0YLQvtGA0L7QvSDQuCDQvtGC0LrQsNC30LAg0L7Rgg0KICAgINC00L7QsdGA0L7QstC+0LvRjNC90L7Qs9C+INGA0LDRgdGC0L7RgNC20LXQvdC40Y8g0LTQvtCz0L7QstC+0YDQsCAtINCyINGB0YPQtNC10LHQvdC+0Lwg0L/QvtGA0Y/QtNC60LUuDQoNCiAgICAgICAgIDcuINCe0YLRh9GD0LbQtNCw0LXQvNGL0Lkg0LTQvtC8INC90LjQutC+0LzRgyDQvdC1INC/0YDQvtC00LDQvSwgINC90LUg0LfQsNC70L7QttC10L0sICDQvdC1INC/0L7QtNCw0YDQtdC9LCDQsg0KICAgINGB0L/QvtGA0LUg0Lgg0L/QvtC0INC30LDQv9GA0LXRidC10L3QuNC10LwgKNCw0YDQtdGB0YLQvtC8KSDQvdC1INGB0L7RgdGC0L7QuNGCLg0KDQogICAgICAgICA4LiDQoNCw0YHRhdC+0LTRiyAg0L/QviAgINGB0L7RgdGC0LDQstC70LXQvdC40Y4gINC4ICDRg9C00L7RgdGC0L7QstC10YDQtdC90LjRjiAg0LTQsNC90L3QvtCz0L4g0LTQvtCz0L7QstC+0YDQsA0KICAgINC+0L/Qu9Cw0YfQuNCy0LDQtdGCINCz0YAuIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fLg0KDQogICAgICAgICA5LiDQndCw0YHRgtC+0Y/RidC40LkgINC00L7Qs9C+0LLQvtGAINGB0L7RgdGC0LDQstC70LXQvSAg0LIgINGC0YDQtdGFICDRjdC60LfQtdC80L/Qu9GP0YDQsNGFLCAg0L7QtNC40L0gINC40LcNCiAgICDQutC+0YLQvtGA0YvRhSDRhdGA0LDQvdC40YLRgdGPINCyIF9fX19fX19fX19fX19fX19fX19fX19fX19fXyDQvdC+0YLQsNGA0LjQsNC70YzQvdC+0LkgINC60L7QvdGC0L7RgNC1LA0KICAgINCwINC+0YHRgtCw0LvRjNC90YvQtSDQstGL0LTQsNGO0YLRgdGPINCz0YAuIF9fX19fX19fX19fX19fX18g0Lgg0LPRgC4gX19fX19fX19fX19fX19fX19fX18uDQoNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICDQn9C+0LTQv9C40YHQuCDRgdGC0L7RgNC+0L06DQoNCiAgICAgICAgICAgICAg0J/RgNC+0LTQsNCy0LXRhiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgX19fX19fX19fX19fX19fXw0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgKNC/0L7QtNC/0LjRgdGMKQ0KDQogICAgICAgICAgICAgINCf0L7QutGD0L/QsNGC0LXQu9GMICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgX19fX19fX19fX19fX19fXw0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgKNC/0L7QtNC/0LjRgdGMKQ0KDQogICAgICAgICAiX18iX19fX19fX19fX19fIDIwX19fINCzLiAg0L3QsNGB0YLQvtGP0YnQuNC5INC00L7Qs9C+0LLQvtGAICDRg9C00L7RgdGC0L7QstC10YDQtdC9ICDQvNC90L7QuSwNCiAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18g0L3QvtGC0LDRgNC40YPRgdC+0Lwg0LMuIF9fX19fX19fX19fX19fX19fXw0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLg0KICAgICAgICAo0L3QsNC40LzQtdC90L7QstCw0L3QuNC1INC90L7RgtCw0YDQuNCw0LvRjNC90L7QuSDQutC+0L3RgtC+0YDRiywgTtC+Liwg0LTQsNGC0LAg0LLRi9C00LDRh9C4INC70LjRhtC10L3Qt9C40LgpDQoNCiAgICAgICAgINCU0L7Qs9C+0LLQvtGAINC/0L7QtNC/0LjRgdCw0L0gICAg0LIgICAg0LzQvtC10LwgICDQv9GA0LjRgdGD0YLRgdGC0LLQuNC4LCAgINC70LjRh9C90L7RgdGC0YwgICDRgdGC0L7RgNC+0L0NCiAgICDRg9GB0YLQsNC90L7QstC70LXQvdCwLCDQuNGFINC00LXQtdGB0L/QvtGB0L7QsdC90L7RgdGC0Ywg0L/RgNC+0LLQtdGA0LXQvdCwLCDQv9GA0LjQvdCw0LTQu9C10LbQvdC+0YHRgtGMINC+0YLRh9GD0LbQtNCw0LXQvNC+0LPQvg0KICAgINC20LjQu9C+0LPQviDQtNC+0LzQsCDQv9GA0L7QstC10YDQtdC90LAuDQogICAgICAgICDQotC10LrRgdGCINC00L7Qs9C+0LLQvtGA0LAg0LrRg9C/0LvQuC3Qv9GA0L7QtNCw0LbQuCDQv9GA0L7Rh9C40YLQsNC9INCy0YHQu9GD0YUuDQogICAgICAgICDQlNC+0LPQvtCy0L7RgCDQv9C+0LTQu9C10LbQuNGCINGA0LXQs9C40YHRgtGA0LDRhtC40Lgg0LIgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICjQvdCw0LjQvNC10L3QvtCy0LDQvdC40LUg0LPQvtGB0YPQtNCw0YDRgdGC0LLQtdC90L3QvtCz0L4NCiAgICBfX19fX19fX19fX19fXy4NCiAgICAgINC+0YDQs9Cw0L3QsCkNCg0KICAgICAgICAgICAgICAgICAgICAgINCX0LDRgNC10LPQuNGB0YLRgNC40YDQvtCy0LDQvdC+INCyINGA0LXQtdGB0YLRgNC1INC30LAgTtC+LiBfX19fX19fX19fX18NCiAgICAgICAgICAgICAgICAgICAgICDQktC30YvRgdC60LDQvdC+INC/0L4g0YLQsNGA0LjRhNGDOiBfX19fX19fX19fX19fX19fX19fX19fINGA0YPQsS4NCiAgICAgICAgICDQvC7Qvy4gICAgICAgINCd0L7RgtCw0YDQuNGD0YE6IF9fX19fX19fX19fX19fX19fXyAo0L/QvtC00L/QuNGB0YwpDQoNCiAgDQo8L3ByZT48L2Rpdj4NCjwvYm9keT4NCjwvaHRtbD4=",
+    "mime_type": "text/html",
+    "language": "ru",
+    "locale": "ru"
+  },
+  "ingestion_preflight": {
+    "mime_type": "text/html",
+    "extractor": "html:regex",
+    "extraction_source": "html:regex",
+    "extraction_ok": true,
+    "error": null,
+    "extraction_error": null,
+    "sha256": "9a9b5a962cfb5db698768207ead52930c6f1262309e14034431f6b05f156dd11"
+  },
+  "metrics": {
+    "risk_count": 1,
+    "high_risk_count": 0,
+    "disputed_clause_count": 1,
+    "asymmetry_signal_count": 0,
+    "contract_type": "purchase_agreement"
+  },
+  "analysis": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'obrazets-dogovor-o-kupleprodazhe-doma-na-usloviyah-pozhiznennogo. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Поставщик'. Определен тип договора: Договор купли-продажи (уверенность 56%, правовая рамка: ГК РФ, глава 30). Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Поставщик'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Образец. Договор о купле-продаже дома на условиях пожизненного содержания - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР О КУПЛЕ-ПРОДАЖЕ ДОМА НА УСЛОВИЯХ ПОЖИЗНЕННОГО СОДЕРЖАНИЯ ДОГОВОР _____________________________________________________________________ (место и дата заключения договора прописью) Мы, гр.",
+        "dispute_reason": "Формулировка зависит от будущего согласования и не содержит исполнимого критерия.",
+        "possible_consequence": "При исполнении может возникнуть спор о том, что именно стороны должны были согласовать.",
+        "confidence": 0.79
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Поставщик",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Поставщик'.",
+      "must_do": [
+        "Конфиг не выявил явных обязательств."
+      ],
+      "should_review": [
+        "Настоящий договор может быть расторгнут по соглашению сторон, в случае невыполнения условий договора одной из сторон и отказа от добровольного расторжения договора - в судебном порядке."
+      ],
+      "payment_terms": [
+        "Конфиг не выявил явных условий оплаты."
+      ],
+      "deadlines": [
+        "Конфиг не выявил явных сроков."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "9a9b5a962cfb5db698768207ead52930c6f1262309e14034431f6b05f156dd11"
+    },
+    "contract_type": {
+      "type_id": "purchase_agreement",
+      "confidence": 0.57,
+      "ru_name": "Договор купли-продажи",
+      "legal_framework": "ГК РФ, глава 30"
+    },
+    "asymmetry_signals": []
+  },
+  "result": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'obrazets-dogovor-o-kupleprodazhe-doma-na-usloviyah-pozhiznennogo. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Поставщик'. Определен тип договора: Договор купли-продажи (уверенность 56%, правовая рамка: ГК РФ, глава 30). Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Поставщик'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Образец. Договор о купле-продаже дома на условиях пожизненного содержания - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР О КУПЛЕ-ПРОДАЖЕ ДОМА НА УСЛОВИЯХ ПОЖИЗНЕННОГО СОДЕРЖАНИЯ ДОГОВОР _____________________________________________________________________ (место и дата заключения договора прописью) Мы, гр.",
+        "dispute_reason": "Формулировка зависит от будущего согласования и не содержит исполнимого критерия.",
+        "possible_consequence": "При исполнении может возникнуть спор о том, что именно стороны должны были согласовать.",
+        "confidence": 0.79
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Поставщик",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Поставщик'.",
+      "must_do": [
+        "Конфиг не выявил явных обязательств."
+      ],
+      "should_review": [
+        "Настоящий договор может быть расторгнут по соглашению сторон, в случае невыполнения условий договора одной из сторон и отказа от добровольного расторжения договора - в судебном порядке."
+      ],
+      "payment_terms": [
+        "Конфиг не выявил явных условий оплаты."
+      ],
+      "deadlines": [
+        "Конфиг не выявил явных сроков."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "9a9b5a962cfb5db698768207ead52930c6f1262309e14034431f6b05f156dd11"
+    },
+    "contract_type": {
+      "type_id": "purchase_agreement",
+      "confidence": 0.57,
+      "ru_name": "Договор купли-продажи",
+      "legal_framework": "ГК РФ, глава 30"
+    },
+    "asymmetry_signals": []
+  },
+  "finished_at": "2026-04-28T16:18:51.898553+00:00",
+  "duration_ms": 137.61
+}

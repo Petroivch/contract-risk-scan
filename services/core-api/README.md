@@ -107,8 +107,13 @@ npm run build
 - ответ `report` содержит:
   - `summary` как объект,
   - `summaryText`,
+  - `contractBriefRecords[]`,
+  - `roleFocusedSummaryRecords[]`,
   - `risks[]`,
   - `disputedClauses[]`,
   - `obligations[]`,
   - `generatedAt`,
   - `generationNotes`.
+- `summaryText` и `summary.shortDescription` сохраняются как legacy string-поля.
+- `contractBriefRecords[]` и `roleFocusedSummaryRecords[]` добавлены как additive structured records в формате
+  `{id, headline, description, recommendation, evidence[]}`.

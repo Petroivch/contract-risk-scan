@@ -1,0 +1,191 @@
+{
+  "case_id": "dogovory_4__dogovor_na_uchastie_v_ustavnih_fondah",
+  "relative_path": "договоры 4/dogovor-na-uchastie-v-ustavnih-fondah.html",
+  "document_path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\договоры 4\\dogovor-na-uchastie-v-ustavnih-fondah.html",
+  "document_name": "dogovor-na-uchastie-v-ustavnih-fondah.html",
+  "role": "Заявитель",
+  "counterparty_role": "Организация",
+  "language": "ru",
+  "mime_type": "text/html",
+  "tags": [
+    "workspace-corpus",
+    "html",
+    "dogovory_4",
+    "non_contract_legal_form"
+  ],
+  "source_group": "manifest",
+  "expected": {
+    "contract_type": "non_contract_legal_form",
+    "min_contract_type_confidence": 0.35,
+    "min_risk_count": 0,
+    "min_disputed_clause_count": 0,
+    "execution_mode": "local_first",
+    "expected_high_risk_ids": []
+  },
+  "started_at": "2026-04-28T16:12:38.016223+00:00",
+  "status": "completed",
+  "request": {
+    "document_name": "dogovor-na-uchastie-v-ustavnih-fondah.html",
+    "role_context": {
+      "role": "Заявитель",
+      "counterparty_role": "Организация"
+    },
+    "document_text": null,
+    "document_base64": "PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMDEgVHJhbnNpdGlvbmFsLy9FTiI+DQo8aHRtbD4NCjxoZWFkPg0KPGJhc2UgaHJlZj0iaHR0cHM6Ly9kb2dvdm9yLXVyaXN0LnJ1LyI+DQo8dGl0bGU+0JTQvtCz0L7QstC+0YAg0L3QsCDRg9GH0LDRgdGC0LjQtSDQsiDRg9GB0YLQsNCy0L3Ri9GFICAg0YTQvtC90LTQsNGFIC0g0LLQtdGA0YHQuNGPINC00LvRjyDQv9C10YfQsNGC0LguIDIwMjYuINCe0LHRgNCw0LfRhtGLINC00L7Qs9C+0LLQvtGA0L7Qsiwg0YLQuNC/0L7QstGL0LUg0LTQvtCz0L7QstC+0YDQsCwg0LDQutGC0YPQsNC70YzQvdGL0LUg0LTQvtC60YPQvNC10L3RgtGLLCDRjtGA0LjQtNC40YfQtdGB0LrQuNC8INC4INGE0LjQt9C40YfQtdGB0LrQuNC8INC70LjRhtCw0Lw8L3RpdGxlPg0KPG1ldGEgY29udGVudD0iIiBuYW1lPSJrZXl3b3JkcyI+DQo8bWV0YSBjb250ZW50PSIiIG5hbWU9ImRlc2NyaXB0aW9uIj4NCjxtZXRhIG5hbWU9InJvYm90cyIgY29udGVudD0ibm9pbmRleCxub2ZvbGxvdyI+DQo8bWV0YSBodHRwLWVxdWl2PSJDb250ZW50LVR5cGUiIGNvbnRlbnQ9InRleHQvaHRtbDsgY2hhcnNldD11dGYtOCI+DQo8bGluayByZWw9InN0eWxlc2hlZXQiIGhyZWY9Ii9pbWFnZXMvc3R5bGUuY3NzIiB0eXBlPSJ0ZXh0L2NzcyI+DQo8L2hlYWQ+DQo8Ym9keT4NCjxkaXYgY2xhc3M9ImRvY3VtZW50VGV4dCI+DQo8cHJlPiAgICAgICAgICAgICDQlNCe0JPQntCS0J7QoCDQndCQINCj0KfQkNCh0KLQmNCVINCSINCj0KHQotCQ0JLQndCr0KUg0KTQntCd0JTQkNClDQoNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICDQlCDQniDQkyDQniDQkiDQniDQoA0KDQogICAgICAgICDQsy4gX19fX19fX19fX19fX18gICAgICAgICAgICAgICAgIl9fXyJfX19fX19fX19fX18yMF9fX9CzLg0KDQogICAgICAgICBfX19fX19fX19fX19fX19fX19fX19fX19fLCDQuNC80LXQvdGD0LXQvNGL0LkgINCyINC00LDQu9GM0L3QtdC50YjQtdC8ICLQkdCQ0J3QmiINCiAgICDQsiDQu9C40YbQtSBfX19fX19fX19fX19fX19fXyDRgtC+0LIuIF9fX19fX19fX19fX19fX19fX18sINC00LXQudGB0YLQstGD0Y7RidC1LQ0KICAgINCz0L4g0L3QsCDQvtGB0L3QvtCy0LDQvdC40LggX19fX19fX19fX18sINC4IF9fX19fX19fX19fX19fX19fXywg0LjQvNC10L3Rg9C10LzRi9C5INCyDQogICAg0LTQsNC70YzQvdC10LnRiNC10Lwg0J/RgNC10LTQv9GA0LjRj9GC0LjQtSAxLCAg0LIgINC70LjRhtC1ICBfX19fX19fX19fX19fX19fX19fX19fX19fXw0KICAgINGC0L7Qsi4gX19fX19fX19fX19fX19fX19fXywgICAgINC00LXQudGB0YLQstGD0Y7RidC10LPQviAgICAg0L3QsCAgICDQvtGB0L3QvtCy0LDQvdC40LgNCiAgICBfX19fX19fX19fLCDQt9Cw0LrQu9GO0YfQuNC70Lgg0L3QsNGB0YLQvtGP0YnQuNC5INC00L7Qs9C+0LLQvtGAINC+INC90LjQttC10YHQu9C10LTRg9GO0YnQtdC8Og0KDQogICAgICAgICAxLtCR0JDQndCaINGD0L/Qu9Cw0YfQuNCy0LDQtdGCINC/0LDQtdCy0L7QuSDQstC30L3QvtGBINCyINCf0YDQtdC00L/RgNC40Y/RgtC40LUgMiDQt9CwICDQn9GA0LXQtNC/LQ0KICAgINGA0LjRj9GC0LjQtSAxINCyINGA0LDQt9C80LXRgNC1IF9fX19fX19fX19fX19fX19fX19fX19fX19fINGA0YPQsdC70LXQuSDQsiDRgdGA0L7QuiDQtNC+DQogICAgIl9fXyJfX19fX19fX19fXyAyMF9fX9CzLg0KDQogICAgICAgICAyLiDQn9GA0LXQtNC/0YDQuNGP0YLQuNC1IDEg0YPRgdGC0YPQv9Cw0LXRgiDQv9GA0LDQstCwINC/0LDQudGJ0LjQutCwINCR0JDQndCa0KMsICDQtNC70Y8gINGH0LXQs9C+DQogICAg0L/QtdGA0LXQtNCw0LXRgiDQv9GA0LXQtNGB0YLQsNCy0LjRgtC10LvRjiDQkdCQ0J3QmtCQINCz0LXQvdC10YDQsNC70YzQvdGD0Y4g0LTQvtCy0LXRgNC10L3QvdC+0YHRgtGMINC90LAg0L/RgNCw0LLQvg0KICAgINC/0YDQtdC00YHRgtCw0LLQuNGC0LXQu9GM0YHRgtCy0LAg0L/QtdGA0LXQtCDRgtGA0LXRgtGM0LjQvNC4INC70LjRhtCw0LzQuC4NCiAgICAgICAgIDIuMS4g0KPQutCw0LfQsNC90L3Ri9C1ICDQsiAg0L8uMiAg0L3QsNGB0YLQvtGP0YnQtdCz0L4gINC00L7Qs9C+0LLQvtGA0LAg0L/RgNCw0LLQsCDQtNC+0LvQttC90YsNCiAgICDQsdGL0YLRjCDQv9C10YDQtdC00LDQvdGLINGBINC80L7QvNC10L3RgtCwINCy0YHRgtGD0L/Qu9C10L3QuNGPINCyINGB0LjQu9GDINC90LDRgdGC0L7Rj9GJ0LXQs9C+INC00L7Qs9C+0LLQvtGA0LAuDQoNCiAgICAgICAgIDMuINCj0LrQsNC30LDQvdC90LDRjyDQsiDQvy4xINC90LDRgdGC0L7Rj9GJ0LXQs9C+INC00L7Qs9C+0LLQvtGA0LAg0YHRg9C80LzQsCDQtNC+0LvQttC90LAgINCx0YvRgtGMDQogICAg0LLQvtC30LLRgNCw0YnQtdC90LAg0JHQkNCd0JrQoyDQsiDRgdGA0L7QuiDQtNC+ICJfX18iIF9fX19fX19fX19fX18gMjBfX1/Qsy4gINGBINGD0L/Qu9CwLQ0KICAgINGC0L7QuSBfX19fX19fX19fX19fXyUgINCz0L7QtNC+0LLRi9GFLCDQtdGB0LvQuCDQtNC+INGN0YLQvtCz0L4g0LLRgNC10LzQtdC90Lgg0L/RgNCw0LLQsCDQv9Cw0LktDQogICAg0YnQuNC60LAg0LIgX19fX19fX19fX19fX18g0L3QtSDQsdGD0LTRg9GCINC/0LXRgNC10LTQsNC90Ysg0L7RgiDQn9GA0LXQtNC/0YDQuNGP0YLQuNGPIDEg0JHQkNCd0JrQoy4NCg0KICAgICAgICAgNC4g0JIgINGB0LvRg9GH0LDQtSAg0L3QtdCy0YvQv9C+0LvQvdC10L3QuNGPICDQvtCx0Y/Qt9Cw0YLQtdC70YzRgdGC0LIg0L/QviDQv9C10YDQtdC00LDRh9C1INC/0YDQsNCyDQogICAg0L/QsNC50YnQuNC60LAsINC/0L4g0L/RgNC40YfQuNC90LDQvCDQv9GA0Y/QvNC+INC40LvQuCDQutC+0YHQstC10L3QvdC+INC90LUg0LfQsNCy0LjRgdGP0YnQuNC8INC+0YIg0J/RgNC10LTQvy0NCiAgICDRgNC40Y/RgtC40Y8gMSwg0LLQvtC30LLRgNCw0YIg0LrRgNC10LTQuNGC0LAg0L/RgNC+0LjQt9Cy0L7QtNC40YLRgdGPINGBINGD0L/Qu9Cw0YLQvtC5IF9fX19fJSDQs9C+0LTQvtCy0YvRhS4NCg0KICAgICAgICAgNS4g0KHRgNC+0LogINC00LXQudGB0YLQstC40Y8gINC90LDRgdGC0L7Rj9GJ0LXQs9C+INC00L7Qs9C+0LLQvtGA0LAg0L7Qv9GA0LXQtNC10LvRj9C10YLRgdGPINGBINC80L4tDQogICAg0LzQtdC90YLQsCDQv9C+0YHRgtGD0L/Qu9C10L3QuNGPICDRgdGA0LXQtNGB0YLQsiAg0L7RgiAg0JHQkNCd0JrQkCAg0J/RgNC10LTQv9GA0LjRj9GC0LjRjiAgMiAg0L3QsCAg0YAv0YENCiAgICBfX19fX19fX19fX19fX18g0LIgX19fX19fX19fX19fX19fXyDQtNC+INC/0L7Qu9C90L7Qs9C+INC/0L7Qs9Cw0YjQtdC90LjRjyDQn9GA0LXQtC0NCiAgICDQv9GA0LjRj9GC0LjQtdC8IDEg0L7QsdGP0LfQsNGC0LXQu9GM0YHRgtCyINCR0JDQndCa0KMuDQoNCiAgICAgICAgIDYuINCu0YDQuNC00LjRh9C10YHQutC40LUg0LDQtNGA0LXRgdCwINC4INGA0LXQutCy0LjQt9C40YLRiyDRgdGC0L7RgNC+0L06DQoNCiAgICAgICAgINCR0LDQvdC6OiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KICAgICAgICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCg0KICAgICAgICAg0J/RgNC10LTQv9GA0LjRj9GC0LjQtSAxOiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KICAgICAgICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCg0KICAgICAgICAg0J/RgNC10LTQv9GA0LjRj9GC0LjQtSAyOiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KICAgICAgICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCg0KICAgICAgICAg0J3QsNGB0YLQvtGP0YnQuNC5INC00L7Qs9C+0LLQvtGAINGB0L7RgdGC0LDQstC70LXQvSDQsiAzLdGFINGN0LrQt9C10LzQv9C70Y/RgNCw0YUsICDQv9C10YDQstGL0Lkg0LjQtw0KICAgINC60L7RgtC+0YDRi9GFINC90LDRhdC+0LTQuNGC0YHRjyDQvdCwINCf0YDQtdC00L/RgNC40Y/RgtC40LggMSwgINCy0YLQvtGA0L7QuSDQvdCwINCf0YDQtdC00L/RgNC40Y/RgtC40LggIDIsDQogICAg0YLRgNC10YLQuNC5IC0g0LIg0JHQsNC90LrQtS4NCg0KICAgICAgICAgICAgICAgICAg0JHQkNCd0JogICAgICAgICAgICAgICAgICAgICDQn9GA0LXQtNC/0YDQuNGP0YLQuNC1IDENCg0KICAgICAgICAgICAgX19fX19fX19fX19fX19fX18gICAgICAgICAgX19fX19fX19fX19fX19fX19fXw0KDQogICAgICAgICAgICAgICAgICAg0Jwu0J8uICAgICAgICAgICAgICAgICAgICAgICAg0Jwu0J8uDQoNCg0KICANCjwvcHJlPjwvZGl2Pg0KPC9ib2R5Pg0KPC9odG1sPg==",
+    "mime_type": "text/html",
+    "language": "ru",
+    "locale": "ru"
+  },
+  "ingestion_preflight": {
+    "mime_type": "text/html",
+    "extractor": "html:regex",
+    "extraction_source": "html:regex",
+    "extraction_ok": true,
+    "error": null,
+    "extraction_error": null,
+    "sha256": "170e4092db549197dbf9fb1d5341757200d6257e78fe4c9ba2c03a1fc9ba2d48"
+  },
+  "metrics": {
+    "risk_count": 1,
+    "high_risk_count": 0,
+    "disputed_clause_count": 1,
+    "asymmetry_signal_count": 0,
+    "contract_type": "non_contract_legal_form"
+  },
+  "analysis": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'dogovor-na-uchastie-v-ustavnih-fondah. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Заявитель'. Определен тип договора: Иной юридический документ (уверенность 48%, правовая рамка: Вне типовой contract taxonomy). Сроки и дедлайны: БАНК уплачивает паевой взнос в Предприятие 2 за Предп- риятие 1 в размере __________________________ рублей в срок до \"___\"___________ 20___г; 1 настоящего договора сумма должна быть возвращена БАНКУ в срок до \"___\" _____________ 20___г; Срок действия настоящего договора определяется с мо- мента поступления средств от БАНКА Предприятию 2 на р/с _______________ в ________________ до полного погашения Пред- приятием 1 обязательств БАНКУ. Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Заявитель'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Договор на участие в уставных фондах - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР НА УЧАСТИЕ В УСТАВНЫХ ФОНДАХ Д О Г О В О Р г. ______________ \"___\"____________20___г. _________________________, именуемый в дальнейшем \"БАНК\" в лице _________________ тов. ___________________, действующе- го на основании ___________, и __________________, именуемый в дальнейшем Предприятие 1, в лице __________________________ тов.",
+        "dispute_reason": "Явные маркеры спорных формулировок не обнаружены.",
+        "possible_consequence": "Скрытые спорные моменты требуют дополнительной юридической проверки.",
+        "confidence": 0.35
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Заявитель",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Заявитель'.",
+      "must_do": [
+        "Конфиг не выявил явных обязательств."
+      ],
+      "should_review": [
+        "Конфиг не выявил явных дискреционных условий."
+      ],
+      "payment_terms": [
+        "Конфиг не выявил явных условий оплаты."
+      ],
+      "deadlines": [
+        "БАНК уплачивает паевой взнос в Предприятие 2 за Предп- риятие 1 в размере __________________________ рублей в срок до \"___\"___________ 20___г.",
+        "1 настоящего договора сумма должна быть возвращена БАНКУ в срок до \"___\" _____________ 20___г.",
+        "Срок действия настоящего договора определяется с мо- мента поступления средств от БАНКА Предприятию 2 на р/с _______________ в ________________ до полного погашения Пред- приятием 1 обязательств БАНКУ."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "170e4092db549197dbf9fb1d5341757200d6257e78fe4c9ba2c03a1fc9ba2d48"
+    },
+    "contract_type": {
+      "type_id": "non_contract_legal_form",
+      "confidence": 0.48,
+      "ru_name": "Иной юридический документ",
+      "legal_framework": "Вне типовой contract taxonomy"
+    },
+    "asymmetry_signals": []
+  },
+  "result": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'dogovor-na-uchastie-v-ustavnih-fondah. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Заявитель'. Определен тип договора: Иной юридический документ (уверенность 48%, правовая рамка: Вне типовой contract taxonomy). Сроки и дедлайны: БАНК уплачивает паевой взнос в Предприятие 2 за Предп- риятие 1 в размере __________________________ рублей в срок до \"___\"___________ 20___г; 1 настоящего договора сумма должна быть возвращена БАНКУ в срок до \"___\" _____________ 20___г; Срок действия настоящего договора определяется с мо- мента поступления средств от БАНКА Предприятию 2 на р/с _______________ в ________________ до полного погашения Пред- приятием 1 обязательств БАНКУ. Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Заявитель'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Договор на участие в уставных фондах - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР НА УЧАСТИЕ В УСТАВНЫХ ФОНДАХ Д О Г О В О Р г. ______________ \"___\"____________20___г. _________________________, именуемый в дальнейшем \"БАНК\" в лице _________________ тов. ___________________, действующе- го на основании ___________, и __________________, именуемый в дальнейшем Предприятие 1, в лице __________________________ тов.",
+        "dispute_reason": "Явные маркеры спорных формулировок не обнаружены.",
+        "possible_consequence": "Скрытые спорные моменты требуют дополнительной юридической проверки.",
+        "confidence": 0.35
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Заявитель",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Заявитель'.",
+      "must_do": [
+        "Конфиг не выявил явных обязательств."
+      ],
+      "should_review": [
+        "Конфиг не выявил явных дискреционных условий."
+      ],
+      "payment_terms": [
+        "Конфиг не выявил явных условий оплаты."
+      ],
+      "deadlines": [
+        "БАНК уплачивает паевой взнос в Предприятие 2 за Предп- риятие 1 в размере __________________________ рублей в срок до \"___\"___________ 20___г.",
+        "1 настоящего договора сумма должна быть возвращена БАНКУ в срок до \"___\" _____________ 20___г.",
+        "Срок действия настоящего договора определяется с мо- мента поступления средств от БАНКА Предприятию 2 на р/с _______________ в ________________ до полного погашения Пред- приятием 1 обязательств БАНКУ."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "170e4092db549197dbf9fb1d5341757200d6257e78fe4c9ba2c03a1fc9ba2d48"
+    },
+    "contract_type": {
+      "type_id": "non_contract_legal_form",
+      "confidence": 0.48,
+      "ru_name": "Иной юридический документ",
+      "legal_framework": "Вне типовой contract taxonomy"
+    },
+    "asymmetry_signals": []
+  },
+  "finished_at": "2026-04-28T16:12:38.090233+00:00",
+  "duration_ms": 73.62
+}

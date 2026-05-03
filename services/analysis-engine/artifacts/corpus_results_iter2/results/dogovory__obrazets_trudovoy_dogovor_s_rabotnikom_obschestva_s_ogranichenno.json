@@ -1,0 +1,211 @@
+{
+  "case_id": "dogovory__obrazets_trudovoy_dogovor_s_rabotnikom_obschestva_s_ogranichenno",
+  "relative_path": "договоры/obrazets-trudovoy-dogovor-s-rabotnikom-obschestva-s-ogranichenno.html",
+  "document_path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\договоры\\obrazets-trudovoy-dogovor-s-rabotnikom-obschestva-s-ogranichenno.html",
+  "document_name": "obrazets-trudovoy-dogovor-s-rabotnikom-obschestva-s-ogranichenno.html",
+  "role": "Работник",
+  "counterparty_role": "Работодатель",
+  "language": "ru",
+  "mime_type": "text/html",
+  "tags": [
+    "workspace-corpus",
+    "html",
+    "dogovory",
+    "labor_contract"
+  ],
+  "source_group": "manifest",
+  "expected": {
+    "contract_type": "labor_contract",
+    "min_contract_type_confidence": 0.84,
+    "min_risk_count": 0,
+    "min_disputed_clause_count": 2,
+    "execution_mode": "local_first",
+    "expected_high_risk_ids": []
+  },
+  "started_at": "2026-04-28T16:12:35.696514+00:00",
+  "status": "completed",
+  "request": {
+    "document_name": "obrazets-trudovoy-dogovor-s-rabotnikom-obschestva-s-ogranichenno.html",
+    "role_context": {
+      "role": "Работник",
+      "counterparty_role": "Работодатель"
+    },
+    "document_text": null,
+    "document_base64": "PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMDEgVHJhbnNpdGlvbmFsLy9FTiI+DQo8aHRtbD4NCjxoZWFkPg0KPGJhc2UgaHJlZj0iaHR0cHM6Ly9kb2dvdm9yLXVyaXN0LnJ1LyI+DQo8dGl0bGU+0J7QsdGA0LDQt9C10YYuINCi0YDRg9C00L7QstC+0Lkg0LTQvtCz0L7QstC+0YAg0YEg0YDQsNCx0L7RgtC90LjQutC+0Lwg0L7QsdGJ0LXRgdGC0LLQsCDRgSAgINC+0LPRgNCw0L3QuNGH0LXQvdC90L7QuSDQvtGC0LLQtdGC0YHRgtCy0LXQvdC90L7RgdGC0YzRjiDQvdCwINCy0YDQtdC80Y8g0LLRi9C/0L7Qu9C90LXQvdC40Y8g0L7Qv9GA0LXQtNC10LvQtdC90L3QvtC5INGA0LDQsdC+0YLRiyAgICjQutGA0LDRgtC60LjQuSkgLSDQstC10YDRgdC40Y8g0LTQu9GPINC/0LXRh9Cw0YLQuC4gMjAyNi4g0J7QsdGA0LDQt9GG0Ysg0LTQvtCz0L7QstC+0YDQvtCyLCDRgtC40L/QvtCy0YvQtSDQtNC+0LPQvtCy0L7RgNCwLCDQsNC60YLRg9Cw0LvRjNC90YvQtSDQtNC+0LrRg9C80LXQvdGC0YssINGO0YDQuNC00LjRh9C10YHQutC40Lwg0Lgg0YTQuNC30LjRh9C10YHQutC40Lwg0LvQuNGG0LDQvDwvdGl0bGU+DQo8bWV0YSBjb250ZW50PSIiIG5hbWU9ImtleXdvcmRzIj4NCjxtZXRhIGNvbnRlbnQ9IiIgbmFtZT0iZGVzY3JpcHRpb24iPg0KPG1ldGEgbmFtZT0icm9ib3RzIiBjb250ZW50PSJub2luZGV4LG5vZm9sbG93Ij4NCjxtZXRhIGh0dHAtZXF1aXY9IkNvbnRlbnQtVHlwZSIgY29udGVudD0idGV4dC9odG1sOyBjaGFyc2V0PXV0Zi04Ij4NCjxsaW5rIHJlbD0ic3R5bGVzaGVldCIgaHJlZj0iL2ltYWdlcy9zdHlsZS5jc3MiIHR5cGU9InRleHQvY3NzIj4NCjwvaGVhZD4NCjxib2R5Pg0KPGRpdiBjbGFzcz0iZG9jdW1lbnRUZXh0Ij4NCjxwcmU+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg0KLQoNCj0JTQntCS0J7QmSDQlNCe0JPQntCS0J7QoA0KICAgICAgICAgICAgICAgICAo0L3QsCDQstGA0LXQvNGPINCy0YvQv9C+0LvQvdC10L3QuNGPINC+0L/RgNC10LTQtdC70LXQvdC90L7QuSDRgNCw0LHQvtGC0YspDQogICANCiAgINCzLiBfX19fX19fX19fX19fICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAiX18iX19fX19fX19fIDIwX19fINCzLg0KICAgDQogICAgICAgINCe0LHRidC10YHRgtCy0L4g0YEg0L7Qs9GA0LDQvdC40YfQtdC90L3QvtC5INC+0YLQstC10YLRgdGC0LLQtdC90L3QvtGB0YLRjNGOIF9fX19fX19fX19fX19fX19fX19fX19fLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgKNC90LDQuNC80LXQvdC+0LLQsNC90LjQtSkNCiAgIA0KICAg0LjQvNC10L3Rg9C10LzQvtC1INCyINC00LDQu9GM0L3QtdC50YjQtdC8ICLQntCx0YnQtdGB0YLQstC+Iiwg0LIg0LvQuNGG0LUgX19fX19fX19fX19fX19fX19fX19fX19fX19fLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICjQtNC+0LvQttC90L7RgdGC0YwsINGELtC4LtC+LikNCiAgIA0KICAg0LTQtdC50YHRgtCy0YPRjtGJ0LXQs9C+INC90LAg0L7RgdC90L7QstCw0L3QuNC4IF9fX19fX19fX19fX19fX19fX19fX18sICDRgSDQvtC00L3QvtC5INGB0YLQvtGA0L7QvdGLLCAg0LgNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAo0KPRgdGC0LDQstCwLCDQv9C+0LvQvtC20LXQvdC40Y8pDQogICANCiAgINCz0YAt0L3QsCjQutC4KSDQoNC+0YHRgdC40LnRgdC60L7QuSDQpNC10LTQtdGA0LDRhtC40LggX19fX19fX19fX19fX19fX19fX19fX18sINC40LzQtdC90YPQtdC80L7Qs9C+KNC+0LkpDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgKNGE0LDQvNC40LvQuNGPLCDQuNC80Y8sINC+0YLRh9C10YHRgtCy0L4pDQogICANCiAgINCyINC00LDQu9GM0L3QtdC50YjQtdC8ICLQoNCw0LHQvtGC0L3QuNC6Iiwg0YEg0LTRgNGD0LPQvtC5INGB0YLQvtGA0L7QvdGLLCDQt9Cw0LrQu9GO0YfQuNC70Lgg0L3QsNGB0YLQvtGP0YnQuNC5INC00L7Qs9C+0LLQvtGADQogICDQviDQvdC40LbQtdGB0LvQtdC00YPRjtGJ0LXQvDoNCiAgIA0KICAgICAgICAxLiDQoNCw0LHQvtGC0L3QuNC6INC/0YDQuNC90LjQvNCw0LXRgtGB0Y8g0L3QsCDQstGA0LXQvNC10L3QvdGD0Y4g0YDQsNCx0L7RgtGDINCyINCe0LHRidC10YHRgtCy0L4g0LIg0LrQsNGH0LXRgdGC0LLQtQ0KICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLg0KICAgICAgICAyLiDQl9Cw0YDQsNCx0L7RgtC90LDRjyDQv9C70LDRgtCwINCg0LDQsdC+0YLQvdC40LrQsCDRgdC+0YHRgtCw0LLQu9GP0LXRgiBfX19fX19fX19fX19fX19fX19fX19fX18NCiAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fXyDRgNGD0LHQu9C10Lkg0LIg0LzQtdGB0Y/Rhi4NCiAgICAgICAgMy4g0KDQsNCx0L7RgtC90LjQuiAgICDQsiAgICDQv9C10YDQuNC+0LQgICAg0YDQsNCx0L7RgtGLICAg0LIgICDQntCx0YnQtdGB0YLQstC1ICAg0L/QvtC00YfQuNC90Y/QtdGC0YHRjw0KICAg0L3QtdC/0L7RgdGA0LXQtNGB0YLQstC10L3QvdC+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLg0KICAgICAgICA0LiDQndCw0YHRgtC+0Y/RidC40LkgINGC0YDRg9C00L7QstC+0LkgINC00L7Qs9C+0LLQvtGAICDQt9Cw0LrQu9GO0YfQsNC10YLRgdGPICDQvdCwINCy0YDQtdC80Y8g0LLRi9C/0L7Qu9C90LXQvdC40Y8NCiAgINGA0LDQsdC+0YLRiyBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXy4NCiAgICAgICAg0KDQsNCx0L7RgtCwINC00L7Qu9C20L3QsCDQsdGL0YLRjCDQstGL0L/QvtC70L3QtdC90LAg0L3QtSDQv9C+0LfQtNC90LXQtSBfX19fX19fX19fX19fICjQvdC1INCx0L7Qu9C10LUgMg0KICAg0LzQtdGB0Y/RhtC10LIg0YEg0L3QsNGH0LDQu9CwINC00LXQudGB0YLQstC40Y8g0LTQvtCz0L7QstC+0YDQsCkuICDQn9C+ICDQuNGB0YLQtdGH0LXQvdC40LggINGD0LrQsNC30LDQvdC90L7Qs9C+ICDRgdGA0L7QutCwDQogICDQtNC10LnRgdGC0LLQuNC1ICDQvdCw0YHRgtC+0Y/RidC10LPQviAg0LTQvtCz0L7QstC+0YDQsCAg0L/RgNC10LrRgNCw0YnQsNC10YLRgdGPLCAg0LfQsCDQuNGB0LrQu9GO0YfQtdC90LjQtdC8INGB0LvRg9GH0LDQtdCyLA0KICAg0YPQutCw0LfQsNC90L3Ri9GFINCyINC/LtC/LiA4INC4IDkg0LTQvtCz0L7QstC+0YDQsC4NCiAgICAgICAgNS4g0KDQsNCx0L7RgtC90LjQuiDQvtCx0Y/Qt9Cw0L0g0L/RgNC40YHRgtGD0L/QuNGC0Ywg0Log0YDQsNCx0L7RgtC1INGBICJfXyJfX19fX19fX19fXyAyMF9fXyDQsy4NCiAgICAgICAgNi4g0KDQsNCx0L7RgtC90LjQuiDQvtCx0Y/Qt9Cw0L0g0LLRi9C/0L7Qu9C90Y/RgtGMINGB0LvQtdC00YPRjtGJ0LjQtSDQtNC+0LvQttC90L7RgdGC0L3Ri9C1INC+0LHRj9C30LDQvdC90L7RgdGC0Lg6DQogICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQogICAgICAgICAo0YPQutCw0LfRi9Cy0LDRjtGC0YHRjyDQvtGB0L3QvtCy0L3Ri9C1INGF0LDRgNCw0LrRgtC10YDQuNGB0YLQuNC60Lgg0YDQsNCx0L7RgtGLINC4INGC0YDQtdCx0L7QstCw0L3QuNGPINC6DQogICAgICAgICAgICAgICAgICAgICAgICAgICDRg9GA0L7QstC90Y4gINC40YUg0LLRi9C/0L7Qu9C90LXQvdC40Y8pDQogICANCiAgICAgICAg0JLQsNGA0LjQsNC90YI6INCS0YvQv9C+0LvQvdGP0YLRjCAgICDQvtCx0Y/Qt9Cw0L3QvdC+0YHRgtC4LCAgICDRg9C60LDQt9Cw0L3QvdGL0LUgICDQsiAgINC00L7Qu9C20L3QvtGB0YLQvdC+0LkNCiAgINC40L3RgdGC0YDRg9C60YbQuNC4Lg0KICAgDQogICAgICAgIDcuINCc0LXRgdGC0L4g0YDQsNCx0L7RgtGLINCg0LDQsdC+0YLQvdC40LrQsDogX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXy4NCiAgICAgICAg0JLQsNGA0LjQsNC90YLRizoNCiAgICAgICAg0LApINCe0LHRidC10YHRgtCy0L4g0LLQv9GA0LDQstC1INC/0L7RgdGL0LvQsNGC0Ywg0KDQsNCx0L7RgtC90LjQutCwINC00LvRjyAg0LLRi9C/0L7Qu9C90LXQvdC40Y8gINC30LDQtNCw0L3QuNC5ICDQsg0KICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fLCDRgNCw0YHQv9C+0LvQvtC20LXQvdC90YPRjiDQv9C+INCw0LTRgNC10YHRgzogX19fX19fX19fX19fX19fXw0KICAgICjQvdCw0LjQvNC10L3QvtCy0LDQvdC40LUg0L7RgNCz0LDQvdC40LfQsNGG0LjQuCkNCiAgIA0KICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18uDQogICAgICAgINCxKSDQntCx0YnQtdGB0YLQstC+ICDQstC/0YDQsNCy0LUgINC/0L7RgdGL0LvQsNGC0YwgINCg0LDQsdC+0YLQvdC40LrQsCDQtNC70Y8g0LLRi9C/0L7Qu9C90LXQvdC40Y8g0LfQsNC00LDQvdC40Lkg0LINCiAgINC70Y7QsdC+0Lkg0YDQsNC50L7QvSDQsiDQv9GA0LXQtNC10LvQsNGFIF9fX19fX19fX19fX19fX19fX19fX19fXyDQvtCx0LvQsNGB0YLQuC4NCiAgICAgICAgOC4g0J/QvtGB0LvQtSDQstGL0L/QvtC70L3QtdC90LjRjyDRgNCw0LHQvtGC0YssICDRg9C60LDQt9Cw0L3QvdC+0Lkg0LIg0L8uIDQg0LTQvtCz0L7QstC+0YDQsCwg0L3QsNGB0YLQvtGP0YnQuNC5DQogICDRgtGA0YPQtNC+0LLQvtC5INC00L7Qs9C+0LLQvtGAINC80L7QttC10YIg0LHRi9GC0Ywg0L/RgNC+0LTQu9C10L0g0L/QviDRgdC+0LPQu9Cw0YjQtdC90LjRjiAg0YHRgtC+0YDQvtC9LCAg0LjQu9C4ICDQvNC10LbQtNGDDQogICDQvdC40LzQuCAg0LzQvtC20LXRgiDQsdGL0YLRjCDQt9Cw0LrQu9GO0YfQtdC9INC90L7QstGL0Lkg0YLRgNGD0LTQvtCy0L7QuSDQtNC+0LPQvtCy0L7RgCDQviDQv9GA0LjQtdC80LUg0L3QsCDQstGA0LXQvNC10L3QvdGD0Y4NCiAgINC40LvQuCDQv9C+0YHRgtC+0Y/QvdC90YPRjiDRgNCw0LHQvtGC0YMuDQogICAgICAgIDkuINCU0LXQudGB0YLQstC40LUgINGC0YDRg9C00L7QstC+0LPQviAg0LTQvtCz0L7QstC+0YDQsCAg0L/RgNC+0LTQu9C10LLQsNC10YLRgdGPICDQvdCwINC90LXQvtC/0YDQtdC00LXQu9C10L3QvdGL0LkNCiAgINGB0YDQvtC6ICDQuCAg0KDQsNCx0L7RgtC90LjQuiAg0L/RgNC40L7QsdGA0LXRgtCw0LXRgiAg0YHRgtCw0YLRg9GBICDQv9C+0YHRgtC+0Y/QvdC90L7Qs9C+ICDRgNCw0LHQvtGC0L3QuNC60LAsICAg0LXRgdC70LgNCiAgINGC0YDRg9C00L7QstGL0LUgINC+0YLQvdC+0YjQtdC90LjRjyAg0YTQsNC60YLQuNGH0LXRgdC60LggINC/0YDQvtC00L7Qu9C20LDRjtGC0YHRjyAg0LggINC90Lgg0L7QtNC90LAg0LjQtyDRgdGC0L7RgNC+0L0g0L3QtQ0KICAg0L/QvtGC0YDQtdCx0L7QstCw0LvQsCDQuNGFINC/0YDQtdC60YDQsNGJ0LXQvdC40Y8g0LIg0L3QuNC20LXQv9C10YDQtdGH0LjRgdC70LXQvdC90YvRhSDRgdC70YPRh9Cw0Y/RhToNCiAgICAgICAg0LApINC10YHQu9C4INC/0L4g0LjRgdGC0LXRh9C10L3QuNC4INGB0YDQvtC60LAg0LTQtdC50YHRgtCy0LjRjyDQtNC+0LPQvtCy0L7RgNCwINGA0LDQsdC+0YLQsCwgINGD0LrQsNC30LDQvdC90LDRjyDQsg0KICAg0L8uIDQsINC90LUg0LHRg9C00LXRgiDQstGL0L/QvtC70L3QtdC90LA7DQogICAgICAgINCxKSDQtdGB0LvQuCAg0L/QvtGB0LvQtSAg0LLRi9C/0L7Qu9C90LXQvdC40Y8gINGA0LDQsdC+0YLRiywgINGD0LrQsNC30LDQvdC90L7QuSAg0LIg0L8uICA0INC00L7Qs9C+0LLQvtGA0LAsDQogICDQoNCw0LHQvtGC0L3QuNC6ICDQv9GA0L7QtNC+0LvQttCw0LXRgiAg0LLRi9C/0L7Qu9C90Y/RgtGMICDRgNCw0LHQvtGC0YMgINC/0L4gINC00LDQvdC90L7QuSAg0YHQv9C10YbQuNCw0LvRjNC90L7RgdGC0LggICDQuA0KICAg0LrQstCw0LvQuNGE0LjQutCw0YbQuNC4Lg0KICAgICAgICAxMC4g0KDQsNCx0L7RgtCwINCyINCe0LHRidC10YHRgtCy0LUg0Y/QstC70Y/QtdGC0YHRjyDQvtGB0L3QvtCy0L3Ri9C8INC80LXRgdGC0L7QvCDRgNCw0LHQvtGC0Ysg0KDQsNCx0L7RgtC90LjQutCwLg0KICAgICAgICAxMS4g0KDQtdC20LjQvCAgINGA0LDQsdC+0YLRiywgICDQv9GA0LDQstCwICAg0LggICDQvtCx0Y/Qt9Cw0L3QvdC+0YHRgtC4ICDRgdGC0L7RgNC+0L0sICDQvtGB0L3QvtCy0LDQvdC40Y8NCiAgINC/0YDQtdC60YDQsNGJ0LXQvdC40Y8g0YLRgNGD0LTQvtCy0L7Qs9C+INC00L7Qs9C+0LLQvtGA0LAg0Lgg0LjQvdGL0LUg0YPRgdC70L7QstC40Y8g0L7Qv9GA0LXQtNC10LvRj9GO0YLRgdGPINCyINCf0L7Qu9C+0LbQtdC90LjQuA0KICAg0L4g0L/QtdGA0YHQvtC90LDQu9C1LCDRg9GC0LLQtdGA0LbQtNCw0LXQvNGL0Lwg0YDRg9C60L7QstC+0LTQuNGC0LXQu9C10Lwg0J7QsdGJ0LXRgdGC0LLQsC4NCiAgICAgICAgMTIuINCU0L7Qv9C+0LvQvdC40YLQtdC70YzQvdGL0LUg0YPRgdC70L7QstC40Y8g0L/QviDQvdCw0YHRgtC+0Y/RidC10LzRgyDQtNC+0LPQvtCy0L7RgNGDOg0KICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KICAgICAgICAxMy4g0KPRgdC70L7QstC40Y8g0L3QsNGB0YLQvtGP0YnQtdCz0L4g0YLRgNGD0LTQvtCy0L7Qs9C+INC00L7Qs9C+0LLQvtGA0LAg0L3QvtGB0Y/RgiAg0LrQvtC90YTQuNC00LXQvdGG0LjQsNC70YzQvdGL0LkNCiAgINGF0LDRgNCw0LrRgtC10YAg0Lgg0YDQsNC30LPQu9Cw0YjQtdC90LjRjiDQvdC1INC/0L7QtNC70LXQttCw0YIuDQogICAgICAgIDE0LiDQo9GB0LvQvtCy0LjRjyAg0L3QsNGB0YLQvtGP0YnQtdCz0L4gINGC0YDRg9C00L7QstC+0LPQviAg0LTQvtCz0L7QstC+0YDQsCAg0LjQvNC10Y7RgiAg0L7QsdGP0LfQsNGC0LXQu9GM0L3Rg9GODQogICDRjtGA0LjQtNC40YfQtdGB0LrRg9GOICDRgdC40LvRgyDQtNC70Y8g0YHRgtC+0YDQvtC9LiAg0JLRgdC1INC40LfQvNC10L3QtdC90LjRjyDQuCDQtNC+0L/QvtC70L3QtdC90LjRjyDQuiDQvdCw0YHRgtC+0Y/RidC10LzRgw0KICAg0YLRgNGD0LTQvtCy0L7QvNGDINC00L7Qs9C+0LLQvtGA0YMg0L7RhNC+0YDQvNC70Y/RjtGC0YHRjyDQtNCy0YPRgdGC0L7RgNC+0L3QvdC40Lwg0L/QuNGB0YzQvNC10L3QvdGL0Lwg0YHQvtCz0LvQsNGI0LXQvdC40LXQvC4NCiAgICAgICAgMTUuINCS0L4g0LLRgdC10Lwg0L7RgdGC0LDQu9GM0L3QvtC8LCAg0YfRgtC+INC90LUg0L/RgNC10LTRg9GB0LzQvtGC0YDQtdC90L4g0L3QsNGB0YLQvtGP0YnQuNC8INC00L7Qs9C+0LLQvtGA0L7QvCwNCiAgINGB0YLQvtGA0L7QvdGLINGA0YPQutC+0LLQvtC00YHRgtCy0YPRjtGC0YHRjyDQtNC10LnRgdGC0LLRg9GO0YnQuNC8INC30LDQutC+0L3QvtC00LDRgtC10LvRjNGB0YLQstC+0LwuDQogICAgICAgIDE2LiDQodGC0L7RgNC+0L3RiyAgINGA0YPQutC+0LLQvtC00YHRgtCy0YPRjtGC0YHRjyAgINCy0L3Rg9GC0YDQtdC90L3QuNC80LggINC90L7RgNC80LDRgtC40LLQvdGL0LzQuCAg0LDQutGC0LDQvNC4DQogICDQntCx0YnQtdGB0YLQstCwICjQn9C+0LvQvtC20LXQvdC40LXQvCAg0L4gINC/0LXRgNGB0L7QvdCw0LvQtSwgINC/0YDQsNCy0LjQu9Cw0LzQuCAg0LLQvdGD0YLRgNC10L3QvdC10LPQviAg0YLRgNGD0LTQvtCy0L7Qs9C+DQogICDRgNCw0YHQv9C+0YDRj9C00LrQsCAg0Lgg0YIuICDQtC4pINGC0L7Qu9GM0LrQviDQv9GA0Lgg0YPRgdC70L7QstC40Lgg0L7Qt9C90LDQutC+0LzQu9C10L3QuNGPINGBINC90LjQvNC4INCg0LDQsdC+0YLQvdC40LrQsA0KICAg0L/QvtC0INGA0LDRgdC/0LjRgdC60YMuDQogICAgICAgIDE3LiDQodC/0L7RgNGLICDQvNC10LbQtNGDINGB0YLQvtGA0L7QvdCw0LzQuCwgINCy0L7Qt9C90LjQutCw0Y7RidC40LUg0L/RgNC4INC40YHQv9C+0LvQvdC10L3QuNC4INGC0YDRg9C00L7QstC+0LPQvg0KICAg0LTQvtCz0L7QstC+0YDQsCwgINGA0LDRgdGB0LzQsNGC0YDQuNCy0LDRjtGC0YHRjyAg0LIgICDQv9C+0YDRj9C00LrQtSwgICDRg9GB0YLQsNC90L7QstC70LXQvdC90L7QvCAgINC00LXQudGB0YLQstGD0Y7RidC40LwNCiAgINC30LDQutC+0L3QvtC00LDRgtC10LvRjNGB0YLQstC+0LwuDQogICAgICAgIDE4LiDQlNC+0LPQvtCy0L7RgCAg0YHQvtGB0YLQsNCy0LvQtdC9ICDQsiAgMi3RhSAg0Y3QutC30LXQvNC/0LvRj9GA0LDRhSwgINC40LzQtdGO0YnQuNGFICDQvtC00LjQvdCw0LrQvtCy0YPRjg0KICAg0Y7RgNC40LTQuNGH0LXRgdC60YPRjiAg0YHQuNC70YMsICDQvtC00LjQvSAg0LjQtyAg0LrQvtGC0L7RgNGL0YUg0YXRgNCw0L3QuNGC0YHRjyDQsiDQntCx0YnQtdGB0YLQstC1LCAg0LAg0LTRgNGD0LPQvtC5INGDDQogICDQoNCw0LHQvtGC0L3QuNC60LAuDQogICANCiAgICAgICAg0J/QvtC00L/QuNGB0Lgg0YHRgtC+0YDQvtC9Og0KICAgDQogICAgICAgINCe0JHQqdCV0KHQotCS0J46IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18oX19fX19fX19fX19fX19fXykNCiAgIA0KICAgICAgICDQoNCQ0JHQntCi0J3QmNCaOiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18gKF9fX19fX19fX19fX19fX18pDQogICAgICAgINCf0LDRgdC/0L7RgNGCINGB0LXRgNC40Y8gX19fX19fX19fX19fX18gTtC+LiBfX19fX19fX19fXyDQstGL0LTQsNC9IF9fX19fX19fX19fX19fDQogICAgICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICjQutC10LwsINC60L7Qs9C00LApDQogICANCiAgICAgICAg0JDQtNGA0LXRgSBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KDQogIA0KPC9wcmU+PC9kaXY+DQo8L2JvZHk+DQo8L2h0bWw+",
+    "mime_type": "text/html",
+    "language": "ru",
+    "locale": "ru"
+  },
+  "ingestion_preflight": {
+    "mime_type": "text/html",
+    "extractor": "html:regex",
+    "extraction_source": "html:regex",
+    "extraction_ok": true,
+    "error": null,
+    "extraction_error": null,
+    "sha256": "40462e6251b5d3617a92cb5e5c440222b762a7dfde7c8ac875b802cdc4337a1d"
+  },
+  "metrics": {
+    "risk_count": 1,
+    "high_risk_count": 0,
+    "disputed_clause_count": 2,
+    "asymmetry_signal_count": 0,
+    "contract_type": "labor_contract"
+  },
+  "analysis": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'obrazets-trudovoy-dogovor-s-rabotnikom-obschestva-s-ogranichenno. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Работник'. Определен тип договора: Трудовой договор (уверенность 99%, правовая рамка: ТК РФ). Что должен Работник: Работник обязан приступить к работе с \"__\"___________ 20___ г; Работник обязан выполнять следующие должностные обязанности: ______________________________________________________________________ (указываются основные характеристики работы и требования к уровню их выполнения) Вариант: Выполнять обязанности, указанные в должностной инструкции. Сроки и дедлайны: По истечении указанного срока действие настоящего договора прекращается, за исключением случаев, указанных в п; Действие трудового договора продлевается на неопределенный срок и Работник приобретает статус постоянного работника, если трудовые отношения фактически продолжаются и ни одна из сторон не потребовала их прекращения в нижеперечисленных случаях: а) если по истечении срока действия договора работа, указанная в п. Найдено спорных или расплывчатых пунктов: 2.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Работник'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Образец. Трудовой договор с работником общества с ограниченной ответственностью на время выполнения определенной работы (краткий) - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ТРУДОВОЙ ДОГОВОР (на время выполнения определенной работы) г. _____________ \"__\"_________ 20___ г. Общество с ограниченной ответственностью _______________________, (наименование) именуемое в дальнейшем \"Общество\", в лице ___________________________,...",
+        "dispute_reason": "Формулировка зависит от будущего согласования и не содержит исполнимого критерия.",
+        "possible_consequence": "При исполнении может возникнуть спор о том, что именно стороны должны были согласовать.",
+        "confidence": 0.79
+      },
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Образец. Трудовой договор с работником общества с ограниченной ответственностью на время выполнения определенной работы (краткий) - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ТРУДОВОЙ ДОГОВОР (на время выполнения определенной работы) г. _____________ \"__\"_________ 20___ г. Общество с ограниченной ответственностью _______________________, (наименование) именуемое в дальнейшем \"Общество\", в лице ___________________________,...",
+        "dispute_reason": "Одна из сторон получила дискреционное право без достаточных ограничителей.",
+        "possible_consequence": "Это может привести к одностороннему применению условия и спору о пределах такого права.",
+        "confidence": 0.76
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Работник",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Работник'.",
+      "must_do": [
+        "Работник обязан приступить к работе с \"__\"___________ 20___ г.",
+        "Работник обязан выполнять следующие должностные обязанности: ______________________________________________________________________ (указываются основные характеристики работы и требования к уровню их выполнения) Вариант: Выполнять обязанности, указанные в должностной инструкции.",
+        "Режим работы, права и обязанности сторон, основания прекращения трудового договора и иные условия определяются в Положении о персонале, утверждаемым руководителем Общества."
+      ],
+      "should_review": [
+        "Варианты: а) Общество вправе посылать Работника для выполнения заданий в ___________________________, расположенную по адресу: ________________ (наименование организации) ____________________________________________.",
+        "б) Общество вправе посылать Работника для выполнения заданий в любой район в пределах ________________________ области.",
+        "4 договора, настоящий трудовой договор может быть продлен по соглашению сторон, или между ними может быть заключен новый трудовой договор о приеме на временную или постоянную работу."
+      ],
+      "payment_terms": [
+        "Конфиг не выявил явных условий оплаты."
+      ],
+      "deadlines": [
+        "Действие трудового договора продлевается на неопределенный срок и Работник приобретает статус постоянного работника, если трудовые отношения фактически продолжаются и ни одна из сторон не потребовала их прекращения в нижеперечисленных случаях: а) если по истечении срока действия договора работа, указанная в п.",
+        "По истечении указанного срока действие настоящего договора прекращается, за исключением случаев, указанных в п."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "40462e6251b5d3617a92cb5e5c440222b762a7dfde7c8ac875b802cdc4337a1d"
+    },
+    "contract_type": {
+      "type_id": "labor_contract",
+      "confidence": 0.99,
+      "ru_name": "Трудовой договор",
+      "legal_framework": "ТК РФ"
+    },
+    "asymmetry_signals": []
+  },
+  "result": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'obrazets-trudovoy-dogovor-s-rabotnikom-obschestva-s-ogranichenno. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Работник'. Определен тип договора: Трудовой договор (уверенность 99%, правовая рамка: ТК РФ). Что должен Работник: Работник обязан приступить к работе с \"__\"___________ 20___ г; Работник обязан выполнять следующие должностные обязанности: ______________________________________________________________________ (указываются основные характеристики работы и требования к уровню их выполнения) Вариант: Выполнять обязанности, указанные в должностной инструкции. Сроки и дедлайны: По истечении указанного срока действие настоящего договора прекращается, за исключением случаев, указанных в п; Действие трудового договора продлевается на неопределенный срок и Работник приобретает статус постоянного работника, если трудовые отношения фактически продолжаются и ни одна из сторон не потребовала их прекращения в нижеперечисленных случаях: а) если по истечении срока действия договора работа, указанная в п. Найдено спорных или расплывчатых пунктов: 2.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Работник'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Образец. Трудовой договор с работником общества с ограниченной ответственностью на время выполнения определенной работы (краткий) - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ТРУДОВОЙ ДОГОВОР (на время выполнения определенной работы) г. _____________ \"__\"_________ 20___ г. Общество с ограниченной ответственностью _______________________, (наименование) именуемое в дальнейшем \"Общество\", в лице ___________________________,...",
+        "dispute_reason": "Формулировка зависит от будущего согласования и не содержит исполнимого критерия.",
+        "possible_consequence": "При исполнении может возникнуть спор о том, что именно стороны должны были согласовать.",
+        "confidence": 0.79
+      },
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Образец. Трудовой договор с работником общества с ограниченной ответственностью на время выполнения определенной работы (краткий) - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ТРУДОВОЙ ДОГОВОР (на время выполнения определенной работы) г. _____________ \"__\"_________ 20___ г. Общество с ограниченной ответственностью _______________________, (наименование) именуемое в дальнейшем \"Общество\", в лице ___________________________,...",
+        "dispute_reason": "Одна из сторон получила дискреционное право без достаточных ограничителей.",
+        "possible_consequence": "Это может привести к одностороннему применению условия и спору о пределах такого права.",
+        "confidence": 0.76
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Работник",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Работник'.",
+      "must_do": [
+        "Работник обязан приступить к работе с \"__\"___________ 20___ г.",
+        "Работник обязан выполнять следующие должностные обязанности: ______________________________________________________________________ (указываются основные характеристики работы и требования к уровню их выполнения) Вариант: Выполнять обязанности, указанные в должностной инструкции.",
+        "Режим работы, права и обязанности сторон, основания прекращения трудового договора и иные условия определяются в Положении о персонале, утверждаемым руководителем Общества."
+      ],
+      "should_review": [
+        "Варианты: а) Общество вправе посылать Работника для выполнения заданий в ___________________________, расположенную по адресу: ________________ (наименование организации) ____________________________________________.",
+        "б) Общество вправе посылать Работника для выполнения заданий в любой район в пределах ________________________ области.",
+        "4 договора, настоящий трудовой договор может быть продлен по соглашению сторон, или между ними может быть заключен новый трудовой договор о приеме на временную или постоянную работу."
+      ],
+      "payment_terms": [
+        "Конфиг не выявил явных условий оплаты."
+      ],
+      "deadlines": [
+        "Действие трудового договора продлевается на неопределенный срок и Работник приобретает статус постоянного работника, если трудовые отношения фактически продолжаются и ни одна из сторон не потребовала их прекращения в нижеперечисленных случаях: а) если по истечении срока действия договора работа, указанная в п.",
+        "По истечении указанного срока действие настоящего договора прекращается, за исключением случаев, указанных в п."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "40462e6251b5d3617a92cb5e5c440222b762a7dfde7c8ac875b802cdc4337a1d"
+    },
+    "contract_type": {
+      "type_id": "labor_contract",
+      "confidence": 0.99,
+      "ru_name": "Трудовой договор",
+      "legal_framework": "ТК РФ"
+    },
+    "asymmetry_signals": []
+  },
+  "finished_at": "2026-04-28T16:12:35.830331+00:00",
+  "duration_ms": 134.63
+}

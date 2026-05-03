@@ -33,6 +33,50 @@ iOS release builds are prepared through Expo EAS in `apps/mobile/eas.json`. Comm
 
 An installable iOS `.ipa` requires Apple Developer credentials and valid signing/provisioning. Without those credentials, EAS configuration can be checked, but a usable `.ipa` should not be promised.
 
+## Backend Test Runs
+
+Use the focused backend checks below when working on `analysis-engine` and `core-api`.
+
+### Analysis Engine
+
+```powershell
+cd services\analysis-engine
+python -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements.txt
+python -m pytest tests/test_evaluation_helpers.py tests/test_quality_metrics.py -q
+```
+
+The compact quality suite uses a small in-repo golden set and validates:
+
+- contract type detection
+- role-aware risk rule hits
+- disputed clause markers
+- structured contract brief records
+- missing-role detection heuristics
+
+### Core API
+
+```powershell
+cd services\core-api
+npm ci
+npm run lint
+npm run test
+npm run build
+```
+
+## Quality Check Notes
+
+- `analysis-engine` regression checks are green locally for the focused contract-analysis suite, including `tests/test_analysis_api.py`, `tests/test_quality_metrics.py`, and the lightweight `tests/test_corpus_tools.py` smoke path.
+- `tests/test_corpus_tools.py` intentionally validates the `manifest -> run_cases -> evaluate_run` wiring on compact in-repo fixture documents instead of the full historical corpus, so CI keeps catching integration breaks without running a 15+ minute batch.
+- `core-api` quality checks are realistic to run end-to-end in CI: lint, unit test script, and build.
+
+## Known Release Blocker
+
+- The repository already contains `contract-risk-scanner-android.apk`, but GitHub release publication could not be verified from this environment.
+- Treat GitHub release upload/signing verification as a separate manual step; presence of the APK in the repo is not proof of a validated release artifact on GitHub.
+- The historical `pr/docs-localizer` branch was reviewed but not merged into this recovery branch: it carries corrupted `README.md` content and unreliable `i18n/original/*` archives, so documentation localization needs a separate cleanup pass before integration.
+
 `Contract Risk Scanner` — мобильное приложение для Android и iPhone, которое принимает файл договора и показывает предварительные индикаторы:
 - возможные риски
 - спорные формулировки

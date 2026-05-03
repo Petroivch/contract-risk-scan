@@ -60,12 +60,22 @@ export interface ContractSummary {
   roleFound?: boolean;
 }
 
+export interface StructuredSummaryRecord {
+  id: string;
+  headline: string;
+  description: string;
+  recommendation: string;
+  evidence: string[];
+}
+
 export interface AnalysisReport {
   analysisId: string;
   selectedRole: string;
   summary: ContractSummary;
   risks: RiskItem[];
   disputedClauses: DisputedClause[];
+  contractBriefRecords?: StructuredSummaryRecord[];
+  roleFocusedSummaryRecords?: StructuredSummaryRecord[];
   generatedAt: string;
 }
 

@@ -1,0 +1,183 @@
+{
+  "case_id": "договоры 4__obrazets-dogovor-postoyannoy-renti_html",
+  "relative_path": "договоры 4/obrazets-dogovor-postoyannoy-renti.html",
+  "document_path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\договоры 4\\obrazets-dogovor-postoyannoy-renti.html",
+  "document_name": "obrazets-dogovor-postoyannoy-renti.html",
+  "role": "Гражданин",
+  "counterparty_role": "Заказчик",
+  "language": "ru",
+  "mime_type": "text/html",
+  "tags": [
+    "ad_hoc"
+  ],
+  "source_group": "договоры 4",
+  "expected": {},
+  "started_at": "2026-04-28T16:18:54.059816+00:00",
+  "status": "completed",
+  "request": {
+    "document_name": "obrazets-dogovor-postoyannoy-renti.html",
+    "role_context": {
+      "role": "Гражданин",
+      "counterparty_role": "Заказчик"
+    },
+    "document_text": null,
+    "document_base64": "PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMDEgVHJhbnNpdGlvbmFsLy9FTiI+DQo8aHRtbD4NCjxoZWFkPg0KPGJhc2UgaHJlZj0iaHR0cHM6Ly9kb2dvdm9yLXVyaXN0LnJ1LyI+DQo8dGl0bGU+0J7QsdGA0LDQt9C10YYuINCU0L7Qs9C+0LLQvtGAINC/0L7RgdGC0L7Rj9C90L3QvtC5INGA0LXQvdGC0YsgLSDQstC10YDRgdC40Y8g0LTQu9GPINC/0LXRh9Cw0YLQuC4gMjAyNi4g0J7QsdGA0LDQt9GG0Ysg0LTQvtCz0L7QstC+0YDQvtCyLCDRgtC40L/QvtCy0YvQtSDQtNC+0LPQvtCy0L7RgNCwLCDQsNC60YLRg9Cw0LvRjNC90YvQtSDQtNC+0LrRg9C80LXQvdGC0YssINGO0YDQuNC00LjRh9C10YHQutC40Lwg0Lgg0YTQuNC30LjRh9C10YHQutC40Lwg0LvQuNGG0LDQvDwvdGl0bGU+DQo8bWV0YSBjb250ZW50PSIiIG5hbWU9ImtleXdvcmRzIj4NCjxtZXRhIGNvbnRlbnQ9IiIgbmFtZT0iZGVzY3JpcHRpb24iPg0KPG1ldGEgbmFtZT0icm9ib3RzIiBjb250ZW50PSJub2luZGV4LG5vZm9sbG93Ij4NCjxtZXRhIGh0dHAtZXF1aXY9IkNvbnRlbnQtVHlwZSIgY29udGVudD0idGV4dC9odG1sOyBjaGFyc2V0PXV0Zi04Ij4NCjxsaW5rIHJlbD0ic3R5bGVzaGVldCIgaHJlZj0iL2ltYWdlcy9zdHlsZS5jc3MiIHR5cGU9InRleHQvY3NzIj4NCjwvaGVhZD4NCjxib2R5Pg0KPGRpdiBjbGFzcz0iZG9jdW1lbnRUZXh0Ij4NCjxwcmU+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICDQlNCe0JPQntCS0J7QoA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg0L/QvtGB0YLQvtGP0L3QvdC+0Lkg0YDQtdC90YLRiw0KDQogICAg0LMuIF9fX19fX19fX19fX18gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAiX19fIl9fX19fX19fX18gMjBfX18g0LMuDQoNCiAgICAgICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXywNCiAgICAgICAgICjQpC7QmC7Qni4g0LPRgNCw0LbQtNCw0L3QuNC90LAg0LvQuNCx0L4g0L3QsNC40LzQtdC90L7QstCw0L3QuNC1INC90LXQutC+0LzQvNC10YDRh9C10YHQutC+0Lkg0L7RgNCz0LDQvdC40LfQsNGG0LjQuCkNCg0KICAgINC40LzQtdC90YPQtdC80YvQuSDQsiAg0LTQsNC70YzQvdC10LnRiNC10LwgICLQn9C+0LvRg9GH0LDRgtC10LvRjCAg0YDQtdC90YLRiyIsICDRgSAg0L7QtNC90L7QuSAg0YHRgtC+0YDQvtC90YssICAg0LgNCiAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18sINC40LzQtdC90YPQtdC80YvQuSDQsiDQtNCw0LvRjNC90LXQudGI0LXQvA0KICAgICAgICAgICAo0L3QsNC40LzQtdC90L7QstCw0L3QuNC1INC/0LvQsNGC0LXQu9GM0YnQuNC60LAg0YDQtdC90YLRiykNCg0KICAgICLQn9C70LDRgtC10LvRjNGJ0LjQuiDRgNC10L3RgtGLIiwg0LIg0LvQuNGG0LUgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18sDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgKNC00L7Qu9C20L3QvtGB0YLRjCwg0KQu0Jgu0J4uKQ0KDQogICAg0LTQtdC50YHRgtCy0YPRjtGJ0LXQs9C+INC90LAg0L7RgdC90L7QstCw0L3QuNC4IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLCAg0YEg0LTRgNGD0LPQvtC5DQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgKNCj0YHRgtCw0LLQsCwg0L/QvtC70L7QttC10L3QuNGPKQ0KDQogICAg0YHRgtC+0YDQvtC90YssINC30LDQutC70Y7Rh9C40LvQuCDQvdCw0YHRgtC+0Y/RidC40Lkg0LTQvtCz0L7QstC+0YAg0L4g0L3QuNC20LXRgdC70LXQtNGD0Y7RidC10LwuDQoNCiAgICAgICAgIDEuINCf0L4gINC90LDRgdGC0L7Rj9GJ0LXQvNGDINC00L7Qs9C+0LLQvtGA0YMg0J/QvtC70YPRh9Cw0YLQtdC70Ywg0YDQtdC90YLRiyDQv9C10YDQtdC00LDQtdGCINCf0LvQsNGC0LXQu9GM0YnQuNC60YMNCiAgICDRgNC10L3RgtGLINCyINGB0L7QsdGB0YLQstC10L3QvdC+0YHRgtGMIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18sDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAo0YPQutCw0LfQsNGC0Ywg0L/QtdGA0LXQtNCw0LLQsNC10LzQvtC1INC40LzRg9GJ0LXRgdGC0LLQvikNCg0KICAgINC40LzQtdC90YPQtdC80L7QtSDQsiDQtNCw0LvRjNC90LXQudGI0LXQvCAi0LjQvNGD0YnQtdGB0YLQstC+Iiwg0L3QtSDQv9C+0LfQtNC90LXQtSBfX19fX19fX19fX19fX19fX19fX18sDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgKNGD0LrQsNC30LDRgtGMINGB0YDQvtC6KQ0KDQogICAg0LAg0J/Qu9Cw0YLQtdC70YzRidC40LogINGA0LXQvdGC0YsgINC/0YDQuNC90LjQvNCw0LXRgiAg0L3QsCAg0YHQtdCx0Y8gINC+0LHRj9C30LDRgtC10LvRjNGB0YLQstC+ICDQsiAg0L7QsdC80LXQvSAg0LDQvQ0KICAgINC/0L7Qu9GD0YfQtdC90L3QvtC1INC40LzRg9GJ0LXRgdGC0LLQviBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICjRg9C60LDQt9Cw0YLRjCDQv9C10YDQuNC+0LTQuNGH0L3QvtGB0YLRjCDQstGL0L/Qu9Cw0YIpDQoNCiAgICDQsdC10YHRgdGA0L7Rh9C90L4g0LLRi9C/0LvQsNGH0LjQstCw0YLRjCAg0J/QvtC70YPRh9Cw0YLQtdC70Y4gINGA0LXQvdGC0YMgINCyICDQstC40LTQtSAg0YHQu9C10LTRg9GO0YnQtdC5INC00LXQvdC10LbQvdC+0LkNCiAgICDRgdGD0LzQvNGLOiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18sINC40LzQtdC90YPQtdC80L7QuQ0KICAgINCyINC00LDQu9GM0L3QtdC50YjQtdC8ICLRgNC10L3RgtC90YvQtSDQv9C70LDRgtC10LbQuCIuDQogICAgICAgICAyLiDQodGC0L7RgNC+0L3RiyAgINC00L7Qs9C+0LLQvtGA0LjQu9C40YHRjCAgINC+0LEgICDRg9Cy0LXQu9C40YfQtdC90LjQuCAgINGA0LXQvdGC0L3Ri9GFICAg0L/Qu9Cw0YLQtdC20LXQuQ0KICAgINC/0YDQvtC/0L7RgNGG0LjQvtC90LDQu9GM0L3QviDRg9Cy0LXQu9C40YfQtdC90LjRjiAgICDRg9GB0YLQsNC90L7QstC70LXQvdC90L7Qs9C+ICAg0LfQsNC60L7QvdC+0LwgICDQvNC40L3QuNC80LDQu9GM0L3QvtCz0L4NCiAgICDRgNCw0LfQvNC10YDQsCDQvtC/0LvQsNGC0Ysg0YLRgNGD0LTQsC4NCiAgICAgICAgIDMuINCh0YLQvtGA0L7QvdGLICDQtNC+0LPQvtCy0L7RgNC40LvQuNGB0YwgINC+ICDRgtC+0LwsICDRh9GC0L4g0L/RgNCw0LLQviDQvdCwINCy0YvQutGD0L8g0L/QvtGB0YLQvtGP0L3QvdC+0LkNCiAgICDRgNC10L3RgtGLLCDQstGL0L/Qu9Cw0YfQuNCy0LDQtdC80L7QuSAg0L/QviAgINC90LDRgdGC0L7Rj9GJ0LXQvNGDICAg0LTQvtCz0L7QstC+0YDRgywgICDQvdC1ICAg0LzQvtC20LXRgiAgINCx0YvRgtGMDQogICAg0L7RgdGD0YnQtdGB0YLQstC70LXQvdC+INC/0YDQuCAg0LbQuNC30L3QuCAg0J/QvtC70YPRh9Cw0YLQtdC70Y8gINGA0LXQvdGC0YssICDQt9CwICDQuNGB0LrQu9GO0YfQtdC90LjQtdC8INGB0LvRg9GH0LDQtdCyLA0KICAgINC/0YDQtdC00YPRgdC80L7RgtGA0LXQvdC90YvRhSDQsiDQv9C+0LTQv9GD0L3QutGC0LUgNS4yINC90LDRgdGC0L7Rj9GJ0LXQs9C+INC00L7Qs9C+0LLQvtGA0LAuDQogICAgICAgICA0LiDQn9C70LDRgtC10LvRjNGJ0LjQuiDRgNC10L3RgtGLINC+0LHRj9C30YPQtdGC0YHRjyDQv9GA0LXQtNC+0YHRgtCw0LLQuNGC0Ywg0YHQu9C10LTRg9GO0YnQtdC1INC+0LHQtdGB0L/QtdGH0LXQvdC40LUNCiAgICDRgdCy0L7QuNGFINC+0LHRj9C30LDRgtC10LvRjNGB0YLQsiDQv9C+INC90LDRgdGC0L7Rj9GJ0LXQvNGDINC00L7Qs9C+0LLQvtGA0YM6IF9fX19fX19fX19fX19fX19fX19fX19fX19fDQogICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQogICAgICAgICAgICAo0LfQsNC70L7Qsywg0L/QvtGA0YPRh9C40YLQtdC70YzRgdGC0LLQviwg0LHQsNC90LrQvtCy0YHQutCw0Y8g0LPQsNGA0LDQvdGC0LjRjywg0LfQsNC00LDRgtC+0LoNCiAgICAgICAgICAgICAgICAgICAgICAgINC70LjQsdC+INC00YDRg9Cz0LjQtSDQstC40LTRiyDQvtCx0LXRgdC/0LXRh9C10L3QuNGPKQ0KDQogICAgICAgICA1LiDQn9C+0LvRg9GH0LDRgtC10LvRjCDRgNC10L3RgtGLINCy0L/RgNCw0LLQtToNCiAgICAgICAgIDUuMS4g0J/QtdGA0LXQtNCw0LLQsNGC0YwgINGB0LLQvtC4ICDQv9GA0LDQstCwICDQvdCwICDQv9C+0LvRg9GH0LXQvdC40LUgINGA0LXQvdGC0YsgICDQsiAgINC/0L7RgNGP0LTQutC1DQogICAg0L3QsNGB0LvQtdC00L7QstCw0L3QuNGPLg0KICAgICAgICAgNS4yLiDQotGA0LXQsdC+0LLQsNGC0Ywg0LLRi9C60YPQv9CwINGA0LXQvdGC0Ysg0J/Qu9Cw0YLQtdC70YzRidC40LrQvtC8INCyINGB0LvRg9GH0LDRj9GFLCDQutC+0LPQtNCwOg0KICAgICAgICAgLSDQn9C70LDRgtC10LvRjNGJ0LjQuiDRgNC10L3RgtGLINC/0YDQvtGB0YDQvtGH0LjQuyDQtdC1INCy0YvQv9C70LDRgtGDINCx0L7Qu9C10LUsINGH0LXQvCDQvdCwINC+0LTQuNC9INCz0L7QtDsNCiAgICAgICAgIC0g0J/Qu9Cw0YLQtdC70YzRidC40Log0YDQtdC90YLRiyDQvdCw0YDRg9GI0LjQuyAg0YHQstC+0LggINC+0LHRj9C30LDRgtC10LvRjNGB0YLQstCwICDQv9C+ICDQvtCx0LXRgdC/0LXRh9C10L3QuNGODQogICAg0LLRi9C/0LvQsNGC0Ysg0YDQtdC90YLRizsNCiAgICAgICAgIC0g0J/Qu9Cw0YLQtdC70YzRidC40Log0YDQtdC90YLRiyDQv9GA0LjQt9C90LDQvSDQvdC10L/Qu9Cw0YLQtdC20LXRgdC/0L7RgdC+0LHQvdGL0Lwg0LvQuNCx0L4g0LLQvtC30L3QuNC60LvQuCDQuNC90YvQtQ0KICAgINC+0LHRgdGC0L7Rj9GC0LXQu9GM0YHRgtCy0LAg0L7Rh9C10LLQuNC00L3QviAgINGB0LLQuNC00LXRgtC10LvRjNGB0YLQstGD0Y7RidC40LUsICAg0YfRgtC+ICAg0YDQtdC90YLQsCAg0L3QtSAg0LHRg9C00LXRgg0KICAgINCy0YvQv9C70LDRh9C40LLQsNGC0YzRgdGPINC40LwgINCyICDRgNCw0LfQvNC10YDQtSAg0LggINCyICDRgdGA0L7QutC4LCAg0YPRgdGC0LDQvdC+0LLQu9C10L3QvdGL0LUgICDQvdCw0YHRgtC+0Y/RidC40LwNCiAgICDQtNC+0LPQvtCy0L7RgNC+0LwuDQogICAgICAgICA2LiDQodGC0L7RgNC+0L3RiyAgINC00L7Qs9C+0LLQvtGA0LjQu9C40YHRjCwgICDRh9GC0L4gICDQstGL0LrRg9C/ICAg0YDQtdC90YLRiyAgINCyICAgINGB0LvRg9GH0LDRj9GFLA0KICAgINC/0YDQtdC00YPRgdC80L7RgtGA0LXQvdC90YvRhSDQsiAgICDQv9C+0LTQv9GD0L3QutGC0LUgICA1LjIgICDQvdCw0YHRgtC+0Y/RidC10LPQviAgINC00L7Qs9C+0LLQvtGA0LAsICAg0LHRg9C00LXRgg0KICAgINC/0YDQvtC40LfQstC+0LTQuNGC0YzRgdGPINC/0L4g0YHQu9C10LTRg9GO0YnQtdC5INGG0LXQvdC1OiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXy4NCiAgICAgICAgIDcuINCg0LjRgdC6ICDRgdC70YPRh9Cw0LnQvdC+0LkgINCz0LjQsdC10LvQuCDQuNC70Lgg0YHQu9GD0YfQsNC50L3QvtCz0L4g0L/QvtCy0YDQtdC20LTQtdC90LjRjyDQuNC80YPRidC10YHRgtCy0LAsDQogICAg0L/QtdGA0LXQtNCw0LLQsNC10LzQvtCz0L4g0L/QvtC0INCy0YvQv9C70LDRgtGDINGA0LXQvdGC0YssINC90LXRgdC10YIg0J/Qu9Cw0YLQtdC70YzRidC40Log0YDQtdC90YLRiy4NCiAgICAgICAgIDguINCd0LDRgdGC0L7Rj9GJ0LjQuSAg0LTQvtCz0L7QstC+0YAg0LLRgdGC0YPQv9Cw0LXRgiDQsiDRgdC40LvRgyDRgSDQvNC+0LzQtdC90YLQsCDQtdCz0L4g0L/QvtC00L/QuNGB0LDQvdC40Y8g0LgNCiAgICDQsdGD0LTQtdGCINC00LXQudGB0YLQstC+0LLQsNGC0YwsICDQutCw0Log0Y3RgtC+INGB0LvQtdC00YPQtdGCINC40Lcg0L/Rg9C90LrRgtCwIDEg0L3QsNGB0YLQvtGP0YnQtdCz0L4gINC00L7Qs9C+0LLQvtGA0LAsDQogICAg0LHQtdGB0YHRgNC+0YfQvdC+Lg0KICAgICAgICAgOS4g0JTQvtCz0L7QstC+0YAg0LfQsNC60LvRjtGH0LXQvSDQsiBfX19fX19fXyDRjdC60LfQtdC80L/Qu9GP0YDQsNGFLg0KICAgICAgICAgMTAuINCQ0LTRgNC10YHQsCDQodGC0L7RgNC+0L06DQoNCiAgICAgICAgINCf0L7Qu9GD0YfQsNGC0LXQu9GMINGA0LXQvdGC0Ys6IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXywNCiAgICDRgdGH0LXRgiBOby4gX19fX19fX19fX19fXyDQsiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLg0KDQogICAgICAgICDQn9C70LDRgtC10LvRjNGJ0LjQuiDRgNC10L3RgtGLOiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18sDQogICAg0YAv0YEgTm8uIF9fX19fX19fX19fX18g0LIgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18uDQoNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICDQn9C+0LTQv9C40YHQuCDRgdGC0L7RgNC+0L06DQoNCiAgICAgICAgINCf0L7Qu9GD0YfQsNGC0LXQu9GMINGA0LXQvdGC0YsgICAgICAgICAgICAgICAgICAgICAgICAgICDQn9C70LDRgtC10LvRjNGJ0LjQuiDRgNC10L3RgtGLDQoNCiAgICBfX19fX19fX19fX19fX19fX19fX19fX18gICAgICAgICAgICAgICAgICAgICBfX19fX19fX19fX19fX19fX19fX19fX18NCg0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICDQnC7Qny4NCg0KICANCjwvcHJlPjwvZGl2Pg0KPC9ib2R5Pg0KPC9odG1sPg==",
+    "mime_type": "text/html",
+    "language": "ru",
+    "locale": "ru"
+  },
+  "ingestion_preflight": {
+    "mime_type": "text/html",
+    "extractor": "html:regex",
+    "extraction_source": "html:regex",
+    "extraction_ok": true,
+    "error": null,
+    "extraction_error": null,
+    "sha256": "5708c11be59cbe04a85d5ad2fcbae6780517627b55ccab92bc0a802c2358bce9"
+  },
+  "metrics": {
+    "risk_count": 1,
+    "high_risk_count": 1,
+    "disputed_clause_count": 1,
+    "asymmetry_signal_count": 0,
+    "contract_type": "loan_security_agreement"
+  },
+  "analysis": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'obrazets-dogovor-postoyannoy-renti. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Гражданин'. Определен тип договора: Договор займа / залога / гарантии (уверенность 65%, правовая рамка: ГК РФ, главы 23, 42, 43). Ключевые обязательства по договору для роли 'Гражданин': Плательщик ренты обязуется предоставить следующее обеспечение своих обязательств по настоящему договору: __________________________ _____________________________________________________________________ (залог, поручительство, банковская гарантия, задаток либо другие виды обеспечения) 5. Условия оплаты: Стороны договорились об увеличении рентных платежей пропорционально увеличению установленного законом минимального размера оплаты труда; Адреса Сторон: Получатель ренты: _____________________________________________, счет No. Сроки и дедлайны: По настоящему договору Получатель ренты передает Плательщику ренты в собственность ______________________________________________, (указать передаваемое имущество) именуемое в дальнейшем \"имущество\", не позднее _____________________, (указать срок) а Плательщик ренты принимает на себя обязательство в обмен ан полученное имущество ________________________________________________ (указать периодичность выплат) бессрочно выплачивать Получателю ренту в виде следующей денежной суммы: ___________________________________________________, именуемой в дальнейшем \"рентные платежи\"; - Плательщик ренты признан неплатежеспособным либо возникли иные обстоятельства очевидно свидетельствующие, что рента не будет выплачиваться им в размере и в сроки, установленные настоящим договором. Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "bank_guarantee_on_demand",
+        "title": "Критический риск: Банковская гарантия по первому требованию",
+        "severity": "critical",
+        "clause_id": "clause-1",
+        "description": "Гарант обязан платить по письменному требованию бенефициара при минимальном наборе документов, что делает взыскание почти автоматическим. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: Образец. Договор постоянной ренты - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР постоянной ренты г. _____________ \"___\"__________ 20___ г. _______________________________________________________________, (Ф. И. О. гражданина либо наименование некоммерческой организации) именуемый в дальнейшем \"Получатель ренты\", с одной стороны, и _____________________________________________, именуемый в дальнейшем (наименование. . .",
+        "role_relevance": "Общий риск договора, релевантный для роли 'Гражданин'. Наиболее вероятный конфликт интересов со стороной 'Заказчик'.",
+        "mitigation": "Проверьте перечень документов, основания требования и лимит суммы гарантии."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Образец. Договор постоянной ренты - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР постоянной ренты г. _____________ \"___\"__________ 20___ г. _______________________________________________________________, (Ф. И. О. гражданина либо наименование некоммерческой организации) именуемый в дальнейшем \"Получатель ренты\", с одной стороны, и _____________________________________________, именуемый в дальнейшем (наименование...",
+        "dispute_reason": "Одна из сторон получила дискреционное право без достаточных ограничителей.",
+        "possible_consequence": "Это может привести к одностороннему применению условия и спору о пределах такого права.",
+        "confidence": 0.76
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Гражданин",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Гражданин'. Обнаружено 1 пунктов с высоким уровнем риска; их стоит перепроверить вручную.",
+      "must_do": [
+        "Плательщик ренты обязуется предоставить следующее обеспечение своих обязательств по настоящему договору: __________________________ _____________________________________________________________________ (залог, поручительство, банковская гарантия, задаток либо другие виды обеспечения) 5."
+      ],
+      "should_review": [
+        "Стороны договорились о том, что право на выкуп постоянной ренты, выплачиваемой по настоящему договору, не может быть осуществлено при жизни Получателя ренты, за исключением случаев, предусмотренных в подпункте 5.",
+        "Получатель ренты вправе: 5."
+      ],
+      "payment_terms": [
+        "Стороны договорились об увеличении рентных платежей пропорционально увеличению установленного законом минимального размера оплаты труда.",
+        "Адреса Сторон: Получатель ренты: _____________________________________________, счет No."
+      ],
+      "deadlines": [
+        "По настоящему договору Получатель ренты передает Плательщику ренты в собственность ______________________________________________, (указать передаваемое имущество) именуемое в дальнейшем \"имущество\", не позднее _____________________, (указать срок) а Плательщик ренты принимает на себя обязательство в обмен ан полученное имущество ________________________________________________ (указать периодичность выплат) бессрочно выплачивать Получателю ренту в виде следующей денежной суммы: ___________________________________________________, именуемой в дальнейшем \"рентные платежи\".",
+        "- Плательщик ренты признан неплатежеспособным либо возникли иные обстоятельства очевидно свидетельствующие, что рента не будет выплачиваться им в размере и в сроки, установленные настоящим договором."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "5708c11be59cbe04a85d5ad2fcbae6780517627b55ccab92bc0a802c2358bce9"
+    },
+    "contract_type": {
+      "type_id": "loan_security_agreement",
+      "confidence": 0.65,
+      "ru_name": "Договор займа / залога / гарантии",
+      "legal_framework": "ГК РФ, главы 23, 42, 43"
+    },
+    "asymmetry_signals": []
+  },
+  "result": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'obrazets-dogovor-postoyannoy-renti. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Гражданин'. Определен тип договора: Договор займа / залога / гарантии (уверенность 65%, правовая рамка: ГК РФ, главы 23, 42, 43). Ключевые обязательства по договору для роли 'Гражданин': Плательщик ренты обязуется предоставить следующее обеспечение своих обязательств по настоящему договору: __________________________ _____________________________________________________________________ (залог, поручительство, банковская гарантия, задаток либо другие виды обеспечения) 5. Условия оплаты: Стороны договорились об увеличении рентных платежей пропорционально увеличению установленного законом минимального размера оплаты труда; Адреса Сторон: Получатель ренты: _____________________________________________, счет No. Сроки и дедлайны: По настоящему договору Получатель ренты передает Плательщику ренты в собственность ______________________________________________, (указать передаваемое имущество) именуемое в дальнейшем \"имущество\", не позднее _____________________, (указать срок) а Плательщик ренты принимает на себя обязательство в обмен ан полученное имущество ________________________________________________ (указать периодичность выплат) бессрочно выплачивать Получателю ренту в виде следующей денежной суммы: ___________________________________________________, именуемой в дальнейшем \"рентные платежи\"; - Плательщик ренты признан неплатежеспособным либо возникли иные обстоятельства очевидно свидетельствующие, что рента не будет выплачиваться им в размере и в сроки, установленные настоящим договором. Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "bank_guarantee_on_demand",
+        "title": "Критический риск: Банковская гарантия по первому требованию",
+        "severity": "critical",
+        "clause_id": "clause-1",
+        "description": "Гарант обязан платить по письменному требованию бенефициара при минимальном наборе документов, что делает взыскание почти автоматическим. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: Образец. Договор постоянной ренты - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР постоянной ренты г. _____________ \"___\"__________ 20___ г. _______________________________________________________________, (Ф. И. О. гражданина либо наименование некоммерческой организации) именуемый в дальнейшем \"Получатель ренты\", с одной стороны, и _____________________________________________, именуемый в дальнейшем (наименование. . .",
+        "role_relevance": "Общий риск договора, релевантный для роли 'Гражданин'. Наиболее вероятный конфликт интересов со стороной 'Заказчик'.",
+        "mitigation": "Проверьте перечень документов, основания требования и лимит суммы гарантии."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Образец. Договор постоянной ренты - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР постоянной ренты г. _____________ \"___\"__________ 20___ г. _______________________________________________________________, (Ф. И. О. гражданина либо наименование некоммерческой организации) именуемый в дальнейшем \"Получатель ренты\", с одной стороны, и _____________________________________________, именуемый в дальнейшем (наименование...",
+        "dispute_reason": "Одна из сторон получила дискреционное право без достаточных ограничителей.",
+        "possible_consequence": "Это может привести к одностороннему применению условия и спору о пределах такого права.",
+        "confidence": 0.76
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Гражданин",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Гражданин'. Обнаружено 1 пунктов с высоким уровнем риска; их стоит перепроверить вручную.",
+      "must_do": [
+        "Плательщик ренты обязуется предоставить следующее обеспечение своих обязательств по настоящему договору: __________________________ _____________________________________________________________________ (залог, поручительство, банковская гарантия, задаток либо другие виды обеспечения) 5."
+      ],
+      "should_review": [
+        "Стороны договорились о том, что право на выкуп постоянной ренты, выплачиваемой по настоящему договору, не может быть осуществлено при жизни Получателя ренты, за исключением случаев, предусмотренных в подпункте 5.",
+        "Получатель ренты вправе: 5."
+      ],
+      "payment_terms": [
+        "Стороны договорились об увеличении рентных платежей пропорционально увеличению установленного законом минимального размера оплаты труда.",
+        "Адреса Сторон: Получатель ренты: _____________________________________________, счет No."
+      ],
+      "deadlines": [
+        "По настоящему договору Получатель ренты передает Плательщику ренты в собственность ______________________________________________, (указать передаваемое имущество) именуемое в дальнейшем \"имущество\", не позднее _____________________, (указать срок) а Плательщик ренты принимает на себя обязательство в обмен ан полученное имущество ________________________________________________ (указать периодичность выплат) бессрочно выплачивать Получателю ренту в виде следующей денежной суммы: ___________________________________________________, именуемой в дальнейшем \"рентные платежи\".",
+        "- Плательщик ренты признан неплатежеспособным либо возникли иные обстоятельства очевидно свидетельствующие, что рента не будет выплачиваться им в размере и в сроки, установленные настоящим договором."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "5708c11be59cbe04a85d5ad2fcbae6780517627b55ccab92bc0a802c2358bce9"
+    },
+    "contract_type": {
+      "type_id": "loan_security_agreement",
+      "confidence": 0.65,
+      "ru_name": "Договор займа / залога / гарантии",
+      "legal_framework": "ГК РФ, главы 23, 42, 43"
+    },
+    "asymmetry_signals": []
+  },
+  "finished_at": "2026-04-28T16:18:54.152420+00:00",
+  "duration_ms": 93.2
+}

@@ -1,0 +1,379 @@
+{
+  "case_id": "dogovory_4__dogovor_na_raschetnokassovoe_obsluzhivanie_dogovor_raschetnogo_s",
+  "relative_path": "договоры 4/dogovor-na-raschetnokassovoe-obsluzhivanie-dogovor-raschetnogo-s.html",
+  "document_path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\договоры 4\\dogovor-na-raschetnokassovoe-obsluzhivanie-dogovor-raschetnogo-s.html",
+  "document_name": "dogovor-na-raschetnokassovoe-obsluzhivanie-dogovor-raschetnogo-s.html",
+  "role": "Подрядчик",
+  "counterparty_role": "Заказчик",
+  "language": "ru",
+  "mime_type": "text/html",
+  "tags": [
+    "workspace-corpus",
+    "html",
+    "dogovory_4",
+    "service_agreement"
+  ],
+  "source_group": "manifest",
+  "expected": {
+    "contract_type": "service_agreement",
+    "min_contract_type_confidence": 0.57,
+    "min_risk_count": 8,
+    "min_disputed_clause_count": 2,
+    "execution_mode": "local_first",
+    "expected_high_risk_ids": [
+      "payment_asymmetry",
+      "payment_conditioned_on_signed_act",
+      "uncapped_daily_penalty",
+      "one_sided_penalty",
+      "strict_deadlines_without_dependency_carveout"
+    ]
+  },
+  "started_at": "2026-04-28T16:12:41.000532+00:00",
+  "status": "completed",
+  "request": {
+    "document_name": "dogovor-na-raschetnokassovoe-obsluzhivanie-dogovor-raschetnogo-s.html",
+    "role_context": {
+      "role": "Подрядчик",
+      "counterparty_role": "Заказчик"
+    },
+    "document_text": null,
+    "document_base64": "PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMDEgVHJhbnNpdGlvbmFsLy9FTiI+DQo8aHRtbD4NCjxoZWFkPg0KPGJhc2UgaHJlZj0iaHR0cHM6Ly9kb2dvdm9yLXVyaXN0LnJ1LyI+DQo8dGl0bGU+0JTQvtCz0L7QstC+0YAg0L3QsCDRgNCw0YHRh9C10YLQvdC+LdC60LDRgdGB0L7QstC+0LUg0L7QsdGB0LvRg9C20LjQstCw0L3QuNC1ICjQtNC+0LPQvtCy0L7RgCDRgNCw0YHRh9C10YLQvdC+0LPQviAgINGB0YfQtdGC0LApIC0g0LLQtdGA0YHQuNGPINC00LvRjyDQv9C10YfQsNGC0LguIDIwMjYuINCe0LHRgNCw0LfRhtGLINC00L7Qs9C+0LLQvtGA0L7Qsiwg0YLQuNC/0L7QstGL0LUg0LTQvtCz0L7QstC+0YDQsCwg0LDQutGC0YPQsNC70YzQvdGL0LUg0LTQvtC60YPQvNC10L3RgtGLLCDRjtGA0LjQtNC40YfQtdGB0LrQuNC8INC4INGE0LjQt9C40YfQtdGB0LrQuNC8INC70LjRhtCw0Lw8L3RpdGxlPg0KPG1ldGEgY29udGVudD0iIiBuYW1lPSJrZXl3b3JkcyI+DQo8bWV0YSBjb250ZW50PSIiIG5hbWU9ImRlc2NyaXB0aW9uIj4NCjxtZXRhIG5hbWU9InJvYm90cyIgY29udGVudD0ibm9pbmRleCxub2ZvbGxvdyI+DQo8bWV0YSBodHRwLWVxdWl2PSJDb250ZW50LVR5cGUiIGNvbnRlbnQ9InRleHQvaHRtbDsgY2hhcnNldD11dGYtOCI+DQo8bGluayByZWw9InN0eWxlc2hlZXQiIGhyZWY9Ii9pbWFnZXMvc3R5bGUuY3NzIiB0eXBlPSJ0ZXh0L2NzcyI+DQo8L2hlYWQ+DQo8Ym9keT4NCjxkaXYgY2xhc3M9ImRvY3VtZW50VGV4dCI+DQo8cHJlPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAg0JTQntCT0J7QktCe0KANCiAgICAgICAgICAgICAgINC90LAg0YDQsNGB0YfQtdGC0L3Qvi3QutCw0YHRgdC+0LLQvtC1INC+0LHRgdC70YPQttC40LLQsNC90LjQtQ0KICAgICAgICAgICAgICAgICAgKNCU0L7Qs9C+0LLQvtGAINGA0LDRgdGH0LXRgtC90L7Qs9C+INGB0YfQtdGC0LApDQoNCiAgICAgICAgINCzLl9fX19fX19fICAgICAgICAgICAgICAgICAgICAiX19fIl9fX19fX18yMF9fXyDQsy4NCg0KICAgICDQmtC+0LzQvNC10YDRh9C10YHQutC40Lkg0LHQsNC90LogIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18sDQrQuNC80LXQvdGD0LXQvNGL0Lkg0LIg0LTQsNC70YzQvdC10LnRiNC10Lwg0JHQsNC90LosINCyINC70LjRhtC1IF9fX19fX19fX19fX19fX19fXywg0LTQtdC50YHRgtCy0YPRjtGJ0LXQs9C+INC90LANCtC+0YHQvdC+0LLQsNC90LjQuCDQo9GB0YLQsNCy0LAsINGBINC+0LTQvdC+0Lkg0YHRgtC+0YDQvtC90YssINC4IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXywNCtC40LzQtdC90YPQtdC80YvQuSDQsiAg0LTQsNC70YzQvdC10LnRiNC10Lwg0JrQu9C40LXQvdGCINCyINC70LjRhtC1IF9fX19fX19fX19fX19fX19fX18sINC00LXQudGB0YLQstGD0Y7RidC10LPQvg0K0L3QsCAg0L7RgdC90L7QstCw0L3QuNC4ICAgX19fX19fX19fX19fX19fX19fX19fLCAg0YEgICDQtNGA0YPQs9C+0LkgINGB0YLQvtGA0L7QvdGLLCAg0LfQsNC60LvRjtGH0LjQu9C4DQrQvdCw0YHRgtC+0Y/RidC40Lkg0JTQvtCz0L7QstC+0YAg0L4g0L3QuNC20LXRgdC70LXQtNGD0Y7RidC10Lw6DQoNCiAgICAgSS4g0JHQsNC90Log0L7QsdGP0LfRg9C10YLRgdGPDQogICAgIDEuINCe0YLQutGA0YvRgtGMINCa0LvQuNC10L3RgtGDINGA0LDRgdGH0LXRgtC90YvQuSDRgdGH0LXRgiBOX19fX19fX19fXw0KICAgICDQndC10L7QsdGF0L7QtNC40LzRi9C1ICDQtNC70Y8gINC+0YLQutGA0YvRgtC40Y8gINGA0LDRgdGH0LXRgtC90L7Qs9C+ICDRgdGH0LXRgtCwICDQtNC+0LrRg9C80LXQvdGC0YsgINCa0LvQuNC10L3RgtC+0LwNCtC/0YDQtdC00L7RgdGC0LDQstC70LXQvdGLINC4INCx0LDQvdC60L7QvCDQv9GA0L7QstC10YDQtdC90YsuDQogICAgIDIuICDQn9GA0LXQtNC+0YHRgtCw0LLQuNGC0YwgINCa0LvQuNC10L3RgtGDICDQutC+0LzQv9C70LXQutGBICDRg9GB0LvRg9CzICDQv9C+ICDRgNCw0YHRh9C10YLQvdC+LdC60LDRgdGB0L7QstC+0LzRgw0K0L7QsdGB0LvRg9C20LjQstCw0L3QuNGOLg0KICAgICDQmtC+0LzQv9C70LXQutGB0L3QvtC1INGA0LDRgdGH0LXRgtC90L4t0LrQsNGB0YHQvtCy0L7QtSAg0L7QsdGB0LvRg9C20LjQstCw0L3QuNC1INC30LDQutC70Y7Rh9Cw0LXRgtGB0Y8gINCyINCy0LXQtNC10L3QuNC4DQrRgdGH0LXRgtCwICDQmtC70LjQtdC90YLQsCAgINC4ICDQvtGB0YPRidC10YHRgtCy0LvQtdC90LjQuCAg0JHQsNC90LrQvtC8ICDQv9C+ICDQv9C+0YDRg9GH0LXQvdC40Y4gINC60LvQuNC10L3RgtCwICDQstGB0LXRhQ0K0YDQsNGB0YfQtdGC0L3Ri9GFINC4INC60LDRgdGB0L7QstGL0YUg0L7Qv9C10YDQsNGG0LjQuSwg0L/RgNC10LTRg9GB0LzQvtGC0YDQtdC90L3Ri9GFINC30LDQutC+0L3QvtC00LDRgtC10LvRjNGB0YLQstC+0LwsINCyINGC0L7QvA0K0YfQuNGB0LvQtTog0LLRi9C/0L7Qu9C90LXQvdC40LUgINC/0L7RgNGD0YfQtdC90LjQuSDQmtC70LjQtdC90YLQsCAg0L4g0L/QtdGA0LXRh9C40YHQu9C10L3QuNC4ICDQtNC10L3QtdC20L3Ri9GFICDRgdGD0LzQvCAg0YENCtC+0LTQvdC+0LPQviAg0L/RgNC40L3QsNC00LvQtdC20LDRidC10LPQviAg0LXQvNGDICDRgdGH0LXRgtCwICDQvdCwICDQtNGA0YPQs9C+0LkgINC4ICDRgdGH0LXRgtCwICDRgtGA0LXRgtGM0LjRhSAg0LvQuNGGOw0K0LLRi9C/0L7Qu9C90LXQvdC40LUg0L/QvtGA0YPRh9C10L3QuNC5ICDQmtC70LjQtdC90YLQsCDQviAg0L/QvtC70YPRh9C10L3QuNC4INC/0YDQuNGH0LjRgtCw0Y7RidC40YXRgdGPICDQtdC80YMgINC00LXQvdC10LbQvdGL0YUNCtGB0YPQvNC8INC+0YIgINC00YDRg9Cz0LjRhSDQu9C40YYgINC4INC+INC30LDRh9C40YHQu9C10L3QuNC4INC40YUg0L3QsCDRgdGH0LXRgiDQmtC70LjQtdC90YLQsCAo0LjQvdC60LDRgdGB0L4pLCDQsiDRgtC+0LwNCtGH0LjRgdC70LUg0L/Rg9GC0LXQvCAg0LLQt9GL0YHQutCw0L3QuNGPINC/0L4g0LLQtdC60YHQtdC70Y/QvCDQv9C+INC40L3QutCw0YHRgdC+0LLQvtC80YMg0LjQvdC00L7RgdGB0LDQvNC10L3RgtGDOyDQv9GA0LjQtdC8INC4DQrQstGL0LTQsNGH0LAgICDQmtC70LjQtdC90YLRgyAgICDQvdCw0LvQuNGH0L3Ri9GFICAg0LTQtdC90LXQsyAgICDQsiAgINGB0LvRg9GH0LDRj9GFLCAgICDQv9GA0LXQtNGD0YHQvNC+0YLRgNC10L3QvdGL0YUNCtC30LDQutC+0L3QvtC00LDRgtC10LvRjNGB0YLQstC+0LwuDQogICAgINCf0YDQtdC00L7RgdGC0LDQstC70LXQvdC40LUg0LTRgNGD0LPQuNGFICDRg9GB0LvRg9CzLCAg0L3QtSAg0L7RgtC90L7RgdGP0YnQuNGF0YHRjyAg0L3QtdC/0L7RgdGA0LXQtNGB0YLQstC10L3QvdC+ICDQug0K0YDQsNGB0YfQtdGC0L3Qvi3QutCw0YHRgdC+0LLQvtC80YMgINC+0LHRgdC70YPQttC40LLQsNC90LjRjiAgKNC90LDQv9GA0LjQvNC10YAsICDQutGA0LXQtNC40YLQvtCy0LDQvdC40LUsICDRhNCw0LrRgtC+0YDQuNC90LMsDQrRhNC+0YDRhNC10LnRgtC40L3Qsywg0LvQuNC30LjQvdCzLCAg0L/QvtC60YPQv9C60LAg0LggINGA0LDQt9C80LXRidC10L3QuNC1INCw0LrRhtC40LkgINC4INC00YAuKSDQvtGB0YPRidC10YHRgtCy0LvRj9C10YLRgdGPDQrQkdCw0L3QutC+0Lwg0L3QsCDQvtGB0L3QvtCy0LUg0L7RgtC00LXQu9GM0L3Ri9GFINC00L7Qs9C+0LLQvtGA0L7Qsi4NCiAgICAgMy4g0KHQstC+0LXQstGA0LXQvNC10L3QvdC+ICDQuCDQv9GA0LDQstC40LvRjNC90L4gINC/0YDQvtC40LfQstC+0LTQuNGC0YwgINGA0LDRgdGH0LXRgtC90YvQtSAg0L7Qv9C10YDQsNGG0LjQuCAg0L/Qvg0K0L/QvtGA0YPRh9C10L3QuNGP0Lwg0JrQu9C40LXQvdGC0LAgINCyINGB0YLRgNC+0LPQvtC8ICDRgdC+0L7RgtCy0LXRgtGB0YLQstC40Lgg0YEgINCf0L7Qu9C+0LbQtdC90LjQtdC8INC+INCx0LXQt9C90LDQu9C40YfQvdGL0YUNCtGA0LDRgdGH0LXRgtCw0YUgINCyICAg0KDQvtGB0YHQuNC50YHQutC+0LkgINCk0LXQtNC10YDQsNGG0LjQuCAgINC+0YIgIDkgINC40Y7Qu9GPICAxOTkyICDQs9C+0LTQsCwgINC00YDRg9Cz0LjQvNC4DQrQvdC+0YDQvNCw0YLQuNCy0L3Ri9C80Lgg0LDQutGC0LDQvNC4INCR0LDQvdC60LAg0KDQvtGB0YHQuNC4Lg0KICAgICDQodC/0LjRgdCw0L3QuNC1ICDQtNC10L3QtdCzICDRgdC+ICDRgdGH0LXRgtCwICDQmtC70LjQtdC90YLQsCAg0L/RgNC+0LjQt9Cy0L7QtNC40YLRgdGPICDRgtC+0LvRjNC60L4gINC/0L4gINC10LPQvg0K0L/QvtGA0YPRh9C10L3QuNGOINC40LvQuCAg0YEgINC10LPQviAg0YHQvtCz0LvQsNGB0LjRjy4gINCR0LXQt9Cw0LrRhtC10L/RgtC90L7QtSAg0LggINCx0LXRgdGB0L/QvtGA0L3QvtC1ICDRgdC/0LjRgdCw0L3QuNC1DQrRgdGA0LXQtNGB0YLQsiDRgdC+ICDRgdGH0LXRgtCwICDQmtC70LjQtdC90YLQsCAg0L7RgdGD0YnQtdGB0YLQstC70Y/QtdGC0YHRjyAg0JHQsNC90LrQvtC8ICDRgtC+0LvRjNC60L4gINCyICDRgdC70YPRh9Cw0Y/RhSwNCtGB0L/QtdGG0LjQsNC70YzQvdC+INC/0YDQtdC00YPRgdC80L7RgtGA0LXQvdC90YvRhSDQt9Cw0LrQvtC90L7QtNCw0YLQtdC70YzRgdGC0LLQvtC8Lg0KICAgICA0LiDQntGB0YPRidC10YHRgtCy0LvRj9GC0YwgINC/0YDQuNC10Lwg0LTQtdC90LXQttC90L7QuSAg0LLRi9GA0YPRh9C60Lgg0LIgINGB0YLRgNC+0LPQvtC8INGB0L7QvtGC0LLQtdGC0YHRgtCy0LjQuCDRgQ0K0JjQvdGB0YLRgNGD0LrRhtC40LXQuSDQk9C+0YHQsdCw0L3QutCwICDQodCh0KHQoCDQvtGCICAxMCDQtNC10LrQsNCx0YDRjyAgMTk4NyDQsy4gIE4yMyAi0J/QviDRjdC80LjRgdGB0LjQvtC90L3Qvi0NCtC60LDRgdGB0L7QstC+0Lkg0YDQsNCx0L7RgtC1INCyINGD0YfRgNC10LbQtNC10L3QuNGP0YUg0LHQsNC90LrQvtCyINCh0KHQodCgIi4NCiAgICAg0J/QviDQv9C10YDQstC+0LzRgyAg0YLRgNC10LHQvtCy0LDQvdC40Y4gINCa0LvQuNC10L3RgtCwICDQstGL0LTQsNCy0LDRgtGMICDQtdC80YMgINC90LDQu9C40YfQvdGL0LUgINC00LXQvdC10LbQvdGL0LUNCtGB0YDQtdC00YHRgtCy0LAg0YEg0YDQsNGB0YfQtdGC0L3QvtCz0L4g0YHRh9C10YLQsCDQvdCwINCy0YvQv9C70LDRgtGDINC30LDRgNCw0LHQvtGC0L3QvtC5INC/0LvQsNGC0Ysg0Lgg0LTRgNGD0LPQuNC1INGG0LXQu9C4INCyDQrRgdC70YPRh9Cw0Y/RhSwg0L/RgNC10LTRg9GB0LzQvtGC0YDQtdC90L3Ri9GFINC30LDQutC+0L3QvtC00LDRgtC10LvRjNGB0YLQstC+0LwuDQogICAgIDUuICDQntCx0LXRgdC/0LXRh9C40LLQsNGC0YwgICDQmtC70LjQtdC90YLQsCAg0LHQu9Cw0L3QutCw0LzQuCAg0YHQu9C10LTRg9GO0YnQuNGFICDRgNCw0YHRh9C10YLQvdC+LdC60LDRgdGB0L7QstGL0YUNCtC00L7QutGD0LzQtdC90YLQvtCyOiDRh9C10LrQvtCy0YvQvNC4ICDQutC90LjQttC60LDQvNC4LCDQvtCx0YrRj9Cy0LvQtdC90LjRj9C80LggINC90LAg0LLQt9C90L7RgSAg0L3QsNC70LjRh9C90YvRhSAg0LTQtdC90LXQsw0KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KICAgICDQktGL0LTQsNGH0LAg0JrQu9C40LXQvdGC0YMg0LHQu9Cw0L3QutC+0LIg0YDQsNGB0YfQtdGC0L3Qvi3QutCw0YHRgdC+0LLRi9GFINC00L7QutGD0LzQtdC90YLQvtCyINC+0YHRg9GJ0LXRgdGC0LLQu9GP0LXRgtGB0Y8NCtCR0LDQvdC60L7QvCAg0LIgICDRgtC10YfQtdC90LjQtSAgMyAgINGA0LDQsdC+0YfQuNGFICDQtNC90LXQuSAgINGBICDQvNC+0LzQtdC90YLQsCAgINC10LPQviAg0L7QsdGA0LDRidC10L3QuNGPICDRgQ0K0YHQvtC+0YLQstC10YLRgdGC0LLRg9GO0YnQtdC5INC/0YDQvtGB0YzQsdC+0LkuDQogICAgINCS0YvQtNCw0YfQsCDQmtC70LjQtdC90YLRgyAg0L7RhNC+0YDQvNC70LXQvdC90L7QuSDRh9C10LrQvtCy0L7QuSAg0LrQvdC40LbQutC4INC00LvRjyDQv9C+0LvRg9GH0LXQvdC40Y8g0L3QsNC70LjRh9C90YvRhQ0K0LTQtdC90LXQsyAg0L7RgdGD0YnQtdGB0YLQstC70Y/QtdGC0YHRjyAg0JHQsNC90LrQvtC8ICDQsiAg0YLQtdGH0LXQvdC40LUgIDMgINGA0LDQsdC+0YfQuNGFICDQtNC90LXQuSAg0YEgINC80L7QvNC10L3RgtCwDQrQv9C+0LTQv9C40YHQsNC90LjRjyDQvdCw0YHRgtC+0Y/RidC10LPQviDQtNC+0LPQvtCy0L7RgNCwLg0KICAgICA2LiDQktGL0LTQsNCy0LDRgtGMINCa0LvQuNC10L3RgtGDINCy0YvQv9C40YHQutC4INC40Lcg0YHRh9C10YLQsCBfX19fX19fX19fX19fICjQv9C10YDQuNC+0LTQuNGH0L3QvtGB0YLRjCkNCiAgICAgNy4g0JLRi9C00LDQstCw0YLRjCAg0JrQu9C40LXQvdGC0YMg0LjQu9C4INGC0YDQtdGC0YzQuNC8INC70LjRhtCw0Lwg0L/QviDRg9C60LDQt9Cw0L3QuNGOINCa0LvQuNC10L3RgtCwINGB0L/RgNCw0LLQutC4DQrQviDQvdCw0LvQuNGH0LjQuCAg0YMg0L3QtdCz0L4gINGA0LDRgdGH0LXRgtC90L7Qs9C+INGB0YfQtdGC0LAsINGA0LDQt9C80LXRgNC1INC+0YHRgtCw0YLQutCwINGB0YDQtdC00YHRgtCyINC90LAg0YHRh9C10YLQtSDQuA0K0L/RgNC+0LjQt9Cy0LXQtNC10L3QvdGL0YUg0L7Qv9C10YDQsNGG0LjRj9GFLg0KICAgICDQkdCw0L3QuiDQs9Cw0YDQsNC90YLQuNGA0YPQtdGCICDRgtCw0LnQvdGDINC+0L/QtdGA0LDRhtC40Lkg0L/QviDRgNCw0YHRh9C10YLQvdC+0LzRgyDRgdGH0LXRgtGDLiDQkdC10Lcg0YHQvtCz0LvQsNGB0LjRjw0K0JrQu9C40LXQvdGC0LAgINGB0L/RgNCw0LLQutC4ICAg0YLRgNC10YLRjNC40LwgINC70LjRhtCw0LwgINC/0L4gINGD0LrQsNC30LDQvdC90L7QvNGDICDQstC+0L/RgNC+0YHRgyAg0LzQvtCz0YPRgiAg0LHRi9GC0YwNCtC/0YDQtdC00L7RgdGC0LDQstC70LXQvdGLICAg0YLQvtC70YzQutC+ICAgINCyICAg0YHQu9GD0YfQsNGP0YUsICAgINGB0L/QtdGG0LjQsNC70YzQvdC+ICAgINC/0YDQtdC00YPRgdC80L7RgtGA0LXQvdC90YvRhQ0K0LfQsNC60L7QvdC+0LTQsNGC0LXQu9GM0YHRgtCy0L7QvC4NCiAgICAgOC4gINCa0L7QvdGB0YPQu9GM0YLQuNGA0L7QstCw0YLRjCAgINCa0LvQuNC10L3RgtCwICDQv9C+ICAg0LLQvtC/0YDQvtGB0LDQvCAg0LfQsNC60L7QvdC+0LTQsNGC0LXQu9GM0YHRgtCy0LAgICDQvg0K0YDQsNGB0YfQtdGC0LDRhSwgINCx0LDQvdC60L7QstGB0LrQvtC5ICAg0YLQtdGF0L3QuNC60LgsICDQv9GA0LDQstC40LsgICDQtNC+0LrRg9C80LXQvdGC0L7QvtCx0L7RgNC+0YLQsCAg0LggICDQtNGA0YPQs9C40LwNCtCy0L7Qv9GA0L7RgdCw0LwsINC40LzQtdGO0YnQuNC8ICDQvdC10L/QvtGB0YDQtdC00YHRgtCy0LXQvdC90L7QtSDQvtGC0L3QvtGI0LXQvdC40LUgINC6INGA0LDRgdGH0LXRgtC90L7QvNGDINC4INC60LDRgdGB0L7QstC+0LzRgw0K0L7QsdGB0LvRg9C20LjQstCw0L3QuNGOLg0KICAgICA5LiDQntCx0LXRgdC/0LXRh9C40YLRjCAg0YHQvtGF0YDQsNC90L3QvtGB0YLRjCDQstCy0LXRgNC10L3QvdGL0YUgINC10LzRgyAg0LTQtdC90LXQttC90YvRhSAg0YHRgNC10LTRgdGC0LIuICDQn9GA0LgNCtC90LDQu9C40YfQuNC4INGP0LLQvdC+0LkgINC/0L7QtNC70L7QttC90L7RgdGC0LggINGA0LDRgdGH0LXRgtC90L4t0LrQsNGB0YHQvtCy0YvRhSAg0LTQvtC60YPQvNC10L3RgtC+0LIgINCR0LDQvdC6ICDQvtCx0Y/Qt9Cw0L0NCtC+0YLQutCw0LfQsNGC0Ywg0LIg0YHQvtCy0LXRgNGI0LXQvdC40Lgg0L7Qv9C10YDQsNGG0LjQuC4NCiAgICAgMTAuICDQktGL0L/Qu9Cw0YfQuNCy0LDRgtGMICAg0JrQu9C40LXQvdGC0YMgINC00L7RhdC+0LQgICDQsiAg0YDQsNC30LzQtdGA0LUgICBfX18lICDQs9C+0LTQvtCy0YvRhSAg0L7Rgg0K0YHRgNC10LTQvdC10LrQstCw0YDRgtCw0LvRjNC90L7Qs9C+INC+0YHRgtCw0YLQutCwINGB0YDQtdC00YHRgtCyLCDQvdCw0YXQvtC00Y/RidC40YXRgdGPINC90LAg0YDQsNGB0YfQtdGC0L3QvtC8INGB0YfQtdGC0LUuDQogICAgINCS0YvQv9C70LDRgtCwICDQv9GA0L7RhtC10L3RgtC+0LIgICDQvtGB0YPRidC10YHRgtCy0LvRj9C10YLRgdGPICDQkdCw0L3QutC+0LwgICDQtdC20LXQutCy0LDRgNGC0LDQu9GM0L3QviAg0L/Rg9GC0LXQvA0K0LfQsNGH0LjRgdC70LXQvdC40Y8g0YHQvtC+0YLQstC10YLRgdGC0LLRg9GO0YnQtdC5ICDRgdGD0LzQvNGLINC90LAg0YHRh9C10YIg0JrQu9C40LXQvdGC0LAg0L3QsCBfX19fINGH0LjRgdC70L4g0L/QtdGA0LLQvtCz0L4NCtC80LXRgdGP0YbQsCDRgdC70LXQtNGD0Y7RidC10LPQviDQutCy0LDRgNGC0LDQu9CwLg0KICAgICAxMS4g0JIgINGB0LvRg9GH0LDQtSDRg9GC0LXRgNC4ICDRgNCw0YHRh9C10YLQvdGL0YUg0LTQvtC60YPQvNC10L3RgtC+0LIgINCyINC/0YDQvtGG0LXRgdGB0LUg0LjRhSDQv9C10YDQtdGB0YvQu9C60LgNCtCR0LDQvdC60L7QvCDRh9C10YDQtdC3ICDQv9GA0LXQtNC/0YDQuNGP0YLQuNGPINC4ICDQvtGA0LPQsNC90LjQt9Cw0YbQuNC4INGB0LLRj9C30LgsINC/0L4g0YLQtdC70LXRgtCw0LnQv9GDINC40LvQuCDQtNGA0YPQs9C40LwNCtGB0L/QvtGB0L7QsdC+0LwsICDQsCAgINGC0LDQutC20LUgINC/0L4gICDQstC40L3QtSAg0JHQsNC90LrQsCAg0YLRgNC10YLRjNC10LPQviAg0LvQuNGG0LAsICDQkdCw0L3QutCwICDQoNC+0YHRgdC40LgsDQrQvtGB0YPRidC10YHRgtCy0LvRj9GC0Ywg0L/QviAgINGB0LLQvtC10LkgINC40L3QuNGG0LjQsNGC0LjQstC1ICDQv9C+0LjRgdC6ICDQv9C+0YLQtdGA0Y/QvdC90YvRhSAg0LTQvtC60YPQvNC10L3RgtC+0LIgINC40LvQuA0K0L7QsdC10YHQv9C10YfQuNGC0Ywg0YHQsdC+0YAg0L3QtdC+0LHRhdC+0LTQuNC80YvRhSDQtNC+0LrQsNC30LDRgtC10LvRjNGB0YLQsiDQtNC70Y8g0LfQsNGJ0LjRgtGLINC40L3RgtC10YDQtdGB0L7QsiDQmtC70LjQtdC90YLQsC4NCg0KICAgICBJSS4g0JHQsNC90Log0LjQvNC10LXRgiDQv9GA0LDQstC+DQogICAgIDEyLiDQntGC0LrQsNC30LDRgtGMICDQsiAg0YHQvtCy0LXRgNGI0LXQvdC40LggINGA0LDRgdGH0LXRgtC90YvRhSAg0LggINC60LDRgdGB0L7QstGL0YUgINC+0L/QtdGA0LDRhtC40LkgINC/0YDQuA0K0L3QsNC70LjRh9C40Lgg0YTQsNC60YLQvtCyLCAg0YHQstC40LTQtdGC0LXQu9GM0YHRgtCy0YPRjtGJ0LjRhSDQviAg0L3QsNGA0YPRiNC10L3QuNC4ICDQmtC70LjQtdC90YLQvtC8ICDQtNC10LnRgdGC0LLRg9GO0YnQtdCz0L4NCtC30LDQutC+0L3QvtC00LDRgtC10LvRjNGB0YLQstCwLCDQsiAg0YLQvtC8INGH0LjRgdC70LUgINCx0LDQvdC60L7QstGB0LrQuNGFINC/0YDQsNCy0LjQuywgINGC0LXRhdC90LjQutC4ICDQvtGE0L7RgNC80LvQtdC90LjRjw0K0YDQsNGB0YfQtdGC0L3Ri9GFINC00L7QutGD0LzQtdC90YLQvtCyINC4INGB0YDQvtC60L7QsiDQuNGFINC/0YDQtdC00L7RgdGC0LDQstC70LXQvdC40Y8g0LIg0JHQsNC90LouDQogICAgIDEzLiAg0J7RgtC60LDQt9Cw0YLRjCAgINCa0LvQuNC10L3RgtGDICDQsiAgINCy0YvQtNCw0YfQtSAg0L3QsNC70LjRh9C90YvRhSAgINC00LXQvdC10LMgICDQsiAgINGB0LvRg9GH0LDQtQ0K0L3QtdGB0LLQvtC10LLRgNC10LzQtdC90L3QvtCz0L4gICDQv9GA0LXQtNGB0YLQsNCy0LvQtdC90LjRjyAgICAo0LjQu9C4ICAg0L3QtdC/0YDQtdC00L7RgdGC0LDQstC70LXQvdC40Y8pICAg0JrQu9C40LXQvdGC0L7QvA0K0LrQsNGB0YHQvtCy0L7Qs9C+INC/0LvQsNC90LAsINCwINGC0LDQutC20LUg0L/RgNC10LLRi9GI0LXQvdC40Y8g0LXQs9C+INC70LjQvNC40YLQsC4NCg0KICAgICBJSUkuINCa0LvQuNC10L3RgiDQvtCx0Y/Qt9GD0LXRgtGB0Y86DQogICAgIDE0LiDQpdGA0LDQvdC40YLRjCAg0LLRgdC1INC40LzQtdGO0YnQuNC10YHRjyDRgyDQvdC10LPQviDQtNC10L3QtdC20L3Ri9C1INGB0YDQtdC00YHRgtCy0LAg0L3QsCDRgNCw0YHRh9C10YLQvdC+0Lwg0LgNCtC00YDRg9Cz0LjRhSDRgdGH0LXRgtCw0YUg0LIg0JHQsNC90LrQtS4NCiAgICAgMTUuINCg0LDRgdGB0YfQuNGC0YvQstCw0YLRjNGB0Y8gINC/0L4g0YHQstC+0LjQvCAg0L7QsdGP0LfQsNGC0LXQu9GM0YHRgtCy0LDQvCDQsiDQsdC10LfQvdCw0LvQuNGH0L3QvtC8INC/0L7RgNGP0LTQutC1DQrQv9GD0YLQtdC8INC/0LXRgNC10YfQuNGB0LvQtdC90LjQuSAg0L/QviDRgdGH0LXRgtCw0LwsICDQt9CwINC40YHQutC70Y7Rh9C10L3QuNC10Lwg0YHQu9GD0YfQsNC10LIsINC/0YDQtdC00YPRgdC80L7RgtGA0LXQvdC90YvRhQ0K0LfQsNC60L7QvdC+0LTQsNGC0LXQu9GM0YHRgtCy0L7QvC4NCiAgICAgMTYuINCS0L3QvtGB0LjRgtGMICDQvdCw0LvQuNGH0L3Ri9C1INC00LXQvdGM0LPQuCAg0L3QsCAg0YDQsNGB0YfQtdGC0L3Ri9C5ICDRgdGH0LXRgiAg0LfQsCAg0LjRgdC60LvRjtGH0LXQvdC40LXQvA0K0L/QtdGA0LXRhdC+0LTRj9GJ0LjRhSAg0L7RgdGC0LDRgtC60L7QsiAgINC00LXQvdC10LMgINCyICAg0LrQsNGB0YHQtSAg0LggICDRgdGD0LzQvCAg0LTQtdC90LXQttC90L7QuSAgINCy0YvRgNGD0YfQutC4LA0K0YDQsNGB0YXQvtC00L7QstCw0L3QuNC1INC60L7RgtC+0YDQvtC5INGA0LDQt9GA0LXRiNC10L3QviDQkdCw0L3QutC+0LwuDQogICAgIDE3LiDQn9GA0LXQtNGB0YLQsNCy0LvRj9GC0YwgINCR0LDQvdC60YMg0LXQttC10LrQstCw0YDRgtCw0LvRjNC90YvQuSDQutCw0YHRgdC+0LLRi9C5INC/0LvQsNC9INC00LvRjyDQstGL0Y/RgdC90LXQvdC40Y8NCtC/0L7RgtGA0LXQsdC90L7RgdGC0LXQuSAg0LrQu9C40LXQvdGC0LAgINCyICDQvdCw0LvQuNGH0L3Ri9GFICDRgdGA0LXQtNGB0YLQstCw0YUgINC90LUgINC/0L7Qt9C00L3QtdC1ICBfX19fX19fX19fXw0KKNGB0YDQvtC6KS4NCiAgICAgMTguINCS0YvQv9C+0LvQvdGP0YLRjCAg0YLRgNC10LHQvtCy0LDQvdC40Y8g0JjQvdGB0YLRgNGD0LrRhtC40LksICDQn9GA0LDQstC40LssINC00YDRg9Cz0LjRhSAg0L3QvtGA0LzQsNGC0LjQstC90YvRhQ0K0LDQutGC0L7QsiDQk9C+0YHQsdCw0L3QutCwICDQodCh0KHQoCDQuCDQptC10L3RgtGA0LDQu9GM0L3QvtCz0L4g0LHQsNC90LrQsCDQoNC+0YHRgdC40Lgg0L/QviDQstC+0L/RgNC+0YHQsNC8INGB0L7QstC10YDRiNC10L3QuNGPDQrRgNCw0YHRh9C10YLQvdC+LdC60LDRgdGB0L7QstGL0YUg0L7Qv9C10YDQsNGG0LjQuS4NCiAgICAgMTkuICDQntC/0LvQsNGH0LjQstCw0YLRjCAgINGB0YLQvtC40LzQvtGB0YLRjCAg0YPRgdC70YPQsyAgINCR0LDQvdC60LAgINC/0L4gINGA0LDRgdGH0LXRgtC90L4t0LrQsNGB0YHQvtCy0L7QvNGDDQrQvtCx0YHQu9GD0LbQuNCy0LDQvdC40Y4g0LIg0L/QvtGA0Y/QtNC60LUsINGD0YHRgtCw0L3QvtCy0LvQtdC90L3QvtC8INGA0LDQt9C00LXQu9C+0LwgViDQvdCw0YHRgtC+0Y/RidC10LPQviDQtNC+0LPQvtCy0L7RgNCwLg0KDQogICAgIElWLiDQmtC70LjQtdC90YIg0LjQvNC10LXRgiDQv9GA0LDQstC+Og0KICAgICAyMC4gICAg0KHQsNC80L7RgdGC0L7Rj9GC0LXQu9GM0L3QviAgICDRgNCw0YHQv9C+0YDRj9C20LDRgtGM0YHRjyAgICDQtNC10L3QtdC20L3Ri9C80LggICAg0YHRgNC10LTRgdGC0LLQsNC80LgsDQrQvdCw0YXQvtC00Y/RidC40LzQuNGB0Y8gINC90LAgICDQtdCz0L4gINGA0LDRgdGH0LXRgtC90L7QvCAgINGB0YfQtdGC0LUsICDQsiAgINC/0L7RgNGP0LTQutC1ICAg0LggICDQv9GA0LXQtNC10LvQsNGFLA0K0YPRgdGC0LDQvdC+0LLQu9C10L3QvdGL0YUg0LTQtdC50YHRgtCy0YPRjtGJ0LjQvCDQt9Cw0LrQvtC90L7QtNCw0YLQtdC70YzRgdGC0LLQvtC8Lg0KICAgICAyMS4g0JTQsNCy0LDRgtGMICDQkdCw0L3QutGDINC/0L7RgNGD0YfQtdC90LjRjyAg0L/QviAg0YDQsNGB0YfQtdGC0L3Qvi3QutCw0YHRgdC+0LLQvtC80YMgINC+0LHRgdC70YPQttC40LLQsNC90LjRjiwNCtC00LXQu9Cw0YLRjCDQt9Cw0L/RgNC+0YHRiywg0YLRgNC10LHQvtCy0LDRgtGMINC+0YLRh9C10YLQsCDQviDQstGL0L/QvtC70L3QtdC90LjQuCDQv9C+0YDRg9GH0LXQvdC40LkuDQogICAgIDIyLiDQotGA0LXQsdC+0LLQsNGC0YwgINC4INC/0L7Qu9GD0YfQsNGC0YwgINC90LDQu9C40YfQvdGL0LUg0LTQtdC90YzQs9C4ICDQsiAg0L/RgNC10LTQtdC70LDRhSAg0LrQsNGB0YHQvtCy0L7Qs9C+DQrQv9C70LDQvdCwINCyINGB0LvRg9GH0LDRj9GFLCDRg9GB0YLQsNC90L7QstC70LXQvdC90YvRhSDQt9Cw0LrQvtC90L7QtNCw0YLQtdC70YzRgdGC0LLQvtC8Lg0KDQogICAgIFYuINCg0LDQt9C80LXRgCAg0Lgg0L/QvtGA0Y/QtNC+0LogINC+0L/Qu9Cw0YLRiyAg0YPRgdC70YPQsyAg0JHQsNC90LrQsCAg0L/QviAg0YDQsNGB0YfQtdGC0L3Qvi3QutCw0YHRgdC+0LLQvtC80YMNCtC+0LHRgdC70YPQttC40LLQsNC90LjRjg0KICAgICAyMy4gICDQktC+0LfQvdCw0LPRgNCw0LbQtNC10L3QuNC1LCAgINGB0LvQtdC00YPQtdC80L7QtSAgINCR0LDQvdC60YMgICDQt9CwICAg0YDQsNGB0YfQtdGC0L3Qvi3QutCw0YHRgdC+0LLQvtC1DQrQvtCx0YHQu9GD0LbQuNCy0LDQvdC40LUgINCa0LvQuNC10L3RgtCwLCAgINGB0L7RgdGC0L7QuNGCICAg0LjQtyAgINCy0L7Qt9C90LDQs9GA0LDQttC00LXQvdC40Y8gICDQt9CwICAg0YDQsNGB0YfQtdGC0L3QvtC1DQrQvtCx0YHQu9GD0LbQuNCy0LDQvdC40LUg0Lgg0LLQvtC30L3QsNCz0YDQsNC20LTQtdC90LjQtSDQt9CwINC60LDRgdGB0L7QstC+0LUg0L7QsdGB0LvRg9C20LjQstCw0L3QuNC1Lg0KICAgICAyNC4gICDQodGC0L7QuNC80L7RgdGC0YwgICAg0YDQsNGB0YfQtdGC0L3QvtCz0L4gICDQvtCx0YHQu9GD0LbQuNCy0LDQvdC40Y8gICDRg9GB0YLQsNC90LDQstC70LjQstCw0LXRgtGB0Y8gICDQsg0K0LfQsNCy0LjRgdC40LzQvtGB0YLQuCDQvtGCINGB0YDQtdC00L3QtdC80LXRgdGP0YfQvdC+0LPQviDQutC+0LvQuNGH0LXRgdGC0LLQsCDQvtC/0LXRgNCw0YbQuNC5INC/0L4g0YHQu9C10LTRg9GO0YnQtdC5INGI0LrQsNC70LU6DQogICAgINC00L4gX19fX18g0L7Qv9C10YDQsNGG0LjQuSAtIF9fX19fX19fINGA0YPQsdC70LXQuSDQsiDQvNC10YHRj9GGLA0KICAgICDQvtGCIF9fXyDQtNC+IF9fX18g0L7Qv9C10YDQsNGG0LjQuSAtIF9fX18g0YDRg9Cx0LvQtdC5INCyINC80LXRgdGP0YYsDQogICAgINGB0LLRi9GI0LUgX19fX19fXyDQvtC/0LXRgNCw0YbQuNC5IC0gX19fX18g0YDRg9Cx0LvQtdC5INCyINC80LXRgdGP0YYuDQogICAgINCf0LvQsNGC0LAg0LfQsCDRgNCw0YHRh9C10YLQvdC+0LUg0L7QsdGB0LvRg9C20LjQstCw0L3QuNC1INGA0LDRgdGB0YfQuNGC0YvQstCw0LXRgtGB0Y8g0LXQttC10LrQstCw0YDRgtCw0LvRjNC90L4uDQogICAgINCe0LHQvtGB0L3QvtCy0LDQvdC40LXQvCAg0LTQu9GPICAg0L/Qu9Cw0YLQtdC20LAgINGP0LLQu9GP0LXRgtGB0Y8gICDRgNCw0YHRh9C10YIgINCy0L7Qt9C90LDQs9GA0LDQttC00LXQvdC40Y8gINC30LANCtC+0LHRgdC70YPQttC40LLQsNC90LjQtSwg0L/RgNC10LTRgdGC0LDQstC70LXQvdC90YvQuSDQkdCw0L3QutC+0LwuDQogICAgINCe0L/Qu9Cw0YLQsCDQmtC70LjQtdC90YLQvtC8ICDRgNCw0YHRh9C10YLQvdC+LdC60LDRgdGB0L7QstC+0LPQviDQvtCx0YHQu9GD0LbQuNCy0LDQvdC40Y8gINC/0YDQvtC40LfQstC+0LTQuNGC0YHRjyAg0L3QsA0K0L7RgdC90L7QstCw0L3QuNC4INC/0LvQsNGC0LXQttC90L7Qs9C+INGC0YDQtdCx0L7QstCw0L3QuNGPLdC/0L7RgNGD0YfQtdC90LjRjyDQkdCw0L3QutCwLg0KICAgICAyNS4g0J/QvtC80LjQvNC+ICDRgdGD0LzQvNGLLCDRg9C60LDQt9Cw0L3QvdC+0LkgINCyINC/LjI0ICDQvdCw0YHRgtC+0Y/RidC10LPQviAg0LTQvtCz0L7QstC+0YDQsCAg0JrQu9C40LXQvdGCDQrQvtCx0Y/Qt9Cw0L0g0YPQv9C70LDRgtC40YLRjCDQkdCw0L3QutGDOg0KX19fX19fINGA0YPQsdC70LXQuSAgIC0gINC30LAg0L7RgtC60YDRi9GC0LjQtSwgINC30LDQutGA0YvRgtC40LUg0LjQu9C4INC/0LXRgNC10L7RhNC+0YDQvNC70LXQvdC40LUg0YDQsNGB0YfQtdGC0L3QvtCz0L4NCtGB0YfQtdGC0LA7DQpfX19fX18g0YDRg9Cx0LvQtdC5IC0g0LfQsCDQstGL0LTQsNGH0YMg0LrQsNC20LTQvtC5INGH0LXQutC+0LLQvtC5INC60L3QuNC20LrQuC4NCiAgICAg0J7Qv9C70LDRgtCwICDQv9GA0L7QuNC30LLQvtC00LjRgtGB0Y8gICDQmtC70LjQtdC90YLQvtC8ICDQv9C70LDRgtC10LbQvdGL0LwgICDQv9C+0YDRg9GH0LXQvdC40LXQvCwgICDQutC+0YLQvtGA0L7QtQ0K0L/RgNC10LTRgdGC0LDQstC70Y/QtdGC0YHRjyAg0LIgICDQkdCw0L3QuiAg0L7QtNC90L7QstGA0LXQvNC10L3QvdC+ICDRgSAg0LfQsNGP0LLQu9C10L3QuNC10LwgINC+ICDQvdC10L7QsdGF0L7QtNC40LzQvtGB0YLQuA0K0L/RgNC+0LjQt9Cy0LXRgdGC0Lgg0YHQvtC+0YLQstC10YLRgdGC0LLRg9GO0YnQuNC1INC+0L/QtdGA0LDRhtC40Lgg0LjQu9C4INCy0YvQtNCw0YLRjCDRh9C10LrQvtCy0YPRjiDQutC90LjQttC60YMuDQogICAgIDI2LiDQodGC0L7QuNC80L7RgdGC0Ywg0LrQsNGB0YHQvtCy0L7Qs9C+INC+0LHRgdC70YPQttC40LLQsNC90LjRjyDQvtC/0YDQtdC00LXQu9GP0LXRgtGB0Y8g0LIg0LfQsNCy0LjRgdC40LzQvtGB0YLQuCDQvtGCDQrRgdGD0LzQvNGLINC90LDQu9C40YfQvdGL0YUg0LTQtdC90LXQsywg0LfQsNGH0LjRgdC70Y/QtdC80YvRhSDQuCDQstGL0LTQsNCy0LDQtdC80YvRhSDRgdC+INGB0YfQtdGC0LAg0JrQu9C40LXQvdGC0LA6DQogICAgINC/0YDQuCDRgdC00LDRh9C1INCx0YPQvNCw0LbQvdGL0YUg0LTQtdC90LXQsyAtIF9fX19fXyU7DQogICAgINC/0YDQuCDRgdC00LDRh9C1INC80LXRgtCw0LvQu9C40YfQtdGB0LrQuNGFINC00LXQvdC10LMgLSBfX19fJTsNCiAgICAg0L/RgNC4INC/0L7Qu9GD0YfQtdC90LjQuCDQvdCw0LvQuNGH0L3Ri9GFINC00LXQvdC10LMgLSBfX19fXyUuDQogICAgINCe0L/Qu9Cw0YLQsCDQvtGB0YPRidC10YHRgtCy0LvRj9C10YLRgdGPINC/0LvQsNGC0LXQttC90YvQvCDQv9C+0YDRg9GH0LXQvdC40LXQvCwg0LrQvtGC0L7RgNC+0LUg0L/RgNC10LTRgdGC0LDQstC70Y/QtdGC0YHRjw0K0LIg0JHQsNC90LogINC+0LTQvdC+0LLRgNC10LzQtdC90L3QviAg0YEgINC00L7QutGD0LzQtdC90YLQsNC80LgsICDQvdC10L7QsdGF0L7QtNC40LzRi9C80LggINC00LvRjyAg0L7RgdGD0YnQtdGB0YLQstC70LXQvdC40Y8NCtGD0LrQsNC30LDQvdC90YvRhSDQvtC/0LXRgNCw0YbQuNC5Lg0KDQogICAgIFZJLiDQntGC0LLQtdGC0YHRgtCy0LXQvdC90L7RgdGC0Ywg0YHRgtC+0YDQvtC9DQogICAgIDI3LiDQl9CwICDQvdC10YHQstC+0LXQstGA0LXQvNC10L3QvdC+0LUgKNC/0L7Qt9C00L3QtdC1ICDRgdC70LXQtNGD0Y7RidC10LPQviAg0LTQvdGPICDQv9C+0YHQu9C1INC/0L7Qu9GD0YfQtdC90LjRjw0K0YHQvtC+0YLQstC10YLRgdGC0LLRg9GO0YnQtdCz0L4g0LTQvtC60YPQvNC10L3RgtCwKSAg0LjQu9C4INC90LXQv9GA0LDQstC40LvRjNC90L7QtSDRgdC/0LjRgdCw0L3QuNC1INGB0YDQtdC00YHRgtCyINGB0L4g0YHRh9C10YLQsA0K0JrQu9C40LXQvdGC0LAsINCwICDRgtCw0LrQttC1INC30LAg0L3QtdGB0LLQvtC10LLRgNC10LzQtdC90L3QvtC1INC40LvQuCDQvdC10L/RgNCw0LLQuNC70YzQvdC+0LUg0LfQsNGH0LjRgdC70LXQvdC40LUg0JHQsNC90LrQvtC8DQrRgdGD0LzQvCwg0L/RgNC40YfQuNGC0LDRjtGJ0LjRhdGB0Y8gINCy0LvQsNC00LXQu9GM0YbRgyDRgdGH0LXRgtCwLCAg0JHQsNC90Log0YPQv9C70LDRh9C40LLQsNC10YIg0LIg0L/QvtC70YzQt9GDINCa0LvQuNC10L3RgtCwDQrRiNGC0YDQsNGEICDQsiAgINGA0LDQt9C80LXRgNC1ICAwLDUlICDQvdC10YHQstC+0LXQstGA0LXQvNC10L3QvdC+ICDQuNC70LggINC90LXQv9GA0LDQstC40LvRjNC90L4gINC30LDRh9C40YHQu9C10L3QvdC+0LkNCijRgdC/0LjRgdCw0L3QvdC+0LkpINGB0YPQvNC80Ysg0LfQsCDQutCw0LbQtNGL0Lkg0LTQtdC90Ywg0L/RgNC+0YHRgNC+0YfQutC4Lg0KICAgICAyOC4g0JfQsCAg0L3QsNGA0YPRiNC10L3QuNC1INGB0YDQvtC60LAsICDRg9GB0YLQsNC90L7QstC70LXQvdC90L7Qs9C+INC/LjEwICDQvdCw0YHRgtC+0Y/RidC10LPQviDQtNC+0LPQvtCy0L7RgNCwDQrQkdCw0L3QuiDRg9C/0LvQsNGH0LjQstCw0LXRgiDQmtC70LjQtdC90YLRgyDQv9C10L3RjiDQsiDRgNCw0LfQvNC10YDQtSAwLDA0JSDQt9CwINC60LDQttC00YvQuSDQtNC10L3RjCDQv9GA0L7RgdGA0L7Rh9C60LguDQogICAgIDI5LiDQl9CwICDRg9C60LvQvtC90LXQvdC40LUg0L7RgiDRg9C/0LvQsNGC0Ysg0YPRgdC70YPQsyDQkdCw0L3QutCwINC40LvQuCDQvdC10YHQstC+0LXQstGA0LXQvNC10L3QvdGD0Y4g0L7Qv9C70LDRgtGDDQrRg9GB0LvRg9CzINCR0LDQvdC60LAgICjQv9C/LjI0LDI1KSDQmtC70LjQtdC90YIg0YPQv9C70LDRh9C40LLQsNC10YIg0JHQsNC90LrRgyDQv9C10L3RjiDQsiDRgNCw0LfQvNC10YDQtSAwLDA0JSDQt9CwDQrQutCw0LbQtNGL0Lkg0LTQtdC90Ywg0L/RgNC+0YHRgNC+0YfQutC4Lg0KICAgICDQkiDRgdC70YPRh9Cw0LUgINC90LXQv9GA0LXQtNGB0YLQsNCy0LvQtdC90LjRjyDQsiAg0JHQsNC90Log0L/Qu9Cw0YLQtdC20L3QvtCz0L4gINC/0L7RgNGD0YfQtdC90LjRjyDQt9CwICDQvtC/0LvQsNGC0YMNCtGD0YHQu9GD0LMg0JHQsNC90LrQsCwgINCyINGB0LvRg9GH0LDRj9GFLCAg0L/RgNC10LTRg9GB0LzQvtGC0YDQtdC90L3Ri9GFINCyICDQvy4yNiDQvdCw0YHRgtC+0Y/RidC10LPQviAg0LTQvtCz0L7QstC+0YDQsCwNCtCR0LDQvdC6INC40LzQtdC10YIg0L/RgNCw0LLQviDQvtGC0LrQsNC30LDRgtGMINCyINGB0L7QstC10YDRiNC10L3QuNC4INC+0L/QtdGA0LDRhtC40LguDQogICAgIDMwLiDQl9CwICDQvdC10YPQstC10LTQvtC80LvQtdC90LjQtSDQkdCw0L3QutCwICDQsiDRgtC10YfQtdC90LjQtSAgMTAgINC00L3QtdC5ICDQv9C+0YHQu9C1ICDQv9C+0LvRg9GH0LXQvdC40Y8NCtCy0YvQv9C40YHQutC4INC40LcgINGB0YfQtdGC0LAg0L7QsSAg0L7RiNC40LHQvtGH0L3QviDQt9Cw0YfQuNGB0LvQtdC90L3Ri9GFICDQvdCwINGB0YfQtdGCICDQmtC70LjQtdC90YLQsCDRgdGD0LzQvNCw0YUgINC+0L0NCtGD0L/Qu9Cw0YfQuNCy0LDQtdGCICDQkdCw0L3QutGDICAg0LfQsCAg0LrQsNC20LTRi9C5ICDQtNC10L3RjCAg0L/RgNC+0YHRgNC+0YfQutC4ICDQv9C10L3RjiAg0LIgINGA0LDQt9C80LXRgNC1ICAwLDUlDQrQvdC10L/RgNCw0LLQuNC70YzQvdC+INC30LDRh9C40YHQu9C10L3QvdC+0Lkg0L3QsCDRgdGH0LXRgiwg0L3QtSDQv9GA0LjQvdCw0LTQu9C10LbQsNGJ0LXQuSDQtdC80YMg0YHRg9C80LzRiy4NCg0KICAgICBWSUkuINCh0YDQvtC6INC00LXQudGB0YLQstC40Y8g0LTQvtCz0L7QstC+0YDQsCDQuCDQv9C+0YDRj9C00L7QuiDQtdCz0L4g0LTQvtGB0YDQvtGH0L3QvtCz0L4g0YDQsNGB0YLQvtGA0LbQtdC90LjRjw0KICAgICAzMS4g0KHRgNC+0Log0LTQtdC50YHRgtCy0LjRjyDQtNC+0LPQvtCy0L7RgNCwINGB0L7RgdGC0LDQstC70Y/QtdGCIF9fX19fX19fX19fDQogICAgIDMyLiDQm9GO0LHQsNGPICDRgdGC0L7RgNC+0L3QsCDQvdCw0YHRgtC+0Y/RidC10LPQviAg0LTQvtCz0L7QstC+0YDQsCDQstC/0YDQsNCy0LUgINC10LPQviDRgNCw0YHRgtC+0YDQs9C90YPRgtGMICDQsg0K0L7QtNC90L7RgdGC0L7RgNC+0L3QvdC10Lwg0L/QvtGA0Y/QtNC60LUg0LTQviDQuNGB0YLQtdGH0LXQvdC40Y8g0YHRgNC+0LrQsCwg0L/RgNC10LTRg9C/0YDQtdC00LjQsiDQtNGA0YPQs9GD0Y4g0YHRgtC+0YDQvtC90YMg0LfQsA0KX19fX19fX18gKNGB0YDQvtC6KS4NCg0KICAgICBWSUlJLiDQlNGA0YPQs9C40LUg0YPRgdC70L7QstC40Y8g0L/QviDRg9GB0LzQvtGC0YDQtdC90LjRjiDRgdGC0L7RgNC+0L0NCiAgICAg0K7RgNC40LTQuNGH0LXRgdC60LjQtSDQsNC00YDQtdGB0LAg0YHRgtC+0YDQvtC9DQogICAgINCa0LvQuNC10L3RgjpfX19fX19fX19fX19fX19fX19fX18NCiAgICAg0JHQsNC90Lo6X19fX19fX19fX19fX19fX19fX19fX19fDQoNCtCg0YPQutC+0LLQvtC00LjRgtC10LvRjCAgICAgICAgICAgICAgICAgINCg0YPQutC+0LLQvtC00LjRgtC10LvRjA0KX19fX19fX19fX19fX19fXyAgICAgICAgICAgICAgX19fX19fX19fX19fX19fXw0KDQrQk9C70LDQstC90YvQuSDQsdGD0YXQs9Cw0LvRgtC10YAgICAgICAgICAgICAg0JPQu9Cw0LLQvdGL0Lkg0LHRg9GF0LPQsNC70YLQtdGADQpfX19fX19fX19fX19fX19fICAgICAgICAgICAgICBfX19fX19fX19fX19fX19fDQoNCiAgICAgINCcLtCfLiAgICAgICAgICAgICAgICAgICAgICAgICAg0Jwu0J8uDQoNCiDQodC8LiDRgtCw0LrQttC1INC60L7QvNC80LXQvdGC0LDRgNC40Lkg0YHQv9C10YbQuNCw0LvQuNGB0YLQvtCyDQoNCg0KICANCjwvcHJlPjwvZGl2Pg0KPC9ib2R5Pg0KPC9odG1sPg==",
+    "mime_type": "text/html",
+    "language": "ru",
+    "locale": "ru"
+  },
+  "ingestion_preflight": {
+    "mime_type": "text/html",
+    "extractor": "html:regex",
+    "extraction_source": "html:regex",
+    "extraction_ok": true,
+    "error": null,
+    "extraction_error": null,
+    "sha256": "163f7eaab0aac7bf06f8f7b7af720fca68c2590012ddbf3a6af4eaf63f5dc12c"
+  },
+  "metrics": {
+    "risk_count": 8,
+    "high_risk_count": 6,
+    "disputed_clause_count": 2,
+    "asymmetry_signal_count": 0,
+    "contract_type": "service_agreement"
+  },
+  "analysis": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'dogovor-na-raschetnokassovoe-obsluzhivanie-dogovor-raschetnogo-s. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Подрядчик'. Определен тип договора: Договор оказания услуг (уверенность 72%, правовая рамка: ГК РФ, глава 39). Ключевые обязательства по договору для роли 'Подрядчик': Банк обязуется 1; Предоставить Клиенту комплекс услуг по расчетно-кассовому обслуживанию; Обеспечить сохранность вверенных ему денежных средств. Условия оплаты: Договор на расчетно-кассовое обслуживание (договор расчетного счета) - версия для печати; Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР на расчетно-кассовое обслуживание (Договор расчетного счета) г; Открыть Клиенту расчетный счет N__________ Необходимые для открытия расчетного счета документы Клиентом предоставлены и банком проверены. Сроки и дедлайны: Обеспечивать Клиента бланками следующих расчетно-кассовых документов: чековыми книжками, объявлениями на взнос наличных денег ______________________________________________________________________ Выдача Клиенту бланков расчетно-кассовых документов осуществляется Банком в течение 3 рабочих дней с момента его обращения с соответствующей просьбой; Выдача Клиенту оформленной чековой книжки для получения наличных денег осуществляется Банком в течение 3 рабочих дней с момента подписания настоящего договора; Отказать в совершении расчетных и кассовых операций при наличии фактов, свидетельствующих о нарушении Клиентом действующего законодательства, в том числе банковских правил, техники оформления расчетных документов и сроков их предоставления в Банк. Штрафы и санкции: За несвоевременное (позднее следующего дня после получения соответствующего документа) или неправильное списание средств со счета Клиента, а также за несвоевременное или неправильное зачисление Банком сумм, причитающихся владельцу счета, Банк уплачивает в пользу Клиента штраф в размере 0,5% несвоевременно или неправильно зачисленной (списанной) суммы за каждый день просрочки. Найдено спорных или расплывчатых пунктов: 2.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "payment_asymmetry",
+        "title": "Критический риск: Платежная асимметрия: исполнение до оплаты",
+        "severity": "critical",
+        "clause_id": "clause-1",
+        "description": "Одна сторона обязана начать исполнение раньше, чем получает деньги, что создает кассовый разрыв и риск неоплаты. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: Договор на расчетно-кассовое обслуживание (договор расчетного счета) - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР на расчетно-кассовое обслуживание (Договор расчетного счета) г. ________ \"___\"_______20___ г. Коммерческий банк ______________________________________________, именуемый в дальнейшем Банк, в лице __________________, действующего на основании Устава, с одной стороны, и _________________________________,. . .",
+        "role_relevance": "Для исполнителя это прямой риск финансировать проект за свой счет.",
+        "mitigation": "Согласуйте аванс, этапные платежи или право приостановить исполнение до поступления оплаты."
+      },
+      {
+        "risk_id": "risk-2",
+        "rule_id": "payment_conditioned_on_signed_act",
+        "title": "Критический риск: Оплата поставлена в зависимость от акта другой стороны",
+        "severity": "critical",
+        "clause_id": "clause-1",
+        "description": "Деньги подлежат выплате только после подписания акта контрагентом, но срок на мотивированный отказ не определен. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: Договор на расчетно-кассовое обслуживание (договор расчетного счета) - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР на расчетно-кассовое обслуживание (Договор расчетного счета) г. ________ \"___\"_______20___ г. Коммерческий банк ______________________________________________, именуемый в дальнейшем Банк, в лице __________________, действующего на основании Устава, с одной стороны, и _________________________________,. . .",
+        "role_relevance": "Контрагент может бесконечно задерживать оплату, не подписывая акт.",
+        "mitigation": "Добавьте срок проверки и правило, что молчание считается либо акцептом, либо мотивированный отказ обязателен."
+      },
+      {
+        "risk_id": "risk-3",
+        "rule_id": "uncapped_daily_penalty",
+        "title": "Критический риск: Ежедневная пеня без верхнего лимита",
+        "severity": "critical",
+        "clause_id": "clause-1",
+        "description": "Договор содержит ежедневную пеню, но не ограничивает ее общий размер или период начисления. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: Договор на расчетно-кассовое обслуживание (договор расчетного счета) - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР на расчетно-кассовое обслуживание (Договор расчетного счета) г. ________ \"___\"_______20___ г. Коммерческий банк ______________________________________________, именуемый в дальнейшем Банк, в лице __________________, действующего на основании Устава, с одной стороны, и _________________________________,. . .",
+        "role_relevance": "Неограниченная пеня быстро превращается в непропорциональную ответственность.",
+        "mitigation": "Установите cap по общей сумме неустойки и предельный период начисления."
+      },
+      {
+        "risk_id": "risk-4",
+        "rule_id": "one_sided_penalty",
+        "title": "Высокий риск: Неустойка предусмотрена только для одной стороны",
+        "severity": "high",
+        "clause_id": "clause-1",
+        "description": "Санкции за нарушение детально описаны только для одной стороны, что создает асимметричный договорный баланс. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: Договор на расчетно-кассовое обслуживание (договор расчетного счета) - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР на расчетно-кассовое обслуживание (Договор расчетного счета) г. ________ \"___\"_______20___ г. Коммерческий банк ______________________________________________, именуемый в дальнейшем Банк, в лице __________________, действующего на основании Устава, с одной стороны, и _________________________________,. . .",
+        "role_relevance": "Исполнитель несет санкции, не имея симметричных средств давления.",
+        "mitigation": "Сделайте ответственность зеркальной или обоснуйте, почему санкция односторонняя и ограниченная."
+      },
+      {
+        "risk_id": "risk-5",
+        "rule_id": "strict_deadlines_without_dependency_carveout",
+        "title": "Высокий риск: Жесткие сроки без оговорки о зависимостях",
+        "severity": "high",
+        "clause_id": "clause-1",
+        "description": "Сроки для одной стороны установлены жестко, но не учитывают задержки по исходным данным, доступам, согласованиям и приемке со стороны контрагента. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: Договор на расчетно-кассовое обслуживание (договор расчетного счета) - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР на расчетно-кассовое обслуживание (Договор расчетного счета) г. ________ \"___\"_______20___ г. Коммерческий банк ______________________________________________, именуемый в дальнейшем Банк, в лице __________________, действующего на основании Устава, с одной стороны, и _________________________________,. . .",
+        "role_relevance": "Исполнитель отвечает за сроки, которые частично контролирует контрагент.",
+        "mitigation": "Пропишите, что сроки автоматически сдвигаются на период задержки зависимых действий другой стороны."
+      },
+      {
+        "risk_id": "risk-6",
+        "rule_id": "vague_material_breach",
+        "title": "Высокий риск: Расторжение привязано к расплывчатому нарушению",
+        "severity": "high",
+        "clause_id": "clause-1",
+        "description": "Основание для расторжения описано общими словами вроде 'ненадлежащее исполнение' без порога существенности и процедуры фиксации. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: Договор на расчетно-кассовое обслуживание (договор расчетного счета) - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР на расчетно-кассовое обслуживание (Договор расчетного счета) г. ________ \"___\"_______20___ г. Коммерческий банк ______________________________________________, именуемый в дальнейшем Банк, в лице __________________, действующего на основании Устава, с одной стороны, и _________________________________,. . .",
+        "role_relevance": "Широкое основание позволяет прекратить договор по субъективной оценке.",
+        "mitigation": "Уточните, какие нарушения считаются существенными, и дайте срок на устранение."
+      },
+      {
+        "risk_id": "risk-7",
+        "rule_id": "uncontrolled_subcontracting",
+        "title": "Средний риск: Субподряд или привлечение третьих лиц описаны неясно",
+        "severity": "medium",
+        "clause_id": "clause-1",
+        "description": "Либо привлечение третьих лиц запрещено без разумных исключений, либо разрешено без контроля, уведомления и ответственности за качество. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: Договор на расчетно-кассовое обслуживание (договор расчетного счета) - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР на расчетно-кассовое обслуживание (Договор расчетного счета) г. ________ \"___\"_______20___ г. Коммерческий банк ______________________________________________, именуемый в дальнейшем Банк, в лице __________________, действующего на основании Устава, с одной стороны, и _________________________________,. . .",
+        "role_relevance": "Полный запрет на субподряд может сделать исполнение нереалистичным.",
+        "mitigation": "Уточните, когда третьи лица допустимы, нужно ли согласие и кто отвечает за их ошибки."
+      },
+      {
+        "risk_id": "risk-8",
+        "rule_id": "confidentiality_without_exceptions",
+        "title": "Средний риск: Конфиденциальность без carve-outs и разумных исключений",
+        "severity": "medium",
+        "clause_id": "clause-1",
+        "description": "Обязанность по конфиденциальности сформулирована широко, но не содержит исключений для общедоступной информации, законных запросов и ранее известных данных. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: Договор на расчетно-кассовое обслуживание (договор расчетного счета) - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР на расчетно-кассовое обслуживание (Договор расчетного счета) г. ________ \"___\"_______20___ г. Коммерческий банк ______________________________________________, именуемый в дальнейшем Банк, в лице __________________, действующего на основании Устава, с одной стороны, и _________________________________,. . .",
+        "role_relevance": "Исполнитель рискует нарушить чрезмерно широкую конфиденциальность.",
+        "mitigation": "Добавьте стандартные carve-outs и ограничьте ответственность за непредотвратимое раскрытие."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Договор на расчетно-кассовое обслуживание (договор расчетного счета) - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР на расчетно-кассовое обслуживание (Договор расчетного счета) г. ________ \"___\"_______20___ г. Коммерческий банк ______________________________________________, именуемый в дальнейшем Банк, в лице __________________, действующего на основании Устава, с одной стороны, и _________________________________,...",
+        "dispute_reason": "Одна из сторон получила дискреционное право без достаточных ограничителей.",
+        "possible_consequence": "Это может привести к одностороннему применению условия и спору о пределах такого права.",
+        "confidence": 0.76
+      },
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Договор на расчетно-кассовое обслуживание (договор расчетного счета) - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР на расчетно-кассовое обслуживание (Договор расчетного счета) г. ________ \"___\"_______20___ г. Коммерческий банк ______________________________________________, именуемый в дальнейшем Банк, в лице __________________, действующего на основании Устава, с одной стороны, и _________________________________,...",
+        "dispute_reason": "Маркер указывает на возможный конфликт между несколькими обязанностями или сроками.",
+        "possible_consequence": "При исполнении может оказаться, что условия невозможно соблюсти одновременно.",
+        "confidence": 0.66
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Подрядчик",
+      "overview": "Договор содержит 1 пунктов и 8 выявленных рисков. Краткий вывод сфокусирован на роли 'Подрядчик'. Обнаружено 6 пунктов с высоким уровнем риска; их стоит перепроверить вручную.",
+      "must_do": [
+        "Банк обязуется 1.",
+        "Предоставить Клиенту комплекс услуг по расчетно-кассовому обслуживанию.",
+        "Обеспечить сохранность вверенных ему денежных средств.",
+        "При наличии явной подложности расчетно-кассовых документов Банк обязан отказать в совершении операции.",
+        "В случае утери расчетных документов в процессе их пересылки Банком через предприятия и организации связи, по телетайпу или другим способом, а также по вине Банка третьего лица, Банка России, осуществлять по своей инициативе поиск потерянных документов или обеспечить сбор необходимых доказательств для защиты интересов Клиента.",
+        "Клиент обязуется: 14."
+      ],
+      "should_review": [
+        "Любая сторона настоящего договора вправе его расторгнуть в одностороннем порядке до истечения срока, предупредив другую сторону за ________ (срок).",
+        "Другие условия по усмотрению сторон Юридические адреса сторон Клиент: _____________________ Банк: ________________________ Руководитель Руководитель ________________ ________________ Главный бухгалтер Главный бухгалтер ________________ ________________ М."
+      ],
+      "payment_terms": [
+        "Договор на расчетно-кассовое обслуживание (договор расчетного счета) - версия для печати.",
+        "Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР на расчетно-кассовое обслуживание (Договор расчетного счета) г.",
+        "Открыть Клиенту расчетный счет N__________ Необходимые для открытия расчетного счета документы Клиентом предоставлены и банком проверены.",
+        "Предоставить Клиенту комплекс услуг по расчетно-кассовому обслуживанию.",
+        "Комплексное расчетно-кассовое обслуживание заключается в ведении счета Клиента и осуществлении Банком по поручению клиента всех расчетных и кассовых операций, предусмотренных законодательством, в том числе: выполнение поручений Клиента о перечислении денежных сумм с одного принадлежащего ему счета на другой и счета третьих лиц.",
+        "выполнение поручений Клиента о получении причитающихся ему денежных сумм от других лиц и о зачислении их на счет Клиента (инкассо), в том числе путем взыскания по векселям по инкассовому индоссаменту."
+      ],
+      "deadlines": [
+        "Обеспечивать Клиента бланками следующих расчетно-кассовых документов: чековыми книжками, объявлениями на взнос наличных денег ______________________________________________________________________ Выдача Клиенту бланков расчетно-кассовых документов осуществляется Банком в течение 3 рабочих дней с момента его обращения с соответствующей просьбой.",
+        "Выдача Клиенту оформленной чековой книжки для получения наличных денег осуществляется Банком в течение 3 рабочих дней с момента подписания настоящего договора.",
+        "Отказать в совершении расчетных и кассовых операций при наличии фактов, свидетельствующих о нарушении Клиентом действующего законодательства, в том числе банковских правил, техники оформления расчетных документов и сроков их предоставления в Банк.",
+        "Представлять Банку ежеквартальный кассовый план для выяснения потребностей клиента в наличных средствах не позднее ___________ (срок).",
+        "За нарушение срока, установленного п.",
+        "За неуведомление Банка в течение 10 дней после получения выписки из счета об ошибочно зачисленных на счет Клиента суммах он уплачивает Банку за каждый день просрочки пеню в размере 0,5% неправильно зачисленной на счет, не принадлежащей ему суммы."
+      ],
+      "penalties": [
+        "За несвоевременное (позднее следующего дня после получения соответствующего документа) или неправильное списание средств со счета Клиента, а также за несвоевременное или неправильное зачисление Банком сумм, причитающихся владельцу счета, Банк уплачивает в пользу Клиента штраф в размере 0,5% несвоевременно или неправильно зачисленной (списанной) суммы за каждый день просрочки."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "163f7eaab0aac7bf06f8f7b7af720fca68c2590012ddbf3a6af4eaf63f5dc12c"
+    },
+    "contract_type": {
+      "type_id": "service_agreement",
+      "confidence": 0.72,
+      "ru_name": "Договор оказания услуг",
+      "legal_framework": "ГК РФ, глава 39"
+    },
+    "asymmetry_signals": []
+  },
+  "result": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'dogovor-na-raschetnokassovoe-obsluzhivanie-dogovor-raschetnogo-s. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Подрядчик'. Определен тип договора: Договор оказания услуг (уверенность 72%, правовая рамка: ГК РФ, глава 39). Ключевые обязательства по договору для роли 'Подрядчик': Банк обязуется 1; Предоставить Клиенту комплекс услуг по расчетно-кассовому обслуживанию; Обеспечить сохранность вверенных ему денежных средств. Условия оплаты: Договор на расчетно-кассовое обслуживание (договор расчетного счета) - версия для печати; Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР на расчетно-кассовое обслуживание (Договор расчетного счета) г; Открыть Клиенту расчетный счет N__________ Необходимые для открытия расчетного счета документы Клиентом предоставлены и банком проверены. Сроки и дедлайны: Обеспечивать Клиента бланками следующих расчетно-кассовых документов: чековыми книжками, объявлениями на взнос наличных денег ______________________________________________________________________ Выдача Клиенту бланков расчетно-кассовых документов осуществляется Банком в течение 3 рабочих дней с момента его обращения с соответствующей просьбой; Выдача Клиенту оформленной чековой книжки для получения наличных денег осуществляется Банком в течение 3 рабочих дней с момента подписания настоящего договора; Отказать в совершении расчетных и кассовых операций при наличии фактов, свидетельствующих о нарушении Клиентом действующего законодательства, в том числе банковских правил, техники оформления расчетных документов и сроков их предоставления в Банк. Штрафы и санкции: За несвоевременное (позднее следующего дня после получения соответствующего документа) или неправильное списание средств со счета Клиента, а также за несвоевременное или неправильное зачисление Банком сумм, причитающихся владельцу счета, Банк уплачивает в пользу Клиента штраф в размере 0,5% несвоевременно или неправильно зачисленной (списанной) суммы за каждый день просрочки. Найдено спорных или расплывчатых пунктов: 2.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "payment_asymmetry",
+        "title": "Критический риск: Платежная асимметрия: исполнение до оплаты",
+        "severity": "critical",
+        "clause_id": "clause-1",
+        "description": "Одна сторона обязана начать исполнение раньше, чем получает деньги, что создает кассовый разрыв и риск неоплаты. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: Договор на расчетно-кассовое обслуживание (договор расчетного счета) - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР на расчетно-кассовое обслуживание (Договор расчетного счета) г. ________ \"___\"_______20___ г. Коммерческий банк ______________________________________________, именуемый в дальнейшем Банк, в лице __________________, действующего на основании Устава, с одной стороны, и _________________________________,. . .",
+        "role_relevance": "Для исполнителя это прямой риск финансировать проект за свой счет.",
+        "mitigation": "Согласуйте аванс, этапные платежи или право приостановить исполнение до поступления оплаты."
+      },
+      {
+        "risk_id": "risk-2",
+        "rule_id": "payment_conditioned_on_signed_act",
+        "title": "Критический риск: Оплата поставлена в зависимость от акта другой стороны",
+        "severity": "critical",
+        "clause_id": "clause-1",
+        "description": "Деньги подлежат выплате только после подписания акта контрагентом, но срок на мотивированный отказ не определен. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: Договор на расчетно-кассовое обслуживание (договор расчетного счета) - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР на расчетно-кассовое обслуживание (Договор расчетного счета) г. ________ \"___\"_______20___ г. Коммерческий банк ______________________________________________, именуемый в дальнейшем Банк, в лице __________________, действующего на основании Устава, с одной стороны, и _________________________________,. . .",
+        "role_relevance": "Контрагент может бесконечно задерживать оплату, не подписывая акт.",
+        "mitigation": "Добавьте срок проверки и правило, что молчание считается либо акцептом, либо мотивированный отказ обязателен."
+      },
+      {
+        "risk_id": "risk-3",
+        "rule_id": "uncapped_daily_penalty",
+        "title": "Критический риск: Ежедневная пеня без верхнего лимита",
+        "severity": "critical",
+        "clause_id": "clause-1",
+        "description": "Договор содержит ежедневную пеню, но не ограничивает ее общий размер или период начисления. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: Договор на расчетно-кассовое обслуживание (договор расчетного счета) - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР на расчетно-кассовое обслуживание (Договор расчетного счета) г. ________ \"___\"_______20___ г. Коммерческий банк ______________________________________________, именуемый в дальнейшем Банк, в лице __________________, действующего на основании Устава, с одной стороны, и _________________________________,. . .",
+        "role_relevance": "Неограниченная пеня быстро превращается в непропорциональную ответственность.",
+        "mitigation": "Установите cap по общей сумме неустойки и предельный период начисления."
+      },
+      {
+        "risk_id": "risk-4",
+        "rule_id": "one_sided_penalty",
+        "title": "Высокий риск: Неустойка предусмотрена только для одной стороны",
+        "severity": "high",
+        "clause_id": "clause-1",
+        "description": "Санкции за нарушение детально описаны только для одной стороны, что создает асимметричный договорный баланс. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: Договор на расчетно-кассовое обслуживание (договор расчетного счета) - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР на расчетно-кассовое обслуживание (Договор расчетного счета) г. ________ \"___\"_______20___ г. Коммерческий банк ______________________________________________, именуемый в дальнейшем Банк, в лице __________________, действующего на основании Устава, с одной стороны, и _________________________________,. . .",
+        "role_relevance": "Исполнитель несет санкции, не имея симметричных средств давления.",
+        "mitigation": "Сделайте ответственность зеркальной или обоснуйте, почему санкция односторонняя и ограниченная."
+      },
+      {
+        "risk_id": "risk-5",
+        "rule_id": "strict_deadlines_without_dependency_carveout",
+        "title": "Высокий риск: Жесткие сроки без оговорки о зависимостях",
+        "severity": "high",
+        "clause_id": "clause-1",
+        "description": "Сроки для одной стороны установлены жестко, но не учитывают задержки по исходным данным, доступам, согласованиям и приемке со стороны контрагента. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: Договор на расчетно-кассовое обслуживание (договор расчетного счета) - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР на расчетно-кассовое обслуживание (Договор расчетного счета) г. ________ \"___\"_______20___ г. Коммерческий банк ______________________________________________, именуемый в дальнейшем Банк, в лице __________________, действующего на основании Устава, с одной стороны, и _________________________________,. . .",
+        "role_relevance": "Исполнитель отвечает за сроки, которые частично контролирует контрагент.",
+        "mitigation": "Пропишите, что сроки автоматически сдвигаются на период задержки зависимых действий другой стороны."
+      },
+      {
+        "risk_id": "risk-6",
+        "rule_id": "vague_material_breach",
+        "title": "Высокий риск: Расторжение привязано к расплывчатому нарушению",
+        "severity": "high",
+        "clause_id": "clause-1",
+        "description": "Основание для расторжения описано общими словами вроде 'ненадлежащее исполнение' без порога существенности и процедуры фиксации. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: Договор на расчетно-кассовое обслуживание (договор расчетного счета) - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР на расчетно-кассовое обслуживание (Договор расчетного счета) г. ________ \"___\"_______20___ г. Коммерческий банк ______________________________________________, именуемый в дальнейшем Банк, в лице __________________, действующего на основании Устава, с одной стороны, и _________________________________,. . .",
+        "role_relevance": "Широкое основание позволяет прекратить договор по субъективной оценке.",
+        "mitigation": "Уточните, какие нарушения считаются существенными, и дайте срок на устранение."
+      },
+      {
+        "risk_id": "risk-7",
+        "rule_id": "uncontrolled_subcontracting",
+        "title": "Средний риск: Субподряд или привлечение третьих лиц описаны неясно",
+        "severity": "medium",
+        "clause_id": "clause-1",
+        "description": "Либо привлечение третьих лиц запрещено без разумных исключений, либо разрешено без контроля, уведомления и ответственности за качество. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: Договор на расчетно-кассовое обслуживание (договор расчетного счета) - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР на расчетно-кассовое обслуживание (Договор расчетного счета) г. ________ \"___\"_______20___ г. Коммерческий банк ______________________________________________, именуемый в дальнейшем Банк, в лице __________________, действующего на основании Устава, с одной стороны, и _________________________________,. . .",
+        "role_relevance": "Полный запрет на субподряд может сделать исполнение нереалистичным.",
+        "mitigation": "Уточните, когда третьи лица допустимы, нужно ли согласие и кто отвечает за их ошибки."
+      },
+      {
+        "risk_id": "risk-8",
+        "rule_id": "confidentiality_without_exceptions",
+        "title": "Средний риск: Конфиденциальность без carve-outs и разумных исключений",
+        "severity": "medium",
+        "clause_id": "clause-1",
+        "description": "Обязанность по конфиденциальности сформулирована широко, но не содержит исключений для общедоступной информации, законных запросов и ранее известных данных. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: Договор на расчетно-кассовое обслуживание (договор расчетного счета) - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР на расчетно-кассовое обслуживание (Договор расчетного счета) г. ________ \"___\"_______20___ г. Коммерческий банк ______________________________________________, именуемый в дальнейшем Банк, в лице __________________, действующего на основании Устава, с одной стороны, и _________________________________,. . .",
+        "role_relevance": "Исполнитель рискует нарушить чрезмерно широкую конфиденциальность.",
+        "mitigation": "Добавьте стандартные carve-outs и ограничьте ответственность за непредотвратимое раскрытие."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Договор на расчетно-кассовое обслуживание (договор расчетного счета) - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР на расчетно-кассовое обслуживание (Договор расчетного счета) г. ________ \"___\"_______20___ г. Коммерческий банк ______________________________________________, именуемый в дальнейшем Банк, в лице __________________, действующего на основании Устава, с одной стороны, и _________________________________,...",
+        "dispute_reason": "Одна из сторон получила дискреционное право без достаточных ограничителей.",
+        "possible_consequence": "Это может привести к одностороннему применению условия и спору о пределах такого права.",
+        "confidence": 0.76
+      },
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Договор на расчетно-кассовое обслуживание (договор расчетного счета) - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР на расчетно-кассовое обслуживание (Договор расчетного счета) г. ________ \"___\"_______20___ г. Коммерческий банк ______________________________________________, именуемый в дальнейшем Банк, в лице __________________, действующего на основании Устава, с одной стороны, и _________________________________,...",
+        "dispute_reason": "Маркер указывает на возможный конфликт между несколькими обязанностями или сроками.",
+        "possible_consequence": "При исполнении может оказаться, что условия невозможно соблюсти одновременно.",
+        "confidence": 0.66
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Подрядчик",
+      "overview": "Договор содержит 1 пунктов и 8 выявленных рисков. Краткий вывод сфокусирован на роли 'Подрядчик'. Обнаружено 6 пунктов с высоким уровнем риска; их стоит перепроверить вручную.",
+      "must_do": [
+        "Банк обязуется 1.",
+        "Предоставить Клиенту комплекс услуг по расчетно-кассовому обслуживанию.",
+        "Обеспечить сохранность вверенных ему денежных средств.",
+        "При наличии явной подложности расчетно-кассовых документов Банк обязан отказать в совершении операции.",
+        "В случае утери расчетных документов в процессе их пересылки Банком через предприятия и организации связи, по телетайпу или другим способом, а также по вине Банка третьего лица, Банка России, осуществлять по своей инициативе поиск потерянных документов или обеспечить сбор необходимых доказательств для защиты интересов Клиента.",
+        "Клиент обязуется: 14."
+      ],
+      "should_review": [
+        "Любая сторона настоящего договора вправе его расторгнуть в одностороннем порядке до истечения срока, предупредив другую сторону за ________ (срок).",
+        "Другие условия по усмотрению сторон Юридические адреса сторон Клиент: _____________________ Банк: ________________________ Руководитель Руководитель ________________ ________________ Главный бухгалтер Главный бухгалтер ________________ ________________ М."
+      ],
+      "payment_terms": [
+        "Договор на расчетно-кассовое обслуживание (договор расчетного счета) - версия для печати.",
+        "Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР на расчетно-кассовое обслуживание (Договор расчетного счета) г.",
+        "Открыть Клиенту расчетный счет N__________ Необходимые для открытия расчетного счета документы Клиентом предоставлены и банком проверены.",
+        "Предоставить Клиенту комплекс услуг по расчетно-кассовому обслуживанию.",
+        "Комплексное расчетно-кассовое обслуживание заключается в ведении счета Клиента и осуществлении Банком по поручению клиента всех расчетных и кассовых операций, предусмотренных законодательством, в том числе: выполнение поручений Клиента о перечислении денежных сумм с одного принадлежащего ему счета на другой и счета третьих лиц.",
+        "выполнение поручений Клиента о получении причитающихся ему денежных сумм от других лиц и о зачислении их на счет Клиента (инкассо), в том числе путем взыскания по векселям по инкассовому индоссаменту."
+      ],
+      "deadlines": [
+        "Обеспечивать Клиента бланками следующих расчетно-кассовых документов: чековыми книжками, объявлениями на взнос наличных денег ______________________________________________________________________ Выдача Клиенту бланков расчетно-кассовых документов осуществляется Банком в течение 3 рабочих дней с момента его обращения с соответствующей просьбой.",
+        "Выдача Клиенту оформленной чековой книжки для получения наличных денег осуществляется Банком в течение 3 рабочих дней с момента подписания настоящего договора.",
+        "Отказать в совершении расчетных и кассовых операций при наличии фактов, свидетельствующих о нарушении Клиентом действующего законодательства, в том числе банковских правил, техники оформления расчетных документов и сроков их предоставления в Банк.",
+        "Представлять Банку ежеквартальный кассовый план для выяснения потребностей клиента в наличных средствах не позднее ___________ (срок).",
+        "За нарушение срока, установленного п.",
+        "За неуведомление Банка в течение 10 дней после получения выписки из счета об ошибочно зачисленных на счет Клиента суммах он уплачивает Банку за каждый день просрочки пеню в размере 0,5% неправильно зачисленной на счет, не принадлежащей ему суммы."
+      ],
+      "penalties": [
+        "За несвоевременное (позднее следующего дня после получения соответствующего документа) или неправильное списание средств со счета Клиента, а также за несвоевременное или неправильное зачисление Банком сумм, причитающихся владельцу счета, Банк уплачивает в пользу Клиента штраф в размере 0,5% несвоевременно или неправильно зачисленной (списанной) суммы за каждый день просрочки."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "163f7eaab0aac7bf06f8f7b7af720fca68c2590012ddbf3a6af4eaf63f5dc12c"
+    },
+    "contract_type": {
+      "type_id": "service_agreement",
+      "confidence": 0.72,
+      "ru_name": "Договор оказания услуг",
+      "legal_framework": "ГК РФ, глава 39"
+    },
+    "asymmetry_signals": []
+  },
+  "finished_at": "2026-04-28T16:12:41.495565+00:00",
+  "duration_ms": 494.52
+}

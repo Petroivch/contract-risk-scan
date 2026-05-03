@@ -1,0 +1,177 @@
+{
+  "case_id": "договоры 3__obrazets_soglasheniya_o_prekraschenii_trudovogo_dogovora_docx",
+  "relative_path": "договоры 3/obrazets_soglasheniya_o_prekraschenii_trudovogo_dogovora.docx",
+  "document_path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\договоры 3\\obrazets_soglasheniya_o_prekraschenii_trudovogo_dogovora.docx",
+  "document_name": "obrazets_soglasheniya_o_prekraschenii_trudovogo_dogovora.docx",
+  "role": "Работник",
+  "counterparty_role": "Работодатель",
+  "language": "ru",
+  "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+  "tags": [
+    "ad_hoc"
+  ],
+  "source_group": "договоры 3",
+  "expected": {},
+  "started_at": "2026-04-28T16:17:14.240625+00:00",
+  "status": "completed",
+  "request": {
+    "document_name": "obrazets_soglasheniya_o_prekraschenii_trudovogo_dogovora.docx",
+    "role_context": {
+      "role": "Работник",
+      "counterparty_role": "Работодатель"
+    },
+    "document_text": null,
+    "document_base64": "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",
+    "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "language": "ru",
+    "locale": "ru"
+  },
+  "ingestion_preflight": {
+    "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "extractor": "docx:mammoth",
+    "extraction_source": "docx:mammoth",
+    "extraction_ok": true,
+    "error": null,
+    "extraction_error": null,
+    "sha256": "7a7b14e86ab41b722d919d8029b71a49e83a41699753d1854897d00e9cd05939"
+  },
+  "metrics": {
+    "risk_count": 1,
+    "high_risk_count": 0,
+    "disputed_clause_count": 1,
+    "asymmetry_signal_count": 0,
+    "contract_type": "labor_contract"
+  },
+  "analysis": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "mime_type:application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "reason": "Mime type документа перевел задачу в более безопасный lightweight/offload режим согласно policy."
+    },
+    "contract_brief": "Договор 'obrazets_soglasheniya_o_prekraschenii_trudovogo_dogovora. docx' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Работник'. Определен тип договора: Трудовой договор (уверенность 99%, правовая рамка: ТК РФ). Что должен Работник: В день прекращения трудового договора работодатель обязан выдать работнику трудовую книжку и произвести с ним расчет в соответствии со статьей 140 ТК РФ, в том числе выплатить работнику выходное пособие, предусмотренное п. Что должен Работодатель: В день прекращения трудового договора работодатель обязан выдать работнику трудовую книжку и произвести с ним расчет в соответствии со статьей 140 ТК РФ, в том числе выплатить работнику выходное пособие, предусмотренное п. Условия оплаты: В день прекращения трудового договора работодатель обязан выдать работнику трудовую книжку и произвести с ним расчет в соответствии со статьей 140 ТК РФ, в том числе выплатить работнику выходное пособие, предусмотренное п. Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Работник'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "СОГЛАШЕНИЕ\nО ПРЕКРАЩЕНИИ ТРУДОВОГО ДОГОВОРА\n«____»________ 20__ г. № __\nгород ___________________\n­­­­­­­­­­­­­­­­­­­­___________________________________________________________________________, именуемое в дальнейшем Работодатель, в лице __________________________, действующего на основании _______________________, с одной стороны, и __________________________________________, именуемый в дальнейшем «Работник», с другой стороны, именуемые совместно Стороны, подписали настоящее Соглашение о...",
+        "dispute_reason": "Формулировка зависит от будущего согласования и не содержит исполнимого критерия.",
+        "possible_consequence": "При исполнении может возникнуть спор о том, что именно стороны должны были согласовать.",
+        "confidence": 0.79
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Работник",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Работник'.",
+      "must_do": [
+        "В день прекращения трудового договора работодатель обязан выдать работнику трудовую книжку и произвести с ним расчет в соответствии со статьей 140 ТК РФ, в том числе выплатить работнику выходное пособие, предусмотренное п."
+      ],
+      "should_review": [
+        "Конфиг не выявил явных дискреционных условий."
+      ],
+      "payment_terms": [
+        "В день прекращения трудового договора работодатель обязан выдать работнику трудовую книжку и произвести с ним расчет в соответствии со статьей 140 ТК РФ, в том числе выплатить работнику выходное пособие, предусмотренное п."
+      ],
+      "deadlines": [
+        "Конфиг не выявил явных сроков."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "docx:mammoth",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "7a7b14e86ab41b722d919d8029b71a49e83a41699753d1854897d00e9cd05939"
+    },
+    "contract_type": {
+      "type_id": "labor_contract",
+      "confidence": 0.99,
+      "ru_name": "Трудовой договор",
+      "legal_framework": "ТК РФ"
+    },
+    "asymmetry_signals": []
+  },
+  "result": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "mime_type:application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "reason": "Mime type документа перевел задачу в более безопасный lightweight/offload режим согласно policy."
+    },
+    "contract_brief": "Договор 'obrazets_soglasheniya_o_prekraschenii_trudovogo_dogovora. docx' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Работник'. Определен тип договора: Трудовой договор (уверенность 99%, правовая рамка: ТК РФ). Что должен Работник: В день прекращения трудового договора работодатель обязан выдать работнику трудовую книжку и произвести с ним расчет в соответствии со статьей 140 ТК РФ, в том числе выплатить работнику выходное пособие, предусмотренное п. Что должен Работодатель: В день прекращения трудового договора работодатель обязан выдать работнику трудовую книжку и произвести с ним расчет в соответствии со статьей 140 ТК РФ, в том числе выплатить работнику выходное пособие, предусмотренное п. Условия оплаты: В день прекращения трудового договора работодатель обязан выдать работнику трудовую книжку и произвести с ним расчет в соответствии со статьей 140 ТК РФ, в том числе выплатить работнику выходное пособие, предусмотренное п. Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Работник'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "СОГЛАШЕНИЕ\nО ПРЕКРАЩЕНИИ ТРУДОВОГО ДОГОВОРА\n«____»________ 20__ г. № __\nгород ___________________\n­­­­­­­­­­­­­­­­­­­­___________________________________________________________________________, именуемое в дальнейшем Работодатель, в лице __________________________, действующего на основании _______________________, с одной стороны, и __________________________________________, именуемый в дальнейшем «Работник», с другой стороны, именуемые совместно Стороны, подписали настоящее Соглашение о...",
+        "dispute_reason": "Формулировка зависит от будущего согласования и не содержит исполнимого критерия.",
+        "possible_consequence": "При исполнении может возникнуть спор о том, что именно стороны должны были согласовать.",
+        "confidence": 0.79
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Работник",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Работник'.",
+      "must_do": [
+        "В день прекращения трудового договора работодатель обязан выдать работнику трудовую книжку и произвести с ним расчет в соответствии со статьей 140 ТК РФ, в том числе выплатить работнику выходное пособие, предусмотренное п."
+      ],
+      "should_review": [
+        "Конфиг не выявил явных дискреционных условий."
+      ],
+      "payment_terms": [
+        "В день прекращения трудового договора работодатель обязан выдать работнику трудовую книжку и произвести с ним расчет в соответствии со статьей 140 ТК РФ, в том числе выплатить работнику выходное пособие, предусмотренное п."
+      ],
+      "deadlines": [
+        "Конфиг не выявил явных сроков."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "docx:mammoth",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "7a7b14e86ab41b722d919d8029b71a49e83a41699753d1854897d00e9cd05939"
+    },
+    "contract_type": {
+      "type_id": "labor_contract",
+      "confidence": 0.99,
+      "ru_name": "Трудовой договор",
+      "legal_framework": "ТК РФ"
+    },
+    "asymmetry_signals": []
+  },
+  "finished_at": "2026-04-28T16:17:14.672890+00:00",
+  "duration_ms": 432.06
+}

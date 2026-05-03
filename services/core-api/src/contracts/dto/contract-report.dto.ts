@@ -2,6 +2,33 @@ import { ApiProperty } from '@nestjs/swagger';
 import { RiskSeverity } from '../../common/domain/risk-severity.enum';
 import { SupportedLocale } from '../../common/i18n/supported-locale.enum';
 
+export class StructuredSummaryRecordDto {
+  @ApiProperty({ example: 'role-summary-overview' })
+  id!: string;
+
+  @ApiProperty({ example: "Сводка для роли 'Исполнитель'." })
+  headline!: string;
+
+  @ApiProperty({
+    example:
+      "Для роли 'Исполнитель' собрана сводка по 12 пунктам договора, выявлено 4 риска, из них 2 с высоким приоритетом."
+  })
+  description!: string;
+
+  @ApiProperty({
+    example:
+      'Проверьте пункты с высоким риском, подтвердите критичные обязательства и согласуйте спорные условия до подписания.'
+  })
+  recommendation!: string;
+
+  @ApiProperty({
+    type: String,
+    isArray: true,
+    example: ['Фрагмент договора: Исполнитель обязан оказать услуги в течение 10 рабочих дней.']
+  })
+  evidence!: string[];
+}
+
 export class ContractSummaryDto {
   @ApiProperty({ example: 'Master Service Agreement - contractor view' })
   title!: string;
@@ -96,9 +123,7 @@ export class ContractReportDto {
   @ApiProperty({ example: 'contractor' })
   roleFocus!: string;
 
-  @ApiProperty({
-    example: 'contractor'
-  })
+  @ApiProperty({ example: 'contractor' })
   selectedRole!: string;
 
   @ApiProperty({ type: ContractSummaryDto })
@@ -118,6 +143,23 @@ export class ContractReportDto {
 
   @ApiProperty({ type: DisputedClauseDto, isArray: true })
   disputedClauses!: DisputedClauseDto[];
+
+  @ApiProperty({ example: false, required: false })
+  roleNotFound?: boolean;
+
+  @ApiProperty({
+    required: false,
+    nullable: true,
+    example:
+      "Выбранная роль 'Finance reviewer' не найдена в тексте договора. Найдены роли: Seller, Buyer."
+  })
+  message?: string | null;
+
+  @ApiProperty({ type: StructuredSummaryRecordDto, isArray: true })
+  contractBriefRecords!: StructuredSummaryRecordDto[];
+
+  @ApiProperty({ type: StructuredSummaryRecordDto, isArray: true })
+  roleFocusedSummaryRecords!: StructuredSummaryRecordDto[];
 
   @ApiProperty({ example: '2026-04-20T10:20:00.000Z' })
   generatedAt!: string;

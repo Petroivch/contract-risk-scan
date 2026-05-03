@@ -1,0 +1,197 @@
+{
+  "case_id": "dogovory_4__obrazets_dogovor_pozhiznennoy_renti_v_polzu_neskolkih_grazhdan",
+  "relative_path": "договоры 4/obrazets-dogovor-pozhiznennoy-renti-v-polzu-neskolkih-grazhdan.html",
+  "document_path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\договоры 4\\obrazets-dogovor-pozhiznennoy-renti-v-polzu-neskolkih-grazhdan.html",
+  "document_name": "obrazets-dogovor-pozhiznennoy-renti-v-polzu-neskolkih-grazhdan.html",
+  "role": "Работник",
+  "counterparty_role": "Работодатель",
+  "language": "ru",
+  "mime_type": "text/html",
+  "tags": [
+    "workspace-corpus",
+    "html",
+    "dogovory_4",
+    "labor_contract"
+  ],
+  "source_group": "manifest",
+  "expected": {
+    "contract_type": "labor_contract",
+    "min_contract_type_confidence": 0.42,
+    "min_risk_count": 0,
+    "min_disputed_clause_count": 0,
+    "execution_mode": "local_first",
+    "expected_high_risk_ids": []
+  },
+  "started_at": "2026-04-28T16:12:35.204157+00:00",
+  "status": "completed",
+  "request": {
+    "document_name": "obrazets-dogovor-pozhiznennoy-renti-v-polzu-neskolkih-grazhdan.html",
+    "role_context": {
+      "role": "Работник",
+      "counterparty_role": "Работодатель"
+    },
+    "document_text": null,
+    "document_base64": "PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMDEgVHJhbnNpdGlvbmFsLy9FTiI+DQo8aHRtbD4NCjxoZWFkPg0KPGJhc2UgaHJlZj0iaHR0cHM6Ly9kb2dvdm9yLXVyaXN0LnJ1LyI+DQo8dGl0bGU+0J7QsdGA0LDQt9C10YYuINCU0L7Qs9C+0LLQvtGAINC/0L7QttC40LfQvdC10L3QvdC+0Lkg0YDQtdC90YLRiyDQsiDQv9C+0LvRjNC30YMg0L3QtdGB0LrQvtC70YzQutC40YUgICDQs9GA0LDQttC00LDQvSAtINCy0LXRgNGB0LjRjyDQtNC70Y8g0L/QtdGH0LDRgtC4LiAyMDI2LiDQntCx0YDQsNC30YbRiyDQtNC+0LPQvtCy0L7RgNC+0LIsINGC0LjQv9C+0LLRi9C1INC00L7Qs9C+0LLQvtGA0LAsINCw0LrRgtGD0LDQu9GM0L3Ri9C1INC00L7QutGD0LzQtdC90YLRiywg0Y7RgNC40LTQuNGH0LXRgdC60LjQvCDQuCDRhNC40LfQuNGH0LXRgdC60LjQvCDQu9C40YbQsNC8PC90aXRsZT4NCjxtZXRhIGNvbnRlbnQ9IiIgbmFtZT0ia2V5d29yZHMiPg0KPG1ldGEgY29udGVudD0iIiBuYW1lPSJkZXNjcmlwdGlvbiI+DQo8bWV0YSBuYW1lPSJyb2JvdHMiIGNvbnRlbnQ9Im5vaW5kZXgsbm9mb2xsb3ciPg0KPG1ldGEgaHR0cC1lcXVpdj0iQ29udGVudC1UeXBlIiBjb250ZW50PSJ0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgiPg0KPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSIvaW1hZ2VzL3N0eWxlLmNzcyIgdHlwZT0idGV4dC9jc3MiPg0KPC9oZWFkPg0KPGJvZHk+DQo8ZGl2IGNsYXNzPSJkb2N1bWVudFRleHQiPg0KPHByZT4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgINCU0J7Qk9Ce0JLQntCgDQogICAgICAgICAgICAgICAg0L/QvtC20LjQt9C90LXQvdC90L7QuSDRgNC10L3RgtGLINCyINC/0L7Qu9GM0LfRgyDQvdC10YHQutC+0LvRjNC60LjRhSDQs9GA0LDQttC00LDQvQ0KDQogICAg0LMuIF9fX19fX19fX19fX19fX19fX18gICAgICAgICAgICAgICAgICAgICAgICAgIl9fXyJfX19fX19fX18gMjBfX18g0LMuDQoNCiAgICAgICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXywNCiAgICAgICAgICAgICAgICAgICAgICjQpC7QmC7Qni4g0LPRgNCw0LbQtNCw0L0gLSDQv9C+0LvRg9GH0LDRgtC10LvQtdC5INGA0LXQvdGC0YspDQoNCiAgICDQuNC80LXQvdGD0LXQvNGL0LUg0LIgINC00LDQu9GM0L3QtdC50YjQtdC8ICAi0J/QvtC70YPRh9Cw0YLQtdC70LggINGA0LXQvdGC0YsiLCAg0YEgINC+0LTQvdC+0LkgINGB0YLQvtGA0L7QvdGLLCAgINC4DQogICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18sDQogICAgICAgICAgICAgICAo0L3QsNC40LzQtdC90L7QstCw0L3QuNC1INC/0YDQtdC00L/RgNC40Y/RgtC40Y8gLSDQv9C70LDRgtC10LvRjNGJ0LjQutCwINGA0LXQvdGC0YspDQoNCiAgICDQuNC80LXQvdGD0LXQvNGL0Lkg0LIg0LTQsNC70YzQvdC10LnRiNC10LwgItCf0LvQsNGC0LXQu9GM0YnQuNC6INGA0LXQvdGC0YsiLCDQsiDQu9C40YbQtSBfX19fX19fX19fX19fX19fX19fDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgKNC00L7Qu9C20L3QvtGB0YLRjCwNCg0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXywg0LTQtdC50YHRgtCy0YPRjtGJ0LXQs9C+ICDQvdCwICAg0L7RgdC90L7QstCw0L3QuNC4DQogICAgICAgICAgICAgICAgICAg0KQu0Jgu0J4uKQ0KDQogICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLCDRgSDQtNGA0YPQs9C+0Lkg0YHRgtC+0YDQvtC90YssICDQt9Cw0LrQu9GO0YfQuNC70LgNCiAgICAgICAgICAgICAgICjQo9GB0YLQsNCy0LAsINC/0L7Qu9C+0LbQtdC90LjRjykNCg0KICAgINC90LDRgdGC0L7Rj9GJ0LjQuSDQtNC+0LPQvtCy0L7RgCDQviDQvdC40LbQtdGB0LvQtdC00YPRjtGJ0LXQvC4NCg0KICAgICAgICAgMS4g0J/QviDQvdCw0YHRgtC+0Y/RidC10LzRgyDQtNC+0LPQvtCy0L7RgNGDINCf0L7Qu9GD0YfQsNGC0LXQu9C4INGA0LXQvdGC0Ysg0L/QtdGA0LXQtNCw0Y7RgiAg0J/Qu9Cw0YLQtdC70YzRidC40LrRgw0KICAgINGA0LXQvdGC0Ysg0LIg0YHQvtCx0YHRgtCy0LXQvdC90L7RgdGC0YwgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXywNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICjRg9C60LDQt9Cw0YLRjCDQv9C10YDQtdC00LDQstCw0LXQvNC+0LUg0LjQvNGD0YnQtdGB0YLQstC+KQ0KDQogICAg0LjQvNC10L3Rg9C10LzQvtC1INCyINC00LDQu9GM0L3QtdC50YjQtdC8ICLQmNC80YPRidC10YHRgtCy0L4iLCAg0LAg0J/Qu9Cw0YLQtdC70YzRidC40Log0YDQtdC90YLRiyDQv9GA0LjQvdC40LzQsNC10YIgINC90LANCiAgICDRgdC10LHRjyDQvtCx0Y/Qt9Cw0YLQtdC70YzRgdGC0LLQviAgINCyICAg0L7QsdC80LXQvSAg0L3QsCAg0L/QvtC70YPRh9C10L3QvdC+0LUgINC40LzRg9GJ0LXRgdGC0LLQviAg0L/QvtC20LjQt9C90LXQvdC90L4NCiAgICDQstGL0L/Qu9Cw0YfQuNCy0LDRgtGMINCf0L7Qu9GD0YfQsNGC0LXQu9GP0Lwg0YDQtdC90YLRgy4g0JjQvNGD0YnQtdGB0YLQstC+INC/0LXRgNC10LTQsNC10YLRgdGPINCf0LvQsNGC0LXQu9GM0YnQuNC60YMg0YDQtdC90YLRiw0KICAgINC90LUg0L/QvtC30LTQvdC10LUgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLg0KICAgICAgICAgICAgICAgICAgICAgICAgICjRg9C60LDQt9Cw0YLRjCDRgdGA0L7QuikNCg0KICAgICAgICAgMi4g0KDQtdC90YLQsCDQstGL0L/Qu9Cw0YfQuNCy0LDQtdGC0YHRjyDQn9C+0LvRg9GH0LDRgtC10LvRj9C8ICDQsiAg0LLQuNC00LUgINGB0LvQtdC00YPRjtGJ0LXQuSAg0LTQtdC90LXQttC90L7QuQ0KICAgINGB0YPQvNC80Ys6IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18uDQogICAgICAgICAzLiDQoNC10L3RgtCwINCy0YvQv9C70LDRh9C40LLQsNC10YLRgdGPINCf0L7Qu9GD0YfQsNGC0LXQu9GP0Lwg0LIgINGA0LDQt9C80LXRgNC1LCAg0YPRgdGC0LDQvdC+0LLQu9C10L3QvdC+0LwgINCyDQogICAg0L/Rg9C90LrRgtC1IDIgICDQvdCw0YHRgtC+0Y/RidC10LPQviAg0LTQvtCz0L7QstC+0YDQsCAg0LIgINGC0LXRh9C10L3QuNC1ICDQuNGFICDQttC40LfQvdC4ICDRgdC+ICDRgdC70LXQtNGD0Y7RidC10LkNCiAgICDQv9C10YDQuNC+0LTQuNGH0L3QvtGB0YLRjNGOOiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLg0KICAgICAgICAgNC4g0JTQvtC70LggINCf0L7Qu9GD0YfQsNGC0LXQu9C10LkgINGA0LXQvdGC0YsgINCyINC/0YDQsNCy0LUg0L3QsCDQv9C+0LvRg9GH0LXQvdC40LUg0YDQtdC90YLRiyDRj9Cy0LvRj9GO0YLRgdGPDQogICAg0YDQsNCy0L3Ri9C80LguDQogICAgICAgICA1LiDQkiAg0YHQu9GD0YfQsNC1INGB0LzQtdGA0YLQuCDQvtC00L3QvtCz0L4g0LjQtyDQn9C+0LvRg9GH0LDRgtC10LvQtdC5INGA0LXQvdGC0Ysg0LXQs9C+INC00L7Qu9GPINCyINC/0YDQsNCy0LUNCiAgICDQvdCwINC/0L7Qu9GD0YfQtdC90LjQtSDRgNC10L3RgtGLINC/0LXRgNC10YXQvtC00LjRgiDQuiDQv9C10YDQtdC20LjQstGI0LjQvCDQtdCz0L4g0J/QvtC70YPRh9Cw0YLQtdC70Y/QvCDRgNC10L3RgtGLLCAg0LAg0LINCiAgICDRgdC70YPRh9Cw0LUg0YHQvNC10YDRgtC4INC/0L7RgdC70LXQtNC90LXQs9C+INCf0L7Qu9GD0YfQsNGC0LXQu9GPINGA0LXQvdGC0Ysg0L7QsdGP0LfQsNGC0LXQu9GM0YHRgtCy0L4g0LLRi9C/0LvQsNGC0Ysg0YDQtdC90YLRiw0KICAgINC/0YDQtdC60YDQsNGJ0LDQtdGC0YHRjy4NCiAgICAgICAgIDYuINCf0L7Qu9GD0YfQsNGC0LXQu9C4ICDQv9C+0YHRgtC+0Y/QvdC90L7QuSAg0YDQtdC90YLRiyAg0LLQv9GA0LDQstC1INC/0L7RgtGA0LXQsdC+0LLQsNGC0Ywg0YDQsNGB0YLQvtGA0LbQtdC90LjRjw0KICAgINC90LDRgdGC0L7Rj9GJ0LXQs9C+INC00L7Qs9C+0LLQvtGA0LAgINC4ICAg0LLQvtC30LzQtdGJ0LXQvdC40Y8gICDRg9Cx0YvRgtC60L7QsiAgINC70LjQsdC+ICAg0LLRi9C60YPQv9CwICAg0YDQtdC90YLRiw0KICAgINCf0LvQsNGC0LXQu9GM0YnQuNC60L7QvCDQsiDRgdC70YPRh9Cw0Y/RhSwg0LrQvtCz0LTQsDoNCiAgICAgICAgIC0g0J/Qu9Cw0YLQtdC70YzRidC40Log0YDQtdC90YLRiyDQv9GA0L7RgdGA0L7Rh9C40Lsg0LXQtSDQstGL0L/Qu9Cw0YLRgyDQsdC+0LvQtdC1INGH0LXQvCDQvdCwINC+0LTQuNC9INCz0L7QtDsNCiAgICAgICAgIC0g0J/Qu9Cw0YLQtdC70YzRidC40LogINGA0LXQvdGC0YsgINC90LDRgNGD0YjQuNC7ICDRgdCy0L7QuCAg0L7QsdGP0LfQsNGC0LXQu9GM0YHRgtCy0LAg0L/QviDQvtCx0LXRgdC/0LXRh9C10L3QuNGODQogICAg0LLRi9C/0LvQsNGC0Ysg0YDQtdC90YLRizsNCiAgICAgICAgIC0g0J/Qu9Cw0YLQtdC70YzRidC40Log0YDQtdC90YLRiyDQv9GA0LjQt9C90LDQvSDQvdC10L/Qu9Cw0YLQtdC20LXRgdC/0L7RgdC+0LHQvdGL0Lwg0LvQuNCx0L4g0LLQvtC30L3QuNC60LvQuCDQuNC90YvQtQ0KICAgINC+0LHRgdGC0L7Rj9GC0LXQu9GM0YHRgtCy0LAsINGB0LLQuNC00LXRgtC10LvRjNGB0YLQstGD0Y7RidC40LUg0L4g0L3QtdCy0YvQv9C70LDRgtC1INCyINC/0L7RgdC70LXQtNGD0Y7RidC10LwgINGA0LXQvdGC0YsgINCyDQogICAg0YDQsNC30LzQtdGA0LUg0Lgg0LIg0YHRgNC+0LrQuCwg0YPRgdGC0LDQvdC+0LLQu9C10L3QvdGL0LUg0LIg0L/Rg9C90LrRgtCw0YUgMiDQuCAzINC90LDRgdGC0L7Rj9GJ0LXQs9C+INC00L7Qs9C+0LLQvtGA0LAuDQogICAgICAgICA3LiDQodC+0LPQu9Cw0YHQvdC+ICAg0L3QsNGB0YLQvtGP0YnQtdC80YMgICDQtNC+0LPQvtCy0L7RgNGDICAg0LjQvNGD0YnQtdGB0YLQstC+ICAg0L/QvtC0ICAgINCy0YvQv9C70LDRgtGDDQogICAg0L/QvtC20LjQt9C90LXQvdC90L7QuSDRgNC10L3RgtGLINC+0YLRh9GD0LbQtNCw0LXRgtGB0Y8g0LfQsCDRgdC70LXQtNGD0Y7RidGD0Y4g0L/Qu9Cw0YLRgzogX19fX19fX19fX19fX19fX19fXw0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLg0KICAgICAgICAgOC4g0J/RgNC4ICAg0YHRg9GJ0LXRgdGC0LLQtdC90L3QvtC8ICAg0L3QsNGA0YPRiNC10L3QuNC4ICDRg9GB0LvQvtCy0LjQuSAg0L3QsNGB0YLQvtGP0YnQtdCz0L4gINC00L7Qs9C+0LLQvtGA0LANCiAgICDQn9C70LDRgtC10LvRjNGJ0LjQutC+0Lwg0YDQtdC90YLRiyAo0L/Rg9C90LrRgiAgNikgINCf0L7Qu9GD0YfQsNGC0LXQu9C4ICDRgNC10L3RgtGLICDQstC/0YDQsNCy0LUgINC/0L7RgtGA0LXQsdC+0LLQsNGC0YwNCiAgICDQstC+0LfQstGA0LDRgtCwINGN0YLQvtCz0L4g0LjQvNGD0YnQtdGB0YLQstCwINGBINC30LDRh9C10YLQvtC8INC10LPQviDRgdGC0L7QuNC80L7RgdGC0Lgg0LIg0YHRh9C10YIg0LLRi9C60YPQv9C90L7QuSDRhtC10L3Riw0KICAgINGA0LXQvdGC0YsuDQogICAgICAgICA5LiDQodGC0L7RgNC+0L3RiyAgICDQtNC+0LPQvtCy0L7RgNC40LvQuNGB0YwsICAg0YfRgtC+ICAg0LLRi9C60YPQvyAgINGA0LXQvdGC0YsgICDQsiAgINGB0LvRg9GH0LDRj9GFLA0KICAgINC/0YDQtdC00YPRgdC80L7RgtGA0LXQvdC90YvRhSDQsiDQv9GD0L3QutGC0LUgNiDQvdCw0YHRgtC+0Y/RidC10LPQviDQtNC+0LPQvtCy0L7RgNCwLCAg0LHRg9C00LXRgiAg0L/RgNC+0LjQt9Cy0L7QtNC40YLRjNGB0Y8NCiAgICDQv9C+INGB0LvQtdC00YPRjtGJ0LXQuSDRhtC10L3QtTogX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXy4NCiAgICAgICAgIDEwLiDQodC70YPRh9Cw0LnQvdCw0Y8gINCz0LjQsdC10LvRjCAg0LjQu9C4ICDRgdC70YPRh9Cw0LnQvdC+0LUgICDQv9C+0LLRgNC10LbQtNC10L3QuNC1ICAg0LjQvNGD0YnQtdGB0YLQstCwLA0KICAgINC/0LXRgNC10LTQsNC90L3QvtCz0L4g0L/QvtC0ICAg0LLRi9C/0LvQsNGC0YMgICDQv9C+0LbQuNC30L3QtdC90L3QvtC5ICAg0YDQtdC90YLRiyAg0YHQvtCz0LvQsNGB0L3QviAg0L3QsNGB0YLQvtGP0YnQtdC80YMNCiAgICDQtNC+0LPQvtCy0L7RgNGDLCDQvdC1ICAg0L7RgdCy0L7QsdC+0LbQtNCw0LXRgiAgINCf0LvQsNGC0LXQu9GM0YnQuNC60LAgICDRgNC10L3RgtGLICAg0L7RgiAgINC+0LHRj9C30LDRgtC10LvRjNGB0YLQstCwDQogICAg0LLRi9C/0LvQsNGH0LjQstCw0YLRjCDQtdC1INC90LAg0YPRgdC70L7QstC40Y/RhSwg0L/RgNC10LTRg9GB0LzQvtGC0YDQtdC90L3Ri9GFINC00L7Qs9C+0LLQvtGA0L7QvC4NCiAgICAgICAgIDExLiDQlNC+0LPQvtCy0L7RgCDQstGB0YLRg9C/0LDQtdGCINCyINGB0LjQu9GDINGBINC80L7QvNC10L3RgtCwINC10LPQviDQv9C+0LTQv9C40YHQsNC90LjRjywgINGB0L7RgdGC0LDQstC70LXQvQ0KICAgINCyIF9fX19fX18g0Y3QutC30LXQvNC/0LvRj9GA0LDRhS4NCiAgICAgICAgIDEyLiDQkNC00YDQtdGB0LAg0KHRgtC+0YDQvtC9Og0KDQogICAgICAgICDQn9C+0LvRg9GH0LDRgtC10LvQuCDRgNC10L3RgtGLOiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18sDQogICAg0YHRh9C10YIgTm8uIF9fX19fX19fX19fX19fX19fX18g0LIgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXy4NCiAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXywNCiAgICDRgdGH0LXRgiBOby4gX19fX19fX19fX19fX19fX19fXyDQsiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLg0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLA0KICAgINGB0YfQtdGCIE5vLiBfX19fX19fX19fX19fX19fX19fINCyIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18uDQoNCiAgICAgICAgINCf0LvQsNGC0LXQu9GM0YnQuNC6INGA0LXQvdGC0Ys6IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXywNCiAgICDRgC/RgSBOby4gX19fX19fX19fX19fX19fX18g0LIgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXy4NCg0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgINCf0L7QtNC/0LjRgdC4INCh0YLQvtGA0L7QvToNCg0KICAgICAgICAg0J/QvtC70YPRh9Cw0YLQtdC70Lgg0YDQtdC90YLRiyAgICAgICAgICAgICAgICAgICAgICAgICAgINCf0LvQsNGC0LXQu9GM0YnQuNC6INGA0LXQvdGC0YsNCg0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fXyAgICAgICAgICAgICAgICAgIF9fX19fX19fX19fX19fX19fX19fX19fXw0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fXw0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fXyAgICAgICAgICAgICAgICAgICAgICAgICAgINCcLtCfLg0KDQogIA0KPC9wcmU+PC9kaXY+DQo8L2JvZHk+DQo8L2h0bWw+",
+    "mime_type": "text/html",
+    "language": "ru",
+    "locale": "ru"
+  },
+  "ingestion_preflight": {
+    "mime_type": "text/html",
+    "extractor": "html:regex",
+    "extraction_source": "html:regex",
+    "extraction_ok": true,
+    "error": null,
+    "extraction_error": null,
+    "sha256": "0bb0533c08f23285970771a8e253ce51724ce63244c2d345d01aa941ec3faf10"
+  },
+  "metrics": {
+    "risk_count": 1,
+    "high_risk_count": 0,
+    "disputed_clause_count": 1,
+    "asymmetry_signal_count": 0,
+    "contract_type": "labor_contract"
+  },
+  "analysis": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'obrazets-dogovor-pozhiznennoy-renti-v-polzu-neskolkih-grazhdan. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Работник'. Определен тип договора: Трудовой договор (уверенность 56%, правовая рамка: ТК РФ). Условия оплаты: При существенном нарушении условий настоящего договора Плательщиком ренты (пункт 6) Получатели ренты вправе потребовать возврата этого имущества с зачетом его стоимости в счет выкупной цены ренты; Адреса Сторон: Получатели ренты: _____________________________________________, счет No; ____________________________________________________________________, счет No. Сроки и дедлайны: (указать срок) 2; Рента выплачивается Получателям в размере, установленном в пункте 2 настоящего договора в течение их жизни со следующей периодичностью: ____________________________________________________; - Плательщик ренты признан неплатежеспособным либо возникли иные обстоятельства, свидетельствующие о невыплате в последующем ренты в размере и в сроки, установленные в пунктах 2 и 3 настоящего договора. Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Работник'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Образец. Договор пожизненной ренты в пользу нескольких граждан - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР пожизненной ренты в пользу нескольких граждан г. ___________________ \"___\"_________ 20___ г. _______________________________________________________________, (Ф. И. О.",
+        "dispute_reason": "Одна из сторон получила дискреционное право без достаточных ограничителей.",
+        "possible_consequence": "Это может привести к одностороннему применению условия и спору о пределах такого права.",
+        "confidence": 0.76
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Работник",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Работник'.",
+      "must_do": [
+        "Конфиг не выявил явных обязательств."
+      ],
+      "should_review": [
+        "Получатели постоянной ренты вправе потребовать расторжения настоящего договора и возмещения убытков либо выкупа ренты Плательщиком в случаях, когда: - Плательщик ренты просрочил ее выплату более чем на один год.",
+        "При существенном нарушении условий настоящего договора Плательщиком ренты (пункт 6) Получатели ренты вправе потребовать возврата этого имущества с зачетом его стоимости в счет выкупной цены ренты."
+      ],
+      "payment_terms": [
+        "При существенном нарушении условий настоящего договора Плательщиком ренты (пункт 6) Получатели ренты вправе потребовать возврата этого имущества с зачетом его стоимости в счет выкупной цены ренты.",
+        "Адреса Сторон: Получатели ренты: _____________________________________________, счет No.",
+        "____________________________________________________________________, счет No."
+      ],
+      "deadlines": [
+        "(указать срок) 2.",
+        "Рента выплачивается Получателям в размере, установленном в пункте 2 настоящего договора в течение их жизни со следующей периодичностью: ____________________________________________________.",
+        "- Плательщик ренты признан неплатежеспособным либо возникли иные обстоятельства, свидетельствующие о невыплате в последующем ренты в размере и в сроки, установленные в пунктах 2 и 3 настоящего договора."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "0bb0533c08f23285970771a8e253ce51724ce63244c2d345d01aa941ec3faf10"
+    },
+    "contract_type": {
+      "type_id": "labor_contract",
+      "confidence": 0.57,
+      "ru_name": "Трудовой договор",
+      "legal_framework": "ТК РФ"
+    },
+    "asymmetry_signals": []
+  },
+  "result": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'obrazets-dogovor-pozhiznennoy-renti-v-polzu-neskolkih-grazhdan. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Работник'. Определен тип договора: Трудовой договор (уверенность 56%, правовая рамка: ТК РФ). Условия оплаты: При существенном нарушении условий настоящего договора Плательщиком ренты (пункт 6) Получатели ренты вправе потребовать возврата этого имущества с зачетом его стоимости в счет выкупной цены ренты; Адреса Сторон: Получатели ренты: _____________________________________________, счет No; ____________________________________________________________________, счет No. Сроки и дедлайны: (указать срок) 2; Рента выплачивается Получателям в размере, установленном в пункте 2 настоящего договора в течение их жизни со следующей периодичностью: ____________________________________________________; - Плательщик ренты признан неплатежеспособным либо возникли иные обстоятельства, свидетельствующие о невыплате в последующем ренты в размере и в сроки, установленные в пунктах 2 и 3 настоящего договора. Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Работник'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Образец. Договор пожизненной ренты в пользу нескольких граждан - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР пожизненной ренты в пользу нескольких граждан г. ___________________ \"___\"_________ 20___ г. _______________________________________________________________, (Ф. И. О.",
+        "dispute_reason": "Одна из сторон получила дискреционное право без достаточных ограничителей.",
+        "possible_consequence": "Это может привести к одностороннему применению условия и спору о пределах такого права.",
+        "confidence": 0.76
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Работник",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Работник'.",
+      "must_do": [
+        "Конфиг не выявил явных обязательств."
+      ],
+      "should_review": [
+        "Получатели постоянной ренты вправе потребовать расторжения настоящего договора и возмещения убытков либо выкупа ренты Плательщиком в случаях, когда: - Плательщик ренты просрочил ее выплату более чем на один год.",
+        "При существенном нарушении условий настоящего договора Плательщиком ренты (пункт 6) Получатели ренты вправе потребовать возврата этого имущества с зачетом его стоимости в счет выкупной цены ренты."
+      ],
+      "payment_terms": [
+        "При существенном нарушении условий настоящего договора Плательщиком ренты (пункт 6) Получатели ренты вправе потребовать возврата этого имущества с зачетом его стоимости в счет выкупной цены ренты.",
+        "Адреса Сторон: Получатели ренты: _____________________________________________, счет No.",
+        "____________________________________________________________________, счет No."
+      ],
+      "deadlines": [
+        "(указать срок) 2.",
+        "Рента выплачивается Получателям в размере, установленном в пункте 2 настоящего договора в течение их жизни со следующей периодичностью: ____________________________________________________.",
+        "- Плательщик ренты признан неплатежеспособным либо возникли иные обстоятельства, свидетельствующие о невыплате в последующем ренты в размере и в сроки, установленные в пунктах 2 и 3 настоящего договора."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "0bb0533c08f23285970771a8e253ce51724ce63244c2d345d01aa941ec3faf10"
+    },
+    "contract_type": {
+      "type_id": "labor_contract",
+      "confidence": 0.57,
+      "ru_name": "Трудовой договор",
+      "legal_framework": "ТК РФ"
+    },
+    "asymmetry_signals": []
+  },
+  "finished_at": "2026-04-28T16:12:35.322682+00:00",
+  "duration_ms": 118.81
+}

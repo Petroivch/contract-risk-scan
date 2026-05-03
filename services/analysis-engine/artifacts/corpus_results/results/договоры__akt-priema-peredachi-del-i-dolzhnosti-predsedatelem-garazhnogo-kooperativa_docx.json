@@ -1,0 +1,185 @@
+{
+  "case_id": "договоры__akt-priema-peredachi-del-i-dolzhnosti-predsedatelem-garazhnogo-kooperativa_docx",
+  "relative_path": "договоры/akt-priema-peredachi-del-i-dolzhnosti-predsedatelem-garazhnogo-kooperativa.docx",
+  "document_path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\договоры\\akt-priema-peredachi-del-i-dolzhnosti-predsedatelem-garazhnogo-kooperativa.docx",
+  "document_name": "akt-priema-peredachi-del-i-dolzhnosti-predsedatelem-garazhnogo-kooperativa.docx",
+  "role": "Заемщик",
+  "counterparty_role": "Кредитор",
+  "language": "ru",
+  "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+  "tags": [
+    "ad_hoc"
+  ],
+  "source_group": "договоры",
+  "expected": {},
+  "started_at": "2026-04-28T16:13:15.184008+00:00",
+  "status": "completed",
+  "request": {
+    "document_name": "akt-priema-peredachi-del-i-dolzhnosti-predsedatelem-garazhnogo-kooperativa.docx",
+    "role_context": {
+      "role": "Заемщик",
+      "counterparty_role": "Кредитор"
+    },
+    "document_text": null,
+    "document_base64": "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",
+    "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "language": "ru",
+    "locale": "ru"
+  },
+  "ingestion_preflight": {
+    "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "extractor": "docx:mammoth",
+    "extraction_source": "docx:mammoth",
+    "extraction_ok": true,
+    "error": null,
+    "extraction_error": null,
+    "sha256": "16013fa6e32b1a581e7783d45561908493c173a794ae8c8b41b5a9bd7a587bd7"
+  },
+  "metrics": {
+    "risk_count": 1,
+    "high_risk_count": 0,
+    "disputed_clause_count": 1,
+    "asymmetry_signal_count": 0,
+    "contract_type": "non_contract_legal_form"
+  },
+  "analysis": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "mime_type:application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "reason": "Mime type документа перевел задачу в более безопасный lightweight/offload режим согласно policy."
+    },
+    "contract_brief": "Договор 'akt-priema-peredachi-del-i-dolzhnosti-predsedatelem-garazhnogo-kooperativa. docx' разобран на 2 пунктов. Ниже показано, что действительно важно для роли 'Заемщик'. Определен тип договора: Иной юридический документ (уверенность 56%, правовая рамка: Вне типовой contract taxonomy). Ключевые обязательства по договору для роли 'Заемщик': Дебиторская задолженность по текущим расходам на сумму ____________ руб; Дебиторская задолженность по капитальному строительству на сумму __________ руб; Кредиторская задолженность по текущим расходам на сумму __________ руб. Что должен Кредитор: Кредиторская задолженность по текущим расходам на сумму __________ руб; Кредиторская задолженность по капитальному строительству на сумму _________ руб. Условия оплаты: Остатки по лицевым счетам по состоянию на «__»__________ 201_ г. ; Расчеты: . Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Заемщик'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "АКТ\nприема-передачи дел и должности\nПредседателем Гаражного Кооператива ______________\nг. _________________ «__» __________ 201__ года\nВ соответствии с решением Общего собрания Гаражного Кооператива _____________ (ИНН___________, ОГРН_________) от «__»__________ 201_ г. о избрании Председателем Гаражного Кооператива ________________________________________________________\n(фамилия, имя, отчество)\nкомиссия в составе ___________________________________________________________\n(фамилия, имя,...",
+        "dispute_reason": "Явные маркеры спорных формулировок не обнаружены.",
+        "possible_consequence": "Скрытые спорные моменты требуют дополнительной юридической проверки.",
+        "confidence": 0.35
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Заемщик",
+      "overview": "Договор содержит 2 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Заемщик'.",
+      "must_do": [
+        "Дебиторская задолженность по текущим расходам на сумму ____________ руб.",
+        "Дебиторская задолженность по капитальному строительству на сумму __________ руб.",
+        "Кредиторская задолженность по текущим расходам на сумму __________ руб.",
+        "Кредиторская задолженность по капитальному строительству на сумму _________ руб."
+      ],
+      "should_review": [
+        "Конфиг не выявил явных дискреционных условий."
+      ],
+      "payment_terms": [
+        "Остатки по лицевым счетам по состоянию на «__»__________ 201_ г. .",
+        "Расчеты: ."
+      ],
+      "deadlines": [
+        "Конфиг не выявил явных сроков."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "docx:mammoth",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "16013fa6e32b1a581e7783d45561908493c173a794ae8c8b41b5a9bd7a587bd7"
+    },
+    "contract_type": {
+      "type_id": "non_contract_legal_form",
+      "confidence": 0.57,
+      "ru_name": "Иной юридический документ",
+      "legal_framework": "Вне типовой contract taxonomy"
+    },
+    "asymmetry_signals": []
+  },
+  "result": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "mime_type:application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "reason": "Mime type документа перевел задачу в более безопасный lightweight/offload режим согласно policy."
+    },
+    "contract_brief": "Договор 'akt-priema-peredachi-del-i-dolzhnosti-predsedatelem-garazhnogo-kooperativa. docx' разобран на 2 пунктов. Ниже показано, что действительно важно для роли 'Заемщик'. Определен тип договора: Иной юридический документ (уверенность 56%, правовая рамка: Вне типовой contract taxonomy). Ключевые обязательства по договору для роли 'Заемщик': Дебиторская задолженность по текущим расходам на сумму ____________ руб; Дебиторская задолженность по капитальному строительству на сумму __________ руб; Кредиторская задолженность по текущим расходам на сумму __________ руб. Что должен Кредитор: Кредиторская задолженность по текущим расходам на сумму __________ руб; Кредиторская задолженность по капитальному строительству на сумму _________ руб. Условия оплаты: Остатки по лицевым счетам по состоянию на «__»__________ 201_ г. ; Расчеты: . Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Заемщик'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "АКТ\nприема-передачи дел и должности\nПредседателем Гаражного Кооператива ______________\nг. _________________ «__» __________ 201__ года\nВ соответствии с решением Общего собрания Гаражного Кооператива _____________ (ИНН___________, ОГРН_________) от «__»__________ 201_ г. о избрании Председателем Гаражного Кооператива ________________________________________________________\n(фамилия, имя, отчество)\nкомиссия в составе ___________________________________________________________\n(фамилия, имя,...",
+        "dispute_reason": "Явные маркеры спорных формулировок не обнаружены.",
+        "possible_consequence": "Скрытые спорные моменты требуют дополнительной юридической проверки.",
+        "confidence": 0.35
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Заемщик",
+      "overview": "Договор содержит 2 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Заемщик'.",
+      "must_do": [
+        "Дебиторская задолженность по текущим расходам на сумму ____________ руб.",
+        "Дебиторская задолженность по капитальному строительству на сумму __________ руб.",
+        "Кредиторская задолженность по текущим расходам на сумму __________ руб.",
+        "Кредиторская задолженность по капитальному строительству на сумму _________ руб."
+      ],
+      "should_review": [
+        "Конфиг не выявил явных дискреционных условий."
+      ],
+      "payment_terms": [
+        "Остатки по лицевым счетам по состоянию на «__»__________ 201_ г. .",
+        "Расчеты: ."
+      ],
+      "deadlines": [
+        "Конфиг не выявил явных сроков."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "docx:mammoth",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "16013fa6e32b1a581e7783d45561908493c173a794ae8c8b41b5a9bd7a587bd7"
+    },
+    "contract_type": {
+      "type_id": "non_contract_legal_form",
+      "confidence": 0.57,
+      "ru_name": "Иной юридический документ",
+      "legal_framework": "Вне типовой contract taxonomy"
+    },
+    "asymmetry_signals": []
+  },
+  "finished_at": "2026-04-28T16:13:15.421197+00:00",
+  "duration_ms": 237.36
+}

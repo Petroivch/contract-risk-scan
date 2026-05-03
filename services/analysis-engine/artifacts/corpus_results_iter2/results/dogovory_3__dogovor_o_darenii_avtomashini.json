@@ -1,0 +1,187 @@
+{
+  "case_id": "dogovory_3__dogovor_o_darenii_avtomashini",
+  "relative_path": "договоры 3/dogovor-o-darenii-avtomashini.html",
+  "document_path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\договоры 3\\dogovor-o-darenii-avtomashini.html",
+  "document_name": "dogovor-o-darenii-avtomashini.html",
+  "role": "Заявитель",
+  "counterparty_role": "Организация",
+  "language": "ru",
+  "mime_type": "text/html",
+  "tags": [
+    "workspace-corpus",
+    "html",
+    "dogovory_3",
+    "non_contract_legal_form"
+  ],
+  "source_group": "manifest",
+  "expected": {
+    "contract_type": "non_contract_legal_form",
+    "min_contract_type_confidence": 0.35,
+    "min_risk_count": 0,
+    "min_disputed_clause_count": 0,
+    "execution_mode": "local_first",
+    "expected_high_risk_ids": []
+  },
+  "started_at": "2026-04-28T16:12:38.423598+00:00",
+  "status": "completed",
+  "request": {
+    "document_name": "dogovor-o-darenii-avtomashini.html",
+    "role_context": {
+      "role": "Заявитель",
+      "counterparty_role": "Организация"
+    },
+    "document_text": null,
+    "document_base64": "PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMDEgVHJhbnNpdGlvbmFsLy9FTiI+DQo8aHRtbD4NCjxoZWFkPg0KPGJhc2UgaHJlZj0iaHR0cHM6Ly9kb2dvdm9yLXVyaXN0LnJ1LyI+DQo8dGl0bGU+0JTQvtCz0L7QstC+0YAg0L4g0LTQsNGA0LXQvdC40Lgg0LDQstGC0L7QvNCw0YjQuNC90YsgLSDQstC10YDRgdC40Y8g0LTQu9GPINC/0LXRh9Cw0YLQuC4gMjAyNi4g0J7QsdGA0LDQt9GG0Ysg0LTQvtCz0L7QstC+0YDQvtCyLCDRgtC40L/QvtCy0YvQtSDQtNC+0LPQvtCy0L7RgNCwLCDQsNC60YLRg9Cw0LvRjNC90YvQtSDQtNC+0LrRg9C80LXQvdGC0YssINGO0YDQuNC00LjRh9C10YHQutC40Lwg0Lgg0YTQuNC30LjRh9C10YHQutC40Lwg0LvQuNGG0LDQvDwvdGl0bGU+DQo8bWV0YSBjb250ZW50PSIiIG5hbWU9ImtleXdvcmRzIj4NCjxtZXRhIGNvbnRlbnQ9IiIgbmFtZT0iZGVzY3JpcHRpb24iPg0KPG1ldGEgbmFtZT0icm9ib3RzIiBjb250ZW50PSJub2luZGV4LG5vZm9sbG93Ij4NCjxtZXRhIGh0dHAtZXF1aXY9IkNvbnRlbnQtVHlwZSIgY29udGVudD0idGV4dC9odG1sOyBjaGFyc2V0PXV0Zi04Ij4NCjxsaW5rIHJlbD0ic3R5bGVzaGVldCIgaHJlZj0iL2ltYWdlcy9zdHlsZS5jc3MiIHR5cGU9InRleHQvY3NzIj4NCjwvaGVhZD4NCjxib2R5Pg0KPGRpdiBjbGFzcz0iZG9jdW1lbnRUZXh0Ij4NCjxwcmU+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg0J4g0JTQkNCg0JXQndCY0Jgg0JDQktCi0J7QnNCQ0KjQmNCd0KsNCg0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg0JTQntCT0J7QktCe0KANCg0KDQogICAgICAgINCT0L7RgNC+0LQg0JzQvtGB0LrQstCwLCAgINC00LLQsNC00YbQsNGC0YwgICDRgtGA0LXRgtGM0LXQs9C+ICAg0LjRjtC70Y8gICDRgtGL0YHRj9GH0LAgINC00LXQstGP0YLRjNGB0L7Rgg0KICAgINC00LXQstGP0L3QvtGB0YLQviDRgtGA0LXRgtGM0LXQs9C+INCz0L7QtNCwLg0KICAgICAgICDQnNGLLCDQs9GALtCY0LLQsNC90L7QsiAg0JLQuNC60YLQvtGAICDQn9C10YLRgNC+0LLQuNGHLCAgINC/0YDQvtC20LjQstCw0Y7RidC40LkgICDQsiAgINCzLtCc0L7RgdC60LLQtSwNCiAgICDRg9C7LtCa0LjRgNC+0LLQsCwgICDQtC4xNSwgICDQutCyLjE2LCAgINC4ICDQs9GALiAg0KHQuNGC0L3QuNC60L7QsiAg0JLQsNGB0LjQu9C40LkgINCY0LLQsNC90L7QstC40YcsDQogICAg0L/RgNC+0LbQuNCy0LDRjtGJ0LjQuSAg0LIgINCzLtCc0L7RgdC60LLQtSwgINGD0Lsu0JrQvtC70L7QtNC10LfQvdCw0Y8sICDQtC4xLCAg0LrQsi42NywgINC30LDQutC70Y7Rh9C40LvQuA0KICAgINC90LDRgdGC0L7Rj9GJ0LjQuSDQtNC+0LPQvtCy0L7RgCDQviDQvdC40LbQtdGB0LvQtdC00YPRjtGJ0LXQvDoNCg0KICAgICAgICAxLiDQrywgINCY0LLQsNC90L7QsiDQki7Qny4sICDQv9C+0LTQsNGA0LjQuyDQodC40YLQvdC40LrQvtCy0YMg0JIu0JguICDQv9GA0LjQvdCw0LTQu9C10LbQsNGJ0YPRjiDQvNC90LUNCiAgICDQu9C10LPQutC+0LLRg9GOINCw0LLRgtC+0LzQsNGI0LjQvdGDINC80LDRgNC60LggICLQktC+0LvQs9CwIiwgINCz0L7QtCAg0LLRi9C/0YPRgdC60LAgIDE5NzAsICBOICDRiNCw0YHRgdC4DQogICAgMTM1NTUsIE4gINC00LLQuNCz0LDRgtC10LvRjyA4MTU4LCAg0LPQvtGB0YPQtNCw0YDRgdGC0LLQtdC90L3Ri9C5INC90L7QvNC10YDQvdC+0Lkg0LfQvdCw0LogLSDQoiA0My03NA0KICAgINCc0JouDQoNCiAgICAgICAgMi4g0KPQutCw0LfQsNC90L3QsNGPINCw0LLRgtC+0LzQsNGI0LjQvdCwICDQv9GA0LjQvdCw0LTQu9C10LbQuNGCICDQvNC90LUsICDQmNCy0LDQvdC+0LLRgyAg0JIu0J8uLCAg0L3QsA0KICAgINC+0YHQvdC+0LLQsNC90LjQuCDRgtC10YXQvdC40YfQtdGB0LrQvtCz0L4gICDQv9Cw0YHQv9C+0YDRgtCwLCAgINCy0YvQtNCw0L3QvdC+0LPQviAgINCT0L7RgdCw0LLRgtC+0LjQvdGB0L/QtdC60YbQuNC10LkNCiAgICDQmtGD0LnQsdGL0YjQtdCy0YHQutC+0LPQviDRgNCw0LnQvtC90LAg0LMu0JzQvtGB0LrQstGLINC+0YIgMTgg0LTQtdC60LDQsdGA0Y8gMTk3MCDQs9C+0LTQsCBOIDXQmjAwNzUzNS4NCg0KICAgICAgICAzLiDQrywg0KHQuNGC0L3QuNC60L7QsiDQki7QmC4sINC/0YDQuNC90LjQvNCw0Y4g0YEg0LHQu9Cw0LPQvtC00LDRgNC90L7RgdGC0YzRjiDQsiDQtNCw0YAg0YPQutCw0LfQsNC90L3Rg9GODQogICAg0LDQstGC0L7QvNCw0YjQuNC90YMuDQoNCiAgICAgICAgNC4g0KPQutCw0LfQsNC90L3QsNGPICDQsNCy0YLQvtC80LDRiNC40L3QsCAg0YHRgtC+0YDQvtC90LDQvNC4ICDQvtGG0LXQvdC40LLQsNC10YLRgdGPICDQsiDRgdC10LzRjCDRgtGL0YHRj9GHDQogICAgKDcwMDApINGA0YPQsdC70LXQuS4NCg0KICAgICAgICA1LiDQlNC+INC90LDRgdGC0L7Rj9GJ0LXQs9C+ICDQtNC+0LPQvtCy0L7RgNCwICDQv9C+0LTQsNGA0LXQvdC90LDRjyAg0LDQstGC0L7QvNCw0YjQuNC90LAgINC90LjQutC+0LzRgyAg0L3QtQ0KICAgINC/0YDQvtC00LDQvdCwLCDQvdC1ICDQt9Cw0LvQvtC20LXQvdCwLCAg0LIgINGB0L/QvtGA0LUgINC4ICDQv9C+0LQgINC30LDQv9GA0LXRidC10L3QuNC10LwgKNCw0YDQtdGB0YLQvtC8KSDQvdC1DQogICAg0YHQvtGB0YLQvtC40YIuDQoNCiAgICAgICAgNi4g0KDQsNGB0YXQvtC00YsgINC/0L4gINC+0YTQvtGA0LzQu9C10L3QuNGOICDQvdCw0YHRgtC+0Y/RidC10LPQviAgINC00L7Qs9C+0LLQvtGA0LAgICDRg9C/0LvQsNGH0LjQstCw0LXRgg0KICAgINCh0LjRgtC90LjQutC+0LIg0JIu0JguDQoNCiAgICAgICAgNy4g0J3QsNGB0YLQvtGP0YnQuNC5ICAg0LTQvtCz0L7QstC+0YAgINGB0L7RgdGC0LDQstC70LXQvSAg0LIgINGC0YDQtdGFICDRjdC60LfQtdC80L/Qu9GP0YDQsNGFOiAg0L7QtNC40L0NCiAgICDRjdC60LfQtdC80L/Qu9GP0YAg0YXRgNCw0L3QuNGC0YHRjyAg0LIgINC00LXQu9Cw0YUgINCf0LXRgNCy0L7QuSAg0JzQvtGB0LrQvtCy0YHQutC+0LkgICDQs9C+0YHRg9C00LDRgNGB0YLQstC10L3QvdC+0LkNCiAgICDQvdC+0YLQsNGA0LjQsNC70YzQvdC+0Lkg0LrQvtC90YLQvtGA0YsgICDQuCAg0L/QviAg0Y3QutC30LXQvNC/0LvRj9GA0YMgINCy0YvQtNCw0L3RiyAg0JjQstCw0L3QvtCy0YMgINCSLtCfLiAg0LgNCiAgICDQodC40YLQvdC40LrQvtCy0YMg0JIu0JguDQoNCg0KICAgICAgICDQn9C+0LTQv9C40YHQuCDRgdGC0L7RgNC+0L0NCiAgDQo8L3ByZT48L2Rpdj4NCjwvYm9keT4NCjwvaHRtbD4=",
+    "mime_type": "text/html",
+    "language": "ru",
+    "locale": "ru"
+  },
+  "ingestion_preflight": {
+    "mime_type": "text/html",
+    "extractor": "html:regex",
+    "extraction_source": "html:regex",
+    "extraction_ok": true,
+    "error": null,
+    "extraction_error": null,
+    "sha256": "93e4e78667646fd1050393888c9ed343bb23ac10e2489f05668e1c2494aa4633"
+  },
+  "metrics": {
+    "risk_count": 1,
+    "high_risk_count": 0,
+    "disputed_clause_count": 1,
+    "asymmetry_signal_count": 0,
+    "contract_type": "non_contract_legal_form"
+  },
+  "analysis": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'dogovor-o-darenii-avtomashini. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Заявитель'. Определен тип договора: Иной юридический документ (уверенность 48%, правовая рамка: Вне типовой contract taxonomy). Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Заявитель'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Договор о дарении автомашины - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам О ДАРЕНИИ АВТОМАШИНЫ ДОГОВОР Город Москва, двадцать третьего июля тысяча девятьсот девяносто третьего года. Мы, гр. Иванов Виктор Петрович, проживающий в г. Москве, ул. Кирова, д. 15, кв. 16, и гр. Ситников Василий Иванович, проживающий в г. Москве, ул. Колодезная, д. 1, кв. 67, заключили настоящий договор о нижеследующем: 1. Я, Иванов В. П.",
+        "dispute_reason": "Явные маркеры спорных формулировок не обнаружены.",
+        "possible_consequence": "Скрытые спорные моменты требуют дополнительной юридической проверки.",
+        "confidence": 0.35
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Заявитель",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Заявитель'.",
+      "must_do": [
+        "Конфиг не выявил явных обязательств."
+      ],
+      "should_review": [
+        "Конфиг не выявил явных дискреционных условий."
+      ],
+      "payment_terms": [
+        "Конфиг не выявил явных условий оплаты."
+      ],
+      "deadlines": [
+        "Конфиг не выявил явных сроков."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "93e4e78667646fd1050393888c9ed343bb23ac10e2489f05668e1c2494aa4633"
+    },
+    "contract_type": {
+      "type_id": "non_contract_legal_form",
+      "confidence": 0.48,
+      "ru_name": "Иной юридический документ",
+      "legal_framework": "Вне типовой contract taxonomy"
+    },
+    "asymmetry_signals": []
+  },
+  "result": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'dogovor-o-darenii-avtomashini. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Заявитель'. Определен тип договора: Иной юридический документ (уверенность 48%, правовая рамка: Вне типовой contract taxonomy). Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Заявитель'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Договор о дарении автомашины - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам О ДАРЕНИИ АВТОМАШИНЫ ДОГОВОР Город Москва, двадцать третьего июля тысяча девятьсот девяносто третьего года. Мы, гр. Иванов Виктор Петрович, проживающий в г. Москве, ул. Кирова, д. 15, кв. 16, и гр. Ситников Василий Иванович, проживающий в г. Москве, ул. Колодезная, д. 1, кв. 67, заключили настоящий договор о нижеследующем: 1. Я, Иванов В. П.",
+        "dispute_reason": "Явные маркеры спорных формулировок не обнаружены.",
+        "possible_consequence": "Скрытые спорные моменты требуют дополнительной юридической проверки.",
+        "confidence": 0.35
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Заявитель",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Заявитель'.",
+      "must_do": [
+        "Конфиг не выявил явных обязательств."
+      ],
+      "should_review": [
+        "Конфиг не выявил явных дискреционных условий."
+      ],
+      "payment_terms": [
+        "Конфиг не выявил явных условий оплаты."
+      ],
+      "deadlines": [
+        "Конфиг не выявил явных сроков."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "93e4e78667646fd1050393888c9ed343bb23ac10e2489f05668e1c2494aa4633"
+    },
+    "contract_type": {
+      "type_id": "non_contract_legal_form",
+      "confidence": 0.48,
+      "ru_name": "Иной юридический документ",
+      "legal_framework": "Вне типовой contract taxonomy"
+    },
+    "asymmetry_signals": []
+  },
+  "finished_at": "2026-04-28T16:12:38.460904+00:00",
+  "duration_ms": 37.26
+}

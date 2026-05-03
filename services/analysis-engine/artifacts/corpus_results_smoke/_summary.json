@@ -1,0 +1,32 @@
+[
+  {
+    "output_path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\contract-risk-scan\\services\\analysis-engine\\artifacts\\corpus_results_smoke\\0001_____akt-priema-peredachi-del-i-dolzhnosti-predsedatelem-garazhnogo-kooperativa.docx.json",
+    "relative_path": "договоры\\akt-priema-peredachi-del-i-dolzhnosti-predsedatelem-garazhnogo-kooperativa.docx",
+    "extraction_ok": true,
+    "analysis_status": "completed"
+  },
+  {
+    "output_path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\contract-risk-scan\\services\\analysis-engine\\artifacts\\corpus_results_smoke\\0002_____akt-priemaperedachi-imuschestva-v-zaklad-iz-zaklada.doc.json",
+    "relative_path": "договоры\\akt-priemaperedachi-imuschestva-v-zaklad-iz-zaklada.doc",
+    "extraction_ok": false,
+    "analysis_status": "completed"
+  },
+  {
+    "output_path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\contract-risk-scan\\services\\analysis-engine\\artifacts\\corpus_results_smoke\\0003_____Brachnyy-dogovor-dlya-licb-sostoyaschih-v-brake.doc.json",
+    "relative_path": "договоры\\Brachnyy-dogovor-dlya-licb-sostoyaschih-v-brake.doc",
+    "extraction_ok": false,
+    "analysis_status": "completed"
+  },
+  {
+    "output_path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\contract-risk-scan\\services\\analysis-engine\\artifacts\\corpus_results_smoke\\0004_____Brachnyy-dogovor-osnovnoy-rejim-imuschestva-dolevaya-sobstvennost.doc.json",
+    "relative_path": "договоры\\Brachnyy-dogovor-osnovnoy-rejim-imuschestva-dolevaya-sobstvennost.doc",
+    "extraction_ok": false,
+    "analysis_status": "completed"
+  },
+  {
+    "output_path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\contract-risk-scan\\services\\analysis-engine\\artifacts\\corpus_results_smoke\\0005_____Dog-ob-ohrane-kvartir-i-drugih-mest-hran-lich-imuschestva.doc.json",
+    "relative_path": "договоры\\Dog-ob-ohrane-kvartir-i-drugih-mest-hran-lich-imuschestva.doc",
+    "extraction_ok": false,
+    "analysis_status": "completed"
+  }
+]

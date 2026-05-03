@@ -1,0 +1,292 @@
+{
+  "case_id": "commission_ru",
+  "relative_path": "contract-risk-scan/services/analysis-engine/golden_set/docs/commission.txt",
+  "document_path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\contract-risk-scan\\services\\analysis-engine\\golden_set\\docs\\commission.txt",
+  "document_name": "commission.txt",
+  "role": "Комиссионер",
+  "counterparty_role": "Комитент",
+  "language": "ru",
+  "mime_type": "text/plain",
+  "tags": [
+    "real-corpus",
+    "agency",
+    "commission"
+  ],
+  "source_group": "manifest",
+  "expected": {
+    "contract_type": "agency_agreement",
+    "min_contract_type_confidence": 0.9,
+    "min_risk_count": 2,
+    "min_disputed_clause_count": 2,
+    "risk_title_fragments_any": [
+      "неустойка",
+      "пеня"
+    ],
+    "required_asymmetry_signal_ids": [
+      "undefined_acceptance_criteria"
+    ],
+    "execution_mode": "local_first",
+    "expected_high_risk_ids": [
+      "uncapped_daily_penalty",
+      "one_sided_penalty"
+    ]
+  },
+  "started_at": "2026-04-28T16:12:20.210735+00:00",
+  "status": "completed",
+  "request": {
+    "document_name": "commission.txt",
+    "role_context": {
+      "role": "Комиссионер",
+      "counterparty_role": "Комитент"
+    },
+    "document_text": null,
+    "document_base64": "77u/0JTQntCT0J7QktCe0KAg0JrQntCc0JjQodCh0JjQmCDQndCQINCg0JXQkNCb0JjQl9CQ0KbQmNCuINCi0J7QktCQ0KDQntCSCgrQsy4gX19fX19fX19fX19fX19fCQkJCQkJ4oCcX19f4oCdIF9fX19fX19fX18gMjBfXyDQsy4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLCDQuNC80LXQvdGD0LXQvF9fXyDQsiDQtNCw0LvRjNC90LXQudGI0LXQvAoK4oCc0JrQvtC80LjRgtC10L3RguKAnSwg0LIg0LvQuNGG0LUgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXywg0LTQtdC50YHRgtCy0YPRjtGJ0LXQs9C+CgkJCSAgICAgICAo0LTQvtC70LbQvdC+0YHRgtGMLCDRhNCw0LzQuNC70LjRjywg0LjQvNGPLCDQvtGC0YfQtdGB0YLQstC+KQrQvdCwINC+0YHQvdC+0LLQsNC90LjQuCBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLCDRgSDQvtC00L3QvtC5INGB0YLQvtGA0L7QvdGLLAoJCQkgICAgICAgICAo0KPRgdGC0LDQstCwLCDQtNC+0LLQtdGA0LXQvdC90L7RgdGC0LgpCtC4IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLAoo0L3QsNC40LzQtdC90L7QstCw0L3QuNC1INC/0YDQtdC00L/RgNC40Y/RgtC40Y8sINGD0YfRgNC10LbQtNC10L3QuNGPLCDQvtGA0LPQsNC90LjQt9Cw0YbQuNC4KQrQuNC80LXQvdGD0LXQvF9fXyDQsiDQtNCw0LvRjNC90LXQudGI0LXQvCDigJzQmtC+0LzQuNGB0YHQuNC+0L3QtdGA4oCdLCDQsiDQu9C40YbQtSBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18sCgkJCQkJCQkJCSjQtNC+0LvQttC90L7RgdGC0YwsINCkLtCYLtCeLikK0LTQtdC50YHRgtCy0YPRjtGJ0LXQs9C+INC90LAg0L7RgdC90L7QstCw0L3QuNC4IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLAoJCQkJCSAgICAgICjQo9GB0YLQsNCy0LAsINC/0L7Qu9C+0LbQtdC90LjRjywg0LTQvtCy0LXRgNC10L3QvdC+0YHRgtC4KQrQtNGA0YPQs9C+0Lkg0YHRgtC+0YDQvtC90YssINC40LzQtdC90YPQtdC80YvQtSDQsiDQtNCw0LvRjNC90LXQudGI0LXQvCDigJzQodGC0L7RgNC+0L3Ri+KAnSwg0LfQsNC60LvRjtGH0LjQu9C4INC90LDRgdGC0L7Rj9GJ0LjQuSDQlNC+0LPQvtCy0L7RgCDQviDQvdC40LbQtdGB0LvQtdC00YPRjtGJ0LXQvDoKCjEuINCf0YDQtdC00LzQtdGCINCU0L7Qs9C+0LLQvtGA0LAKCjEuMS4g0JrQvtC80LjRgtC10L3RgiDQv9C+0YDRg9GH0LDQtdGCLCDQsCDQmtC+0LzQuNGB0YHQuNC+0L3QtdGAINC/0YDQuNC90LjQvNCw0LXRgiDQvdCwINGB0LXQsdGPINC+0LHRj9C30LDRgtC10LvRjNGB0YLQstC+INC30LAg0LLQvtC30L3QsNCz0YDQsNC20LTQtdC90LjQtSDRgdC+0LLQtdGA0YjQsNGC0Ywg0L3QsCDRg9GB0LvQvtCy0LjRj9GFINC90LDRgdGC0L7Rj9GJ0LXQs9C+INCU0L7Qs9C+0LLQvtGA0LAg0L7RgiDRgdCy0L7QtdCz0L4g0LjQvNC10L3QuCwg0L3QviDQsiDQuNC90YLQtdGA0LXRgdCw0YUg0Lgg0LfQsCDRgdGH0LXRgiDQmtC+0LzQuNGC0LXQvdGC0LAg0YHQtNC10LvQutC4INC/0L4g0YDQtdCw0LvQuNC30LDRhtC40Lgg0L/QtdGA0LXQtNCw0LLQsNC10LzRi9GFINC10LzRgyDQmtC+0LzQuNGC0LXQvdGC0L7QvCDRgtC+0LLQsNGA0L7QsjogX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18gKNC00LDQu9C10LUg4oCTINCi0L7QstCw0YApLgoxLjIuINCi0L7QstCw0YAg0L/QtdGA0LXQtNCw0LXRgtGB0Y8g0JrQvtC80LjRgdGB0LjQvtC90LXRgNGDINC/0LDRgNGC0LjRj9C80Lgg0LIg0LrQvtC70LjRh9C10YHRgtCy0LUg0Lgg0LDRgdGB0L7RgNGC0LjQvNC10L3RgtC1LCDRgdC+0LPQu9Cw0YHQvtCy0LDQvdC90L7QvCDQodGC0L7RgNC+0L3QsNC80Lgg0LIg0LTQvtC/0L7Qu9C90LjRgtC10LvRjNC90YvRhSDRgdC+0LPQu9Cw0YjQtdC90LjRj9GFINC6INC90LDRgdGC0L7Rj9GJ0LXQvNGDINCU0L7Qs9C+0LLQvtGA0YMuINCSINC00L7Qv9C+0LvQvdC40YLQtdC70YzQvdGL0YUg0YHQvtCz0LvQsNGI0LXQvdC40Y/RhSDRgtCw0LrQttC1INGD0YHRgtCw0L3QsNCy0LvQuNCy0LDRjtGC0YHRjyDQvNC40L3QuNC80LDQu9GM0L3QsNGPINGG0LXQvdCwINC/0YDQvtC00LDQttC4INC60LDQttC00L7QuSDQtdC00LjQvdC40YbRiyDQotC+0LLQsNGA0LAsINGB0YDQvtC6LCDQsiDRgtC10YfQtdC90LjQtSDQutC+0YLQvtGA0L7Qs9C+INGBINC80L7QvNC10L3RgtCwINC/0L7Qu9GD0YfQtdC90LjRjyDQotC+0LLQsNGA0LAg0JrQvtC80LjRgdGB0LjQvtC90LXRgCDQvtCx0Y/Qt9GD0LXRgtGB0Y8g0YDQtdCw0LvQuNC30L7QstCw0YLRjCDQotC+0LLQsNGALCDQsCDRgtCw0LrQttC1INGB0LvRg9GH0LDQuCDQuCDQv9C+0YDRj9C00L7QuiDQstC+0LfQstGA0LDRgtCwINCi0L7QstCw0YDQsCDQmtC+0LzQuNGC0LXQvdGC0YMuCtCe0LTQvdCwINC/0LDRgNGC0LjRjyDQotC+0LLQsNGA0LAg0L3QtSDQvNC+0LbQtdGCINCx0YvRgtGMINC80LXQvdC10LUgX19fX19fX19fX18g0Lgg0LHQvtC70LXQtSBfX19fX19fLgoKMi4g0J/RgNCw0LLQsCDQuCDQvtCx0Y/Qt9Cw0L3QvdC+0YHRgtC4INCh0YLQvtGA0L7QvQoKMi4xLiDQmtC+0LzQuNGB0YHQuNC+0L3QtdGAINC+0LHRj9C30LDQvToKMi4xLjEuINCf0YDQvtC40LfQstC+0LTQuNGC0Ywg0L/RgNC40LXQvNC60YMg0KLQvtCy0LDRgNCwINC4INGC0L7QstCw0YDQvdGL0YUg0LTQvtC60YPQvNC10L3RgtC+0LIg0L3QsCDQvdC10LPQviDQv9C+INCw0LrRgtGDINC/0YDQuNC10LzQsC0K0L/QtdGA0LXQtNCw0YfQuCDQotC+0LLQsNGA0LAuINCf0YDQuCDQv9GA0LjQvdGP0YLQuNC4INCi0L7QstCw0YDQsCDRgSDQvdC10LTQvtGB0YLQsNGC0LrQsNC80Lgg0L7RgtGA0LDQttCw0YLRjCDRgtCw0LrQuNC1INC90LXQtNC+0YHRgtCw0YLQutC4INCyINCw0LrRgtC1INC/0YDQuNC10LzQsC3Qv9C10YDQtdC00LDRh9C4INCi0L7QstCw0YDQsC4KMi4xLjIuINCf0YDQvtCy0L7QtNC40YLRjCDQv9C+0LjRgdC6INC/0L7QutGD0L/QsNGC0LXQu9C10Lkg0L3QsCDQotC+0LLQsNGAINC90LAg0YPRgdC70L7QstC40Y/RhSwg0L3QsNC40LHQvtC70LXQtSDQstGL0LPQvtC00L3Ri9GFINC00LvRjyDQmtC+0LzQuNGC0LXQvdGC0LAg0Lgg0L/QviDRhtC10L3QtSDQvdC1INC90LjQttC1INC90LDQt9C90LDRh9C10L3QvdC+0Lkg0L/QvtGB0LvQtdC00L3QuNC8LgoyLjEuMy4g0KDQtdCw0LvQuNC30L7QstGL0LLQsNGC0Ywg0KLQvtCy0LDRgCDQvdCwINGD0YHQu9C+0LLQuNGP0YUsINC/0YDQtdC00YPRgdC80L7RgtGA0LXQvdC90YvRhSDQsiDQtNC+0L/QvtC70L3QuNGC0LXQu9GM0L3Ri9GFINGB0L7Qs9C70LDRiNC10L3QuNGP0YUg0KHRgtC+0YDQvtC9LgoyLjEuNC4g0J7RhtC10L3QuNCy0LDRgtGMINC/0LXRgNGB0L/QtdC60YLQuNCy0Ysg0L/RgNC+0LTQsNC20Lgg0L3QsNGF0L7QtNGP0YnQtdCz0L7RgdGPINGDINGB0LXQsdGPINCi0L7QstCw0YDQsCDQmtC+0LzQuNGC0LXQvdGC0LAg0Lgg0YPQstC10LTQvtC80LvRj9GC0Ywg0L/QvtGB0LvQtdC00L3QtdCz0L4g0L4g0YHRgNC+0LrQtSwg0LIg0LrQvtGC0L7RgNGL0Lkg0L3QtdC+0LHRhdC+0LTQuNC80L4g0YHQvtCz0LvQsNGB0L7QstCw0YLRjCDRg9GB0LvQvtCy0LjRjyDQv9GA0L7QtNCw0LbQuCDQvtGH0LXRgNC10LTQvdC+0Lkg0L/QsNGA0YLQuNC4INCi0L7QstCw0YDQsC4KMi4xLjUuINCY0L3RhNC+0YDQvNC40YDQvtCy0LDRgtGMINCa0L7QvNC40YLQtdC90YLQsCDQviDRhdC+0LTQtSDQuNGB0L/QvtC70L3QtdC90LjRjyDQv9C+0YDRg9GH0LXQvdC40Y8g0L/QviDQvdCw0YHRgtC+0Y/RidC10LzRgyDQlNC+0LPQvtCy0L7RgNGDLiDQn9C+INGA0LXQt9GD0LvRjNGC0LDRgtCw0Lwg0L/RgNC+0LTQsNC20Lgg0LrQsNC20LTQvtC5INC/0LDRgNGC0LjQuCDQotC+0LLQsNGA0LAg0L/RgNC10LTQvtGB0YLQsNCy0LvRj9GC0Ywg0JrQvtC80LjRgtC10L3RgtGDINC/0LjRgdGM0LzQtdC90L3Ri9C1INC+0YLRh9C10YLRiyDRgSDRg9C60LDQt9Cw0L3QuNC10Lwg0YTQsNC60YLQuNGH0LXRgdC60L7QuSDRhtC10L3RiyDQv9GA0L7QtNCw0LbQuCDQotC+0LLQsNGA0LAg0L3QtSDQv9C+0LfQtNC90LXQtSBfX19fINC00L3RjyDRgSDQtNCw0YLRiyDRgNC10LDQu9C40LfQsNGG0LjQuCDQvtGH0LXRgNC10LTQvdC+0Lkg0L/QsNGA0YLQuNC4INCi0L7QstCw0YDQsCDQsiDQv9C+0LvQvdC+0Lwg0L7QsdGK0LXQvNC1LiDQmiDQvtGC0YfQtdGC0YMg0LTQvtC70LbQvdGLINCx0YvRgtGMINC/0YDQuNC70L7QttC10L3RiyDRgNCw0YHRh9C10YIg0LLQvtC30L3QsNCz0YDQsNC20LTQtdC90LjRjyDQmtC+0LzQuNGB0YHQuNC+0L3QtdGA0LAg0Lgg0YDQsNC30LHQuNCy0LrQsCDQv9C+0L3QtdGB0LXQvdC90YvRhSDQuNC8INCy0L4g0LjRgdC/0L7Qu9C90LXQvdC40LUg0L3QsNGB0YLQvtGP0YnQtdCz0L4g0JTQvtCz0L7QstC+0YDQsCDRgNCw0YHRhdC+0LTQvtCyLCDQsCDRgtCw0LrQttC1INC90LXQvtCx0YXQvtC00LjQvNGL0LUg0LTQvtC60LDQt9Cw0YLQtdC70YzRgdGC0LLQsCDRgtCw0LrQuNGFINGA0LDRgdGF0L7QtNC+0LIuCjIuMS42LiDQodC+0LPQu9Cw0YHQvtCy0YvQstCw0YLRjCDRgSDQmtC+0LzQuNGC0LXQvdGC0L7QvCDRgNCw0YHRhdC+0LTRiywg0L3QtdC+0LHRhdC+0LTQuNC80YvQtSDQtNC70Y8g0LjRgdC/0L7Qu9C90LXQvdC40Y8g0L3QsNGB0YLQvtGP0YnQtdCz0L4g0JTQvtCz0L7QstC+0YDQsC4KMi4xLjcuINCSINGC0LXRh9C10L3QuNC1IF9fX18g0LTQvdC10Lkg0YEg0LTQsNGC0Ysg0L/RgNC+0LTQsNC20Lgg0L7Rh9C10YDQtdC00L3QvtC5INC/0LDRgNGC0LjQuCDQotC+0LLQsNGA0LAg0L/QtdGA0LXRh9C40YHQu9C40YLRjCDQmtC+0LzQuNGC0LXQvdGC0YMg0LLRi9GA0YPRh9C10L3QvdGD0Y4g0L7RgiDRgNC10LDQu9C40LfQsNGG0LjQuCDQotC+0LLQsNGA0LAg0YHRg9C80LzRgyDQt9CwINCy0YvRh9C10YLQvtC8INGB0LLQvtC10LPQviDQstC+0LfQvdCw0LPRgNCw0LbQtNC10L3QuNGPINC4INGA0LDRgdGF0L7QtNC+0LIsINGB0L7Qs9C70LDRgdC+0LLQsNC90L3Ri9GFINCh0YLQvtGA0L7QvdCw0LzQuCDQsiDRgdGC0LDRgtGM0LUgMyDQvdCw0YHRgtC+0Y/RidC10LPQviDQlNC+0LPQvtCy0L7RgNCwLgoyLjIuINCa0L7QvNC40YHRgdC40L7QvdC10YAg0LLQv9GA0LDQstC1OgoyLjIuMS4g0J/RgNC4INC/0YDQuNC10LzQutC1INCi0L7QstCw0YDQsCDQvtGCINCa0L7QvNC40YLQtdC90YLQsCDQt9CwINGB0LLQvtC5INGB0YfQtdGCINC/0YDQvtC40LfQstC+0LTQuNGC0Ywg0L7RgdC80L7RgtGAINCi0L7QstCw0YDQsCDQvdCwINC/0YDQtdC00LzQtdGCINC10LPQviDQutCw0YfQtdGB0YLQstCwLCDQutC+0LvQuNGH0LXRgdGC0LLQsCDQuCBfX19fX19fX19fX19fX19fX19fLgoyLjIuMi4g0J7RgtC60LDQt9Cw0YLRjNGB0Y8g0L7RgiDQuNGB0L/QvtC70L3QtdC90LjRjyDQlNC+0LPQvtCy0L7RgNCwLCDQtdGB0LvQuCDQmtC+0LzQuNGC0LXQvdGCINC90LUg0LLRi9C/0L7Qu9C90Y/QtdGCINC40LvQuCDQvdC10L3QsNC00LvQtdC20LDRidC40Lwg0L7QsdGA0LDQt9C+0Lwg0LLRi9C/0L7Qu9C90Y/QtdGCINGB0LLQvtC4INC+0LHRj9C30LDRgtC10LvRjNGB0YLQstCwLCDQsiDRgtC+0Lwg0YfQuNGB0LvQtSDQvtCx0Y/Qt9Cw0YLQtdC70YzRgdGC0LLQsCDQv9C+INCy0YvQv9C70LDRgtC1INCa0L7QvNC40YHRgdC40L7QvdC10YDRgyDQstC+0LfQvdCw0LPRgNCw0LbQtNC10L3QuNGPINC4INC+0L/Qu9Cw0YLQtSDQtdCz0L4g0YDQsNGB0YXQvtC00L7Qsi4KMi4zLiDQmtC+0LzQuNGC0LXQvdGCINC+0LHRj9C30LDQvToKMi4zLjEuINCh0LLQvtC40LzQuCDRgdC40LvQsNC80Lgg0Lgg0LfQsCDRgdCy0L7QuSDRgdGH0LXRgiDQv9GA0LXQtNC+0YHRgtCw0LLQu9GP0YLRjCDQotC+0LLQsNGAINCyINGA0LDRgdC/0L7RgNGP0LbQtdC90LjQtSDQmtC+0LzQuNGB0YHQuNC+LQrQvdC10YDQsC4K0JzQtdGB0YLQviDQv9C10YDQtdC00LDRh9C4INCi0L7QstCw0YDQsDogX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXy4K0KHRgNC+0Log0L/QtdGA0LXQtNCw0YfQuCDQutCw0LbQtNC+0Lkg0L/QsNGA0YLQuNC4INCi0L7QstCw0YDQsCDRgdC+0LPQu9Cw0YHRg9C10YLRgdGPINCh0YLQvtGA0L7QvdCw0LzQuCDQsiDQtNC+0L/QvtC70L3QuNGC0LXQu9GM0L3Ri9GFINGB0L7Qs9C70LDRiNC10L3QuNGP0YUsINGD0YHRgtCw0L3QsNCy0LvQuNCy0LDRjtGJ0LjRhSDQutC+0LvQuNGH0LXRgdGC0LLQviwg0LDRgdGB0L7RgNGC0LjQvNC10L3Rgiwg0YbQtdC90YMg0Lgg0LTRgNGD0LPQuNC1INC/0L7QutCw0LfQsNGC0LXQu9C4INC/0LXRgNC10LTQsNCy0LDQtdC80L7QuSDQvdCwINGA0LXQsNC70LjQt9Cw0YbQuNGOINC/0LDRgNGC0LjQuCDQotC+0LLQsNGA0LAuCjIuMy4yLiDQn9GA0LjQvdC40LzQsNGC0Ywg0L7RgtGH0LXRgtGLINCa0L7QvNC40YLQtdC90YLQsCDQuCDQv9GA0Lgg0L3QsNC70LjRh9C40Lgg0LLQvtC30YDQsNC20LXQvdC40Lkg0L/QviDQvdC40Lwg0YHQvtC+0LHRidC40YLRjCDQviDQvdC40YUg0JrQvtC80LjRgdGB0LjQvtC90LXRgNGDINCyINGC0LXRh9C10L3QuNC1IF9fX19fX19fX19fINC00L3QtdC5INGB0L4g0LTQvdGPINC/0L7Qu9GD0YfQtdC90LjRjyDQvtGC0YfQtdGC0LAuINCSINC/0YDQvtGC0LjQstC90L7QvCDRgdC70YPRh9Cw0LUg0L7RgtGH0LXRgtGLINGB0YfQuNGC0LDRjtGC0YHRjyDQv9GA0LjQvdGP0YLRi9C80Lgg0JrQvtC80LjRgtC10L3RgtC+0LwuCjIuMy4zLiDQntC/0LvQsNGC0LjRgtGMINGA0LDRgdGF0L7QtNGLINCa0L7QvNC40YHRgdC40L7QvdC10YDQsCDQsiDQv9C+0YDRj9C00LrQtSwg0YHQvtCz0LvQsNGB0L7QstCw0L3QvdC+0Lwg0KHRgtC+0YDQvtC90LDQvNC4INCyINGB0YLQsNGC0YzQtSAzINC90LDRgdGC0L7Rj9GJ0LXQs9C+INCU0L7Qs9C+0LLQvtGA0LAuCjIuMy40LiDQktGL0L/Qu9Cw0YLQuNGC0Ywg0LrQvtC80LjRgdGB0LjQvtC90L3QvtC1INCy0L7Qt9C90LDQs9GA0LDQttC00LXQvdC40LUg0JrQvtC80LjRgdGB0LjQvtC90LXRgNGDINCyINC/0L7RgNGP0LTQutC1LCDRgNCw0LfQvNC10YDQtSDQuCDQvdCwINGD0YHQu9C+0LLQuNGP0YUsINGB0L7Qs9C70LDRgdC+0LLQsNC90L3Ri9GFINCh0YLQvtGA0L7QvdCw0LzQuCDQsiDRgdGC0LDRgtGM0LUgMyDQvdCw0YHRgtC+0Y/RidC10LPQviDQlNC+0LPQvtCy0L7RgNCwLgoKMy4g0JLQvtC30L3QsNCz0YDQsNC20LTQtdC90LjQtSDQmtC+0LzQuNGB0YHQuNC+0L3QtdGA0LAuINCf0L7RgNGP0LTQvtC6INC+0YHRg9GJ0LXRgdGC0LLQu9C10L3QuNGPINGA0LDRgdGH0LXRgtC+0LIKCjMuMS4g0JLQvtC30L3QsNCz0YDQsNC20LTQtdC90LjQtSDQmtC+0LzQuNGB0YHQuNC+0L3QtdGA0LAg0YHQvtGB0YLQsNCy0LvRj9C10YIgX19fXyAlINC+0YIg0YTQsNC60YLQuNGH0LXRgdC60L7QuSDRhtC10L3RiyDQv9GA0L7QtNCw0LbQuCDQutCw0LbQtNC+0Lkg0L/QsNGA0YLQuNC4INCi0L7QstCw0YDQsCDQmtC+0LzQuNGC0LXQvdGC0LAuCjMuMi4g0JLQvtC30L3QsNCz0YDQsNC20LTQtdC90LjQtSDQmtC+0LzQuNGB0YHQuNC+0L3QtdGA0YMg0LfQsCDQv9GA0L7QtNCw0LbRgyDQvtGH0LXRgNC10LTQvdC+0Lkg0L/QsNGA0YLQuNC4INCi0L7QstCw0YDQsCDQstGL0L/Qu9Cw0YfQuNCy0LDQtdGC0YHRjyDQv9GD0YLQtdC8INGD0LTQtdGA0LbQsNC90LjRjyDQv9C+0YHQu9C10LTQvdC40Lwg0YHRg9C80LzRiyDQv9GA0LjRh9C40YLQsNGO0YnQtdCz0L7RgdGPINC10LzRgyDQstC+0LfQvdCw0LPRgNCw0LbQtNC10L3QuNGPINC40Lcg0YHRg9C80LzRiywg0LLRi9GA0YPRh9C10L3QvdC+0Lkg0L7RgiDRgNC10LDQu9C40LfQsNGG0LjQuCDQvtGH0LXRgNC10LTQvdC+0Lkg0L/QsNGA0YLQuNC4INCi0L7QstCw0YDQsCDQsiDQv9C+0LvQvdC+0Lwg0L7QsdGK0LXQvNC1LCDQv9GA0Lgg0YPRgdC70L7QstC40Lgg0L/RgNC10LTQvtGB0YLQsNCy0LvQtdC90LjRjyDQv9C40YHRjNC80LXQvdC90L7Qs9C+INC+0YLRh9C10YLQsCDQmtC+0LzQuNGC0LXQvdGC0YMg0LIg0YHQvtC+0YLQstC10YLRgdGC0LLQuNC4INGBINC/LiAyLjEuNSDQvdCw0YHRgtC+0Y/RidC10LPQviDQlNC+0LPQvtCy0L7RgNCwLgozLjMuINCg0LDRgdGF0L7QtNGLINCa0L7QvNC40YHRgdC40L7QvdC10YDQsCwg0L/RgNC10LTQstCw0YDQuNGC0LXQu9GM0L3QviDRgdC+0LPQu9Cw0YHQvtCy0LDQvdC90YvQtSDRgSDQmtC+0LzQuNGC0LXQvdGC0L7QvCwg0LLQvtC30LzQtdGJ0LDRjtGC0YHRjyDQmtC+0LzQuNGB0YHQuNC+0L3QtdGA0YMg0L/Rg9GC0LXQvCDRg9C00LXRgNC20LDQvdC40Y8g0L/QvtGB0LvQtdC00L3QuNC8INC40YUg0YHRg9C80LzRiyDQuNC3INGB0YPQvNC80YssINCy0YvRgNGD0YfQtdC90L3QvtC5INC+0YIg0YDQtdCw0LvQuNC30LDRhtC40Lgg0L7Rh9C10YDQtdC00L3QvtC5INC/0LDRgNGC0LjQuCDQotC+0LLQsNGA0LAg0LIg0L/QvtC70L3QvtC8INC+0LHRitC10LzQtSwg0L/RgNC4INGD0YHQu9C+0LLQuNC4INC/0YDQtdC00L7RgdGC0LDQstC70LXQvdC40Y8g0L/QuNGB0YzQvNC10L3QvdC+0LPQviDQvtGC0YfQtdGC0LAg0JrQvtC80LjRgtC10L3RgtGDINCyINGB0L7QvtGC0LLQtdGC0YHRgtCy0LjQuCDRgSDQvy4gMi4xLjUg0L3QsNGB0YLQvtGP0YnQtdCz0L4g0JTQvtCz0L7QstC+0YDQsC4KMy40LiDQndC10L/RgNC10LTQstC40LTQtdC90L3Ri9C1INGA0LDRgdGF0L7QtNGLINCa0L7QvNC40YHRgdC40L7QvdC10YDQsCwg0L3QtSDRgdC+0LPQu9Cw0YHQvtCy0LDQvdC90YvQtSDRgSDQmtC+0LzQuNGC0LXQvdGC0L7QvCDQsiDQv9GA0LXQtNCy0LDRgNC40YLQtdC70YzQvdC+0Lwg0L/QvtGA0Y/QtNC60LUsINCy0L7Qt9C80LXRidCw0Y7RgtGB0Y8g0JrQvtC80LjRgtC10L3RgtC+0Lwg0LIg0YLQtdGH0LXQvdC40LUgX19fX18g0LTQvdC10Lkg0YEg0LTQsNGC0Ysg0LjRhSDRgdC+0LPQu9Cw0YHQvtCy0LDQvdC40Y8uINCf0YDQuCDRgdC+0LPQu9Cw0YHQuNC4INCa0L7QvNC40YLQtdC90YLQsCDRgtCw0LrQuNC1INGA0LDRgdGF0L7QtNGLINC80L7Qs9GD0YIg0LHRi9GC0Ywg0YLQsNC60LbQtSDQstC+0LfQvNC10YnQtdC90Ysg0JrQvtC80LjRgdGB0LjQvtC90LXRgNGDINC/0YPRgtC10Lwg0YPQtNC10YDQttCw0L3QuNGPINC/0L7RgdC70LXQtNC90LjQvCDQuNGFINGB0YPQvNC80Ysg0LjQtyDRgdGD0LzQvNGLLCDQstGL0YDRg9GH0LXQvdC90L7QuSDQvtGCINGA0LXQsNC70LjQt9Cw0YbQuNC4INC+0YfQtdGA0LXQtNC90L7QuSDQv9Cw0YDRgtC40Lgg0KLQvtCy0LDRgNCwINCyINC/0L7Qu9C90L7QvCDQvtCx0YrQtdC80LUuCtCf0L4g0YHQvtCz0LvQsNGI0LXQvdC40Y4g0KHRgtC+0YDQvtC9INGB0YPQvNC80YssINC/0YDQtdC00L3QsNC30L3QsNGH0LXQvdC90YvQtSDQtNC70Y8g0L/QvtC60YDRi9GC0LjRjyDRgNCw0YHRhdC+0LTQvtCyINCa0L7QvNC40YHRgdC40L7QvdC10YDQsCwg0LzQvtCz0YPRgiDQstGL0L/Qu9Cw0YfQuNCy0LDRgtGM0YHRjyDQmtC+0LzQuNGC0LXQvdGC0L7QvCDQsNCy0LDQvdGB0L7QvC4KCjQuINCe0YLQstC10YLRgdGC0LLQtdC90L3QvtGB0YLRjCDQodGC0L7RgNC+0L0KCjQuMS4g0JIg0YHQu9GD0YfQsNC1INC/0YDQvtGB0YDQvtGH0LrQuCDQmtC+0LzQuNGC0LXQvdGC0LAg0LIg0L7Qv9C70LDRgtC1INGA0LDRgdGF0L7QtNC+0LIg0JrQvtC80LjRgdGB0LjQvtC90LXRgNCwINCa0L7QvNC40YLQtdC90YIg0LLRi9C/0LvQsNGH0LjQstCw0LXRgiDQmtC+0LzQuNGB0YHQuNC+0L3QtdGA0YMg0L3QtdGD0YHRgtC+0LnQutGDINCyINGA0LDQt9C80LXRgNC1IF9fX19fX19fXyUg0L7RgiDQv9GA0L7RgdGA0L7Rh9C10L3QvdC+0Lkg0YHRg9C80LzRiyDQt9Cw0LTQvtC70LbQtdC90L3QvtGB0YLQuCDQt9CwINC60LDQttC00YvQuSDQtNC10L3RjCDQv9GA0L7RgdGA0L7Rh9C60LguCjQuMi4g0J/RgNC4INC90LXQv9GA0LXQtNC+0YHRgtCw0LLQu9C10L3QuNC4INCa0L7QvNC40YHRgdC40L7QvdC10YDQvtC8INCa0L7QvNC40YLQtdC90YLRgyDQvtGC0YfQtdGC0LAg0LIg0YHRgNC+0LosINGB0L7Qs9C70LDRgdC+0LLQsNC90L3Ri9C5INCh0YLQvtGA0L7QvdCw0LzQuCDQsiDQvy4gMi4xLjUg0L3QsNGB0YLQvtGP0YnQtdCz0L4g0JTQvtCz0L7QstC+0YDQsCwg0JrQvtC80LjRgtC10L3RgiDRg9C/0LvQsNGH0LjQstCw0LXRgiDQvdC10YPRgdGC0L7QudC60YMg0LIg0YDQsNC30LzQtdGA0LUgX19fXyUg0LfQsCDQutCw0LbQtNGL0Lkg0LTQtdC90Ywg0L/RgNC+0YHRgNC+0YfQutC4INC+0YIg0YbQtdC90Ysg0L/QsNGA0YLQuNC4INCi0L7QstCw0YDQsCwg0L4g0YDQtdCw0LvQuNC30LDRhtC40Lgg0LrQvtGC0L7RgNC+0Lkg0L3QtSDQv9GA0LXQtNC+0YHRgtCw0LLQu9C10L0g0L7RgtGH0LXRgiwg0YHQvtCz0LvQsNGB0L7QstCw0L3QvdGL0Lkg0KHRgtC+0YDQvtC90LDQvNC4INCyINC00L7Qv9C+0LvQvdC40YLQtdC70YzQvdC+0Lwg0YHQvtCz0LvQsNGI0LXQvdC40LgsINGD0YHRgtCw0L3QsNCy0LvQuNCy0LDRjtGJ0LXQvCDRg9GB0LvQvtCy0LjRjyDQv9GA0L7QtNCw0LbQuCDRgtCw0LrQvtC5INC/0LDRgNGC0LjQuCDQotC+0LLQsNGA0LAuCjQuMy4g0J/RgNC4INC/0YDQvtGB0YDQvtGH0LrQtSDQsiDQv9C10YDQtdGH0LjRgdC70LXQvdC40Lgg0JrQvtC80LjRgtC10L3RgtGDINGB0YPQvNC80YssINCy0YvRgNGD0YfQtdC90L3QvtC5INC+0YIg0YDQtdCw0LvQuNC30LDRhtC40Lgg0L7Rh9C10YDQtdC00L3QvtC5INC/0LDRgNGC0LjQuCDQotC+0LLQsNGA0LAsINCyINGB0L7QvtGC0LLQtdGC0YHRgtCy0LjQuCDRgSDQvy4gMi4xLjcg0L3QsNGB0YLQvtGP0YnQtdCz0L4g0JTQvtCz0L7QstC+0YDQsCwg0JrQvtC80LjRgdGB0LjQvtC90LXRgCDRg9C/0LvQsNGH0LjQstCw0LXRgiDQvdC10YPRgdGC0L7QudC60YMg0LIg0YDQsNC30LzQtdGA0LUgX19fX19fX18lINC+0YIg0YHRg9C80LzRiywg0L/QvtC00LvQtdC20LDRidC10Lkg0L/QtdGA0LXRh9C40YHQu9C10L3QuNGOLCDQt9CwINC60LDQttC00YvQuSDQtNC10L3RjCDQv9GA0L7RgdGA0L7Rh9C60LguCjQuNC4g0JIg0YHQu9GD0YfQsNC1INC90LXRgdC+0LHQu9GO0LTQtdC90LjRjyDRgdGA0L7QutCwINGA0LXQsNC70LjQt9Cw0YbQuNC4INC+0YfQtdGA0LXQtNC90L7QuSDQv9Cw0YDRgtC40Lgg0KLQvtCy0LDRgNCwLCDRgdC+0LPQu9Cw0YHQvtCy0LDQvdC90L7Qs9C+INCyINC00L7Qv9C+0LvQvdC40YLQtdC70YzQvdC+0Lwg0YHQvtCz0LvQsNGI0LXQvdC40Lgg0KHRgtC+0YDQvtC9INC+INGC0LDQutC+0Lkg0L/QsNGA0YLQuNC4INCi0L7QstCw0YDQsCwg0YDQsNC30LzQtdGAINCy0L7Qt9C90LDQs9GA0LDQttC00LXQvdC40Y8g0JrQvtC80LjRgdGB0LjQvtC90LXRgNCwINGD0LzQtdC90YzRiNCw0LXRgtGB0Y8g0L3QsCBfX19fX19fX19fX18g0LfQsCDQutCw0LbQtNGL0Lkg0LTQtdC90Ywg0L/RgNC+0YHRgNC+0YfQutC4INCyINGA0LXQsNC70LjQt9Cw0YbQuNC4IArQotC+0LLQsNGA0LAuCgo1LiDQntCx0YHRgtC+0Y/RgtC10LvRjNGB0YLQstCwINC90LXQv9GA0LXQvtC00L7Qu9C40LzQvtC5INGB0LjQu9GLCgo1LjEuINCh0YLQvtGA0L7QvdGLINC+0YHQstC+0LHQvtC20LTQsNGO0YLRgdGPINC+0YIg0L7RgtCy0LXRgtGB0YLQstC10L3QvdC+0YHRgtC4INC30LAg0L3QtdC40YHQv9C+0LvQvdC10L3QuNC1INC40LvQuCDQvdC10L3QsNC00LvQtdC20LDRidC10LUg0LjRgdC/0L7Qu9C90LXQvdC40LUg0YHQstC+0LjRhSDQvtCx0Y/Qt9Cw0YLQtdC70YzRgdGC0LIg0L/QviDQvdCw0YHRgtC+0Y/RidC10LzRgyDQlNC+0LPQvtCy0L7RgNGDINCyINGB0LvRg9GH0LDQtSDQtNC10LnRgdGC0LLQuNGPINC+0LHRgdGC0L7Rj9GC0LXQu9GM0YHRgtCyINC90LXQv9GA0LXQvtC00L7Qu9C40LzQvtC5INGB0LjQu9GLLCDQv9GA0Y/QvNC+INC40LvQuCDQutC+0YHQstC10L3QvdC+INC/0YDQtdC/0Y/RgtGB0YLQstGD0Y7RidC40YUg0LjRgdC/0L7Qu9C90LXQvdC40Y4g0L3QsNGB0YLQvtGP0YnQtdCz0L4g0JTQvtCz0L7QstC+0YDQsCwg0YLQviDQtdGB0YLRjCDRgtCw0LrQuNGFINC+0LHRgdGC0L7Rj9GC0LXQu9GM0YHRgtCyLCDQutC+0YLQvtGA0YvQtSDQvdC10LfQsNCy0LjRgdC40LzRiyDQvtGCINCy0L7Qu9C4INCh0YLQvtGA0L7QvSwg0L3QtSDQvNC+0LPQu9C4INCx0YvRgtGMINC40LzQuCDQv9GA0LXQtNCy0LjQtNC10L3RiyDQsiDQvNC+0LzQtdC90YIg0LfQsNC60LvRjtGH0LXQvdC40Y8g0JTQvtCz0L7QstC+0YDQsCDQuCDQv9GA0LXQtNC+0YLQstGA0LDRidC10L3RiyDRgNCw0LfRg9C80L3Ri9C80Lgg0YHRgNC10LTRgdGC0LLQsNC80Lgg0L/RgNC4INC40YUg0L3QsNGB0YLRg9C/0LvQtdC90LjQuC4KNS4yLiDQmiDQvtCx0YHRgtC+0Y/RgtC10LvRjNGB0YLQstCw0LwsINGD0LrQsNC30LDQvdC90YvQvCDQsiDQvy4gNS4xINCU0L7Qs9C+0LLQvtGA0LAsINC+0YLQvdC+0YHRj9GC0YHRjzog0LLQvtC50L3QsCDQuCDQstC+0LXQvdC90YvQtSDQtNC10LnRgdGC0LLQuNGPLCDQstC+0YHRgdGC0LDQvdC40LUsINGN0L/QuNC00LXQvNC40LgsINC30LXQvNC70LXRgtGA0Y/RgdC10L3QuNGPLCDQvdCw0LLQvtC00L3QtdC90LjRjywg0LDQutGC0Ysg0L7RgNCz0LDQvdC+0LIg0LLQu9Cw0YHRgtC4LCDQvdC10L/QvtGB0YDQtdC00YHRgtCy0LXQvdC90L4g0LfQsNGC0YDQsNCz0LjQstCw0Y7RidC40LUg0L/RgNC10LTQvNC10YIg0L3QsNGB0YLQvtGP0YnQtdCz0L4g0JTQvtCz0L7QstC+0YDQsCwg0Lgg0LTRgNGD0LPQuNC1INGB0L7QsdGL0YLQuNGPLCDQutC+0YLQvtGA0YvQtSDQutC+0LzQv9C10YLQtdC90YLQvdGL0Lkg0YHRg9C0INC/0YDQuNC30L3QsNC10YIg0Lgg0L7QsdGK0Y/QstC40YIg0YHQu9GD0YfQsNGP0LzQuCDQvdC10L/RgNC10L7QtNC+0LvQuNC80L7QuSDRgdC40LvRiy4KNS4zLiDQodGC0L7RgNC+0L3QsCwg0L/QvtC00LLQtdGA0LPRiNCw0Y/RgdGPINC00LXQudGB0YLQstC40Y4g0YLQsNC60LjRhSDQvtCx0YHRgtC+0Y/RgtC10LvRjNGB0YLQsiwg0L7QsdGP0LfQsNC90LAg0L3QtdC80LXQtNC70LXQvdC90L4g0LIg0L/QuNGB0YzQvNC10L3QvdC+0Lwg0LLQuNC00LUg0YPQstC10LTQvtC80LjRgtGMINC00YDRg9Cz0YPRjiDQodGC0L7RgNC+0L3RgyDQviDQstC+0LfQvdC40LrQvdC+0LLQtdC90LjQuCwg0LLQuNC00LUg0Lgg0LLQvtC30LzQvtC20L3QvtC5INC/0YDQvtC00L7Qu9C20LjRgtC10LvRjNC90L7RgdGC0Lgg0LTQtdC50YHRgtCy0LjRjyDRgdC+0L7RgtCy0LXRgtGB0YLQstGD0Y7RidC40YUg0L7QsdGB0YLQvtGP0YLQtdC70YzRgdGC0LIuIAo1LjQuINCd0LDRgdGC0YPQv9C70LXQvdC40LUg0L7QsdGB0YLQvtGP0YLQtdC70YzRgdGC0LIsINC/0YDQtdC00YPRgdC80L7RgtGA0LXQvdC90YvRhSDQvdCw0YHRgtC+0Y/RidC10Lkg0YHRgtCw0YLRjNC10LksINC/0YDQuCDRg9GB0LvQvtCy0LjQuCDRgdC+0LHQu9GO0LTQtdC90LjRjyDRgtGA0LXQsdC+0LLQsNC90LjQuSDQvy4gNS4zINC90LDRgdGC0L7Rj9GJ0LXQs9C+INCU0L7Qs9C+0LLQvtGA0LAsINC/0YDQvtC00LvQtdCy0LDQtdGCINGB0YDQvtC6INC40YHQv9C+0LvQvdC10L3QuNGPINC00L7Qs9C+0LLQvtGA0L3Ri9GFINC+0LHRj9C30LDRgtC10LvRjNGB0YLQsiDQvdCwINC/0LXRgNC40L7QtCwg0LrQvtGC0L7RgNGL0Lkg0LIg0YbQtdC70L7QvCDRgdC+0L7RgtCy0LXRgtGB0YLQstGD0LXRgiDRgdGA0L7QutGDINC00LXQudGB0YLQstC40Y8g0L3QsNGB0YLRg9C/0LjQstGI0LXQs9C+INC+0LHRgdGC0L7Rj9GC0LXQu9GM0YHRgtCy0LAg0Lgg0YDQsNC30YPQvNC90L7QvNGDINGB0YDQvtC60YMg0LTQu9GPINC10LPQviDRg9GB0YLRgNCw0L3QtdC90LjRjy4KNS41LiDQkiDRgdC70YPRh9Cw0LUg0LXRgdC70Lgg0L7QsdGB0YLQvtGP0YLQtdC70YzRgdGC0LLQsCwg0L/RgNC10LTRg9GB0LzQvtGC0YDQtdC90L3Ri9C1INC90LDRgdGC0L7Rj9GJ0LXQuSDRgdGC0LDRgtGM0LXQuSwg0LTQu9GP0YLRgdGPINCx0L7Qu9C10LUgX19fX18g0LzQtdGB0Y/RhtC10LIsINCh0YLQvtGA0L7QvdGLINGB0L7QstC80LXRgdGC0L3QviDQvtC/0YDQtdC00LXQu9GP0YIg0LTQsNC70YzQvdC10LnRiNGD0Y4g0Y7RgNC40LTQuNGH0LXRgdC60YPRjiDRgdGD0LTRjNCx0YMg0L3QsNGB0YLQvtGP0YnQtdCz0L4g0JTQvtCz0L7QstC+0YDQsC4KCjYuINCX0LDQutC70Y7Rh9C40YLQtdC70YzQvdGL0LUg0L/QvtC70L7QttC10L3QuNGPCgo2LjEuINCd0LDRgdGC0L7Rj9GJ0LjQuSDQlNC+0LPQvtCy0L7RgCDQstGB0YLRg9C/0LDQtdGCINCyINGB0LjQu9GDINGBINC80L7QvNC10L3RgtCwINC10LPQviDQv9C+0LTQv9C40YHQsNC90LjRjyDQuCDQtNC10LnRgdGC0LLRg9C10YIg0LTQviDQv9C+0LvQvdC+0LPQviDQuNGB0L/QvtC70L3QtdC90LjRjyDQodGC0L7RgNC+0L3QsNC80Lgg0YHQstC+0LjRhSDQvtCx0Y/Qt9Cw0YLQtdC70YzRgdGC0LIuCjYuMi4g0KHQv9C+0YDRiyDQuCDRgNCw0LfQvdC+0LPQu9Cw0YHQuNGPLCDQstC+0LfQvdC40LrQsNGO0YnQuNC1INC40Lcg0L3QsNGB0YLQvtGP0YnQtdCz0L4g0JTQvtCz0L7QstC+0YDQsCDQuNC70Lgg0LIg0YHQstGP0LfQuCDRgSDQvdC40LwsINCx0YPQtNGD0YIg0YDQtdGI0LDRgtGM0YHRjyDQodGC0L7RgNC+0L3QsNC80Lgg0L/Rg9GC0LXQvCDQv9C10YDQtdCz0L7QstC+0YDQvtCyLiDQkiDRgdC70YPRh9Cw0LUg0L3QtdC00L7RgdGC0LjQttC10L3QuNGPINGB0L7Qs9C70LDRgdC40Y8g0YHQv9C+0YAg0L/QtdGA0LXQtNCw0LXRgtGB0Y8g0L3QsCDRgNCw0YHRgdC80L7RgtGA0LXQvdC40LUg0LDRgNCx0LjRgtGA0LDQttC90L7Qs9C+INGB0YPQtNCwLgo2LjMuINCb0Y7QsdGL0LUg0LjQt9C80LXQvdC10L3QuNGPINC4INC00L7Qv9C+0LvQvdC10L3QuNGPINC6INC90LDRgdGC0L7Rj9GJ0LXQvNGDINCU0L7Qs9C+0LLQvtGA0YMg0LTQtdC50YHRgtCy0LjRgtC10LvRjNC90YssINGC0L7Qu9GM0LrQviDQtdGB0LvQuCDQvtC90Lgg0YHQvtGB0YLQsNCy0LvQtdC90Ysg0LIg0L/QuNGB0YzQvNC10L3QvdC+0Lkg0YTQvtGA0LzQtSDQuCDQv9C+0LTQv9C40YHQsNC90Ysg0KHRgtC+0YDQvtC90LDQvNC4Lgo2LjQuINCb0Y7QsdGL0LUg0LTQvtC/0L7Qu9C90LXQvdC40Y8sINC/0YDQvtGC0L7QutC+0LvRiywg0L/RgNC40LvQvtC20LXQvdC40Y8g0Log0L3QsNGB0YLQvtGP0YnQtdC80YMg0JTQvtCz0L7QstC+0YDRgyDRgdGC0LDQvdC+0LLRj9GC0YHRjyDQtdCz0L4g0L3QtdC+0YLRitC10LzQu9C10LzRi9C80Lgg0YfQsNGB0YLRj9C80Lgg0YEg0LzQvtC80LXQvdGC0LAg0LjRhSDQv9C+0LTQv9C40YHQsNC90LjRjy4KNi41LiDQktC+INCy0YHQtdC8LCDRh9GC0L4g0L3QtSDQvtCz0L7QstC+0YDQtdC90L4g0LIg0L3QsNGB0YLQvtGP0YnQtdC8INCU0L7Qs9C+0LLQvtGA0LUsINCh0YLQvtGA0L7QvdGLINGA0YPQutC+0LLQvtC00YHRgtCy0YPRjtGC0YHRjyDQtNC10LnRgdGC0LLRg9GO0YnQuNC8INC30LDQutC+0L3QvtC00LDRgtC10LvRjNGB0YLQstC+0Lwg0KDQpC4KNi42LiDQndCw0YHRgtC+0Y/RidC40Lkg0JTQvtCz0L7QstC+0YAg0YHQvtGB0YLQsNCy0LvQtdC9INCyINC00LLRg9GFINGN0LrQt9C10LzQv9C70Y/RgNCw0YUsINC40LzQtdGO0YnQuNGFINC+0LTQuNC90LDQutC+0LLRg9GOINGO0YDQuNC00LjRh9C10YHQutGD0Y4g0YHQuNC70YMsINC/0L4g0L7QtNC90L7QvNGDINGN0LrQt9C10LzQv9C70Y/RgNGDINC00LvRjyDQutCw0LbQtNC+0Lkg0LjQtyDQodGC0L7RgNC+0L0uCgo3LiDQkNC00YDQtdGB0LAg0Lgg0LHQsNC90LrQvtCy0YHQutC40LUg0YDQtdC60LLQuNC30LjRgtGLINCh0YLQvtGA0L7QvQoKCgoKCgoKCtCf0L7QtNC/0LjRgdC4INCh0YLQvtGA0L7QvToKDQo=",
+    "mime_type": "text/plain",
+    "language": "ru",
+    "locale": "ru"
+  },
+  "ingestion_preflight": {
+    "mime_type": "text/plain",
+    "extractor": "binary:utf8_decode",
+    "extraction_source": "binary:utf8_decode",
+    "extraction_ok": true,
+    "error": null,
+    "extraction_error": null,
+    "sha256": "9904ec1fba40f730757cabc05d13ab3a7bb9c8959393376eddab10a2d1a8c639"
+  },
+  "metrics": {
+    "risk_count": 2,
+    "high_risk_count": 1,
+    "disputed_clause_count": 2,
+    "asymmetry_signal_count": 1,
+    "contract_type": "agency_agreement"
+  },
+  "analysis": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "local_first",
+      "offline_capable": true,
+      "network_required": false,
+      "policy_source": "mime_type:text/plain",
+      "reason": "Mime type документа перевел задачу в более безопасный lightweight/offload режим согласно policy."
+    },
+    "contract_brief": "Договор 'commission. txt' разобран на 18 пунктов. Ниже показано, что действительно важно для роли 'Комиссионер'. Определен тип договора: Агентский / комиссионный договор (уверенность 98%, правовая рамка: ГК РФ, главы 51 и 52). Что должен Комиссионер: В дополнительных соглашениях также устанавливаются минимальная цена продажи каждой единицы Товара, срок, в течение которого с момента получения Товара Комиссионер обязуется реализовать Товар, а также случаи и порядок возврата Товара Комитенту. ; Комиссионер обязан: ; В случае просрочки Комитента в оплате расходов Комиссионера Комитент выплачивает Комиссионеру неустойку в размере _________% от просроченной суммы задолженности за каждый день просрочки. . Что должен Комитент: В дополнительных соглашениях также устанавливаются минимальная цена продажи каждой единицы Товара, срок, в течение которого с момента получения Товара Комиссионер обязуется реализовать Товар, а также случаи и порядок возврата Товара Комитенту. ; Комитент обязан: ; В случае просрочки Комитента в оплате расходов Комиссионера Комитент выплачивает Комиссионеру неустойку в размере _________% от просроченной суммы задолженности за каждый день просрочки. . Условия оплаты: Комитент поручает, а Комиссионер принимает на себя обязательство за вознаграждение совершать на условиях настоящего Договора от своего имени, но в интересах и за счет Комитента сделки по реализации передаваемых ему Комитентом товаров: _____________________________________________________ (далее – Товар). ; К отчету должны быть приложены расчет вознаграждения Комиссионера и разбивка понесенных им во исполнение настоящего Договора расходов, а также необходимые доказательства таких расходов. ; В течение ____ дней с даты продажи очередной партии Товара перечислить Комитенту вырученную от реализации Товара сумму за вычетом своего вознаграждения и расходов, согласованных Сторонами в статье 3 настоящего Договора. . Сроки и дедлайны: В дополнительных соглашениях также устанавливаются минимальная цена продажи каждой единицы Товара, срок, в течение которого с момента получения Товара Комиссионер обязуется реализовать Товар, а также случаи и порядок возврата Товара Комитенту. ; Оценивать перспективы продажи находящегося у себя Товара Комитента и уведомлять последнего о сроке, в который необходимо согласовать условия продажи очередной партии Товара. ; В течение ____ дней с даты продажи очередной партии Товара перечислить Комитенту вырученную от реализации Товара сумму за вычетом своего вознаграждения и расходов, согласованных Сторонами в статье 3 настоящего Договора. . Штрафы и санкции: В случае просрочки Комитента в оплате расходов Комиссионера Комитент выплачивает Комиссионеру неустойку в размере _________% от просроченной суммы задолженности за каждый день просрочки. ; 5 настоящего Договора, Комитент уплачивает неустойку в размере ____% за каждый день просрочки от цены партии Товара, о реализации которой не предоставлен отчет, согласованный Сторонами в дополнительном соглашении, устанавливающем условия продажи такой партии Товара. ; 7 настоящего Договора, Комиссионер уплачивает неустойку в размере ________% от суммы, подлежащей перечислению, за каждый день просрочки. . Найдено спорных или расплывчатых пунктов: 2.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "uncapped_daily_penalty",
+        "title": "Критический риск: Ежедневная пеня без верхнего лимита",
+        "severity": "critical",
+        "clause_id": "clause-12",
+        "description": "Договор содержит ежедневную пеню, но не ограничивает ее общий размер или период начисления. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: 4. 1. В случае просрочки Комитента в оплате расходов Комиссионера Комитент выплачивает Комиссионеру неустойку в размере _________% от просроченной суммы задолженности за каждый день просрочки.\n4. 2. При непредоставлении Комиссионером Комитенту отчета в срок, согласованный Сторонами в п. 2. 1. 5 настоящего Договора, Комитент уплачивает неустойку в размере ____% за каждый день просрочки от цены партии Товара, о реализации которой не предоставлен отчет, согласованный Сторонами в дополнительном. . .",
+        "role_relevance": "Неограниченная пеня быстро превращается в непропорциональную ответственность.",
+        "mitigation": "Установите cap по общей сумме неустойки и предельный период начисления."
+      },
+      {
+        "risk_id": "risk-2",
+        "rule_id": "undefined_acceptance_criteria",
+        "title": "Средний риск: Приемка предусмотрена без объективных критериев результата.",
+        "severity": "medium",
+        "clause_id": "clause-8",
+        "description": "2. 1. Комиссионер обязан:\n2. 1. 1. Производить приемку Товара и товарных документов на него по акту приемапередачи Товара. При принятии Товара с недостатками отражать такие недостатки в акте приема-передачи Товара.\n2. 1. 2. Проводить поиск покупателей на Товар на условиях, наиболее выгодных для Комитента и по цене не ниже назначенной последним.\n2. 1. 3. Реализовывать Товар на условиях, предусмотренных в дополнительных соглашениях Сторон.\n2. 1. 4. Оценивать перспективы продажи находящегося у себя Товара Комитента и уведомлять последнего о сроке, в который необходимо согласовать условия продажи очередной партии Товара.\n2. 1. 5. Информировать Комитента о ходе исполнения поручения по настоящему Договору. По результатам продажи каждой партии Товара предоставлять Комитенту письменные отчеты с указанием фактической цены продажи Товара не позднее ____ дня с даты реализации очередной партии Товара в полном объеме. К отчету должны быть приложены расчет вознаграждения Комиссионера и разбивка понесенных им во исполнение настоящего Договора расходов, а также необходимые доказательства таких расходов.\n2. 1. 6. Согласовывать с Комитентом расходы, необходимые для исполнения настоящего Договора.\n2. 1. 7. В течение ____ дней с даты продажи очередной партии Товара перечислить Комитенту вырученную от реализации Товара сумму за вычетом своего вознаграждения и расходов, согласованных Сторонами в статье 3 настоящего Договора.\n2. 2. Комиссионер вправе:\n2. 2. 1. При приемке Товара от Комитента за свой счет производить осмотр Товара на предмет его качества, количества и ___________________.\n2. 2. 2. Отказаться от исполнения Договора, если Комитент не выполняет или ненадлежащим образом выполняет свои обязательства, в том числе обязательства по выплате Комиссионеру вознаграждения и оплате его расходов.\n2. 3. Комитент обязан:\n2. 3. 1. Своими силами и за свой счет предоставлять Товар в распоряжение Комиссионера.\nМесто передачи Товара: ____________________________________________________.\nСрок передачи каждой партии Товара согласуется Сторонами в дополнительных соглашениях, устанавливающих количество, ассортимент, цену и другие показатели передаваемой на реализацию партии Товара.\n2. 3. 2. Принимать отчеты Комитента и при наличии возражений по ним сообщить о них Комиссионеру в течение ___________ дней со дня получения отчета. В противном случае отчеты считаются принятыми Комитентом.\n2. 3. 3. Оплатить расходы Комиссионера в порядке, согласованном Сторонами в статье 3 настоящего Договора.\n2. 3. 4. Выплатить комиссионное вознаграждение Комиссионеру в порядке, размере и на условиях, согласованных Сторонами в статье 3 настоящего Договора.",
+        "role_relevance": "Сигнал асимметрии затрагивает выбранную роль 'Комиссионер'.",
+        "mitigation": "Зафиксируйте объективные критерии приемки, сроки проверки и мотивированный отказ."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-8",
+        "clause_excerpt": "2. 1. Комиссионер обязан:\n2. 1. 1. Производить приемку Товара и товарных документов на него по акту приемапередачи Товара. При принятии Товара с недостатками отражать такие недостатки в акте приема-передачи Товара.\n2. 1. 2. Проводить поиск покупателей на Товар на условиях, наиболее выгодных для Комитента и по цене не ниже назначенной последним.\n2. 1. 3. Реализовывать Товар на условиях, предусмотренных в дополнительных соглашениях Сторон.\n2. 1. 4.",
+        "dispute_reason": "Одна из сторон получила дискреционное право без достаточных ограничителей.",
+        "possible_consequence": "Это может привести к одностороннему применению условия и спору о пределах такого права.",
+        "confidence": 0.76
+      },
+      {
+        "clause_id": "clause-10",
+        "clause_excerpt": "3. 1. Вознаграждение Комиссионера составляет ____ % от фактической цены продажи каждой партии Товара Комитента.\n3. 2. Вознаграждение Комиссионеру за продажу очередной партии Товара выплачивается путем удержания последним суммы причитающегося ему вознаграждения из суммы, вырученной от реализации очередной партии Товара в полном объеме, при условии предоставления письменного отчета Комитенту в соответствии с п. 2. 1. 5 настоящего Договора.\n3. 3.",
+        "dispute_reason": "Формулировка зависит от будущего согласования и не содержит исполнимого критерия.",
+        "possible_consequence": "При исполнении может возникнуть спор о том, что именно стороны должны были согласовать.",
+        "confidence": 0.79
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Комиссионер",
+      "overview": "Договор содержит 18 пунктов и 2 выявленных рисков. Краткий вывод сфокусирован на роли 'Комиссионер'. Обнаружено 1 пунктов с высоким уровнем риска; их стоит перепроверить вручную.",
+      "must_do": [
+        "В дополнительных соглашениях также устанавливаются минимальная цена продажи каждой единицы Товара, срок, в течение которого с момента получения Товара Комиссионер обязуется реализовать Товар, а также случаи и порядок возврата Товара Комитенту. .",
+        "Комиссионер обязан: .",
+        "В случае просрочки Комитента в оплате расходов Комиссионера Комитент выплачивает Комиссионеру неустойку в размере _________% от просроченной суммы задолженности за каждый день просрочки. .",
+        "Права и обязанности Сторон.",
+        "Комитент обязан: .",
+        "Сторона, подвергшаяся действию таких обстоятельств, обязана немедленно в письменном виде уведомить другую Сторону о возникновении, виде и возможной продолжительности действия соответствующих обстоятельств. ."
+      ],
+      "should_review": [
+        "Комиссионер вправе: .",
+        "Одна партия Товара не может быть менее ___________ и более _______. .",
+        "Одна партия Товара не может быть менее ___________ и более _______."
+      ],
+      "payment_terms": [
+        "Комитент поручает, а Комиссионер принимает на себя обязательство за вознаграждение совершать на условиях настоящего Договора от своего имени, но в интересах и за счет Комитента сделки по реализации передаваемых ему Комитентом товаров: _____________________________________________________ (далее – Товар). .",
+        "К отчету должны быть приложены расчет вознаграждения Комиссионера и разбивка понесенных им во исполнение настоящего Договора расходов, а также необходимые доказательства таких расходов. .",
+        "В течение ____ дней с даты продажи очередной партии Товара перечислить Комитенту вырученную от реализации Товара сумму за вычетом своего вознаграждения и расходов, согласованных Сторонами в статье 3 настоящего Договора. .",
+        "При приемке Товара от Комитента за свой счет производить осмотр Товара на предмет его качества, количества и ___________________. .",
+        "Отказаться от исполнения Договора, если Комитент не выполняет или ненадлежащим образом выполняет свои обязательства, в том числе обязательства по выплате Комиссионеру вознаграждения и оплате его расходов. .",
+        "Своими силами и за свой счет предоставлять Товар в распоряжение Комиссионера. ."
+      ],
+      "deadlines": [
+        "В дополнительных соглашениях также устанавливаются минимальная цена продажи каждой единицы Товара, срок, в течение которого с момента получения Товара Комиссионер обязуется реализовать Товар, а также случаи и порядок возврата Товара Комитенту. .",
+        "Оценивать перспективы продажи находящегося у себя Товара Комитента и уведомлять последнего о сроке, в который необходимо согласовать условия продажи очередной партии Товара. .",
+        "В течение ____ дней с даты продажи очередной партии Товара перечислить Комитенту вырученную от реализации Товара сумму за вычетом своего вознаграждения и расходов, согласованных Сторонами в статье 3 настоящего Договора. .",
+        "Принимать отчеты Комитента и при наличии возражений по ним сообщить о них Комиссионеру в течение ___________ дней со дня получения отчета.",
+        "Непредвиденные расходы Комиссионера, не согласованные с Комитентом в предварительном порядке, возмещаются Комитентом в течение _____ дней с даты их согласования.",
+        "При непредоставлении Комиссионером Комитенту отчета в срок, согласованный Сторонами в п."
+      ],
+      "penalties": [
+        "В случае просрочки Комитента в оплате расходов Комиссионера Комитент выплачивает Комиссионеру неустойку в размере _________% от просроченной суммы задолженности за каждый день просрочки. .",
+        "5 настоящего Договора, Комитент уплачивает неустойку в размере ____% за каждый день просрочки от цены партии Товара, о реализации которой не предоставлен отчет, согласованный Сторонами в дополнительном соглашении, устанавливающем условия продажи такой партии Товара. .",
+        "7 настоящего Договора, Комиссионер уплачивает неустойку в размере ________% от суммы, подлежащей перечислению, за каждый день просрочки. ."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "binary:utf8_decode",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "9904ec1fba40f730757cabc05d13ab3a7bb9c8959393376eddab10a2d1a8c639"
+    },
+    "contract_type": {
+      "type_id": "agency_agreement",
+      "confidence": 0.98,
+      "ru_name": "Агентский / комиссионный договор",
+      "legal_framework": "ГК РФ, главы 51 и 52"
+    },
+    "asymmetry_signals": [
+      {
+        "risk_id": "undefined_acceptance_criteria",
+        "clause_id": "clause-8",
+        "summary": "Приемка предусмотрена без объективных критериев результата.",
+        "details": "2. 1. Комиссионер обязан:\n2. 1. 1. Производить приемку Товара и товарных документов на него по акту приемапередачи Товара. При принятии Товара с недостатками отражать такие недостатки в акте приема-передачи Товара.\n2. 1. 2. Проводить поиск покупателей на Товар на условиях, наиболее выгодных для Комитента и по цене не ниже назначенной последним.\n2. 1. 3. Реализовывать Товар на условиях, предусмотренных в дополнительных соглашениях Сторон.\n2. 1. 4. Оценивать перспективы продажи находящегося у себя Товара Комитента и уведомлять последнего о сроке, в который необходимо согласовать условия продажи очередной партии Товара.\n2. 1. 5. Информировать Комитента о ходе исполнения поручения по настоящему Договору. По результатам продажи каждой партии Товара предоставлять Комитенту письменные отчеты с указанием фактической цены продажи Товара не позднее ____ дня с даты реализации очередной партии Товара в полном объеме. К отчету должны быть приложены расчет вознаграждения Комиссионера и разбивка понесенных им во исполнение настоящего Договора расходов, а также необходимые доказательства таких расходов.\n2. 1. 6. Согласовывать с Комитентом расходы, необходимые для исполнения настоящего Договора.\n2. 1. 7. В течение ____ дней с даты продажи очередной партии Товара перечислить Комитенту вырученную от реализации Товара сумму за вычетом своего вознаграждения и расходов, согласованных Сторонами в статье 3 настоящего Договора.\n2. 2. Комиссионер вправе:\n2. 2. 1. При приемке Товара от Комитента за свой счет производить осмотр Товара на предмет его качества, количества и ___________________.\n2. 2. 2. Отказаться от исполнения Договора, если Комитент не выполняет или ненадлежащим образом выполняет свои обязательства, в том числе обязательства по выплате Комиссионеру вознаграждения и оплате его расходов.\n2. 3. Комитент обязан:\n2. 3. 1. Своими силами и за свой счет предоставлять Товар в распоряжение Комиссионера.\nМесто передачи Товара: ____________________________________________________.\nСрок передачи каждой партии Товара согласуется Сторонами в дополнительных соглашениях, устанавливающих количество, ассортимент, цену и другие показатели передаваемой на реализацию партии Товара.\n2. 3. 2. Принимать отчеты Комитента и при наличии возражений по ним сообщить о них Комиссионеру в течение ___________ дней со дня получения отчета. В противном случае отчеты считаются принятыми Комитентом.\n2. 3. 3. Оплатить расходы Комиссионера в порядке, согласованном Сторонами в статье 3 настоящего Договора.\n2. 3. 4. Выплатить комиссионное вознаграждение Комиссионеру в порядке, размере и на условиях, согласованных Сторонами в статье 3 настоящего Договора.",
+        "severity_hint": "medium",
+        "affected_roles": [
+          "executor",
+          "client"
+        ]
+      }
+    ]
+  },
+  "result": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "local_first",
+      "offline_capable": true,
+      "network_required": false,
+      "policy_source": "mime_type:text/plain",
+      "reason": "Mime type документа перевел задачу в более безопасный lightweight/offload режим согласно policy."
+    },
+    "contract_brief": "Договор 'commission. txt' разобран на 18 пунктов. Ниже показано, что действительно важно для роли 'Комиссионер'. Определен тип договора: Агентский / комиссионный договор (уверенность 98%, правовая рамка: ГК РФ, главы 51 и 52). Что должен Комиссионер: В дополнительных соглашениях также устанавливаются минимальная цена продажи каждой единицы Товара, срок, в течение которого с момента получения Товара Комиссионер обязуется реализовать Товар, а также случаи и порядок возврата Товара Комитенту. ; Комиссионер обязан: ; В случае просрочки Комитента в оплате расходов Комиссионера Комитент выплачивает Комиссионеру неустойку в размере _________% от просроченной суммы задолженности за каждый день просрочки. . Что должен Комитент: В дополнительных соглашениях также устанавливаются минимальная цена продажи каждой единицы Товара, срок, в течение которого с момента получения Товара Комиссионер обязуется реализовать Товар, а также случаи и порядок возврата Товара Комитенту. ; Комитент обязан: ; В случае просрочки Комитента в оплате расходов Комиссионера Комитент выплачивает Комиссионеру неустойку в размере _________% от просроченной суммы задолженности за каждый день просрочки. . Условия оплаты: Комитент поручает, а Комиссионер принимает на себя обязательство за вознаграждение совершать на условиях настоящего Договора от своего имени, но в интересах и за счет Комитента сделки по реализации передаваемых ему Комитентом товаров: _____________________________________________________ (далее – Товар). ; К отчету должны быть приложены расчет вознаграждения Комиссионера и разбивка понесенных им во исполнение настоящего Договора расходов, а также необходимые доказательства таких расходов. ; В течение ____ дней с даты продажи очередной партии Товара перечислить Комитенту вырученную от реализации Товара сумму за вычетом своего вознаграждения и расходов, согласованных Сторонами в статье 3 настоящего Договора. . Сроки и дедлайны: В дополнительных соглашениях также устанавливаются минимальная цена продажи каждой единицы Товара, срок, в течение которого с момента получения Товара Комиссионер обязуется реализовать Товар, а также случаи и порядок возврата Товара Комитенту. ; Оценивать перспективы продажи находящегося у себя Товара Комитента и уведомлять последнего о сроке, в который необходимо согласовать условия продажи очередной партии Товара. ; В течение ____ дней с даты продажи очередной партии Товара перечислить Комитенту вырученную от реализации Товара сумму за вычетом своего вознаграждения и расходов, согласованных Сторонами в статье 3 настоящего Договора. . Штрафы и санкции: В случае просрочки Комитента в оплате расходов Комиссионера Комитент выплачивает Комиссионеру неустойку в размере _________% от просроченной суммы задолженности за каждый день просрочки. ; 5 настоящего Договора, Комитент уплачивает неустойку в размере ____% за каждый день просрочки от цены партии Товара, о реализации которой не предоставлен отчет, согласованный Сторонами в дополнительном соглашении, устанавливающем условия продажи такой партии Товара. ; 7 настоящего Договора, Комиссионер уплачивает неустойку в размере ________% от суммы, подлежащей перечислению, за каждый день просрочки. . Найдено спорных или расплывчатых пунктов: 2.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "uncapped_daily_penalty",
+        "title": "Критический риск: Ежедневная пеня без верхнего лимита",
+        "severity": "critical",
+        "clause_id": "clause-12",
+        "description": "Договор содержит ежедневную пеню, но не ограничивает ее общий размер или период начисления. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: 4. 1. В случае просрочки Комитента в оплате расходов Комиссионера Комитент выплачивает Комиссионеру неустойку в размере _________% от просроченной суммы задолженности за каждый день просрочки.\n4. 2. При непредоставлении Комиссионером Комитенту отчета в срок, согласованный Сторонами в п. 2. 1. 5 настоящего Договора, Комитент уплачивает неустойку в размере ____% за каждый день просрочки от цены партии Товара, о реализации которой не предоставлен отчет, согласованный Сторонами в дополнительном. . .",
+        "role_relevance": "Неограниченная пеня быстро превращается в непропорциональную ответственность.",
+        "mitigation": "Установите cap по общей сумме неустойки и предельный период начисления."
+      },
+      {
+        "risk_id": "risk-2",
+        "rule_id": "undefined_acceptance_criteria",
+        "title": "Средний риск: Приемка предусмотрена без объективных критериев результата.",
+        "severity": "medium",
+        "clause_id": "clause-8",
+        "description": "2. 1. Комиссионер обязан:\n2. 1. 1. Производить приемку Товара и товарных документов на него по акту приемапередачи Товара. При принятии Товара с недостатками отражать такие недостатки в акте приема-передачи Товара.\n2. 1. 2. Проводить поиск покупателей на Товар на условиях, наиболее выгодных для Комитента и по цене не ниже назначенной последним.\n2. 1. 3. Реализовывать Товар на условиях, предусмотренных в дополнительных соглашениях Сторон.\n2. 1. 4. Оценивать перспективы продажи находящегося у себя Товара Комитента и уведомлять последнего о сроке, в который необходимо согласовать условия продажи очередной партии Товара.\n2. 1. 5. Информировать Комитента о ходе исполнения поручения по настоящему Договору. По результатам продажи каждой партии Товара предоставлять Комитенту письменные отчеты с указанием фактической цены продажи Товара не позднее ____ дня с даты реализации очередной партии Товара в полном объеме. К отчету должны быть приложены расчет вознаграждения Комиссионера и разбивка понесенных им во исполнение настоящего Договора расходов, а также необходимые доказательства таких расходов.\n2. 1. 6. Согласовывать с Комитентом расходы, необходимые для исполнения настоящего Договора.\n2. 1. 7. В течение ____ дней с даты продажи очередной партии Товара перечислить Комитенту вырученную от реализации Товара сумму за вычетом своего вознаграждения и расходов, согласованных Сторонами в статье 3 настоящего Договора.\n2. 2. Комиссионер вправе:\n2. 2. 1. При приемке Товара от Комитента за свой счет производить осмотр Товара на предмет его качества, количества и ___________________.\n2. 2. 2. Отказаться от исполнения Договора, если Комитент не выполняет или ненадлежащим образом выполняет свои обязательства, в том числе обязательства по выплате Комиссионеру вознаграждения и оплате его расходов.\n2. 3. Комитент обязан:\n2. 3. 1. Своими силами и за свой счет предоставлять Товар в распоряжение Комиссионера.\nМесто передачи Товара: ____________________________________________________.\nСрок передачи каждой партии Товара согласуется Сторонами в дополнительных соглашениях, устанавливающих количество, ассортимент, цену и другие показатели передаваемой на реализацию партии Товара.\n2. 3. 2. Принимать отчеты Комитента и при наличии возражений по ним сообщить о них Комиссионеру в течение ___________ дней со дня получения отчета. В противном случае отчеты считаются принятыми Комитентом.\n2. 3. 3. Оплатить расходы Комиссионера в порядке, согласованном Сторонами в статье 3 настоящего Договора.\n2. 3. 4. Выплатить комиссионное вознаграждение Комиссионеру в порядке, размере и на условиях, согласованных Сторонами в статье 3 настоящего Договора.",
+        "role_relevance": "Сигнал асимметрии затрагивает выбранную роль 'Комиссионер'.",
+        "mitigation": "Зафиксируйте объективные критерии приемки, сроки проверки и мотивированный отказ."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-8",
+        "clause_excerpt": "2. 1. Комиссионер обязан:\n2. 1. 1. Производить приемку Товара и товарных документов на него по акту приемапередачи Товара. При принятии Товара с недостатками отражать такие недостатки в акте приема-передачи Товара.\n2. 1. 2. Проводить поиск покупателей на Товар на условиях, наиболее выгодных для Комитента и по цене не ниже назначенной последним.\n2. 1. 3. Реализовывать Товар на условиях, предусмотренных в дополнительных соглашениях Сторон.\n2. 1. 4.",
+        "dispute_reason": "Одна из сторон получила дискреционное право без достаточных ограничителей.",
+        "possible_consequence": "Это может привести к одностороннему применению условия и спору о пределах такого права.",
+        "confidence": 0.76
+      },
+      {
+        "clause_id": "clause-10",
+        "clause_excerpt": "3. 1. Вознаграждение Комиссионера составляет ____ % от фактической цены продажи каждой партии Товара Комитента.\n3. 2. Вознаграждение Комиссионеру за продажу очередной партии Товара выплачивается путем удержания последним суммы причитающегося ему вознаграждения из суммы, вырученной от реализации очередной партии Товара в полном объеме, при условии предоставления письменного отчета Комитенту в соответствии с п. 2. 1. 5 настоящего Договора.\n3. 3.",
+        "dispute_reason": "Формулировка зависит от будущего согласования и не содержит исполнимого критерия.",
+        "possible_consequence": "При исполнении может возникнуть спор о том, что именно стороны должны были согласовать.",
+        "confidence": 0.79
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Комиссионер",
+      "overview": "Договор содержит 18 пунктов и 2 выявленных рисков. Краткий вывод сфокусирован на роли 'Комиссионер'. Обнаружено 1 пунктов с высоким уровнем риска; их стоит перепроверить вручную.",
+      "must_do": [
+        "В дополнительных соглашениях также устанавливаются минимальная цена продажи каждой единицы Товара, срок, в течение которого с момента получения Товара Комиссионер обязуется реализовать Товар, а также случаи и порядок возврата Товара Комитенту. .",
+        "Комиссионер обязан: .",
+        "В случае просрочки Комитента в оплате расходов Комиссионера Комитент выплачивает Комиссионеру неустойку в размере _________% от просроченной суммы задолженности за каждый день просрочки. .",
+        "Права и обязанности Сторон.",
+        "Комитент обязан: .",
+        "Сторона, подвергшаяся действию таких обстоятельств, обязана немедленно в письменном виде уведомить другую Сторону о возникновении, виде и возможной продолжительности действия соответствующих обстоятельств. ."
+      ],
+      "should_review": [
+        "Комиссионер вправе: .",
+        "Одна партия Товара не может быть менее ___________ и более _______. .",
+        "Одна партия Товара не может быть менее ___________ и более _______."
+      ],
+      "payment_terms": [
+        "Комитент поручает, а Комиссионер принимает на себя обязательство за вознаграждение совершать на условиях настоящего Договора от своего имени, но в интересах и за счет Комитента сделки по реализации передаваемых ему Комитентом товаров: _____________________________________________________ (далее – Товар). .",
+        "К отчету должны быть приложены расчет вознаграждения Комиссионера и разбивка понесенных им во исполнение настоящего Договора расходов, а также необходимые доказательства таких расходов. .",
+        "В течение ____ дней с даты продажи очередной партии Товара перечислить Комитенту вырученную от реализации Товара сумму за вычетом своего вознаграждения и расходов, согласованных Сторонами в статье 3 настоящего Договора. .",
+        "При приемке Товара от Комитента за свой счет производить осмотр Товара на предмет его качества, количества и ___________________. .",
+        "Отказаться от исполнения Договора, если Комитент не выполняет или ненадлежащим образом выполняет свои обязательства, в том числе обязательства по выплате Комиссионеру вознаграждения и оплате его расходов. .",
+        "Своими силами и за свой счет предоставлять Товар в распоряжение Комиссионера. ."
+      ],
+      "deadlines": [
+        "В дополнительных соглашениях также устанавливаются минимальная цена продажи каждой единицы Товара, срок, в течение которого с момента получения Товара Комиссионер обязуется реализовать Товар, а также случаи и порядок возврата Товара Комитенту. .",
+        "Оценивать перспективы продажи находящегося у себя Товара Комитента и уведомлять последнего о сроке, в который необходимо согласовать условия продажи очередной партии Товара. .",
+        "В течение ____ дней с даты продажи очередной партии Товара перечислить Комитенту вырученную от реализации Товара сумму за вычетом своего вознаграждения и расходов, согласованных Сторонами в статье 3 настоящего Договора. .",
+        "Принимать отчеты Комитента и при наличии возражений по ним сообщить о них Комиссионеру в течение ___________ дней со дня получения отчета.",
+        "Непредвиденные расходы Комиссионера, не согласованные с Комитентом в предварительном порядке, возмещаются Комитентом в течение _____ дней с даты их согласования.",
+        "При непредоставлении Комиссионером Комитенту отчета в срок, согласованный Сторонами в п."
+      ],
+      "penalties": [
+        "В случае просрочки Комитента в оплате расходов Комиссионера Комитент выплачивает Комиссионеру неустойку в размере _________% от просроченной суммы задолженности за каждый день просрочки. .",
+        "5 настоящего Договора, Комитент уплачивает неустойку в размере ____% за каждый день просрочки от цены партии Товара, о реализации которой не предоставлен отчет, согласованный Сторонами в дополнительном соглашении, устанавливающем условия продажи такой партии Товара. .",
+        "7 настоящего Договора, Комиссионер уплачивает неустойку в размере ________% от суммы, подлежащей перечислению, за каждый день просрочки. ."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "binary:utf8_decode",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "9904ec1fba40f730757cabc05d13ab3a7bb9c8959393376eddab10a2d1a8c639"
+    },
+    "contract_type": {
+      "type_id": "agency_agreement",
+      "confidence": 0.98,
+      "ru_name": "Агентский / комиссионный договор",
+      "legal_framework": "ГК РФ, главы 51 и 52"
+    },
+    "asymmetry_signals": [
+      {
+        "risk_id": "undefined_acceptance_criteria",
+        "clause_id": "clause-8",
+        "summary": "Приемка предусмотрена без объективных критериев результата.",
+        "details": "2. 1. Комиссионер обязан:\n2. 1. 1. Производить приемку Товара и товарных документов на него по акту приемапередачи Товара. При принятии Товара с недостатками отражать такие недостатки в акте приема-передачи Товара.\n2. 1. 2. Проводить поиск покупателей на Товар на условиях, наиболее выгодных для Комитента и по цене не ниже назначенной последним.\n2. 1. 3. Реализовывать Товар на условиях, предусмотренных в дополнительных соглашениях Сторон.\n2. 1. 4. Оценивать перспективы продажи находящегося у себя Товара Комитента и уведомлять последнего о сроке, в который необходимо согласовать условия продажи очередной партии Товара.\n2. 1. 5. Информировать Комитента о ходе исполнения поручения по настоящему Договору. По результатам продажи каждой партии Товара предоставлять Комитенту письменные отчеты с указанием фактической цены продажи Товара не позднее ____ дня с даты реализации очередной партии Товара в полном объеме. К отчету должны быть приложены расчет вознаграждения Комиссионера и разбивка понесенных им во исполнение настоящего Договора расходов, а также необходимые доказательства таких расходов.\n2. 1. 6. Согласовывать с Комитентом расходы, необходимые для исполнения настоящего Договора.\n2. 1. 7. В течение ____ дней с даты продажи очередной партии Товара перечислить Комитенту вырученную от реализации Товара сумму за вычетом своего вознаграждения и расходов, согласованных Сторонами в статье 3 настоящего Договора.\n2. 2. Комиссионер вправе:\n2. 2. 1. При приемке Товара от Комитента за свой счет производить осмотр Товара на предмет его качества, количества и ___________________.\n2. 2. 2. Отказаться от исполнения Договора, если Комитент не выполняет или ненадлежащим образом выполняет свои обязательства, в том числе обязательства по выплате Комиссионеру вознаграждения и оплате его расходов.\n2. 3. Комитент обязан:\n2. 3. 1. Своими силами и за свой счет предоставлять Товар в распоряжение Комиссионера.\nМесто передачи Товара: ____________________________________________________.\nСрок передачи каждой партии Товара согласуется Сторонами в дополнительных соглашениях, устанавливающих количество, ассортимент, цену и другие показатели передаваемой на реализацию партии Товара.\n2. 3. 2. Принимать отчеты Комитента и при наличии возражений по ним сообщить о них Комиссионеру в течение ___________ дней со дня получения отчета. В противном случае отчеты считаются принятыми Комитентом.\n2. 3. 3. Оплатить расходы Комиссионера в порядке, согласованном Сторонами в статье 3 настоящего Договора.\n2. 3. 4. Выплатить комиссионное вознаграждение Комиссионеру в порядке, размере и на условиях, согласованных Сторонами в статье 3 настоящего Договора.",
+        "severity_hint": "medium",
+        "affected_roles": [
+          "executor",
+          "client"
+        ]
+      }
+    ]
+  },
+  "finished_at": "2026-04-28T16:12:20.507497+00:00",
+  "duration_ms": 296.41
+}

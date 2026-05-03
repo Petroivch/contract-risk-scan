@@ -17,6 +17,16 @@ def _assert_localized_map(name: str, localized_map: dict[str, str], supported_la
         raise ValueError(f"Config map '{name}' is missing languages: {missing_languages}")
 
 
+def _assert_structured_record_template(
+    name: str,
+    template: object,
+    supported_languages: list[str],
+) -> None:
+    _assert_localized_map(f"{name}.headline", template.headline, supported_languages)
+    _assert_localized_map(f"{name}.description", template.description, supported_languages)
+    _assert_localized_map(f"{name}.recommendation", template.recommendation, supported_languages)
+
+
 def _validate_runtime_config(config: AnalysisRuntimeConfig) -> None:
     supported_languages = config.language_behavior.supported_languages
     severity_levels = {"low", "medium", "high", "critical"}
@@ -34,6 +44,8 @@ def _validate_runtime_config(config: AnalysisRuntimeConfig) -> None:
         config.pipeline.ingestion.empty_text_placeholder,
         supported_languages,
     )
+    if config.pipeline.ingestion.extraction_timeout_seconds <= 0:
+        raise ValueError("pipeline.ingestion.extraction_timeout_seconds must be positive")
     _assert_localized_map(
         "pipeline.segmentation.fallback_clause_text",
         config.pipeline.segmentation.fallback_clause_text,
@@ -88,6 +100,77 @@ def _validate_runtime_config(config: AnalysisRuntimeConfig) -> None:
         brief_sections.disputed_clauses,
         supported_languages,
     )
+    structured_records = config.templates.structured_summary_records
+    _assert_structured_record_template(
+        "templates.structured_summary_records.role_overview",
+        structured_records.role_overview,
+        supported_languages,
+    )
+    _assert_structured_record_template(
+        "templates.structured_summary_records.must_do",
+        structured_records.must_do,
+        supported_languages,
+    )
+    _assert_structured_record_template(
+        "templates.structured_summary_records.should_review",
+        structured_records.should_review,
+        supported_languages,
+    )
+    _assert_structured_record_template(
+        "templates.structured_summary_records.payment_terms",
+        structured_records.payment_terms,
+        supported_languages,
+    )
+    _assert_structured_record_template(
+        "templates.structured_summary_records.deadlines",
+        structured_records.deadlines,
+        supported_languages,
+    )
+    _assert_structured_record_template(
+        "templates.structured_summary_records.penalties",
+        structured_records.penalties,
+        supported_languages,
+    )
+    _assert_structured_record_template(
+        "templates.structured_summary_records.contract_intro",
+        structured_records.contract_intro,
+        supported_languages,
+    )
+    _assert_structured_record_template(
+        "templates.structured_summary_records.contract_role_obligations",
+        structured_records.contract_role_obligations,
+        supported_languages,
+    )
+    _assert_structured_record_template(
+        "templates.structured_summary_records.contract_counterparty_obligations",
+        structured_records.contract_counterparty_obligations,
+        supported_languages,
+    )
+    _assert_structured_record_template(
+        "templates.structured_summary_records.contract_general_obligations",
+        structured_records.contract_general_obligations,
+        supported_languages,
+    )
+    _assert_structured_record_template(
+        "templates.structured_summary_records.contract_payment_terms",
+        structured_records.contract_payment_terms,
+        supported_languages,
+    )
+    _assert_structured_record_template(
+        "templates.structured_summary_records.contract_deadlines",
+        structured_records.contract_deadlines,
+        supported_languages,
+    )
+    _assert_structured_record_template(
+        "templates.structured_summary_records.contract_penalties",
+        structured_records.contract_penalties,
+        supported_languages,
+    )
+    _assert_structured_record_template(
+        "templates.structured_summary_records.contract_disputed_clauses",
+        structured_records.contract_disputed_clauses,
+        supported_languages,
+    )
 
     if not config.execution_strategy.allow_server_assist and config.execution_strategy.network_required_modes:
         raise ValueError("execution_strategy.network_required_modes requires allow_server_assist=true")
@@ -130,11 +213,18 @@ def _validate_runtime_config(config: AnalysisRuntimeConfig) -> None:
     )
 
     for rule in config.risk_scoring.risk_rules:
-        if rule.severity not in severity_levels:
-            raise ValueError(f"Rule '{rule.id}' has unsupported severity '{rule.severity}'")
+        resolved_severity = rule.severity_base or rule.severity
+        if not resolved_severity or resolved_severity not in severity_levels:
+            raise ValueError(f"Rule '{rule.id}' has unsupported severity '{resolved_severity}'")
         _assert_localized_map(f"risk_rule.{rule.id}.title", rule.title, supported_languages)
         _assert_localized_map(f"risk_rule.{rule.id}.description", rule.description, supported_languages)
         _assert_localized_map(f"risk_rule.{rule.id}.mitigation", rule.mitigation, supported_languages)
+        for role_name, escalation in rule.role_escalation.items():
+            if escalation.escalate_to not in severity_levels:
+                raise ValueError(
+                    f"Rule '{rule.id}' role escalation for '{role_name}' has unsupported severity "
+                    f"'{escalation.escalate_to}'"
+                )
 
     for marker in config.risk_scoring.dispute_markers:
         _assert_localized_map(f"dispute_marker.{marker.id}.reason", marker.reason, supported_languages)
@@ -143,6 +233,39 @@ def _validate_runtime_config(config: AnalysisRuntimeConfig) -> None:
             marker.consequence,
             supported_languages,
         )
+        if not marker.markers and marker.detection_logic is None:
+            raise ValueError(
+                f"Dispute marker '{marker.id}' must define markers or detection_logic"
+            )
+        if marker.fragment_max_chars < marker.fragment_window_chars:
+            raise ValueError(
+                f"Dispute marker '{marker.id}' has fragment_max_chars smaller than fragment_window_chars"
+            )
+
+    if config.risk_scoring.truncation and config.risk_scoring.truncation.max_chars < 50:
+        raise ValueError("risk_scoring.truncation.max_chars must be at least 50 characters")
+
+    for contract_type in config.contract_types:
+        if not contract_type.id:
+            raise ValueError("contract_types contains an empty id")
+
+    for contract_type_id, matrix in config.risk_scoring.role_escalation_matrix.items():
+        if not contract_type_id:
+            raise ValueError("role_escalation_matrix contains an empty contract type id")
+        for risk_id, role_map in matrix.items():
+            if not risk_id:
+                raise ValueError("role_escalation_matrix contains an empty risk id")
+            for role_name, escalation in role_map.items():
+                if not role_name:
+                    raise ValueError(
+                        f"role_escalation_matrix for contract type '{contract_type_id}' risk '{risk_id}' "
+                        "contains an empty role name"
+                    )
+                if escalation.escalate_to not in severity_levels:
+                    raise ValueError(
+                        f"role_escalation_matrix for contract type '{contract_type_id}' risk '{risk_id}' "
+                        f"role '{role_name}' has unsupported severity '{escalation.escalate_to}'"
+                    )
 
     fallback_config = config.risk_scoring.fallback
     _assert_localized_map("risk_fallback.risk_title", fallback_config.risk_title, supported_languages)

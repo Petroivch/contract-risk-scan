@@ -1,0 +1,33 @@
+{
+  "generated_at": "2026-04-28T15:57:23.585006+00:00",
+  "manifest_path": null,
+  "output_dir": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\contract-risk-scan\\services\\analysis-engine\\artifacts\\corpus_results_smoke",
+  "total_cases": 8,
+  "completed_cases": 8,
+  "failed_cases": 0,
+  "contract_type_counts": {
+    "non_contract_legal_form": 4,
+    "lease_agreement": 1,
+    "service_agreement": 3
+  },
+  "severity_counts": {
+    "low": 4,
+    "high": 20,
+    "critical": 15,
+    "medium": 11
+  },
+  "extractor_counts": {
+    "docx:mammoth": 1,
+    "doc:word_com:text": 7
+  },
+  "case_ids": [
+    "договоры__akt-priema-peredachi-del-i-dolzhnosti-predsedatelem-garazhnogo-kooperativa_docx",
+    "договоры__akt-priemaperedachi-imuschestva-v-zaklad-iz-zaklada_doc",
+    "договоры__Brachnyy-dogovor-dlya-licb-sostoyaschih-v-brake_doc",
+    "договоры__Brachnyy-dogovor-osnovnoy-rejim-imuschestva-dolevaya-sobstvennost_doc",
+    "договоры__Dog-ob-ohrane-kvartir-i-drugih-mest-hran-lich-imuschestva_doc",
+    "договоры__Dog-ob-okaz-uslug-na-vedenie-buh-ucheta-dogovor-autsorsinga_doc",
+    "договоры__Dog-ok-uslug-po-upravleniyu-kottedjnym-poselkom_doc",
+    "договоры__Dog-ok-uslug-po-upravleniyu-yur-licom-Upravlyayuschey-kompaniey_doc"
+  ]
+}

@@ -1,0 +1,177 @@
+{
+  "case_id": "договоры 3__pismennoye_obrasheniye_fizich_13b_docx",
+  "relative_path": "договоры 3/pismennoye_obrasheniye_fizich_13b.docx",
+  "document_path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\договоры 3\\pismennoye_obrasheniye_fizich_13b.docx",
+  "document_name": "pismennoye_obrasheniye_fizich_13b.docx",
+  "role": "Подрядчик",
+  "counterparty_role": "Заказчик",
+  "language": "ru",
+  "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+  "tags": [
+    "ad_hoc"
+  ],
+  "source_group": "договоры 3",
+  "expected": {},
+  "started_at": "2026-04-28T16:17:21.283252+00:00",
+  "status": "completed",
+  "request": {
+    "document_name": "pismennoye_obrasheniye_fizich_13b.docx",
+    "role_context": {
+      "role": "Подрядчик",
+      "counterparty_role": "Заказчик"
+    },
+    "document_text": null,
+    "document_base64": "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",
+    "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "language": "ru",
+    "locale": "ru"
+  },
+  "ingestion_preflight": {
+    "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "extractor": "docx:mammoth",
+    "extraction_source": "docx:mammoth",
+    "extraction_ok": true,
+    "error": null,
+    "extraction_error": null,
+    "sha256": "271b1cba989ef15c20728bc45ddb54434d95e534811547a6317151100233ed26"
+  },
+  "metrics": {
+    "risk_count": 1,
+    "high_risk_count": 0,
+    "disputed_clause_count": 1,
+    "asymmetry_signal_count": 0,
+    "contract_type": "targeted_education_agreement"
+  },
+  "analysis": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "mime_type:application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "reason": "Mime type документа перевел задачу в более безопасный lightweight/offload режим согласно policy."
+    },
+    "contract_brief": "Договор 'pismennoye_obrasheniye_fizich_13b. docx' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Подрядчик'. Определен тип договора: Договор о целевом обучении (уверенность 48%, правовая рамка: ФЗ об образовании, ГК РФ, локальные акты работодателя). Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Подрядчик'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Приложение № 13-1\nк Административному регламенту исполнения Федеральной миграционной службой государственной функции по организации и ведению адресно-справочной работы\n(в ред. Приказа ФМС РФ от 24. 01. 2011 № 14)\nФорма № 13-Б\nВ отдел (отделение, группу) адресно-справочной работы _________________\n(наименование\n__________________________________\nтерриториального органа ФМС России)\nЗАЯВЛЕНИЕ\nВ связи с _____________________________________________________________\n(указать причину обращения)\nпрошу...",
+        "dispute_reason": "Явные маркеры спорных формулировок не обнаружены.",
+        "possible_consequence": "Скрытые спорные моменты требуют дополнительной юридической проверки.",
+        "confidence": 0.35
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Подрядчик",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Подрядчик'.",
+      "must_do": [
+        "Конфиг не выявил явных обязательств."
+      ],
+      "should_review": [
+        "Конфиг не выявил явных дискреционных условий."
+      ],
+      "payment_terms": [
+        "Конфиг не выявил явных условий оплаты."
+      ],
+      "deadlines": [
+        "Конфиг не выявил явных сроков."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "docx:mammoth",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "271b1cba989ef15c20728bc45ddb54434d95e534811547a6317151100233ed26"
+    },
+    "contract_type": {
+      "type_id": "targeted_education_agreement",
+      "confidence": 0.48,
+      "ru_name": "Договор о целевом обучении",
+      "legal_framework": "ФЗ об образовании, ГК РФ, локальные акты работодателя"
+    },
+    "asymmetry_signals": []
+  },
+  "result": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "mime_type:application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "reason": "Mime type документа перевел задачу в более безопасный lightweight/offload режим согласно policy."
+    },
+    "contract_brief": "Договор 'pismennoye_obrasheniye_fizich_13b. docx' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Подрядчик'. Определен тип договора: Договор о целевом обучении (уверенность 48%, правовая рамка: ФЗ об образовании, ГК РФ, локальные акты работодателя). Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Подрядчик'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Приложение № 13-1\nк Административному регламенту исполнения Федеральной миграционной службой государственной функции по организации и ведению адресно-справочной работы\n(в ред. Приказа ФМС РФ от 24. 01. 2011 № 14)\nФорма № 13-Б\nВ отдел (отделение, группу) адресно-справочной работы _________________\n(наименование\n__________________________________\nтерриториального органа ФМС России)\nЗАЯВЛЕНИЕ\nВ связи с _____________________________________________________________\n(указать причину обращения)\nпрошу...",
+        "dispute_reason": "Явные маркеры спорных формулировок не обнаружены.",
+        "possible_consequence": "Скрытые спорные моменты требуют дополнительной юридической проверки.",
+        "confidence": 0.35
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Подрядчик",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Подрядчик'.",
+      "must_do": [
+        "Конфиг не выявил явных обязательств."
+      ],
+      "should_review": [
+        "Конфиг не выявил явных дискреционных условий."
+      ],
+      "payment_terms": [
+        "Конфиг не выявил явных условий оплаты."
+      ],
+      "deadlines": [
+        "Конфиг не выявил явных сроков."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "docx:mammoth",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "271b1cba989ef15c20728bc45ddb54434d95e534811547a6317151100233ed26"
+    },
+    "contract_type": {
+      "type_id": "targeted_education_agreement",
+      "confidence": 0.48,
+      "ru_name": "Договор о целевом обучении",
+      "legal_framework": "ФЗ об образовании, ГК РФ, локальные акты работодателя"
+    },
+    "asymmetry_signals": []
+  },
+  "finished_at": "2026-04-28T16:17:21.407246+00:00",
+  "duration_ms": 124.13
+}

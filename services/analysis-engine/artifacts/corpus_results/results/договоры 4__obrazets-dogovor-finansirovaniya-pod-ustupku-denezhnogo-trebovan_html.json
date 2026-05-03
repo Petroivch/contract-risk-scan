@@ -1,0 +1,209 @@
+{
+  "case_id": "договоры 4__obrazets-dogovor-finansirovaniya-pod-ustupku-denezhnogo-trebovan_html",
+  "relative_path": "договоры 4/obrazets-dogovor-finansirovaniya-pod-ustupku-denezhnogo-trebovan.html",
+  "document_path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\договоры 4\\obrazets-dogovor-finansirovaniya-pod-ustupku-denezhnogo-trebovan.html",
+  "document_name": "obrazets-dogovor-finansirovaniya-pod-ustupku-denezhnogo-trebovan.html",
+  "role": "Заемщик",
+  "counterparty_role": "Кредитор",
+  "language": "ru",
+  "mime_type": "text/html",
+  "tags": [
+    "ad_hoc"
+  ],
+  "source_group": "договоры 4",
+  "expected": {},
+  "started_at": "2026-04-28T16:18:49.496182+00:00",
+  "status": "completed",
+  "request": {
+    "document_name": "obrazets-dogovor-finansirovaniya-pod-ustupku-denezhnogo-trebovan.html",
+    "role_context": {
+      "role": "Заемщик",
+      "counterparty_role": "Кредитор"
+    },
+    "document_text": null,
+    "document_base64": "PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMDEgVHJhbnNpdGlvbmFsLy9FTiI+DQo8aHRtbD4NCjxoZWFkPg0KPGJhc2UgaHJlZj0iaHR0cHM6Ly9kb2dvdm9yLXVyaXN0LnJ1LyI+DQo8dGl0bGU+0J7QsdGA0LDQt9C10YYuINCU0L7Qs9C+0LLQvtGAINGE0LjQvdCw0L3RgdC40YDQvtCy0LDQvdC40Y8g0L/QvtC0INGD0YHRgtGD0L/QutGDINC00LXQvdC10LbQvdC+0LPQviDRgtGA0LXQsdC+0LLQsNC90LjRjyAgINC/0YPRgtC10Lwg0L/QvtC60YPQv9C60Lgg0Y3RgtC+0LPQviDRgtGA0LXQsdC+0LLQsNC90LjRjyAo0YTQsNC60YLQvtGA0LjQvdCzKSAtINCy0LXRgNGB0LjRjyDQtNC70Y8g0L/QtdGH0LDRgtC4LiAyMDI2LiDQntCx0YDQsNC30YbRiyDQtNC+0LPQvtCy0L7RgNC+0LIsINGC0LjQv9C+0LLRi9C1INC00L7Qs9C+0LLQvtGA0LAsINCw0LrRgtGD0LDQu9GM0L3Ri9C1INC00L7QutGD0LzQtdC90YLRiywg0Y7RgNC40LTQuNGH0LXRgdC60LjQvCDQuCDRhNC40LfQuNGH0LXRgdC60LjQvCDQu9C40YbQsNC8PC90aXRsZT4NCjxtZXRhIGNvbnRlbnQ9IiIgbmFtZT0ia2V5d29yZHMiPg0KPG1ldGEgY29udGVudD0iIiBuYW1lPSJkZXNjcmlwdGlvbiI+DQo8bWV0YSBuYW1lPSJyb2JvdHMiIGNvbnRlbnQ9Im5vaW5kZXgsbm9mb2xsb3ciPg0KPG1ldGEgaHR0cC1lcXVpdj0iQ29udGVudC1UeXBlIiBjb250ZW50PSJ0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgiPg0KPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSIvaW1hZ2VzL3N0eWxlLmNzcyIgdHlwZT0idGV4dC9jc3MiPg0KPC9oZWFkPg0KPGJvZHk+DQo8ZGl2IGNsYXNzPSJkb2N1bWVudFRleHQiPg0KPHByZT4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgINCU0J7Qk9Ce0JLQntCgDQogICAgICAgICAgICAgICAgICAgINGE0LjQvdCw0L3RgdC40YDQvtCy0LDQvdC40Y8g0L/QvtC0INGD0YHRgtGD0L/QutGDINC00LXQvdC10LbQvdC+0LPQvg0KICAgICAgICAgICAgICAgICAgICAgICAgICAg0YLRgNC10LHQvtCy0LDQvdC40Y8gKNGE0LDQutGC0L7RgNC40L3QsykNCg0KICAgINCzLiBfX19fX19fX19fX19fX19fICAgICAgICAgICAgICAgICAgICAgICAgICAgICAiX18iX19fX19fX19fIDIwX19fINCzLg0KDQogICAgICAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18sDQogICAgICAgICAgICAo0L3QsNC40LzQtdC90L7QstCw0L3QuNC1INC/0YDQtdC00L/RgNC40Y/RgtC40Y8sINC/0LXRgNC10LTQsNGO0YnQtdCz0L4g0LTQtdC90LXQttC90YvQtSDRgdGA0LXQtNGB0YLQstCwKQ0KDQogICAg0LjQvNC10L3Rg9C10LzQvtC1INCyINC00LDQu9GM0L3QtdC50YjQtdC8ICLQpNC40L3QsNC90YHQvtCy0YvQuSDQsNCz0LXQvdGCIiwg0LIg0LvQuNGG0LUgX19fX19fX19fX19fX19fX19fXw0KDQogICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18sDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgKNC00L7Qu9C20L3QvtGB0YLRjCwg0KQu0Jgu0J4uKQ0KDQogICAg0LTQtdC50YHRgtCy0YPRjtGJ0LXQs9C+INC90LAg0L7RgdC90L7QstCw0L3QuNC4IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXywNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgKNCj0YHRgtCw0LLQsCwg0L/QvtC70L7QttC10L3QuNGPKQ0KDQogICAg0YEg0L7QtNC90L7QuSDRgdGC0L7RgNC+0L3Riywg0LggX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCg0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLA0KICAgICAgICAgKNC90LDQuNC80LXQvdC+0LLQsNC90LjQtSDQv9GA0LXQtNC/0YDQuNGP0YLQuNGPLCDRg9GB0YLRg9C/0LDRjtGJ0LXQs9C+INC00LXQvdC10LbQvdC+0LUg0YLRgNC10LHQvtCy0LDQvdC40LUpDQoNCiAgICDQuNC80LXQvdGD0LXQvNC+0LUg0LIg0LTQsNC70YzQvdC10LnRiNC10LwgItCa0LvQuNC10L3RgiIgKCLQmtGA0LXQtNC40YLQvtGAIiksINCyINC70LjRhtC1IF9fX19fX19fX19fX19fX18NCg0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAo0LTQvtC70LbQvdC+0YHRgtGMLCDQpC7QmC7Qni4pDQoNCiAgICDQtNC10LnRgdGC0LLRg9GO0YnQtdCz0L4g0L3QsCDQvtGB0L3QvtCy0LDQvdC40LggX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgKNCj0YHRgtCw0LLQsCwg0L/QvtC70L7QttC10L3QuNGPKQ0KDQogICAg0YEg0LTRgNGD0LPQvtC5INGB0YLQvtGA0L7QvdGLLCDQt9Cw0LrQu9GO0YfQuNC70Lgg0L3QsNGB0YLQvtGP0YnQuNC5INC00L7Qs9C+0LLQvtGAINC+INC90LjQttC10YHQu9C10LTRg9GO0YnQtdC8Lg0KDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgIDEuINCf0YDQtdC00LzQtdGCINC00L7Qs9C+0LLQvtGA0LANCg0KICAgICAgICAgMS4xLiDQn9C+ICDQvdCw0YHRgtC+0Y/RidC10LzRgyAg0LTQvtCz0L7QstC+0YDRgyAg0KTQuNC90LDQvdGB0L7QstGL0Lkg0LDQs9C10L3RgiDQv9C10YDQtdC00LDQtdGCINCa0LvQuNC10L3RgtGDDQogICAg0LTQtdC90LXQttC90YvQtSDRgdGA0LXQtNGB0YLQstCwINCyINGB0YfQtdGCINC00LXQvdC10LbQvdC+0LPQviDRgtGA0LXQsdC+0LLQsNC90LjRjyAg0JrQu9C40LXQvdGC0LAgICjQmtGA0LXQtNC40YLQvtGA0LApINC6DQogICAg0YLRgNC10YLRjNC10LzRgyDQu9C40YbRgyAo0LTQvtC70LbQvdC40LrRgyksIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAo0L3QsNC40LzQtdC90L7QstCw0L3QuNC1INC+0YDQs9Cw0L3QuNC30LDRhtC40Lgt0LTQvtC70LbQvdC40LrQsCkNCg0KICAgINCy0YvRgtC10LrQsNGO0YnQtdCz0L4g0LjQtyDQv9GA0LXQtNC+0YHRgtCw0LLQu9C10L3QuNGPINCa0LvQuNC10L3RgtC+0LwgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQogICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQogICAgICAgICAgICAgICAo0YLQvtCy0LDRgNC+0LIsINCy0YvQv9C+0LvQvdC10L3QuNGPINC40Lwg0YDQsNCx0L7RgiDQuCDQvtC60LDQt9Cw0L3QuNGPINGD0YHQu9GD0LMpDQoNCiAgICDQtNC+0LvQttC90LjQutGDLCDQsCAgINCa0LvQuNC10L3RgiAgINGD0YHRgtGD0L/QsNC10YIgICDQpNC40L3QsNC90YHQvtCy0L7QvNGDICAg0LDQs9C10L3RgtGDICDRjdGC0L4gINC00LXQvdC10LbQvdC+0LUNCiAgICDRgtGA0LXQsdC+0LLQsNC90LjQtS4NCiAgICAgICAgIDEuMi4g0J/RgNCw0LLQviAgICDQmtC70LjQtdC90YLQsCAgICDQvdCwICAgINC/0LXRgNC10LTQsNGH0YMgICDQtNC10L3QtdC20L3QvtCz0L4gICDRgtGA0LXQsdC+0LLQsNC90LjRjw0KICAgINC/0L7QtNGC0LLQtdGA0LbQtNCw0LXRgtGB0Y8g0YHQu9C10LTRg9GO0YnQuNC80Lgg0LTQvtC60YPQvNC10L3RgtCw0LzQuDogX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICjQtNC+0LPQvtCy0L7RgCDQutC70LjQtdC90YLQsCDRgSDQtNC+0LvQttC90LjQutC+0Lw6DQoNCiAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCiAgICAgICAgICAgICAgICDQvdC+0LzQtdGALCDQtNCw0YLQsCDQt9Cw0LrQu9GO0YfQtdC90LjRjywg0YDQtdGI0LXQvdC40LUg0YHRg9C00LAg0Lgg0YIu0LQuKQ0KDQogICAg0Lgg0L3QsCDQvNC+0LzQtdC90YIg0YPRgdGC0YPQv9C60Lgg0Y3RgtC+0LPQviDQtNC10L3QtdC20L3QvtCz0L4g0YLRgNC10LHQvtCy0LDQvdC40Y8gINCa0LvQuNC10L3RgtGDICDQvdC1ICDQuNC30LLQtdGB0YLQvdGLDQogICAg0L7QsdGB0YLQvtGP0YLQtdC70YzRgdGC0LLQsCwg0LLRgdC70LXQtNGB0YLQstC40LUgICDQutC+0YLQvtGA0YvRhSAgINC00L7Qu9C20L3QuNC6ICDQstC/0YDQsNCy0LUgINC90LUgINC40YHQv9C+0LvQvdGP0YLRjA0KICAgINGC0YDQtdCx0L7QstCw0L3QuNC1Lg0KICAgICAgICAgMS4zLiDQmtC70LjQtdC90YIg0LPQsNGA0LDQvdGC0LjRgNGD0LXRgiwg0YfRgtC+INC80LXQttC00YMg0L3QuNC8INC4INC00L7Qu9C20L3QuNC60L7QvCDQvdC1INGB0YPRidC10YHRgtCy0YPQtdGCDQogICAg0YHQvtCz0LvQsNGI0LXQvdC40Y8g0L4gINC30LDQv9GA0LXRgtC1ICDQuNC70LggINC+0LPRgNCw0L3QuNGH0LXQvdC40LggINGD0YHRgtGD0L/QutC4INC00LXQvdC10LbQvdC+0LPQviDRgtGA0LXQsdC+0LLQsNC90LjRjw0KICAgINGC0YDQtdGC0YzQtdC80YMg0LvQuNGG0YMuDQogICAgICAgICAxLjQuINCk0LjQvdCw0L3RgdC+0LLRi9C5INCw0LPQtdC90YIgINC/0L7QutGD0L/QsNC10YIgINGB0LvQtdC00YPRjtGJ0LXQtSAg0LTQtdC90LXQttC90L7QtSAg0YLRgNC10LHQvtCy0LDQvdC40LUNCiAgICDQmtC70LjQtdC90YLQsDogX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQogICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQogICAgICAgICAo0YHRg9C80LzQsCDQvtGB0L3QvtCy0L3QvtCz0L4g0LTQvtC70LPQsCwg0L/RgNC+0YbQtdC90YLRiywg0YjRgtGA0LDRhNC90YvQtSDRgdCw0L3QutGG0LjQuCDQuCDRgi7QtC4pDQoNCiAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXy4NCiAgICAgICAgIDEuNS4g0KTQuNC90LDQvdGB0L7QstGL0LkgICDQsNCz0LXQvdGCICAg0L7QsdGP0LfRg9C10YLRgdGPICAg0L/QtdGA0LXQtNCw0YLRjCAg0JrQu9C40LXQvdGC0YMgINCyICDRgdGH0LXRgg0KICAgINC00LXQvdC10LbQvdC+0LPQviDRgtGA0LXQsdC+0LLQsNC90LjRjyDQmtC70LjQtdC90YLQsCDQuiDQtNC+0LvQttC90LjQutGDINC00LXQvdC10LbQvdGL0LUg0YHRgNC10LTRgdGC0LLQsCDQsiDRgdC70LXQtNGD0Y7RidC10LwNCiAgICDRgNCw0LfQvNC10YDQtTogX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18uDQogICAgICAgICAxLjYuINCj0LrQsNC30LDQvdC90YvQtSAg0LTQtdC90LXQttC90YvQtSDRgdGA0LXQtNGB0YLQstCwINC/0LXRgNC10LTQsNGO0YLRgdGPINCyINGB0LvQtdC00YPRjtGJ0LjQtSDRgdGA0L7QutC4INC4DQogICAg0LIg0YHQu9C10LTRg9GO0YnQtdC8INC/0L7RgNGP0LTQutC1OiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCiAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXy4NCiAgICAgICAgIDEuNy4g0KHQvtCz0LvQsNGB0L3QviDQvdCw0YHRgtC+0Y/RidC10LzRgyDQtNC+0LPQvtCy0L7RgNGDINC/0L7RgdC70LXQtNGD0Y7RidCw0Y8g0YPRgdGC0YPQv9C60LAgINC00LXQvdC10LbQvdC+0LPQvg0KICAgINGC0YDQtdCx0L7QstCw0L3QuNGPINCk0LjQvdCw0L3RgdC+0LLRi9C8INCw0LPQtdC90YLQvtC8INC90LUg0LTQvtC/0YPRgdC60LDQtdGC0YHRjy4NCg0KICAgICAgICAgICAgMi4g0J7RgtCy0LXRgtGB0YLQstC10L3QvdC+0YHRgtGMINCa0LvQuNC10L3RgtCwINC/0LXRgNC10LQg0KTQuNC90LDQvdGB0L7QstGL0Lwg0LDQs9C10L3RgtC+0LwNCg0KICAgICAgICAgMi4xLiDQmtC70LjQtdC90YIgINC90LXRgdC10YIgINC/0LXRgNC10LQgINCk0LjQvdCw0L3RgdC+0LLRi9C8INCw0LPQtdC90YLQvtC8INC+0YLQstC10YLRgdGC0LLQtdC90L3QvtGB0YLRjCDQt9CwDQogICAg0LTQtdC50YHRgtCy0LjRgtC10LvRjNC90L7RgdGC0Ywg0LTQtdC90LXQttC90L7Qs9C+INGC0YDQtdCx0L7QstCw0L3QuNGPLCDRj9Cy0LvRj9GO0YnQtdCz0L7RgdGPINC/0YDQtdC00LzQtdGC0L7QvCDRg9GB0YLRg9C/0LrQuC4NCiAgICAgICAgIDIuMi4g0JrQu9C40LXQvdGCICDQvdC1ICDQvtGC0LLQtdGH0LDQtdGCICDQt9CwICDQvdC10LjRgdC/0L7Qu9C90LXQvdC40LUgICDQuNC70LggICDQvdC10L3QsNC00LvQtdC20LDRidC10LUNCiAgICDQuNGB0L/QvtC70L3QtdC90LjQtSDQtNC+0LvQttC90LjQutC+0LwgINGC0YDQtdCx0L7QstCw0L3QuNGPLCAg0Y/QstC70Y/RjtGJ0LXQs9C+0YHRjyAg0L/RgNC10LTQvNC10YLQvtC8INGD0YHRgtGD0L/QutC4LCAg0LINCiAgICDRgdC70YPRh9Cw0LUg0L/RgNC10LTRitGP0LLQu9C10L3QuNGPINC10LPQviDQpNC40L3QsNC90YHQvtCy0YvQvCDQsNCz0LXQvdGC0L7QvCDQuiDQuNGB0L/QvtC70L3QtdC90LjRji4NCg0KICAgICAgICAgICAgICAgICAgIDMuINCe0LHRj9C30LDRgtC10LvRjNGB0YLQstCwINCh0YLQvtGA0L7QvSDQv9C10YDQtdC0INC00L7Qu9C20L3QuNC60L7QvA0KDQogICAgICAgICAzLjEuINCa0LvQuNC10L3RgiDQvtCx0Y/Qt9GD0LXRgtGB0Y8g0L/QuNGB0YzQvNC10L3QvdC+INGD0LLQtdC00L7QvNC40YLRjCAg0LTQvtC70LbQvdC40LrQsCAg0L7QsSAg0YPRgdGC0YPQv9C60LUNCiAgICDQtNC10L3QtdC20L3QvtCz0L4g0YLRgNC10LHQvtCy0LDQvdC40Y8gINCk0LjQvdCw0L3RgdC+0LLQvtC80YMgINCw0LPQtdC90YLRgyAg0YEg0L7Qv9GA0LXQtNC10LvQtdC90LjQtdC8INC/0L7QtNC70LXQttCw0YnQtdCz0L4NCiAgICDQuNGB0L/QvtC70L3QtdC90LjRjiDQtNC10L3QtdC20L3QvtCz0L4gINGC0YDQtdCx0L7QstCw0L3QuNGPLCAg0LAgINGC0LDQutC20LUgICDRg9C60LDQt9Cw0L3QuNC10LwgICDRhNC40L3QsNC90YHQvtCy0L7Qs9C+DQogICAg0LDQs9C10L3RgtCwLCDQutC+0YLQvtGA0L7QvNGDINC00L7Qu9C20LXQvSDQsdGL0YLRjCDQv9GA0L7QuNC30LLQtdC00LXQvSDQv9C70LDRgtC10LYuDQogICAgICAgICAzLjIuINCk0LjQvdCw0L3RgdC+0LLRi9C5ICDQsNCz0LXQvdGCICDQvtCx0Y/Qt9GD0LXRgtGB0Y8gINCyICDRgNCw0LfRg9C80L3Ri9C5INGB0YDQvtC6INC/0YDQtdC00L7RgdGC0LDQstC40YLRjA0KICAgINC00L7Qu9C20L3QuNC60YMg0LTQvtC60LDQt9Cw0YLQtdC70YzRgdGC0LLQviAg0YLQvtCz0L4sICDRh9GC0L4gINGD0YHRgtGD0L/QutCwICAg0LTQtdC90LXQttC90L7Qs9C+ICAg0YLRgNC10LHQvtCy0LDQvdC40Y8NCiAgICDQpNC40L3QsNC90YHQvtCy0L7QvNGDINCw0LPQtdC90YLRgyDQtNC10LnRgdGC0LLQuNGC0LXQu9GM0L3QviDQuNC80LXQu9CwINC80LXRgdGC0L4uDQogICAgICAgICAzLjMuINCf0L4gINGC0YDQtdCx0L7QstCw0L3QuNGOICDQpNC40L3QsNC90YHQvtCy0L7Qs9C+ICDQsNCz0LXQvdGC0LAgINC6ICDQtNC+0LvQttC90LjQutGDINC/0YDQvtC40LfQstC10YHRgtC4DQogICAg0L/Qu9Cw0YLQtdC2LCDQtNC+0LvQttC90LjQuiDQstC/0YDQsNCy0LUg0L/RgNC10LTRitGP0LLQuNGC0Ywg0Log0LfQsNGH0LXRgtGDINGB0LLQvtC4INC00LXQvdC10LbQvdGL0LUgINGC0YDQtdCx0L7QstCw0L3QuNGPLA0KICAgINCy0YvRgtC10LrQsNGO0YnQuNC1INC40Lcg0LTQvtCz0L7QstC+0YDQsCDRgSDQmtC70LjQtdC90YLQvtC8LCAg0LrQvtGC0L7RgNGL0LUg0YPQttC1INC40LzQtdC70LjRgdGMINGDINC00L7Qu9C20L3QuNC60LAg0LrQvg0KICAgINCy0YDQtdC80LXQvdC4LCDQutC+0LPQtNCwINC40Lwg0LHRi9C70L4g0L/QvtC70YPRh9C10L3QviAg0YPQstC10LTQvtC80LvQtdC90LjQtSAg0L7QsSAg0YPRgdGC0YPQv9C60LUgINGC0YDQtdCx0L7QstCw0L3QuNGPDQogICAg0KTQuNC90LDQvdGB0L7QstC+0LzRgyDQsNCz0LXQvdGC0YMuDQogICAgICAgICAzLjQuINCY0YHQv9C+0LvQvdC10L3QuNC1ICAg0LTQtdC90LXQttC90L7Qs9C+ICAg0YLRgNC10LHQvtCy0LDQvdC40Y8gINC00L7Qu9C20L3QuNC60L7QvCAg0KTQuNC90LDQvdGB0L7QstC+0LzRgw0KICAgINCw0LPQtdC90YLRgyDQvtGB0LLQvtCx0L7QttC00LDQtdGCINC00L7Qu9C20L3QuNC60LAg0L7RgiDRgdC+0L7RgtCy0LXRgtGB0YLQstGD0Y7RidC10LPQviAg0L7QsdGP0LfQsNGC0LXQu9GM0YHRgtCy0LAgINC/0LXRgNC10LQNCiAgICDQmtC70LjQtdC90YLQvtC8Lg0KDQogICAgICAgICAgICAgICAgICAgIDQuINCf0YDQsNCy0L4g0KTQuNC90LDQvdGB0L7QstC+0LPQviDQsNCz0LXQvdGC0LAg0L3QsCDRgdGD0LzQvNGDLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAg0L/QvtC70YPRh9C10L3QvdGD0Y4g0L7RgiDQtNC+0LvQttC90LjQutCwDQoNCiAgICAgICAgIDQuMS4g0J/QviDQvdCw0YHRgtC+0Y/RidC10LzRgyDQtNC+0LPQvtCy0L7RgNGDINGE0LjQvdCw0L3RgdC40YDQvtCy0LDQvdC40Y8g0L/QvtC0INGD0YHRgtGD0L/QutGDINC00LXQvdC10LbQvdC+0LPQvg0KICAgINGC0YDQtdCx0L7QstCw0L3QuNGPINCk0LjQvdCw0L3RgdC+0LLRi9C5INCw0LPQtdC90YIg0L/RgNC40L7QsdGA0LXRgtCw0LXRgiDQv9GA0LDQstC+INC90LAg0LLRgdC1ICDRgdGD0LzQvNGLLCAg0LrQvtGC0L7RgNGL0LUNCiAgICDQvtC9ICDQv9C+0LvRg9GH0LjRgiAg0L7RgiDQtNC+0LvQttC90LjQutCwINCy0L4g0LjRgdC/0L7Qu9C90LXQvdC40LUg0YLRgNC10LHQvtCy0LDQvdC40Y8sICDQsCDQmtC70LjQtdC90YIg0L3QtSDQvdC10YHQtdGCDQogICAg0L7RgtCy0LXRgtGB0YLQstC10L3QvdC+0YHRgtC4INC/0LXRgNC10LQg0KTQuNC90LDQvdGB0L7QstGL0Lwg0LDQs9C10L3RgtC+0Lwg0LfQsCAg0YLQviwgINGH0YLQviAg0L/QvtC70YPRh9C10L3QvdGL0LUgINC40LwNCiAgICDRgdGD0LzQvNGLINC+0LrQsNC30LDQu9C40YHRjCDQvNC10L3RjNGI0LUgINGG0LXQvdGLLCAg0LfQsCAg0LrQvtGC0L7RgNGD0Y4sICDRgdC+0LPQu9Cw0YHQvdC+ICDQv9C+0LTQv9GD0L3QutGC0YMgIDEuNQ0KICAgINC90LDRgdGC0L7Rj9GJ0LXQs9C+INC00L7Qs9C+0LLQvtGA0LAg0JDQs9C10L3RgiDQv9GA0LjQvtCx0YDQtdC7INGC0YDQtdCx0L7QstCw0L3QuNGPLg0KICAgICAgICAgNC4yLiDQkiDRgdC70YPRh9Cw0LUg0L3QsNGA0YPRiNC10L3QuNGPINCa0LvQuNC10L3RgtC+0Lwg0YHQstC+0LjRhSDQvtCx0Y/Qt9Cw0YLQtdC70YzRgdGC0LIg0L/QviDQtNC+0LPQvtCy0L7RgNGDLA0KICAgINC30LDQutC70Y7Rh9C10L3QvdC+0LzRgyDRgSDQtNC+0LvQttC90LjQutC+0LwsICDQtNC+0LvQttC90LjQuiDQvdC1INCy0L/RgNCw0LLQtSDRgtGA0LXQsdC+0LLQsNGC0Ywg0L7RgiDQpNC40L3QsNC90YHQvtCy0L7Qs9C+DQogICAg0LDQs9C10L3RgtCwINCy0L7Qt9Cy0YDQsNGCINGB0YPQvNC8LCAg0YPQttC1INGD0L/Qu9Cw0YfQtdC90L3Ri9GFICDQtdC80YMgINC/0L4gINC/0LXRgNC10YjQtdC00YjQtdC80YMgINC00LXQvdC10LbQvdC+0LzRgw0KICAgINGC0YDQtdCx0L7QstCw0L3QuNGOLCDQtdGB0LvQuCAg0LTQvtC70LbQvdC40Log0LLQv9GA0LDQstC1INC/0L7Qu9GD0YfQuNGC0Ywg0YLQsNC60LjQtSDRgdGD0LzQvNGLINC90LXQv9C+0YHRgNC10LTRgdGC0LLQtdC90L3Qvg0KICAgINGBINCa0LvQuNC10L3RgtCwLg0KICAgICAgICAgNC4zLiDQlNC+0LvQttC90LjQuiwgINC40LzQtdGO0YnQuNC5ICDQv9GA0LDQstC+INC/0L7Qu9GD0YfQuNGC0Ywg0L3QtdC/0L7RgdGA0LXQtNGB0YLQstC10L3QvdC+INGBINCa0LvQuNC10L3RgtCwDQogICAg0YHRg9C80LzRiywg0YPQv9C70LDRh9C10L3QvdGL0LUg0KTQuNC90LDQvdGB0L7QstC+0LzRgyDQsNCz0LXQvdGC0YMg0LIg0YDQtdC30YPQu9GM0YLQsNGC0LUg0YPRgdGC0YPQv9C60Lgg0YLRgNC10LHQvtCy0LDQvdC40Y8sDQogICAg0YLQtdC8INC90LUgINC80LXQvdC10LUgINCy0L/RgNCw0LLQtSAg0YLRgNC10LHQvtCy0LDRgtGMICDQstC+0LfQstGA0LDRidC10L3QuNGPICDRjdGC0LjRhSAg0YHRg9C80LwgINCk0LjQvdCw0L3RgdC+0LLRi9C8DQogICAg0LDQs9C10L3RgtC+0LwsINC10YHQu9C4INC00L7QutCw0LfQsNC90L4sICDRh9GC0L4g0L/QvtGB0LvQtdC00L3QuNC5INC90LUg0LjRgdC/0L7Qu9C90LjQuyDRgdCy0L7QtSDQvtCx0Y/Qt9Cw0YLQtdC70YzRgdGC0LLQvg0KICAgINC+0YHRg9GJ0LXRgdGC0LLQuNGC0Ywg0JrQu9C40LXQvdGC0YMgICAg0L7QsdC10YnQsNC90L3Ri9C5ICAg0L/Qu9Cw0YLQtdC2LCAgINGB0LLRj9C30LDQvdC90YvQuSAgINGBICAg0YPRgdGC0YPQv9C60L7QuQ0KICAgINGC0YDQtdCx0L7QstCw0L3QuNGPLCDQu9C40LHQviDQv9GA0L7QuNC30LLQtdC7INGC0LDQutC+0Lkg0L/Qu9Cw0YLQtdC2LCAg0LfQvdCw0Y8gINC+ICDQvdCw0YDRg9GI0LXQvdC40LggINCa0LvQuNC10L3RgtC+0LwNCiAgICDRgtC+0LPQviDQvtCx0Y/Qt9Cw0YLQtdC70YzRgdGC0LLQsCAg0L/QtdGA0LXQtCAg0LTQvtC70LbQvdC40LrQvtC8LCAg0LogINC60L7RgtC+0YDQvtC80YMgINC+0YLQvdC+0YHQuNGC0YHRjyDQv9C70LDRgtC10LYsDQogICAg0YHQstGP0LfQsNC90L3Ri9C5INGBINGD0YHRgtGD0L/QutC+0Lkg0YLRgNC10LHQvtCy0LDQvdC40Y8uDQoNCiAgICAgICAgICAgICAgICAgICAgICAgICA1LiDQl9Cw0LrQu9GO0YfQuNGC0LXQu9GM0L3Ri9C1INC/0L7Qu9C+0LbQtdC90LjRjw0KDQogICAgICAgICA1LjEuINCS0L4g0LLRgdC10Lwg0L7RgdGC0LDQu9GM0L3QvtC8LCDQvdC1INC/0YDQtdC00YPRgdC80L7RgtGA0LXQvdC90L7QvCDQsiDQvdCw0YHRgtC+0Y/RidC10Lwg0LTQvtCz0L7QstC+0YDQtSwNCiAgICDRgdGC0L7RgNC+0L3RiyDQsdGD0LTRg9GCINGA0YPQutC+0LLQvtC00YHRgtCy0L7QstCw0YLRjNGB0Y8g0L/QvtC70L7QttC10L3QuNGP0LzQuCDQtNC10LnRgdGC0LLRg9GO0YnQtdCz0L4g0LPRgNCw0LbQtNCw0L3RgdC60L7Qs9C+DQogICAg0LfQsNC60L7QvdC+0LTQsNGC0LXQu9GM0YHRgtCy0LAg0KDQvtGB0YHQuNC4Lg0KICAgICAgICAgNS4yLiDQlNC+0LPQvtCy0L7RgCDQstGB0YLRg9C/0LDQtdGCINCyINGB0LjQu9GDINGBINC80L7QvNC10L3RgtCwINC10LPQviDQv9C+0LTQv9C40YHQsNC90LjRjywg0YHQvtGB0YLQsNCy0LvQtdC9DQogICAg0LIgX19fX18g0Y3QutC30LXQvNC/0LvRj9GA0LDRhS4NCiAgICAgICAgIDUuMy4g0JDQtNGA0LXRgdCwINC4INCx0LDQvdC60L7QstGB0LrQuNC1INGA0LXQutCy0LjQt9C40YLRiyDRgdGC0L7RgNC+0L06DQoNCiAgICAgICAgINCa0LvQuNC10L3RgjogX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCiAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCg0KICAgICAgICAg0KTQuNC90LDQvdGB0L7QstGL0Lkg0LDQs9C10L3RgjogX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg0J/QvtC00L/QuNGB0Lgg0YHRgtC+0YDQvtC9Og0KDQogICAgICAgICAgINCa0LvQuNC10L3RgiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgINCk0LjQvdCw0L3RgdC+0LLRi9C5INCw0LPQtdC90YINCg0KICAgIF9fX19fX19fX19fX19fX19fX19fXyAgICAgICAgICAgICAgICAgICAgICAgX19fX19fX19fX19fX19fX19fX19fX19fXw0KICAgICAgICAgICDQnC7Qny4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICDQnC7Qny4NCg0KDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgINCa0J7QnNCc0JXQndCi0JDQoNCY0Jg6DQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIC0tLS0tLS0tLS0tLQ0KICAgICAgICAg0JIg0LrQsNGH0LXRgdGC0LLQtSAg0YTQuNC90LDQvdGB0L7QstC+0LPQviAg0LDQs9C10L3RgtCwICDQtNC+0LPQvtCy0L7RgNGLICAg0YTQuNC90LDQvdGB0LjRgNC+0LLQsNC90LjRjyAgINC/0L7QtA0KICAgINGD0YHRgtGD0L/QutGDINC00LXQvdC10LbQvdC+0LPQviAg0YLRgNC10LHQvtCy0LDQvdC40Y8gINC80L7Qs9GD0YIg0LfQsNC60LvRjtGH0LDRgtGMINCx0LDQvdC60Lgg0Lgg0LjQvdGL0LUg0LrRgNC10LTQuNGC0L3Ri9C1DQogICAg0L7RgNCz0LDQvdC40LfQsNGG0LjQuCwg0LAgINGC0LDQutC20LUgINC00YDRg9Cz0LjQtSAgINC60L7QvNC80LXRgNGH0LXRgdC60LjQtSAgINC+0YDQs9Cw0L3QuNC30LDRhtC40LgsICAg0LjQvNC10Y7RidC40LUNCiAgICDRgNCw0LfRgNC10YjQtdC90LjQtSAo0LvQuNGG0LXQvdC30LjRjikgINC90LAg0L7RgdGD0YnQtdGB0YLQstC70LXQvdC40LUg0LTQtdGP0YLQtdC70YzQvdC+0YHRgtC4INGC0LDQutC+0LPQviDQstC40LTQsCAo0YHRgi4NCiAgICA4MjUg0JPQmiDQoNCkKS4NCiAgICAgICAgINCf0YDQtdC00LzQtdGC0L7QvCDRg9GB0YLRg9C/0LrQuCwgINC/0L7QtCAg0LrQvtGC0L7RgNGD0Y4g0L/RgNC10LTQvtGB0YLQsNCy0LvRj9C10YLRgdGPINGE0LjQvdCw0L3RgdC40YDQvtCy0LDQvdC40LUsDQogICAg0LzQvtC20LXRgiDQsdGL0YLRjCDQutCw0Log0LTQtdC90LXQttC90L7QtSDRgtGA0LXQsdC+0LLQsNC90LjQtSwgINGB0YDQvtC6ICDQv9C70LDRgtC10LbQsCAg0L/QviAg0LrQvtGC0L7RgNC+0LzRgyAg0YPQttC1DQogICAg0L3QsNGB0YLRg9C/0LjQuyAo0YHRg9GJ0LXRgdGC0LLRg9GO0YnQtdC1INGC0YDQtdCx0L7QstCw0L3QuNC1KSwg0YLQsNC6INC4INC/0YDQsNCy0L4g0L3QsCDQv9C+0LvRg9GH0LXQvdC40LUg0LTQtdC90LXQttC90YvRhQ0KICAgINGB0YDQtdC00YHRgtCyLCDQutC+0YLQvtGA0L7QtSDQstC+0LfQvdC40LrQvdC10YIg0LIg0LHRg9C00YPRidC10LwgKNCx0YPQtNGD0YnQtdC1INGC0YDQtdCx0L7QstCw0L3QuNC1KS4NCiAgICAgICAgINCU0LXQvdC10LbQvdC+0LUg0YLRgNC10LHQvtCy0LDQvdC40LUsICDRj9Cy0LvRj9GO0YnQtdC10YHRjyDQv9GA0LXQtNC80LXRgtC+0Lwg0YPRgdGC0YPQv9C60LgsICDQtNC+0LvQttC90L4g0LHRi9GC0YwNCiAgICDQvtC/0YDQtdC00LXQu9C10L3QviDQsiDQtNC+0LPQvtCy0L7RgNC1INC60LvQuNC10L3RgtCwINGBICDRhNC40L3QsNC90YHQvtCy0YvQvCAg0LDQs9C10L3RgtC+0LwgINGC0LDQutC40LwgINC+0LHRgNCw0LfQvtC8LA0KICAgINC60L7RgtC+0YDRi9C5INC/0L7Qt9Cy0L7Qu9GP0LXRgiAg0LjQtNC10L3RgtC40YTQuNGG0LjRgNC+0LLQsNGC0YwgINGB0YPRidC10YHRgtCy0YPRjtGJ0LXQtSDRgtGA0LXQsdC+0LLQsNC90LjQtSDQsiDQvNC+0LzQtdC90YINCiAgICDQt9Cw0LrQu9GO0YfQtdC90LjRjyDQtNC+0LPQvtCy0L7RgNCwLCAg0LAg0LHRg9C00YPRidC10LUg0YLRgNC10LHQvtCy0LDQvdC40LUgLSDQvdC1INC/0L7Qt9C00L3QtdC1INGH0LXQvCDQsiAg0LzQvtC80LXQvdGCDQogICAg0LXQs9C+INCy0L7Qt9C90LjQutC90L7QstC10L3QuNGPLg0KICAgICAgICAg0J/RgNC4INGD0YHRgtGD0L/QutC1INC00LXQvdC10LbQvdC+0LPQviAg0YLRgNC10LHQvtCy0LDQvdC40Y8gINC+0L3QviAg0YHRh9C40YLQsNC10YLRgdGPICDQv9C10YDQtdGI0LXQtNGI0LjQvCAg0LoNCiAgICDRhNC40L3QsNC90YHQvtCy0L7QvNGDINCw0LPQtdC90YLRgyDQv9C+0YHQu9C1INGC0L7Qs9C+LCDQutCw0Log0LLQvtC30L3QuNC60LvQviDRgdCw0LzQviDQv9GA0LDQstC+INC90LAg0L/QvtC70YPRh9C10L3QuNC1INGBDQogICAg0LTQvtC70LbQvdC40LrQsCDQtNC10L3QtdC20L3Ri9GFICDRgdGA0LXQtNGB0YLQsiwgINC60L7RgtC+0YDRi9C1ICAg0Y/QstC70Y/RjtGC0YHRjyAgINC/0YDQtdC00LzQtdGC0L7QvCAgINGD0YHRgtGD0L/QutC4DQogICAg0YLRgNC10LHQvtCy0LDQvdC40Y8sINC/0YDQtdC00YPRgdC80L7RgtGA0LXQvdC90L7QuSAgINC00L7Qs9C+0LLQvtGA0L7QvC4gICDQldGB0LvQuCAgINGD0YHRgtGD0L/QutCwICAg0LTQtdC90LXQttC90L7Qs9C+DQogICAg0YLRgNC10LHQvtCy0LDQvdC40Y8g0L7QsdGD0YHQu9C+0LLQu9C10L3QsCDQvtC/0YDQtdC00LXQu9C10L3QvdGL0Lwg0YHQvtCx0YvRgtC40LXQvCwgINC+0L3QsCAg0LLRgdGC0YPQv9Cw0LXRgiAg0LIgINGB0LjQu9GDDQogICAg0L/QvtGB0LvQtSDQvdCw0YHRgtGD0L/Qu9C10L3QuNGPINGN0YLQvtCz0L4g0YHQvtCx0YvRgtC40Y8gKNGB0YIuIDgyNiDQk9CaINCg0KQpLg0KDQogIA0KPC9wcmU+PC9kaXY+DQo8L2JvZHk+DQo8L2h0bWw+",
+    "mime_type": "text/html",
+    "language": "ru",
+    "locale": "ru"
+  },
+  "ingestion_preflight": {
+    "mime_type": "text/html",
+    "extractor": "html:regex",
+    "extraction_source": "html:regex",
+    "extraction_ok": true,
+    "error": null,
+    "extraction_error": null,
+    "sha256": "b08131c4ca17df7416ab709ba6358b8f17653803569a73bded825fbc34609952"
+  },
+  "metrics": {
+    "risk_count": 1,
+    "high_risk_count": 0,
+    "disputed_clause_count": 2,
+    "asymmetry_signal_count": 0,
+    "contract_type": "loan_security_agreement"
+  },
+  "analysis": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'obrazets-dogovor-finansirovaniya-pod-ustupku-denezhnogo-trebovan. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Заемщик'. Определен тип договора: Договор займа / залога / гарантии (уверенность 65%, правовая рамка: ГК РФ, главы 23, 42, 43). Ключевые обязательства по договору для роли 'Заемщик': Финансовый агент обязуется передать Клиенту в счет денежного требования Клиента к должнику денежные средства в следующем размере: ___________________________________________________________; Клиент обязуется письменно уведомить должника об уступке денежного требования Финансовому агенту с определением подлежащего исполнению денежного требования, а также указанием финансового агента, которому должен быть произведен платеж; Финансовый агент обязуется в разумный срок предоставить должнику доказательство того, что уступка денежного требования Финансовому агенту действительно имела место. Условия оплаты: По настоящему договору Финансовый агент передает Клиенту денежные средства в счет денежного требования Клиента (Кредитора) к третьему лицу (должнику), ___________________________________________ (наименование организации-должника) вытекающего из предоставления Клиентом ______________________________ _____________________________________________________________________ (товаров, выполнения им работ и оказания услуг) должнику, а Клиент уступает Финансовому агенту это денежное требование; Финансовый агент обязуется передать Клиенту в счет денежного требования Клиента к должнику денежные средства в следующем размере: ___________________________________________________________. Сроки и дедлайны: Указанные денежные средства передаются в следующие сроки и в следующем порядке: ________________________________________________ ____________________________________________________________________; Финансовый агент обязуется в разумный срок предоставить должнику доказательство того, что уступка денежного требования Финансовому агенту действительно имела место; Предметом уступки, под которую предоставляется финансирование, может быть как денежное требование, срок платежа по которому уже наступил (существующее требование), так и право на получение денежных средств, которое возникнет в будущем (будущее требование). Штрафы и санкции: Финансовый агент покупает следующее денежное требование Клиента: ____________________________________________________________ _____________________________________________________________________ (сумма основного долга, проценты, штрафные санкции и т. Найдено спорных или расплывчатых пунктов: 2.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Заемщик'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Образец. Договор финансирования под уступку денежного требования путем покупки этого требования (факторинг) - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР финансирования под уступку денежного требования (факторинг) г. ________________ \"__\"_________ 20___ г. _______________________________________________________________, (наименование предприятия, передающего денежные средства) именуемое в дальнейшем \"Финансовый...",
+        "dispute_reason": "Одна из сторон получила дискреционное право без достаточных ограничителей.",
+        "possible_consequence": "Это может привести к одностороннему применению условия и спору о пределах такого права.",
+        "confidence": 0.76
+      },
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Образец. Договор финансирования под уступку денежного требования путем покупки этого требования (факторинг) - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР финансирования под уступку денежного требования (факторинг) г. ________________ \"__\"_________ 20___ г. _______________________________________________________________, (наименование предприятия, передающего денежные средства) именуемое в дальнейшем \"Финансовый...",
+        "dispute_reason": "Срок задан оценочно и может толковаться сторонами по-разному.",
+        "possible_consequence": "Стороны могут спорить о моменте надлежащего исполнения и начале просрочки.",
+        "confidence": 0.77
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Заемщик",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Заемщик'.",
+      "must_do": [
+        "Финансовый агент обязуется передать Клиенту в счет денежного требования Клиента к должнику денежные средства в следующем размере: ___________________________________________________________.",
+        "Клиент обязуется письменно уведомить должника об уступке денежного требования Финансовому агенту с определением подлежащего исполнению денежного требования, а также указанием финансового агента, которому должен быть произведен платеж.",
+        "Финансовый агент обязуется в разумный срок предоставить должнику доказательство того, что уступка денежного требования Финансовому агенту действительно имела место."
+      ],
+      "should_review": [
+        ") и на момент уступки этого денежного требования Клиенту не известны обстоятельства, вследствие которых должник вправе не исполнять требование.",
+        "По требованию Финансового агента к должнику произвести платеж, должник вправе предъявить к зачету свои денежные требования, вытекающие из договора с Клиентом, которые уже имелись у должника ко времени, когда им было получено уведомление об уступке требования Финансовому агенту.",
+        "В случае нарушения Клиентом своих обязательств по договору, заключенному с должником, должник не вправе требовать от Финансового агента возврат сумм, уже уплаченных ему по перешедшему денежному требованию, если должник вправе получить такие суммы непосредственно с Клиента.",
+        "Должник, имеющий право получить непосредственно с Клиента суммы, уплаченные Финансовому агенту в результате уступки требования, тем не менее вправе требовать возвращения этих сумм Финансовым агентом, если доказано, что последний не исполнил свое обязательство осуществить Клиенту обещанный платеж, связанный с уступкой требования, либо произвел такой платеж, зная о нарушении Клиентом того обязательства перед должником, к которому относится платеж, связанный с уступкой требования.",
+        "Предметом уступки, под которую предоставляется финансирование, может быть как денежное требование, срок платежа по которому уже наступил (существующее требование), так и право на получение денежных средств, которое возникнет в будущем (будущее требование)."
+      ],
+      "payment_terms": [
+        "По настоящему договору Финансовый агент передает Клиенту денежные средства в счет денежного требования Клиента (Кредитора) к третьему лицу (должнику), ___________________________________________ (наименование организации-должника) вытекающего из предоставления Клиентом ______________________________ _____________________________________________________________________ (товаров, выполнения им работ и оказания услуг) должнику, а Клиент уступает Финансовому агенту это денежное требование.",
+        "Финансовый агент обязуется передать Клиенту в счет денежного требования Клиента к должнику денежные средства в следующем размере: ___________________________________________________________."
+      ],
+      "deadlines": [
+        "Указанные денежные средства передаются в следующие сроки и в следующем порядке: ________________________________________________ ____________________________________________________________________.",
+        "Финансовый агент обязуется в разумный срок предоставить должнику доказательство того, что уступка денежного требования Финансовому агенту действительно имела место.",
+        "Предметом уступки, под которую предоставляется финансирование, может быть как денежное требование, срок платежа по которому уже наступил (существующее требование), так и право на получение денежных средств, которое возникнет в будущем (будущее требование)."
+      ],
+      "penalties": [
+        "Финансовый агент покупает следующее денежное требование Клиента: ____________________________________________________________ _____________________________________________________________________ (сумма основного долга, проценты, штрафные санкции и т."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "b08131c4ca17df7416ab709ba6358b8f17653803569a73bded825fbc34609952"
+    },
+    "contract_type": {
+      "type_id": "loan_security_agreement",
+      "confidence": 0.65,
+      "ru_name": "Договор займа / залога / гарантии",
+      "legal_framework": "ГК РФ, главы 23, 42, 43"
+    },
+    "asymmetry_signals": []
+  },
+  "result": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'obrazets-dogovor-finansirovaniya-pod-ustupku-denezhnogo-trebovan. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Заемщик'. Определен тип договора: Договор займа / залога / гарантии (уверенность 65%, правовая рамка: ГК РФ, главы 23, 42, 43). Ключевые обязательства по договору для роли 'Заемщик': Финансовый агент обязуется передать Клиенту в счет денежного требования Клиента к должнику денежные средства в следующем размере: ___________________________________________________________; Клиент обязуется письменно уведомить должника об уступке денежного требования Финансовому агенту с определением подлежащего исполнению денежного требования, а также указанием финансового агента, которому должен быть произведен платеж; Финансовый агент обязуется в разумный срок предоставить должнику доказательство того, что уступка денежного требования Финансовому агенту действительно имела место. Условия оплаты: По настоящему договору Финансовый агент передает Клиенту денежные средства в счет денежного требования Клиента (Кредитора) к третьему лицу (должнику), ___________________________________________ (наименование организации-должника) вытекающего из предоставления Клиентом ______________________________ _____________________________________________________________________ (товаров, выполнения им работ и оказания услуг) должнику, а Клиент уступает Финансовому агенту это денежное требование; Финансовый агент обязуется передать Клиенту в счет денежного требования Клиента к должнику денежные средства в следующем размере: ___________________________________________________________. Сроки и дедлайны: Указанные денежные средства передаются в следующие сроки и в следующем порядке: ________________________________________________ ____________________________________________________________________; Финансовый агент обязуется в разумный срок предоставить должнику доказательство того, что уступка денежного требования Финансовому агенту действительно имела место; Предметом уступки, под которую предоставляется финансирование, может быть как денежное требование, срок платежа по которому уже наступил (существующее требование), так и право на получение денежных средств, которое возникнет в будущем (будущее требование). Штрафы и санкции: Финансовый агент покупает следующее денежное требование Клиента: ____________________________________________________________ _____________________________________________________________________ (сумма основного долга, проценты, штрафные санкции и т. Найдено спорных или расплывчатых пунктов: 2.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Заемщик'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Образец. Договор финансирования под уступку денежного требования путем покупки этого требования (факторинг) - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР финансирования под уступку денежного требования (факторинг) г. ________________ \"__\"_________ 20___ г. _______________________________________________________________, (наименование предприятия, передающего денежные средства) именуемое в дальнейшем \"Финансовый...",
+        "dispute_reason": "Одна из сторон получила дискреционное право без достаточных ограничителей.",
+        "possible_consequence": "Это может привести к одностороннему применению условия и спору о пределах такого права.",
+        "confidence": 0.76
+      },
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Образец. Договор финансирования под уступку денежного требования путем покупки этого требования (факторинг) - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР финансирования под уступку денежного требования (факторинг) г. ________________ \"__\"_________ 20___ г. _______________________________________________________________, (наименование предприятия, передающего денежные средства) именуемое в дальнейшем \"Финансовый...",
+        "dispute_reason": "Срок задан оценочно и может толковаться сторонами по-разному.",
+        "possible_consequence": "Стороны могут спорить о моменте надлежащего исполнения и начале просрочки.",
+        "confidence": 0.77
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Заемщик",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Заемщик'.",
+      "must_do": [
+        "Финансовый агент обязуется передать Клиенту в счет денежного требования Клиента к должнику денежные средства в следующем размере: ___________________________________________________________.",
+        "Клиент обязуется письменно уведомить должника об уступке денежного требования Финансовому агенту с определением подлежащего исполнению денежного требования, а также указанием финансового агента, которому должен быть произведен платеж.",
+        "Финансовый агент обязуется в разумный срок предоставить должнику доказательство того, что уступка денежного требования Финансовому агенту действительно имела место."
+      ],
+      "should_review": [
+        ") и на момент уступки этого денежного требования Клиенту не известны обстоятельства, вследствие которых должник вправе не исполнять требование.",
+        "По требованию Финансового агента к должнику произвести платеж, должник вправе предъявить к зачету свои денежные требования, вытекающие из договора с Клиентом, которые уже имелись у должника ко времени, когда им было получено уведомление об уступке требования Финансовому агенту.",
+        "В случае нарушения Клиентом своих обязательств по договору, заключенному с должником, должник не вправе требовать от Финансового агента возврат сумм, уже уплаченных ему по перешедшему денежному требованию, если должник вправе получить такие суммы непосредственно с Клиента.",
+        "Должник, имеющий право получить непосредственно с Клиента суммы, уплаченные Финансовому агенту в результате уступки требования, тем не менее вправе требовать возвращения этих сумм Финансовым агентом, если доказано, что последний не исполнил свое обязательство осуществить Клиенту обещанный платеж, связанный с уступкой требования, либо произвел такой платеж, зная о нарушении Клиентом того обязательства перед должником, к которому относится платеж, связанный с уступкой требования.",
+        "Предметом уступки, под которую предоставляется финансирование, может быть как денежное требование, срок платежа по которому уже наступил (существующее требование), так и право на получение денежных средств, которое возникнет в будущем (будущее требование)."
+      ],
+      "payment_terms": [
+        "По настоящему договору Финансовый агент передает Клиенту денежные средства в счет денежного требования Клиента (Кредитора) к третьему лицу (должнику), ___________________________________________ (наименование организации-должника) вытекающего из предоставления Клиентом ______________________________ _____________________________________________________________________ (товаров, выполнения им работ и оказания услуг) должнику, а Клиент уступает Финансовому агенту это денежное требование.",
+        "Финансовый агент обязуется передать Клиенту в счет денежного требования Клиента к должнику денежные средства в следующем размере: ___________________________________________________________."
+      ],
+      "deadlines": [
+        "Указанные денежные средства передаются в следующие сроки и в следующем порядке: ________________________________________________ ____________________________________________________________________.",
+        "Финансовый агент обязуется в разумный срок предоставить должнику доказательство того, что уступка денежного требования Финансовому агенту действительно имела место.",
+        "Предметом уступки, под которую предоставляется финансирование, может быть как денежное требование, срок платежа по которому уже наступил (существующее требование), так и право на получение денежных средств, которое возникнет в будущем (будущее требование)."
+      ],
+      "penalties": [
+        "Финансовый агент покупает следующее денежное требование Клиента: ____________________________________________________________ _____________________________________________________________________ (сумма основного долга, проценты, штрафные санкции и т."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "b08131c4ca17df7416ab709ba6358b8f17653803569a73bded825fbc34609952"
+    },
+    "contract_type": {
+      "type_id": "loan_security_agreement",
+      "confidence": 0.65,
+      "ru_name": "Договор займа / залога / гарантии",
+      "legal_framework": "ГК РФ, главы 23, 42, 43"
+    },
+    "asymmetry_signals": []
+  },
+  "finished_at": "2026-04-28T16:18:49.801220+00:00",
+  "duration_ms": 305.0
+}

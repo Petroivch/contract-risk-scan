@@ -1,0 +1,193 @@
+{
+  "case_id": "dogovory_4__obrazets_dogovor_na_peredachu_vo_vremennoe_polzovanie_prav_na_no",
+  "relative_path": "договоры 4/obrazets-dogovor-na-peredachu-vo-vremennoe-polzovanie-prav-na-no.html",
+  "document_path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\договоры 4\\obrazets-dogovor-na-peredachu-vo-vremennoe-polzovanie-prav-na-no.html",
+  "document_name": "obrazets-dogovor-na-peredachu-vo-vremennoe-polzovanie-prav-na-no.html",
+  "role": "Заявитель",
+  "counterparty_role": "Организация",
+  "language": "ru",
+  "mime_type": "text/html",
+  "tags": [
+    "workspace-corpus",
+    "html",
+    "dogovory_4",
+    "non_contract_legal_form"
+  ],
+  "source_group": "manifest",
+  "expected": {
+    "contract_type": "non_contract_legal_form",
+    "min_contract_type_confidence": 0.43,
+    "min_risk_count": 0,
+    "min_disputed_clause_count": 0,
+    "execution_mode": "local_first",
+    "expected_high_risk_ids": []
+  },
+  "started_at": "2026-04-28T16:12:39.079902+00:00",
+  "status": "completed",
+  "request": {
+    "document_name": "obrazets-dogovor-na-peredachu-vo-vremennoe-polzovanie-prav-na-no.html",
+    "role_context": {
+      "role": "Заявитель",
+      "counterparty_role": "Организация"
+    },
+    "document_text": null,
+    "document_base64": "PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMDEgVHJhbnNpdGlvbmFsLy9FTiI+DQo8aHRtbD4NCjxoZWFkPg0KPGJhc2UgaHJlZj0iaHR0cHM6Ly9kb2dvdm9yLXVyaXN0LnJ1LyI+DQo8dGl0bGU+0J7QsdGA0LDQt9C10YYuINCU0L7Qs9C+0LLQvtGAINC90LAg0L/QtdGA0LXQtNCw0YfRgyDQstC+INCy0YDQtdC80LXQvdC90L7QtSDQv9C+0LvRjNC30L7QstCw0L3QuNC1INC/0YDQsNCyINC90LAgICAmYW1wO3F1b3Q70L3QvtGDLdGF0LDRgyZhbXA7cXVvdDsgLSDQstC10YDRgdC40Y8g0LTQu9GPINC/0LXRh9Cw0YLQuC4gMjAyNi4g0J7QsdGA0LDQt9GG0Ysg0LTQvtCz0L7QstC+0YDQvtCyLCDRgtC40L/QvtCy0YvQtSDQtNC+0LPQvtCy0L7RgNCwLCDQsNC60YLRg9Cw0LvRjNC90YvQtSDQtNC+0LrRg9C80LXQvdGC0YssINGO0YDQuNC00LjRh9C10YHQutC40Lwg0Lgg0YTQuNC30LjRh9C10YHQutC40Lwg0LvQuNGG0LDQvDwvdGl0bGU+DQo8bWV0YSBjb250ZW50PSIiIG5hbWU9ImtleXdvcmRzIj4NCjxtZXRhIGNvbnRlbnQ9IiIgbmFtZT0iZGVzY3JpcHRpb24iPg0KPG1ldGEgbmFtZT0icm9ib3RzIiBjb250ZW50PSJub2luZGV4LG5vZm9sbG93Ij4NCjxtZXRhIGh0dHAtZXF1aXY9IkNvbnRlbnQtVHlwZSIgY29udGVudD0idGV4dC9odG1sOyBjaGFyc2V0PXV0Zi04Ij4NCjxsaW5rIHJlbD0ic3R5bGVzaGVldCIgaHJlZj0iL2ltYWdlcy9zdHlsZS5jc3MiIHR5cGU9InRleHQvY3NzIj4NCjwvaGVhZD4NCjxib2R5Pg0KPGRpdiBjbGFzcz0iZG9jdW1lbnRUZXh0Ij4NCjxwcmU+DQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg0JTQntCT0J7QktCe0KANCiAgICAgICAgICAgICAgICAgICDQvdCwINC/0LXRgNC10LTQsNGH0YMg0LLQviDQstGA0LXQvNC10L3QvdC+0LUg0L/QvtC70YzQt9C+0LLQsNC90LjQtQ0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICDQv9GA0LDQsiDQvdCwICLQndCe0KMt0KXQkNCjIg0KDQogICAgICAgICAgICDQsy5fX19fX19fX19fX19fICAgICAgICAgICAgICAgIl9fIl9fX19fX19fX18yMF9f0LMuDQoNCiAgICAgICAg0J7QsdGJ0LXRgdGC0LLQviAg0YEgICDQvtCz0YDQsNC90LjRh9C10L3QvdC+0LkgICDQvtGC0LLQtdGC0YHRgtCy0LXQvdC90L7RgdGC0YzRjiAgIl9fX19fX19fX19fXyIsDQogICAg0LjQvNC10L3Rg9C10LzQvtC1INCyINC00LDQu9GM0L3QtdC50YjQtdC8ICLQktC70LDQtNC10LvQtdGGIiwg0LIg0LvQuNGG0LVfX19fX19fX19fX19fICjQtNC+0LvQttC90L7RgdGC0YwsDQogICAg0KQu0Jgu0J4uKSwgINC00LXQudGB0YLQstGD0Y7RidC10LPQviAg0L3QsCAg0L7RgdC90L7QstCw0L3QuNC4ICDQo9GB0YLQsNCy0LAg0JLQu9Cw0LTQtdC70YzRhtCwLCAg0YEgINC+0LTQvdC+0LkNCiAgICDRgdGC0L7RgNC+0L3RiywgINC4ICDQsNC60YbQuNC+0L3QtdGA0L3QvtC1ICAg0L7QsdGJ0LXRgdGC0LLQviAgIl9fX19fX19fX19fXyIsICDQuNC80LXQvdGD0LXQvNC+0LUgINCyDQogICAg0LTQsNC70YzQvdC10LnRiNC10LwgICAi0J/QvtC70YzQt9C+0LLQsNGC0LXQu9GMIiwgICDQsiAgINC70LjRhtC1X19fX19fX19fX19fXyAgICjQtNC+0LvQttC90L7RgdGC0YwsDQogICAg0KQu0Jgu0J4uKSwg0LTQtdC50YHRgtCy0YPRjtGJ0LXQs9C+ICDQvdCwINC+0YHQvdC+0LLQsNC90LjQuCDQo9GB0YLQsNCy0LAgINCf0L7Qu9GM0LfQvtCy0LDRgtC10LvRjywg0YEg0LTRgNGD0LPQvtC5DQogICAg0YHRgtC+0YDQvtC90YssINGA0YPQutC+0LLQvtC00YHRgtCy0YPRj9GB0Ywg0LTQtdC50YHRgtCy0YPRjtGJ0LjQvCDQt9Cw0LrQvtC90L7QtNCw0YLQtdC70YzRgdGC0LLQvtC8LCDQsiDRgtC+0Lwg0YfQuNGB0LvQtQ0KICAgINGH0LDRgdGC0YzRjiA0INGB0YLQsNGC0YzQuCAxNSDQmtC+0L3RgdGC0LjRgtGD0YbQuNC4INCg0KQsINCh0L7Qs9C70LDRiNC10L3QuNC10Lwg0L7RgiAyMiDQvNCw0Y8gMTk5MiDQs9C+0LTQsA0KICAgINC80LXQttC00YMgINCf0YDQsNCy0LjRgtC10LvRjNGB0YLQstC+0LwgINCg0KQgINC4ICDQn9GA0LDQstC40YLQtdC70YzRgdGC0LLQvtC8INCf0L7Qu9GM0YjQuCAg0L7QsSAg0LjQt9Cx0LXQttCw0L3QuNC4DQogICAg0LTQstC+0LnQvdC+0LPQviAgINC90LDQu9C+0LPQvtC+0LHQu9C+0LbQtdC90LjRjyAgICDQtNC+0YXQvtC00L7QsiAgINC4ICAgINC40LzRg9GJ0LXRgdGC0LLQsCwgICDRgdGC0LDRgtGM0Y/QvNC4DQogICAgMTI4LDEyOSw4LDQyMSwgMTM5ICDQk9GA0LDQttC00LDQvdGB0LrQvtCz0L4gINC60L7QtNC10LrRgdCwINCg0L7RgdGB0LjQudGB0LrQvtC5ICDQpNC10LTQtdGA0LDRhtC40LgsINCwDQogICAg0YLQsNC6INC20LUgINC/LjE3INCf0L7RgdGC0LDQvdC+0LLQu9C10L3QuNGPICDQn9C70LXQvdGD0LzQsCDQktC10YDRhdC+0LLQvdC+0LPQviAg0YHRg9C00LAg0KDQpCAg0Lgg0JLRi9GB0YjQtdCz0L4NCiAgICDQsNGA0LHQuNGC0YDQsNC20L3QvtCz0L4gINGB0YPQtNCwICDQoNCkICDQvtGCICAwMS4wNy45NiBOICA2MTgsICDQt9Cw0LrQu9GO0YfQuNC70LggINC90LDRgdGC0L7Rj9GJ0LjQuQ0KICAgINC00L7Qs9C+0LLQvtGAINC+INC90LjQttC10YHQu9C10LTRg9GO0YnQtdC8Og0KICAgICAgICAxLiAg0J/QvtC70YzQt9C+0LLQsNGC0LXQu9GMICAg0L/QvtC70YPRh9Cw0LXRgiwgINCwICAg0JLQu9Cw0LTQtdC70LXRhiAgINC/0YDQtdC00L7RgdGC0LDQstC70Y/QtdGCICDQstC+DQogICAg0LLRgNC10LzQtdC90L3QvtC1ICAg0L/QvtC70YzQt9C+0LLQsNC90LjQtSAgINC/0YDQsNCy0LAgICDQvdCwICAgItC90L7Rgy3RhdCw0YMiICAo0YLQtdGF0L3QvtC70L7Qs9C40YfQtdGB0LrRg9GODQogICAg0LTQvtC60YPQvNC10L3RgtCw0YbQuNGOKS4NCiAgICAgICAgMi4gICDQmtC+0LzQv9C70LXQutGC0L3QvtGB0YLRjCwgICDQtNGA0YPQs9C40LUgICAg0L7RgtC70LjRh9C40YLQtdC70YzQvdGL0LUgICDRhdCw0YDQsNC60YLQtdGA0LjRgdGC0LjQutC4DQogICAg0L/QtdGA0LXQtNCw0LLQsNC10LzQvtC5INGC0LXRhdC90L7Qu9C+0LPQuNGH0LXRgdC60L7QuSAg0LTQvtC60YPQvNC10L3RgtCw0YbQuNC4INGD0LrQsNC30LDQvdGLICDQsiDQn9GA0LjQu9C+0LbQtdC90LjQuCBODQogICAgMSwg0Y/QstC70Y/RjtGJ0LXQvNGB0Y8g0L3QtdC+0YLRitC10LzQu9C10LzQvtC5INGH0LDRgdGC0YzRjiDQvdCw0YHRgtC+0Y/RidC10LPQviDQtNC+0LPQvtCy0L7RgNCwLg0KICAgICAgICAzLiDQntGC0YHRg9GC0YHRgtCy0LjQtSDQn9GA0LjQu9C+0LbQtdC90LjRjyBOIDEg0YHQviDRgdCy0LXQtNC10L3QuNGP0LzQuCwg0L/RgNC10LTRg9GB0LzQvtGC0YDQtdC90L3Ri9C80Lgg0LINCiAgICDQvy4yINC90LDRgdGC0L7Rj9GJ0LXQs9C+INC00L7Qs9C+0LLQvtGA0LAsICDQtNC+INC80L7QvNC10L3RgtCwINC40YUgINC/0YDQtdC00YHRgtCw0LLQu9C10L3QuNGPINC00LXQu9Cw0LXRgiDRjdGC0L7Rgg0KICAgINC00L7Qs9C+0LLQvtGAINC90LXQtNC10LnRgdGC0LLQuNGC0LXQu9GM0L3Ri9C8Lg0KICAgICAgICA0LiAgINCj0LrQsNC30LDQvdC90LDRjyAgINGC0LXRhdC90L7Qu9C+0LPQuNGH0LXRgdC60LDRjyAgICDQtNC+0LrRg9C80LXQvdGC0LDRhtC40Y8sICAg0L/RgNCw0LLQsCAgINC90LANCiAgICDQv9C+0LvRjNC30L7QstCw0L3QuNC1INC60L7RgtC+0YDQvtC5ICDQstGA0LXQvNC10L3QvdC+INC/0LXRgNC10LTQsNGO0YLRgdGPICDQktC70LDQtNC10LvRjNGG0LXQvCDQn9C+0LvRjNC30L7QstCw0YLQtdC70Y4sDQogICAg0LTQvtC70LbQvdCwINCx0YvRgtGMINC/0L7Qu9GD0YfQtdC90LAg0J/QvtC70YzQt9C+0LLQsNGC0LXQu9C10LwgINC90LUg0L/QvtC30LTQvdC10LUg0YLRgNC10YUg0LTQvdC10Lkg0YEg0LzQvtC80LXQvdGC0LANCiAgICDQt9Cw0LrQu9GO0YfQtdC90LjRjyDQvdCw0YHRgtC+0Y/RidC10LPQviAg0LTQvtCz0L7QstC+0YDQsCwg0L/RgNC4ICDRjdGC0L7QvCDRgdGC0L7RgNC+0L3QsNC80Lgg0L/QvtC00L/QuNGB0YvQstCw0LXRgtGB0Y8NCiAgICDQsNC60YIg0L/RgNC40LXQvNCwLdC/0LXRgNC10LTQsNGH0LguDQogICAgICAgIDUuINCh0YDQvtC6INC/0YDQtdC00L7RgdGC0LDQstC70LXQvdC40Y8g0JLQu9Cw0LTQtdC70YzRhtC10LwgINC/0YDQsNCy0LAg0L/QvtC70YzQt9C+0LLQsNC90LjRjyAi0L3QvtGDLdGF0LDRgyINCiAgICDQv9C+ICDQvdCw0YHRgtC+0Y/RidC10LzRgyAgINC00L7Qs9C+0LLQvtGA0YMgIC0gICBfX19fX19fX9C80LXRgdGP0YbQtdCyICAo0LvQtdGCKSAgINGBICDQvNC+0LzQtdC90YLQsA0KICAgINC/0L7QtNC/0LjRgdCw0L3QuNGPINGB0YLQvtGA0L7QvdCw0LzQuCDQsNC60YLQsCDQv9GA0LjQtdC80LAt0L/QtdGA0LXQtNCw0YfQuC4NCiAgICAgICAgNi4g0J/Qu9Cw0YLQsCAg0J/QvtC70YzQt9C+0LLQsNGC0LXQu9GPINCS0LvQsNC00LXQu9GM0YbRgyAg0LfQsCAg0LLRgNC10LzQtdC90L3QvtC1INC/0YDQtdC00L7RgdGC0LDQstC70LXQvdC40LUNCiAgICDQv9GA0LDQstCwICDQv9C+0LvRjNC30L7QstCw0L3QuNGPICLQvdC+0YMt0YXQsNGDIiAg0YHQvtGB0YLQsNCy0LvRj9C10YIgIF9fX19fX19f0YDRg9Cx0LvQtdC5ICDQsiDQvNC10YHRj9GGLA0KICAgINC/0YDQuNGH0LXQvCDQvtC/0LvQsNGC0LAg0LTQvtC70LbQvdCwINC/0YDQvtC40LfQstC+0LTQuNGC0YzRgdGPINC10LbQtdC80LXRgdGP0YfQvdC+Lg0KICAgICAgICA3LiDQktC70LDQtNC10LvQtdGGINCz0LDRgNCw0L3RgtC40YDRg9C10YIsICDRh9GC0L4gItC90L7Rgy3RhdCw0YMiLCAg0L/RgNCw0LLQsCDQvdCwICDQutC+0YLQvtGA0YPRjiDQuNC8DQogICAg0L/RgNC10LTQvtGB0YLQsNCy0LvRj9GO0YLRgdGPINCf0L7Qu9GM0LfQvtCy0LDRgtC10LvRjjoNCiAgICAgICAgNy4xLiDQndC10LjQt9Cy0LXRgdGC0L3QsCDRgtGA0LXRgtGM0LjQvCDQu9C40YbQsNC8Ow0KICAgICAgICA3LjIuINCaINC90LXQuSDQvdC10YIg0LTQvtGB0YLRg9C/0LAg0L3QsCDQt9Cw0LrQvtC90L3QvtC8INC+0YHQvdC+0LLQsNC90LjQuDsNCiAgICAgICAgNy4zLiDQndC1INCx0YPQtNC10YIg0LjQvCDRgNCw0LfQs9C70LDRiNC10L3QsCDQvdC4INC/0YDQuCDQutCw0LrQuNGFINC+0LHRgdGC0L7Rj9GC0LXQu9GM0YHRgtCy0LDRhTsNCiAgICAgICAgNy40LiAg0JjQvNC10LXRgiAg0L/QvtGC0LXQvdGG0LjQsNC70YzQvdGD0Y4gINC60L7QvNC80LXRgNGH0LXRgdC60YPRjiAg0YbQtdC90L3QvtGB0YLRjCAg0LIgINGC0LXRh9C10L3QuNC1DQogICAg0L/RgNC10LTQvtGB0YLQsNCy0LvRj9C10LzQvtCz0L4g0L3QsNGB0YLQvtGP0YnQuNC8INC00L7Qs9C+0LLQvtGA0L7QvCDRgdGA0L7QutCwINC/0L7Qu9GM0LfQvtCy0LDQvdC40Y8uDQogICAgICAgIDguINCf0L7Qu9GM0LfQvtCy0LDRgtC10LvRjCDQs9Cw0YDQsNC90YLQuNGA0YPQtdGCLCAg0YfRgtC+ICLQvdC+0YMt0YXQsNGDIiwgINC/0YDQsNCy0LAg0L3QsCDQutC+0YLQvtGA0YPRjg0KICAgINC10LzRgyDQv9GA0LXQtNC+0YHRgtCw0LLQu9GP0Y7RgtGB0Y8gINCS0LvQsNC00LXQu9GM0YbQtdC8LCDQvdC1INGB0YLQsNC90LXRgiAg0LjQt9Cy0LXRgdGC0L3QsCDRgtGA0LXRgtGM0LjQvCDQu9C40YbQsNC8DQogICAg0LrQsNC6INCyINGC0LXRh9C10L3QuNC1ICDRgdGA0L7QutCwINC00LXQudGB0YLQstC40Y8g0LTQvtCz0L7QstC+0YDQsCwg0YLQsNC6ICDQuCDQv9C+0YHQu9C1INC10LPQviDQvtC60L7QvdGH0LDQvdC40Y8NCiAgICDQtNC+IF9fX19fX9Cz0L7QtNCwLg0KICAgICAgICA5LiAg0J/RgNC4ICDQvdCw0YDRg9GI0LXQvdC40LggINCS0LvQsNC00LXQu9GM0YbQtdC8ICAg0LjQu9C4ICDQn9C+0LvRjNC30L7QstCw0YLQtdC70LXQvCAg0LPQsNGA0LDQvdGC0LjQuSwNCiAgICDQv9GA0LXQtNGD0YHQvNC+0YLRgNC10L3QvdGL0YUgINC/LjcgINC40LvQuCAgINC/LjggINC90LDRgdGC0L7Rj9GJ0LXQs9C+ICDQtNC+0LPQvtCy0L7RgNCwLCAg0L3QsNGA0YPRiNC40YLQtdC70YwNCiAgICDQstGL0L/Qu9Cw0YfQuNCy0LDQtdGCICDQstGC0L7RgNC+0LkgINGB0YLQvtGA0L7QvdC1ICDQv9C+ICDQtNC+0LPQvtCy0L7RgNGDINC60L7QvNC/0LXQvdGB0LDRhtC40Y4gINCyICDRgNCw0LfQvNC10YDQtQ0KICAgIF9fX19fX19fX9GA0YPQsdC70LXQuS4NCiAgICAgICAgMTAuINCc0LXRgNGLINC+0YLQstC10YLRgdGC0LLQtdC90L3QvtGB0YLQuCDRgdGC0L7RgNC+0L0sICDQvdC1INC/0YDQtdC00YPRgdC80L7RgtGA0LXQvdC90YvQtSDQvdCw0YHRgtC+0Y/RidC40LwNCiAgICDQtNC+0LPQvtCy0L7RgNC+0LwsICDQv9GA0LjQvNC10L3Rj9GO0YLRgdGPICDQsiAg0YHQvtC+0YLQstC10YLRgdGC0LLQuNC4ICDRgSAg0L3QvtGA0LzQsNC80LggINC00LXQudGB0YLQstGD0Y7RidC10LPQvg0KICAgINC30LDQutC+0L3QvtC00LDRgtC10LvRjNGB0YLQstCwINCg0L7RgdGB0LjQuC4NCg0KDQoNCiAgICAgICAgIA0KICANCjwvcHJlPjwvZGl2Pg0KPC9ib2R5Pg0KPC9odG1sPg==",
+    "mime_type": "text/html",
+    "language": "ru",
+    "locale": "ru"
+  },
+  "ingestion_preflight": {
+    "mime_type": "text/html",
+    "extractor": "html:regex",
+    "extraction_source": "html:regex",
+    "extraction_ok": true,
+    "error": null,
+    "extraction_error": null,
+    "sha256": "815919bae9c71ccd92ddbe9a412cdccba752d2c53c8f4372a6cda37373c7001f"
+  },
+  "metrics": {
+    "risk_count": 1,
+    "high_risk_count": 0,
+    "disputed_clause_count": 1,
+    "asymmetry_signal_count": 0,
+    "contract_type": "non_contract_legal_form"
+  },
+  "analysis": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'obrazets-dogovor-na-peredachu-vo-vremennoe-polzovanie-prav-na-no. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Заявитель'. Определен тип договора: Иной юридический документ (уверенность 57%, правовая рамка: Вне типовой contract taxonomy). Условия оплаты: Плата Пользователя Владельцу за временное предоставление права пользования \"ноу-хау\" составляет ________рублей в месяц, причем оплата должна производиться ежемесячно. Сроки и дедлайны: Указанная технологическая документация, права на пользование которой временно передаются Владельцем Пользователю, должна быть получена Пользователем не позднее трех дней с момента заключения настоящего договора, при этом сторонами подписывается акт приема-передачи; Срок предоставления Владельцем права пользования \"ноу-хау\" по настоящему договору - ________месяцев (лет) с момента подписания сторонами акта приема-передачи; Имеет потенциальную коммерческую ценность в течение предоставляемого настоящим договором срока пользования. Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Заявитель'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Образец. Договор на передачу во временное пользование прав на &quot; ноу-хау&quot; - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР на передачу во временное пользование прав на \"НОУ-ХАУ\" г. _____________ \"__\"__________20__г. Общество с ограниченной ответственностью \"____________\", именуемое в дальнейшем \"Владелец\", в лице_____________ (должность, Ф. И. О.",
+        "dispute_reason": "Маркер указывает на возможный конфликт между несколькими обязанностями или сроками.",
+        "possible_consequence": "При исполнении может оказаться, что условия невозможно соблюсти одновременно.",
+        "confidence": 0.66
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Заявитель",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Заявитель'.",
+      "must_do": [
+        "Конфиг не выявил явных обязательств."
+      ],
+      "should_review": [
+        "Конфиг не выявил явных дискреционных условий."
+      ],
+      "payment_terms": [
+        "Плата Пользователя Владельцу за временное предоставление права пользования \"ноу-хау\" составляет ________рублей в месяц, причем оплата должна производиться ежемесячно."
+      ],
+      "deadlines": [
+        "Указанная технологическая документация, права на пользование которой временно передаются Владельцем Пользователю, должна быть получена Пользователем не позднее трех дней с момента заключения настоящего договора, при этом сторонами подписывается акт приема-передачи.",
+        "Срок предоставления Владельцем права пользования \"ноу-хау\" по настоящему договору - ________месяцев (лет) с момента подписания сторонами акта приема-передачи.",
+        "Имеет потенциальную коммерческую ценность в течение предоставляемого настоящим договором срока пользования.",
+        "Пользователь гарантирует, что \"ноу-хау\", права на которую ему предоставляются Владельцем, не станет известна третьим лицам как в течение срока действия договора, так и после его окончания до ______года."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "815919bae9c71ccd92ddbe9a412cdccba752d2c53c8f4372a6cda37373c7001f"
+    },
+    "contract_type": {
+      "type_id": "non_contract_legal_form",
+      "confidence": 0.58,
+      "ru_name": "Иной юридический документ",
+      "legal_framework": "Вне типовой contract taxonomy"
+    },
+    "asymmetry_signals": []
+  },
+  "result": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'obrazets-dogovor-na-peredachu-vo-vremennoe-polzovanie-prav-na-no. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Заявитель'. Определен тип договора: Иной юридический документ (уверенность 57%, правовая рамка: Вне типовой contract taxonomy). Условия оплаты: Плата Пользователя Владельцу за временное предоставление права пользования \"ноу-хау\" составляет ________рублей в месяц, причем оплата должна производиться ежемесячно. Сроки и дедлайны: Указанная технологическая документация, права на пользование которой временно передаются Владельцем Пользователю, должна быть получена Пользователем не позднее трех дней с момента заключения настоящего договора, при этом сторонами подписывается акт приема-передачи; Срок предоставления Владельцем права пользования \"ноу-хау\" по настоящему договору - ________месяцев (лет) с момента подписания сторонами акта приема-передачи; Имеет потенциальную коммерческую ценность в течение предоставляемого настоящим договором срока пользования. Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Заявитель'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Образец. Договор на передачу во временное пользование прав на &quot; ноу-хау&quot; - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР на передачу во временное пользование прав на \"НОУ-ХАУ\" г. _____________ \"__\"__________20__г. Общество с ограниченной ответственностью \"____________\", именуемое в дальнейшем \"Владелец\", в лице_____________ (должность, Ф. И. О.",
+        "dispute_reason": "Маркер указывает на возможный конфликт между несколькими обязанностями или сроками.",
+        "possible_consequence": "При исполнении может оказаться, что условия невозможно соблюсти одновременно.",
+        "confidence": 0.66
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Заявитель",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Заявитель'.",
+      "must_do": [
+        "Конфиг не выявил явных обязательств."
+      ],
+      "should_review": [
+        "Конфиг не выявил явных дискреционных условий."
+      ],
+      "payment_terms": [
+        "Плата Пользователя Владельцу за временное предоставление права пользования \"ноу-хау\" составляет ________рублей в месяц, причем оплата должна производиться ежемесячно."
+      ],
+      "deadlines": [
+        "Указанная технологическая документация, права на пользование которой временно передаются Владельцем Пользователю, должна быть получена Пользователем не позднее трех дней с момента заключения настоящего договора, при этом сторонами подписывается акт приема-передачи.",
+        "Срок предоставления Владельцем права пользования \"ноу-хау\" по настоящему договору - ________месяцев (лет) с момента подписания сторонами акта приема-передачи.",
+        "Имеет потенциальную коммерческую ценность в течение предоставляемого настоящим договором срока пользования.",
+        "Пользователь гарантирует, что \"ноу-хау\", права на которую ему предоставляются Владельцем, не станет известна третьим лицам как в течение срока действия договора, так и после его окончания до ______года."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "815919bae9c71ccd92ddbe9a412cdccba752d2c53c8f4372a6cda37373c7001f"
+    },
+    "contract_type": {
+      "type_id": "non_contract_legal_form",
+      "confidence": 0.58,
+      "ru_name": "Иной юридический документ",
+      "legal_framework": "Вне типовой contract taxonomy"
+    },
+    "asymmetry_signals": []
+  },
+  "finished_at": "2026-04-28T16:12:39.151974+00:00",
+  "duration_ms": 71.75
+}

@@ -1,0 +1,207 @@
+{
+  "case_id": "dogovory_4__obrazets_dogovor_komissii_na_prodazhu_dollarov_ssha",
+  "relative_path": "договоры 4/obrazets-dogovor-komissii-na-prodazhu-dollarov-ssha.html",
+  "document_path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\договоры 4\\obrazets-dogovor-komissii-na-prodazhu-dollarov-ssha.html",
+  "document_name": "obrazets-dogovor-komissii-na-prodazhu-dollarov-ssha.html",
+  "role": "Работник",
+  "counterparty_role": "Работодатель",
+  "language": "ru",
+  "mime_type": "text/html",
+  "tags": [
+    "workspace-corpus",
+    "html",
+    "dogovory_4",
+    "labor_contract"
+  ],
+  "source_group": "manifest",
+  "expected": {
+    "contract_type": "labor_contract",
+    "min_contract_type_confidence": 0.37,
+    "min_risk_count": 0,
+    "min_disputed_clause_count": 0,
+    "execution_mode": "local_first",
+    "expected_high_risk_ids": []
+  },
+  "started_at": "2026-04-28T16:12:33.952154+00:00",
+  "status": "completed",
+  "request": {
+    "document_name": "obrazets-dogovor-komissii-na-prodazhu-dollarov-ssha.html",
+    "role_context": {
+      "role": "Работник",
+      "counterparty_role": "Работодатель"
+    },
+    "document_text": null,
+    "document_base64": "PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMDEgVHJhbnNpdGlvbmFsLy9FTiI+DQo8aHRtbD4NCjxoZWFkPg0KPGJhc2UgaHJlZj0iaHR0cHM6Ly9kb2dvdm9yLXVyaXN0LnJ1LyI+DQo8dGl0bGU+0J7QsdGA0LDQt9C10YYuINCU0L7Qs9C+0LLQvtGAINC60L7QvNC40YHRgdC40Lgg0L3QsCAgINC/0YDQvtC00LDQttGDINC00L7Qu9C70LDRgNC+0LIg0YHRiNCwIC0g0LLQtdGA0YHQuNGPINC00LvRjyDQv9C10YfQsNGC0LguIDIwMjYuINCe0LHRgNCw0LfRhtGLINC00L7Qs9C+0LLQvtGA0L7Qsiwg0YLQuNC/0L7QstGL0LUg0LTQvtCz0L7QstC+0YDQsCwg0LDQutGC0YPQsNC70YzQvdGL0LUg0LTQvtC60YPQvNC10L3RgtGLLCDRjtGA0LjQtNC40YfQtdGB0LrQuNC8INC4INGE0LjQt9C40YfQtdGB0LrQuNC8INC70LjRhtCw0Lw8L3RpdGxlPg0KPG1ldGEgY29udGVudD0iIiBuYW1lPSJrZXl3b3JkcyI+DQo8bWV0YSBjb250ZW50PSIiIG5hbWU9ImRlc2NyaXB0aW9uIj4NCjxtZXRhIG5hbWU9InJvYm90cyIgY29udGVudD0ibm9pbmRleCxub2ZvbGxvdyI+DQo8bWV0YSBodHRwLWVxdWl2PSJDb250ZW50LVR5cGUiIGNvbnRlbnQ9InRleHQvaHRtbDsgY2hhcnNldD11dGYtOCI+DQo8bGluayByZWw9InN0eWxlc2hlZXQiIGhyZWY9Ii9pbWFnZXMvc3R5bGUuY3NzIiB0eXBlPSJ0ZXh0L2NzcyI+DQo8L2hlYWQ+DQo8Ym9keT4NCjxkaXYgY2xhc3M9ImRvY3VtZW50VGV4dCI+DQo8cHJlPiAgICAgICAgICAgICAgICAgICAgICAgICDQlNCe0JPQntCS0J7QoCDQmtCe0JzQmNCh0KHQmNCYIE7Qvi4gX19fX19fDQoNCiAgICDQsy4gX19fX19fX19fX19fX19fICAgICAgICAgICAgICAgICAgICAgICAgICAgIl9fXyJfX19fX19fX19fIDIwX19fINCzLg0KDQogICAgICAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18sDQogICAgICAgICAgICAgICAgICAgICAgICAgICjQvdCw0LjQvNC10L3QvtCy0LDQvdC40LUg0L/RgNC10LTQv9GA0LjRj9GC0LjRjykNCg0KICAgINC40LzQtdC90YPQtdC8X18g0LIg0LTQsNC70YzQvdC10LnRiNC10LwgItCk0LjRgNC80LAiLCDQsiDQu9C40YbQtSBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAo0LTQvtC70LbQvdC+0YHRgtGMKQ0KDQogICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLCDQtNC10LnRgdGC0LLRg9GO0YnQtdCz0L4g0L3QsCDQvtGB0L3QvtCy0LDQvdC40LgNCiAgICAgICAgICAgICAo0YTQsNC80LjQu9C40Y8sINC40LzRjywg0L7RgtGH0LXRgdGC0LLQvikNCg0KICAgIF9fX19fX19fX19fX19fX19fX19fINGBINC+0LTQvdC+0Lkg0YHRgtC+0YDQvtC90YssINC4IF9fX19fX19fX19fX19fX19fX19fX19fX19fX18sDQogICAgICjQo9GB0YLQsNCy0LAsINC/0L7Qu9C+0LbQtdC90LjRjykgICAgICAgICAgICAgICAgICAgICAo0L3QsNC40LzQtdC90L7QstCw0L3QuNC1INC/0YDQtdC00L/RgNC40Y/RgtC40Y8pDQoNCiAgICDQuNC80LXQvdGD0LXQvF9fINCyINC00LDQu9GM0L3QtdC50YjQtdC8ICLQmtC70LjQtdC90YIiLCDQsiDQu9C40YbQtSBfX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAo0LTQvtC70LbQvdC+0YHRgtGMKQ0KDQogICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLCDQtNC10LnRgdGC0LLRg9GO0YnQtdCz0L4g0L3QsCDQvtGB0L3QvtCy0LDQvdC40LgNCiAgICAgICAgICAgICjRhNCw0LzQuNC70LjRjywg0LjQvNGPLCDQvtGC0YfQtdGB0YLQstC+KQ0KDQogICAgX19fX19fX19fX19fX19fX19fX19fX18g0YEg0LTRgNGD0LPQvtC5INGB0YLQvtGA0L7QvdGLLCDQt9Cw0LrQu9GO0YfQuNC70Lgg0L3QsNGB0YLQvtGP0YnQuNC5INC00L7Qs9C+0LLQvtGADQogICAgICAo0KPRgdGC0LDQstCwLCDQv9C+0LvQvtC20LXQvdC40Y8pDQoNCiAgICDQviDQvdC40LbQtdGB0LvQtdC00YPRjtGJ0LXQvDoNCg0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAxLiDQn9Cg0JXQlNCc0JXQoiDQlNCe0JPQntCS0J7QoNCQDQoNCiAgICAgICAgINCa0LvQuNC10L3RgiAg0L/QvtGA0YPRh9Cw0LXRgiDQpNC40YDQvNC1INC/0YDQvtC00LDRgtGMINC00L7Qu9C70LDRgNGLINCh0KjQkCDQsiDQutC+0LvQuNGH0LXRgdGC0LLQtSBfX19fX19fXw0KICAgIChfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXykgVVNEICjRh9C10YDQtdC3INGD0L/QvtC70L3QvtC80L7Rh9C10L3QvdGL0Lkg0JHQsNC90LopINC90LANCiAgICAgICAgICAgICAgKNC/0YDQvtC/0LjRgdGM0Y4pDQoNCiAgICAo0JzQvtGB0LrQvtCy0YHQutC+0LkgINCc0LXQttCx0LDQvdC60L7QstGB0LrQvtC5ICDQstCw0LvRjtGC0L3QvtC5ICDQsdC40YDQttC1KSDQv9C+INCx0LjRgNC20LXQstC+0LzRgyAg0LrRg9GA0YHRgywgINC90L4NCiAgICDQvdC1INC80LXQvdC10LUgX19fX19fX18gKF9fX19fX19fX19fX19fX19fX19fX19fX19fXykg0YDRg9CxLiDQt9CwIDEg0LTQvtC70LvQsNGAINCh0KjQkC4NCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAo0L/RgNC+0L/QuNGB0YzRjikNCg0KDQogICAgICAgICAgICAgICAgICAgICAgICAgICAyLiDQntCR0K/Ql9CQ0KLQldCb0KzQodCi0JLQkCDQodCi0J7QoNCe0J0NCg0KICAgICAgICAg0JrQm9CY0JXQndCiOg0KICAgICAgICAgMi4xLiAg0JIgINGC0LXRh9C10L3QuNC1ICDRgtGA0LXRhSAg0LHQsNC90LrQvtCy0YHQutC40YUgINC00L3QtdC5ICDRgSAg0LzQvtC80LXQvdGC0LAgINC/0L7QtNC/0LjRgdCw0L3QuNGPDQogICAg0L3QsNGB0YLQvtGP0YnQtdCz0L4g0LTQvtCz0L7QstC+0YDQsCDQv9C10YDQtdCy0L7QtNC40YIg0L3QsCDRgdGH0LXRgiDQpNC40YDQvNGLINCyINC/0L7Qu9C90L7QvCDQvtCx0YrQtdC80LUgINC00LXQvdC10LbQvdGL0LUNCiAgICDRgdGA0LXQtNGB0YLQstCwLCAgINC/0YDQtdC00L3QsNC30L3QsNGH0LXQvdC90YvQtSAg0LTQu9GPICDQutC+0L3QstC10YDRgtCw0YbQuNC4LiAg0J7QtNC90L7QstGA0LXQvNC10L3QvdC+ICDRgSAg0Y3RgtC40LwNCiAgICDQv9C10YDQtdCy0L7QtNC40YIg0L3QsCDRgdGH0LXRgiDQpNC40YDQvNGLINC10LUg0LrQvtC80LjRgdGB0LjQvtC90L3QvtC1INCy0L7Qt9C90LDQs9GA0LDQttC00LXQvdC40LUuDQogICAgICAgICAyLjIuINCe0LTQvdC+0LLRgNC10LzQtdC90L3QviAg0YEgINCy0YvQv9C+0LvQvdC10L3QuNC10LwgINC/LiAyLjEgINC/0YDQtdC00YHRgtCw0LLQu9GP0LXRgiAg0KTQuNGA0LzQtSDQsg0KICAgINGB0L7QvtGC0LLQtdGC0YHRgtCy0LjQuCDRgSDQtNC10LnRgdGC0LLRg9GO0YnQuNC80Lgg0LIg0KDQpCDQv9GA0LDQstC40LvQsNC80LggINC00L7QutGD0LzQtdC90YLRiywgINC90LAgINC+0YHQvdC+0LLQsNC90LjQuA0KICAgINC60L7RgtC+0YDRi9GFINCx0YPQtNC10YIg0L/RgNC+0LjQt9Cy0L7QtNC40YLRjNGB0Y8g0LrQvtC90LLQtdGA0YLQsNGG0LjRjy4NCiAgICAgICAgIDIuMy4g0J/QvtGB0LvQtSDQv9C+0LvRg9GH0LXQvdC40Y8g0L7RgiDQpNC40YDQvNGLINGD0LLQtdC00L7QvNC70LXQvdC40Y8g0LIg0LvRjtCx0L7QuSDRhNC+0YDQvNC1ICDQviAg0YLQvtC8LA0KICAgINGH0YLQviDQtNC10L3QtdC20L3Ri9C1INGB0YDQtdC00YHRgtCy0LAg0JrQu9C40LXQvdGC0LAgINC/0YDQvtC60L7QvdCy0LXRgNGC0LjRgNC+0LLQsNC90YssINCa0LvQuNC10L3RgiDQv9GA0LXQtNGB0YLQsNCy0LvRj9C10YINCiAgICDQpNC40YDQvNC1ICDQv9C40YHRjNC80L4gINGBICDQv9GA0L7RgdGM0LHQvtC5INC+INC/0LXRgNC10LLQvtC00LUg0YDRg9Cx0LvQtdCy0YvRhSDRgdGA0LXQtNGB0YLQsiDQvdCwINGD0LrQsNC30LDQvdC90YvQuSDQsg0KICAgINGN0YLQvtC8INC/0LjRgdGM0LzQtSDRgdGH0LXRgi4NCiAgICAgICAgIDIuNC4g0J/QvtGB0LvQtSDQv9C+0LvRg9GH0LXQvdC40Y8g0L7RgiDQpNC40YDQvNGLINC/0LvQsNGC0LXQttC90L7Qs9C+INC00L7QutGD0LzQtdC90YLQsCwgINC30LDQstC10YDQtdC90L3QvtCz0L4NCiAgICDQkdCw0L3QutC+0LwgINC+ICDQv9C10YDQtdGH0LjRgdC70LXQvdC40LggINGA0YPQsdC70LXQstGL0YUgINGB0YDQtdC00YHRgtCyLCDRgdC+0YHRgtCw0LLQu9GP0LXRgiDRgSDQpNC40YDQvNC+0Lkg0LDQutGCINC+DQogICAg0LLRi9C/0L7Qu9C90LXQvdC90YvRhSDRgNCw0LHQvtGC0LDRhS4NCiAgICAgICAgINCk0JjQoNCc0JA6DQogICAgICAgICAyLjUuINCf0L7RgdC70LUg0L/QvtC00L/QuNGB0LDQvdC40Y8g0L3QsNGB0YLQvtGP0YnQtdCz0L4g0LTQvtCz0L7QstC+0YDQsCDQuCDQv9C+0YHRgtGD0L/Qu9C10L3QuNGPINC90LAgINGB0YfQtdGCDQogICAg0KTQuNGA0LzRiyAg0LLQsNC70Y7RgtGLICDQmtC70LjQtdC90YLQsCwgINC/0YDQtdC00L3QsNC30L3QsNGH0LXQvdC90L7QuSDQtNC70Y8g0L/RgNC+0LTQsNC20LgsINC4INC60L7QvNC40YHRgdC40L7QvdC90L7Qs9C+DQogICAg0LLQvtC30L3QsNCz0YDQsNC20LTQtdC90LjRjyDQpNC40YDQvNGLLCDQsiDRgtC10YfQtdC90LjQuCDQvtC00L3QvtCz0L4gINCx0LDQvdC60L7QstGB0LrQvtCz0L4gINC00L3RjyAg0L/QtdGA0LXRh9C40YHQu9GP0LXRgg0KICAgINCy0LDQu9GO0YLRgyDQmtC70LjQtdC90YLQsCDQvdCwINGB0YfQtdGCIF9fX19fX19fX19fX19fXyAo0YPQv9C+0LvQvdC+0LzQvtGH0LXQvdC90L7Qs9C+INCR0LDQvdC60LApLg0KICAgICAgICAgMi42LiDQn9GA0Lgg0YHQvtCy0LXRgNGI0LXQvdC40Lgg0YHQtNC10LvQutC4INGH0LXRgNC10Lcg0JHQsNC90Lo6INC/0YDQuCAg0L/QvtGB0YLRg9C/0LvQtdC90LjQuCDQtNC10L3QtdCzINC90LANCiAgICDRgdGH0LXRgiDQkdCw0L3QutCwICDQv9C+0LTQsNC10YIgINC30LDRj9Cy0LrRgyDQuCDRg9C60LDQt9Cw0L3QvdGL0LUg0LIg0L8uIDIuMiDQtNC+0LrRg9C80LXQvdGC0YsuDQogICAgICAgICAyLjcuINCf0L7RgdC70LUgINC/0YDQvtC00LDQttC4ICjRg9C/0L7Qu9C90L7QvNC+0YfQtdC90L3Ri9C8ICDQkdCw0L3QutC+0LwpINCy0LDQu9GO0YLRiyAg0JrQu9C40LXQvdGC0LAsICDQsg0KICAgINGC0LXRh9C10L3QuNC1INC+0LTQvdC+0LPQviDQtNC90Y8g0YPQstC10LTQvtC80LvRj9C10YIg0L7QsSDRjdGC0L7QvCDQmtC70LjQtdC90YLQsC4NCiAgICAgICAgIDIuOC4g0J/QvtGB0LvQtSAgINCy0YvQv9C+0LvQvdC10L3QuNGPICAg0JrQu9C40LXQvdGC0L7QvCAgINC/LiAyLjMsICAg0LIgINGC0LXRh9C10L3QuNC1ICDRgdGD0YLQvtC6DQogICAg0L/RgNC10LTRgdGC0LDQstC70Y/QtdGCINCx0LDQvdC60YMg0YHQvtC+0YLQstC10YLRgdGC0LLRg9GO0YnQtdC1INC/0LvQsNGC0LXQttC90L7QtSDQv9C+0YDRg9GH0LXQvdC40LUuDQogICAgICAgICAyLjkuICDQkiAg0YLQtdGH0LXQvdC40LUgINC00LLRg9GFICDQsdCw0L3QutC+0LLRgdC60LjRhSAg0LTQvdC10LkgINC/0YDQtdC00L7RgdGC0LDQstC70Y/QtdGCICDQmtC70LjQtdC90YLRgw0KICAgINC/0LvQsNGC0LXQttC90L7QtSAg0L/QvtGA0YPRh9C10L3QuNC1LCAg0LfQsNCy0LXRgNC10L3QvdC+0LUgINCx0LDQvdC60L7QvCwg0L/QvtGB0LvQtSDRh9C10LPQviDQvNC10LbQtNGDINGB0YLQvtGA0L7QvdCw0LzQuA0KICAgINC/0L7QtNC/0LjRgdGL0LLQsNC10YLRgdGPINCw0LrRgiDQviDQstGL0L/QvtC70L3QtdC90L3Ri9GFINGA0LDQsdC+0YLQsNGFLg0KICAgICAgICAgMi4xMC4g0JXRgdC70LggINC/0L4gINC40YHRgtC10YfQtdC90LjQuCAg0YHRgNC+0LrQsCAg0LTQtdC50YHRgtCy0LjRjyAg0L3QsNGB0YLQvtGP0YnQtdCz0L4gINC00L7Qs9C+0LLQvtGA0LANCiAgICDQv9GA0L7QtNCw0LbQsCAgINC90LUgICDQsdGL0LvQsCAg0L/RgNC+0LjQt9Cy0LXQtNC10L3QsCwgINCyICDRgtC10YfQtdC90LjQtSAg0YLRgNC10YUgINCx0LDQvdC60L7QstGB0LrQuNGFICDQtNC90LXQuQ0KICAgINCy0L7Qt9Cy0YDQsNGJ0LDQtdGCINC00LXQvdC10LbQvdGD0Y4g0YHRg9C80LzRgyDQmtC70LjQtdC90YLQsCwg0LfQsCAg0LLRi9GH0LXRgtC+0LwgINC30LDRgtGA0LDRgiwgINGB0LLRj9C30LDQvdC90YvRhSAg0YENCiAgICDQv9C10YDQtdGH0LjRgdC70LXQvdC40LXQvC4NCg0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDMuINCe0J/Qm9CQ0KLQkA0KDQogICAgICAgICAzLjEuINCX0LAg0YPRgdC70YPQs9C4INC/0L4g0L3QsNGB0YLQvtGP0YnQtdC80YMg0LTQvtCz0L7QstC+0YDRgyAg0JrQu9C40LXQvdGCICDQstGL0L/Qu9Cw0YfQuNCy0LDQtdGCINCk0LjRgNC80LUNCiAgICDQstC+0LfQvdCw0LPRgNCw0LbQtNC10L3QuNC1INCyINGA0LDQt9C80LXRgNC1IF9fX19fX18oX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18pDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAo0L/RgNC+0L/QuNGB0YzRjikNCg0KICAgINC/0YDQvtGG0LXQvdGC0L7QsiDQvtGCINGB0YPQvNC80Ysg0LrQvtC90LLQtdGA0YLQsNGG0LjQuCDQsiDRgNGD0LHQu9GP0YUuDQogICAgICAgICAzLjIuINCSINGB0LvRg9GH0LDQtSAg0YHQvtCy0LXRgNGI0LXQvdC40LggINGB0LTQtdC70LrQuCAg0YfQtdGA0LXQtyDQkdCw0L3Quiwg0JrQu9C40LXQvdGCINC+0L/Qu9Cw0YfQuNCy0LDQtdGCDQogICAg0LrQvtC80LjRgdGB0LjQvtC90L3QvtC1INCy0L7Qt9C90LDQs9GA0LDQttC00LXQvdC40LUg0YPQv9C+0LvQvdC+0LzQvtGH0LXQvdC90L7Qs9C+INCR0LDQvdC60LAg0LggINCR0LjRgNC20LgsICDQsCAg0YLQsNC60LbQtQ0KICAgINCy0YHQtSDRgNCw0YHRhdC+0LTRiyDQv9C+INC/0LXRgNC10YfQuNGB0LvQtdC90LjRjiDQtNC10L3QtdCzLg0KDQogICAgICAgICAgICAgICAgICAgICAgICAgIDQuINCe0KLQktCV0KLQodCi0JLQldCd0J3QntCh0KLQrCDQodCi0J7QoNCe0J0NCg0KICAgICAgICAg0JrQm9CY0JXQndCiOg0KICAgICAgICAgNC4xLiDQkiDRgdC70YPRh9Cw0LUg0L3QsNGA0YPRiNC10L3QuNGPINC40LvQuCDQvdC10LLRi9C/0L7Qu9C90LXQvdC40Y8g0L8uINC/LiAyLjEg0LggMi4yINC00L7Qs9C+0LLQvtGADQogICAg0L7RgdGC0LDQtdGC0YHRjyAg0LHQtdC3ICDQuNGB0L/QvtC70L3QtdC90LjRjywgINCwINCa0LvQuNC10L3RgiDQstGL0L/Qu9Cw0YfQuNCy0LDQtdGCINCk0LjRgNC80LUg0L/QtdC90Y4g0LIg0YDQsNC30LzQtdGA0LUNCiAgICBfX18lINC+0YIgINGB0YPQvNC80YsgINC60L7QvdCy0LXRgNGC0LDRhtC40Lgg0LIg0YDRg9Cx0LvRj9GFINC30LAg0LrQsNC20LTRi9C5INC00LXQvdGMINC/0YDQvtGB0YDQvtGH0LrQuCwgINC90L4g0L3QtQ0KICAgINCx0L7Qu9C10LUgX19fXyUg0L7RgiDRgdGD0LzQvNGLINCyINGG0LXQu9C+0LwuDQogICAgICAgICA0LjIuICDQkiAg0YHQu9GD0YfQsNC1ICDQvtGC0LrQsNC30LAgINC/0L7QtNC/0LjRgdCw0YLRjCDQsNC60YIg0L4g0LLRi9C/0L7Qu9C90LXQvdC90YvRhSDRgNCw0LHQvtGC0LDRhSDQv9GA0LgNCiAgICDQvtGE0LjRhtC40LDQu9GM0L3QvtC8INCy0YvQv9C+0LvQvdC10L3QuNC4INCk0LjRgNC80L7QuSDRgdCy0L7QtdC5INGH0LDRgdGC0Lgg0YDQsNCx0L7RgtGLLCDQtNC+0LPQvtCy0L7RgCAg0L/RgNC40LfQvdCw0LXRgtGB0Y8NCiAgICDQstGL0L/QvtC70L3QtdC90L3Ri9C8INC4INCa0LvQuNC10L3RgiDQstGL0L/Qu9Cw0YfQuNCy0LDQtdGCINCk0LjRgNC80LUg0YjRgtGA0LDRhCDQsiDRgNCw0LfQvNC10YDQtSBfX18lICDQvtGCINGB0YPQvNC80YsNCiAgICDQutC+0L3QstC10YDRgtCw0YbQuNC4INCyINGA0YPQsdC70Y/RhS4NCiAgICAgICAgINCk0JjQoNCc0JA6DQogICAgICAgICA0LjMuINCSINGB0LvRg9GH0LDQtSAg0L/RgNC+0YHRgNC+0YfQutC4ICDQv9C10YDQtdGH0LjRgdC70LXQvdC40Y8gINC00LXQvdC10LbQvdC+0LkgINGB0YPQvNC80YsgINCa0LvQuNC10L3RgtCwDQogICAgKNC/LiAyLjUpICDRg9C/0LvQsNGH0LjQstCw0LXRgiAg0JrQu9C40LXQvdGC0YMgINC/0LXQvdGOICDQsiAg0YDQsNC30LzQtdGA0LUgX19fXyUgINC30LAg0LrQsNC20LTRi9C5INC00LXQvdGMDQogICAg0L/RgNC+0YHRgNC+0YfQutC4LCDQvdC+INC90LUg0LHQvtC70LXQtSBfX18lINC+0YIg0YHRg9C80LzRiyDQutC+0L3QstC10YDRgtCw0YbQuNC4Lg0KICAgICAgICAgNC40LiDQkiDRgdC70YPRh9Cw0LUg0L/RgNC+0YHRgNC+0YfQutC4INC/0YDQtdC00YHRgtCw0LLQu9C10L3QuNGPINC/0LvQsNGC0LXQttC90L7Qs9C+INC/0L7RgNGD0YfQtdC90LjRjyDQsdCw0L3QutGDDQogICAgKNC/LjIuOCkg0YPQv9C70LDRh9C40LLQsNC10YIg0JrQu9C40LXQvdGC0YMgINC/0LXQvdGOICDQsiAg0YDQsNC30LzQtdGA0LUgIF9fX18lICDQt9CwICDQutCw0LbQtNGL0LkgINC00LXQvdGMDQogICAg0L/RgNC+0YHRgNC+0YfQutC4LCDQvdC+INC90LUg0LHQvtC70LXQtSBfX19fJSDQvtGCINGB0YPQvNC80Ysg0YHQtNC10LvQutC4Lg0KICAgICAgICAgNC41LiAg0JIgINGB0LvRg9GH0LDQtSAg0L/RgNC+0YHRgNC+0YfQutC4ICDQstC+0LfQstGA0LDRidC10L3QuNGPINC00LXQvdC10LbQvdGL0YUg0YHRgNC10LTRgdGC0LIg0L3QsCDRgdGH0LXRgg0KICAgINCa0LvQuNC10L3RgtCwICAo0L8uIDIuMTApICDRg9C/0LvQsNGH0LjQstCw0LXRgiAg0L/QtdC90Y4g0LIg0YDQsNC30LzQtdGA0LUgX19fXyUgINC30LAgINC60LDQttC00YvQuSDQtNC10L3RjA0KICAgINC/0YDQvtGB0YDQvtGH0LrQuCwg0L3QviDQvdC1INCx0L7Qu9C10LUgX19fXyUg0L7RgiDRgdGD0LzQvNGLINC00L7Qs9C+0LLQvtGA0LAuDQoNCiAgICAgICAgICAgICAgICAgICAgICAgNS4g0J/QntCg0K/QlNCe0Jog0KDQkNCh0KHQnNCe0KLQoNCV0J3QmNCvINCh0J/QntCg0J7Qkg0KDQogICAgICAgICDQktGB0LUgICDRgNCw0LfQvdC+0LPQu9Cw0YHQuNGPICAg0L/QviAgINC90LDRgdGC0L7Rj9GJ0LXQvNGDICAg0LTQvtCz0L7QstC+0YDRgyAgINGA0LXRiNCw0Y7RgtGB0Y8gINC/0YPRgtC10LwNCiAgICDQv9C10YDQtdCz0L7QstC+0YDQvtCyINC40LvQuCDQsiDRgdC+0L7RgtCy0LXRgtGB0YLQstC40Lgg0YEg0LTQtdC50YHRgtCy0YPRjtGJ0LjQvCDQt9Cw0LrQvtC90L7QtNCw0YLQtdC70YzRgdGC0LLQvtC8Lg0KDQogICAgICAgICAgICAgICAgICAgICAgIDYuINCf0J7QoNCv0JTQntCaINCe0KHQo9Cp0JXQodCi0JLQm9CV0J3QmNCvINCh0JLQr9CX0JgNCg0KICAgICAgICAg0J/QvtGA0YPRh9C10L3QuNGPLCAgINC40LfQstC10YnQtdC90LjRjyAgINC4ICAg0LTRgNGD0LPQuNC1ICAgINC00L7QutGD0LzQtdC90YLRiywgICAg0L/QvtC00L/QuNGB0LDQvdC90YvQtQ0KICAgINGA0YPQutC+0LLQvtC00LjRgtC10LvQtdC8ICDQuCDQs9C70LDQstC90YvQvCDQsdGD0YXQs9Cw0LvRgtC10YDQvtC8LCDQt9Cw0LLQtdGA0LXQvdC90YvQtSDQv9C10YfQsNGC0YzRjiDQuCDQv9C10YDQtdC00LDQvdC90YvQtQ0KICAgINC/0YDQvtGC0LjQstC+0L/QvtC70L7QttC90L7QuSDRgdGC0L7RgNC+0L3QtSDRgtC10LvQtdGE0LDQutGB0L7QvCwg0L/RgNC40LfQvdCw0Y7RgtGB0Y8g0YHRgtC+0YDQvtC90LDQvNC4INC/0L7Qu9C90L7RhtC10L3QvdGL0LzQuA0KICAgINGO0YDQuNC00LjRh9C10YHQutC40LzQuCDQtNC+0LrRg9C80LXQvdGC0LDQvNC4Lg0KDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICA3LiDQntCh0J7QkdCr0JUg0KPQodCb0J7QktCY0K8NCg0KICAgICAgICAgNy4xIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLg0KDQogICAgICAgICAgICAgICAgICAgICAgICAgIDguINCh0KDQntCaINCU0JXQmdCh0KLQktCY0K8g0JTQntCT0J7QktCe0KDQkA0KDQogICAgICAgICA4LjEgINCh0YDQvtC6ICDQtNC10LnRgdGC0LLQuNGPICDQvdCw0YHRgtC+0Y/RidC10LPQviAg0LTQvtCz0L7QstC+0YDQsCAg0L3QsNGH0LjQvdCw0LXRgtGB0Y8gINC00LDRgtC+0Lkg0LXQs9C+DQogICAg0L/QvtC00L/QuNGB0LDQvdC40Y8g0Lgg0LfQsNC60LDQvdGH0LjQstCw0LXRgtGB0Y8gIl9fXyJfX19fX19fX19fX19fIDIwX19fINCzLg0KICAgICAgICAg0JTQvtCz0L7QstC+0YAg0YHQvtGB0YLQsNCy0LvQtdC9INCyINC00LLRg9GFINGN0LrQt9C10LzQv9C70Y/RgNCw0YUsINC/0L4g0L7QtNC90L7QvNGDICDQtNC70Y8gINC60LDQttC00L7QuSAg0LjQtw0KICAgINGB0YLQvtGA0L7QvS4NCg0KICAgICAgICAgICAgICAgICAgINCu0KDQmNCU0JjQp9CV0KHQmtCY0JUg0JDQlNCg0JXQodCQINCYINCg0JXQmtCS0JjQl9CY0KLQqyDQodCi0J7QoNCe0J06DQoNCiAgICAgICAgICAgICAgICDQpNCY0KDQnNCQOiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg0JrQm9CY0JXQndCiOg0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fICAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fICAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fICAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fICAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fICAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fICAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fICAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fICAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fICAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KDQogICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18gICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQoNCiAgICAgICAgICAgICAgICAg0Jwu0J8uICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgINCcLtCfLg0KDQogIA0KPC9wcmU+PC9kaXY+DQo8L2JvZHk+DQo8L2h0bWw+",
+    "mime_type": "text/html",
+    "language": "ru",
+    "locale": "ru"
+  },
+  "ingestion_preflight": {
+    "mime_type": "text/html",
+    "extractor": "html:regex",
+    "extraction_source": "html:regex",
+    "extraction_ok": true,
+    "error": null,
+    "extraction_error": null,
+    "sha256": "4455d6f6bbe6edb67f7c57600fd87310315c54e8a0016b7a51e072ce65ad6a56"
+  },
+  "metrics": {
+    "risk_count": 1,
+    "high_risk_count": 0,
+    "disputed_clause_count": 1,
+    "asymmetry_signal_count": 0,
+    "contract_type": "labor_contract"
+  },
+  "analysis": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'obrazets-dogovor-komissii-na-prodazhu-dollarov-ssha. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Работник'. Определен тип договора: Трудовой договор (уверенность 52%, правовая рамка: ТК РФ). Условия оплаты: В течение трех банковских дней с момента подписания настоящего договора переводит на счет Фирмы в полном объеме денежные средства, предназначенные для конвертации; Одновременно с этим переводит на счет Фирмы ее комиссионное вознаграждение; После получения от Фирмы уведомления в любой форме о том, что денежные средства Клиента проконвертированы, Клиент представляет Фирме письмо с просьбой о переводе рублевых средств на указанный в этом письме счет. Сроки и дедлайны: В течение трех банковских дней с момента подписания настоящего договора переводит на счет Фирмы в полном объеме денежные средства, предназначенные для конвертации; После продажи (уполномоченным Банком) валюты Клиента, в течение одного дня уведомляет об этом Клиента; 3, в течение суток представляет банку соответствующее платежное поручение. Штрафы и санкции: В случае отказа подписать акт о выполненных работах при официальном выполнении Фирмой своей части работы, договор признается выполненным и Клиент выплачивает Фирме штраф в размере ___% от суммы конвертации в рублях. Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Работник'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Образец. Договор комиссии на продажу долларов сша - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР КОМИССИИ Nо. ______ г. _______________ \"___\"__________ 20___ г. _______________________________________________________________, (наименование предприятия) именуем__ в дальнейшем \"Фирма\", в лице ______________________________ (должность) __________________________________________, действующего на основании (фамилия, имя,...",
+        "dispute_reason": "Маркер указывает на возможный конфликт между несколькими обязанностями или сроками.",
+        "possible_consequence": "При исполнении может оказаться, что условия невозможно соблюсти одновременно.",
+        "confidence": 0.66
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Работник",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Работник'.",
+      "must_do": [
+        "Конфиг не выявил явных обязательств."
+      ],
+      "should_review": [
+        "Конфиг не выявил явных дискреционных условий."
+      ],
+      "payment_terms": [
+        "В течение трех банковских дней с момента подписания настоящего договора переводит на счет Фирмы в полном объеме денежные средства, предназначенные для конвертации.",
+        "Одновременно с этим переводит на счет Фирмы ее комиссионное вознаграждение.",
+        "После получения от Фирмы уведомления в любой форме о том, что денежные средства Клиента проконвертированы, Клиент представляет Фирме письмо с просьбой о переводе рублевых средств на указанный в этом письме счет.",
+        "После подписания настоящего договора и поступления на счет Фирмы валюты Клиента, предназначенной для продажи, и комиссионного вознаграждения Фирмы, в течении одного банковского дня перечисляет валюту Клиента на счет _______________ (уполномоченного Банка).",
+        "При совершении сделки через Банк: при поступлении денег на счет Банка подает заявку и указанные в п.",
+        "ОПЛАТА 3."
+      ],
+      "deadlines": [
+        "В течение трех банковских дней с момента подписания настоящего договора переводит на счет Фирмы в полном объеме денежные средства, предназначенные для конвертации.",
+        "После продажи (уполномоченным Банком) валюты Клиента, в течение одного дня уведомляет об этом Клиента.",
+        "3, в течение суток представляет банку соответствующее платежное поручение.",
+        "В течение двух банковских дней предоставляет Клиенту платежное поручение, заверенное банком, после чего между сторонами подписывается акт о выполненных работах.",
+        "Если по истечении срока действия настоящего договора продажа не была произведена, в течение трех банковских дней возвращает денежную сумму Клиента, за вычетом затрат, связанных с перечислением.",
+        "СРОК ДЕЙСТВИЯ ДОГОВОРА 8."
+      ],
+      "penalties": [
+        "В случае отказа подписать акт о выполненных работах при официальном выполнении Фирмой своей части работы, договор признается выполненным и Клиент выплачивает Фирме штраф в размере ___% от суммы конвертации в рублях."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "4455d6f6bbe6edb67f7c57600fd87310315c54e8a0016b7a51e072ce65ad6a56"
+    },
+    "contract_type": {
+      "type_id": "labor_contract",
+      "confidence": 0.52,
+      "ru_name": "Трудовой договор",
+      "legal_framework": "ТК РФ"
+    },
+    "asymmetry_signals": []
+  },
+  "result": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'obrazets-dogovor-komissii-na-prodazhu-dollarov-ssha. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Работник'. Определен тип договора: Трудовой договор (уверенность 52%, правовая рамка: ТК РФ). Условия оплаты: В течение трех банковских дней с момента подписания настоящего договора переводит на счет Фирмы в полном объеме денежные средства, предназначенные для конвертации; Одновременно с этим переводит на счет Фирмы ее комиссионное вознаграждение; После получения от Фирмы уведомления в любой форме о том, что денежные средства Клиента проконвертированы, Клиент представляет Фирме письмо с просьбой о переводе рублевых средств на указанный в этом письме счет. Сроки и дедлайны: В течение трех банковских дней с момента подписания настоящего договора переводит на счет Фирмы в полном объеме денежные средства, предназначенные для конвертации; После продажи (уполномоченным Банком) валюты Клиента, в течение одного дня уведомляет об этом Клиента; 3, в течение суток представляет банку соответствующее платежное поручение. Штрафы и санкции: В случае отказа подписать акт о выполненных работах при официальном выполнении Фирмой своей части работы, договор признается выполненным и Клиент выплачивает Фирме штраф в размере ___% от суммы конвертации в рублях. Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Работник'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Образец. Договор комиссии на продажу долларов сша - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР КОМИССИИ Nо. ______ г. _______________ \"___\"__________ 20___ г. _______________________________________________________________, (наименование предприятия) именуем__ в дальнейшем \"Фирма\", в лице ______________________________ (должность) __________________________________________, действующего на основании (фамилия, имя,...",
+        "dispute_reason": "Маркер указывает на возможный конфликт между несколькими обязанностями или сроками.",
+        "possible_consequence": "При исполнении может оказаться, что условия невозможно соблюсти одновременно.",
+        "confidence": 0.66
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Работник",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Работник'.",
+      "must_do": [
+        "Конфиг не выявил явных обязательств."
+      ],
+      "should_review": [
+        "Конфиг не выявил явных дискреционных условий."
+      ],
+      "payment_terms": [
+        "В течение трех банковских дней с момента подписания настоящего договора переводит на счет Фирмы в полном объеме денежные средства, предназначенные для конвертации.",
+        "Одновременно с этим переводит на счет Фирмы ее комиссионное вознаграждение.",
+        "После получения от Фирмы уведомления в любой форме о том, что денежные средства Клиента проконвертированы, Клиент представляет Фирме письмо с просьбой о переводе рублевых средств на указанный в этом письме счет.",
+        "После подписания настоящего договора и поступления на счет Фирмы валюты Клиента, предназначенной для продажи, и комиссионного вознаграждения Фирмы, в течении одного банковского дня перечисляет валюту Клиента на счет _______________ (уполномоченного Банка).",
+        "При совершении сделки через Банк: при поступлении денег на счет Банка подает заявку и указанные в п.",
+        "ОПЛАТА 3."
+      ],
+      "deadlines": [
+        "В течение трех банковских дней с момента подписания настоящего договора переводит на счет Фирмы в полном объеме денежные средства, предназначенные для конвертации.",
+        "После продажи (уполномоченным Банком) валюты Клиента, в течение одного дня уведомляет об этом Клиента.",
+        "3, в течение суток представляет банку соответствующее платежное поручение.",
+        "В течение двух банковских дней предоставляет Клиенту платежное поручение, заверенное банком, после чего между сторонами подписывается акт о выполненных работах.",
+        "Если по истечении срока действия настоящего договора продажа не была произведена, в течение трех банковских дней возвращает денежную сумму Клиента, за вычетом затрат, связанных с перечислением.",
+        "СРОК ДЕЙСТВИЯ ДОГОВОРА 8."
+      ],
+      "penalties": [
+        "В случае отказа подписать акт о выполненных работах при официальном выполнении Фирмой своей части работы, договор признается выполненным и Клиент выплачивает Фирме штраф в размере ___% от суммы конвертации в рублях."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "4455d6f6bbe6edb67f7c57600fd87310315c54e8a0016b7a51e072ce65ad6a56"
+    },
+    "contract_type": {
+      "type_id": "labor_contract",
+      "confidence": 0.52,
+      "ru_name": "Трудовой договор",
+      "legal_framework": "ТК РФ"
+    },
+    "asymmetry_signals": []
+  },
+  "finished_at": "2026-04-28T16:12:34.089159+00:00",
+  "duration_ms": 136.45
+}

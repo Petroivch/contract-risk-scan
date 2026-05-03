@@ -1,0 +1,229 @@
+{
+  "case_id": "договоры 4__obrazets-dogovor-komissii-na-pokupku-valyuti_html",
+  "relative_path": "договоры 4/obrazets-dogovor-komissii-na-pokupku-valyuti.html",
+  "document_path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\договоры 4\\obrazets-dogovor-komissii-na-pokupku-valyuti.html",
+  "document_name": "obrazets-dogovor-komissii-na-pokupku-valyuti.html",
+  "role": "Подрядчик",
+  "counterparty_role": "Заказчик",
+  "language": "ru",
+  "mime_type": "text/html",
+  "tags": [
+    "ad_hoc"
+  ],
+  "source_group": "договоры 4",
+  "expected": {},
+  "started_at": "2026-04-28T16:18:50.018986+00:00",
+  "status": "completed",
+  "request": {
+    "document_name": "obrazets-dogovor-komissii-na-pokupku-valyuti.html",
+    "role_context": {
+      "role": "Подрядчик",
+      "counterparty_role": "Заказчик"
+    },
+    "document_text": null,
+    "document_base64": "PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMDEgVHJhbnNpdGlvbmFsLy9FTiI+DQo8aHRtbD4NCjxoZWFkPg0KPGJhc2UgaHJlZj0iaHR0cHM6Ly9kb2dvdm9yLXVyaXN0LnJ1LyI+DQo8dGl0bGU+0J7QsdGA0LDQt9C10YYuINCU0L7Qs9C+0LLQvtGAINC60L7QvNC40YHRgdC40Lgg0L3QsCDQv9C+0LrRg9C/0LrRgyDQstCw0LvRjtGC0YsgICAgLSDQstC10YDRgdC40Y8g0LTQu9GPINC/0LXRh9Cw0YLQuC4gMjAyNi4g0J7QsdGA0LDQt9GG0Ysg0LTQvtCz0L7QstC+0YDQvtCyLCDRgtC40L/QvtCy0YvQtSDQtNC+0LPQvtCy0L7RgNCwLCDQsNC60YLRg9Cw0LvRjNC90YvQtSDQtNC+0LrRg9C80LXQvdGC0YssINGO0YDQuNC00LjRh9C10YHQutC40Lwg0Lgg0YTQuNC30LjRh9C10YHQutC40Lwg0LvQuNGG0LDQvDwvdGl0bGU+DQo8bWV0YSBjb250ZW50PSIiIG5hbWU9ImtleXdvcmRzIj4NCjxtZXRhIGNvbnRlbnQ9IiIgbmFtZT0iZGVzY3JpcHRpb24iPg0KPG1ldGEgbmFtZT0icm9ib3RzIiBjb250ZW50PSJub2luZGV4LG5vZm9sbG93Ij4NCjxtZXRhIGh0dHAtZXF1aXY9IkNvbnRlbnQtVHlwZSIgY29udGVudD0idGV4dC9odG1sOyBjaGFyc2V0PXV0Zi04Ij4NCjxsaW5rIHJlbD0ic3R5bGVzaGVldCIgaHJlZj0iL2ltYWdlcy9zdHlsZS5jc3MiIHR5cGU9InRleHQvY3NzIj4NCjwvaGVhZD4NCjxib2R5Pg0KPGRpdiBjbGFzcz0iZG9jdW1lbnRUZXh0Ij4NCjxwcmU+diAgICAgICAgICAgICAgICAgICAgICDQlNCe0JPQntCS0J7QoCDQmtCe0JzQmNCh0KHQmNCYIE7Qvi4gX19fX19fX19fX19fDQoNCiAgICDQsy4gX19fX19fX19fX19fX18gICAgICAgICAgICAgICAgICAgICAgICAgICAgIl9fXyJfX19fX19fX19fIDIwX19fINCzLg0KDQogICAgICAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18sDQogICAgICAgICAgICAgICAgICAgICAgICAgICjQvdCw0LjQvNC10L3QvtCy0LDQvdC40LUg0L/RgNC10LTQv9GA0LjRj9GC0LjRjykNCg0KICAgINC40LzQtdC90YPQtdC80L7QtSDQsiDQtNCw0LvRjNC90LXQudGI0LXQvCAi0KTQuNGA0LzQsCIsINCyINC70LjRhtC1IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICjQtNC+0LvQttC90L7RgdGC0YwpDQoNCiAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18sINC00LXQudGB0YLQstGD0Y7RidC10LPQviDQvdCwINC+0YHQvdC+0LLQsNC90LjQuA0KICAgICAgICAgICAgICjRhNCw0LzQuNC70LjRjywg0LjQvNGPLCDQvtGC0YfQtdGB0YLQstC+KQ0KDQogICAgX19fX19fX19fX19fX19fINGBINC+0LTQvdC+0Lkg0YHRgtC+0YDQvtC90YssINC4IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXywNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAo0L3QsNC40LzQtdC90L7QstCw0L3QuNC1INC/0YDQtdC00L/RgNC40Y/RgtC40Y8pDQoNCiAgICDQuNC80LXQvdGD0LXQvNC+0LUg0LIg0LTQsNC70YzQvdC10LnRiNC10LwgItCa0LvQuNC10L3RgiIsINCyINC70LjRhtC1IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAo0LTQvtC70LbQvdC+0YHRgtGMKQ0KDQogICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLCDQtNC10LnRgdGC0LLRg9GO0YnQtdCz0L4g0L3QsCDQvtGB0L3QvtCy0LDQvdC40LgNCiAgICAgICAgICAgICjRhNCw0LzQuNC70LjRjywg0LjQvNGPLCDQvtGC0YfQtdGB0YLQstC+KQ0KDQogICAgX19fX19fX19fX19fX19fX19fX19fINGBINC00YDRg9Cz0L7QuSDRgdGC0L7RgNC+0L3Riywg0LfQsNC60LvRjtGH0LjQu9C4INC90LDRgdGC0L7Rj9GJ0LjQuSDQtNC+0LPQvtCy0L7RgCDQvg0KICAgINC90LjQttC10YHQu9C10LTRg9GO0YnQtdC8Og0KDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgIDEuINCf0KDQldCU0JzQldCiINCU0J7Qk9Ce0JLQntCg0JANCg0KICAgICAgICAg0JrQu9C40LXQvdGCINC/0L7RgNGD0YfQsNC10YIsINCwINCk0LjRgNC80LAg0L7RgdGD0YnQtdGB0YLQstC70Y/QtdGCINC/0L7QutGD0L/QutGDOg0KICAgICAgICAgMS4g0JLQsNC70Y7RgtCwOiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fOw0KICAgICAgICAgMi4g0JzQtdGB0YLQvjog0L3QsCBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXzsNCiAgICAgICAgIDMuINCm0LXQvdCwOiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX187DQogICAgICAgICAgICAgICAgICAgICAgICAgICAo0LvQuNC80LjRgtC40YDQvtCy0LDQvdC90LDRjywg0LHQuNGA0LbQtdCy0LDRjywg0YDRi9C90L7Rh9C90LDRjykNCg0KICAgICAgICAgNC4g0JrRg9GA0YE6IF9fX19fX19fX19fX19fX19fKF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fKSDRgNGD0LHQu9C10LkNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICjQv9GA0L7Qv9C40YHRjNGOKQ0KDQogICAg0LfQsCAxIF9fX19fX19fX19fX19fOw0KICAgICAgICAgNS4g0J7QsdGJ0YPRjiDRgdGD0LzQvNCwINC/0YDQvtC00LDQttC4INGA0YPQsdC70LXQuS/Qv9C+0LrRg9C/0LrQuCDQstCw0LvRjtGC0Ys6IF9fX19fX19fX19fX19fX19fXw0KICAgIChfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18pIF9fX19fX19fX19fLg0KICAgICAgICAgICAgICAgICAgICAgICAgICAo0L/RgNC+0L/QuNGB0YzRjikNCg0KDQogICAgICAgICAgICAgICAgICAgICAgICAgICAyLiDQntCR0K/Ql9CQ0KLQldCb0KzQodCi0JLQkCDQodCi0J7QoNCe0J0NCg0KICAgICAgICAg0JrQm9CY0JXQndCiOg0KICAgICAgICAgMi4xLiAg0J/QtdGA0LXQstC+0LTQuNGCICDQvdCwINGB0YfQtdGCINCk0LjRgNC80Ysg0LTQtdC90LXQttC90YvQtSDRgdGA0LXQtNGB0YLQstCwINCyINC/0L7Qu9C90L7QvCDQvtCx0YrQtdC80LUNCiAgICDQvdCwINC+0LHRidGD0Y4g0YHRg9C80LzRgyBfX19fX19fX19fXyhfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18pINGA0YPQsdC70LXQuS4NCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICjQv9GA0L7Qv9C40YHRjNGOKQ0KDQogICAgICAgICDQntC00L3QvtCy0YDQtdC80LXQvdC90L4gINGBICDRjdGC0LjQvCAg0L/QtdGA0LXQstC+0LTQuNGCICDQvdCwICDRgdGH0LXRgiDQpNC40YDQvNGLINC10LUg0LrQvtC80LjRgdGB0LjQvtC90L3QvtC1DQogICAg0LLQvtC30L3QsNCz0YDQsNC20LTQtdC90LjQtS4NCiAgICAgICAgIDIuMi4g0J7Qv9C70LDRh9C40LLQsNC10YIg0YPRgdC70YPQs9C4INCk0LjRgNC80Ysg0Lgg0YDQtdCz0LjRgdGC0YDQsNGG0LjQvtC90L3Ri9C5INGB0LHQvtGAINCR0LjRgNC20LguDQoNCiAgICAgICAgINCk0JjQoNCc0JA6DQogICAgICAgICAyLjMuINCf0L7RgdC70LUg0L/QvtC00L/QuNGB0LDQvdC40Y8g0L3QsNGB0YLQvtGP0YnQtdCz0L4g0LTQvtCz0L7QstC+0YDQsCDQuCDQstGL0L/QvtC70L3QtdC90LjRjyAg0JrQu9C40LXQvdGC0L7QvA0KICAgINCyINC/0L7Qu9C90L7QvCAg0L7QsdGK0LXQvNC1ICDQvy4gMi4xICDQvdC10LfQsNC80LXQtNC70LjRgtC10LvRjNC90L4gICDQvdCw0YfQuNC90LDQtdGCICDRgNCw0LHQvtGC0YMgINC/0L4gINC10LPQvg0KICAgINC40YHQv9C+0LvQvdC10L3QuNGOLg0KICAgICAgICAgMi40LiDQmNGB0L/QvtC70L3QuNCyINC00L7Qs9C+0LLQvtGALCDQsiBfX19fX19fINC00L3QtdCy0L3Ri9C5INGB0YDQvtC6INC/0YDQtdC00YHRgtCw0LLQu9GP0LXRgiDQvtGC0YfQtdGCDQogICAg0YEg0LTQvtC60YPQvNC10L3RgtCw0LzQuCwg0L/QvtC70YPRh9C10L3QvdGL0LzQuCDQvtGCINCa0L7QvdGC0YDQsNCz0LXQvdGC0LAg0L/QviDRgdC+0LLQtdGA0YjQtdC90L3QvtC5INGB0LTQtdC70LrQtS4NCiAgICAgICAgIDIuNS4g0JXRgdC70Lgg0YLQvtCy0LDRgCDQsiDRgdC+0L7RgtCy0LXRgtGB0YLQstC40LggINGBICDQn9GA0LDQstC40LvQsNC80LggINCx0LjRgNC20LXQstC+0LkgINGC0L7RgNCz0L7QstC70LgNCiAgICDRgdC90Y/RgiDRgSDRgtC+0YDQs9C+0LIsINCk0LjRgNC80LAg0LjQt9Cy0LXRidCw0LXRgiDQvtCxINGN0YLQvtC8INCyIF9fX19fX18g0LTQvdC10LLQvdGL0Lkg0YHRgNC+0LouDQoNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAzLiDQntCf0JvQkNCi0JANCg0KICAgICAgICAgMy4xLiDQl9CwINGD0YHQu9GD0LPQuCDQv9C+INC90LDRgdGC0L7Rj9GJ0LXQvNGDINC00L7Qs9C+0LLQvtGA0YMgINCa0LvQuNC10L3RgiDQstGL0L/Qu9Cw0YfQuNCy0LDQtdGCICDQpNC40YDQvNC1DQogICAg0LLQvtC30L3QsNCz0YDQsNC20LTQtdC90LjQtSDQsiAgX19fX19fX19fX19fINCyINGA0LDQt9C80LXRgNC1IF9fX19fIChfX19fX19fKSDQv9GA0L7RhtC10L3RgtC+0LIg0L7Rgg0KICAgINGB0YPQvNC80Ysg0YHQtNC10LvQutC4INC/0LvRjtGBIF9fX19fX19fXyAoX19fX19fX19fX18pINC/0YDQvtGG0LXQvdGC0L7QsiDQvtGCINCy0L7Qt9C90LDQs9GA0LDQttC00LXQvdC40Y8NCiAgICDQpNC40YDQvNGLICDQndCU0KEgINC4INC00L7Qv9C+0LvQvdC40YLQtdC70YzQvdC+IF9fX19fX18gKF9fX19fX19fX18pINC/0YDQvtGG0LXQvdGC0L7QsiDQvtGCINGA0LDQt9C90LjRhtGLDQogICAg0Y3QutC+0L3QvtC80LjQuCDRhNCw0LrRgtC40YfQtdGB0LrQvtC5INGG0LXQvdGLINC/0L7QutGD0L/QutC4INC4IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KICAgICjRgdGA0LXQtNC90LjQvCAg0LrRg9GA0YHQvtC8LCAg0LfQsNGE0LjQutGB0LjRgNC+0LLQsNC90L3Ri9C8INC90LAg0LHQuNGA0LbQtSDQvdCwINC00LXQvdGMINC/0L7QutGD0L/QutC4OyDQstC10LvQuNGH0LjQvdGLDQogICAg0LrRg9GA0YHQsCDQv9C+0YDRg9GH0LXQvdC40Y8pLg0KICAgICAgICAg0J7Qv9C70LDRgtCwINC/0YDQvtC40LfQstC+0LTQuNGC0YHRjyDQsiDRgtC10YfQtdC90LjQtSAgMyAgKNGC0YDQtdGFKSAg0LTQvdC10LkgINC/0L7RgdC70LUgINC/0L7Qu9GD0YfQtdC90LjRjw0KICAgINC+0YLRh9C10YLQsCDQpNC40YDQvNGLLg0KICAgICAgICAg0J7RgtGH0LXRgiAg0KTQuNGA0LzQsCAg0L/RgNC10LTRgdGC0LDQstC70Y/QtdGCICDQsiAg0LLQuNC00LUgINC00L7Qs9C+0LLQvtGA0LAgINC60YPQv9C70Lgt0L/RgNC+0LTQsNC20Lgg0LjQu9C4DQogICAg0LHQuNGA0LbQtdCy0L7Qs9C+INC60L7QvdGC0YDQsNC60YLQsC4NCiAgICAgICAgIDMuMi4g0JrQu9C40LXQvdGCINC+0L/Qu9Cw0YfQuNCy0LDQtdGCINCR0LjRgNC20LUg0YDQtdCz0LjRgdGC0YDQsNGG0LjQvtC90L3Ri9C5INGB0LHQvtGAICDQsiAg0YDQsNC30LzQtdGA0LUgINC4DQogICAg0YHRgNC+0LrQuCwg0L/RgNC10LTRg9GB0LzQvtGC0YDQtdC90L3QvtC8INCx0LjRgNC20LXQstGL0LzQuCDQv9GA0LDQstC40LvQsNC80LggKNGH0LXRgNC10Lcg0YHRh9C10YIg0KTQuNGA0LzRiykuDQogICAgICAgICAzLjMuICAg0JLRgdC1ICAg0L/Qu9Cw0YLQtdC20LggICDQvtGB0YPRidC10YHRgtCy0LvRj9GO0YLRgdGPICAg0L/Qu9Cw0YLQtdC20L3Ri9C80LggICDQv9C+0YDRg9GH0LXQvdC40Y/QvNC4DQogICAg0YLQtdC70LXQs9GA0LDRhNC+0LwgKNC60YDQvtC80LUg0L/Qu9Cw0YLQtdC20LXQuSDQsiDQv9GA0LXQtNC10LvQsNGFINCzLiDQnNC+0YHQutCy0Ysg0Lgg0LfQsCDQv9GA0LXQtNC10LvRiyDQoNCkKS4NCg0KICAgICAgICAgICAgICAgICAgICAgICAgICA0LiDQntCi0JLQldCi0KHQotCS0JXQndCd0J7QodCi0Kwg0KHQotCe0KDQntCdDQoNCiAgICAgICAgIDQuMS4g0JrQm9CY0JXQndCiOg0KICAgICAgICAg0LApICAg0LIgINGB0LvRg9GH0LDQtSAg0L3QtdCy0YvQv9C+0LvQvdC10L3QuNGPICDQvy4gMi4xICAtICDQtNC+0LPQvtCy0L7RgCAgINC+0YHRgtCw0LXRgtGB0Y8gINCx0LXQtw0KICAgINC40YHQv9C+0LvQvdC10L3QuNGPOw0KICAgICAgICAg0LEpICDQsiAg0YHQu9GD0YfQsNC1ICDQv9GA0L7RgdGA0L7Rh9C60LggICDQvtC/0LvQsNGC0YsgICDQstC+0LfQvdCw0LPRgNCw0LbQtNC10L3QuNGPICAg0KTQuNGA0LzQtSAgINC40LvQuA0KICAgINGA0LXQs9C40YHRgtGA0LDRhtC40L7QvdC90L7Qs9C+INGB0LHQvtGA0LAgINCR0LjRgNC20LUgIC0gINGD0L/Qu9Cw0YfQuNCy0LDQtdGCICDQv9C10L3QuCAgX19fX18g0L/RgNC+0YbQtdC90YLQsCDQvtGCDQogICAg0YHRg9C80LzRiyDRgdC00LXQu9C60Lgg0LIgX19fX19fX19fX19fX19fX19fX19fX18g0LfQsCDQutCw0LbQtNGL0Lkg0LTQtdC90YwgINC/0YDQvtGB0YDQvtGH0LrQuCwgINC90L4NCiAgICDQvdC1INCx0L7Qu9C10LUgX19fX19fX18g0L/RgNC+0YbQtdC90YLQvtCyLg0KICAgICAgICAg0LIpINC10YHQu9C4INC/0YDQvtGB0YDQvtGH0LrQsCDQtNC70LjRgtGB0Y8g0YHQstGL0YjQtSAgX19fX19fICDQtNC90LXQuSAgLSAg0YHRh9C40YLQsNC10YLRgdGPLCAg0YfRgtC+DQogICAg0JrQu9C40LXQvdGCICDQvtGC0LrQsNC30YvQstCw0LXRgtGB0Y8gINC+0YIgINC+0L/Qu9Cw0YLRiy4gINCSICDRjdGC0L7QvCDRgdC70YPRh9Cw0LUg0L7QvSDRg9C/0LvQsNGH0LjQstCw0LXRgiDQpNC40YDQvNC1DQogICAg0YjRgtGA0LDRhCDQsiDRgNCw0LfQvNC10YDQtSBfX19fXyDQv9GA0L7RhtC10L3RgtC+0LIg0L7RgiDRgdGD0LzQvNGLINGB0LTQtdC70LrQuC4NCiAgICAgICAgINCS0LzQtdGB0YLQtSAg0YEg0YLQtdC8INCk0LjRgNC80LAg0LLQv9GA0LDQstC1INGB0L/QuNGB0LDRgtGMINGB0L7QvtGC0LLQtdGC0YHRgtCy0YPRjtGJ0LjQtSDRgdGD0LzQvNGLICjQstC80LXRgdGC0LUNCiAgICDRgSDQv9C10L3QuCkg0YHQviDRgdGH0LXRgtCwINCa0LvQuNC10L3RgtCwINCyINCx0LXQt9Cw0LrRhtC10L/RgtC90L7QvCDQv9C+0YDRj9C00LrQtSDQsiDRgtC10YfQtdC90LjQtSAg0LTQstC10L3QsNC00YbQsNGC0LgNCiAgICDQvNC10YHRj9GG0LXQsiDRgSDQvNC+0LzQtdC90YLQsCDQstC+0LfQvdC40LrQvdC+0LLQtdC90LjRjyDQv9GA0LDQstCwINGC0YDQtdCx0L7QstCw0L3QuNGPLg0KDQogICAgICAgICA0LjIuINCk0JjQoNCc0JA6DQogICAgICAgICDQsCkg0LfQsCDQvdC10LjRgdC/0L7Qu9C90LXQvdC40LUg0L/QvtGA0YPRh9C10L3QuNGPINC/0L4g0LXQtSDQstC40L3QtSAtINGD0L/Qu9Cw0YfQuNCy0LDQtdGCINGI0YLRgNCw0YQgX19fX18NCiAgICDQv9GA0L7RhtC10L3RgtC+0LIg0L7RgiDRgdGD0LzQvNGLINCyIF9fX19fX19fX19fX19fX19fX19fX19fX18sINGD0LrQsNC30LDQvdC90L7QuSDQsiDQvdCw0YHRgtC+0Y/RidC10LwNCiAgICDQtNC+0LPQvtCy0L7RgNC1Lg0KDQogICAgICAgICAgICAgICAgICAgICAgICA1LiDQn9Ce0KDQr9CU0J7QmiDQoNCQ0KHQodCc0J7QotCg0JXQndCY0K8g0KHQn9Ce0KDQntCSDQoNCiAgICAgICAgIDUuMS4g0JLRgdC1ICDRgNCw0LfQvdC+0LPQu9Cw0YHQuNGPICDQv9C+ICDQvdCw0YHRgtC+0Y/RidC10LzRgyAg0LTQvtCz0L7QstC+0YDRgyAg0YDQtdGI0LDRjtGC0YHRjyAg0L/Rg9GC0LXQvA0KICAgINC/0LXRgNC10LPQvtCy0L7RgNC+0LIuDQogICAgICAgICA1LjIuINCSICDRgdC70YPRh9Cw0LUgINC90LXQstC+0LfQvNC+0LbQvdC+0YHRgtC4ICDRgNC10YjQuNGC0YwgINGB0L/QvtGAICDQvNC40YDQvdGL0LwgINC/0YPRgtC10LwsICAg0L7QvQ0KICAgINC/0LXRgNC10LTQsNC10YLRgdGPINCyINCQ0YDQsdC40YLRgNCw0LbQvdGL0Lkg0YHRg9C0Lg0KDQogICAgICAgICAgICAgICAgICAgICAgICA2LiDQn9Ce0KDQr9CU0J7QmiDQntCh0KPQqdCV0KHQotCS0JvQldCd0JjQryDQodCS0K/Ql9CYDQoNCiAgICAgICAgIDYuMS4g0KHQstGP0LfRjCDQvNC10LbQtNGDINGB0YLQvtGA0L7QvdCw0LzQuCAg0L7RgdGD0YnQtdGB0YLQstC70Y/QtdGC0YHRjyAg0YfQtdGA0LXQtyAg0L7RgtCy0LXRgtGB0YLQstC10L3QvdGL0YUNCiAgICDQu9C40YYg0JrQu9C40LXQvdGC0LAg0Lgg0LHRgNC+0LrQtdGA0LAg0KTQuNGA0LzRiy4g0K3RgtC4INC70LjRhtCwINC90LXRgdGD0YIg0L/QvtC70L3Rg9GOINC+0YLQstC10YLRgdGC0LLQtdC90L3QvtGB0YLRjCDQt9CwDQogICAg0YHQvtCy0LXRgNGI0LXQvdC90YvQtSAgICDQuNC80LggICAg0LTQtdC50YHRgtCy0LjRjy4gICDQkdGA0L7QutC10YAgICDRgdCy0Y/Qt9GL0LLQsNC10YLRgdGPICAg0YEgICDQmtC70LjQtdC90YLQvtC8DQogICAg0L3QtdC/0L7RgdGA0LXQtNGB0YLQstC10L3QvdC+ICDQu9C40LHQviAg0YfQtdGA0LXQtyAg0YHQstC+0LXQs9C+ICAg0YDQtdCz0LjQvtC90LDQu9GM0L3QvtCz0L4gICDQv9GA0LXQtNGB0YLQsNCy0LjRgtC10LvRjywNCiAgICDQuNC80LXRjtGJ0LXQs9C+INC00L7QstC10YDQtdC90L3QvtGB0YLRjCDQkdGA0L7QutC10YDQsC4NCiAgICAgICAgIDYuMi4g0J/QvtGA0YPRh9C10L3QuNGPLCAg0LjQt9Cy0LXRidC10L3QuNGPICDQuCAg0LTRgNGD0LPQuNC1ICAg0LTQvtC60YPQvNC10L3RgtGLLCAgINC/0L7QtNC/0LjRgdCw0L3QvdGL0LUNCiAgICDRgNGD0LrQvtCy0L7QtNC40YLQtdC70LXQvCAg0Lgg0LPQu9Cw0LLQvdGL0Lwg0LHRg9GF0LPQsNC70YLQtdGA0L7QvCwg0LfQsNCy0LXRgNC10L3QvdGL0LUg0L/QtdGH0LDRgtGM0Y4g0Lgg0L/QtdGA0LXQtNCw0L3QvdGL0LUNCiAgICDQv9GA0L7RgtC40LLQvtC/0L7Qu9C+0LbQvdC+0Lkg0YHRgtC+0YDQvtC90LUg0L/QvtGB0YDQtdC00YHRgtCy0L7QvCDRhNCw0LrRgdC40LzQuNC70YzQvdC+0LkgINGB0LLRj9C30LggICjRgtC10LvQtdGE0LDQutGB0L7QvCkNCiAgICDQv9GA0LjQt9C90LDRjtGC0YHRjyDRgdGC0L7RgNC+0L3QsNC80Lgg0L/QvtC70L3QvtGG0LXQvdC90YvQvNC4INGO0YDQuNC00LjRh9C10YHQutC40LzQuCDQtNC+0LrRg9C80LXQvdGC0LDQvNC4Lg0KDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICA3LiDQntCh0J7QkdCr0JUg0KPQodCb0J7QktCY0K8NCg0KICAgICAgICAgNy4xLiDQkiAg0YHQu9GD0YfQsNC1ICDQtdGB0LvQuCAg0L/QviAg0YHQvtCz0LvQsNGB0LjRjiAg0YHRgtC+0YDQvtC9ICDQmtC70LjQtdC90YIg0L3QtSDQvtC/0LvQsNGH0LjQstCw0LXRgg0KICAgINC30LDRgNCw0L3QtdC1INGD0YHQu9GD0LPQuCDQpNC40YDQvNGLINCyINGB0L7QvtGC0LLQtdGC0YHRgtCy0LjQuCDRgSDQvy4gIDIuMSwgINCk0LjRgNC80LAg0L/QviAg0L/QvtGB0YLRg9C/0LvQtdC90LjRjg0KICAgINCy0LDQu9GO0YLRiyAg0L3QsCAg0YHQstC+0LkgINCy0LDQu9GO0YLQvdGL0LkgINGB0YfQtdGCICDQuNC30LLQtdGJ0LDQtdGCICDQvtCxINGN0YLQvtC8INCa0LvQuNC10L3RgtCwLCAg0LrQvtGC0L7RgNGL0LkNCiAgICDQvtCx0Y/Qt9GD0LXRgtGB0Y8g0LIg0YLQtdGH0LXQvdC40LUgX19fX19fXyDQsdCw0L3QutC+0LLRgdC60LjRhSDQtNC90LXQuSDQvtC/0LvQsNGC0LjRgtGMINCyINC/0L7Qu9C90L7QvCAg0L7QsdGK0LXQvNC1DQogICAg0YPRgdC70YPQs9C4INCk0LjRgNC80YsuDQogICAgICAgICA3LjIuINCV0YHQu9C4ICDQsiAg0YLQtdGH0LXQvdC40LUgIF9fX19fX19fICDQtNC90LXQuSAg0JrQu9C40LXQvdGCICAg0L3QtSAgINC+0L/Qu9Cw0YLQuNC7ICAg0LINCiAgICDRgdC+0L7RgtCy0LXRgtGB0YLQstC40LggINGBICDRg9GB0LvQvtCy0LjRj9C80LggINC90LDRgdGC0L7Rj9GJ0LXQs9C+ICDQtNC+0LPQvtCy0L7RgNCwINGD0YHQu9GD0LPQuCDQpNC40YDQvNGLLCAg0KTQuNGA0LzQsA0KICAgINGB0LDQvNC+0YHRgtC+0Y/RgtC10LvRjNC90L4g0L/RgNC+0LLQvtC00LjRgiAg0L7QsdGA0LDRgtC90YPRjiAg0LrQvtC90LLQtdGA0YLQsNGG0LjRjiwgINC+0YHRgtCw0LLQu9GP0LXRgiAg0L3QsCAg0YHQstC+0LXQvA0KICAgINGA0LDRgdGH0LXRgtC90L7QvCAg0YHRh9C10YLRgyDRgdCy0L7QtSDQstC+0LfQvdCw0LPRgNCw0LbQtNC10L3QuNC1INGB0L4g0LLRgdC10LzQuCDQv9GA0LjRh9C40YLQsNGO0YnQuNC80LjRgdGPINGI0YLRgNCw0YTQsNC80LgNCiAgICDQuCDQvtGB0YLQsNCy0YjRg9GO0YHRjyDRgdGD0LzQvNGDINC/0LXRgNC10YfQuNGB0LvRj9C10YIg0JrQu9C40LXQvdGC0YMg0LIg0YLQtdGH0LXQvdC40LUg0YLRgNC10YUg0LHQsNC90LrQvtCy0YHQutC40YUg0LTQvdC10LkNCiAgICDRgSDQvNC+0LzQtdC90YLQsCDRgdC+0LLQtdGA0YjQtdC90LjRjyDQvtCx0YDQsNGC0L3QvtC5INC60L7QvdCy0LXRgNGC0LDRhtC40Lgg0Lgg0L/QvtGB0YLRg9C/0LvQtdC90LjRjyDQtNC10L3QtdCzINC90LAg0YHQstC+0LkNCiAgICDRgNCw0YHRh9C10YLQvdGL0Lkg0YHRh9C10YIuDQogICAgICAgICA3LjMuINCk0LjRgNC80LAg0LIg0YLQtdGH0LXQvdC40LUg0YLRgNC10YUg0LHQsNC90LrQvtCy0YHQutC40YUg0LTQvdC10Lkg0YEg0LzQvtC80LXQvdGC0LAg0L/RgNC10LTRitGP0LLQu9C10L3QuNGPDQogICAg0JrQu9C40LXQvdGC0L7QvCAg0LrQvtC/0LjQuCAg0L/Qu9Cw0YLQtdC20L3QvtCz0L4gINC/0L7RgNGD0YfQtdC90LjRjywg0LfQsNCy0LXRgNC10L3QvdC+0LPQviDQsdCw0L3QutC+0LwsINC+0LEg0L7Qv9C70LDRgtC1DQogICAg0LLQvtC30L3QsNCz0YDQsNC20LTQtdC90LjRjyDQpNC40YDQvNC1ICjRgdC+0LPQu9Cw0YHQvdC+INC/LiA3LjEpICDQv9C10YDQtdCy0L7QtNC40YIg0LLQsNC70Y7RgtGDINC90LAg0YPQutCw0LfQsNC90L3Ri9C5DQogICAg0JrQu9C40LXQvdGC0L7QvCDRgdGH0LXRgi4NCiAgICAgICAgINCSINGB0LvRg9GH0LDQtSAgINC/0YDQvtGB0YDQvtGH0LrQuCAgINCk0LjRgNC80LAgINCy0YvQv9C70LDRh9C40LLQsNC10YIgINCa0LvQuNC10L3RgtGDICDQv9C10L3QuCAgX19fX19fDQogICAg0L/RgNC+0YbQtdC90YLQsCDQvtGCINGB0YPQvNC80Ysg0YHQtNC10LvQutC4INCyINGA0YPQsdC70Y/RhSDQt9CwINC60LDQttC00YvQuSAg0LTQtdC90YwgINC/0YDQvtGB0YDQvtGH0LrQuCwgINC90L4gINC90LUNCiAgICDQsdC+0LvQtdC1IF9fX19fX18g0L/RgNC+0YbQtdC90YLQvtCyLg0KICAgICAgICAgNy40LiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLg0KICAgICAgICAgNy41LiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLg0KDQogICAgICAgICAgICAgICAgICAgICAgICAgIDguINCh0KDQntCaINCU0JXQmdCh0KLQktCY0K8g0JTQntCT0J7QktCe0KDQkA0KDQogICAgICAgICA4LjEuINCh0YDQvtC6ICDQtNC10LnRgdGC0LLQuNGPICDQvdCw0YHRgtC+0Y/RidC10LPQviAg0LTQvtCz0L7QstC+0YDQsCAg0L3QsNGH0LjQvdCw0LXRgtGB0Y8gINC00LDRgtC+0Lkg0LXQs9C+DQogICAg0L/QvtC00L/QuNGB0LDQvdC40Y8g0Lgg0LfQsNC60LDQvdGH0LjQstCw0LXRgtGB0Y8gIl9fXyJfX19fX19fX19fX19fIDIwX19fINCzLg0KICAgICAgICAg0JTQvtCz0L7QstC+0YAg0YHQvtGB0YLQsNCy0LvQtdC9INCyINC00LLRg9GFINGN0LrQt9C10LzQv9C70Y/RgNCw0YUsINC/0L4g0L7QtNC90L7QvNGDICDQtNC70Y8gINC60LDQttC00L7QuSAg0LjQtw0KICAgINGB0YLQvtGA0L7QvS4NCg0KICAgICAgICAgICAgICAgICAgINCu0KDQmNCU0JjQp9CV0KHQmtCY0JUg0JDQlNCg0JXQodCQINCYINCg0JXQmtCS0JjQl9CY0KLQqyDQodCi0J7QoNCe0J06DQoNCiAgICAgICAgICAgICAgICDQpNCY0KDQnNCQOiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg0JrQm9CY0JXQndCiOg0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fICAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fICAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fICAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fICAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fICAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fICAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fICAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KDQogICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18gICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQoNCiAgICAgICAgICAgICAgINCcLtCfLiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICDQnC7Qny4NCg0KICANCjwvcHJlPjwvZGl2Pg0KPC9ib2R5Pg0KPC9odG1sPg==",
+    "mime_type": "text/html",
+    "language": "ru",
+    "locale": "ru"
+  },
+  "ingestion_preflight": {
+    "mime_type": "text/html",
+    "extractor": "html:regex",
+    "extraction_source": "html:regex",
+    "extraction_ok": true,
+    "error": null,
+    "extraction_error": null,
+    "sha256": "cce57d00f74a1ea513d4de27c2ea03af31d563928bec913123efeb39562aefdc"
+  },
+  "metrics": {
+    "risk_count": 1,
+    "high_risk_count": 1,
+    "disputed_clause_count": 3,
+    "asymmetry_signal_count": 0,
+    "contract_type": "agency_agreement"
+  },
+  "analysis": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'obrazets-dogovor-komissii-na-pokupku-valyuti. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Подрядчик'. Определен тип договора: Агентский / комиссионный договор (уверенность 57%, правовая рамка: ГК РФ, главы 51 и 52). Ключевые обязательства по договору для роли 'Подрядчик': 1, Фирма по поступлению валюты на свой валютный счет извещает об этом Клиента, который обязуется в течение _______ банковских дней оплатить в полном объеме услуги Фирмы. Условия оплаты: Переводит на счет Фирмы денежные средства в полном объеме на общую сумму ___________(_________________________________) рублей; (прописью) Одновременно с этим переводит на счет Фирмы ее комиссионное вознаграждение; ОПЛАТА 3. Сроки и дедлайны: Исполнив договор, в _______ дневный срок представляет отчет с документами, полученными от Контрагента по совершенной сделке; Если товар в соответствии с Правилами биржевой торговли снят с торгов, Фирма извещает об этом в _______ дневный срок; Оплата производится в течение 3 (трех) дней после получения отчета Фирмы. Штрафы и санкции: В этом случае он уплачивает Фирме штраф в размере _____ процентов от суммы сделки; ФИРМА: а) за неисполнение поручения по ее вине - уплачивает штраф _____ процентов от суммы в _________________________, указанной в настоящем договоре; Если в течение ________ дней Клиент не оплатил в соответствии с условиями настоящего договора услуги Фирмы, Фирма самостоятельно проводит обратную конвертацию, оставляет на своем расчетном счету свое вознаграждение со всеми причитающимися штрафами и оставшуюся сумму перечисляет Клиенту в течение трех банковских дней с момента совершения обратной конвертации и поступления денег на свой расчетный счет. Найдено спорных или расплывчатых пунктов: 3.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "uncapped_daily_penalty",
+        "title": "Критический риск: Ежедневная пеня без верхнего лимита",
+        "severity": "critical",
+        "clause_id": "clause-1",
+        "description": "Договор содержит ежедневную пеню, но не ограничивает ее общий размер или период начисления. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: Образец. Договор комиссии на покупку валюты - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам v ДОГОВОР КОМИССИИ Nо. ____________ г. ______________ \"___\"__________ 20___ г. _______________________________________________________________, (наименование предприятия) именуемое в дальнейшем \"Фирма\", в лице ______________________________ (должность) __________________________________________, действующего на основании (фамилия, имя,. . .",
+        "role_relevance": "Неограниченная пеня быстро превращается в непропорциональную ответственность.",
+        "mitigation": "Установите cap по общей сумме неустойки и предельный период начисления."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Образец. Договор комиссии на покупку валюты - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам v ДОГОВОР КОМИССИИ Nо. ____________ г. ______________ \"___\"__________ 20___ г. _______________________________________________________________, (наименование предприятия) именуемое в дальнейшем \"Фирма\", в лице ______________________________ (должность) __________________________________________, действующего на основании (фамилия, имя,...",
+        "dispute_reason": "Одна из сторон получила дискреционное право без достаточных ограничителей.",
+        "possible_consequence": "Это может привести к одностороннему применению условия и спору о пределах такого права.",
+        "confidence": 0.76
+      },
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Образец. Договор комиссии на покупку валюты - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам v ДОГОВОР КОМИССИИ Nо. ____________ г. ______________ \"___\"__________ 20___ г. _______________________________________________________________, (наименование предприятия) именуемое в дальнейшем \"Фирма\", в лице ______________________________ (должность) __________________________________________, действующего на основании (фамилия, имя,...",
+        "dispute_reason": "Срок задан оценочно и может толковаться сторонами по-разному.",
+        "possible_consequence": "Стороны могут спорить о моменте надлежащего исполнения и начале просрочки.",
+        "confidence": 0.77
+      },
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Образец. Договор комиссии на покупку валюты - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам v ДОГОВОР КОМИССИИ Nо. ____________ г. ______________ \"___\"__________ 20___ г. _______________________________________________________________, (наименование предприятия) именуемое в дальнейшем \"Фирма\", в лице ______________________________ (должность) __________________________________________, действующего на основании (фамилия, имя,...",
+        "dispute_reason": "Маркер указывает на возможный конфликт между несколькими обязанностями или сроками.",
+        "possible_consequence": "При исполнении может оказаться, что условия невозможно соблюсти одновременно.",
+        "confidence": 0.66
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Подрядчик",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Подрядчик'. Обнаружено 1 пунктов с высоким уровнем риска; их стоит перепроверить вручную.",
+      "must_do": [
+        "1, Фирма по поступлению валюты на свой валютный счет извещает об этом Клиента, который обязуется в течение _______ банковских дней оплатить в полном объеме услуги Фирмы."
+      ],
+      "should_review": [
+        "Вместе с тем Фирма вправе списать соответствующие суммы (вместе с пени) со счета Клиента в безакцептном порядке в течение двенадцати месяцев с момента возникновения права требования."
+      ],
+      "payment_terms": [
+        "Переводит на счет Фирмы денежные средства в полном объеме на общую сумму ___________(_________________________________) рублей.",
+        "(прописью) Одновременно с этим переводит на счет Фирмы ее комиссионное вознаграждение.",
+        "ОПЛАТА 3.",
+        "За услуги по настоящему договору Клиент выплачивает Фирме вознаграждение в ____________ в размере _____ (_______) процентов от суммы сделки плюс _________ (___________) процентов от вознаграждения Фирмы НДС и дополнительно _______ (__________) процентов от разницы экономии фактической цены покупки и _________________________________ (средним курсом, зафиксированным на бирже на день покупки.",
+        "Оплата производится в течение 3 (трех) дней после получения отчета Фирмы.",
+        "Клиент оплачивает Бирже регистрационный сбор в размере и сроки, предусмотренном биржевыми правилами (через счет Фирмы)."
+      ],
+      "deadlines": [
+        "Исполнив договор, в _______ дневный срок представляет отчет с документами, полученными от Контрагента по совершенной сделке.",
+        "Если товар в соответствии с Правилами биржевой торговли снят с торгов, Фирма извещает об этом в _______ дневный срок.",
+        "Оплата производится в течение 3 (трех) дней после получения отчета Фирмы.",
+        "Клиент оплачивает Бирже регистрационный сбор в размере и сроки, предусмотренном биржевыми правилами (через счет Фирмы).",
+        "в) если просрочка длится свыше ______ дней - считается, что Клиент отказывается от оплаты.",
+        "Вместе с тем Фирма вправе списать соответствующие суммы (вместе с пени) со счета Клиента в безакцептном порядке в течение двенадцати месяцев с момента возникновения права требования."
+      ],
+      "penalties": [
+        "В этом случае он уплачивает Фирме штраф в размере _____ процентов от суммы сделки.",
+        "ФИРМА: а) за неисполнение поручения по ее вине - уплачивает штраф _____ процентов от суммы в _________________________, указанной в настоящем договоре.",
+        "Если в течение ________ дней Клиент не оплатил в соответствии с условиями настоящего договора услуги Фирмы, Фирма самостоятельно проводит обратную конвертацию, оставляет на своем расчетном счету свое вознаграждение со всеми причитающимися штрафами и оставшуюся сумму перечисляет Клиенту в течение трех банковских дней с момента совершения обратной конвертации и поступления денег на свой расчетный счет."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "cce57d00f74a1ea513d4de27c2ea03af31d563928bec913123efeb39562aefdc"
+    },
+    "contract_type": {
+      "type_id": "agency_agreement",
+      "confidence": 0.58,
+      "ru_name": "Агентский / комиссионный договор",
+      "legal_framework": "ГК РФ, главы 51 и 52"
+    },
+    "asymmetry_signals": []
+  },
+  "result": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'obrazets-dogovor-komissii-na-pokupku-valyuti. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Подрядчик'. Определен тип договора: Агентский / комиссионный договор (уверенность 57%, правовая рамка: ГК РФ, главы 51 и 52). Ключевые обязательства по договору для роли 'Подрядчик': 1, Фирма по поступлению валюты на свой валютный счет извещает об этом Клиента, который обязуется в течение _______ банковских дней оплатить в полном объеме услуги Фирмы. Условия оплаты: Переводит на счет Фирмы денежные средства в полном объеме на общую сумму ___________(_________________________________) рублей; (прописью) Одновременно с этим переводит на счет Фирмы ее комиссионное вознаграждение; ОПЛАТА 3. Сроки и дедлайны: Исполнив договор, в _______ дневный срок представляет отчет с документами, полученными от Контрагента по совершенной сделке; Если товар в соответствии с Правилами биржевой торговли снят с торгов, Фирма извещает об этом в _______ дневный срок; Оплата производится в течение 3 (трех) дней после получения отчета Фирмы. Штрафы и санкции: В этом случае он уплачивает Фирме штраф в размере _____ процентов от суммы сделки; ФИРМА: а) за неисполнение поручения по ее вине - уплачивает штраф _____ процентов от суммы в _________________________, указанной в настоящем договоре; Если в течение ________ дней Клиент не оплатил в соответствии с условиями настоящего договора услуги Фирмы, Фирма самостоятельно проводит обратную конвертацию, оставляет на своем расчетном счету свое вознаграждение со всеми причитающимися штрафами и оставшуюся сумму перечисляет Клиенту в течение трех банковских дней с момента совершения обратной конвертации и поступления денег на свой расчетный счет. Найдено спорных или расплывчатых пунктов: 3.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "uncapped_daily_penalty",
+        "title": "Критический риск: Ежедневная пеня без верхнего лимита",
+        "severity": "critical",
+        "clause_id": "clause-1",
+        "description": "Договор содержит ежедневную пеню, но не ограничивает ее общий размер или период начисления. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: Образец. Договор комиссии на покупку валюты - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам v ДОГОВОР КОМИССИИ Nо. ____________ г. ______________ \"___\"__________ 20___ г. _______________________________________________________________, (наименование предприятия) именуемое в дальнейшем \"Фирма\", в лице ______________________________ (должность) __________________________________________, действующего на основании (фамилия, имя,. . .",
+        "role_relevance": "Неограниченная пеня быстро превращается в непропорциональную ответственность.",
+        "mitigation": "Установите cap по общей сумме неустойки и предельный период начисления."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Образец. Договор комиссии на покупку валюты - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам v ДОГОВОР КОМИССИИ Nо. ____________ г. ______________ \"___\"__________ 20___ г. _______________________________________________________________, (наименование предприятия) именуемое в дальнейшем \"Фирма\", в лице ______________________________ (должность) __________________________________________, действующего на основании (фамилия, имя,...",
+        "dispute_reason": "Одна из сторон получила дискреционное право без достаточных ограничителей.",
+        "possible_consequence": "Это может привести к одностороннему применению условия и спору о пределах такого права.",
+        "confidence": 0.76
+      },
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Образец. Договор комиссии на покупку валюты - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам v ДОГОВОР КОМИССИИ Nо. ____________ г. ______________ \"___\"__________ 20___ г. _______________________________________________________________, (наименование предприятия) именуемое в дальнейшем \"Фирма\", в лице ______________________________ (должность) __________________________________________, действующего на основании (фамилия, имя,...",
+        "dispute_reason": "Срок задан оценочно и может толковаться сторонами по-разному.",
+        "possible_consequence": "Стороны могут спорить о моменте надлежащего исполнения и начале просрочки.",
+        "confidence": 0.77
+      },
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Образец. Договор комиссии на покупку валюты - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам v ДОГОВОР КОМИССИИ Nо. ____________ г. ______________ \"___\"__________ 20___ г. _______________________________________________________________, (наименование предприятия) именуемое в дальнейшем \"Фирма\", в лице ______________________________ (должность) __________________________________________, действующего на основании (фамилия, имя,...",
+        "dispute_reason": "Маркер указывает на возможный конфликт между несколькими обязанностями или сроками.",
+        "possible_consequence": "При исполнении может оказаться, что условия невозможно соблюсти одновременно.",
+        "confidence": 0.66
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Подрядчик",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Подрядчик'. Обнаружено 1 пунктов с высоким уровнем риска; их стоит перепроверить вручную.",
+      "must_do": [
+        "1, Фирма по поступлению валюты на свой валютный счет извещает об этом Клиента, который обязуется в течение _______ банковских дней оплатить в полном объеме услуги Фирмы."
+      ],
+      "should_review": [
+        "Вместе с тем Фирма вправе списать соответствующие суммы (вместе с пени) со счета Клиента в безакцептном порядке в течение двенадцати месяцев с момента возникновения права требования."
+      ],
+      "payment_terms": [
+        "Переводит на счет Фирмы денежные средства в полном объеме на общую сумму ___________(_________________________________) рублей.",
+        "(прописью) Одновременно с этим переводит на счет Фирмы ее комиссионное вознаграждение.",
+        "ОПЛАТА 3.",
+        "За услуги по настоящему договору Клиент выплачивает Фирме вознаграждение в ____________ в размере _____ (_______) процентов от суммы сделки плюс _________ (___________) процентов от вознаграждения Фирмы НДС и дополнительно _______ (__________) процентов от разницы экономии фактической цены покупки и _________________________________ (средним курсом, зафиксированным на бирже на день покупки.",
+        "Оплата производится в течение 3 (трех) дней после получения отчета Фирмы.",
+        "Клиент оплачивает Бирже регистрационный сбор в размере и сроки, предусмотренном биржевыми правилами (через счет Фирмы)."
+      ],
+      "deadlines": [
+        "Исполнив договор, в _______ дневный срок представляет отчет с документами, полученными от Контрагента по совершенной сделке.",
+        "Если товар в соответствии с Правилами биржевой торговли снят с торгов, Фирма извещает об этом в _______ дневный срок.",
+        "Оплата производится в течение 3 (трех) дней после получения отчета Фирмы.",
+        "Клиент оплачивает Бирже регистрационный сбор в размере и сроки, предусмотренном биржевыми правилами (через счет Фирмы).",
+        "в) если просрочка длится свыше ______ дней - считается, что Клиент отказывается от оплаты.",
+        "Вместе с тем Фирма вправе списать соответствующие суммы (вместе с пени) со счета Клиента в безакцептном порядке в течение двенадцати месяцев с момента возникновения права требования."
+      ],
+      "penalties": [
+        "В этом случае он уплачивает Фирме штраф в размере _____ процентов от суммы сделки.",
+        "ФИРМА: а) за неисполнение поручения по ее вине - уплачивает штраф _____ процентов от суммы в _________________________, указанной в настоящем договоре.",
+        "Если в течение ________ дней Клиент не оплатил в соответствии с условиями настоящего договора услуги Фирмы, Фирма самостоятельно проводит обратную конвертацию, оставляет на своем расчетном счету свое вознаграждение со всеми причитающимися штрафами и оставшуюся сумму перечисляет Клиенту в течение трех банковских дней с момента совершения обратной конвертации и поступления денег на свой расчетный счет."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "cce57d00f74a1ea513d4de27c2ea03af31d563928bec913123efeb39562aefdc"
+    },
+    "contract_type": {
+      "type_id": "agency_agreement",
+      "confidence": 0.58,
+      "ru_name": "Агентский / комиссионный договор",
+      "legal_framework": "ГК РФ, главы 51 и 52"
+    },
+    "asymmetry_signals": []
+  },
+  "finished_at": "2026-04-28T16:18:50.301982+00:00",
+  "duration_ms": 283.31
+}

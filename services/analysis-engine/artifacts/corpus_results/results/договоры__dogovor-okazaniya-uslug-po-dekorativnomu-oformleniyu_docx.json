@@ -1,0 +1,599 @@
+{
+  "case_id": "договоры__dogovor-okazaniya-uslug-po-dekorativnomu-oformleniyu_docx",
+  "relative_path": "договоры/dogovor-okazaniya-uslug-po-dekorativnomu-oformleniyu.docx",
+  "document_path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\договоры\\dogovor-okazaniya-uslug-po-dekorativnomu-oformleniyu.docx",
+  "document_name": "dogovor-okazaniya-uslug-po-dekorativnomu-oformleniyu.docx",
+  "role": "Исполнитель",
+  "counterparty_role": "Заказчик",
+  "language": "ru",
+  "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+  "tags": [
+    "ad_hoc"
+  ],
+  "source_group": "договоры",
+  "expected": {},
+  "started_at": "2026-04-28T16:13:47.315274+00:00",
+  "status": "completed",
+  "request": {
+    "document_name": "dogovor-okazaniya-uslug-po-dekorativnomu-oformleniyu.docx",
+    "role_context": {
+      "role": "Исполнитель",
+      "counterparty_role": "Заказчик"
+    },
+    "document_text": null,
+    "document_base64": "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",
+    "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "language": "ru",
+    "locale": "ru"
+  },
+  "ingestion_preflight": {
+    "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "extractor": "docx:mammoth",
+    "extraction_source": "docx:mammoth",
+    "extraction_ok": true,
+    "error": null,
+    "extraction_error": null,
+    "sha256": "930b4ebffcede4e86a3ce213c7a33fb420396a916e8fc6b9c0d2bb9257681477"
+  },
+  "metrics": {
+    "risk_count": 17,
+    "high_risk_count": 10,
+    "disputed_clause_count": 4,
+    "asymmetry_signal_count": 1,
+    "contract_type": "service_agreement"
+  },
+  "analysis": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "mime_type:application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "reason": "Mime type документа перевел задачу в более безопасный lightweight/offload режим согласно policy."
+    },
+    "contract_brief": "Договор 'dogovor-okazaniya-uslug-po-dekorativnomu-oformleniyu. docx' разобран на 50 пунктов. Ниже показано, что действительно важно для роли 'Исполнитель'. Определен тип договора: Договор оказания услуг (уверенность 99%, правовая рамка: ГК РФ, глава 39). Что должен Исполнитель: Настоящим Договором Заказчик поручает и оплачивает, а Исполнитель обязуется лично, или при помощи третьих лиц, оказать ему услуги по декоративному оформлению помещений и других площадок, а также иные услуги по организации и проведению деловых и праздничных мероприятий, по адресу: ____________________________________________; Исполнитель обязуется сдать результат Заказчику, а Заказчик обязуется принять результат работ и оплатить выполненные работы. ; Исполнитель обязан: . Что должен Заказчик: Настоящим Договором Заказчик поручает и оплачивает, а Исполнитель обязуется лично, или при помощи третьих лиц, оказать ему услуги по декоративному оформлению помещений и других площадок, а также иные услуги по организации и проведению деловых и праздничных мероприятий, по адресу: ____________________________________________; Исполнитель обязуется сдать результат Заказчику, а Заказчик обязуется принять результат работ и оплатить выполненные работы. ; Заказчик обязан: . Условия оплаты: Исполнитель обязуется сдать результат Заказчику, а Заказчик обязуется принять результат работ и оплатить выполненные работы. ; Исполнитель обязуется устранить по требованию Заказчика за свой счет все выявленные при приемке Работ недостатки, если Сторонами не будет согласовано соразмерное уменьшение цены Работы или возмещение Подрядчиком расходов Заказчика, связанных с устранением выявленных недостатков. ; Оплата осуществляется путем перечисления денежных средств на расчетный счет Исполнителя в течение двух рабочих дней с момента подписания Договора. . Сроки и дедлайны: В течение дня перед мероприятием после получения от Исполнителя извещения об окончании Работы осмотреть и принять результат Работ, о чем составляется акт приемки, за подписью обеих сторон настоящего Договора. ; Заказчик обязуется своевременно предоставить Исполнителю всю необходимую достоверную информацию по заказу, а также обеспечить доступ сотрудников Исполнителя к местам проведения работ и в сроки, оговоренные в Протоколе. ; Выполнить работы в срок и в объеме, предусмотренном настоящим Договором и с надлежащим уровнем качества. . Штрафы и санкции: В случае, одностороннего расторжения данного Договора Заказчиком, либо невозможности его исполнения по вине Заказчика или по вине обстоятельств, за которые несет ответственность Заказчик, Исполнитель удерживает внесенный Заказчиком задаток в качестве неустойки. ; В случае, одностороннего расторжения данного Договора Заказчиком, либо невозможности его исполнения по вине Заказчика или по вине обстоятельств, за которые несет ответственность Заказчик, Исполнитель удерживает внесенный Заказчиком задаток в качестве неустойки. Найдено спорных или расплывчатых пунктов: 4.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "undefined_acceptance_criteria",
+        "title": "Критический риск: Неопределенные критерии приемки",
+        "severity": "critical",
+        "clause_id": "clause-5",
+        "description": "В договоре есть приемка результата, но отсутствуют объективные критерии качества, чек-листы, метрики или ссылка на полное ТЗ. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: 2. 1. 1. В течение дня перед мероприятием после получения от Исполнителя извещения об окончании Работы осмотреть и принять результат Работ, о чем составляется акт приемки, за подписью обеих сторон настоящего Договора.",
+        "role_relevance": "Без критериев приемки исполнитель зависит от субъективного мнения заказчика.",
+        "mitigation": "Опишите, что именно считается готовым результатом и по каким тестам или документам это проверяется."
+      },
+      {
+        "risk_id": "risk-2",
+        "rule_id": "undefined_acceptance_criteria",
+        "title": "Критический риск: Неопределенные критерии приемки",
+        "severity": "critical",
+        "clause_id": "clause-13",
+        "description": "В договоре есть приемка результата, но отсутствуют объективные критерии качества, чек-листы, метрики или ссылка на полное ТЗ. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: 2. 4. Исполнитель обязуется устранить по требованию Заказчика за свой счет все выявленные при приемке Работ недостатки, если Сторонами не будет согласовано соразмерное уменьшение цены Работы или возмещение Подрядчиком расходов Заказчика, связанных с устранением выявленных недостатков.",
+        "role_relevance": "Без критериев приемки исполнитель зависит от субъективного мнения заказчика.",
+        "mitigation": "Опишите, что именно считается готовым результатом и по каким тестам или документам это проверяется."
+      },
+      {
+        "risk_id": "risk-3",
+        "rule_id": "uncapped_daily_penalty",
+        "title": "Критический риск: Ежедневная пеня без верхнего лимита",
+        "severity": "critical",
+        "clause_id": "clause-37",
+        "description": "Договор содержит ежедневную пеню, но не ограничивает ее общий размер или период начисления. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: 6. 1. В случае нарушения Исполнителем срока выполнения работ, указанного в пункте 4. 1. настоящего Договора, он уплачивает Заказчику пеню в размере 0,1% от цены Работ за каждый час просрочки, но не более 3% от стоимости работ настоящего Договора.",
+        "role_relevance": "Неограниченная пеня быстро превращается в непропорциональную ответственность.",
+        "mitigation": "Установите cap по общей сумме неустойки и предельный период начисления."
+      },
+      {
+        "risk_id": "risk-4",
+        "rule_id": "uncapped_daily_penalty",
+        "title": "Критический риск: Ежедневная пеня без верхнего лимита",
+        "severity": "critical",
+        "clause_id": "clause-39",
+        "description": "Договор содержит ежедневную пеню, но не ограничивает ее общий размер или период начисления. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: 6. 3. За несвоевременную оплату выполненных работ Заказчик выплачивает Исполнителю пеню в размере 0,1% от цены не оплаченной работы за каждый час просрочки, но не более 3% от стоимости работ настоящего Договора.",
+        "role_relevance": "Неограниченная пеня быстро превращается в непропорциональную ответственность.",
+        "mitigation": "Установите cap по общей сумме неустойки и предельный период начисления."
+      },
+      {
+        "risk_id": "risk-5",
+        "rule_id": "payment_asymmetry",
+        "title": "Критический риск: Платежная асимметрия: исполнение до оплаты",
+        "severity": "critical",
+        "clause_id": "clause-40",
+        "description": "Одна сторона обязана начать исполнение раньше, чем получает деньги, что создает кассовый разрыв и риск неоплаты. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: 6. 4. В случае, когда возникает невозможность исполнения данного Договора по обстоятельствам, за которые ни одна из Сторон не отвечает, Исполнитель возвращает Заказчику полученную предоплату, за вычетом фактически понесенных им в связи с данным Договором расходов.",
+        "role_relevance": "Для исполнителя это прямой риск финансировать проект за свой счет.",
+        "mitigation": "Согласуйте аванс, этапные платежи или право приостановить исполнение до поступления оплаты."
+      },
+      {
+        "risk_id": "risk-6",
+        "rule_id": "payment_asymmetry",
+        "title": "Критический риск: Платежная асимметрия: исполнение до оплаты",
+        "severity": "critical",
+        "clause_id": "clause-42",
+        "description": "Одна сторона обязана начать исполнение раньше, чем получает деньги, что создает кассовый разрыв и риск неоплаты. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: 6. 6. В исключительном случае, при отсутствии материала (например, определенного типа воздушных шаров) у поставщиков, Исполнитель имеет право, по согласованию с Заказчиком, произвести замену такого материала на максимально подобный. При этом производится пересчет стоимости заказа с изменением суммы данного Договора, либо, по требованию Заказчика, данный Договор расторгается с возвратом Исполнителем Заказчику всей внесенной им предоплаты.",
+        "role_relevance": "Для исполнителя это прямой риск финансировать проект за свой счет.",
+        "mitigation": "Согласуйте аванс, этапные платежи или право приостановить исполнение до поступления оплаты."
+      },
+      {
+        "risk_id": "risk-7",
+        "rule_id": "strict_deadlines_without_dependency_carveout",
+        "title": "Высокий риск: Жесткие сроки без оговорки о зависимостях",
+        "severity": "high",
+        "clause_id": "clause-19",
+        "description": "Сроки для одной стороны установлены жестко, но не учитывают задержки по исходным данным, доступам, согласованиям и приемке со стороны контрагента. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: 4. СРОК ВЫПОЛНЕНИЯ ДОГОВОРА.",
+        "role_relevance": "Исполнитель отвечает за сроки, которые частично контролирует контрагент.",
+        "mitigation": "Пропишите, что сроки автоматически сдвигаются на период задержки зависимых действий другой стороны."
+      },
+      {
+        "risk_id": "risk-8",
+        "rule_id": "vague_material_breach",
+        "title": "Высокий риск: Расторжение привязано к расплывчатому нарушению",
+        "severity": "high",
+        "clause_id": "clause-38",
+        "description": "Основание для расторжения описано общими словами вроде 'ненадлежащее исполнение' без порога существенности и процедуры фиксации. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: 6. 2. За ненадлежащее качество работы, Исполнитель несет ответственность в соответствии с законодательством РФ.",
+        "role_relevance": "Широкое основание позволяет прекратить договор по субъективной оценке.",
+        "mitigation": "Уточните, какие нарушения считаются существенными, и дайте срок на устранение."
+      },
+      {
+        "risk_id": "risk-9",
+        "rule_id": "one_sided_penalty",
+        "title": "Высокий риск: Неустойка предусмотрена только для одной стороны",
+        "severity": "high",
+        "clause_id": "clause-41",
+        "description": "Санкции за нарушение детально описаны только для одной стороны, что создает асимметричный договорный баланс. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: 6. 5. В случае, одностороннего расторжения данного Договора Заказчиком, либо невозможности его исполнения по вине Заказчика или по вине обстоятельств, за которые несет ответственность Заказчик, Исполнитель удерживает внесенный Заказчиком задаток в качестве неустойки.",
+        "role_relevance": "Исполнитель несет санкции, не имея симметричных средств давления.",
+        "mitigation": "Сделайте ответственность зеркальной или обоснуйте, почему санкция односторонняя и ограниченная."
+      },
+      {
+        "risk_id": "risk-10",
+        "rule_id": "ip_transfer_without_scope",
+        "title": "Высокий риск: Передача IP без точного объема прав",
+        "severity": "high",
+        "clause_id": "clause-42",
+        "description": "Договор говорит о передаче результатов, прав или лицензии, но не фиксирует территорию, срок, способ использования или исключительность. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: 6. 6. В исключительном случае, при отсутствии материала (например, определенного типа воздушных шаров) у поставщиков, Исполнитель имеет право, по согласованию с Заказчиком, произвести замену такого материала на максимально подобный. При этом производится пересчет стоимости заказа с изменением суммы данного Договора, либо, по требованию Заказчика, данный Договор расторгается с возвратом Исполнителем Заказчику всей внесенной им предоплаты.",
+        "role_relevance": "Исполнитель может непреднамеренно отдать больше прав, чем планировал.",
+        "mitigation": "Опишите объект, объем прав, территорию, срок и момент перехода прав отдельными формулировками."
+      },
+      {
+        "risk_id": "risk-11",
+        "rule_id": "uncontrolled_subcontracting",
+        "title": "Средний риск: Субподряд или привлечение третьих лиц описаны неясно",
+        "severity": "medium",
+        "clause_id": "clause-2",
+        "description": "Либо привлечение третьих лиц запрещено без разумных исключений, либо разрешено без контроля, уведомления и ответственности за качество. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: 1. Настоящим Договором Заказчик поручает и оплачивает, а Исполнитель обязуется лично, или при помощи третьих лиц, оказать ему услуги по декоративному оформлению помещений и других площадок, а также иные услуги по организации и проведению деловых и праздничных мероприятий, по адресу: ____________________________________________\nНаименование работ, стоимость и прочие необходимые условия заказа, фиксируются в протоколе согласования цены, именуемом в дальнейшем «Протокол», являющегося неотъемлемой. . .",
+        "role_relevance": "Полный запрет на субподряд может сделать исполнение нереалистичным.",
+        "mitigation": "Уточните, когда третьи лица допустимы, нужно ли согласие и кто отвечает за их ошибки."
+      },
+      {
+        "risk_id": "risk-12",
+        "rule_id": "uncontrolled_subcontracting",
+        "title": "Средний риск: Субподряд или привлечение третьих лиц описаны неясно",
+        "severity": "medium",
+        "clause_id": "clause-11",
+        "description": "Либо привлечение третьих лиц запрещено без разумных исключений, либо разрешено без контроля, уведомления и ответственности за качество. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: 2. 2. 2. Исполнитель обязан выполнить предусмотренную в настоящем Договоре работу лично. Привлечение Подрядчиком третьих лиц возможно. При этом Исполнитель несет ответственность перед Заказчиком за действия третьих лиц.",
+        "role_relevance": "Полный запрет на субподряд может сделать исполнение нереалистичным.",
+        "mitigation": "Уточните, когда третьи лица допустимы, нужно ли согласие и кто отвечает за их ошибки."
+      },
+      {
+        "risk_id": "risk-13",
+        "rule_id": "conflicting_obligations",
+        "title": "Средний риск: В договоре есть конфликтующие или несогласованные обязанности",
+        "severity": "medium",
+        "clause_id": "clause-11",
+        "description": "Разные пункты задают несовместимые сроки, объемы или последствия нарушения, поэтому неясно, какое условие имеет приоритет. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: 2. 2. 2. Исполнитель обязан выполнить предусмотренную в настоящем Договоре работу лично. Привлечение Подрядчиком третьих лиц возможно. При этом Исполнитель несет ответственность перед Заказчиком за действия третьих лиц.",
+        "role_relevance": "Исполнитель рискует быть нарушителем при любой трактовке противоречащих пунктов.",
+        "mitigation": "Сведите взаимосвязанные условия в единую таблицу обязательств и определите приоритет документов."
+      },
+      {
+        "risk_id": "risk-14",
+        "rule_id": "conflicting_obligations",
+        "title": "Средний риск: В договоре есть конфликтующие или несогласованные обязанности",
+        "severity": "medium",
+        "clause_id": "clause-12",
+        "description": "Разные пункты задают несовместимые сроки, объемы или последствия нарушения, поэтому неясно, какое условие имеет приоритет. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: 2. 3. Исполнитель выполняет заказ на основе данных, записанных в Протоколе. Изменение Заказчиком условий заказа, возможно только при наличии такой возможности у Исполнителя и с его согласия. При этом изменения фиксируются в действующем, либо новом Протоколе.",
+        "role_relevance": "Исполнитель рискует быть нарушителем при любой трактовке противоречащих пунктов.",
+        "mitigation": "Сведите взаимосвязанные условия в единую таблицу обязательств и определите приоритет документов."
+      },
+      {
+        "risk_id": "risk-15",
+        "rule_id": "conflicting_obligations",
+        "title": "Средний риск: В договоре есть конфликтующие или несогласованные обязанности",
+        "severity": "medium",
+        "clause_id": "clause-31",
+        "description": "Разные пункты задают несовместимые сроки, объемы или последствия нарушения, поэтому неясно, какое условие имеет приоритет. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: 5. 1. 8. При изменении температуры окружающего их воздуха с момента надувания более чем на 5 градусов Цельсия (при этом меняется объем наполняющего их газа, что может привести к разрыву или, наоборот, обмяканию шаров).",
+        "role_relevance": "Исполнитель рискует быть нарушителем при любой трактовке противоречащих пунктов.",
+        "mitigation": "Сведите взаимосвязанные условия в единую таблицу обязательств и определите приоритет документов."
+      },
+      {
+        "risk_id": "risk-16",
+        "rule_id": "conflicting_obligations",
+        "title": "Средний риск: В договоре есть конфликтующие или несогласованные обязанности",
+        "severity": "medium",
+        "clause_id": "clause-42",
+        "description": "Разные пункты задают несовместимые сроки, объемы или последствия нарушения, поэтому неясно, какое условие имеет приоритет. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: 6. 6. В исключительном случае, при отсутствии материала (например, определенного типа воздушных шаров) у поставщиков, Исполнитель имеет право, по согласованию с Заказчиком, произвести замену такого материала на максимально подобный. При этом производится пересчет стоимости заказа с изменением суммы данного Договора, либо, по требованию Заказчика, данный Договор расторгается с возвратом Исполнителем Заказчику всей внесенной им предоплаты.",
+        "role_relevance": "Исполнитель рискует быть нарушителем при любой трактовке противоречащих пунктов.",
+        "mitigation": "Сведите взаимосвязанные условия в единую таблицу обязательств и определите приоритет документов."
+      },
+      {
+        "risk_id": "risk-17",
+        "rule_id": "favorable_jurisdiction_or_dispute_clause",
+        "title": "Средний риск: Подсудность и споры сформулированы в пользу одной стороны",
+        "severity": "medium",
+        "clause_id": "clause-46",
+        "description": "Порядок разрешения споров делает защиту неудобной: удаленная подсудность, сложный претензионный порядок или неопределенный арбитраж. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: 7. 2. В случае невозможности разрешения споров путем переговоров они подлежат рассмотрению в Арбитражном суде г. _____________.",
+        "role_relevance": "Удаленная подсудность повышает стоимость защиты интересов исполнителя.",
+        "mitigation": "Проверьте применимое право, подсудность, сроки претензии и выполнимость выбранного способа защиты."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-11",
+        "clause_excerpt": "2. 2. 2. Исполнитель обязан выполнить предусмотренную в настоящем Договоре работу лично. Привлечение Подрядчиком третьих лиц возможно. При этом Исполнитель несет ответственность перед Заказчиком за действия третьих лиц.",
+        "dispute_reason": "Маркер указывает на возможный конфликт между несколькими обязанностями или сроками.",
+        "possible_consequence": "При исполнении может оказаться, что условия невозможно соблюсти одновременно.",
+        "confidence": 0.66
+      },
+      {
+        "clause_id": "clause-12",
+        "clause_excerpt": "2. 3. Исполнитель выполняет заказ на основе данных, записанных в Протоколе. Изменение Заказчиком условий заказа, возможно только при наличии такой возможности у Исполнителя и с его согласия. При этом изменения фиксируются в действующем, либо новом Протоколе.",
+        "dispute_reason": "Маркер указывает на возможный конфликт между несколькими обязанностями или сроками.",
+        "possible_consequence": "При исполнении может оказаться, что условия невозможно соблюсти одновременно.",
+        "confidence": 0.66
+      },
+      {
+        "clause_id": "clause-31",
+        "clause_excerpt": "5. 1. 8. При изменении температуры окружающего их воздуха с момента надувания более чем на 5 градусов Цельсия (при этом меняется объем наполняющего их газа, что может привести к разрыву или, наоборот, обмяканию шаров).",
+        "dispute_reason": "Маркер указывает на возможный конфликт между несколькими обязанностями или сроками.",
+        "possible_consequence": "При исполнении может оказаться, что условия невозможно соблюсти одновременно.",
+        "confidence": 0.66
+      },
+      {
+        "clause_id": "clause-42",
+        "clause_excerpt": "6. 6. В исключительном случае, при отсутствии материала (например, определенного типа воздушных шаров) у поставщиков, Исполнитель имеет право, по согласованию с Заказчиком, произвести замену такого материала на максимально подобный. При этом производится пересчет стоимости заказа с изменением суммы данного Договора, либо, по требованию Заказчика, данный Договор расторгается с возвратом Исполнителем Заказчику всей внесенной им предоплаты.",
+        "dispute_reason": "Маркер указывает на возможный конфликт между несколькими обязанностями или сроками.",
+        "possible_consequence": "При исполнении может оказаться, что условия невозможно соблюсти одновременно.",
+        "confidence": 0.66
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Исполнитель",
+      "overview": "Договор содержит 50 пунктов и 17 выявленных рисков. Краткий вывод сфокусирован на роли 'Исполнитель'. Обнаружено 10 пунктов с высоким уровнем риска; их стоит перепроверить вручную.",
+      "must_do": [
+        "Настоящим Договором Заказчик поручает и оплачивает, а Исполнитель обязуется лично, или при помощи третьих лиц, оказать ему услуги по декоративному оформлению помещений и других площадок, а также иные услуги по организации и проведению деловых и праздничных мероприятий, по адресу: ____________________________________________.",
+        "Исполнитель обязуется сдать результат Заказчику, а Заказчик обязуется принять результат работ и оплатить выполненные работы. .",
+        "Исполнитель обязан: .",
+        "Исполнитель обязан выполнить предусмотренную в настоящем Договоре работу лично.",
+        "Исполнитель обязуется устранить по требованию Заказчика за свой счет все выявленные при приемке Работ недостатки, если Сторонами не будет согласовано соразмерное уменьшение цены Работы или возмещение Подрядчиком расходов Заказчика, связанных с устранением выявленных недостатков. .",
+        "Исполнитель обязуется сдать результат Заказчику, а Заказчик обязуется принять результат работ и оплатить выполненные работы."
+      ],
+      "should_review": [
+        "Стоимость работы может быть изменена вследствие изменений, внесенных по требованию Заказчика в ходе выполнения работ. .",
+        "Стоимость работы может быть изменена вследствие изменений, внесенных по требованию Заказчика в ходе выполнения работ.",
+        "При изменении температуры окружающего их воздуха с момента надувания более чем на 5 градусов Цельсия (при этом меняется объем наполняющего их газа, что может привести к разрыву или, наоборот, обмяканию шаров)."
+      ],
+      "payment_terms": [
+        "Исполнитель обязуется сдать результат Заказчику, а Заказчик обязуется принять результат работ и оплатить выполненные работы. .",
+        "Исполнитель обязуется устранить по требованию Заказчика за свой счет все выявленные при приемке Работ недостатки, если Сторонами не будет согласовано соразмерное уменьшение цены Работы или возмещение Подрядчиком расходов Заказчика, связанных с устранением выявленных недостатков. .",
+        "За несвоевременную оплату выполненных работ Заказчик выплачивает Исполнителю пеню в размере 0,1% от цены не оплаченной работы за каждый час просрочки, но не более 3% от стоимости работ настоящего Договора. .",
+        "В случае, когда возникает невозможность исполнения данного Договора по обстоятельствам, за которые ни одна из Сторон не отвечает, Исполнитель возвращает Заказчику полученную предоплату, за вычетом фактически понесенных им в связи с данным Договором расходов. .",
+        "При этом производится пересчет стоимости заказа с изменением суммы данного Договора, либо, по требованию Заказчика, данный Договор расторгается с возвратом Исполнителем Заказчику всей внесенной им предоплаты.",
+        "Исполнитель обязуется сдать результат Заказчику, а Заказчик обязуется принять результат работ и оплатить выполненные работы."
+      ],
+      "deadlines": [
+        "Заказчик обязуется своевременно предоставить Исполнителю всю необходимую достоверную информацию по заказу, а также обеспечить доступ сотрудников Исполнителя к местам проведения работ и в сроки, оговоренные в Протоколе. .",
+        "Исполнитель выполняет работы в следующие сроки: .",
+        "Срок действия Договора: до полного выполнения обязательств Заказчиком и Исполнителем по данному Договору. .",
+        "Исполнитель гарантирует сохранение целостности и первоначального внешнего вида оформления из воздушных шаров при соблюдении следующих условий: оформление воздушными шарами не предназначено для длительного использования и сохраняет свой праздничный вид от нескольких часов до 3 дней (конкретные сроки – см.",
+        "Требования, связанные недостатками результата Работы, Заказчик имеет право предъявить в течение гарантийного срока. .",
+        "Заказчик обязуется своевременно предоставить Исполнителю всю необходимую достоверную информацию по заказу, а также обеспечить доступ сотрудников Исполнителя к местам проведения работ и в сроки, оговоренные в Протоколе."
+      ],
+      "penalties": [
+        "В случае, одностороннего расторжения данного Договора Заказчиком, либо невозможности его исполнения по вине Заказчика или по вине обстоятельств, за которые несет ответственность Заказчик, Исполнитель удерживает внесенный Заказчиком задаток в качестве неустойки. .",
+        "В случае, одностороннего расторжения данного Договора Заказчиком, либо невозможности его исполнения по вине Заказчика или по вине обстоятельств, за которые несет ответственность Заказчик, Исполнитель удерживает внесенный Заказчиком задаток в качестве неустойки."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "docx:mammoth",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "930b4ebffcede4e86a3ce213c7a33fb420396a916e8fc6b9c0d2bb9257681477"
+    },
+    "contract_type": {
+      "type_id": "service_agreement",
+      "confidence": 0.99,
+      "ru_name": "Договор оказания услуг",
+      "legal_framework": "ГК РФ, глава 39"
+    },
+    "asymmetry_signals": [
+      {
+        "risk_id": "undefined_acceptance_criteria",
+        "clause_id": "clause-5",
+        "summary": "Приемка предусмотрена без объективных критериев результата.",
+        "details": "2. 1. 1. В течение дня перед мероприятием после получения от Исполнителя извещения об окончании Работы осмотреть и принять результат Работ, о чем составляется акт приемки, за подписью обеих сторон настоящего Договора.",
+        "severity_hint": "medium",
+        "affected_roles": [
+          "executor",
+          "client"
+        ]
+      }
+    ]
+  },
+  "result": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "mime_type:application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "reason": "Mime type документа перевел задачу в более безопасный lightweight/offload режим согласно policy."
+    },
+    "contract_brief": "Договор 'dogovor-okazaniya-uslug-po-dekorativnomu-oformleniyu. docx' разобран на 50 пунктов. Ниже показано, что действительно важно для роли 'Исполнитель'. Определен тип договора: Договор оказания услуг (уверенность 99%, правовая рамка: ГК РФ, глава 39). Что должен Исполнитель: Настоящим Договором Заказчик поручает и оплачивает, а Исполнитель обязуется лично, или при помощи третьих лиц, оказать ему услуги по декоративному оформлению помещений и других площадок, а также иные услуги по организации и проведению деловых и праздничных мероприятий, по адресу: ____________________________________________; Исполнитель обязуется сдать результат Заказчику, а Заказчик обязуется принять результат работ и оплатить выполненные работы. ; Исполнитель обязан: . Что должен Заказчик: Настоящим Договором Заказчик поручает и оплачивает, а Исполнитель обязуется лично, или при помощи третьих лиц, оказать ему услуги по декоративному оформлению помещений и других площадок, а также иные услуги по организации и проведению деловых и праздничных мероприятий, по адресу: ____________________________________________; Исполнитель обязуется сдать результат Заказчику, а Заказчик обязуется принять результат работ и оплатить выполненные работы. ; Заказчик обязан: . Условия оплаты: Исполнитель обязуется сдать результат Заказчику, а Заказчик обязуется принять результат работ и оплатить выполненные работы. ; Исполнитель обязуется устранить по требованию Заказчика за свой счет все выявленные при приемке Работ недостатки, если Сторонами не будет согласовано соразмерное уменьшение цены Работы или возмещение Подрядчиком расходов Заказчика, связанных с устранением выявленных недостатков. ; Оплата осуществляется путем перечисления денежных средств на расчетный счет Исполнителя в течение двух рабочих дней с момента подписания Договора. . Сроки и дедлайны: В течение дня перед мероприятием после получения от Исполнителя извещения об окончании Работы осмотреть и принять результат Работ, о чем составляется акт приемки, за подписью обеих сторон настоящего Договора. ; Заказчик обязуется своевременно предоставить Исполнителю всю необходимую достоверную информацию по заказу, а также обеспечить доступ сотрудников Исполнителя к местам проведения работ и в сроки, оговоренные в Протоколе. ; Выполнить работы в срок и в объеме, предусмотренном настоящим Договором и с надлежащим уровнем качества. . Штрафы и санкции: В случае, одностороннего расторжения данного Договора Заказчиком, либо невозможности его исполнения по вине Заказчика или по вине обстоятельств, за которые несет ответственность Заказчик, Исполнитель удерживает внесенный Заказчиком задаток в качестве неустойки. ; В случае, одностороннего расторжения данного Договора Заказчиком, либо невозможности его исполнения по вине Заказчика или по вине обстоятельств, за которые несет ответственность Заказчик, Исполнитель удерживает внесенный Заказчиком задаток в качестве неустойки. Найдено спорных или расплывчатых пунктов: 4.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "undefined_acceptance_criteria",
+        "title": "Критический риск: Неопределенные критерии приемки",
+        "severity": "critical",
+        "clause_id": "clause-5",
+        "description": "В договоре есть приемка результата, но отсутствуют объективные критерии качества, чек-листы, метрики или ссылка на полное ТЗ. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: 2. 1. 1. В течение дня перед мероприятием после получения от Исполнителя извещения об окончании Работы осмотреть и принять результат Работ, о чем составляется акт приемки, за подписью обеих сторон настоящего Договора.",
+        "role_relevance": "Без критериев приемки исполнитель зависит от субъективного мнения заказчика.",
+        "mitigation": "Опишите, что именно считается готовым результатом и по каким тестам или документам это проверяется."
+      },
+      {
+        "risk_id": "risk-2",
+        "rule_id": "undefined_acceptance_criteria",
+        "title": "Критический риск: Неопределенные критерии приемки",
+        "severity": "critical",
+        "clause_id": "clause-13",
+        "description": "В договоре есть приемка результата, но отсутствуют объективные критерии качества, чек-листы, метрики или ссылка на полное ТЗ. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: 2. 4. Исполнитель обязуется устранить по требованию Заказчика за свой счет все выявленные при приемке Работ недостатки, если Сторонами не будет согласовано соразмерное уменьшение цены Работы или возмещение Подрядчиком расходов Заказчика, связанных с устранением выявленных недостатков.",
+        "role_relevance": "Без критериев приемки исполнитель зависит от субъективного мнения заказчика.",
+        "mitigation": "Опишите, что именно считается готовым результатом и по каким тестам или документам это проверяется."
+      },
+      {
+        "risk_id": "risk-3",
+        "rule_id": "uncapped_daily_penalty",
+        "title": "Критический риск: Ежедневная пеня без верхнего лимита",
+        "severity": "critical",
+        "clause_id": "clause-37",
+        "description": "Договор содержит ежедневную пеню, но не ограничивает ее общий размер или период начисления. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: 6. 1. В случае нарушения Исполнителем срока выполнения работ, указанного в пункте 4. 1. настоящего Договора, он уплачивает Заказчику пеню в размере 0,1% от цены Работ за каждый час просрочки, но не более 3% от стоимости работ настоящего Договора.",
+        "role_relevance": "Неограниченная пеня быстро превращается в непропорциональную ответственность.",
+        "mitigation": "Установите cap по общей сумме неустойки и предельный период начисления."
+      },
+      {
+        "risk_id": "risk-4",
+        "rule_id": "uncapped_daily_penalty",
+        "title": "Критический риск: Ежедневная пеня без верхнего лимита",
+        "severity": "critical",
+        "clause_id": "clause-39",
+        "description": "Договор содержит ежедневную пеню, но не ограничивает ее общий размер или период начисления. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: 6. 3. За несвоевременную оплату выполненных работ Заказчик выплачивает Исполнителю пеню в размере 0,1% от цены не оплаченной работы за каждый час просрочки, но не более 3% от стоимости работ настоящего Договора.",
+        "role_relevance": "Неограниченная пеня быстро превращается в непропорциональную ответственность.",
+        "mitigation": "Установите cap по общей сумме неустойки и предельный период начисления."
+      },
+      {
+        "risk_id": "risk-5",
+        "rule_id": "payment_asymmetry",
+        "title": "Критический риск: Платежная асимметрия: исполнение до оплаты",
+        "severity": "critical",
+        "clause_id": "clause-40",
+        "description": "Одна сторона обязана начать исполнение раньше, чем получает деньги, что создает кассовый разрыв и риск неоплаты. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: 6. 4. В случае, когда возникает невозможность исполнения данного Договора по обстоятельствам, за которые ни одна из Сторон не отвечает, Исполнитель возвращает Заказчику полученную предоплату, за вычетом фактически понесенных им в связи с данным Договором расходов.",
+        "role_relevance": "Для исполнителя это прямой риск финансировать проект за свой счет.",
+        "mitigation": "Согласуйте аванс, этапные платежи или право приостановить исполнение до поступления оплаты."
+      },
+      {
+        "risk_id": "risk-6",
+        "rule_id": "payment_asymmetry",
+        "title": "Критический риск: Платежная асимметрия: исполнение до оплаты",
+        "severity": "critical",
+        "clause_id": "clause-42",
+        "description": "Одна сторона обязана начать исполнение раньше, чем получает деньги, что создает кассовый разрыв и риск неоплаты. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: 6. 6. В исключительном случае, при отсутствии материала (например, определенного типа воздушных шаров) у поставщиков, Исполнитель имеет право, по согласованию с Заказчиком, произвести замену такого материала на максимально подобный. При этом производится пересчет стоимости заказа с изменением суммы данного Договора, либо, по требованию Заказчика, данный Договор расторгается с возвратом Исполнителем Заказчику всей внесенной им предоплаты.",
+        "role_relevance": "Для исполнителя это прямой риск финансировать проект за свой счет.",
+        "mitigation": "Согласуйте аванс, этапные платежи или право приостановить исполнение до поступления оплаты."
+      },
+      {
+        "risk_id": "risk-7",
+        "rule_id": "strict_deadlines_without_dependency_carveout",
+        "title": "Высокий риск: Жесткие сроки без оговорки о зависимостях",
+        "severity": "high",
+        "clause_id": "clause-19",
+        "description": "Сроки для одной стороны установлены жестко, но не учитывают задержки по исходным данным, доступам, согласованиям и приемке со стороны контрагента. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: 4. СРОК ВЫПОЛНЕНИЯ ДОГОВОРА.",
+        "role_relevance": "Исполнитель отвечает за сроки, которые частично контролирует контрагент.",
+        "mitigation": "Пропишите, что сроки автоматически сдвигаются на период задержки зависимых действий другой стороны."
+      },
+      {
+        "risk_id": "risk-8",
+        "rule_id": "vague_material_breach",
+        "title": "Высокий риск: Расторжение привязано к расплывчатому нарушению",
+        "severity": "high",
+        "clause_id": "clause-38",
+        "description": "Основание для расторжения описано общими словами вроде 'ненадлежащее исполнение' без порога существенности и процедуры фиксации. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: 6. 2. За ненадлежащее качество работы, Исполнитель несет ответственность в соответствии с законодательством РФ.",
+        "role_relevance": "Широкое основание позволяет прекратить договор по субъективной оценке.",
+        "mitigation": "Уточните, какие нарушения считаются существенными, и дайте срок на устранение."
+      },
+      {
+        "risk_id": "risk-9",
+        "rule_id": "one_sided_penalty",
+        "title": "Высокий риск: Неустойка предусмотрена только для одной стороны",
+        "severity": "high",
+        "clause_id": "clause-41",
+        "description": "Санкции за нарушение детально описаны только для одной стороны, что создает асимметричный договорный баланс. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: 6. 5. В случае, одностороннего расторжения данного Договора Заказчиком, либо невозможности его исполнения по вине Заказчика или по вине обстоятельств, за которые несет ответственность Заказчик, Исполнитель удерживает внесенный Заказчиком задаток в качестве неустойки.",
+        "role_relevance": "Исполнитель несет санкции, не имея симметричных средств давления.",
+        "mitigation": "Сделайте ответственность зеркальной или обоснуйте, почему санкция односторонняя и ограниченная."
+      },
+      {
+        "risk_id": "risk-10",
+        "rule_id": "ip_transfer_without_scope",
+        "title": "Высокий риск: Передача IP без точного объема прав",
+        "severity": "high",
+        "clause_id": "clause-42",
+        "description": "Договор говорит о передаче результатов, прав или лицензии, но не фиксирует территорию, срок, способ использования или исключительность. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: 6. 6. В исключительном случае, при отсутствии материала (например, определенного типа воздушных шаров) у поставщиков, Исполнитель имеет право, по согласованию с Заказчиком, произвести замену такого материала на максимально подобный. При этом производится пересчет стоимости заказа с изменением суммы данного Договора, либо, по требованию Заказчика, данный Договор расторгается с возвратом Исполнителем Заказчику всей внесенной им предоплаты.",
+        "role_relevance": "Исполнитель может непреднамеренно отдать больше прав, чем планировал.",
+        "mitigation": "Опишите объект, объем прав, территорию, срок и момент перехода прав отдельными формулировками."
+      },
+      {
+        "risk_id": "risk-11",
+        "rule_id": "uncontrolled_subcontracting",
+        "title": "Средний риск: Субподряд или привлечение третьих лиц описаны неясно",
+        "severity": "medium",
+        "clause_id": "clause-2",
+        "description": "Либо привлечение третьих лиц запрещено без разумных исключений, либо разрешено без контроля, уведомления и ответственности за качество. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: 1. Настоящим Договором Заказчик поручает и оплачивает, а Исполнитель обязуется лично, или при помощи третьих лиц, оказать ему услуги по декоративному оформлению помещений и других площадок, а также иные услуги по организации и проведению деловых и праздничных мероприятий, по адресу: ____________________________________________\nНаименование работ, стоимость и прочие необходимые условия заказа, фиксируются в протоколе согласования цены, именуемом в дальнейшем «Протокол», являющегося неотъемлемой. . .",
+        "role_relevance": "Полный запрет на субподряд может сделать исполнение нереалистичным.",
+        "mitigation": "Уточните, когда третьи лица допустимы, нужно ли согласие и кто отвечает за их ошибки."
+      },
+      {
+        "risk_id": "risk-12",
+        "rule_id": "uncontrolled_subcontracting",
+        "title": "Средний риск: Субподряд или привлечение третьих лиц описаны неясно",
+        "severity": "medium",
+        "clause_id": "clause-11",
+        "description": "Либо привлечение третьих лиц запрещено без разумных исключений, либо разрешено без контроля, уведомления и ответственности за качество. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: 2. 2. 2. Исполнитель обязан выполнить предусмотренную в настоящем Договоре работу лично. Привлечение Подрядчиком третьих лиц возможно. При этом Исполнитель несет ответственность перед Заказчиком за действия третьих лиц.",
+        "role_relevance": "Полный запрет на субподряд может сделать исполнение нереалистичным.",
+        "mitigation": "Уточните, когда третьи лица допустимы, нужно ли согласие и кто отвечает за их ошибки."
+      },
+      {
+        "risk_id": "risk-13",
+        "rule_id": "conflicting_obligations",
+        "title": "Средний риск: В договоре есть конфликтующие или несогласованные обязанности",
+        "severity": "medium",
+        "clause_id": "clause-11",
+        "description": "Разные пункты задают несовместимые сроки, объемы или последствия нарушения, поэтому неясно, какое условие имеет приоритет. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: 2. 2. 2. Исполнитель обязан выполнить предусмотренную в настоящем Договоре работу лично. Привлечение Подрядчиком третьих лиц возможно. При этом Исполнитель несет ответственность перед Заказчиком за действия третьих лиц.",
+        "role_relevance": "Исполнитель рискует быть нарушителем при любой трактовке противоречащих пунктов.",
+        "mitigation": "Сведите взаимосвязанные условия в единую таблицу обязательств и определите приоритет документов."
+      },
+      {
+        "risk_id": "risk-14",
+        "rule_id": "conflicting_obligations",
+        "title": "Средний риск: В договоре есть конфликтующие или несогласованные обязанности",
+        "severity": "medium",
+        "clause_id": "clause-12",
+        "description": "Разные пункты задают несовместимые сроки, объемы или последствия нарушения, поэтому неясно, какое условие имеет приоритет. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: 2. 3. Исполнитель выполняет заказ на основе данных, записанных в Протоколе. Изменение Заказчиком условий заказа, возможно только при наличии такой возможности у Исполнителя и с его согласия. При этом изменения фиксируются в действующем, либо новом Протоколе.",
+        "role_relevance": "Исполнитель рискует быть нарушителем при любой трактовке противоречащих пунктов.",
+        "mitigation": "Сведите взаимосвязанные условия в единую таблицу обязательств и определите приоритет документов."
+      },
+      {
+        "risk_id": "risk-15",
+        "rule_id": "conflicting_obligations",
+        "title": "Средний риск: В договоре есть конфликтующие или несогласованные обязанности",
+        "severity": "medium",
+        "clause_id": "clause-31",
+        "description": "Разные пункты задают несовместимые сроки, объемы или последствия нарушения, поэтому неясно, какое условие имеет приоритет. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: 5. 1. 8. При изменении температуры окружающего их воздуха с момента надувания более чем на 5 градусов Цельсия (при этом меняется объем наполняющего их газа, что может привести к разрыву или, наоборот, обмяканию шаров).",
+        "role_relevance": "Исполнитель рискует быть нарушителем при любой трактовке противоречащих пунктов.",
+        "mitigation": "Сведите взаимосвязанные условия в единую таблицу обязательств и определите приоритет документов."
+      },
+      {
+        "risk_id": "risk-16",
+        "rule_id": "conflicting_obligations",
+        "title": "Средний риск: В договоре есть конфликтующие или несогласованные обязанности",
+        "severity": "medium",
+        "clause_id": "clause-42",
+        "description": "Разные пункты задают несовместимые сроки, объемы или последствия нарушения, поэтому неясно, какое условие имеет приоритет. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: 6. 6. В исключительном случае, при отсутствии материала (например, определенного типа воздушных шаров) у поставщиков, Исполнитель имеет право, по согласованию с Заказчиком, произвести замену такого материала на максимально подобный. При этом производится пересчет стоимости заказа с изменением суммы данного Договора, либо, по требованию Заказчика, данный Договор расторгается с возвратом Исполнителем Заказчику всей внесенной им предоплаты.",
+        "role_relevance": "Исполнитель рискует быть нарушителем при любой трактовке противоречащих пунктов.",
+        "mitigation": "Сведите взаимосвязанные условия в единую таблицу обязательств и определите приоритет документов."
+      },
+      {
+        "risk_id": "risk-17",
+        "rule_id": "favorable_jurisdiction_or_dispute_clause",
+        "title": "Средний риск: Подсудность и споры сформулированы в пользу одной стороны",
+        "severity": "medium",
+        "clause_id": "clause-46",
+        "description": "Порядок разрешения споров делает защиту неудобной: удаленная подсудность, сложный претензионный порядок или неопределенный арбитраж. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: 7. 2. В случае невозможности разрешения споров путем переговоров они подлежат рассмотрению в Арбитражном суде г. _____________.",
+        "role_relevance": "Удаленная подсудность повышает стоимость защиты интересов исполнителя.",
+        "mitigation": "Проверьте применимое право, подсудность, сроки претензии и выполнимость выбранного способа защиты."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-11",
+        "clause_excerpt": "2. 2. 2. Исполнитель обязан выполнить предусмотренную в настоящем Договоре работу лично. Привлечение Подрядчиком третьих лиц возможно. При этом Исполнитель несет ответственность перед Заказчиком за действия третьих лиц.",
+        "dispute_reason": "Маркер указывает на возможный конфликт между несколькими обязанностями или сроками.",
+        "possible_consequence": "При исполнении может оказаться, что условия невозможно соблюсти одновременно.",
+        "confidence": 0.66
+      },
+      {
+        "clause_id": "clause-12",
+        "clause_excerpt": "2. 3. Исполнитель выполняет заказ на основе данных, записанных в Протоколе. Изменение Заказчиком условий заказа, возможно только при наличии такой возможности у Исполнителя и с его согласия. При этом изменения фиксируются в действующем, либо новом Протоколе.",
+        "dispute_reason": "Маркер указывает на возможный конфликт между несколькими обязанностями или сроками.",
+        "possible_consequence": "При исполнении может оказаться, что условия невозможно соблюсти одновременно.",
+        "confidence": 0.66
+      },
+      {
+        "clause_id": "clause-31",
+        "clause_excerpt": "5. 1. 8. При изменении температуры окружающего их воздуха с момента надувания более чем на 5 градусов Цельсия (при этом меняется объем наполняющего их газа, что может привести к разрыву или, наоборот, обмяканию шаров).",
+        "dispute_reason": "Маркер указывает на возможный конфликт между несколькими обязанностями или сроками.",
+        "possible_consequence": "При исполнении может оказаться, что условия невозможно соблюсти одновременно.",
+        "confidence": 0.66
+      },
+      {
+        "clause_id": "clause-42",
+        "clause_excerpt": "6. 6. В исключительном случае, при отсутствии материала (например, определенного типа воздушных шаров) у поставщиков, Исполнитель имеет право, по согласованию с Заказчиком, произвести замену такого материала на максимально подобный. При этом производится пересчет стоимости заказа с изменением суммы данного Договора, либо, по требованию Заказчика, данный Договор расторгается с возвратом Исполнителем Заказчику всей внесенной им предоплаты.",
+        "dispute_reason": "Маркер указывает на возможный конфликт между несколькими обязанностями или сроками.",
+        "possible_consequence": "При исполнении может оказаться, что условия невозможно соблюсти одновременно.",
+        "confidence": 0.66
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Исполнитель",
+      "overview": "Договор содержит 50 пунктов и 17 выявленных рисков. Краткий вывод сфокусирован на роли 'Исполнитель'. Обнаружено 10 пунктов с высоким уровнем риска; их стоит перепроверить вручную.",
+      "must_do": [
+        "Настоящим Договором Заказчик поручает и оплачивает, а Исполнитель обязуется лично, или при помощи третьих лиц, оказать ему услуги по декоративному оформлению помещений и других площадок, а также иные услуги по организации и проведению деловых и праздничных мероприятий, по адресу: ____________________________________________.",
+        "Исполнитель обязуется сдать результат Заказчику, а Заказчик обязуется принять результат работ и оплатить выполненные работы. .",
+        "Исполнитель обязан: .",
+        "Исполнитель обязан выполнить предусмотренную в настоящем Договоре работу лично.",
+        "Исполнитель обязуется устранить по требованию Заказчика за свой счет все выявленные при приемке Работ недостатки, если Сторонами не будет согласовано соразмерное уменьшение цены Работы или возмещение Подрядчиком расходов Заказчика, связанных с устранением выявленных недостатков. .",
+        "Исполнитель обязуется сдать результат Заказчику, а Заказчик обязуется принять результат работ и оплатить выполненные работы."
+      ],
+      "should_review": [
+        "Стоимость работы может быть изменена вследствие изменений, внесенных по требованию Заказчика в ходе выполнения работ. .",
+        "Стоимость работы может быть изменена вследствие изменений, внесенных по требованию Заказчика в ходе выполнения работ.",
+        "При изменении температуры окружающего их воздуха с момента надувания более чем на 5 градусов Цельсия (при этом меняется объем наполняющего их газа, что может привести к разрыву или, наоборот, обмяканию шаров)."
+      ],
+      "payment_terms": [
+        "Исполнитель обязуется сдать результат Заказчику, а Заказчик обязуется принять результат работ и оплатить выполненные работы. .",
+        "Исполнитель обязуется устранить по требованию Заказчика за свой счет все выявленные при приемке Работ недостатки, если Сторонами не будет согласовано соразмерное уменьшение цены Работы или возмещение Подрядчиком расходов Заказчика, связанных с устранением выявленных недостатков. .",
+        "За несвоевременную оплату выполненных работ Заказчик выплачивает Исполнителю пеню в размере 0,1% от цены не оплаченной работы за каждый час просрочки, но не более 3% от стоимости работ настоящего Договора. .",
+        "В случае, когда возникает невозможность исполнения данного Договора по обстоятельствам, за которые ни одна из Сторон не отвечает, Исполнитель возвращает Заказчику полученную предоплату, за вычетом фактически понесенных им в связи с данным Договором расходов. .",
+        "При этом производится пересчет стоимости заказа с изменением суммы данного Договора, либо, по требованию Заказчика, данный Договор расторгается с возвратом Исполнителем Заказчику всей внесенной им предоплаты.",
+        "Исполнитель обязуется сдать результат Заказчику, а Заказчик обязуется принять результат работ и оплатить выполненные работы."
+      ],
+      "deadlines": [
+        "Заказчик обязуется своевременно предоставить Исполнителю всю необходимую достоверную информацию по заказу, а также обеспечить доступ сотрудников Исполнителя к местам проведения работ и в сроки, оговоренные в Протоколе. .",
+        "Исполнитель выполняет работы в следующие сроки: .",
+        "Срок действия Договора: до полного выполнения обязательств Заказчиком и Исполнителем по данному Договору. .",
+        "Исполнитель гарантирует сохранение целостности и первоначального внешнего вида оформления из воздушных шаров при соблюдении следующих условий: оформление воздушными шарами не предназначено для длительного использования и сохраняет свой праздничный вид от нескольких часов до 3 дней (конкретные сроки – см.",
+        "Требования, связанные недостатками результата Работы, Заказчик имеет право предъявить в течение гарантийного срока. .",
+        "Заказчик обязуется своевременно предоставить Исполнителю всю необходимую достоверную информацию по заказу, а также обеспечить доступ сотрудников Исполнителя к местам проведения работ и в сроки, оговоренные в Протоколе."
+      ],
+      "penalties": [
+        "В случае, одностороннего расторжения данного Договора Заказчиком, либо невозможности его исполнения по вине Заказчика или по вине обстоятельств, за которые несет ответственность Заказчик, Исполнитель удерживает внесенный Заказчиком задаток в качестве неустойки. .",
+        "В случае, одностороннего расторжения данного Договора Заказчиком, либо невозможности его исполнения по вине Заказчика или по вине обстоятельств, за которые несет ответственность Заказчик, Исполнитель удерживает внесенный Заказчиком задаток в качестве неустойки."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "docx:mammoth",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "930b4ebffcede4e86a3ce213c7a33fb420396a916e8fc6b9c0d2bb9257681477"
+    },
+    "contract_type": {
+      "type_id": "service_agreement",
+      "confidence": 0.99,
+      "ru_name": "Договор оказания услуг",
+      "legal_framework": "ГК РФ, глава 39"
+    },
+    "asymmetry_signals": [
+      {
+        "risk_id": "undefined_acceptance_criteria",
+        "clause_id": "clause-5",
+        "summary": "Приемка предусмотрена без объективных критериев результата.",
+        "details": "2. 1. 1. В течение дня перед мероприятием после получения от Исполнителя извещения об окончании Работы осмотреть и принять результат Работ, о чем составляется акт приемки, за подписью обеих сторон настоящего Договора.",
+        "severity_hint": "medium",
+        "affected_roles": [
+          "executor",
+          "client"
+        ]
+      }
+    ]
+  },
+  "finished_at": "2026-04-28T16:13:47.934269+00:00",
+  "duration_ms": 619.33
+}

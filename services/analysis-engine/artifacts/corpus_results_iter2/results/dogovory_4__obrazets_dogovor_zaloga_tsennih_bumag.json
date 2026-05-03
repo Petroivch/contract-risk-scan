@@ -1,0 +1,187 @@
+{
+  "case_id": "dogovory_4__obrazets_dogovor_zaloga_tsennih_bumag",
+  "relative_path": "договоры 4/obrazets-dogovor-zaloga-tsennih-bumag.html",
+  "document_path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\договоры 4\\obrazets-dogovor-zaloga-tsennih-bumag.html",
+  "document_name": "obrazets-dogovor-zaloga-tsennih-bumag.html",
+  "role": "Работник",
+  "counterparty_role": "Работодатель",
+  "language": "ru",
+  "mime_type": "text/html",
+  "tags": [
+    "workspace-corpus",
+    "html",
+    "dogovory_4",
+    "labor_contract"
+  ],
+  "source_group": "manifest",
+  "expected": {
+    "contract_type": "labor_contract",
+    "min_contract_type_confidence": 0.37,
+    "min_risk_count": 0,
+    "min_disputed_clause_count": 0,
+    "execution_mode": "local_first",
+    "expected_high_risk_ids": []
+  },
+  "started_at": "2026-04-28T16:12:35.326694+00:00",
+  "status": "completed",
+  "request": {
+    "document_name": "obrazets-dogovor-zaloga-tsennih-bumag.html",
+    "role_context": {
+      "role": "Работник",
+      "counterparty_role": "Работодатель"
+    },
+    "document_text": null,
+    "document_base64": "PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMDEgVHJhbnNpdGlvbmFsLy9FTiI+DQo8aHRtbD4NCjxoZWFkPg0KPGJhc2UgaHJlZj0iaHR0cHM6Ly9kb2dvdm9yLXVyaXN0LnJ1LyI+DQo8dGl0bGU+0J7QsdGA0LDQt9C10YYuINCU0L7Qs9C+0LLQvtGAINC30LDQu9C+0LPQsCAo0YbQtdC90L3Ri9GFINCx0YPQvNCw0LMpIC0g0LLQtdGA0YHQuNGPINC00LvRjyDQv9C10YfQsNGC0LguIDIwMjYuINCe0LHRgNCw0LfRhtGLINC00L7Qs9C+0LLQvtGA0L7Qsiwg0YLQuNC/0L7QstGL0LUg0LTQvtCz0L7QstC+0YDQsCwg0LDQutGC0YPQsNC70YzQvdGL0LUg0LTQvtC60YPQvNC10L3RgtGLLCDRjtGA0LjQtNC40YfQtdGB0LrQuNC8INC4INGE0LjQt9C40YfQtdGB0LrQuNC8INC70LjRhtCw0Lw8L3RpdGxlPg0KPG1ldGEgY29udGVudD0iIiBuYW1lPSJrZXl3b3JkcyI+DQo8bWV0YSBjb250ZW50PSIiIG5hbWU9ImRlc2NyaXB0aW9uIj4NCjxtZXRhIG5hbWU9InJvYm90cyIgY29udGVudD0ibm9pbmRleCxub2ZvbGxvdyI+DQo8bWV0YSBodHRwLWVxdWl2PSJDb250ZW50LVR5cGUiIGNvbnRlbnQ9InRleHQvaHRtbDsgY2hhcnNldD11dGYtOCI+DQo8bGluayByZWw9InN0eWxlc2hlZXQiIGhyZWY9Ii9pbWFnZXMvc3R5bGUuY3NzIiB0eXBlPSJ0ZXh0L2NzcyI+DQo8L2hlYWQ+DQo8Ym9keT4NCjxkaXYgY2xhc3M9ImRvY3VtZW50VGV4dCI+DQo8cHJlPiAgICAgICAgICAgICAgICAgICAgICAgICAg0JTQntCT0J7QktCe0KAg0JfQkNCb0J7Qk9CQIE7Qvi4gX19fX19fDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgINGG0LXQvdC90YvRhSDQsdGD0LzQsNCzDQoNCiAgICDQsy4gX19fX19fX19fX19fX19fICAgICAgICAgICAgICAgICAgICAgICAgIl9fXyJfX19fX19fX19fX19fIDIwX19fINCzLg0KDQogICAgICAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18sINC40LzQtdC90YPQtdC80YvQuSDQsg0KICAgICAgICAgICAgICAgICAgICAgICAgKNC90LDQuNC80LXQvdC+0LLQsNC90LjQtSDQsdCw0L3QutCwKQ0KDQogICAg0LTQsNC70YzQvdC10LnRiNC10LwgItCR0LDQvdC6Iiwg0LIg0LvQuNGG0LUgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgKNC00L7Qu9C20L3QvtGB0YLRjCwg0YTQsNC80LjQu9C40Y8sINC40LzRjywg0L7RgtGH0LXRgdGC0LLQvikNCg0KICAgINC00LXQudGB0YLQstGD0Y7RidC10LPQviDQvdCwINC+0YHQvdC+0LLQsNC90LjQuCBfX19fX19fX19fX19fX19fX19fX19fX19fLCDRgSDQvtC00L3QvtC5INGB0YLQvtGA0L7QvdGLLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgKNCj0YHRgtCw0LLQsCwg0L/QvtC70L7QttC10L3QuNGPKQ0KDQogICAg0LggX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLA0KICAgICAgICAgICAgICAgICAgICAgKNGE0LDQvNC40LvQuNGPLCDQuNC80Y8sINC+0YLRh9C10YHRgtCy0L4g0LfQsNC10LzRidC40LrQsCkNCg0KICAgINC/0YDQvtC20LjQstCw0Y7RidC40Lkg0L/QviDQsNC00YDQtdGB0YM6IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXywNCiAgICDQuNC80LXQvdGD0LXQvNGL0Lkg0LIgINC00LDQu9GM0L3QtdC50YjQtdC8ICLQl9Cw0LvQvtCz0L7QtNCw0YLQtdC70YwiLCAg0YEg0LTRgNGD0LPQvtC5INGB0YLQvtGA0L7QvdGLLCAg0LfQsNC60LvRjtGH0LjQu9C4DQogICAg0L3QsNGB0YLQvtGP0YnQuNC5INC00L7Qs9C+0LLQvtGAINC+INC90LjQttC10YHQu9C10LTRg9GO0YnQtdC8Og0KDQogICAgICAgICAxLiDQn9C+INC60YDQtdC00LjRgtC90L7QvNGDINC00L7Qs9C+0LLQvtGA0YMgTm8uIF9fX19fXyDQvtGCICJfX19fIl9fX19fX19fX18gMjBfX18g0LMuDQogICAg0JHQsNC90Log0L/RgNC10LTQvtGB0YLQsNCy0LjQuyBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18g0LrRgNC10LTQuNGCDQogICAgICAgICAgICAgICAgICAgICAgICAgICjRhNCw0LzQuNC70LjRjywg0LjQvNGPLCDQvtGC0YfQtdGB0YLQstC+INC30LDQtdC80YnQuNC60LApDQoNCiAgICDQsiDRgdGD0LzQvNC1IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXyDRgNGD0LHQu9C10LkNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgKNC/0YDQvtC/0LjRgdGM0Y4pDQoNCiAgICDRgdGA0L7QutC+0Lwg0LTQviAiX19fIl9fX19fX19fX19fIDIwX19fXyDQsy4NCiAgICAgICAgIDIuINCSICDQvtCx0LXRgdC/0LXRh9C10L3QuNC1ICDRgdCy0L7QtdCy0YDQtdC80LXQvdC90L7Qs9C+INC40YHQv9C+0LvQvdC10L3QuNGPINC60YDQtdC00LjRgtC90L7Qs9C+INC00L7Qs9C+0LLQvtGA0LANCiAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCiAgICAgICAgICAgICAgICAgICAgKNGE0LDQvNC40LvQuNGPLCDQuNC80Y8sINC+0YLRh9C10YHRgtCy0L4g0JfQsNC70L7Qs9C+0LTQsNGC0LXQu9GPKQ0KDQogICAg0LfQsNC70L7QttC40Lsg0JHQsNC90LrRgyBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQogICAgICAgICAgICAgICAgICAgICAgICAgKNGD0LrQsNC30YvQstCw0LXRgtGB0Y8g0LLQuNC0INGG0LXQvdC90YvRhSDQsdGD0LzQsNCzLA0KDQogICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQogICAgICAgICAgICAgICAg0LjRhSDQvdC+0LzQtdGA0LAsINGB0LXRgNC40LgsINC00L7RgdGC0L7QuNC90YHRgtCy0L4sINC60L7Qu9C40YfQtdGB0YLQstC+KQ0KDQogICAgICAgICAzLiDQl9Cw0LvQvtC20LXQvdC90YvQtSDRhtC10L3QvdGL0LUg0LHRg9C80LDQs9C4INC+0YbQtdC90LjQstCw0Y7RgtGB0Y8g0LIg0YHRg9C80LzQtSBfX19fX19fX19fX19fX19fDQogICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXyDRgNGD0LHQu9C10LkuDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAo0L/RgNC+0L/QuNGB0YzRjikNCg0KICAgICAgICAgNC4g0JfQsNC70L7QttC10L3QvdGL0LUgINGG0LXQvdC90YvQtSAg0LHRg9C80LDQs9C4ICDQv9C+0LvQvdC+0YHRgtGM0Y4g0L/QtdGA0LXQtNCw0Y7RgtGB0Y8gINC90LAg0YXRgNCw0L3QtdC90LjQtQ0KICAgINCR0LDQvdC60YMuDQogICAgICAgICA1LiDQkdCw0L3QuiAgINCy0LfQuNC80LDQtdGCICAg0YEgINCX0LDQu9C+0LPQvtC00LDRgtC10LvRjyAg0LfQsCAg0YXRgNCw0L3QtdC90LjQtSAg0LggINGD0L/RgNCw0LLQu9C10L3QuNC1DQogICAg0LfQsNC70L7QttC10L3QvdGL0LzQuCDRhtC10L3QvdGL0LzQuCDQsdGD0LzQsNCz0LDQvNC4INC/0LvQsNGC0YMg0LIg0YDQsNC30LzQtdGA0LUgX19fX19fX19fX19fX19fX19fX19fX19fDQogICAgX19fX19fX19fINGA0YPQsS4NCiAgICAgICAgIDYuINCSICAg0YHQu9GD0YfQsNC1ICAg0L3QtdC40YHQv9C+0LvQvdC10L3QuNGPICDQt9Cw0LXQvNGJ0LjQutC+0LwgINGB0LLQvtC40YUgINC+0LHRj9C30LDRgtC10LvRjNGB0YLQsiAg0L/Qvg0KICAgINCy0L7Qt9Cy0YDQsNGC0YMg0YHRgdGD0LTRiyAg0JHQsNC90LogINCy0L/RgNCw0LLQtSAgINGD0LTQvtCy0LvQtdGC0LLQvtGA0LjRgtGMICAg0YHQstC+0LggICDRgtGA0LXQsdC+0LLQsNC90LjRjyAgINC40LcNCiAgICDRgdGC0L7QuNC80L7RgdGC0Lgg0LfQsNC70L7QttC10L3QvdGL0YUg0YbQtdC90L3Ri9GFINCx0YPQvNCw0LMg0LIg0YPRgdGC0LDQvdC+0LLQu9C10L3QvdC+0Lwg0LfQsNC60L7QvdC+0Lwg0L/QvtGA0Y/QtNC60LUuDQogICAgICAgICA3LiDQlNC+0LPQvtCy0L7RgCAg0YHQvtGB0YLQsNCy0LvQtdC9ICDQsiAg0LTQstGD0YUgINGN0LrQt9C10LzQv9C70Y/RgNCw0YUsICDQuNC3ICDQutC+0YLQvtGA0YvRhSAgINC+0LTQuNC9DQogICAg0L7RgdGC0LDQtdGC0YHRjyDQsiDQkdCw0L3QutC1LCDQsCDQtNGA0YPQs9C+0Lkg0LLRi9C00LDQtdGC0YHRjyDQl9Cw0LvQvtCz0L7QtNCw0YLQtdC70Y4uDQogICAgICAgICA4LiDQrtGA0LjQtNC40YfQtdGB0LrQuNC1INCw0LTRgNC10YHQsCDQuCDRgNC10LrQstC40LfQuNGC0Ysg0YHRgtC+0YDQvtC9Og0KDQogICAgICAgICDQn9C+0YfRgtC+0LLRi9C5INCw0LTRgNC10YEg0Lgg0YDQtdC60LLQuNC30LjRgtGLICAgICAgICDQn9Cw0YHQv9C+0YDRgiDQuNC70Lgg0LTQvtC60YPQvNC10L3RgiwNCiAgICAgICAgINGD0YfRgNC10LbQtNC10L3QuNGPINCR0LDQvdC60LAgICAgICAgICAgICAgICAgICDQtdCz0L4g0LfQsNC80LXQvdGP0Y7RidC40LkNCiAgICAgICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fICAgICAgICDQodC10YDQuNGPX19fX19fX19fIE5vLl9fX19fX19fX18NCiAgICAgICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fICAgICAgICDQstGL0LTQsNC9IF9fX19fX19fX19fX19fX19fX19fX18NCiAgICAgICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fICAgICAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fDQogICAgICAgICBfX19fX19fX19fX19fX19fX19fX19fX19fXyAgICAgICAgICAo0LrQtdC8LCDQvNC10YHRgtC+INC4INC00LDRgtCwINCy0YvQtNCw0YfQuCkNCg0KDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg0J/QvtC00L/QuNGB0Lgg0YHRgtC+0YDQvtC9Og0KDQogICAgICAgICAgICAgICDQkdCw0L3QuiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICDQl9Cw0LvQvtCz0L7QtNCw0YLQtdC70YwNCg0KICAgICAgICAgX19fX19fX19fX19fX19fX19fX19fXyAgICAgICAgICAgICAgIF9fX19fX19fX19fX19fX19fX19fX19fXw0KICAgICAgICAgICAgICjQv9C+0LTQv9C40YHRjCkgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAo0L/QvtC00L/QuNGB0YwpDQoNCiAgICAgICAgICAgICAgICDQvC7Qvy4NCg0KICANCjwvcHJlPjwvZGl2Pg0KPC9ib2R5Pg0KPC9odG1sPg==",
+    "mime_type": "text/html",
+    "language": "ru",
+    "locale": "ru"
+  },
+  "ingestion_preflight": {
+    "mime_type": "text/html",
+    "extractor": "html:regex",
+    "extraction_source": "html:regex",
+    "extraction_ok": true,
+    "error": null,
+    "extraction_error": null,
+    "sha256": "1c96375ff7747794a7e95d9c0d1866f3dfb3b1089c355a89e5989d580a68be10"
+  },
+  "metrics": {
+    "risk_count": 1,
+    "high_risk_count": 0,
+    "disputed_clause_count": 1,
+    "asymmetry_signal_count": 0,
+    "contract_type": "labor_contract"
+  },
+  "analysis": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'obrazets-dogovor-zaloga-tsennih-bumag. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Работник'. Определен тип договора: Трудовой договор (уверенность 52%, правовая рамка: ТК РФ). Сроки и дедлайны: Банк предоставил _____________________________________________ кредит (фамилия, имя, отчество заемщика) в сумме ______________________________________________________ рублей (прописью) сроком до \"___\"___________ 20____ г. Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Работник'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Образец. Договор залога (ценных бумаг) - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР ЗАЛОГА Nо. ______ ценных бумаг г. _______________ \"___\"_____________ 20___ г. ___________________________________________________, именуемый в (наименование банка) дальнейшем \"Банк\", в лице __________________________________________, (должность, фамилия, имя, отчество) действующего на основании _________________________, с одной...",
+        "dispute_reason": "Одна из сторон получила дискреционное право без достаточных ограничителей.",
+        "possible_consequence": "Это может привести к одностороннему применению условия и спору о пределах такого права.",
+        "confidence": 0.76
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Работник",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Работник'.",
+      "must_do": [
+        "Конфиг не выявил явных обязательств."
+      ],
+      "should_review": [
+        "В случае неисполнения заемщиком своих обязательств по возврату ссуды Банк вправе удовлетворить свои требования из стоимости заложенных ценных бумаг в установленном законом порядке."
+      ],
+      "payment_terms": [
+        "Конфиг не выявил явных условий оплаты."
+      ],
+      "deadlines": [
+        "Банк предоставил _____________________________________________ кредит (фамилия, имя, отчество заемщика) в сумме ______________________________________________________ рублей (прописью) сроком до \"___\"___________ 20____ г."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "1c96375ff7747794a7e95d9c0d1866f3dfb3b1089c355a89e5989d580a68be10"
+    },
+    "contract_type": {
+      "type_id": "labor_contract",
+      "confidence": 0.52,
+      "ru_name": "Трудовой договор",
+      "legal_framework": "ТК РФ"
+    },
+    "asymmetry_signals": []
+  },
+  "result": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'obrazets-dogovor-zaloga-tsennih-bumag. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Работник'. Определен тип договора: Трудовой договор (уверенность 52%, правовая рамка: ТК РФ). Сроки и дедлайны: Банк предоставил _____________________________________________ кредит (фамилия, имя, отчество заемщика) в сумме ______________________________________________________ рублей (прописью) сроком до \"___\"___________ 20____ г. Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Работник'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Образец. Договор залога (ценных бумаг) - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР ЗАЛОГА Nо. ______ ценных бумаг г. _______________ \"___\"_____________ 20___ г. ___________________________________________________, именуемый в (наименование банка) дальнейшем \"Банк\", в лице __________________________________________, (должность, фамилия, имя, отчество) действующего на основании _________________________, с одной...",
+        "dispute_reason": "Одна из сторон получила дискреционное право без достаточных ограничителей.",
+        "possible_consequence": "Это может привести к одностороннему применению условия и спору о пределах такого права.",
+        "confidence": 0.76
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Работник",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Работник'.",
+      "must_do": [
+        "Конфиг не выявил явных обязательств."
+      ],
+      "should_review": [
+        "В случае неисполнения заемщиком своих обязательств по возврату ссуды Банк вправе удовлетворить свои требования из стоимости заложенных ценных бумаг в установленном законом порядке."
+      ],
+      "payment_terms": [
+        "Конфиг не выявил явных условий оплаты."
+      ],
+      "deadlines": [
+        "Банк предоставил _____________________________________________ кредит (фамилия, имя, отчество заемщика) в сумме ______________________________________________________ рублей (прописью) сроком до \"___\"___________ 20____ г."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "1c96375ff7747794a7e95d9c0d1866f3dfb3b1089c355a89e5989d580a68be10"
+    },
+    "contract_type": {
+      "type_id": "labor_contract",
+      "confidence": 0.52,
+      "ru_name": "Трудовой договор",
+      "legal_framework": "ТК РФ"
+    },
+    "asymmetry_signals": []
+  },
+  "finished_at": "2026-04-28T16:12:35.439583+00:00",
+  "duration_ms": 112.32
+}

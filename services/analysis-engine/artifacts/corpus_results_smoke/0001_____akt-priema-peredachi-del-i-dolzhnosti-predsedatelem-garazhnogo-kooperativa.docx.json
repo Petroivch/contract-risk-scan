@@ -1,0 +1,94 @@
+{
+  "source_path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\договоры\\akt-priema-peredachi-del-i-dolzhnosti-predsedatelem-garazhnogo-kooperativa.docx",
+  "relative_path": "договоры\\akt-priema-peredachi-del-i-dolzhnosti-predsedatelem-garazhnogo-kooperativa.docx",
+  "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+  "role_context": {
+    "role": "Исполнитель",
+    "counterparty_role": "Заказчик"
+  },
+  "ingestion_preflight": {
+    "extraction_source": "docx:mammoth",
+    "extraction_ok": true,
+    "extraction_error": null,
+    "sha256": "16013fa6e32b1a581e7783d45561908493c173a794ae8c8b41b5a9bd7a587bd7",
+    "text_length": 3408
+  },
+  "timings": {
+    "analysis_seconds": 0.168,
+    "total_seconds": 0.412
+  },
+  "analysis": {
+    "job_id": "dc672c48-7ca5-4242-960e-2fdac4195c22",
+    "status": "completed",
+    "result": {
+      "language": "ru",
+      "locale": "ru",
+      "execution_plan": {
+        "mode": "server_assist",
+        "offline_capable": false,
+        "network_required": true,
+        "policy_source": "mime_type:application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        "reason": "Mime type документа перевел задачу в более безопасный lightweight/offload режим согласно policy."
+      },
+      "contract_brief": "Договор 'akt-priema-peredachi-del-i-dolzhnosti-predsedatelem-garazhnogo-kooperativa. docx' разобран на 2 пунктов. Ниже показано, что действительно важно для роли 'Исполнитель'. Определен тип договора: Иной юридический документ (уверенность 56%, правовая рамка: Вне типовой contract taxonomy). Ключевые обязательства по договору для роли 'Исполнитель': Дебиторская задолженность по текущим расходам на сумму ____________ руб; Дебиторская задолженность по капитальному строительству на сумму __________ руб; Кредиторская задолженность по текущим расходам на сумму __________ руб. Условия оплаты: Остатки по лицевым счетам по состоянию на «__»__________ 201_ г. ; Расчеты: . Найдено спорных или расплывчатых пунктов: 1.",
+      "risks": [
+        {
+          "risk_id": "risk-1",
+          "rule_id": "fallback_low_risk",
+          "title": "Низкий риск: явные критические маркеры не обнаружены",
+          "severity": "low",
+          "clause_id": null,
+          "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+          "role_relevance": "Базовый вывод для роли 'Исполнитель'.",
+          "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+        }
+      ],
+      "disputed_clauses": [
+        {
+          "clause_id": "clause-1",
+          "clause_excerpt": "АКТ\nприема-передачи дел и должности\nПредседателем Гаражного Кооператива ______________\nг. _________________ «__» __________ 201__ года\nВ соответствии с решением Общего собрания Гаражного Кооператива _____________ (ИНН___________, ОГРН_________) от «__»__________ 201_ г. о избрании Председателем Гаражного Кооператива ________________________________________________________\n(фамилия, имя, отчество)\nкомиссия в составе ___________________________________________________________\n(фамилия, имя,...",
+          "dispute_reason": "Явные маркеры спорных формулировок не обнаружены.",
+          "possible_consequence": "Скрытые спорные моменты требуют дополнительной юридической проверки.",
+          "confidence": 0.35
+        }
+      ],
+      "role_focused_summary": {
+        "role": "Исполнитель",
+        "overview": "Договор содержит 2 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Исполнитель'.",
+        "must_do": [
+          "Дебиторская задолженность по текущим расходам на сумму ____________ руб.",
+          "Дебиторская задолженность по капитальному строительству на сумму __________ руб.",
+          "Кредиторская задолженность по текущим расходам на сумму __________ руб.",
+          "Кредиторская задолженность по капитальному строительству на сумму _________ руб."
+        ],
+        "should_review": [
+          "Конфиг не выявил явных дискреционных условий."
+        ],
+        "payment_terms": [
+          "Остатки по лицевым счетам по состоянию на «__»__________ 201_ г. .",
+          "Расчеты: ."
+        ],
+        "deadlines": [
+          "Конфиг не выявил явных сроков."
+        ],
+        "penalties": [
+          "Конфиг не выявил явных штрафных санкций."
+        ]
+      },
+      "ingestion": {
+        "extraction_source": "docx:mammoth",
+        "extraction_ok": true,
+        "extraction_error": null,
+        "sha256": "16013fa6e32b1a581e7783d45561908493c173a794ae8c8b41b5a9bd7a587bd7"
+      },
+      "contract_type": {
+        "type_id": "non_contract_legal_form",
+        "confidence": 0.57,
+        "ru_name": "Иной юридический документ",
+        "legal_framework": "Вне типовой contract taxonomy"
+      },
+      "asymmetry_signals": []
+    },
+    "error_message": null
+  }
+}

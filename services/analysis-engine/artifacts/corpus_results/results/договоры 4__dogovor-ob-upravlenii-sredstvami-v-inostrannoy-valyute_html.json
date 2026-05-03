@@ -1,0 +1,191 @@
+{
+  "case_id": "договоры 4__dogovor-ob-upravlenii-sredstvami-v-inostrannoy-valyute_html",
+  "relative_path": "договоры 4/dogovor-ob-upravlenii-sredstvami-v-inostrannoy-valyute.html",
+  "document_path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\договоры 4\\dogovor-ob-upravlenii-sredstvami-v-inostrannoy-valyute.html",
+  "document_name": "dogovor-ob-upravlenii-sredstvami-v-inostrannoy-valyute.html",
+  "role": "Заемщик",
+  "counterparty_role": "Кредитор",
+  "language": "ru",
+  "mime_type": "text/html",
+  "tags": [
+    "ad_hoc"
+  ],
+  "source_group": "договоры 4",
+  "expected": {},
+  "started_at": "2026-04-28T16:18:31.501245+00:00",
+  "status": "completed",
+  "request": {
+    "document_name": "dogovor-ob-upravlenii-sredstvami-v-inostrannoy-valyute.html",
+    "role_context": {
+      "role": "Заемщик",
+      "counterparty_role": "Кредитор"
+    },
+    "document_text": null,
+    "document_base64": "PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMDEgVHJhbnNpdGlvbmFsLy9FTiI+DQo8aHRtbD4NCjxoZWFkPg0KPGJhc2UgaHJlZj0iaHR0cHM6Ly9kb2dvdm9yLXVyaXN0LnJ1LyI+DQo8dGl0bGU+0JTQvtCz0L7QstC+0YAg0L7QsSDRg9C/0YDQsNCy0LvQtdC90LjQuCDRgdGA0LXQtNGB0YLQstCw0LzQuCAo0LIg0LjQvdC+0YHRgtGA0LDQvdC90L7QuSDQstCw0LvRjtGC0LUpIC0g0LLQtdGA0YHQuNGPINC00LvRjyDQv9C10YfQsNGC0LguIDIwMjYuINCe0LHRgNCw0LfRhtGLINC00L7Qs9C+0LLQvtGA0L7Qsiwg0YLQuNC/0L7QstGL0LUg0LTQvtCz0L7QstC+0YDQsCwg0LDQutGC0YPQsNC70YzQvdGL0LUg0LTQvtC60YPQvNC10L3RgtGLLCDRjtGA0LjQtNC40YfQtdGB0LrQuNC8INC4INGE0LjQt9C40YfQtdGB0LrQuNC8INC70LjRhtCw0Lw8L3RpdGxlPg0KPG1ldGEgY29udGVudD0iIiBuYW1lPSJrZXl3b3JkcyI+DQo8bWV0YSBjb250ZW50PSIiIG5hbWU9ImRlc2NyaXB0aW9uIj4NCjxtZXRhIG5hbWU9InJvYm90cyIgY29udGVudD0ibm9pbmRleCxub2ZvbGxvdyI+DQo8bWV0YSBodHRwLWVxdWl2PSJDb250ZW50LVR5cGUiIGNvbnRlbnQ9InRleHQvaHRtbDsgY2hhcnNldD11dGYtOCI+DQo8bGluayByZWw9InN0eWxlc2hlZXQiIGhyZWY9Ii9pbWFnZXMvc3R5bGUuY3NzIiB0eXBlPSJ0ZXh0L2NzcyI+DQo8L2hlYWQ+DQo8Ym9keT4NCjxkaXYgY2xhc3M9ImRvY3VtZW50VGV4dCI+DQo8cHJlPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICDQlNC+0LPQvtCy0L7RgA0KICAgICAgICAgICAgICAgICAgICAgICDQvtCxINGD0L/RgNCw0LLQu9C10L3QuNC4INGB0YDQtdC00YHRgtCy0LDQvNC4DQogICAgICAgICAgICAgICAgICAo0LIg0LjQvdC+0YHRgtGA0LDQvdC90L7QuSDQstCw0LvRjtGC0LUpIE5fX19fX19fX18NCiAgICAgICAgICAgICAgINCzLtCc0L7RgdC60LLQsCAgIl9fX18iX19fX19fX19fX19fX19fXzIwX19f0LMuDQoNCiAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCiAgICDQuNC80LXQvdGD0LXQvNGL0LkgICAgICDQsiAgICAgINC00LDQu9GM0L3QtdC50YjQtdC8ICAgICAgICIgINCf0J7QktCV0KDQldCd0J3Qq9CZICAiLCAgICAgICAgICDQsg0KICAgINC70LjRhtC1X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCiAgICAgICAgICAgICDQtNC10LnRgdGC0LLRg9GO0YnQuNC5ICAgICAgICAgICAg0L3QsCDQvtGB0L3QvtCy0LDQvdC40LggICAgICAgICAgICAgICDQo9GB0YLQsNCy0LAsDQogICAg0LhfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX9C40LzQtdC90YPQtdC80YvQuQ0KICAgINCyICAgICAgICAgICDQtNCw0LvRjNC90LXQudGI0LXQvCAgICAgICAgICAgICAgICAi0JTQntCS0JXQoNCY0KLQldCb0KwiLCAgICAgICAgICAgICAgICAg0LINCiAgIC3Qu9C40YbQtV9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQogICAgICAgINC00LXQudGB0YLQstGD0Y7RidC40Lkg0L3QsCDQvtGB0L3QvtCy0LDQvdC40Lgg0KPRgdGC0LDQstCwLA0KICAgINC30LDQutC70Y7Rh9C40LvQuCDQlNC+0LPQvtCy0L7RgCDQviDQvdC40LbQtdGB0LvQtdC00YPRjtGJ0LXQvDsNCiAgICAxLiDQlNCe0JLQldCg0JjQotCV0JvQrCAgINC/0LXRgNC10LTQsNC10YIgICDQn9Ce0JLQldCg0JXQndCd0J7QnNCjICAg0LTQtdC90LXQttC90YvQtSAg0YHRgNC10LTRgdGC0LLQsCAg0LIgINGB0YPQvNC80LUNCihfX19fX19fXykg0LTQvtC70LvQsNGA0L7QsiDQodCo0JAg0Lgg0L/QvtGA0YPRh9Cw0LXRgiDQn9Ce0JLQldCg0JXQndCd0J7QnNCjICDRg9C/0YDQsNCy0LvQtdC90LjQtSAg0YDQtdGB0YPRgNGB0LDQvNC4ICDQt9CwDQrRgdGH0LXRgiDQuCDRgNC40YHQuiDQlNCe0JLQldCg0JjQotCV0JvQry4NCiAgICAyLiDQo9C/0YDQsNCy0LvQtdC90LjQtSDRgdGA0LXQtNGB0YLQstCw0LzQuCDQt9Cw0LrQu9GO0YfQsNC10YLRgdGPINCyINC40YUg0LTQuNCy0LXRgNGB0LjRhNC40YbQuNGA0L7QstCw0L3QvdC+0LwgINGA0LDQt9C80LUtDQrRidC10L3QuNC4INCyINGG0LXQu9GP0YUg0LzQsNC60YHQuNC80LDQu9C40LfQsNGG0LjQuCDQtNC+0YXQvtC00LAg0L3QsCDQuNC90LLQtdGB0YLQuNGA0L7QstCw0L3QvdGL0Lkg0LrQsNC/0LjRgtCw0LsuDQogICAgMy4g0J/QntCS0JXQoNCV0J3QndCr0Jkg0L/RgNC40LvQsNCz0LDQtdGCINCy0YHQtSDRg9GB0LjQu9C40Y8g0LTQu9GPINC/0L7Qu9GD0YfQtdC90LjRjyDQtNC+0YXQvtC00LAgINC/0L4gINC40L3QstC10YHRgtC4LQ0K0YbQuNGP0LwsINC/0L7QtNC70LXQttCw0YnQtdCz0L4g0YDQsNGB0L/RgNC10LTQtdC70LXQvdC40Y4g0LIg0YLQtdGH0LXQvdC40LUgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0K0LvQtdGCINGBINC00LDRgtGLINC/0L7QtNC/0LjRgdCw0L3QuNGPINC90LDRgdGC0L7Rj9GJ0LXQs9C+INCU0J7Qk9Ce0JLQntCg0JAuDQogICAgNC4g0JTQtdC50YHRgtCy0LjQtSDQvdCw0YHRgtC+0Y/RidC10LPQviDQlNC+0LPQvtCy0L7RgNCwINC4INC90LDRh9Cw0LvQviDQv9GA0L7RhtC10L3RgtC90L7Qs9C+INC/0LXRgNC40L7QtNCwINC40YHRh9C40YHQu9GPLQ0K0LXRgtGB0Y8g0YEg0LzQvtC80LXQvdGC0LAg0L/QvtGB0YLRg9C/0LvQtdC90LjRjyAg0YPQutCw0LfQsNC90L3Ri9GFINC/0L4g0L8uIDEg0YHRgNC10LTRgdGC0LIg0L3QsCBfX19fX19fX19fX19fX19fDQrRgdGH0LXRgiDQn9Ce0JLQldCg0JXQndCd0J7Qk9CeLg0KICAgIDUuINCf0L4g0LjRgdGC0LXRh9C10L3QuNC4INGB0YDQvtC60LAg0JTQvtCz0L7QstC+0YDQsCDQn9Ce0JLQldCg0JXQndCd0KvQmSDQs9Cw0YDQsNC90YLQuNGA0YPQtdGCINCy0YvQv9C70LDRgtGDICDQv9C+0LvQvdC+0LkNCtGB0YPQvNC80Ysg0L/QtdGA0LXQtNCw0L3QvdGL0YUg0LIg0YPQv9GA0LDQstC70LXQvdC40LUg0YHRgNC10LTRgdGC0LIg0Lgg0L/RgNC+0YbQtdC90YLQvtCyINCyINGA0LDQt9C80LXRgNC1INCb0JjQkdCe0KAg0L/Qu9GO0YFfX18NCtC/0YDQvtGG0LXQvdGC0L7QsiDQs9C+0LTQvtCy0YvRhS4NCiAgICA2LiDQlNC+0YXQvtC0INC+0YIg0LjQvdCy0LXRgdGC0LjRgNC+0LLQsNC90L3Ri9GFINGB0YDQtdC00YHRgtCyINCx0YPQtNC10YIg0YDQsNGB0L/RgNC10LTQtdC70Y/RgtGB0Y8g0YHQu9C10LTRg9GO0YnQuNC8INC+0LEtDQrRgNCw0LfQvtC8OiAg0L/QtdGA0LLRi9C1IF9fXyUgINCz0L7QtNC+0LLQvtCz0L4g0LTQvtGF0L7QtNCwINC90LAg0YHRh9C10YIg0JTQntCS0JXQoNCY0KLQldCb0K8sICDRgdC70LXQtNGD0Y7RidC40LVfX19fICUNCtCz0L7QtNC+0LLQvtCz0L4gINC00L7RhdC+0LTQsCAg0L3QsCDRgdGH0LXRgiDQn9Ce0JLQldCg0JXQndCd0J7Qk9CeLiAg0JTQvtGF0L7QtCwgINC/0YDQtdCy0YvRiNCw0Y7RidC40LkgMTYlICDQs9C+0LTQvtCy0YvRhSwNCtGA0LDRgdC/0YDQtdC00LXQu9GP0LXRgtGB0Y8g0LzQtdC20LTRgyDQtNC+0LLQtdGA0LjRgtC10LvQtdC8INC4INC/0L7QstC10YDQtdC90L3Ri9C8INGB0L7QvtGC0LLQtdGC0YHRgtCy0LXQvdC90L4gNTAlINC90LAgNTAgJS4NCiAgICA3LiDQlNCe0JLQldCg0JjQotCV0JvQrCAg0L/QvtC70YzQt9GD0LXRgtGB0Y8g0L/RgNC10LjQvNGD0YnQtdGB0YLQstC10L3QvdGL0LzQuCDQv9GA0LDQstCw0LzQuCDQvdCwINC60YDQtdC00LjRgtC+0LLQsNC90LjQtSDQsg0K0YDRg9Cx0LvRj9GFINC4INC40L3QvtGB0YLRgNCw0L3QvdC+0Lkg0LLQsNC70Y7RgtC1LCAg0LAg0YLQsNC60LbQtSDQv9GA0Lgg0L/RgNC10LTQvtGB0YLQsNCy0LvQtdC90LjQuCDQstGB0LXQs9C+ICDQutC+0LzQv9C70LXQutGB0LANCtGD0YHQu9GD0LMsINC+0LrQsNC30YvQstCw0LXQvNGL0YUg0J/QntCS0JXQoNCV0J3QndCr0JwuDQogICAgOC4g0KHRgNC+0Log0LTQtdC50YHRgtCy0LjRjyDQvdCw0YHRgtC+0Y/RidC10LPQviDQlNC+0LPQvtCy0L7RgNCwIDIo0JTQstCwKSDQs9C+0LTQsCDRgSAg0LzQvtC80LXQvdGC0LAgINC/0L7QtNC/0LjRgdCwLQ0K0L3QuNGPLiDQndCw0YHRgtC+0Y/RidC40LkgINCU0L7Qs9C+0LLQvtGAICDQvNC+0LbQtdGCINCx0YvRgtGMINC/0YDQvtC70L7QvdCz0LjRgNC+0LLQsNC9INC/0L4g0LLQt9Cw0LjQvNC90L7QvNGDINGB0L7Qs9C70LDRiNC10L3QuNGODQrRgdGC0L7RgNC+0L0sINC+INGH0LXQvCDRgdC+0YHRgtCw0LLQu9GP0LXRgtGB0Y8g0LTQvtC/0L7Qu9C90LjRgtC10LvRjNC90L7QtSDRgdC+0LPQu9Cw0YjQtdC90LjQtS4NCiAgICA5LiDQpNC+0YDRgSAtINC80LDQttC+0YAuDQoNCiAgICA5LjEuINCh0YLQvtGA0L7QvdGLINC+0YHQstC+0LHQvtC20LTQsNGO0YLRgdGPINC+0YIg0L7RgtCy0LXRgtGB0YLQstC10L3QvdC+0YHRgtC4INC30LAg0YfQsNGB0YLQuNGH0L3QvtC1INC40LvQuCDQv9C+0LvQvdC+0LUNCtC90LXQuNGB0L/QvtC70L3QtdC90LjQtSDQvtCx0Y/Qt9Cw0YLQtdC70YzRgdGC0LIg0L/QviDQvdCw0YHRgtC+0Y/RidC10LzRgyDQlNC+0LPQvtCy0L7RgNGDLCDQtdGB0LvQuCDQvtC90L4g0Y/QstC40LvQvtGB0Ywg0YHQu9C10LTRgS0NCtGC0LLQuNC10Lwg0L7QsdGB0YLQvtGP0YLQtdC70YzRgdGC0LIg0L3QtdC/0YDQtdC+0LTQvtC70LjQvNC+0Lkg0YHQuNC70YssINCwINC40LzQtdC90L3QviAtINC/0YDQsNCy0LjRgtC10LvRjNGB0YLQstC10L3QvdGL0LUg0LfQsNC/LQ0K0YDQtdGC0YssICDRgdGC0LjRhdC40LnQvdGL0LUg0LHQtdC00YHRgtCy0LjRjywgINCy0L7QtdC90L3Ri9C1INC00LXQudGB0YLQstC40Y8g0Lgg0YIu0L8uLCAg0LgsINC10YHQu9C4INGN0YLQuCDQvtCx0YHRgtC+0Y8tDQrRgtC10LvRjNGB0YLQstCwINC90LXQv9C+0YHRgNC10LTRgdGC0LLQtdC90L3QviDQv9C+0LLQu9C40Y/Qu9C4INC90LAg0LjRgdC/0L7Qu9C90LXQvdC40LUg0L3QsNGB0YLQvtGP0YnQtdCz0L4g0JTQvtCz0L7QstC+0YDQsC4NCg0KICAgIDkuMi4g0KHRgNC+0LogINC40YHQv9C+0LvQvdC10L3QuNGPICDQvtCx0Y/Qt9Cw0YLQtdC70YzRgdGC0LIg0LIg0Y3RgtC+0Lwg0YHQu9GD0YfQsNC1INC+0YLQvtC00LLQuNCz0LDQtdGC0YHRjyDRgdC+0YDQsNC3LQ0K0LzQtdGA0L3QviDQstGA0LXQvNC10L3QuCwg0LIg0YLQtdGH0LXQvdC40LUg0LrQvtGC0L7RgNC+0LPQviDQtNC10LnRgdGC0LLQvtCy0LDQu9C4INGC0LDQutC40LUg0L7QsdGP0LfQsNGC0LXQu9GM0YHRgtCy0LAuDQoNCiAgICA5LjMuINCV0YHQu9C4INGN0YLQuCDQvtCx0YHRgtC+0Y/RgtC10LvRjNGB0YLQstCwINC00LvQuNC70LjRgdGMINCx0L7Qu9C10LUgNiDQvNC10YHRj9GG0LXQsiwgINGC0L4g0LrQsNC20LTQsNGPINGB0YLQvi0NCtGA0L7QvdCwINC40LzQtdC10YIg0L/RgNCw0LLQviDQsNC90L3Rg9C70LjRgNC+0LLQsNGC0Ywg0L3QsNGB0YLQvtGP0YnQuNC5INCU0L7Qs9C+0LLQvtGALCAg0Lgg0LIg0Y3RgtC+0Lwg0YHQu9GD0YfQsNC1INC90Lgg0L7QtNC90LANCtC40Lcg0YHRgtC+0YDQvtC9INC90LUg0LHRg9C00LXRgiDQuNC80LXRgtGMINC/0YDQsNCy0LAg0L3QsCDQstC+0LfQvNC10YnQtdC90LjQtSDRg9Cx0YvRgtC60L7Qsi4NCg0KICAgIDkuNC4g0J/RgNC4INCy0L7Qt9C90LjQutC90L7QstC10L3QuNC4INC+0LHRgdGC0L7Rj9GC0LXQu9GM0YHRgtCyLCAg0LzQvtCz0YPRidC40YUg0L/QvtCy0LvQtdGH0Ywg0LfQsCDRgdC+0LHQvtC5INC90LXQstGLLQ0K0L/QvtC70L3QtdC90LjQtSDQn9Ce0JLQldCg0JXQndCd0KvQnCDRgdCy0L7QuNGFINC+0LHRj9C30LDRgtC10LvRjNGB0YLQsiDQv9C+INC90LDRgdGC0L7Rj9GJ0LXQvNGDINCU0L7Qs9C+0LLQvtGA0YMsINCyINGC0L7QvCDRh9C40YEtDQrQu9C1LCDQsiDRgdC70YPRh9Cw0LUg0LHQu9C+0LrQuNGA0L7QstCw0L3QuNGPINC00LXQvdC10LMg0L3QsCDRgdGH0LXRgtC1INC4INC70LjQutCy0LjQtNCw0YbQuNC4ICDQn9Ce0JLQldCg0JXQndCd0J7Qk9CeLCAg0L/QvtGBLQ0K0LvQtdC00L3QuNC5INC+0LHRj9C30YPQtdGC0YHRjyAg0LIgINGC0YDQtdGF0LTQvdC10LLQvdGL0LkgINGB0YDQvtC6INC40L3RhNC+0YDQvNC40YDQvtCy0LDRgtGMINCU0J7QktCV0KDQmNCi0JXQm9CvINC+INC90LjRhSDQuCDQvg0K0LzQtdGA0LDRhSwg0L/RgNC40L3QuNC80LDQtdC80YvRhSDQn9Ce0JLQldCg0JXQndCd0KvQnCDQv9C+INCy0YvQv9C+0LvQvdC10L3QuNGOINCy0YHQtdGFINGD0YHQu9C+0LLQuNC5LCDQv9GA0LXQtNGD0YHQvNC+0YLRgNC10L3QvdGL0YUNCtC90LDRgdGC0L7Rj9GJ0LjQvCDQlNC+0LPQvtCy0L7RgNC+0LwuDQoNCiAgICAxMC4g0KHRgtC+0YDQvtC90YsgINGB0YLRgNC+0Y/RgiAg0YHQstC+0Lgg0L7RgtC90L7RiNC10L3QuNGPINC90LAg0L7RgdC90L7QstC1INC/0LDRgNGC0L3QtdGA0YHRgtCy0LAsICDQstC30LDQuNC80L3QvtCz0L4NCtC00L7QstC10YDQuNGPINC4INC60L7QvdGE0LjQtNC10L3RhtC40LDQu9GM0L3QvtGB0YLQuC4NCiAgICDQodGC0L7RgNC+0L3RiyDQv9GA0LjQvNGD0YIgINCy0YHQtSDQvNC10YDRiyDQtNC70Y8g0YDQsNC30YDQtdGI0LXQvdC40Y8g0LLQvtC30L3QuNC60LDRjtGJ0LjRhSDRgNCw0LfQvdC+0LPQu9Cw0YHQuNC5INC/0YPRgtC10LwNCtC/0LXRgNC10LPQvtCy0L7RgNC+0LIuDQogICAg0JIg0YHQu9GD0YfQsNC1INC90LXQstC+0LfQvNC+0LbQvdC+0YHRgtC4INC40YUg0YDQsNC30YDQtdGI0LXQvdC40Y8g0YHRgtC+0YDQvtC90Ysg0L7QsdGA0LDRidCw0Y7RgtGB0Y8g0LIg0LDRgNCx0LjRgtGA0LDQti4NCg0KICAgIDExLiDQrtGA0LjQtNC40YfQtdGB0LrQuNC1INCw0LTRgNC10YHQsCDQuCDRgNC10LrQstC40LfQuNGC0Ysg0YHRgtC+0YDQvtC9Lg0KICAgINCU0J7QktCV0KDQmNCi0JXQm9CsOw0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLQ0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KICAgINCf0J7QktCV0KDQldCd0J3Qq9CZOg0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLQ0KDQogICAgMTIuINCd0LDRgdGC0L7Rj9GJ0LjQuSDQlNC+0LPQvtCy0L7RgCDRgdC+0YHRgtCw0LLQu9C10L0g0LIgMiAo0JTQstCwKSDQv9C+0LTQu9C40L3QvdGL0YUg0Y3QutC30LXQvNC/0LvRj9GA0LDRhSwg0L/RgNC4LQ0K0YfQtdC8INC60LDQttC00YvQuSDQuNC3INC90LjRhSDQuNC80LXQtdGCINC+0LTQuNC90LDQutC+0LLRg9GOINGO0YDQuNC00LjRh9C10YHQutGD0Y4g0YHQuNC70YMuDQoNCiAgICAgICAgINCU0J7QktCV0KDQmNCi0JXQm9CsICAgICAgICAgICAgICAgICAgICAgINCf0J7QktCV0KDQldCd0J3Qq9CZDQoNCiAgICAg0Jwu0J8uIF9fX19fX19fX19fICAgICAgICAgICAgICAgINCcLtCfLl9fX19fX19fX19fXw0KDQoNCiAgDQo8L3ByZT48L2Rpdj4NCjwvYm9keT4NCjwvaHRtbD4=",
+    "mime_type": "text/html",
+    "language": "ru",
+    "locale": "ru"
+  },
+  "ingestion_preflight": {
+    "mime_type": "text/html",
+    "extractor": "html:regex",
+    "extraction_source": "html:regex",
+    "extraction_ok": true,
+    "error": null,
+    "extraction_error": null,
+    "sha256": "c8e4af12c43eae62a9693abd21b6055ea47214193bf92d9e440702d5ab6d16fc"
+  },
+  "metrics": {
+    "risk_count": 1,
+    "high_risk_count": 0,
+    "disputed_clause_count": 1,
+    "asymmetry_signal_count": 0,
+    "contract_type": "non_contract_legal_form"
+  },
+  "analysis": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'dogovor-ob-upravlenii-sredstvami-v-inostrannoy-valyute. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Заемщик'. Определен тип договора: Иной юридический документ (уверенность 48%, правовая рамка: Вне типовой contract taxonomy). Ключевые обязательства по договору для роли 'Заемщик': При возникновении обстоятельств, могущих повлечь за собой невы- полнение ПОВЕРЕННЫМ своих обязательств по настоящему Договору, в том чис- ле, в случае блокирования денег на счете и ликвидации ПОВЕРЕННОГО, пос- ледний обязуется в трехдневный срок информировать ДОВЕРИТЕЛЯ о них и о мерах, принимаемых ПОВЕРЕННЫМ по выполнению всех условий, предусмотренных настоящим Договором. Условия оплаты: ДОВЕРИТЕЛЬ передает ПОВЕРЕННОМУ денежные средства в сумме (________) долларов США и поручает ПОВЕРЕННОМУ управление ресурсами за счет и риск ДОВЕРИТЕЛЯ; 1 средств на ________________ счет ПОВЕРЕННОГО; Доход от инвестированных средств будет распределятся следующим об- разом: первые ___% годового дохода на счет ДОВЕРИТЕЛЯ, следующие____ % годового дохода на счет ПОВЕРЕННОГО. Сроки и дедлайны: ПОВЕРЕННЫЙ прилагает все усилия для получения дохода по инвести- циям, подлежащего распределению в течение _______________________________ лет с даты подписания настоящего ДОГОВОРА; По истечении срока Договора ПОВЕРЕННЫЙ гарантирует выплату полной суммы переданных в управление средств и процентов в размере ЛИБОР плюс___ процентов годовых; Срок действия настоящего Договора 2(Два) года с момента подписа- ния. Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Заемщик'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Договор об управлении средствами (в иностранной валюте) - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам Договор об управлении средствами (в иностранной валюте) N_________ г. Москва \"____\"________________20___г. _____________________________________________________________________ именуемый в дальнейшем \" ПОВЕРЕННЫЙ \", в лице_________________________________________________________________ действующий на основании Устава,...",
+        "dispute_reason": "Явные маркеры спорных формулировок не обнаружены.",
+        "possible_consequence": "Скрытые спорные моменты требуют дополнительной юридической проверки.",
+        "confidence": 0.35
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Заемщик",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Заемщик'.",
+      "must_do": [
+        "При возникновении обстоятельств, могущих повлечь за собой невы- полнение ПОВЕРЕННЫМ своих обязательств по настоящему Договору, в том чис- ле, в случае блокирования денег на счете и ликвидации ПОВЕРЕННОГО, пос- ледний обязуется в трехдневный срок информировать ДОВЕРИТЕЛЯ о них и о мерах, принимаемых ПОВЕРЕННЫМ по выполнению всех условий, предусмотренных настоящим Договором."
+      ],
+      "should_review": [
+        "Настоящий Договор может быть пролонгирован по взаимному соглашению сторон, о чем составляется дополнительное соглашение."
+      ],
+      "payment_terms": [
+        "ДОВЕРИТЕЛЬ передает ПОВЕРЕННОМУ денежные средства в сумме (________) долларов США и поручает ПОВЕРЕННОМУ управление ресурсами за счет и риск ДОВЕРИТЕЛЯ.",
+        "1 средств на ________________ счет ПОВЕРЕННОГО.",
+        "Доход от инвестированных средств будет распределятся следующим об- разом: первые ___% годового дохода на счет ДОВЕРИТЕЛЯ, следующие____ % годового дохода на счет ПОВЕРЕННОГО.",
+        "При возникновении обстоятельств, могущих повлечь за собой невы- полнение ПОВЕРЕННЫМ своих обязательств по настоящему Договору, в том чис- ле, в случае блокирования денег на счете и ликвидации ПОВЕРЕННОГО, пос- ледний обязуется в трехдневный срок информировать ДОВЕРИТЕЛЯ о них и о мерах, принимаемых ПОВЕРЕННЫМ по выполнению всех условий, предусмотренных настоящим Договором."
+      ],
+      "deadlines": [
+        "ПОВЕРЕННЫЙ прилагает все усилия для получения дохода по инвести- циям, подлежащего распределению в течение _______________________________ лет с даты подписания настоящего ДОГОВОРА.",
+        "По истечении срока Договора ПОВЕРЕННЫЙ гарантирует выплату полной суммы переданных в управление средств и процентов в размере ЛИБОР плюс___ процентов годовых.",
+        "Срок действия настоящего Договора 2(Два) года с момента подписа- ния.",
+        "Срок исполнения обязательств в этом случае отодвигается сораз- мерно времени, в течение которого действовали такие обязательства.",
+        "При возникновении обстоятельств, могущих повлечь за собой невы- полнение ПОВЕРЕННЫМ своих обязательств по настоящему Договору, в том чис- ле, в случае блокирования денег на счете и ликвидации ПОВЕРЕННОГО, пос- ледний обязуется в трехдневный срок информировать ДОВЕРИТЕЛЯ о них и о мерах, принимаемых ПОВЕРЕННЫМ по выполнению всех условий, предусмотренных настоящим Договором."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "c8e4af12c43eae62a9693abd21b6055ea47214193bf92d9e440702d5ab6d16fc"
+    },
+    "contract_type": {
+      "type_id": "non_contract_legal_form",
+      "confidence": 0.48,
+      "ru_name": "Иной юридический документ",
+      "legal_framework": "Вне типовой contract taxonomy"
+    },
+    "asymmetry_signals": []
+  },
+  "result": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'dogovor-ob-upravlenii-sredstvami-v-inostrannoy-valyute. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Заемщик'. Определен тип договора: Иной юридический документ (уверенность 48%, правовая рамка: Вне типовой contract taxonomy). Ключевые обязательства по договору для роли 'Заемщик': При возникновении обстоятельств, могущих повлечь за собой невы- полнение ПОВЕРЕННЫМ своих обязательств по настоящему Договору, в том чис- ле, в случае блокирования денег на счете и ликвидации ПОВЕРЕННОГО, пос- ледний обязуется в трехдневный срок информировать ДОВЕРИТЕЛЯ о них и о мерах, принимаемых ПОВЕРЕННЫМ по выполнению всех условий, предусмотренных настоящим Договором. Условия оплаты: ДОВЕРИТЕЛЬ передает ПОВЕРЕННОМУ денежные средства в сумме (________) долларов США и поручает ПОВЕРЕННОМУ управление ресурсами за счет и риск ДОВЕРИТЕЛЯ; 1 средств на ________________ счет ПОВЕРЕННОГО; Доход от инвестированных средств будет распределятся следующим об- разом: первые ___% годового дохода на счет ДОВЕРИТЕЛЯ, следующие____ % годового дохода на счет ПОВЕРЕННОГО. Сроки и дедлайны: ПОВЕРЕННЫЙ прилагает все усилия для получения дохода по инвести- циям, подлежащего распределению в течение _______________________________ лет с даты подписания настоящего ДОГОВОРА; По истечении срока Договора ПОВЕРЕННЫЙ гарантирует выплату полной суммы переданных в управление средств и процентов в размере ЛИБОР плюс___ процентов годовых; Срок действия настоящего Договора 2(Два) года с момента подписа- ния. Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Заемщик'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Договор об управлении средствами (в иностранной валюте) - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам Договор об управлении средствами (в иностранной валюте) N_________ г. Москва \"____\"________________20___г. _____________________________________________________________________ именуемый в дальнейшем \" ПОВЕРЕННЫЙ \", в лице_________________________________________________________________ действующий на основании Устава,...",
+        "dispute_reason": "Явные маркеры спорных формулировок не обнаружены.",
+        "possible_consequence": "Скрытые спорные моменты требуют дополнительной юридической проверки.",
+        "confidence": 0.35
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Заемщик",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Заемщик'.",
+      "must_do": [
+        "При возникновении обстоятельств, могущих повлечь за собой невы- полнение ПОВЕРЕННЫМ своих обязательств по настоящему Договору, в том чис- ле, в случае блокирования денег на счете и ликвидации ПОВЕРЕННОГО, пос- ледний обязуется в трехдневный срок информировать ДОВЕРИТЕЛЯ о них и о мерах, принимаемых ПОВЕРЕННЫМ по выполнению всех условий, предусмотренных настоящим Договором."
+      ],
+      "should_review": [
+        "Настоящий Договор может быть пролонгирован по взаимному соглашению сторон, о чем составляется дополнительное соглашение."
+      ],
+      "payment_terms": [
+        "ДОВЕРИТЕЛЬ передает ПОВЕРЕННОМУ денежные средства в сумме (________) долларов США и поручает ПОВЕРЕННОМУ управление ресурсами за счет и риск ДОВЕРИТЕЛЯ.",
+        "1 средств на ________________ счет ПОВЕРЕННОГО.",
+        "Доход от инвестированных средств будет распределятся следующим об- разом: первые ___% годового дохода на счет ДОВЕРИТЕЛЯ, следующие____ % годового дохода на счет ПОВЕРЕННОГО.",
+        "При возникновении обстоятельств, могущих повлечь за собой невы- полнение ПОВЕРЕННЫМ своих обязательств по настоящему Договору, в том чис- ле, в случае блокирования денег на счете и ликвидации ПОВЕРЕННОГО, пос- ледний обязуется в трехдневный срок информировать ДОВЕРИТЕЛЯ о них и о мерах, принимаемых ПОВЕРЕННЫМ по выполнению всех условий, предусмотренных настоящим Договором."
+      ],
+      "deadlines": [
+        "ПОВЕРЕННЫЙ прилагает все усилия для получения дохода по инвести- циям, подлежащего распределению в течение _______________________________ лет с даты подписания настоящего ДОГОВОРА.",
+        "По истечении срока Договора ПОВЕРЕННЫЙ гарантирует выплату полной суммы переданных в управление средств и процентов в размере ЛИБОР плюс___ процентов годовых.",
+        "Срок действия настоящего Договора 2(Два) года с момента подписа- ния.",
+        "Срок исполнения обязательств в этом случае отодвигается сораз- мерно времени, в течение которого действовали такие обязательства.",
+        "При возникновении обстоятельств, могущих повлечь за собой невы- полнение ПОВЕРЕННЫМ своих обязательств по настоящему Договору, в том чис- ле, в случае блокирования денег на счете и ликвидации ПОВЕРЕННОГО, пос- ледний обязуется в трехдневный срок информировать ДОВЕРИТЕЛЯ о них и о мерах, принимаемых ПОВЕРЕННЫМ по выполнению всех условий, предусмотренных настоящим Договором."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "c8e4af12c43eae62a9693abd21b6055ea47214193bf92d9e440702d5ab6d16fc"
+    },
+    "contract_type": {
+      "type_id": "non_contract_legal_form",
+      "confidence": 0.48,
+      "ru_name": "Иной юридический документ",
+      "legal_framework": "Вне типовой contract taxonomy"
+    },
+    "asymmetry_signals": []
+  },
+  "finished_at": "2026-04-28T16:18:31.587291+00:00",
+  "duration_ms": 85.38
+}

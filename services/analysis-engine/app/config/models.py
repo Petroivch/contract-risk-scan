@@ -38,6 +38,9 @@ class SegmentationConfig(BaseModel):
 
 class IngestionConfig(BaseModel):
     empty_text_placeholder: dict[str, str]
+    extractors_enabled: dict[str, bool] = Field(default_factory=dict)
+    extraction_timeout_seconds: float = Field(default=20.0, gt=0)
+    fallback_to_server_assist: bool = False
 
 
 class PipelineErrorsConfig(BaseModel):
@@ -74,20 +77,75 @@ class ExecutionStrategyConfig(BaseModel):
     reasons: ExecutionStrategyReasonsConfig
 
 
+class ContractTypeConfig(BaseModel):
+    id: str
+    ru_name: str
+    en_name: str | None = None
+    aliases: list[str] = Field(default_factory=list)
+    title_markers: list[str] = Field(default_factory=list)
+    keywords: list[str] = Field(default_factory=list)
+    markers: list[str] = Field(default_factory=list)
+    required_markers: list[str] = Field(default_factory=list)
+    excluded_markers: list[str] = Field(default_factory=list)
+    legal_framework: str = ""
+    characteristic_clauses: list[str] = Field(default_factory=list)
+    high_priority_risks: list[str] = Field(default_factory=list)
+    default_roles: list[str] = Field(default_factory=list)
+    escalation_multiplier: float = Field(default=1.0, gt=0)
+    minimum_score: float = Field(default=2.0, ge=0.0)
+    keyword_weight: float = Field(default=1.0, ge=0.0)
+    marker_weight: float = Field(default=2.0, ge=0.0)
+    characteristic_clause_weight: float = Field(default=1.5, ge=0.0)
+    title_weight: float = Field(default=3.0, ge=0.0)
+    excluded_marker_penalty: float = Field(default=1.5, ge=0.0)
+    legal_notes: str | None = None
+
+
+class DetectionLogicConfig(BaseModel):
+    type: str = "keyword_any"
+    patterns: list[str] = Field(default_factory=list)
+    all_patterns: list[str] = Field(default_factory=list)
+    any_patterns: list[str] = Field(default_factory=list)
+    absent_patterns: list[str] = Field(default_factory=list)
+    actor_patterns: dict[str, list[str]] = Field(default_factory=dict)
+    timeline_patterns: dict[str, list[str]] = Field(default_factory=dict)
+    min_matches: int = Field(default=1, ge=1)
+    source: str = "clause"
+    description: str | None = None
+    negate: bool = False
+
+
+class RoleEscalationEntryConfig(BaseModel):
+    escalate_to: str
+    reason_ru: str | None = None
+    reason_en: str | None = None
+    reason_it: str | None = None
+    reason_fr: str | None = None
+
+
 class RiskRuleConfig(BaseModel):
     id: str
     source_ref: str
-    keywords: list[str]
-    severity: str
+    keywords: list[str] = Field(default_factory=list)
+    severity: str | None = None
+    severity_base: str | None = None
+    legal_basis: str | None = None
+    affected_contract_types: list[str] = Field(default_factory=list)
+    detection_logic: DetectionLogicConfig | None = None
+    role_escalation: dict[str, RoleEscalationEntryConfig] = Field(default_factory=dict)
     title: dict[str, str]
     description: dict[str, str]
     mitigation: dict[str, str]
+    examples: list[str] = Field(default_factory=list)
 
 
 class DisputeMarkerConfig(BaseModel):
     id: str
     source_ref: str
-    markers: list[str]
+    markers: list[str] = Field(default_factory=list)
+    detection_logic: DetectionLogicConfig | None = None
+    fragment_window_chars: int = Field(default=160, ge=40, le=2000)
+    fragment_max_chars: int = Field(default=320, ge=40, le=4000)
     reason: dict[str, str]
     consequence: dict[str, str]
     confidence: float = Field(..., ge=0.0, le=1.0)
@@ -107,15 +165,26 @@ class RoleRelevanceTemplatesConfig(BaseModel):
     role_generic: dict[str, str]
 
 
+class TruncationConfig(BaseModel):
+    max_chars: int = Field(..., gt=0)
+    preserve_word_boundary: bool = True
+    ensure_sentence_end: bool = True
+    fallback_ending: str = "..."
+
+
 class RiskScoringConfig(BaseModel):
     risk_id_prefix: str
-    max_clause_excerpt_chars: int = Field(..., gt=0)
+    max_clause_excerpt_chars: int = Field(default=300, gt=0)
     fallback_dispute_confidence: float = Field(..., ge=0.0, le=1.0)
     severity_labels: dict[str, dict[str, str]]
     role_relevance_templates: RoleRelevanceTemplatesConfig
     risk_rules: list[RiskRuleConfig]
     dispute_markers: list[DisputeMarkerConfig]
     fallback: RiskFallbackConfig
+    truncation: TruncationConfig | None = None
+    role_escalation_matrix: dict[str, dict[str, dict[str, RoleEscalationEntryConfig]]] = Field(
+        default_factory=dict
+    )
 
 
 class SummaryFallbackConfig(BaseModel):
@@ -145,9 +214,33 @@ class ContractBriefSectionsConfig(BaseModel):
     disputed_clauses: dict[str, str]
 
 
+class StructuredSummaryRecordTemplateConfig(BaseModel):
+    headline: dict[str, str]
+    description: dict[str, str]
+    recommendation: dict[str, str]
+
+
+class StructuredSummaryRecordsConfig(BaseModel):
+    role_overview: StructuredSummaryRecordTemplateConfig
+    must_do: StructuredSummaryRecordTemplateConfig
+    should_review: StructuredSummaryRecordTemplateConfig
+    payment_terms: StructuredSummaryRecordTemplateConfig
+    deadlines: StructuredSummaryRecordTemplateConfig
+    penalties: StructuredSummaryRecordTemplateConfig
+    contract_intro: StructuredSummaryRecordTemplateConfig
+    contract_role_obligations: StructuredSummaryRecordTemplateConfig
+    contract_counterparty_obligations: StructuredSummaryRecordTemplateConfig
+    contract_general_obligations: StructuredSummaryRecordTemplateConfig
+    contract_payment_terms: StructuredSummaryRecordTemplateConfig
+    contract_deadlines: StructuredSummaryRecordTemplateConfig
+    contract_penalties: StructuredSummaryRecordTemplateConfig
+    contract_disputed_clauses: StructuredSummaryRecordTemplateConfig
+
+
 class TemplatesConfig(BaseModel):
     contract_brief: dict[str, str]
     contract_brief_sections: ContractBriefSectionsConfig
+    structured_summary_records: StructuredSummaryRecordsConfig
 
 
 class ServiceMetadataConfig(BaseModel):
@@ -163,5 +256,6 @@ class AnalysisRuntimeConfig(BaseModel):
     pipeline: PipelineConfig
     execution_strategy: ExecutionStrategyConfig
     templates: TemplatesConfig
+    contract_types: list[ContractTypeConfig] = Field(default_factory=list)
     risk_scoring: RiskScoringConfig
     summary_generation: SummaryGenerationConfig

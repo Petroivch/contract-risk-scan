@@ -1,0 +1,191 @@
+{
+  "case_id": "dogovory_4__obrazets_dogovor_o_razdele_voznagrazhdeniya",
+  "relative_path": "договоры 4/obrazets-dogovor-o-razdele-voznagrazhdeniya.html",
+  "document_path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\договоры 4\\obrazets-dogovor-o-razdele-voznagrazhdeniya.html",
+  "document_name": "obrazets-dogovor-o-razdele-voznagrazhdeniya.html",
+  "role": "Заявитель",
+  "counterparty_role": "Организация",
+  "language": "ru",
+  "mime_type": "text/html",
+  "tags": [
+    "workspace-corpus",
+    "html",
+    "dogovory_4",
+    "non_contract_legal_form"
+  ],
+  "source_group": "manifest",
+  "expected": {
+    "contract_type": "non_contract_legal_form",
+    "min_contract_type_confidence": 0.35,
+    "min_risk_count": 0,
+    "min_disputed_clause_count": 0,
+    "execution_mode": "local_first",
+    "expected_high_risk_ids": []
+  },
+  "started_at": "2026-04-28T16:12:39.153902+00:00",
+  "status": "completed",
+  "request": {
+    "document_name": "obrazets-dogovor-o-razdele-voznagrazhdeniya.html",
+    "role_context": {
+      "role": "Заявитель",
+      "counterparty_role": "Организация"
+    },
+    "document_text": null,
+    "document_base64": "PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMDEgVHJhbnNpdGlvbmFsLy9FTiI+DQo8aHRtbD4NCjxoZWFkPg0KPGJhc2UgaHJlZj0iaHR0cHM6Ly9kb2dvdm9yLXVyaXN0LnJ1LyI+DQo8dGl0bGU+0J7QsdGA0LDQt9C10YYuINCU0L7Qs9C+0LLQvtGAINC+INGA0LDQt9C00LXQu9C1INCy0L7Qt9C90LDQs9GA0LDQttC00LXQvdC40Y8gLSDQstC10YDRgdC40Y8g0LTQu9GPINC/0LXRh9Cw0YLQuC4gMjAyNi4g0J7QsdGA0LDQt9GG0Ysg0LTQvtCz0L7QstC+0YDQvtCyLCDRgtC40L/QvtCy0YvQtSDQtNC+0LPQvtCy0L7RgNCwLCDQsNC60YLRg9Cw0LvRjNC90YvQtSDQtNC+0LrRg9C80LXQvdGC0YssINGO0YDQuNC00LjRh9C10YHQutC40Lwg0Lgg0YTQuNC30LjRh9C10YHQutC40Lwg0LvQuNGG0LDQvDwvdGl0bGU+DQo8bWV0YSBjb250ZW50PSIiIG5hbWU9ImtleXdvcmRzIj4NCjxtZXRhIGNvbnRlbnQ9IiIgbmFtZT0iZGVzY3JpcHRpb24iPg0KPG1ldGEgbmFtZT0icm9ib3RzIiBjb250ZW50PSJub2luZGV4LG5vZm9sbG93Ij4NCjxtZXRhIGh0dHAtZXF1aXY9IkNvbnRlbnQtVHlwZSIgY29udGVudD0idGV4dC9odG1sOyBjaGFyc2V0PXV0Zi04Ij4NCjxsaW5rIHJlbD0ic3R5bGVzaGVldCIgaHJlZj0iL2ltYWdlcy9zdHlsZS5jc3MiIHR5cGU9InRleHQvY3NzIj4NCjwvaGVhZD4NCjxib2R5Pg0KPGRpdiBjbGFzcz0iZG9jdW1lbnRUZXh0Ij4NCjxwcmU+ICAgICAgICAgICAgICAgICAgICAg0JTQntCT0J7QktCe0KAg0J4g0KDQkNCX0JTQldCb0JUg0JLQntCX0J3QkNCT0KDQkNCW0JTQldCd0JjQrw0KDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgINCU0J7Qk9Ce0JLQntCgDQoNCiAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCiAgICAgICAgICAgICAgICAo0LzQtdGB0YLQviDQuCDQtNCw0YLQsCDQt9Cw0LrQu9GO0YfQtdC90LjRjyDQtNC+0LPQvtCy0L7RgNCwINC/0YDQvtC/0LjRgdGM0Y4pDQoNCiAgICAgICAgINCc0YssINC90LjQttC10L/QvtC00L/QuNGB0LDQstGI0LjQtdGB0Y8sINCz0YAuIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXywNCiAgICDQv9GA0L7QttC40LLQsNGO0YnQuNC5KNCw0Y8pINC/0L4g0LDQtNGA0LXRgdGDOiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCiAgICDQuCDQs9GALiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLCDQv9GA0L7QttC40LLQsNGO0YnQuNC5KNCw0Y8pINC/0L4NCiAgICDQsNC00YDQtdGB0YM6X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXywNCiAgICDRj9Cy0LvRj9GO0YnQuNC10YHRjyDRgdC+0LDQstGC0L7RgNCw0LzQuCDQuNC30L7QsdGA0LXRgtC10L3QuNGPIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQogICAgKNCw0LLRgtC+0YDRgdC60L7QtSDRgdCy0LjQtNC10YLQtdC70YzRgdGC0LLQviBOby4gX19fX19fX19fX19fX19fKSzQsCDRgtCw0LrQttC1INCz0YAuIF9fX19fX19fX19fDQogICAgX19fX19fX19fX19fX19fX19fX19fX19fX18sINC/0YDQvtC20LjQstCw0Y7RidCw0Y8o0LjQuSkg0L/QviDQsNC00YDQtdGB0YM6IF9fX19fX19fX19fX19fDQogICAgX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXywg0Y/QstC70Y/RjtGJ0LDRj9GB0Y8o0LjQudGB0Y8pINC90LDRgdC70LXQtNC90LjRhtC10Lko0LrQvtC8KQ0KICAgINGD0LzQtdGA0YjQtdCz0L4gIl9fIl9fX19fX19fX18gMjBfX18g0LMuINCz0YAuIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLA0KICAgINGB0L7Qs9C70LDRgdC90L4g0YHQstC40LTQtdGC0LXQu9GM0YHRgtCy0YMg0L4g0L/RgNCw0LLQtSDQvdCwINC90LDRgdC70LXQtNGB0YLQstC+LCDQstGL0LTQsNC90L3QvtC80YMgX19fX19fX19fX19fXw0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fINC90L7RgtCw0YDQuNCw0LvRjNC90L7QuSDQutC+0L3RgtC+0YDQvtC5ICJfXyJfX19fX19fXyAyMF9fXyDQsy4NCiAgICDQv9C+INGA0LXQtdGB0YLRgNGDIE5vLiBfX19fX19fX19fLCDRj9Cy0LvRj9GO0YnQtdCz0L7RgdGPINGC0LDQutC20LUg0YHQvtCw0LLRgtC+0YDQvtC8INCy0YvRiNC10YPQutCw0LfQsNC90L3QvtCz0L4NCiAgICDQuNC30L7QsdGA0LXRgtC10L3QuNGPLCDQt9Cw0LrQu9GO0YfQuNC70Lgg0L3QsNGB0YLQvtGP0YnQuNC5INC00L7Qs9C+0LLQvtGAINC+INC90LjQttC10YHQu9C10LTRg9GO0YnQtdC8Og0KDQogICAgICAgICAxLiDQn9GA0LjRh9C40YLQsNGO0YnQuNC10YHRjyAgINC90LDQvCAgINCy0L7Qt9C90LDQs9GA0LDQttC00LXQvdC40Y8sICAg0YHQvtCz0LvQsNGB0L3QviAgINCw0LLRgtC+0YDRgdC60L7QvNGDDQogICAg0YHQstC40LTQtdGC0LXQu9GM0YHRgtCy0YMgTm8uIF9fX19fX19fX19fX18sINGA0LDRgdC/0YDQtdC00LXQu9GP0LXQvCDQsiDRgdC70LXQtNGD0Y7RidC40YUg0LTQvtC70Y/RhToNCiAgICDQs9GALiBfX19fX19fX19fX19fX19fX19fX19fIC0gX19fX18gKF9fX19fX19fX19fX19fX19fX19fXykg0L/RgNC+0YbQtdC90YLQvtCyOw0KICAgINCz0YAuIF9fX19fX19fX19fX19fX19fX19fX18gLSBfX19fXyAoX19fX19fX19fX19fX19fX19fX19fKSDQv9GA0L7RhtC10L3RgtC+0LI7DQogICAg0LPRgC4gX19fX19fX19fX19fX19fX19fX19fXywgINGP0LLQu9GP0Y7RidC10LnRgdGPKNC10LzRg9GB0Y8pICDQvdCw0YHQu9C10LTQvdC40YbQtdC5KNC60L7QvCkgINCz0YAuDQogICAgX19fX19fX19fX19fX19fX19fX19fXyAtIF9fX19fX19fX19fIChfX19fX19fX19fX19fX19fX19fKSDQv9GA0L7RhtC10L3RgtC+0LIuDQoNCiAgICAgICAgIDIuINCg0LDRgdGF0L7QtNGLINC/0L4g0LfQsNC60LvRjtGH0LXQvdC40Y4g0L3QsNGB0YLQvtGP0YnQtdCz0L4g0LTQvtCz0L7QstC+0YDQsCDRgdGC0L7RgNC+0L3RiyAg0YPQv9C70LDRh9C40LLQsNGO0YINCiAgICDQsiDRgNCw0LLQvdGL0YUg0LTQvtC70Y/RhS4NCg0KICAgICAgICAgMy4g0JTQvtCz0L7QstC+0YAg0YHQvtGB0YLQsNCy0LvQtdC9INCyICDRgtGA0LXRhSAg0Y3QutC30LXQvNC/0LvRj9GA0LDRhS4gINCt0LrQt9C10LzQv9C70Y/RgCDQvdCw0YHRgtC+0Y/RidC10LPQvg0KICAgINC00L7Qs9C+0LLQvtGA0LAg0YXRgNCw0L3QuNGC0YHRjyDQsiDQtNC10LvQsNGFIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fXyDQvdC+0YLQsNGA0LjQsNC70YzQvdC+0LkNCiAgICDQutC+0L3RgtC+0YDRiywg0Lgg0L/QviDQvtC00L3QvtC80YMg0Y3QutC30LXQvNC/0LvRj9GA0YMg0LLRi9C00LDQtdGC0YHRjyDRg9GH0LDRgdGC0L3QuNC60LDQvCDQtNC+0LPQvtCy0L7RgNCwLg0KDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg0J/QvtC00L/QuNGB0Lgg0YHRgtC+0YDQvtC9Og0KDQogICAgICAgICAgICAgIF9fX19fX19fX19fX19fX19fX19fICAgICAgICAgICAgICAgICAgX19fX19fX19fX19fX19fXw0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICjQv9C+0LTQv9C40YHRjCkNCg0KICAgICAgICAgICAgICBfX19fX19fX19fX19fX19fX19fXyAgICAgICAgICAgICAgICAgIF9fX19fX19fX19fX19fX18NCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAo0L/QvtC00L/QuNGB0YwpDQoNCiAgICAgICAgICAgICAgX19fX19fX19fX19fX19fX19fX18gICAgICAgICAgICAgICAgICBfX19fX19fX19fX19fX19fDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgKNC/0L7QtNC/0LjRgdGMKQ0KDQogICAgICAgICAiX18iX19fX19fX19fX19fIDIwX19fINCzLiAg0L3QsNGB0YLQvtGP0YnQuNC5INC00L7Qs9C+0LLQvtGAICDRg9C00L7RgdGC0L7QstC10YDQtdC9ICDQvNC90L7QuSwNCiAgICBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18g0L3QvtGC0LDRgNC40YPRgdC+0Lwg0LMuIF9fX19fX19fX19fX19fX19fXw0KICAgIF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fLg0KICAgICAgICAo0L3QsNC40LzQtdC90L7QstCw0L3QuNC1INC90L7RgtCw0YDQuNCw0LvRjNC90L7QuSDQutC+0L3RgtC+0YDRiywgTtC+Liwg0LTQsNGC0LAg0LLRi9C00LDRh9C4INC70LjRhtC10L3Qt9C40LgpDQoNCiAgICAgICAgINCU0L7Qs9C+0LLQvtGAINC/0L7QtNC/0LjRgdCw0L0gICAg0LIgICAg0LzQvtC10LwgICDQv9GA0LjRgdGD0YLRgdGC0LLQuNC4LCAgINC70LjRh9C90L7RgdGC0YwgICDRgdGC0L7RgNC+0L0NCiAgICDRg9GB0YLQsNC90L7QstC70LXQvdCwLCAg0LjRhSDQtNC10LXRgdC/0L7RgdC+0LHQvdC+0YHRgtGMINC/0YDQvtCy0LXRgNC10L3QsC4NCiAgICAgICAgINCi0LXQutGB0YIg0LTQvtCz0L7QstC+0YDQsCDQv9GA0L7Rh9C40YLQsNC9INCy0YHQu9GD0YUuDQoNCiAgICAgICAgICAgICAgICAgICAgICDQl9Cw0YDQtdCz0LjRgdGC0YDQuNGA0L7QstCw0L3QviDQsiDRgNC10LXRgdGC0YDQtSDQt9CwIE7Qvi4gX19fX19fX19fX19fDQogICAgICAgICAgICAgICAgICAgICAg0JLQt9GL0YHQutCw0L3QviDQv9C+INGC0LDRgNC40YTRgzogX19fX19fX19fX19fX19fX19fX19fXyDRgNGD0LEuDQogICAgICAgICDQvC7Qvy4gICAgICAgICDQndC+0YLQsNGA0LjRg9GBOiBfX19fX19fX19fX19fX19fX18gKNC/0L7QtNC/0LjRgdGMKQ0KDQogIA0KPC9wcmU+PC9kaXY+DQo8L2JvZHk+DQo8L2h0bWw+",
+    "mime_type": "text/html",
+    "language": "ru",
+    "locale": "ru"
+  },
+  "ingestion_preflight": {
+    "mime_type": "text/html",
+    "extractor": "html:regex",
+    "extraction_source": "html:regex",
+    "extraction_ok": true,
+    "error": null,
+    "extraction_error": null,
+    "sha256": "ecd77eaa7a3723f836c6f840b2288f445e3ff02f44dd6b7638b41120c22e59ed"
+  },
+  "metrics": {
+    "risk_count": 1,
+    "high_risk_count": 0,
+    "disputed_clause_count": 1,
+    "asymmetry_signal_count": 0,
+    "contract_type": "non_contract_legal_form"
+  },
+  "analysis": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'obrazets-dogovor-o-razdele-voznagrazhdeniya. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Заявитель'. Определен тип договора: Иной юридический документ (уверенность 48%, правовая рамка: Вне типовой contract taxonomy). Условия оплаты: Договор о разделе вознаграждения - версия для печати; Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР О РАЗДЕЛЕ ВОЗНАГРАЖДЕНИЯ ДОГОВОР _____________________________________________________________________ (место и дата заключения договора прописью) Мы, нижеподписавшиеся, гр; Причитающиеся нам вознаграждения, согласно авторскому свидетельству No. Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Заявитель'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Образец. Договор о разделе вознаграждения - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР О РАЗДЕЛЕ ВОЗНАГРАЖДЕНИЯ ДОГОВОР _____________________________________________________________________ (место и дата заключения договора прописью) Мы, нижеподписавшиеся, гр. ____________________________________, проживающий(ая) по адресу: __________________________________________ и гр.",
+        "dispute_reason": "Явные маркеры спорных формулировок не обнаружены.",
+        "possible_consequence": "Скрытые спорные моменты требуют дополнительной юридической проверки.",
+        "confidence": 0.35
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Заявитель",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Заявитель'.",
+      "must_do": [
+        "Конфиг не выявил явных обязательств."
+      ],
+      "should_review": [
+        "Конфиг не выявил явных дискреционных условий."
+      ],
+      "payment_terms": [
+        "Договор о разделе вознаграждения - версия для печати.",
+        "Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР О РАЗДЕЛЕ ВОЗНАГРАЖДЕНИЯ ДОГОВОР _____________________________________________________________________ (место и дата заключения договора прописью) Мы, нижеподписавшиеся, гр.",
+        "Причитающиеся нам вознаграждения, согласно авторскому свидетельству No."
+      ],
+      "deadlines": [
+        "Конфиг не выявил явных сроков."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "ecd77eaa7a3723f836c6f840b2288f445e3ff02f44dd6b7638b41120c22e59ed"
+    },
+    "contract_type": {
+      "type_id": "non_contract_legal_form",
+      "confidence": 0.48,
+      "ru_name": "Иной юридический документ",
+      "legal_framework": "Вне типовой contract taxonomy"
+    },
+    "asymmetry_signals": []
+  },
+  "result": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'obrazets-dogovor-o-razdele-voznagrazhdeniya. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Заявитель'. Определен тип договора: Иной юридический документ (уверенность 48%, правовая рамка: Вне типовой contract taxonomy). Условия оплаты: Договор о разделе вознаграждения - версия для печати; Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР О РАЗДЕЛЕ ВОЗНАГРАЖДЕНИЯ ДОГОВОР _____________________________________________________________________ (место и дата заключения договора прописью) Мы, нижеподписавшиеся, гр; Причитающиеся нам вознаграждения, согласно авторскому свидетельству No. Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Заявитель'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Образец. Договор о разделе вознаграждения - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР О РАЗДЕЛЕ ВОЗНАГРАЖДЕНИЯ ДОГОВОР _____________________________________________________________________ (место и дата заключения договора прописью) Мы, нижеподписавшиеся, гр. ____________________________________, проживающий(ая) по адресу: __________________________________________ и гр.",
+        "dispute_reason": "Явные маркеры спорных формулировок не обнаружены.",
+        "possible_consequence": "Скрытые спорные моменты требуют дополнительной юридической проверки.",
+        "confidence": 0.35
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Заявитель",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Заявитель'.",
+      "must_do": [
+        "Конфиг не выявил явных обязательств."
+      ],
+      "should_review": [
+        "Конфиг не выявил явных дискреционных условий."
+      ],
+      "payment_terms": [
+        "Договор о разделе вознаграждения - версия для печати.",
+        "Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР О РАЗДЕЛЕ ВОЗНАГРАЖДЕНИЯ ДОГОВОР _____________________________________________________________________ (место и дата заключения договора прописью) Мы, нижеподписавшиеся, гр.",
+        "Причитающиеся нам вознаграждения, согласно авторскому свидетельству No."
+      ],
+      "deadlines": [
+        "Конфиг не выявил явных сроков."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "ecd77eaa7a3723f836c6f840b2288f445e3ff02f44dd6b7638b41120c22e59ed"
+    },
+    "contract_type": {
+      "type_id": "non_contract_legal_form",
+      "confidence": 0.48,
+      "ru_name": "Иной юридический документ",
+      "legal_framework": "Вне типовой contract taxonomy"
+    },
+    "asymmetry_signals": []
+  },
+  "finished_at": "2026-04-28T16:12:39.208915+00:00",
+  "duration_ms": 55.62
+}

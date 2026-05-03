@@ -1,0 +1,269 @@
+{
+  "case_id": "договоры 4__dogovor-ob-otkritii-tekuschego-valyutnogo-scheta-i-raschetnokass_html",
+  "relative_path": "договоры 4/dogovor-ob-otkritii-tekuschego-valyutnogo-scheta-i-raschetnokass.html",
+  "document_path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\договоры 4\\dogovor-ob-otkritii-tekuschego-valyutnogo-scheta-i-raschetnokass.html",
+  "document_name": "dogovor-ob-otkritii-tekuschego-valyutnogo-scheta-i-raschetnokass.html",
+  "role": "Заемщик",
+  "counterparty_role": "Кредитор",
+  "language": "ru",
+  "mime_type": "text/html",
+  "tags": [
+    "ad_hoc"
+  ],
+  "source_group": "договоры 4",
+  "expected": {},
+  "started_at": "2026-04-28T16:18:31.180393+00:00",
+  "status": "completed",
+  "request": {
+    "document_name": "dogovor-ob-otkritii-tekuschego-valyutnogo-scheta-i-raschetnokass.html",
+    "role_context": {
+      "role": "Заемщик",
+      "counterparty_role": "Кредитор"
+    },
+    "document_text": null,
+    "document_base64": "PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMDEgVHJhbnNpdGlvbmFsLy9FTiI+DQo8aHRtbD4NCjxoZWFkPg0KPGJhc2UgaHJlZj0iaHR0cHM6Ly9kb2dvdm9yLXVyaXN0LnJ1LyI+DQo8dGl0bGU+0JTQvtCz0L7QstC+0YAg0L7QsSDQvtGC0LrRgNGL0YLQuNC4ICAg0YLQtdC60YPRidC10LPQviDQstCw0LvRjtGC0L3QvtCz0L4g0YHRh9C10YLQsCDQuCDRgNCw0YHRh9C10YLQvdC+LdC60LDRgdGB0L7QstC+0Lwg0L7QsdGB0LvRg9C20LjQstCw0L3QuNC4IC0g0LLQtdGA0YHQuNGPINC00LvRjyDQv9C10YfQsNGC0LguIDIwMjYuINCe0LHRgNCw0LfRhtGLINC00L7Qs9C+0LLQvtGA0L7Qsiwg0YLQuNC/0L7QstGL0LUg0LTQvtCz0L7QstC+0YDQsCwg0LDQutGC0YPQsNC70YzQvdGL0LUg0LTQvtC60YPQvNC10L3RgtGLLCDRjtGA0LjQtNC40YfQtdGB0LrQuNC8INC4INGE0LjQt9C40YfQtdGB0LrQuNC8INC70LjRhtCw0Lw8L3RpdGxlPg0KPG1ldGEgY29udGVudD0iIiBuYW1lPSJrZXl3b3JkcyI+DQo8bWV0YSBjb250ZW50PSIiIG5hbWU9ImRlc2NyaXB0aW9uIj4NCjxtZXRhIG5hbWU9InJvYm90cyIgY29udGVudD0ibm9pbmRleCxub2ZvbGxvdyI+DQo8bWV0YSBodHRwLWVxdWl2PSJDb250ZW50LVR5cGUiIGNvbnRlbnQ9InRleHQvaHRtbDsgY2hhcnNldD11dGYtOCI+DQo8bGluayByZWw9InN0eWxlc2hlZXQiIGhyZWY9Ii9pbWFnZXMvc3R5bGUuY3NzIiB0eXBlPSJ0ZXh0L2NzcyI+DQo8L2hlYWQ+DQo8Ym9keT4NCjxkaXYgY2xhc3M9ImRvY3VtZW50VGV4dCI+DQo8cHJlPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgINCS0LDRgNC40LDQvdGCDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg0JTQntCT0J7QktCe0KANCiAgICAgICAgICAgICAgINC+0LEg0L7RgtC60YDRi9GC0LjQuCDRgtC10LrRg9GJ0LXQs9C+INCy0LDQu9GO0YLQvdC+0LPQviDRgdGH0LXRgtCwINC4DQogICAgICAgICAgICAgICAgICDRgNCw0YHRh9C10YLQvdC+LdC60LDRgdGB0L7QstC+0Lwg0L7QsdGB0LvRg9C20LjQstCw0L3QuNC4DQoNCiAgICAgICAgICAg0LMuX19fX19fX18gICAgICAgICAgICAgICAgICAgICJfX18iX19fX19fXzIwX19fINCzLg0KDQogICAgIF9fX19fX19fX19fX19fXywg0LjQvNC10L3Rg9C10LzRi9C5ICDQsiAg0LTQsNC70YzQvdC10LnRiNC10Lwg0JHQsNC90LosICDQsiDQu9C40YbQtSBfX19fX19fX19fXywNCtC00LXQudGB0YLQstGD0Y7RidC10LPQviDQvdCwINC+0YHQvdC+0LLQsNC90LjQuCDQo9GB0YLQsNCy0LAsINGBINC+0LTQvdC+0Lkg0YHRgtC+0YDQvtC90YssINC4IF9fX19fX18sINC40LzQtdC90YPQtdC80YvQuSDQsg0K0LTQsNC70YzQvdC10LnRiNC10LwgICDQmtC70LjQtdC90YIgINCyICDQu9C40YbQtSAgX19fX19fX19fX19fXywgINC00LXQudGB0YLQstGD0Y7RidC10LPQviAg0L3QsCAg0L7RgdC90L7QstCw0L3QuNC4DQpfX19fX19fX19fLCAgINGBICAg0LTRgNGD0LPQvtC5ICAg0YHRgtC+0YDQvtC90YssICAg0LfQsNC60LvRjtGH0LjQu9C4ICAg0L3QsNGB0YLQvtGP0YnQuNC5ICAg0JTQvtCz0L7QstC+0YAgICDQvg0K0L3QuNC20LXRgdC70LXQtNGD0Y7RidC10Lw6DQoNCiAgICAgMS4g0J/RgNC10LTQvNC10YIg0LTQvtCz0L7QstC+0YDQsA0KICAgICAxLjEuINCR0LDQvdC6ICDQvtGC0LrRgNGL0LLQsNC10YIgINCa0LvQuNC10L3RgtGDICDRgtC10LrRg9GJ0LjQuSAg0LLQsNC70Y7RgtC90YvQuSDRgdGH0LXRgiDQuCDQvtGB0YPRidC10YHRgtCy0LvRj9C10YINCtGA0LDRgdGH0LXRgtC90L4t0LrQsNGB0YHQvtCy0L7QtSDQvtCx0YHQu9GD0LbQuNCy0LDQvdC40LUg0JrQu9C40LXQvdGC0LAg0LIg0LjQvdC+0YHRgtGA0LDQvdC90L7QuSDQstCw0LvRjtGC0LUuDQoNCiAgICAgMi4g0J/QvtGA0Y/QtNC+0Log0L7RgtC60YDRi9GC0LjRjyDQuCDRgNC10LbQuNC8INGB0YfQtdGC0LANCiAgICAgMi4xLiDQotC10LrRg9GJ0LjQuSDQstCw0LvRjtGC0L3Ri9C5INGB0YfQtdGCINCa0LvQuNC10L3RgtCwINCyINCR0LDQvdC60LUg0L7RgtC60YDRi9Cy0LDQtdGC0YHRjyDQvdCwICDQvtGB0L3QvtCy0LDQvdC40LgNCtC30LDRj9Cy0LvQtdC90LjRjyAg0JrQu9C40LXQvdGC0LAgINC4INC/0YDQtdC00L7RgdGC0LDQstC70LXQvdC40Y8g0LTQvtC60YPQvNC10L3RgtC+0LIsICDQv9C+0LTRgtCy0LXRgNC20LTQsNGO0YnQuNGFINGB0L7Qt9C00LDQvdC40LUNCtC+0YDQs9Cw0L3QuNC30LDRhtC40LgsICDQutC+0L/QuNC4INCj0YHRgtCw0LLQsCAo0J/QvtC70L7QttC10L3QuNGPKSDQuCDQutCw0YDRgtC+0YfQutC4INGBINC+0LHRgNCw0LfRhtCw0LzQuCDQv9C+0LTQv9C40YHQtdC5ICDQuA0K0L7RgtGC0LjRgdC60L7QvCDQv9C10YfQsNGC0LgsINCwINGC0LDQutC20LUg0LTRgNGD0LPQuNGFINC00L7QutGD0LzQtdC90YLQvtCyLCDRgdC+0LPQu9Cw0YHQvdC+INCY0L3RgdGC0YDRg9C60YbQuNGP0Lwg0JHQsNC90LrQsC4NCiAgICAgMi4yLiDQn9C10YDQtdGH0LXQvdGMICDQstC+0LfQvNC+0LbQvdGL0YUgINC/0L7RgdGC0YPQv9C70LXQvdC40LkgINC4ICDQv9C70LDRgtC10LbQtdC5LCAg0LAgINGC0LDQutC20LUgINGE0L7RgNC80YsNCtGA0LDRgdGH0LXRgtC+0LIg0Lgg0YPRgdC70YPQsywgINC/0YDQtdC00L7RgdGC0LDQstC70Y/QtdC80YvRhSDQkdCw0L3QutC+0LwsINC+0L/RgNC10LTQtdC70Y/RjtGC0YHRjyDQt9Cw0LrQvtC90L7QtNCw0YLQtdC70YzRgdGC0LLQvtC8DQrQuCDQstC90YPRgtGA0LXQvdC90LjQvNC4INCY0L3RgdGC0YDRg9C60YbQuNGP0LzQuCDQkdCw0L3QutCwINC+INC/0L7RgNGP0LTQutC1ICDQvtGC0LrRgNGL0YLQuNGPICDQuCAg0LLQtdC00LXQvdC40Y8gINGC0LXQutGD0YnQuNGFDQrQstCw0LvRjtGC0L3Ri9GFINGB0YfQtdGC0L7Qsi4NCiAgICAgMi4zLiDQn9C70LDRgtC10LbQuCDRgdC+INGB0YfQtdGC0LAgINCa0LvQuNC10L3RgtCwICDQvtGB0YPRidC10YHRgtCy0LvRj9GO0YLRgdGPICDQsiAg0L/RgNC10LTQtdC70LDRhSAg0L7RgdGC0LDRgtC60LANCtGB0YDQtdC00YHRgtCyINC90LAg0YHRh9C10YLQtS4g0J7QstC10YDQtNGA0LDRhNGC0L3Ri9C5INC60YDQtdC00LjRgiDQvdC1INC/0YDQtdC00L7RgdGC0LDQstC70Y/QtdGC0YHRjy4NCiAgICAgMi40LiDQodCy0L7QsdC+0LTQvdGL0LUgINC+0YHRgtCw0YLQutC4ICDQstCw0LvRjtGC0L3Ri9GFICDRgdGA0LXQtNGB0YLQsiAg0L3QsCAg0YHRh9C10YLQtSAg0L3QsCAg0L7RgdC90L7QstCw0L3QuNC4DQrQt9Cw0Y/QstC70LXQvdC40Y8gINCa0LvQuNC10L3RgtCwICDQvNC+0LPRg9GCINCx0YvRgtGMINGA0LDQt9C80LXRidC10L3RiyDQsiDQtNC10L/QvtC30LjRgiDRgSDQv9C+0YHQu9C10LTRg9GO0YnQtdC5INCy0YvQv9C70LDRgtC+0LkNCtC/0YDQvtGG0LXQvdGC0L7QsiDQsiDQv9C+0LvRjNC30YMg0JrQu9C40LXQvdGC0LAg0LIg0YHQvtC+0YLQstC10YLRgdGC0LLQuNC4INGBINCi0LDRgNC40YTQsNC80Lgg0JHQsNC90LrQsC4NCiAgICAgMi41LiDQn9GA0LggICDQt9Cw0LrQu9GO0YfQtdC90LjQuCAgINGC0YDQsNGB0YLQvtCy0L7Qs9C+ICAg0YHQvtCz0LvQsNGI0LXQvdC40Y8gICDQkdCw0L3QuiAg0L7RgdGD0YnQtdGB0YLQstC70Y/QtdGCDQrQtNC+0LLQtdGA0LjRgtC10LvRjNC90YvQtSDQvtC/0LXRgNCw0YbQuNC4INGBICDQuNC90LLQsNC70Y7RgtC90YvQvNC4ICDRgdGA0LXQtNGB0YLQstCw0LzQuCAg0JrQu9C40LXQvdGC0LAsICDQtdCz0L4gINGG0LXQvdC90YvQvNC4DQrQsdGD0LzQsNCz0LDQvNC4INC4INC40LzRg9GJ0LXRgdGC0LLQvtC8Lg0KICAgICAyLjYuINCS0YvQv9C40YHQutC4INC/0L4g0YHRh9C10YLRgyDRgdGH0LjRgtCw0Y7RgtGB0Y8g0L/QvtC00YLQstC10YDQttC00LXQvdC90YvQvNC4LCDQtdGB0LvQuCDQstC70LDQtNC10LvQtdGGINGB0YfQtdGC0LANCtC90LUgINC/0YDQtdC00YHRgtCw0LLQuNGCICDRgdCy0L7QuCAg0LfQsNC80LXRh9Cw0L3QuNGPICDQsiAg0YLQtdGH0LXQvdC40LUgIDMwICDQutCw0LvQtdC90LTQsNGA0L3Ri9GFICDQtNC90LXQuSDRgdC+INC00L3Rjw0K0L/QvtC70YPRh9C10L3QuNGPINCy0YvQv9C40YHQutC4Lg0KICAgICAyLjcuINCS0YHQtSAgINC/0LvQsNGC0LXQttC4ICAg0YHQviAgINGB0YfQtdGC0LAgINCa0LvQuNC10L3RgtCwICDQvtGB0YPRidC10YHRgtCy0LvRj9GO0YLRgdGPICDQsiAg0L/QvtGA0Y/QtNC60LUNCtC60LDQu9C10L3QtNCw0YDQvdC+0Lkg0L7RgtGH0LXRgtC90L7RgdGC0LguDQoNCiAgICAgMy4g0J7QsdGP0LfQsNGC0LXQu9GM0YHRgtCy0LAg0LHQsNC90LrQsC4NCiAgICAgMy4xLiDQkdCw0L3QuiDQvtCx0Y/Qt9GD0LXRgtGB0Y8g0L7QsdC10YHQv9C10YfQuNCy0LDRgtGMINGB0L7RhdGA0LDQvdC90L7RgdGC0Ywg0LLRgdC10YUg0LLQsNC70Y7RgtC90YvRhSAg0YHRgNC10LTRgdGC0LIsDQrQv9C+0YHRgtGD0L/QuNCy0YjQuNGFICDQvdCwICDRgdGH0LXRgiAg0JrQu9C40LXQvdGC0LAsICDQuCAg0LLRi9C/0L7Qu9C90Y/RgtGMICDRgNCw0YHQv9C+0YDRj9C20LXQvdC40Y8g0JrQu9C40LXQvdGC0LAg0L/QviDQuNGFDQrQuNGB0L/QvtC70YzQt9C+0LLQsNC90LjRjiwg0L3QsNGH0LjRgdC70Y/RgtGMINC/0YDQvtGG0LXQvdGC0Ysg0L/QviDQvtGB0YLQsNGC0LrQsNC8INGB0YDQtdC00YHRgtCyINC90LAg0YHRh9C10YLQtS4NCiAgICAgMy4yLiDQkdCw0L3QuiAg0L7QsdGP0LfRg9C10YLRgdGPICDQvtGB0YPRidC10YHRgtCy0LvRj9GC0Ywg0L/QtdGA0LXQstC+0LQg0LTQtdC90LXQttC90YvRhSDRgdGA0LXQtNGB0YLQsiDRgdC+INGB0YfQtdGC0LANCtCa0LvQuNC10L3RgtCwINC/0L4g0LXQs9C+INC/0L7RgNGD0YfQtdC90LjRjiDQvdC1ICDQv9C+0LfQtNC90LXQtSAg0YHQu9C10LTRg9GO0YnQtdCz0L4gINGA0LDQsdC+0YfQtdCz0L4gINC00L3RjyAg0L7RgiAg0LTQsNGC0YsNCtC/0L7Qu9GD0YfQtdC90LjRjyDQv9C70LDRgtC10LbQvdGL0YUg0LTQvtC60YPQvNC10L3RgtC+0LIuDQogICAgIDMuMy4g0JHQsNC90LogINC+0LHRj9C30LDQvSAg0L7RgdGD0YnQtdGB0YLQstC40YLRjCAg0LLRi9C00LDRh9GDICDQmtC70LjQtdC90YLRgyAg0L3QsNC70LjRh9C90YvRhSAgINCy0LDQu9GO0YLQvdGL0YUNCtGB0YDQtdC00YHRgtCyICDQsiDRgtC10YfQtdC90LjQtSBfX19fINGA0LDQsdC+0YfQuNGFINC00L3QtdC5INGB0L4g0LTQvdGPINC/0L7RgdGC0YPQv9C70LXQvdC40Y8g0LfQsNGP0LLQutC4INC+0YIg0JrQu9C40LXQvdGC0LANCtCyINC/0L7RgNGP0LTQutC1LCDRg9GB0YLQsNC90L7QstC70LXQvdC90L7QvCDQsiDQsdCw0L3QutC+0LLRgdC60L7QuSDQv9GA0LDQutGC0LjQutC1Lg0KICAgICAzLjQuINCR0LDQvdC6ICDQstGL0LTQsNC10YIgINCy0YvQv9C40YHQutC4ICDQmtC70LjQtdC90YLRgyAg0L/QviAg0LzQtdGA0LUg0YHQvtCy0LXRgNGI0LXQvdC40Y8g0L7Qv9C10YDQsNGG0LjQuSDQv9C+DQrRgdGH0LXRgtGDLg0KICAgICAzLjUuINCR0LDQvdC6ICDQvtCx0Y/Qt9GD0LXRgtGB0Y8gINC+0LHQtdGB0L/QtdGH0LjQstCw0YLRjCAg0LrQvtC90YTQuNC00LXQvdGG0LjQsNC70YzQvdC+0YHRgtGMICDQuNC90YTQvtGA0LzQsNGG0LjQuCDQvg0K0YXQvtC30Y/QudGB0YLQstC10L3QvdC+0Lkg0LTQtdGP0YLQtdC70YzQvdC+0YHRgtC4INCa0LvQuNC10L3RgtCwICDQuCAg0YHQvtGF0YDQsNC90Y/RgtGMICDQutC+0LzQvNC10YDRh9C10YHQutGD0Y4gINGC0LDQudC90YMgINC/0L4NCtC+0L/QtdGA0LDRhtC40Y/QvCwg0L/RgNC+0LjQt9Cy0L7QtNC40LzRi9C8INC/0L4g0YHRh9C10YLRgyDQmtC70LjQtdC90YLQsC4NCg0KICAgICA0LiDQntCx0Y/Qt9Cw0YLQtdC70YzRgdGC0LLQsCDQmtC70LjQtdC90YLQsC4NCiAgICAgNC4xLiDQmtC70LjQtdC90YIgINC+0LHRj9C30YPQtdGC0YHRjyAgKNC90LUgINC+0LHRj9C30YPQtdGC0YHRjykv0L3QtdC90YPQttC90L7QtSDQt9Cw0YfQtdGA0LrQvdGD0YLRjC8g0YXRgNCw0L3QuNGC0YwNCtCy0YHQtSDRgdCy0L7QuCDQstCw0LvRjtGC0L3Ri9C1INGB0YDQtdC00YHRgtCy0LAg0YLQvtC70YzQutC+INC90LAg0YHRh9C10YLQtSDQsiDQkdCw0L3QutC1Lg0KICAgICA0LjIuINCa0LvQuNC10L3RgiAgICDQvtCx0Y/Qt9GD0LXRgtGB0Y8gICAg0YDQsNGB0L/QvtGA0Y/QttCw0YLRjNGB0Y8gICAg0LLQsNC70Y7RgtC90YvQvNC4ICAg0YHRgNC10LTRgdGC0LLQsNC80LgsDQrRhdGA0LDQvdGP0YnQuNC80LjRgdGPICDQvdCwICAg0YHRh9C10YLQtSAgINCyICAg0JHQsNC90LrQtSwgICDQsiAgINGB0L7QvtGC0LLQtdGC0YHRgtCy0LjQuCAgINGBICAg0LTQtdC50YHRgtCy0YPRjtGJ0LjQvA0K0LfQsNC60L7QvdC+0LTQsNGC0LXQu9GM0YHRgtCy0L7QvC4NCg0KICAgICA1LiDQpNC40L3QsNC90YHQvtCy0YvQtSDQstC30LDQuNC80L7QvtGC0L3QvtGI0LXQvdC40Y8NCiAgICAgNS4xLiDQntGC0LrRgNGL0YLQuNC1INGC0LXQutGD0YnQtdCz0L4g0LLQsNC70Y7RgtC90L7Qs9C+INGB0YfQtdGC0LAsINGD0YHQu9GD0LPQuCDQv9C+INGA0LDRgdGH0LXRgtC90L4t0LrQsNGB0YHQvtCy0L7QvNGDDQrQvtCx0YHQu9GD0LbQuNCy0LDQvdC40Y4gINC4ICDQtNGA0YPQs9C40LUgINCx0LDQvdC60L7QstGB0LrQuNC1ICAg0YPRgdC70YPQs9C4LCAgINC/0YDQtdC00L7RgdGC0LDQstC70Y/QtdC80YvQtSAgINCx0LDQvdC60L7QvCwNCtC+0L/Qu9Cw0YfQuNCy0LDRjtGC0YHRjyDQmtC70LjQtdC90YLQvtC8INGB0L7Qs9C70LDRgdC90L4g0KLQsNGA0LjRhNCw0LwsICDQtNC10LnRgdGC0LLRg9GO0YnQuNC8INCyINCR0LDQvdC60LUsINC/0YDQuNCy0LXQtNC10L3QvdGL0LwNCtCyINC/0YDQuNC70L7QttC10L3QuNC4INC4INGP0LLQu9GP0Y7RidC40LzQuNGB0Y8g0L3QtdC+0YLRitC10LzQu9C10LzQvtC5INGH0LDRgdGC0YzRjiDQvdCw0YHRgtC+0Y/RidC10LPQviDQtNC+0LPQvtCy0L7RgNCwLg0KICAgICDQn9GA0L7RhtC10L3RgtC90YvQtSDRgdGC0LDQstC60LggINC/0L4gINC00LXQv9C+0LfQuNGC0LDQvCAg0YLQtdC60YPRidC10LPQviDRgdGH0LXRgtCwINCyINCh0JrQkiDQuCDQsiDRgNGD0LHQu9GP0YUg0YHQvg0K0YHQstC+0LHQvtC00L3QvtC5INC60L7QvdCy0LXRgNGB0LjQtdC5INGD0YHRgtCw0L3QsNCy0LvQuNCy0LDRjtGC0YHRjyDQsiDRgdC+0L7RgtCy0LXRgtGB0YLQstC40Lgg0YEg0YDQtdGI0LXQvdC40LXQvCDQmtGA0LXQtNC40YLQvdC+0LPQvg0K0LrQvtC80LjRgtC10YLQsCDQvdCwINC00LDRgtGDINC30LDQutC70Y7Rh9C10L3QuNGPINC00L7Qs9C+0LLQvtGA0LAsINC90L4g0L3QtSDQvNC10L3QtdC1IF9fXyUg0LPQvtC00L7QstGL0YUuINCf0L4g0YHRg9C80LzQsNC8DQrQsdC+0LvQtdC1IF9fX19fX18g0YLRi9GBLiAg0LTQvtC70LsuICDQv9GA0L7RhtC10L3RgiDQv9C+INC00LXQv9C+0LfQuNGC0LDQvCDRg9Cy0LXQu9C40YfQuNCy0LDQtdGC0YHRjyDQvdCwIF9fX18lLCDQsA0K0L/QviAg0LTQtdC/0L7Qt9C40YLQsNC8ICDQvNC10L3QtdC1IF9fX19fINGC0YvRgS4gINC00L7Qu9C7LiAg0L/RgNC+0YbQtdC90YIg0YPQvNC10L3RjNGI0LDQtdGC0YHRjyDQvdCwIF9fX19fJSAg0L/Qvg0K0YHRgNCw0LLQvdC10L3QuNGOINGBINGD0LrQsNC30LDQvdC90YvQvCDQstGL0YjQtSDQv9GA0L7RhtC10L3RgtC+0LwuDQogICAgINCf0L7RgdC70LUg0L/QvtC00LrQu9GO0YfQtdC90LjRjyDQuiDQvNC10LbQtNGD0L3QsNGA0L7QtNC90L7QuSDRgdC40YHRgtC10LzQtSAi0KDQtdC50YLQtdGAIiDQv9GA0L7RhtC10L3RgtC90YvQtSDRgdGC0LDQstC60LgNCtCx0YPQtNGD0YIg0YPRgdGC0LDQvdCw0LLQu9C40LLQsNGC0YzRgdGPINCyINGB0L7QvtGC0LLQtdGC0YHRgtCy0LjQuCDRgSDQvy7Qvy41LjItNS43INC90LDRgdGC0L7Rj9GJ0LXQs9C+INC00L7Qs9C+0LLQvtGA0LAuDQogICAgIDUuMi4g0J/QviDQstCw0LvRjtGC0L3Ri9C8INGB0YfQtdGC0LDQvCDQsiDQodCa0JIg0L/RgNC+0YbQtdC90YLQvdCw0Y8g0YHRgtCw0LLQutCwINC+0L/RgNC10LTQtdC70Y/QtdGC0YHRjywg0LjRgdGF0L7QtNGPDQrQuNC3INGB0YLQsNCy0L7QuiDQutGA0LDRgtC60L7RgdGA0L7Rh9C90YvRhSAo0L7QtNC90L7QtNC90LXQstC90YvRhSkg0LTQtdC/0L7Qt9C40YLQvtCyINC90LAg0LzQtdC20LTRg9C90LDRgNC+0LTQvdC+0Lwg0YDRi9C90LrQtS4NCiAgICAg0JjRgdGF0L7QtNGPINC40Lcg0LXQttC10LTQvdC10LLQvdGL0YUg0LTQsNC90L3Ri9GFINC+INGB0YLQsNCy0LrQsNGFINC/0L4g0LrRgNCw0YLQutC+0YHRgNC+0YfQvdGL0LwgKNC+0LTQvdC+0LTQvdC10LLQvdGL0LwpDQrQtNC10L/QvtC30LjRgtCw0LwgINC90LAgINC80LXQttC00YPQvdCw0YDQvtC00L3QvtC8ICDQstCw0LvRjtGC0L3QvtC8ICDRgNGL0L3QutC1LCAgINC/0YPQsdC70LjQutGD0LXQvNGL0LUgICDQsNCz0LXQvdGC0YHRgtCy0L7QvA0KItCg0LXQudGC0LXRgCIsICDRgNCw0YHRgdGH0LjRgtGL0LLQsNGO0YLRgdGPINGB0YDQtdC00L3QuNC1INGB0YLQsNCy0LrQuCDQv9C+INC+0YLQtNC10LvRjNC90YvQvCDQstCw0LvRjtGC0LDQvCDQt9CwINC40YHRgtC10LrRiNC40LkNCtC60LLQsNGA0YLQsNC7Lg0KICAgICDQoNCw0YHRgdGH0LjRgtCw0L3QvdCw0Y8g0YHRgNC10LTQvdGP0Y8gINGB0YLQsNCy0LrQsCAg0YPQvNC10L3RjNGI0LDQtdGC0YHRjyDQvdCwIF9fX18lICAo0KDQsNC30LzQtdGAINGB0L3QuNC20LXQvdC40Y8NCtGB0YDQtdC00L3QtdC5ICDRgdGC0LDQstC60LggIChfX19fJSkgINGD0YHRgtCw0L3QvtCy0LvQtdC9ICDRgSAg0YPRh9C10YLQvtC8ICDQvNC10LbQtNGD0L3QsNGA0L7QtNC90L7QuSAg0L/RgNCw0LrRgtC40LrQuCwNCtGB0L7Qs9C70LDRgdC90L4gINC60L7RgtC+0YDQvtC5INC/0YDQvtGG0LXQvdGC0Ysg0L/QviDRgtC10LrRg9GJ0LjQvCDRgdGH0LXRgtCw0Lwg0LjQu9C4INCy0L7QvtCx0YnQtSDQvdC1INC/0LvQsNGC0Y/RgtGB0Y8sICDQuNC70LgNCtGD0YHRgtCw0L3QsNCy0LvQuNCy0LDRjtGC0YHRjyDQv9C+INGB0YLQsNCy0LrQsNC8INC30L3QsNGH0LjRgtC10LvRjNC90L4g0L3QuNC20LUg0YHRgtCw0LLQvtC6INC80LXQttC00YPQvdCw0YDQvtC00L3QvtCz0L4g0YDRi9C90LrQsCkuDQogICAgIDUuMy4g0J/RgNC+0YbQtdC90YLRiyAg0L3QtSAg0L3QsNGH0LjRgdC70Y/RjtGC0YHRjyAg0L/QviAg0LLQsNC70Y7RgtCw0LwsICDQv9C+ICDQutC+0YLQvtGA0YvQvCDQv9GA0L7RhtC10L3RgtC90LDRjw0K0YHRgtCw0LLQutCwINC90LAg0LzQtdC20LTRg9C90LDRgNC+0LTQvdC+0Lwg0LLQsNC70Y7RgtC90L7QvCDRgNGL0L3QutC1INC80LXQvdGM0YjQtSDQuNC70Lgg0YDQsNCy0L3QsCBfX19fJQ0KICAgICA1LjQuINCf0L4gICDQstC60LvQsNC00LDQvCAgINCyICAg0YHQstC+0LHQvtC00L3QviAgINC60L7QvdCy0LXRgNGC0LjRgNGD0LXQvNC+0LkgICDQstCw0LvRjtGC0LUgINC/0YDQvtGG0LXQvdGC0YsNCtC90LDRh9C40YHQu9GP0Y7RgtGB0Y8gINC/0L4gINGB0YLQsNCy0LrQsNC8LCAg0LHQsNC30LjRgNGD0Y7RidC40LzRgdGPICDQvdCwICDRgdGC0LDQstC60LDRhSAg0L3QsCAg0YHQvtC+0YLQstC10YLRgdGC0LLRg9GO0YnQuNC5DQrQv9C10YDQuNC+0LQsICAg0LTQtdC50YHRgtCy0YPRjtGJ0LjRhSAgINC90LAgICDQtNCw0YLRgyAgINC/0YDQuNC90Y/RgtC40Y8gICDRgdGA0LXQtNGB0YLQsiAg0L3QsCAg0LzQtdC20LTRg9C90LDRgNC+0LTQvdC+0LwNCtC80LXQttCx0LDQvdC60L7QstGB0LrQvtC8INGA0YvQvdC60LUg0L/QviDRgdC+0L7RgtCy0LXRgtGB0YLQstGD0Y7RidC40Lwg0LLQsNC70Y7RgtCw0LwuICDQn9C+ICDQtNC10L/QvtC30LjRgtCw0LwgINC90LAgINGB0YPQvNC80YMNCtCx0L7Qu9C10LUgIF9fX19fX19fINGC0YvRgS4gINC00L7Qu9C7LiAg0YHRgtCw0LLQutC4INC80L7Qs9GD0YIg0LHRi9GC0Ywg0YPQstC10LvQuNGH0LXQvdGLINC00L4gX19fJSAg0LPQvtC00L7QstGL0YUNCtCy0YvRiNC1INGA0YvQvdC+0YfQvdC+0LPQviDRg9GA0L7QstC90Y8g0L3QsCDRgdC+0L7RgtCy0LXRgtGB0YLQstGD0Y7RidC40Lkg0L/QtdGA0LjQvtC0LiDQn9C+INC00LXQv9C+0LfQuNGC0LDQvCDQvdC40LbQtSBfX19fX18NCtGC0YvRgS4gINC00L7Qu9C7LiAg0YHRgtCw0LLQutC4INGD0LzQtdC90YzRiNCw0Y7RgtGB0Y8g0L3QsCBfX19fJSDQs9C+0LTQvtCy0YvRhSDQvdC40LbQtSDRgNGL0L3QvtGH0L3QvtCz0L4g0YPRgNC+0LLQvdGPINC90LANCtGB0L7QvtGC0LLQtdGC0YHRgtCy0YPRjtGJ0LjQuSDQv9C10YDQuNC+0LQuDQogICAgIDUuNS4g0J/QviAg0LLQsNC70Y7RgtC90YvQvCDRgdGH0LXRgtCw0Lwg0LIg0YDRg9Cx0LvRj9GFINGB0L4g0YHQstC+0LHQvtC00L3QvtC5INC60L7QvdCy0LXRgNGB0LjQtdC5INC/0YDQvtGG0LXQvdGC0L3QsNGPDQrRgdGC0LDQstC60LAgINC+0L/RgNC10LTQtdC70Y/QtdGC0YHRjywgINC40YHRhdC+0LTRjyAg0LjQtyAg0YHRgtCw0LLQvtC6ICDQutGA0LDRgtC60L7RgdGA0L7Rh9C90YvRhSAgINC00LXQv9C+0LfQuNGC0L7QsiAgINC90LANCtC80LXQttC00YPQvdCw0YDQvtC00L3QvtC8ICAg0LLQsNC70Y7RgtC90L7QvCAgINGA0YvQvdC60LUgICDQuCAgINGD0LTQtdC70YzQvdGL0YUgINCy0LXRgdC+0LIgINCy0LDQu9GO0YIgINCyICDQvdCw0LHQvtGA0LUsDQrQuNGB0L/QvtC70YzQt9GD0LXQvNC+0Lwg0JHQsNC90LrQvtC8INCg0L7RgdGB0LjQuCDQtNC70Y8g0L7Qv9GA0LXQtNC10LvQtdC90LjRjyDQutGD0YDRgdCwINCy0LDQu9GO0YIg0LIg0YDRg9Cx0LvRj9GFLg0KICAgICDQmNGB0YXQvtC00Y8g0LjQtyDQtdC20LXQtNC90LXQstC90YvRhSDQtNCw0L3QvdGL0YUg0L4g0YHRgtCw0LLQutCw0YUg0L/QviDQutGA0LDRgtC60L7RgdGA0L7Rh9C90YvQvCAo0L7QtNC90L7QtNC90LXQstC90YvQvCkNCtC00LXQv9C+0LfQuNGC0LDQvCAg0L3QsCAg0LzQtdC20LTRg9C90LDRgNC+0LTQvdC+0LwgINCy0LDQu9GO0YLQvdC+0LwgINGA0YvQvdC60LUsICAg0L/Rg9Cx0LvQuNC60YPQtdC80YvQvCAgINCw0LPQtdC90YLRgdGC0LLQvtC8DQoi0KDQtdC50YLQtdGAIiwgINGA0LDRgdGB0YfQuNGC0YvQstCw0Y7RgtGB0Y8g0YHRgNC10LTQvdC40LUg0YHRgtCw0LLQutC4INC/0L4g0L7RgtC00LXQu9GM0L3Ri9C8INCy0LDQu9GO0YLQsNC8INC30LAg0LjRgdGC0LXQutGI0LjQuQ0K0LrQstCw0YDRgtCw0LsuDQogICAgINCd0LAg0L7RgdC90L7QstC1INGB0YDQtdC00L3QuNGFINGB0YLQsNCy0L7QuiDQv9C+INC+0YLQtNC10LvRjNC90YvQvCDQstCw0LvRjtGC0LDQvCDQuCDRg9C00LXQu9GM0L3Ri9GFINCy0LXRgdC+0LIg0LLQsNC70Y7Rgg0K0LIg0L3QsNCx0L7RgNC1INCy0LDQu9GO0YIg0JHQsNC90LrQsCAg0KDQvtGB0YHQuNC4ICDRgNCw0YHRgdGH0LjRgtGL0LLQsNC10YLRgdGPICDRgdGA0LXQtNC90LXQstC30LLQtdGI0LXQvdC90LDRjyAgKNCx0LDQt9C+0LLQsNGPKQ0K0YHRgtCw0LLQutCwLg0KICAgICDQoNCw0YHRgdGH0LjRgtCw0L3QvdCw0Y8g0LHQsNC30L7QstCw0Y8g0YHRgtCw0LLQutCwINGD0LzQtdC90YzRiNCw0LXRgtGB0Y8g0L3QsCAgX19fJS4gICjQoNCw0LfQvNC10YAgINGB0L3QuNC20LXQvdC40Y8NCtGB0YDQtdC00L3QtdC5ICDRgdGC0LDQstC60LggICjQvdCwICBfX18lKSAg0YPRgdGC0LDQvdC+0LLQu9C10L0gINGBINGD0YfQtdGC0L7QvCDQvNC10LbQtNGD0L3QsNGA0L7QtNC90L7QuSDQv9GA0LDQutGC0LjQutC4LA0K0YHQvtCz0LvQsNGB0L3QviDQutC+0YLQvtGA0L7QuSDQv9GA0L7RhtC10L3RgtGLINC/0L4g0YLQtdC60YPRidC40Lwg0YHRh9C10YLQsNC8INC40LvQuCDQstC+0L7QsdGJ0LUg0L3QtSAg0L/Qu9Cw0YLRj9GC0YHRjywgINC40LvQuA0K0YPRgdGC0LDQvdCw0LLQu9C40LLQsNGO0YLRgdGPINC/0L4g0YHRgtCw0LLQutCw0Lwg0LfQvdCw0YfQuNGC0LXQu9GM0L3QviDQvdC40LbQtSDRgdGC0LDQstC+0Log0LzQtdC20LTRg9C90LDRgNC+0LTQvdC+0LPQviDRgNGL0L3QutCwKS4NCiAgICAgNS42LiDQn9C+INCy0LrQu9Cw0LTQsNC8INCyINGA0YPQsdC70Y/RhSDRgdC+INGB0LLQvtCx0L7QtNC90L7QuSDQutC+0L3QstC10YDRgdC40LXQuSAg0L/RgNC+0YbQtdC90YLQvdCw0Y8gINGB0YLQsNCy0LrQsA0K0L7Qv9GA0LXQtNC10LvRj9C10YLRgdGPICDQvdCwINC+0YHQvdC+0LLQtSDRgdGA0LXQtNC90LXQstC30LLQtdGI0LXQvdC90L7QuSAo0LHQsNC30L7QstC+0LkpINGB0YLQsNCy0LrQuCDQv9C+INC00LXQv9C+0LfQuNGC0LDQvCDQvdCwDQrRgdC+0L7RgtCy0LXRgtGB0YLQstGD0Y7RidC40Lkg0L/QtdGA0LjQvtC0LCDRgNCw0YHRgdGH0LjRgtCw0L3QvdGL0Lkg0L3QsCDQtNCw0YLRgyDQv9GA0LjQvdGP0YLQuNGPINGB0YDQtdC00YHRgtCyLg0KICAgICDQo9C60LDQt9Cw0L3QvdGL0LUg0YHRgNC10LTQvdC10LLQt9Cy0LXRiNC10L3QvdGL0LUgICAo0LHQsNC30L7QstGL0LUpICDRgdGC0LDQstC60LggINC90LAgINGA0LDQt9C70LjRh9C90YvQtSAg0YHRgNC+0LrQuA0K0YDQsNGB0YHRh9C40YLRi9Cy0LDRjtGC0YHRjywgINC40YHRhdC+0LTRjyDQuNC3INC00LDQvdC90YvRhSwgINC/0YPQsdC70LjQutGD0LXQvNGL0YUgINCw0LPQtdC90YLRgdGC0LLQvtC8ICAi0KDQtdC50YLQtdGAIiwgINC+DQrRgdGC0LDQstC60LDRhSAg0L/QviAg0LTQtdC/0L7Qt9C40YLQsNC8ICDQsiAg0L7RgtC00LXQu9GM0L3Ri9GFICDQstCw0LvRjtGC0LDRhSDQvdCwINGB0L7QvtGC0LLQtdGC0YHRgtCy0YPRjtGJ0LjQtSDRgdGA0L7QutC4INC90LANCtC80LXQttC00YPQvdCw0YDQvtC00L3QvtC8INCy0LDQu9GO0YLQvdC+0Lwg0YDRi9C90LrQtSwg0Lgg0YPQtNC10LvRjNC90YvRhSDQstC10YHQvtCyINCy0LDQu9GO0YIg0LIg0L3QsNCx0L7RgNC1INCy0LDQu9GO0YIg0JHQsNC90LrQsA0K0KDQvtGB0YHQuNC4Lg0KICAgICDQn9C+INC00LXQv9C+0LfQuNGC0LDQvCDQvdCwINGB0YPQvNC80YMg0LzQtdC90LXQtSAgX19fX19fX9GC0YvRgS4gINC00L7Qu9C7LiAg0YHRgtCw0LLQutC4ICDQvNC+0LPRg9GCICDQsdGL0YLRjA0K0YHQvdC40LbQtdC90Ysg0LTQviBfX19fJSDQs9C+0LTQvtCy0YvRhSDQvdC40LbQtSDRgNCw0LfQvNC10YDQsCDRgdGA0LXQtNC90LXQstC30LLQtdGI0LXQvdC90L7QuSDRgdGC0LDQstC60LguDQogICAgIDUuNy4g0J/QviAg0LLQsNC70Y7RgtC90YvQvCAg0YHRh9C10YLQsNC8ICAg0LIgICDQuNC90LTQuNC50YHQutC40YUgICDRgNGD0L/QuNGP0YUgICDRg9GB0YLQsNC90LDQstC70LjQstCw0LXRgtGB0Y8NCtC/0YDQvtGG0LXQvdGC0L3QsNGPINGB0YLQsNCy0LrQsCDQsiDRgNCw0LfQvNC10YDQtSBfX19fJSDQs9C+0LTQvtCy0YvRhS4NCiAgICAgNS44LiDQn9GA0Lgg0LLRi9C/0L7Qu9C90LXQvdC40Lgg0JrQu9C40LXQvdGC0L7QvCDQvtCx0Y/Qt9Cw0YLQtdC70YzRgdGC0LIg0YXRgNCw0L3QuNGC0Ywg0LLRgdC1INGB0LLQvtC4ICDQtNC10L3QtdC20L3Ri9C1DQrRgdGA0LXQtNGB0YLQstCwICDQvdCwICDRgdGH0LXRgtC1INCR0LDQvdC60LAgKNGB0LwuICDQvy40LjEg0L3QsNGB0YLQvtGP0YnQtdCz0L4g0LTQvtCz0L7QstC+0YDQsCkg0YDQsNC30LzQtdGA0Ysg0LLRi9C/0LvQsNGCDQrQmtC70LjQtdC90YLRgyDRgdC+0LPQu9Cw0YHQvdC+INC/LjUuMS01Ljcg0YPQstC10LvQuNGH0LjQstCw0Y7RgtGB0Y8g0L3QsCBfX19fJS4NCiAgICAgNS45LiDQkiAg0LrQsNGH0LXRgdGC0LLQtSAg0LPQsNGA0LDQvdGC0LjQuCDQv9C+0LPQsNGI0LXQvdC40Y8g0L/Qu9Cw0YLQtdC20LXQuSDQt9CwINGD0YHQu9GD0LPQuCDQkdCw0L3QutCwINCa0LvQuNC10L3Rgg0K0LTQtdC/0L7QvdC40YDRg9C10YIg0YHRg9C80LzRgywgINGN0LrQstC40LLQsNC70LXQvdGC0L3Rg9GOIF9fX19fINGC0YvRgS7QtNC+0LvQuy4g0LvQuNCx0L4gX19fX18g0YLRi9GBLiDRgNGD0LHQu9C10LkgLQ0K0LIgINGA0YPQsdC70Y/RhSAg0YHQviAg0YHQstC+0LHQvtC00L3QvtC5INC60L7QvdCy0LXRgNGB0LjQtdC5LCAg0L/QviDQutC+0YLQvtGA0YvQvCDQkdCw0L3QuiDQstGL0L/Qu9Cw0YfQuNCy0LDQtdGCINCa0LvQuNC10L3RgtGDDQpfX19fJSDQs9C+0LTQvtCy0YvRhSDQvtGCINGB0YPQvNC80Ysg0LTQtdC/0L7QvdC40YDQvtCy0LDQvdC90YvRhSDRgdGA0LXQtNGB0YLQsi4NCg0KICAgICA2LiDQodGA0L7QuiDQtNC10LnRgdGC0LLQuNGPINCU0L7Qs9C+0LLQvtGA0LAuDQogICAgIDYuMS4g0JTQvtCz0L7QstC+0YAg0YHRh9C40YLQsNC10YLRgdGPINC30LDQutC70Y7Rh9C10L3QvdGL0Lwg0YEg0LzQvtC80LXQvdGC0LAg0LXQs9C+ICDQv9C+0LTQv9C40YHQsNC90LjRjyAg0L7QsdC10LjQvNC4DQrRgdGC0L7RgNC+0L3QsNC80Lgg0Lgg0LTQtdC50YHRgtCy0YPQtdGCINCyINGC0LXRh9C10L3QuNC1INC+0LTQvdC+0LPQviDQutCw0LvQtdC90LTQsNGA0L3QvtCz0L4g0LPQvtC00LAuDQogICAgIDYuMi4g0JIg0YHQu9GD0YfQsNC1LCAg0LXRgdC70Lgg0L3QuCDQvtC00L3QsCDQuNC3ICDRgdGC0L7RgNC+0L0gINC90LUgINC30LDRj9Cy0LjQu9CwICDQviAg0YDQsNGB0YLQvtGA0LbQtdC90LjQuA0K0LTQvtCz0L7QstC+0YDQsCAg0LfQsCAgMyAg0LzQtdGB0Y/RhtCwICDQtNC+ICDQuNGB0YLQtdGH0LXQvdC40Y8g0YHRgNC+0LrQsCDQtNC10LnRgdGC0LLQuNGPLCAg0LTQvtCz0L7QstC+0YAg0YHRh9C40YLQsNC10YLRgdGPDQrQv9GA0L7QtNC70LXQvdC90YvQvCDQvdCwINGB0LvQtdC00YPRjtGJ0LjQuSDQutCw0LvQtdC90LTQsNGA0L3Ri9C5INCz0L7QtC4NCiAgICAgNi4zLiDQl9Cw0LrRgNGL0YLQuNC1ICAg0YHRh9C10YLQsCAgINC/0YDQvtC40LfQstC+0LTQuNGC0YHRjyAgINCyICDRgdC+0L7RgtCy0LXRgtGB0YLQstC40LggINGBICDQv9C+0YDRj9C00LrQvtC8LA0K0L/RgNC10LTRg9GB0LzQsNGC0YDQuNCy0LDQtdC80YvQvCDQt9Cw0LrQvtC90L7QtNCw0YLQtdC70YzRgdGC0LLQvtC8Lg0KDQogICAgIDcuINCY0LzRg9GJ0LXRgdGC0LLQtdC90L3QsNGPINC+0YLQstC10YLRgdGC0LLQtdC90L3QvtGB0YLRjCDRgdGC0L7RgNC+0L0NCiAgICAgNy4xLiDQkiDRgdC70YPRh9Cw0LUg0L3QtdC40YHQv9C+0LvQvdC10L3QuNGPINC40LvQuCDQvdC10L3QsNC00LvQtdC20LDRidC10LPQviDQuNGB0L/QvtC70L3QtdC90LjRjyDQvtCx0Y/Qt9Cw0YLQtdC70YzRgdGC0LINCtC/0L4gICDQvdCw0YHRgtC+0Y/RidC10LzRgyAg0LTQvtCz0L7QstC+0YDRgywgINCy0LjQvdC+0LLQvdCw0Y8gINGB0YLQvtGA0L7QvdCwICDQstC+0LfQvNC10YnQsNC10YIgINC00YDRg9Cz0L7QuSAg0YHRgtC+0YDQvtC90LUNCtC/0L7QvdC10YHQtdC90L3Ri9C1INC10Y4g0YPQsdGL0YLQutC4INCyINGB0L7QvtGC0LLQtdGC0YHRgtCy0LjQuCDRgSDQtNC10LnRgdGC0LLRg9GO0YnQuNC8INC30LDQutC+0L3QvtC00LDRgtC10LvRjNGB0YLQstC+0LwuDQogICAgIDcuMi4g0J7RgtCy0LXRgtGB0YLQstC10L3QvdC+0YHRgtGMINGB0YLQvtGA0L7QvSDQv9C+INC90LDRgdGC0L7Rj9GJ0LXQvNGDINC00L7Qs9C+0LLQvtGA0YMg0LzQvtC20LXRgiDQvdCw0YHRgtGD0L/QsNGC0Ywg0LINCtGE0L7RgNC80LUg0LLRi9C/0LvQsNGC0Ysg0L3QtdGD0YHRgtC+0LXQuiwg0L7Qs9C+0LLQsNGA0LjQstCw0LXQvNGL0YUg0LIg0L8uNy4zINC90LDRgdGC0L7Rj9GJ0LXQs9C+INC00L7Qs9C+0LLQvtGA0LAuDQogICAgIDcuMy4g0JIgINGB0LvRg9GH0LDQtSAg0L3QtdCy0YvQv9C+0LvQvdC10L3QuNGPICDQmtC70LjQtdC90YLQvtC8INC+0LHRj9C30LDRgtC10LvRjNGB0YLQsiDRhdGA0LDQvdC40YLRjCDQstGB0LUg0YHQstC+0LgNCtC00LXQvdC10LbQvdGL0LUg0YHRgNC10LTRgdGC0LLQsCDQvdCwINGB0YfQtdGC0LUg0JHQsNC90LrQsCAo0YHQvC7Qvy40LjEgINC90LDRgdGC0L7Rj9GJ0LXQs9C+ICDQtNC+0LPQvtCy0L7RgNCwKSAg0JrQu9C40LXQvdGCDQrQstGL0L/Qu9Cw0YfQuNCy0LDQtdGCINCR0LDQvdC60YMg0L3QtdGD0YHRgtC+0LnQutGDINCyINGA0LDQt9C80LXRgNC1IF9fX18lINC+0YIg0YHRg9C80LzRiyDRgdGA0LXQtNGB0YLQsiwg0L/QvtGB0YLRg9C/0LjQstGI0LjRhQ0K0LIg0LrQsNGH0LXRgdGC0LLQtSDQv9C70LDRgtGLINC30LAgINGA0LDQt9C80LXRidC10L3QuNC1ICDQv9GA0LjQvdCw0LTQu9C10LbQsNGJ0LXQuSAg0LXQvNGDICDQstCw0LvRjtGC0YsgINCyICDQvdCw0YDRg9GI0LXQvdC40LUNCtC00LDQvdC90L7Qs9C+INC+0LHRj9C30LDRgtC10LvRjNGB0YLQstCwINCyINC00YDRg9Cz0LjRhSDRhNC40L3QsNC90YHQvtCy0L4t0LrRgNC10LTQuNGC0L3Ri9GFINGD0YfRgNC10LbQtNC10L3QuNGP0YUuDQogICAgIDcuNC4g0J7RgtCy0LXRgtGB0YLQstC10L3QvdC+0YHRgtGMINCR0LDQvdC60LAg0L3QtSDQvdCw0YHRgtGD0L/QsNC10YIg0LIg0YHQu9GD0YfQsNC1LCAg0LXRgdC70Lgg0L7Qv9C10YDQsNGG0LjQuCAg0L/Qvg0K0YLQtdC60YPRidC10LzRgyDQstCw0LvRjtGC0L3QvtC80YMg0YHRh9C10YLRgyDQmtC70LjQtdC90YLRgyDQt9Cw0LTQtdGA0LbQuNCy0LDRjtGC0YHRjyDQvdC1INC/0L4g0LXQs9C+INCy0LjQvdC1Lg0KICAgICA3LjUuINCU0YDRg9Cz0LjQtSDRg9GB0LvQvtCy0LjRjyDQv9C+INGD0YHQvNC+0YLRgNC10L3QuNGOINGB0YLQvtGA0L7QvV9fX19fX19fX19fX19fXw0KDQogICAgIDguINCu0YDQuNC00LjRh9C10YHQutC40LUg0LDQtNGA0LXRgdCwINGB0YLQvtGA0L7QvQ0KICAgICA4LjEuINCa0LvQuNC10L3RgjpfX19fX19fX19fX19fX19fX19fX18NCiAgICAgOC4yLiDQkdCw0L3QujpfX19fX19fX19fX19fX19fX19fX19fX18NCg0K0KDRg9C60L7QstC+0LTQuNGC0LXQu9GMICAgICAgICAgICAgICAgICAg0KDRg9C60L7QstC+0LTQuNGC0LXQu9GMDQpfX19fX19fX19fX19fX19fICAgICAgICAgICAgICBfX19fX19fX19fX19fX19fDQoNCtCT0LvQsNCy0L3Ri9C5INCx0YPRhdCz0LDQu9GC0LXRgCAgICAgICAgICAgICDQk9C70LDQstC90YvQuSDQsdGD0YXQs9Cw0LvRgtC10YANCl9fX19fX19fX19fX19fX18gICAgICAgICAgICAgIF9fX19fX19fX19fX19fX18NCg0KICAgICAg0Jwu0J8uICAgICAgICAgICAgICAgICAgICAgICAgICDQnC7Qny4NCg0KDQogIA0KPC9wcmU+PC9kaXY+DQo8L2JvZHk+DQo8L2h0bWw+",
+    "mime_type": "text/html",
+    "language": "ru",
+    "locale": "ru"
+  },
+  "ingestion_preflight": {
+    "mime_type": "text/html",
+    "extractor": "html:regex",
+    "extraction_source": "html:regex",
+    "extraction_ok": true,
+    "error": null,
+    "extraction_error": null,
+    "sha256": "f6e156a00b085ba5b9a3eb76ff320140b68fb4970c4464fff2d6b6e025590e15"
+  },
+  "metrics": {
+    "risk_count": 4,
+    "high_risk_count": 3,
+    "disputed_clause_count": 1,
+    "asymmetry_signal_count": 0,
+    "contract_type": "consulting_agreement"
+  },
+  "analysis": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'dogovor-ob-otkritii-tekuschego-valyutnogo-scheta-i-raschetnokass. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Заемщик'. Определен тип договора: Консалтинговый договор (уверенность 69%, правовая рамка: ГК РФ, глава 39). Ключевые обязательства по договору для роли 'Заемщик': Банк обязуется обеспечивать сохранность всех валютных средств, поступивших на счет Клиента, и выполнять распоряжения Клиента по их использованию, начислять проценты по остаткам средств на счете; Банк обязуется осуществлять перевод денежных средств со счета Клиента по его поручению не позднее следующего рабочего дня от даты получения платежных документов; Банк обязан осуществить выдачу Клиенту наличных валютных средств в течение ____ рабочих дней со дня поступления заявки от Клиента в порядке, установленном в банковской практике. Условия оплаты: Договор об открытии текущего валютного счета и расчетно-кассовом обслуживании - версия для печати; Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам Вариант ДОГОВОР об открытии текущего валютного счета и расчетно-кассовом обслуживании г; Банк открывает Клиенту текущий валютный счет и осуществляет расчетно-кассовое обслуживание Клиента в иностранной валюте. Сроки и дедлайны: Выписки по счету считаются подтвержденными, если владелец счета не представит свои замечания в течение 30 календарных дней со дня получения выписки; Банк обязан осуществить выдачу Клиенту наличных валютных средств в течение ____ рабочих дней со дня поступления заявки от Клиента в порядке, установленном в банковской практике; Рассчитанная средняя ставка уменьшается на ____% (Размер снижения средней ставки (____%) установлен с учетом международной практики, согласно которой проценты по текущим счетам или вообще не платятся, или устанавливаются по ставкам значительно ниже ставок международного рынка). Штрафы и санкции: 1 настоящего договора) Клиент выплачивает Банку неустойку в размере ____% от суммы средств, поступивших в качестве платы за размещение принадлежащей ему валюты в нарушение данного обязательства в других финансово-кредитных учреждениях. Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "payment_asymmetry",
+        "title": "Высокий риск: Платежная асимметрия: исполнение до оплаты",
+        "severity": "high",
+        "clause_id": "clause-1",
+        "description": "Одна сторона обязана начать исполнение раньше, чем получает деньги, что создает кассовый разрыв и риск неоплаты. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: Договор об открытии текущего валютного счета и расчетно-кассовом обслуживании - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам Вариант ДОГОВОР об открытии текущего валютного счета и расчетно-кассовом обслуживании г. ________ \"___\"_______20___ г. _______________, именуемый в дальнейшем Банк, в лице ___________, действующего на основании Устава, с одной стороны, и _______, именуемый в дальнейшем Клиент в лице _____________,. . .",
+        "role_relevance": "Общий риск договора, релевантный для роли 'Заемщик'. Наиболее вероятный конфликт интересов со стороной 'Кредитор'.",
+        "mitigation": "Согласуйте аванс, этапные платежи или право приостановить исполнение до поступления оплаты."
+      },
+      {
+        "risk_id": "risk-2",
+        "rule_id": "long_payment_delay_no_security",
+        "title": "Высокий риск: Длинная отсрочка платежа без обеспечений",
+        "severity": "high",
+        "clause_id": "clause-1",
+        "description": "Договор закладывает длительную отсрочку оплаты без аванса, банковской гарантии или права остановить исполнение. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: Договор об открытии текущего валютного счета и расчетно-кассовом обслуживании - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам Вариант ДОГОВОР об открытии текущего валютного счета и расчетно-кассовом обслуживании г. ________ \"___\"_______20___ г. _______________, именуемый в дальнейшем Банк, в лице ___________, действующего на основании Устава, с одной стороны, и _______, именуемый в дальнейшем Клиент в лице _____________,. . .",
+        "role_relevance": "Общий риск договора, релевантный для роли 'Заемщик'. Наиболее вероятный конфликт интересов со стороной 'Кредитор'.",
+        "mitigation": "Сократите срок оплаты, добавьте аванс, лимит дебиторки или договорное обеспечение."
+      },
+      {
+        "risk_id": "risk-3",
+        "rule_id": "strict_deadlines_without_dependency_carveout",
+        "title": "Высокий риск: Жесткие сроки без оговорки о зависимостях",
+        "severity": "high",
+        "clause_id": "clause-1",
+        "description": "Сроки для одной стороны установлены жестко, но не учитывают задержки по исходным данным, доступам, согласованиям и приемке со стороны контрагента. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: Договор об открытии текущего валютного счета и расчетно-кассовом обслуживании - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам Вариант ДОГОВОР об открытии текущего валютного счета и расчетно-кассовом обслуживании г. ________ \"___\"_______20___ г. _______________, именуемый в дальнейшем Банк, в лице ___________, действующего на основании Устава, с одной стороны, и _______, именуемый в дальнейшем Клиент в лице _____________,. . .",
+        "role_relevance": "Общий риск договора, релевантный для роли 'Заемщик'. Наиболее вероятный конфликт интересов со стороной 'Кредитор'.",
+        "mitigation": "Пропишите, что сроки автоматически сдвигаются на период задержки зависимых действий другой стороны."
+      },
+      {
+        "risk_id": "risk-4",
+        "rule_id": "confidentiality_without_exceptions",
+        "title": "Средний риск: Конфиденциальность без carve-outs и разумных исключений",
+        "severity": "medium",
+        "clause_id": "clause-1",
+        "description": "Обязанность по конфиденциальности сформулирована широко, но не содержит исключений для общедоступной информации, законных запросов и ранее известных данных. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: Договор об открытии текущего валютного счета и расчетно-кассовом обслуживании - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам Вариант ДОГОВОР об открытии текущего валютного счета и расчетно-кассовом обслуживании г. ________ \"___\"_______20___ г. _______________, именуемый в дальнейшем Банк, в лице ___________, действующего на основании Устава, с одной стороны, и _______, именуемый в дальнейшем Клиент в лице _____________,. . .",
+        "role_relevance": "Общий риск договора, релевантный для роли 'Заемщик'.",
+        "mitigation": "Добавьте стандартные carve-outs и ограничьте ответственность за непредотвратимое раскрытие."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Договор об открытии текущего валютного счета и расчетно-кассовом обслуживании - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам Вариант ДОГОВОР об открытии текущего валютного счета и расчетно-кассовом обслуживании г. ________ \"___\"_______20___ г. _______________, именуемый в дальнейшем Банк, в лице ___________, действующего на основании Устава, с одной стороны, и _______, именуемый в дальнейшем Клиент в лице _____________,...",
+        "dispute_reason": "Одна из сторон получила дискреционное право без достаточных ограничителей.",
+        "possible_consequence": "Это может привести к одностороннему применению условия и спору о пределах такого права.",
+        "confidence": 0.76
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Заемщик",
+      "overview": "Договор содержит 1 пунктов и 4 выявленных рисков. Краткий вывод сфокусирован на роли 'Заемщик'. Обнаружено 3 пунктов с высоким уровнем риска; их стоит перепроверить вручную.",
+      "must_do": [
+        "Банк обязуется обеспечивать сохранность всех валютных средств, поступивших на счет Клиента, и выполнять распоряжения Клиента по их использованию, начислять проценты по остаткам средств на счете.",
+        "Банк обязуется осуществлять перевод денежных средств со счета Клиента по его поручению не позднее следующего рабочего дня от даты получения платежных документов.",
+        "Банк обязан осуществить выдачу Клиенту наличных валютных средств в течение ____ рабочих дней со дня поступления заявки от Клиента в порядке, установленном в банковской практике.",
+        "Банк обязуется обеспечивать конфиденциальность информации о хозяйственной деятельности Клиента и сохранять коммерческую тайну по операциям, производимым по счету Клиента.",
+        "Клиент обязуется (не обязуется)/ненужное зачеркнуть/ хранить все свои валютные средства только на счете в Банке.",
+        "Клиент обязуется распоряжаться валютными средствами, хранящимися на счете в Банке, в соответствии с действующим законодательством."
+      ],
+      "should_review": [
+        "Ответственность сторон по настоящему договору может наступать в форме выплаты неустоек, оговариваемых в п.",
+        "Другие условия по усмотрению сторон_______________ 8."
+      ],
+      "payment_terms": [
+        "Договор об открытии текущего валютного счета и расчетно-кассовом обслуживании - версия для печати.",
+        "Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам Вариант ДОГОВОР об открытии текущего валютного счета и расчетно-кассовом обслуживании г.",
+        "Банк открывает Клиенту текущий валютный счет и осуществляет расчетно-кассовое обслуживание Клиента в иностранной валюте.",
+        "Порядок открытия и режим счета 2.",
+        "Текущий валютный счет Клиента в Банке открывается на основании заявления Клиента и предоставления документов, подтверждающих создание организации, копии Устава (Положения) и карточки с образцами подписей и оттиском печати, а также других документов, согласно Инструкциям Банка.",
+        "Перечень возможных поступлений и платежей, а также формы расчетов и услуг, предоставляемых Банком, определяются законодательством и внутренними Инструкциями Банка о порядке открытия и ведения текущих валютных счетов."
+      ],
+      "deadlines": [
+        "Выписки по счету считаются подтвержденными, если владелец счета не представит свои замечания в течение 30 календарных дней со дня получения выписки.",
+        "Банк обязан осуществить выдачу Клиенту наличных валютных средств в течение ____ рабочих дней со дня поступления заявки от Клиента в порядке, установленном в банковской практике.",
+        "Рассчитанная средняя ставка уменьшается на ____% (Размер снижения средней ставки (____%) установлен с учетом международной практики, согласно которой проценты по текущим счетам или вообще не платятся, или устанавливаются по ставкам значительно ниже ставок международного рынка).",
+        "(Размер снижения средней ставки (на ___%) установлен с учетом международной практики, согласно которой проценты по текущим счетам или вообще не платятся, или устанавливаются по ставкам значительно ниже ставок международного рынка).",
+        "Указанные средневзвешенные (базовые) ставки на различные сроки рассчитываются, исходя из данных, публикуемых агентством \"Рейтер\", о ставках по депозитам в отдельных валютах на соответствующие сроки на международном валютном рынке, и удельных весов валют в наборе валют Банка России.",
+        "Срок действия Договора."
+      ],
+      "penalties": [
+        "1 настоящего договора) Клиент выплачивает Банку неустойку в размере ____% от суммы средств, поступивших в качестве платы за размещение принадлежащей ему валюты в нарушение данного обязательства в других финансово-кредитных учреждениях."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "f6e156a00b085ba5b9a3eb76ff320140b68fb4970c4464fff2d6b6e025590e15"
+    },
+    "contract_type": {
+      "type_id": "consulting_agreement",
+      "confidence": 0.69,
+      "ru_name": "Консалтинговый договор",
+      "legal_framework": "ГК РФ, глава 39"
+    },
+    "asymmetry_signals": []
+  },
+  "result": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'dogovor-ob-otkritii-tekuschego-valyutnogo-scheta-i-raschetnokass. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Заемщик'. Определен тип договора: Консалтинговый договор (уверенность 69%, правовая рамка: ГК РФ, глава 39). Ключевые обязательства по договору для роли 'Заемщик': Банк обязуется обеспечивать сохранность всех валютных средств, поступивших на счет Клиента, и выполнять распоряжения Клиента по их использованию, начислять проценты по остаткам средств на счете; Банк обязуется осуществлять перевод денежных средств со счета Клиента по его поручению не позднее следующего рабочего дня от даты получения платежных документов; Банк обязан осуществить выдачу Клиенту наличных валютных средств в течение ____ рабочих дней со дня поступления заявки от Клиента в порядке, установленном в банковской практике. Условия оплаты: Договор об открытии текущего валютного счета и расчетно-кассовом обслуживании - версия для печати; Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам Вариант ДОГОВОР об открытии текущего валютного счета и расчетно-кассовом обслуживании г; Банк открывает Клиенту текущий валютный счет и осуществляет расчетно-кассовое обслуживание Клиента в иностранной валюте. Сроки и дедлайны: Выписки по счету считаются подтвержденными, если владелец счета не представит свои замечания в течение 30 календарных дней со дня получения выписки; Банк обязан осуществить выдачу Клиенту наличных валютных средств в течение ____ рабочих дней со дня поступления заявки от Клиента в порядке, установленном в банковской практике; Рассчитанная средняя ставка уменьшается на ____% (Размер снижения средней ставки (____%) установлен с учетом международной практики, согласно которой проценты по текущим счетам или вообще не платятся, или устанавливаются по ставкам значительно ниже ставок международного рынка). Штрафы и санкции: 1 настоящего договора) Клиент выплачивает Банку неустойку в размере ____% от суммы средств, поступивших в качестве платы за размещение принадлежащей ему валюты в нарушение данного обязательства в других финансово-кредитных учреждениях. Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "payment_asymmetry",
+        "title": "Высокий риск: Платежная асимметрия: исполнение до оплаты",
+        "severity": "high",
+        "clause_id": "clause-1",
+        "description": "Одна сторона обязана начать исполнение раньше, чем получает деньги, что создает кассовый разрыв и риск неоплаты. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: Договор об открытии текущего валютного счета и расчетно-кассовом обслуживании - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам Вариант ДОГОВОР об открытии текущего валютного счета и расчетно-кассовом обслуживании г. ________ \"___\"_______20___ г. _______________, именуемый в дальнейшем Банк, в лице ___________, действующего на основании Устава, с одной стороны, и _______, именуемый в дальнейшем Клиент в лице _____________,. . .",
+        "role_relevance": "Общий риск договора, релевантный для роли 'Заемщик'. Наиболее вероятный конфликт интересов со стороной 'Кредитор'.",
+        "mitigation": "Согласуйте аванс, этапные платежи или право приостановить исполнение до поступления оплаты."
+      },
+      {
+        "risk_id": "risk-2",
+        "rule_id": "long_payment_delay_no_security",
+        "title": "Высокий риск: Длинная отсрочка платежа без обеспечений",
+        "severity": "high",
+        "clause_id": "clause-1",
+        "description": "Договор закладывает длительную отсрочку оплаты без аванса, банковской гарантии или права остановить исполнение. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: Договор об открытии текущего валютного счета и расчетно-кассовом обслуживании - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам Вариант ДОГОВОР об открытии текущего валютного счета и расчетно-кассовом обслуживании г. ________ \"___\"_______20___ г. _______________, именуемый в дальнейшем Банк, в лице ___________, действующего на основании Устава, с одной стороны, и _______, именуемый в дальнейшем Клиент в лице _____________,. . .",
+        "role_relevance": "Общий риск договора, релевантный для роли 'Заемщик'. Наиболее вероятный конфликт интересов со стороной 'Кредитор'.",
+        "mitigation": "Сократите срок оплаты, добавьте аванс, лимит дебиторки или договорное обеспечение."
+      },
+      {
+        "risk_id": "risk-3",
+        "rule_id": "strict_deadlines_without_dependency_carveout",
+        "title": "Высокий риск: Жесткие сроки без оговорки о зависимостях",
+        "severity": "high",
+        "clause_id": "clause-1",
+        "description": "Сроки для одной стороны установлены жестко, но не учитывают задержки по исходным данным, доступам, согласованиям и приемке со стороны контрагента. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: Договор об открытии текущего валютного счета и расчетно-кассовом обслуживании - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам Вариант ДОГОВОР об открытии текущего валютного счета и расчетно-кассовом обслуживании г. ________ \"___\"_______20___ г. _______________, именуемый в дальнейшем Банк, в лице ___________, действующего на основании Устава, с одной стороны, и _______, именуемый в дальнейшем Клиент в лице _____________,. . .",
+        "role_relevance": "Общий риск договора, релевантный для роли 'Заемщик'. Наиболее вероятный конфликт интересов со стороной 'Кредитор'.",
+        "mitigation": "Пропишите, что сроки автоматически сдвигаются на период задержки зависимых действий другой стороны."
+      },
+      {
+        "risk_id": "risk-4",
+        "rule_id": "confidentiality_without_exceptions",
+        "title": "Средний риск: Конфиденциальность без carve-outs и разумных исключений",
+        "severity": "medium",
+        "clause_id": "clause-1",
+        "description": "Обязанность по конфиденциальности сформулирована широко, но не содержит исключений для общедоступной информации, законных запросов и ранее известных данных. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: Договор об открытии текущего валютного счета и расчетно-кассовом обслуживании - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам Вариант ДОГОВОР об открытии текущего валютного счета и расчетно-кассовом обслуживании г. ________ \"___\"_______20___ г. _______________, именуемый в дальнейшем Банк, в лице ___________, действующего на основании Устава, с одной стороны, и _______, именуемый в дальнейшем Клиент в лице _____________,. . .",
+        "role_relevance": "Общий риск договора, релевантный для роли 'Заемщик'.",
+        "mitigation": "Добавьте стандартные carve-outs и ограничьте ответственность за непредотвратимое раскрытие."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Договор об открытии текущего валютного счета и расчетно-кассовом обслуживании - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам Вариант ДОГОВОР об открытии текущего валютного счета и расчетно-кассовом обслуживании г. ________ \"___\"_______20___ г. _______________, именуемый в дальнейшем Банк, в лице ___________, действующего на основании Устава, с одной стороны, и _______, именуемый в дальнейшем Клиент в лице _____________,...",
+        "dispute_reason": "Одна из сторон получила дискреционное право без достаточных ограничителей.",
+        "possible_consequence": "Это может привести к одностороннему применению условия и спору о пределах такого права.",
+        "confidence": 0.76
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Заемщик",
+      "overview": "Договор содержит 1 пунктов и 4 выявленных рисков. Краткий вывод сфокусирован на роли 'Заемщик'. Обнаружено 3 пунктов с высоким уровнем риска; их стоит перепроверить вручную.",
+      "must_do": [
+        "Банк обязуется обеспечивать сохранность всех валютных средств, поступивших на счет Клиента, и выполнять распоряжения Клиента по их использованию, начислять проценты по остаткам средств на счете.",
+        "Банк обязуется осуществлять перевод денежных средств со счета Клиента по его поручению не позднее следующего рабочего дня от даты получения платежных документов.",
+        "Банк обязан осуществить выдачу Клиенту наличных валютных средств в течение ____ рабочих дней со дня поступления заявки от Клиента в порядке, установленном в банковской практике.",
+        "Банк обязуется обеспечивать конфиденциальность информации о хозяйственной деятельности Клиента и сохранять коммерческую тайну по операциям, производимым по счету Клиента.",
+        "Клиент обязуется (не обязуется)/ненужное зачеркнуть/ хранить все свои валютные средства только на счете в Банке.",
+        "Клиент обязуется распоряжаться валютными средствами, хранящимися на счете в Банке, в соответствии с действующим законодательством."
+      ],
+      "should_review": [
+        "Ответственность сторон по настоящему договору может наступать в форме выплаты неустоек, оговариваемых в п.",
+        "Другие условия по усмотрению сторон_______________ 8."
+      ],
+      "payment_terms": [
+        "Договор об открытии текущего валютного счета и расчетно-кассовом обслуживании - версия для печати.",
+        "Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам Вариант ДОГОВОР об открытии текущего валютного счета и расчетно-кассовом обслуживании г.",
+        "Банк открывает Клиенту текущий валютный счет и осуществляет расчетно-кассовое обслуживание Клиента в иностранной валюте.",
+        "Порядок открытия и режим счета 2.",
+        "Текущий валютный счет Клиента в Банке открывается на основании заявления Клиента и предоставления документов, подтверждающих создание организации, копии Устава (Положения) и карточки с образцами подписей и оттиском печати, а также других документов, согласно Инструкциям Банка.",
+        "Перечень возможных поступлений и платежей, а также формы расчетов и услуг, предоставляемых Банком, определяются законодательством и внутренними Инструкциями Банка о порядке открытия и ведения текущих валютных счетов."
+      ],
+      "deadlines": [
+        "Выписки по счету считаются подтвержденными, если владелец счета не представит свои замечания в течение 30 календарных дней со дня получения выписки.",
+        "Банк обязан осуществить выдачу Клиенту наличных валютных средств в течение ____ рабочих дней со дня поступления заявки от Клиента в порядке, установленном в банковской практике.",
+        "Рассчитанная средняя ставка уменьшается на ____% (Размер снижения средней ставки (____%) установлен с учетом международной практики, согласно которой проценты по текущим счетам или вообще не платятся, или устанавливаются по ставкам значительно ниже ставок международного рынка).",
+        "(Размер снижения средней ставки (на ___%) установлен с учетом международной практики, согласно которой проценты по текущим счетам или вообще не платятся, или устанавливаются по ставкам значительно ниже ставок международного рынка).",
+        "Указанные средневзвешенные (базовые) ставки на различные сроки рассчитываются, исходя из данных, публикуемых агентством \"Рейтер\", о ставках по депозитам в отдельных валютах на соответствующие сроки на международном валютном рынке, и удельных весов валют в наборе валют Банка России.",
+        "Срок действия Договора."
+      ],
+      "penalties": [
+        "1 настоящего договора) Клиент выплачивает Банку неустойку в размере ____% от суммы средств, поступивших в качестве платы за размещение принадлежащей ему валюты в нарушение данного обязательства в других финансово-кредитных учреждениях."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "f6e156a00b085ba5b9a3eb76ff320140b68fb4970c4464fff2d6b6e025590e15"
+    },
+    "contract_type": {
+      "type_id": "consulting_agreement",
+      "confidence": 0.69,
+      "ru_name": "Консалтинговый договор",
+      "legal_framework": "ГК РФ, глава 39"
+    },
+    "asymmetry_signals": []
+  },
+  "finished_at": "2026-04-28T16:18:31.498265+00:00",
+  "duration_ms": 317.92
+}

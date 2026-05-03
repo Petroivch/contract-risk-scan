@@ -1,0 +1,984 @@
+{
+  "generated_at": "2026-04-28T15:36:22.466223+00:00",
+  "manifest_path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\contract-risk-scan\\services\\analysis-engine\\golden_set\\cases.json",
+  "run_dir": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\contract-risk-scan\\services\\analysis-engine\\artifacts\\corpus_results\\20260428T153603Z",
+  "total_cases": 15,
+  "passed_cases": 15,
+  "failed_cases": 0,
+  "missing_case_ids": [],
+  "total_checks": 167,
+  "passed_checks": 167,
+  "check_pass_rate": 1.0,
+  "case_reports": [
+    {
+      "case_id": "agency_goods_ru",
+      "passed": true,
+      "checks": [
+        {
+          "name": "status_completed",
+          "passed": true,
+          "details": "status=completed"
+        },
+        {
+          "name": "role_roundtrip",
+          "passed": true,
+          "details": "expected role='Агент', actual role='Агент'"
+        },
+        {
+          "name": "contract_brief_present",
+          "passed": true,
+          "details": "length=1800"
+        },
+        {
+          "name": "summary_has_content",
+          "passed": true,
+          "details": "must_do=4, should_review=1"
+        },
+        {
+          "name": "no_mojibake",
+          "passed": true,
+          "details": "scan of string fields for mojibake markers"
+        },
+        {
+          "name": "contract_type_match",
+          "passed": true,
+          "details": "expected=agency_agreement, actual=agency_agreement"
+        },
+        {
+          "name": "contract_type_confidence",
+          "passed": true,
+          "details": "expected>=0.9, actual=0.99"
+        },
+        {
+          "name": "min_risk_count",
+          "passed": true,
+          "details": "expected>=2, actual=2"
+        },
+        {
+          "name": "min_disputed_clause_count",
+          "passed": true,
+          "details": "expected>=1, actual=1"
+        },
+        {
+          "name": "risk_title_fragments_any",
+          "passed": true,
+          "details": "expected one of ['пеня', 'конфиденциальность']"
+        },
+        {
+          "name": "execution_mode",
+          "passed": true,
+          "details": "expected=local_first, actual=local_first"
+        }
+      ],
+      "failed_checks": [],
+      "expected_contract_type": "agency_agreement",
+      "actual_contract_type": "agency_agreement"
+    },
+    {
+      "case_id": "autstaffing_ru",
+      "passed": true,
+      "checks": [
+        {
+          "name": "status_completed",
+          "passed": true,
+          "details": "status=completed"
+        },
+        {
+          "name": "role_roundtrip",
+          "passed": true,
+          "details": "expected role='Исполнитель', actual role='Исполнитель'"
+        },
+        {
+          "name": "contract_brief_present",
+          "passed": true,
+          "details": "length=2127"
+        },
+        {
+          "name": "summary_has_content",
+          "passed": true,
+          "details": "must_do=6, should_review=6"
+        },
+        {
+          "name": "no_mojibake",
+          "passed": true,
+          "details": "scan of string fields for mojibake markers"
+        },
+        {
+          "name": "contract_type_match",
+          "passed": true,
+          "details": "expected=labor_contract, actual=labor_contract"
+        },
+        {
+          "name": "contract_type_confidence",
+          "passed": true,
+          "details": "expected>=0.9, actual=0.97"
+        },
+        {
+          "name": "min_risk_count",
+          "passed": true,
+          "details": "expected>=1, actual=2"
+        },
+        {
+          "name": "min_disputed_clause_count",
+          "passed": true,
+          "details": "expected>=4, actual=4"
+        },
+        {
+          "name": "risk_title_fragments_any",
+          "passed": true,
+          "details": "expected one of ['неограниченная имущественная ответственность']"
+        },
+        {
+          "name": "required_asymmetry_signal_ids",
+          "passed": true,
+          "details": "missing=[]"
+        },
+        {
+          "name": "execution_mode",
+          "passed": true,
+          "details": "expected=local_first, actual=local_first"
+        }
+      ],
+      "failed_checks": [],
+      "expected_contract_type": "labor_contract",
+      "actual_contract_type": "labor_contract"
+    },
+    {
+      "case_id": "commission_ru",
+      "passed": true,
+      "checks": [
+        {
+          "name": "status_completed",
+          "passed": true,
+          "details": "status=completed"
+        },
+        {
+          "name": "role_roundtrip",
+          "passed": true,
+          "details": "expected role='Комиссионер', actual role='Комиссионер'"
+        },
+        {
+          "name": "contract_brief_present",
+          "passed": true,
+          "details": "length=3238"
+        },
+        {
+          "name": "summary_has_content",
+          "passed": true,
+          "details": "must_do=6, should_review=3"
+        },
+        {
+          "name": "no_mojibake",
+          "passed": true,
+          "details": "scan of string fields for mojibake markers"
+        },
+        {
+          "name": "contract_type_match",
+          "passed": true,
+          "details": "expected=agency_agreement, actual=agency_agreement"
+        },
+        {
+          "name": "contract_type_confidence",
+          "passed": true,
+          "details": "expected>=0.9, actual=0.98"
+        },
+        {
+          "name": "min_risk_count",
+          "passed": true,
+          "details": "expected>=2, actual=2"
+        },
+        {
+          "name": "min_disputed_clause_count",
+          "passed": true,
+          "details": "expected>=2, actual=2"
+        },
+        {
+          "name": "risk_title_fragments_any",
+          "passed": true,
+          "details": "expected one of ['неустойка', 'пеня']"
+        },
+        {
+          "name": "required_asymmetry_signal_ids",
+          "passed": true,
+          "details": "missing=[]"
+        },
+        {
+          "name": "execution_mode",
+          "passed": true,
+          "details": "expected=local_first, actual=local_first"
+        }
+      ],
+      "failed_checks": [],
+      "expected_contract_type": "agency_agreement",
+      "actual_contract_type": "agency_agreement"
+    },
+    {
+      "case_id": "contractor_ru",
+      "passed": true,
+      "checks": [
+        {
+          "name": "status_completed",
+          "passed": true,
+          "details": "status=completed"
+        },
+        {
+          "name": "role_roundtrip",
+          "passed": true,
+          "details": "expected role='Подрядчик', actual role='Подрядчик'"
+        },
+        {
+          "name": "contract_brief_present",
+          "passed": true,
+          "details": "length=3073"
+        },
+        {
+          "name": "summary_has_content",
+          "passed": true,
+          "details": "must_do=6, should_review=6"
+        },
+        {
+          "name": "no_mojibake",
+          "passed": true,
+          "details": "scan of string fields for mojibake markers"
+        },
+        {
+          "name": "contract_type_match",
+          "passed": true,
+          "details": "expected=non_contract_legal_form, actual=non_contract_legal_form"
+        },
+        {
+          "name": "contract_type_confidence",
+          "passed": true,
+          "details": "expected>=0.8, actual=0.87"
+        },
+        {
+          "name": "min_risk_count",
+          "passed": true,
+          "details": "expected>=1, actual=1"
+        },
+        {
+          "name": "min_disputed_clause_count",
+          "passed": true,
+          "details": "expected>=5, actual=5"
+        },
+        {
+          "name": "risk_title_fragments_any",
+          "passed": true,
+          "details": "expected one of ['низкий риск']"
+        },
+        {
+          "name": "execution_mode",
+          "passed": true,
+          "details": "expected=local_first, actual=local_first"
+        }
+      ],
+      "failed_checks": [],
+      "expected_contract_type": "non_contract_legal_form",
+      "actual_contract_type": "non_contract_legal_form"
+    },
+    {
+      "case_id": "dealer_ru",
+      "passed": true,
+      "checks": [
+        {
+          "name": "status_completed",
+          "passed": true,
+          "details": "status=completed"
+        },
+        {
+          "name": "role_roundtrip",
+          "passed": true,
+          "details": "expected role='Дилер', actual role='Дилер'"
+        },
+        {
+          "name": "contract_brief_present",
+          "passed": true,
+          "details": "length=1829"
+        },
+        {
+          "name": "summary_has_content",
+          "passed": true,
+          "details": "must_do=6, should_review=6"
+        },
+        {
+          "name": "no_mojibake",
+          "passed": true,
+          "details": "scan of string fields for mojibake markers"
+        },
+        {
+          "name": "contract_type_match",
+          "passed": true,
+          "details": "expected=non_contract_legal_form, actual=non_contract_legal_form"
+        },
+        {
+          "name": "contract_type_confidence",
+          "passed": true,
+          "details": "expected>=0.5, actual=0.67"
+        },
+        {
+          "name": "min_risk_count",
+          "passed": true,
+          "details": "expected>=1, actual=1"
+        },
+        {
+          "name": "min_disputed_clause_count",
+          "passed": true,
+          "details": "expected>=3, actual=3"
+        },
+        {
+          "name": "risk_title_fragments_any",
+          "passed": true,
+          "details": "expected one of ['низкий риск']"
+        },
+        {
+          "name": "execution_mode",
+          "passed": true,
+          "details": "expected=local_first, actual=local_first"
+        }
+      ],
+      "failed_checks": [],
+      "expected_contract_type": "non_contract_legal_form",
+      "actual_contract_type": "non_contract_legal_form"
+    },
+    {
+      "case_id": "household_contract_ru",
+      "passed": true,
+      "checks": [
+        {
+          "name": "status_completed",
+          "passed": true,
+          "details": "status=completed"
+        },
+        {
+          "name": "role_roundtrip",
+          "passed": true,
+          "details": "expected role='Подрядчик', actual role='Подрядчик'"
+        },
+        {
+          "name": "contract_brief_present",
+          "passed": true,
+          "details": "length=2825"
+        },
+        {
+          "name": "summary_has_content",
+          "passed": true,
+          "details": "must_do=6, should_review=6"
+        },
+        {
+          "name": "no_mojibake",
+          "passed": true,
+          "details": "scan of string fields for mojibake markers"
+        },
+        {
+          "name": "contract_type_match",
+          "passed": true,
+          "details": "expected=construction_contract, actual=construction_contract"
+        },
+        {
+          "name": "contract_type_confidence",
+          "passed": true,
+          "details": "expected>=0.9, actual=0.92"
+        },
+        {
+          "name": "min_risk_count",
+          "passed": true,
+          "details": "expected>=8, actual=8"
+        },
+        {
+          "name": "min_disputed_clause_count",
+          "passed": true,
+          "details": "expected>=3, actual=3"
+        },
+        {
+          "name": "risk_title_fragments_any",
+          "passed": true,
+          "details": "expected one of ['платежная асимметрия', 'акт другой стороны']"
+        },
+        {
+          "name": "execution_mode",
+          "passed": true,
+          "details": "expected=local_first, actual=local_first"
+        }
+      ],
+      "failed_checks": [],
+      "expected_contract_type": "construction_contract",
+      "actual_contract_type": "construction_contract"
+    },
+    {
+      "case_id": "rent_ru",
+      "passed": true,
+      "checks": [
+        {
+          "name": "status_completed",
+          "passed": true,
+          "details": "status=completed"
+        },
+        {
+          "name": "role_roundtrip",
+          "passed": true,
+          "details": "expected role='Наниматель', actual role='Наниматель'"
+        },
+        {
+          "name": "contract_brief_present",
+          "passed": true,
+          "details": "length=1116"
+        },
+        {
+          "name": "summary_has_content",
+          "passed": true,
+          "details": "must_do=6, should_review=1"
+        },
+        {
+          "name": "no_mojibake",
+          "passed": true,
+          "details": "scan of string fields for mojibake markers"
+        },
+        {
+          "name": "contract_type_match",
+          "passed": true,
+          "details": "expected=lease_agreement, actual=lease_agreement"
+        },
+        {
+          "name": "contract_type_confidence",
+          "passed": true,
+          "details": "expected>=0.9, actual=0.99"
+        },
+        {
+          "name": "min_risk_count",
+          "passed": true,
+          "details": "expected>=3, actual=3"
+        },
+        {
+          "name": "min_disputed_clause_count",
+          "passed": true,
+          "details": "expected>=2, actual=2"
+        },
+        {
+          "name": "risk_title_fragments_any",
+          "passed": true,
+          "details": "expected one of ['депозита', 'расходы на содержание']"
+        },
+        {
+          "name": "execution_mode",
+          "passed": true,
+          "details": "expected=local_first, actual=local_first"
+        }
+      ],
+      "failed_checks": [],
+      "expected_contract_type": "lease_agreement",
+      "actual_contract_type": "lease_agreement"
+    },
+    {
+      "case_id": "rent_auto_ru",
+      "passed": true,
+      "checks": [
+        {
+          "name": "status_completed",
+          "passed": true,
+          "details": "status=completed"
+        },
+        {
+          "name": "role_roundtrip",
+          "passed": true,
+          "details": "expected role='Арендатор', actual role='Арендатор'"
+        },
+        {
+          "name": "contract_brief_present",
+          "passed": true,
+          "details": "length=2753"
+        },
+        {
+          "name": "summary_has_content",
+          "passed": true,
+          "details": "must_do=6, should_review=6"
+        },
+        {
+          "name": "no_mojibake",
+          "passed": true,
+          "details": "scan of string fields for mojibake markers"
+        },
+        {
+          "name": "contract_type_match",
+          "passed": true,
+          "details": "expected=lease_agreement, actual=lease_agreement"
+        },
+        {
+          "name": "contract_type_confidence",
+          "passed": true,
+          "details": "expected>=0.9, actual=0.99"
+        },
+        {
+          "name": "min_risk_count",
+          "passed": true,
+          "details": "expected>=1, actual=1"
+        },
+        {
+          "name": "min_disputed_clause_count",
+          "passed": true,
+          "details": "expected>=2, actual=2"
+        },
+        {
+          "name": "risk_title_fragments_any",
+          "passed": true,
+          "details": "expected one of ['низкий риск']"
+        },
+        {
+          "name": "execution_mode",
+          "passed": true,
+          "details": "expected=local_first, actual=local_first"
+        }
+      ],
+      "failed_checks": [],
+      "expected_contract_type": "lease_agreement",
+      "actual_contract_type": "lease_agreement"
+    },
+    {
+      "case_id": "rent_vehicle_ru",
+      "passed": true,
+      "checks": [
+        {
+          "name": "status_completed",
+          "passed": true,
+          "details": "status=completed"
+        },
+        {
+          "name": "role_roundtrip",
+          "passed": true,
+          "details": "expected role='Арендатор', actual role='Арендатор'"
+        },
+        {
+          "name": "contract_brief_present",
+          "passed": true,
+          "details": "length=2911"
+        },
+        {
+          "name": "summary_has_content",
+          "passed": true,
+          "details": "must_do=6, should_review=6"
+        },
+        {
+          "name": "no_mojibake",
+          "passed": true,
+          "details": "scan of string fields for mojibake markers"
+        },
+        {
+          "name": "contract_type_match",
+          "passed": true,
+          "details": "expected=lease_agreement, actual=lease_agreement"
+        },
+        {
+          "name": "contract_type_confidence",
+          "passed": true,
+          "details": "expected>=0.9, actual=0.99"
+        },
+        {
+          "name": "min_risk_count",
+          "passed": true,
+          "details": "expected>=2, actual=2"
+        },
+        {
+          "name": "min_disputed_clause_count",
+          "passed": true,
+          "details": "expected>=3, actual=3"
+        },
+        {
+          "name": "risk_title_fragments_any",
+          "passed": true,
+          "details": "expected one of ['пеня', 'расходы на содержание']"
+        },
+        {
+          "name": "execution_mode",
+          "passed": true,
+          "details": "expected=local_first, actual=local_first"
+        }
+      ],
+      "failed_checks": [],
+      "expected_contract_type": "lease_agreement",
+      "actual_contract_type": "lease_agreement"
+    },
+    {
+      "case_id": "site_ru",
+      "passed": true,
+      "checks": [
+        {
+          "name": "status_completed",
+          "passed": true,
+          "details": "status=completed"
+        },
+        {
+          "name": "role_roundtrip",
+          "passed": true,
+          "details": "expected role='Исполнитель', actual role='Исполнитель'"
+        },
+        {
+          "name": "contract_brief_present",
+          "passed": true,
+          "details": "length=3277"
+        },
+        {
+          "name": "summary_has_content",
+          "passed": true,
+          "details": "must_do=6, should_review=4"
+        },
+        {
+          "name": "no_mojibake",
+          "passed": true,
+          "details": "scan of string fields for mojibake markers"
+        },
+        {
+          "name": "contract_type_match",
+          "passed": true,
+          "details": "expected=non_contract_legal_form, actual=non_contract_legal_form"
+        },
+        {
+          "name": "contract_type_confidence",
+          "passed": true,
+          "details": "expected>=0.5, actual=0.52"
+        },
+        {
+          "name": "min_risk_count",
+          "passed": true,
+          "details": "expected>=1, actual=1"
+        },
+        {
+          "name": "min_disputed_clause_count",
+          "passed": true,
+          "details": "expected>=3, actual=3"
+        },
+        {
+          "name": "risk_title_fragments_any",
+          "passed": true,
+          "details": "expected one of ['низкий риск']"
+        },
+        {
+          "name": "execution_mode",
+          "passed": true,
+          "details": "expected=local_first, actual=local_first"
+        }
+      ],
+      "failed_checks": [],
+      "expected_contract_type": "non_contract_legal_form",
+      "actual_contract_type": "non_contract_legal_form"
+    },
+    {
+      "case_id": "service_agreement_saas_ru",
+      "passed": true,
+      "checks": [
+        {
+          "name": "status_completed",
+          "passed": true,
+          "details": "status=completed"
+        },
+        {
+          "name": "role_roundtrip",
+          "passed": true,
+          "details": "expected role='Исполнитель', actual role='Исполнитель'"
+        },
+        {
+          "name": "contract_brief_present",
+          "passed": true,
+          "details": "length=754"
+        },
+        {
+          "name": "summary_has_content",
+          "passed": true,
+          "details": "must_do=1, should_review=1"
+        },
+        {
+          "name": "no_mojibake",
+          "passed": true,
+          "details": "scan of string fields for mojibake markers"
+        },
+        {
+          "name": "contract_type_match",
+          "passed": true,
+          "details": "expected=service_agreement, actual=service_agreement"
+        },
+        {
+          "name": "contract_type_confidence",
+          "passed": true,
+          "details": "expected>=0.9, actual=0.99"
+        },
+        {
+          "name": "min_risk_count",
+          "passed": true,
+          "details": "expected>=8, actual=8"
+        },
+        {
+          "name": "min_disputed_clause_count",
+          "passed": true,
+          "details": "expected>=2, actual=2"
+        },
+        {
+          "name": "risk_title_fragments_any",
+          "passed": true,
+          "details": "expected one of ['одностороннее расторжение', 'платежная асимметрия']"
+        },
+        {
+          "name": "execution_mode",
+          "passed": true,
+          "details": "expected=local_first, actual=local_first"
+        }
+      ],
+      "failed_checks": [],
+      "expected_contract_type": "service_agreement",
+      "actual_contract_type": "service_agreement"
+    },
+    {
+      "case_id": "targeted_education_ru",
+      "passed": true,
+      "checks": [
+        {
+          "name": "status_completed",
+          "passed": true,
+          "details": "status=completed"
+        },
+        {
+          "name": "role_roundtrip",
+          "passed": true,
+          "details": "expected role='Гражданин', actual role='Гражданин'"
+        },
+        {
+          "name": "contract_brief_present",
+          "passed": true,
+          "details": "length=771"
+        },
+        {
+          "name": "summary_has_content",
+          "passed": true,
+          "details": "must_do=2, should_review=1"
+        },
+        {
+          "name": "no_mojibake",
+          "passed": true,
+          "details": "scan of string fields for mojibake markers"
+        },
+        {
+          "name": "contract_type_match",
+          "passed": true,
+          "details": "expected=targeted_education_agreement, actual=targeted_education_agreement"
+        },
+        {
+          "name": "contract_type_confidence",
+          "passed": true,
+          "details": "expected>=0.9, actual=0.99"
+        },
+        {
+          "name": "min_risk_count",
+          "passed": true,
+          "details": "expected>=1, actual=1"
+        },
+        {
+          "name": "min_disputed_clause_count",
+          "passed": true,
+          "details": "expected>=1, actual=1"
+        },
+        {
+          "name": "risk_title_fragments_any",
+          "passed": true,
+          "details": "expected one of ['возврат мер поддержки']"
+        },
+        {
+          "name": "execution_mode",
+          "passed": true,
+          "details": "expected=local_first, actual=local_first"
+        }
+      ],
+      "failed_checks": [],
+      "expected_contract_type": "targeted_education_agreement",
+      "actual_contract_type": "targeted_education_agreement"
+    },
+    {
+      "case_id": "loan_security_ru",
+      "passed": true,
+      "checks": [
+        {
+          "name": "status_completed",
+          "passed": true,
+          "details": "status=completed"
+        },
+        {
+          "name": "role_roundtrip",
+          "passed": true,
+          "details": "expected role='Заемщик', actual role='Заемщик'"
+        },
+        {
+          "name": "contract_brief_present",
+          "passed": true,
+          "details": "length=681"
+        },
+        {
+          "name": "summary_has_content",
+          "passed": true,
+          "details": "must_do=1, should_review=1"
+        },
+        {
+          "name": "no_mojibake",
+          "passed": true,
+          "details": "scan of string fields for mojibake markers"
+        },
+        {
+          "name": "contract_type_match",
+          "passed": true,
+          "details": "expected=loan_security_agreement, actual=loan_security_agreement"
+        },
+        {
+          "name": "contract_type_confidence",
+          "passed": true,
+          "details": "expected>=0.9, actual=0.99"
+        },
+        {
+          "name": "min_risk_count",
+          "passed": true,
+          "details": "expected>=1, actual=1"
+        },
+        {
+          "name": "min_disputed_clause_count",
+          "passed": true,
+          "details": "expected>=1, actual=1"
+        },
+        {
+          "name": "risk_title_fragments_any",
+          "passed": true,
+          "details": "expected one of ['банковская гарантия по первому требованию']"
+        },
+        {
+          "name": "execution_mode",
+          "passed": true,
+          "details": "expected=local_first, actual=local_first"
+        }
+      ],
+      "failed_checks": [],
+      "expected_contract_type": "loan_security_agreement",
+      "actual_contract_type": "loan_security_agreement"
+    },
+    {
+      "case_id": "ip_license_ru",
+      "passed": true,
+      "checks": [
+        {
+          "name": "status_completed",
+          "passed": true,
+          "details": "status=completed"
+        },
+        {
+          "name": "role_roundtrip",
+          "passed": true,
+          "details": "expected role='Лицензиат', actual role='Лицензиат'"
+        },
+        {
+          "name": "contract_brief_present",
+          "passed": true,
+          "details": "length=414"
+        },
+        {
+          "name": "summary_has_content",
+          "passed": true,
+          "details": "must_do=1, should_review=1"
+        },
+        {
+          "name": "no_mojibake",
+          "passed": true,
+          "details": "scan of string fields for mojibake markers"
+        },
+        {
+          "name": "contract_type_match",
+          "passed": true,
+          "details": "expected=ip_agreement, actual=ip_agreement"
+        },
+        {
+          "name": "contract_type_confidence",
+          "passed": true,
+          "details": "expected>=0.9, actual=0.99"
+        },
+        {
+          "name": "min_risk_count",
+          "passed": true,
+          "details": "expected>=4, actual=5"
+        },
+        {
+          "name": "min_disputed_clause_count",
+          "passed": true,
+          "details": "expected>=1, actual=1"
+        },
+        {
+          "name": "risk_title_fragments_any",
+          "passed": true,
+          "details": "expected one of ['передача ip', 'гарантийный период']"
+        },
+        {
+          "name": "execution_mode",
+          "passed": true,
+          "details": "expected=local_first, actual=local_first"
+        }
+      ],
+      "failed_checks": [],
+      "expected_contract_type": "ip_agreement",
+      "actual_contract_type": "ip_agreement"
+    },
+    {
+      "case_id": "supply_ru",
+      "passed": true,
+      "checks": [
+        {
+          "name": "status_completed",
+          "passed": true,
+          "details": "status=completed"
+        },
+        {
+          "name": "role_roundtrip",
+          "passed": true,
+          "details": "expected role='Поставщик', actual role='Поставщик'"
+        },
+        {
+          "name": "contract_brief_present",
+          "passed": true,
+          "details": "length=640"
+        },
+        {
+          "name": "summary_has_content",
+          "passed": true,
+          "details": "must_do=1, should_review=1"
+        },
+        {
+          "name": "no_mojibake",
+          "passed": true,
+          "details": "scan of string fields for mojibake markers"
+        },
+        {
+          "name": "contract_type_match",
+          "passed": true,
+          "details": "expected=supply_agreement, actual=supply_agreement"
+        },
+        {
+          "name": "contract_type_confidence",
+          "passed": true,
+          "details": "expected>=0.9, actual=0.99"
+        },
+        {
+          "name": "min_risk_count",
+          "passed": true,
+          "details": "expected>=2, actual=2"
+        },
+        {
+          "name": "min_disputed_clause_count",
+          "passed": true,
+          "details": "expected>=3, actual=3"
+        },
+        {
+          "name": "risk_title_fragments_any",
+          "passed": true,
+          "details": "expected one of ['неустойка', 'гарантийный период']"
+        },
+        {
+          "name": "execution_mode",
+          "passed": true,
+          "details": "expected=local_first, actual=local_first"
+        }
+      ],
+      "failed_checks": [],
+      "expected_contract_type": "supply_agreement",
+      "actual_contract_type": "supply_agreement"
+    }
+  ]
+}

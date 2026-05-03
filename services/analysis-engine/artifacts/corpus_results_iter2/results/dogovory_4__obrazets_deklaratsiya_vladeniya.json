@@ -1,0 +1,187 @@
+{
+  "case_id": "dogovory_4__obrazets_deklaratsiya_vladeniya",
+  "relative_path": "договоры 4/obrazets-deklaratsiya-vladeniya.html",
+  "document_path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\договоры 4\\obrazets-deklaratsiya-vladeniya.html",
+  "document_name": "obrazets-deklaratsiya-vladeniya.html",
+  "role": "Заявитель",
+  "counterparty_role": "Организация",
+  "language": "ru",
+  "mime_type": "text/html",
+  "tags": [
+    "workspace-corpus",
+    "html",
+    "dogovory_4",
+    "non_contract_legal_form"
+  ],
+  "source_group": "manifest",
+  "expected": {
+    "contract_type": "non_contract_legal_form",
+    "min_contract_type_confidence": 0.35,
+    "min_risk_count": 0,
+    "min_disputed_clause_count": 0,
+    "execution_mode": "local_first",
+    "expected_high_risk_ids": []
+  },
+  "started_at": "2026-04-28T16:12:39.053968+00:00",
+  "status": "completed",
+  "request": {
+    "document_name": "obrazets-deklaratsiya-vladeniya.html",
+    "role_context": {
+      "role": "Заявитель",
+      "counterparty_role": "Организация"
+    },
+    "document_text": null,
+    "document_base64": "PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMDEgVHJhbnNpdGlvbmFsLy9FTiI+DQo8aHRtbD4NCjxoZWFkPg0KPGJhc2UgaHJlZj0iaHR0cHM6Ly9kb2dvdm9yLXVyaXN0LnJ1LyI+DQo8dGl0bGU+0J7QsdGA0LDQt9C10YYuINCU0LXQutC70LDRgNCw0YbQuNGPINCy0LvQsNC00LXQvdC40Y8gLSDQstC10YDRgdC40Y8g0LTQu9GPINC/0LXRh9Cw0YLQuC4gMjAyNi4g0J7QsdGA0LDQt9GG0Ysg0LTQvtCz0L7QstC+0YDQvtCyLCDRgtC40L/QvtCy0YvQtSDQtNC+0LPQvtCy0L7RgNCwLCDQsNC60YLRg9Cw0LvRjNC90YvQtSDQtNC+0LrRg9C80LXQvdGC0YssINGO0YDQuNC00LjRh9C10YHQutC40Lwg0Lgg0YTQuNC30LjRh9C10YHQutC40Lwg0LvQuNGG0LDQvDwvdGl0bGU+DQo8bWV0YSBjb250ZW50PSIiIG5hbWU9ImtleXdvcmRzIj4NCjxtZXRhIGNvbnRlbnQ9IiIgbmFtZT0iZGVzY3JpcHRpb24iPg0KPG1ldGEgbmFtZT0icm9ib3RzIiBjb250ZW50PSJub2luZGV4LG5vZm9sbG93Ij4NCjxtZXRhIGh0dHAtZXF1aXY9IkNvbnRlbnQtVHlwZSIgY29udGVudD0idGV4dC9odG1sOyBjaGFyc2V0PXV0Zi04Ij4NCjxsaW5rIHJlbD0ic3R5bGVzaGVldCIgaHJlZj0iL2ltYWdlcy9zdHlsZS5jc3MiIHR5cGU9InRleHQvY3NzIj4NCjwvaGVhZD4NCjxib2R5Pg0KPGRpdiBjbGFzcz0iZG9jdW1lbnRUZXh0Ij4NCjxwcmU+DQogICAgICAgICAgICAgICAgICAgICAgICAgICAg0JTQldCa0JvQkNCg0JDQptCY0K8g0JLQm9CQ0JTQldCd0JjQrw0KDQogICAgICAgINCc0YssINCS0L7Qu9C20YHQutC+0LUg0L7QsdGK0LXQtNC40L3QtdC90LjQtSDQv9C+ICDQv9GA0L7QuNC30LLQvtC00YHRgtCy0YMg0LvQtdCz0LrQvtCy0YvRhSDQsNCy0YLQvtC80L7QsdC40LvQtdC5DQogICAgLSAg0L7RgNCz0LDQvdC40LfQsNGG0LjRjywgINGB0YPRidC10YHRgtCy0YPRjtGJ0LDRjyAg0LggINC00LXQudGB0YLQstGD0Y7RidCw0Y8gICDQv9C+ICDQt9Cw0LrQvtC90LDQvCAg0KHQodCh0KAsDQogICAg0L3QsNGF0L7QtNGP0YnQsNGP0YHRjyDQv9C+ICDQsNC00YDQtdGB0YM6ICDQsy4gINCi0L7Qu9GM0Y/RgtGC0LgsICDRg9C7LiAg0JHQtdC70L7RgNGD0YHRgdC60LDRjywgINC0LiAgMTYsDQogICAg0L3QsNGB0YLQvtGP0YnQuNC8ICDQt9Cw0Y/QstC70Y/QtdC8LCAg0YfRgtC+ICAg0LzRiyAg0Y/QstC70Y/QtdC80YHRjyAgINCy0LvQsNC00LXQu9GM0YbQsNC80LggINGB0LvQtdC00YPRjtGJ0LXQs9C+DQogICAg0YLQvtCy0LDRgNC90L7Qs9C+INC30L3QsNC60LANCg0KICAgICAgICAo0LjQt9C+0LHRgNCw0LbQtdC90LjQtSDRgtC+0LLQsNGA0L3QvtCz0L4g0LfQvdCw0LrQsCkNCg0KICAgICAgICDQktGL0YjQtdGD0LrQsNC30LDQvdC90YvQuSDRgtC+0LLQsNGA0L3Ri9C5INC30L3QsNC6INC40YHQv9C+0LvRjNC30YPQtdGC0YHRjyDQvdCwINGB0LvQtdC00YPRjtGJ0LjRhSDRgtC+0LLQsNGA0Ys6DQogICAgICAgICLQkNCy0YLQvtC80L7QsdC40LvQuCwg0LjRhSDRg9C30LvRiyDQuCDQt9Cw0L/QsNGB0L3Ri9C1INGH0LDRgdGC0LgiIC0g0LrQu9Cw0YHRgSAxMiDQuCDRjdGC0Lgg0YLQvtCy0LDRgNGLDQogICAg0YEgINGD0LrQsNC30LDQvdC90YvQvCAgINGC0L7QstCw0YDQvdGL0LwgICDQt9C90LDQutC+0LwgINC40LfQstC10YHRgtC90YsgICDQsiAgINCQ0LTQtdC90LUgINC60LDQuiAgINC90LDRiNCwDQogICAg0YHQvtCx0YHRgtCy0LXQvdC90L7RgdGC0YwuINCX0LDRj9Cy0LvQtdC90L4g0LIg0LMuINCi0L7Qu9GM0Y/RgtGC0Lgg0KHQsNC80LDRgNGB0LrQvtC5INC+0LHQu9Cw0YHRgtC4INCg0KHQpNCh0KAuDQogICAgICAgINCi0YDQuNC00YbQsNGC0L7Qs9C+INC40Y7Qu9GPINGC0YvRgdGP0YfQsCDQtNC10LLRj9GC0YzRgdC+0YIg0LTQtdCy0Y/QvdC+0YHRgtC+INC/0LXRgNCy0L7Qs9C+INCz0L7QtNCwLg0KDQogICAgICAgICAgICDQktC70LDQtNC40LzQuNGAINCQ0LvQtdC60YHQtdC10LLQuNGHINCQ0LfQsNGA0L7QsiAtINGC0LXRhdC90LjRh9C10YHQutC40Lkg0YDQtdC00LDQutGC0L7RgDog0L/QvtC00L/QuNGB0YwNCg0KICAgINCT0LXRgNCx0L7QstCw0Y8NCiAgICDQv9C10YfQsNGC0YwNCg0KICAgICAgICDQo9C00L7RgdGC0L7QstC10YDQuNGC0LXQu9GM0L3QsNGPICAg0L3QsNC00L/QuNGB0YwgICAg0LPQvtGB0YPQtNCw0YDRgdGC0LLQtdC90L3QvtC5ICAgINC90L7RgtCw0YDQuNCw0LvRjNC90L7QuQ0KICAgINC60L7QvdGC0L7RgNGLLCDQv9GA0LXQtNC90LDQt9C90LDRh9C10L3QvdCw0Y8g0LTQu9GPINC00LXQudGB0YLQstC40Y8g0LfQsCDQs9GA0LDQvdC40YbQtdC5Lg0KICAgICAgICAgDQogIA0KPC9wcmU+PC9kaXY+DQo8L2JvZHk+DQo8L2h0bWw+",
+    "mime_type": "text/html",
+    "language": "ru",
+    "locale": "ru"
+  },
+  "ingestion_preflight": {
+    "mime_type": "text/html",
+    "extractor": "html:regex",
+    "extraction_source": "html:regex",
+    "extraction_ok": true,
+    "error": null,
+    "extraction_error": null,
+    "sha256": "3924a6a6ae5a5c14c46436220c0cfd6e514adf3e4470661e3daebd926280e809"
+  },
+  "metrics": {
+    "risk_count": 1,
+    "high_risk_count": 0,
+    "disputed_clause_count": 1,
+    "asymmetry_signal_count": 0,
+    "contract_type": "non_contract_legal_form"
+  },
+  "analysis": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'obrazets-deklaratsiya-vladeniya. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Заявитель'. Определен тип договора: Иной юридический документ (уверенность 43%, правовая рамка: Вне типовой contract taxonomy). Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Заявитель'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Образец. Декларация владения - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДЕКЛАРАЦИЯ ВЛАДЕНИЯ Мы, Волжское объединение по производству легковых автомобилей - организация, существующая и действующая по законам СССР, находящаяся по адресу: г. Тольятти, ул. Белорусская, д. 16, настоящим заявляем, что мы являемся владельцами следующего товарного знака (изображение товарного знака) Вышеуказанный товарный знак используется на...",
+        "dispute_reason": "Явные маркеры спорных формулировок не обнаружены.",
+        "possible_consequence": "Скрытые спорные моменты требуют дополнительной юридической проверки.",
+        "confidence": 0.35
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Заявитель",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Заявитель'.",
+      "must_do": [
+        "Конфиг не выявил явных обязательств."
+      ],
+      "should_review": [
+        "Конфиг не выявил явных дискреционных условий."
+      ],
+      "payment_terms": [
+        "Конфиг не выявил явных условий оплаты."
+      ],
+      "deadlines": [
+        "Конфиг не выявил явных сроков."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "3924a6a6ae5a5c14c46436220c0cfd6e514adf3e4470661e3daebd926280e809"
+    },
+    "contract_type": {
+      "type_id": "non_contract_legal_form",
+      "confidence": 0.43,
+      "ru_name": "Иной юридический документ",
+      "legal_framework": "Вне типовой contract taxonomy"
+    },
+    "asymmetry_signals": []
+  },
+  "result": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'obrazets-deklaratsiya-vladeniya. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Заявитель'. Определен тип договора: Иной юридический документ (уверенность 43%, правовая рамка: Вне типовой contract taxonomy). Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Заявитель'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Образец. Декларация владения - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДЕКЛАРАЦИЯ ВЛАДЕНИЯ Мы, Волжское объединение по производству легковых автомобилей - организация, существующая и действующая по законам СССР, находящаяся по адресу: г. Тольятти, ул. Белорусская, д. 16, настоящим заявляем, что мы являемся владельцами следующего товарного знака (изображение товарного знака) Вышеуказанный товарный знак используется на...",
+        "dispute_reason": "Явные маркеры спорных формулировок не обнаружены.",
+        "possible_consequence": "Скрытые спорные моменты требуют дополнительной юридической проверки.",
+        "confidence": 0.35
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Заявитель",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Заявитель'.",
+      "must_do": [
+        "Конфиг не выявил явных обязательств."
+      ],
+      "should_review": [
+        "Конфиг не выявил явных дискреционных условий."
+      ],
+      "payment_terms": [
+        "Конфиг не выявил явных условий оплаты."
+      ],
+      "deadlines": [
+        "Конфиг не выявил явных сроков."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "3924a6a6ae5a5c14c46436220c0cfd6e514adf3e4470661e3daebd926280e809"
+    },
+    "contract_type": {
+      "type_id": "non_contract_legal_form",
+      "confidence": 0.43,
+      "ru_name": "Иной юридический документ",
+      "legal_framework": "Вне типовой contract taxonomy"
+    },
+    "asymmetry_signals": []
+  },
+  "finished_at": "2026-04-28T16:12:39.077905+00:00",
+  "duration_ms": 23.5
+}

@@ -1,0 +1,191 @@
+{
+  "case_id": "loan_security_ru",
+  "relative_path": "contract-risk-scan/services/analysis-engine/golden_set/docs/loan_security_guarantee.txt",
+  "document_path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\contract-risk-scan\\services\\analysis-engine\\golden_set\\docs\\loan_security_guarantee.txt",
+  "document_name": "loan_security_guarantee.txt",
+  "role": "Заемщик",
+  "counterparty_role": "Кредитор",
+  "language": "ru",
+  "mime_type": "text/plain",
+  "tags": [
+    "synthetic",
+    "loan",
+    "security"
+  ],
+  "source_group": "manifest",
+  "expected": {
+    "contract_type": "loan_security_agreement",
+    "min_contract_type_confidence": 0.9,
+    "min_risk_count": 1,
+    "min_disputed_clause_count": 1,
+    "risk_title_fragments_any": [
+      "банковская гарантия по первому требованию"
+    ],
+    "execution_mode": "local_first",
+    "expected_high_risk_ids": [
+      "bank_guarantee_on_demand"
+    ]
+  },
+  "started_at": "2026-04-28T16:12:24.185734+00:00",
+  "status": "completed",
+  "request": {
+    "document_name": "loan_security_guarantee.txt",
+    "role_context": {
+      "role": "Заемщик",
+      "counterparty_role": "Кредитор"
+    },
+    "document_text": null,
+    "document_base64": "0JTQntCT0J7QktCe0KAg0JfQkNCZ0JzQkCDQmCDQntCR0JXQodCf0JXQp9CV0J3QmNCvCgrQmtGA0LXQtNC40YLQvtGAINC/0YDQtdC00L7RgdGC0LDQstC70Y/QtdGCINCX0LDQtdC80YnQuNC60YMg0LTQtdC90LXQttC90YvQtSDRgdGA0LXQtNGB0YLQstCwINC90LAg0YPRgdC70L7QstC40Y/RhSDQvdCw0YHRgtC+0Y/RidC10LPQviDQtNC+0LPQvtCy0L7RgNCwINC30LDQudC80LAuCtCX0LDQtdC80YnQuNC6INC/0YDQtdC00L7RgdGC0LDQstC70Y/QtdGCINC+0LHQtdGB0L/QtdGH0LXQvdC40LUg0LjRgdC/0L7Qu9C90LXQvdC40Y8g0LLRgdC10YUg0L7QsdGP0LfQsNGC0LXQu9GM0YHRgtCyINC/0L4g0L3QsNGB0YLQvtGP0YnQtdC80YMg0LTQvtCz0L7QstC+0YDRgyDQuCDRgdCy0Y/Qt9Cw0L3QvdGL0Lwg0YHQvtCz0LvQsNGI0LXQvdC40Y/QvC4K0JHQsNC90LrQvtCy0YHQutCw0Y8g0LPQsNGA0LDQvdGC0LjRjyDQstGL0LTQsNC10YLRgdGPINC/0L4g0L/QtdGA0LLQvtC80YMg0L/QuNGB0YzQvNC10L3QvdC+0LzRgyDRgtGA0LXQsdC+0LLQsNC90LjRjiDQkdC10L3QtdGE0LjRhtC40LDRgNCwLgrQl9Cw0LXQvNGJ0LjQuiDQvtCx0Y/Qt9Cw0L0g0YPQv9C70LDRgtC40YLRjCDQv9GA0L7RhtC10L3RgtGLINC4INCy0YHQtSDRgNCw0YHRhdC+0LTRiyDQmtGA0LXQtNC40YLQvtGA0LAg0LIg0YLQtdGH0LXQvdC40LUgMyDQsdCw0L3QutC+0LLRgdC60LjRhSDQtNC90LXQuSDQv9C+0YHQu9C1INC/0L7Qu9GD0YfQtdC90LjRjyDRgtGA0LXQsdC+0LLQsNC90LjRjy4K",
+    "mime_type": "text/plain",
+    "language": "ru",
+    "locale": "ru"
+  },
+  "ingestion_preflight": {
+    "mime_type": "text/plain",
+    "extractor": "binary:utf8_decode",
+    "extraction_source": "binary:utf8_decode",
+    "extraction_ok": true,
+    "error": null,
+    "extraction_error": null,
+    "sha256": "d28ff733d5a9dd5d17b735c02cb5d746ef95d9cd712715f7ae13f808e7490fc1"
+  },
+  "metrics": {
+    "risk_count": 1,
+    "high_risk_count": 1,
+    "disputed_clause_count": 1,
+    "asymmetry_signal_count": 0,
+    "contract_type": "loan_security_agreement"
+  },
+  "analysis": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "local_first",
+      "offline_capable": true,
+      "network_required": false,
+      "policy_source": "mime_type:text/plain",
+      "reason": "Mime type документа перевел задачу в более безопасный lightweight/offload режим согласно policy."
+    },
+    "contract_brief": "Договор 'loan_security_guarantee. txt' разобран на 2 пунктов. Ниже показано, что действительно важно для роли 'Заемщик'. Определен тип договора: Договор займа / залога / гарантии (уверенность 99%, правовая рамка: ГК РФ, главы 23, 42, 43). Что должен Заемщик: Заемщик обязан уплатить проценты и все расходы Кредитора в течение 3 банковских дней после получения требования. Что должен Кредитор: Заемщик обязан уплатить проценты и все расходы Кредитора в течение 3 банковских дней после получения требования. Сроки и дедлайны: Заемщик обязан уплатить проценты и все расходы Кредитора в течение 3 банковских дней после получения требования. Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "bank_guarantee_on_demand",
+        "title": "Критический риск: Банковская гарантия по первому требованию",
+        "severity": "critical",
+        "clause_id": "clause-2",
+        "description": "Гарант обязан платить по письменному требованию бенефициара при минимальном наборе документов, что делает взыскание почти автоматическим. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: Кредитор предоставляет Заемщику денежные средства на условиях настоящего договора займа.\nЗаемщик предоставляет обеспечение исполнения всех обязательств по настоящему договору и связанным соглашениям.\nБанковская гарантия выдается по первому письменному требованию Бенефициара.\nЗаемщик обязан уплатить проценты и все расходы Кредитора в течение 3 банковских дней после получения требования.",
+        "role_relevance": "Для принципала или гаранта это максимальный риск быстрой реализации обеспечения.",
+        "mitigation": "Проверьте перечень документов, основания требования и лимит суммы гарантии."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "ДОГОВОР ЗАЙМА И ОБЕСПЕЧЕНИЯ.",
+        "dispute_reason": "Явные маркеры спорных формулировок не обнаружены.",
+        "possible_consequence": "Скрытые спорные моменты требуют дополнительной юридической проверки.",
+        "confidence": 0.35
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Заемщик",
+      "overview": "Договор содержит 2 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Заемщик'. Обнаружено 1 пунктов с высоким уровнем риска; их стоит перепроверить вручную.",
+      "must_do": [
+        "Заемщик обязан уплатить проценты и все расходы Кредитора в течение 3 банковских дней после получения требования."
+      ],
+      "should_review": [
+        "Конфиг не выявил явных дискреционных условий."
+      ],
+      "payment_terms": [
+        "Конфиг не выявил явных условий оплаты."
+      ],
+      "deadlines": [
+        "Заемщик обязан уплатить проценты и все расходы Кредитора в течение 3 банковских дней после получения требования."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "binary:utf8_decode",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "d28ff733d5a9dd5d17b735c02cb5d746ef95d9cd712715f7ae13f808e7490fc1"
+    },
+    "contract_type": {
+      "type_id": "loan_security_agreement",
+      "confidence": 0.99,
+      "ru_name": "Договор займа / залога / гарантии",
+      "legal_framework": "ГК РФ, главы 23, 42, 43"
+    },
+    "asymmetry_signals": []
+  },
+  "result": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "local_first",
+      "offline_capable": true,
+      "network_required": false,
+      "policy_source": "mime_type:text/plain",
+      "reason": "Mime type документа перевел задачу в более безопасный lightweight/offload режим согласно policy."
+    },
+    "contract_brief": "Договор 'loan_security_guarantee. txt' разобран на 2 пунктов. Ниже показано, что действительно важно для роли 'Заемщик'. Определен тип договора: Договор займа / залога / гарантии (уверенность 99%, правовая рамка: ГК РФ, главы 23, 42, 43). Что должен Заемщик: Заемщик обязан уплатить проценты и все расходы Кредитора в течение 3 банковских дней после получения требования. Что должен Кредитор: Заемщик обязан уплатить проценты и все расходы Кредитора в течение 3 банковских дней после получения требования. Сроки и дедлайны: Заемщик обязан уплатить проценты и все расходы Кредитора в течение 3 банковских дней после получения требования. Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "bank_guarantee_on_demand",
+        "title": "Критический риск: Банковская гарантия по первому требованию",
+        "severity": "critical",
+        "clause_id": "clause-2",
+        "description": "Гарант обязан платить по письменному требованию бенефициара при минимальном наборе документов, что делает взыскание почти автоматическим. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: Кредитор предоставляет Заемщику денежные средства на условиях настоящего договора займа.\nЗаемщик предоставляет обеспечение исполнения всех обязательств по настоящему договору и связанным соглашениям.\nБанковская гарантия выдается по первому письменному требованию Бенефициара.\nЗаемщик обязан уплатить проценты и все расходы Кредитора в течение 3 банковских дней после получения требования.",
+        "role_relevance": "Для принципала или гаранта это максимальный риск быстрой реализации обеспечения.",
+        "mitigation": "Проверьте перечень документов, основания требования и лимит суммы гарантии."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "ДОГОВОР ЗАЙМА И ОБЕСПЕЧЕНИЯ.",
+        "dispute_reason": "Явные маркеры спорных формулировок не обнаружены.",
+        "possible_consequence": "Скрытые спорные моменты требуют дополнительной юридической проверки.",
+        "confidence": 0.35
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Заемщик",
+      "overview": "Договор содержит 2 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Заемщик'. Обнаружено 1 пунктов с высоким уровнем риска; их стоит перепроверить вручную.",
+      "must_do": [
+        "Заемщик обязан уплатить проценты и все расходы Кредитора в течение 3 банковских дней после получения требования."
+      ],
+      "should_review": [
+        "Конфиг не выявил явных дискреционных условий."
+      ],
+      "payment_terms": [
+        "Конфиг не выявил явных условий оплаты."
+      ],
+      "deadlines": [
+        "Заемщик обязан уплатить проценты и все расходы Кредитора в течение 3 банковских дней после получения требования."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "binary:utf8_decode",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "d28ff733d5a9dd5d17b735c02cb5d746ef95d9cd712715f7ae13f808e7490fc1"
+    },
+    "contract_type": {
+      "type_id": "loan_security_agreement",
+      "confidence": 0.99,
+      "ru_name": "Договор займа / залога / гарантии",
+      "legal_framework": "ГК РФ, главы 23, 42, 43"
+    },
+    "asymmetry_signals": []
+  },
+  "finished_at": "2026-04-28T16:12:24.220737+00:00",
+  "duration_ms": 34.61
+}

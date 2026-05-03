@@ -117,6 +117,7 @@ class AnalysisStatusResponse(BaseModel):
 
 class RiskItem(BaseModel):
     risk_id: str
+    rule_id: str | None = None
     title: str
     severity: RiskSeverity
     clause_id: str | None = None
@@ -125,12 +126,52 @@ class RiskItem(BaseModel):
     mitigation: str
 
 
+class TextOffset(BaseModel):
+    start: int = Field(..., ge=0)
+    end: int = Field(..., ge=0)
+
+
+class DetectedRoleItem(BaseModel):
+    role: str
+    canonical_role: str
+    offset: TextOffset
+
+
+class SourceFragmentProvenance(BaseModel):
+    source: str = Field(
+        ...,
+        description="Coordinate space used for offsets, for example normalized_document_text.",
+    )
+    source_ref: str | None = Field(
+        default=None,
+        description="Config registry reference for the rule that produced the fragment.",
+    )
+    text: str = Field(..., description="Matched fragment in the configured source text.")
+    offset: TextOffset
+    matched_patterns: list[str] = Field(
+        default_factory=list,
+        description="Patterns that matched the fragment for the selected rule.",
+    )
+
+
 class DisputedClauseItem(BaseModel):
     clause_id: str
+    text: str
+    offset: TextOffset
+    rule_id: str
     clause_excerpt: str
     dispute_reason: str
     possible_consequence: str
     confidence: float = Field(..., ge=0.0, le=1.0)
+    provenance: SourceFragmentProvenance
+
+
+class SummaryRecord(BaseModel):
+    id: str
+    headline: str
+    description: str
+    recommendation: str
+    evidence: list[str] = Field(default_factory=list)
 
 
 class RoleFocusedSummary(BaseModel):
@@ -141,6 +182,38 @@ class RoleFocusedSummary(BaseModel):
     payment_terms: list[str]
     deadlines: list[str]
     penalties: list[str]
+
+
+class ExtractedRoleItem(BaseModel):
+    role: str
+    canonical_role: str
+    start_offset: int = Field(..., ge=0)
+    end_offset: int = Field(..., ge=0)
+
+
+class IngestionMetadata(BaseModel):
+    extraction_source: str
+    extraction_ok: bool
+    extraction_error: str | None = None
+    sha256: str | None = None
+    roles: list[ExtractedRoleItem] = Field(default_factory=list)
+    detected_roles: list[DetectedRoleItem] = Field(default_factory=list)
+
+
+class ContractTypeMetadata(BaseModel):
+    type_id: str
+    confidence: float = Field(..., ge=0.0, le=1.0)
+    ru_name: str
+    legal_framework: str
+
+
+class AsymmetrySignalItem(BaseModel):
+    risk_id: str
+    clause_id: str | None = None
+    summary: str
+    details: str
+    severity_hint: RiskSeverity
+    affected_roles: list[str]
 
 
 class AnalysisExecutionPlan(BaseModel):
@@ -169,9 +242,16 @@ class AnalysisOutput(BaseModel):
     locale: str
     execution_plan: AnalysisExecutionPlan
     contract_brief: str
+    contract_brief_records: list[SummaryRecord] = Field(default_factory=list)
     risks: list[RiskItem]
     disputed_clauses: list[DisputedClauseItem]
     role_focused_summary: RoleFocusedSummary
+    role_focused_summary_records: list[SummaryRecord] = Field(default_factory=list)
+    ingestion: IngestionMetadata | None = None
+    contract_type: ContractTypeMetadata | None = None
+    asymmetry_signals: list[AsymmetrySignalItem] = Field(default_factory=list)
+    role_not_found: bool = False
+    message: str | None = None
 
 
 class AnalysisResultResponse(BaseModel):

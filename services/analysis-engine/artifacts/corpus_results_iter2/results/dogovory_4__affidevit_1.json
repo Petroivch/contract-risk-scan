@@ -1,0 +1,187 @@
+{
+  "case_id": "dogovory_4__affidevit_1",
+  "relative_path": "договоры 4/affidevit-1.html",
+  "document_path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\договоры 4\\affidevit-1.html",
+  "document_name": "affidevit-1.html",
+  "role": "Заявитель",
+  "counterparty_role": "Организация",
+  "language": "ru",
+  "mime_type": "text/html",
+  "tags": [
+    "workspace-corpus",
+    "html",
+    "dogovory_4",
+    "non_contract_legal_form"
+  ],
+  "source_group": "manifest",
+  "expected": {
+    "contract_type": "non_contract_legal_form",
+    "min_contract_type_confidence": 0.55,
+    "min_risk_count": 0,
+    "min_disputed_clause_count": 0,
+    "execution_mode": "local_first",
+    "expected_high_risk_ids": []
+  },
+  "started_at": "2026-04-28T16:12:37.376813+00:00",
+  "status": "completed",
+  "request": {
+    "document_name": "affidevit-1.html",
+    "role_context": {
+      "role": "Заявитель",
+      "counterparty_role": "Организация"
+    },
+    "document_text": null,
+    "document_base64": "PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMDEgVHJhbnNpdGlvbmFsLy9FTiI+DQo8aHRtbD4NCjxoZWFkPg0KPGJhc2UgaHJlZj0iaHR0cHM6Ly9kb2dvdm9yLXVyaXN0LnJ1LyI+DQo8dGl0bGU+0JDRhNGE0LjQtNC10LLQuNGCIC0g0LLQtdGA0YHQuNGPINC00LvRjyDQv9C10YfQsNGC0LguIDIwMjYuINCe0LHRgNCw0LfRhtGLINC00L7Qs9C+0LLQvtGA0L7Qsiwg0YLQuNC/0L7QstGL0LUg0LTQvtCz0L7QstC+0YDQsCwg0LDQutGC0YPQsNC70YzQvdGL0LUg0LTQvtC60YPQvNC10L3RgtGLLCDRjtGA0LjQtNC40YfQtdGB0LrQuNC8INC4INGE0LjQt9C40YfQtdGB0LrQuNC8INC70LjRhtCw0Lw8L3RpdGxlPg0KPG1ldGEgY29udGVudD0iIiBuYW1lPSJrZXl3b3JkcyI+DQo8bWV0YSBjb250ZW50PSIiIG5hbWU9ImRlc2NyaXB0aW9uIj4NCjxtZXRhIG5hbWU9InJvYm90cyIgY29udGVudD0ibm9pbmRleCxub2ZvbGxvdyI+DQo8bWV0YSBodHRwLWVxdWl2PSJDb250ZW50LVR5cGUiIGNvbnRlbnQ9InRleHQvaHRtbDsgY2hhcnNldD11dGYtOCI+DQo8bGluayByZWw9InN0eWxlc2hlZXQiIGhyZWY9Ii9pbWFnZXMvc3R5bGUuY3NzIiB0eXBlPSJ0ZXh0L2NzcyI+DQo8L2hlYWQ+DQo8Ym9keT4NCjxkaXYgY2xhc3M9ImRvY3VtZW50VGV4dCI+DQo8cHJlPg0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg0JDQpNCk0JjQlNCV0JLQmNCiDQoNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgKNCd0LAg0L/RgNCw0LLQvtC5INGB0YLQvi0NCiAgICAgICAg0JzRiywg0L3QuNC20LXQv9C+0LTQv9C40YHQsNCy0YjQuNC10YHRjywg0L3QsNGB0YLQvtGP0YnQuNC8INGB0LLQuNC00LXRgtC10LvRjNGB0YLQstGD0LXQvCwg0YfRgtC+OiAgICAgICAgINGA0L7QvdC1INC40LfQu9Cw0LPQsNC10YItDQogICAgICAgINCY0L3RgdGC0LjRgtGD0YIg0Y3Qu9C10LrRgtGA0L7RgdCy0LDRgNC60Lgg0LjQvNC10L3QuCDQlS4g0J4uINCf0LDRgtC+0L3QsCwgINCh0KHQodCgLCDQsy4g0JrQuNC10LIsINGD0LsuINGB0Y8g0YLQtdC60YHRgiDQv9C10YDQtS0NCiAgICDQkdC+0LbQtdC90LrQvjsg0LQuICAxMSwg0LfQsNGP0LLQuNGC0LXQu9GMICDQvNC10LbQtNGD0L3QsNGA0L7QtNC90L7QuSDQt9Cw0Y/QstC60LggIE4gINCg0KHQoi84MS8wMDIxINCyINCy0L7QtNCwINC90LAg0LjQvdC+0YHRgi0NCiAgICDRgdC+0L7RgtCy0LXRgtGB0YLQstC40LggINGBICDQlNC+0LPQvtCy0L7RgNC+0LwgINC+ICDQv9Cw0YLQtdC90YLQvdC+0LkgINC60L7QvtC/0LXRgNCw0YbQuNC4ICDQuCAg0JjQvdGB0YLQuNGC0YPRgiAg0YDQsNC90L3Ri9C5INGP0LfRi9C6DQogICAg0K3Qu9C10LrRgtGA0L7RgdCy0LDRgNC60Lgg0LjQvNC10L3QuCDQlS4g0J4uINCf0LDRgtC+0L3QsCDQkNC60LDQtNC10LzQuNC4INC90LDRg9C6INCj0LrRgNCw0LjQvdGB0LrQvtC5INCh0KHQoCwNCiAgICAgICAg0KHQodCh0KAsINCzLiDQmtC40LXQsiwgINGD0LsuINCR0L7QttC10L3QutC+LCAg0LQuIDExLCDRj9Cy0LvRj9GO0YLRgdGPICDQvtC00L3QvtC5INC4ICDRgtC+0Lkg0LbQtQ0KICAgINC+0YDQs9Cw0L3QuNC30LDRhtC40LXQuSwg0LrQvtGC0L7RgNCw0Y8gINC/0L7QtNCw0LXRgiAg0YPQutCw0LfQsNC90L3Rg9GOICDQvNC10LbQtNGD0L3QsNGA0L7QtNC90YPRjiAg0LfQsNGP0LLQutGDICDQsg0KICAgINCv0L/QvtC90LjQuCDQsiDRgdC+0L7RgtCy0LXRgtGB0YLQstC40Lgg0YEg0JTQvtCz0L7QstC+0YDQvtC8INC+INC/0LDRgtC10L3RgtC90L7QuSDQutC+0L7Qv9C10YDQsNGG0LjQuCwg0Lgg0YfRgtC+Og0KICAgICAgICDQv9GA0LDQstC40LvRjNC90L7QtSDQvdCw0LfQstCw0L3QuNC1ICDQt9Cw0Y/QstC40YLQtdC70Y8gINCy0YvRiNC10YPQutCw0LfQsNC90L3QvtC5INC30LDRj9Cy0LrQuCAg0JjQvdGB0YLQuNGC0YPRgg0KICAgINGN0LvQtdC60YLRgNC+0YHQstCw0YDQutC4INC40LzQtdC90Lgg0JUuINCeLiDQn9Cw0YLQvtC90LAg0JDQutCw0LTQtdC80LjQuCDQvdCw0YPQuiDQo9C60YDQsNC40L3RgdC60L7QuSDQodCh0KAsDQogICAgICAgINCh0KHQodCgLCDQsy4g0JrQuNC10LIsINGD0LsuINCR0L7QttC10L3QutC+LCDQtC4gMTEsINC4INGH0YLQvjoNCiAgICAgICAg0L/RgNCw0LLQsCDQuCDQuNC90YLQtdGA0LXRgdGLINC90LUg0LHRi9C70Lgg0L/QtdGA0LXQtNCw0L3RiyDQtNGA0YPQs9C40Lwg0LvQuNGG0LDQvC4NCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg0J/QvtC00L/QuNGB0LDQvdC+OiAo0JTQsNC90LjQuNC7INCQ0L3QtNGA0LXQtdCy0LjRhyDQlNGD0LHQutC+KQ0KDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICjQv9C+0LTQv9C40YHRjCDQtNC+0LvQti0NCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg0L3QvtGB0YLQvdC+0LPQviDQu9C40YbQsA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICDQsdGD0LrQstCw0LzQuCDQu9Cw0YLQuNC9LQ0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICDRgdC60L7Qs9C+INCw0LvRhNCw0LLQuNGC0LApDQoNCiAgICAgICAg0K8sINC90LjQttC10L/QvtC00L/QuNGB0LDQstGI0LDRj9GB0Y8sINCz0L7RgdGD0LTQsNGA0YHRgtCy0LXQvdC90YvQuSDQvdC+0YLQsNGA0LjRg9GBINCf0LXRgNCy0L7QuSDQmtC40LXQstGB0LrQvtC5ICAo0KLQtdC60YHRgiDQv9C10YDQtdCy0L7QtNCwDQogICAg0LPQvtGB0YPQtNCw0YDRgdGC0LLQtdC90L3QvtC5ICDQvdC+0YLQsNGA0LjQsNC70YzQvdC+0LkgICDQutC+0L3RgtC+0YDRiyAgINGCLiAgINCe0YXRgNC40LzQtdC90LrQviAgINCd0LDRgtCw0LvQuNGPICDRg9C00L7RgdGC0L7QstC10YDQuNGC0LXQu9GMLQ0KICAgINCf0LXRgtGA0L7QstC90LAsINC90LDRgdGC0L7Rj9GJ0LjQvCAg0YHQstC40LTQtdGC0LXQu9GM0YHRgtCy0YPRjiwgINGH0YLQviAg0JjQvdGB0YLQuNGC0YPRgiAg0Y3Qu9C10LrRgtGA0L7RgdCy0LDRgNC60LggINC90L7QuSDQvdCw0LTQv9C40YHQuCDQt9CwLQ0KICAgINC40LzQtdC90Lgg0JUuINCeLiDQn9Cw0YLQvtC90LAg0JDQutCw0LTQtdC80LjQuCDQvdCw0YPQuiDQo9C60YDQsNC40L3RgdC60L7QuSDQodCh0KAsICAgICAgICAgICAgICAgICAgICDQutCw0L3Rh9C40LLQsNC10YLRgdGPINC/0L4tDQogICAgICAgINCh0KHQodCgLCDQsy4g0JrQuNC10LIsINGD0LsuINCR0L7QttC10L3QutC+LCDQtC4gMTEsINGP0LLQu9GP0LXRgtGB0Y8g0Y7RgNC40LTQuNGH0LXRgdC60LjQvCDQu9C40YbQvtC8LCAg0LTQv9C40YHRjNGOINCz0L7RgdGD0LTQsNGALQ0KICAgINC90LDQtNC70LXQttCw0YnQuNC8INC+0LHRgNCw0LfQvtC8INC30LDRgNC10LPQuNGB0YLRgNC40YDQvtCy0LDQvdC90YvQvCAg0L/QviDQt9Cw0LrQvtC90LDQvCAg0KHQvtGO0LfQsCDQodC+0LLQtdGC0YHQutC40YUgINGB0YLQstC10L3QvdC+0LPQviDQvdC+0YLQsC0NCiAgICDQodC+0YbQuNCw0LvQuNGB0YLQuNGH0LXRgdC60LjRhSAg0KDQtdGB0L/Rg9Cx0LvQuNC6LCAgINC4ICDRh9GC0L4gICDQlNCw0L3QuNC40LsgINCQ0L3QtNGA0LXQtdCy0LjRhyAgINCU0YPQsdC60L4sICDRgNC40YPRgdCwINCx0YPQutCy0LDQvNC4DQogICAg0L/QvtC00L/QuNGB0LDQstGI0LjQuSAg0LLRi9GI0LXQv9GA0LjQstC10LTQtdC90L3Ri9C5ICAg0LDRhNGE0LjQtNC10LLQuNGCLCAg0L/QvtC70L3QvtGB0YLRjNGOICAg0YPQv9C+0LvQvdC+0LzQvtGH0LXQvSAg0LvQsNGC0LjQvdGB0LrQvtCz0L4g0LDQuy0NCiAgICDQv9GA0LXQtNGB0YLQsNCy0LvRj9GC0Ywg0YPQutCw0LfQsNC90L3QvtC1INGO0YDQuNC00LjRh9C10YHQutC+0LUg0LvQuNGG0L4uICAgICAgICAgICAgICAgICAgICAgICAgICAgINGE0LDQstC40YLQsCDQuCDQv9GA0LjQu9C+LQ0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg0JTQsNGC0LA6ICjQv9GA0L7Qv9C40YHRjNGOKSAg0LbQtdC90LjQtdC8INCz0LXRgNCx0L7QstC+0LkNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgINC/0LXRh9Cw0YLQuCDQvdC+0YLQsNGA0LgtDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICDQl9Cw0YDQtdCz0LjRgdGC0YDQuNGA0L7QstCw0L3QviDQsiDRgNC10LXRgdGC0YDQtSDQt9CwIE4gINCw0LvRjNC90L7QuSDQutC+0L3RgtC+0YDRiykNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICDQktC30YvRgdC60LDQvdC+INCz0L7RgdGD0LTQsNGA0YHRgtCy0LXQvdC90L7QuSDQv9C+0YjQu9C40L3RiyAxINGA0YPQsS4NCg0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgINCT0L7RgdGD0LTQsNGA0YHRgtCy0LXQvdC90YvQuSDQvdC+0YLQsNGA0LjRg9GBDQogICAgICAgICAgICAgICAgICAgICAgICAgINCf0LXRgNCy0L7QuSDQmtC40LXQstGB0LrQvtC5INCz0L7RgdGD0LTQsNGA0YHRgtCy0LXQvdC90L7QuSDQvdC+0YLQsNGA0LjQsNC70YzQvdC+0LkNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgINC60L7QvdGC0L7RgNGLDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICDQv9C+0LTQv9C40YHRjA0KICAgINCT0LXRgNCx0L7QstCw0Y8g0L/QtdGH0LDRgtGMDQogICAgIA0KICANCjwvcHJlPjwvZGl2Pg0KPC9ib2R5Pg0KPC9odG1sPg==",
+    "mime_type": "text/html",
+    "language": "ru",
+    "locale": "ru"
+  },
+  "ingestion_preflight": {
+    "mime_type": "text/html",
+    "extractor": "html:regex",
+    "extraction_source": "html:regex",
+    "extraction_ok": true,
+    "error": null,
+    "extraction_error": null,
+    "sha256": "e4fda20cfdc62fc3b6177547e87259298cbf22d636541d231f85e9c034fc2b5b"
+  },
+  "metrics": {
+    "risk_count": 1,
+    "high_risk_count": 0,
+    "disputed_clause_count": 1,
+    "asymmetry_signal_count": 0,
+    "contract_type": "non_contract_legal_form"
+  },
+  "analysis": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'affidevit-1. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Заявитель'. Определен тип договора: Иной юридический документ (уверенность 70%, правовая рамка: Вне типовой contract taxonomy). Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Заявитель'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Аффидевит - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам АФФИДЕВИТ (На правой сто- Мы, нижеподписавшиеся, настоящим свидетельствуем, что: роне излагает- Институт электросварки имени Е. О. Патона, СССР, г. Киев, ул. ся текст пере- Боженко; д. 11, заявитель международной заявки N РСТ/81/0021 в вода на иност- соответствии с Договором о патентной кооперации и Институт ранный язык Электросварки имени Е. О.",
+        "dispute_reason": "Явные маркеры спорных формулировок не обнаружены.",
+        "possible_consequence": "Скрытые спорные моменты требуют дополнительной юридической проверки.",
+        "confidence": 0.35
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Заявитель",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Заявитель'.",
+      "must_do": [
+        "Конфиг не выявил явных обязательств."
+      ],
+      "should_review": [
+        "Конфиг не выявил явных дискреционных условий."
+      ],
+      "payment_terms": [
+        "Конфиг не выявил явных условий оплаты."
+      ],
+      "deadlines": [
+        "Конфиг не выявил явных сроков."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "e4fda20cfdc62fc3b6177547e87259298cbf22d636541d231f85e9c034fc2b5b"
+    },
+    "contract_type": {
+      "type_id": "non_contract_legal_form",
+      "confidence": 0.7,
+      "ru_name": "Иной юридический документ",
+      "legal_framework": "Вне типовой contract taxonomy"
+    },
+    "asymmetry_signals": []
+  },
+  "result": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'affidevit-1. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Заявитель'. Определен тип договора: Иной юридический документ (уверенность 70%, правовая рамка: Вне типовой contract taxonomy). Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Заявитель'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Аффидевит - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам АФФИДЕВИТ (На правой сто- Мы, нижеподписавшиеся, настоящим свидетельствуем, что: роне излагает- Институт электросварки имени Е. О. Патона, СССР, г. Киев, ул. ся текст пере- Боженко; д. 11, заявитель международной заявки N РСТ/81/0021 в вода на иност- соответствии с Договором о патентной кооперации и Институт ранный язык Электросварки имени Е. О.",
+        "dispute_reason": "Явные маркеры спорных формулировок не обнаружены.",
+        "possible_consequence": "Скрытые спорные моменты требуют дополнительной юридической проверки.",
+        "confidence": 0.35
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Заявитель",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Заявитель'.",
+      "must_do": [
+        "Конфиг не выявил явных обязательств."
+      ],
+      "should_review": [
+        "Конфиг не выявил явных дискреционных условий."
+      ],
+      "payment_terms": [
+        "Конфиг не выявил явных условий оплаты."
+      ],
+      "deadlines": [
+        "Конфиг не выявил явных сроков."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "e4fda20cfdc62fc3b6177547e87259298cbf22d636541d231f85e9c034fc2b5b"
+    },
+    "contract_type": {
+      "type_id": "non_contract_legal_form",
+      "confidence": 0.7,
+      "ru_name": "Иной юридический документ",
+      "legal_framework": "Вне типовой contract taxonomy"
+    },
+    "asymmetry_signals": []
+  },
+  "finished_at": "2026-04-28T16:12:37.415826+00:00",
+  "duration_ms": 39.07
+}

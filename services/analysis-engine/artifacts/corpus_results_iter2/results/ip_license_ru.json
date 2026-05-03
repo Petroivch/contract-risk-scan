@@ -1,0 +1,232 @@
+{
+  "case_id": "ip_license_ru",
+  "relative_path": "contract-risk-scan/services/analysis-engine/golden_set/docs/ip_license_agreement.txt",
+  "document_path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\contract-risk-scan\\services\\analysis-engine\\golden_set\\docs\\ip_license_agreement.txt",
+  "document_name": "ip_license_agreement.txt",
+  "role": "Лицензиат",
+  "counterparty_role": "Лицензиар",
+  "language": "ru",
+  "mime_type": "text/plain",
+  "tags": [
+    "synthetic",
+    "ip",
+    "license"
+  ],
+  "source_group": "manifest",
+  "expected": {
+    "contract_type": "ip_agreement",
+    "min_contract_type_confidence": 0.9,
+    "min_risk_count": 4,
+    "min_disputed_clause_count": 1,
+    "risk_title_fragments_any": [
+      "передача ip",
+      "гарантийный период"
+    ],
+    "execution_mode": "local_first",
+    "expected_high_risk_ids": [
+      "ip_transfer_without_scope"
+    ]
+  },
+  "started_at": "2026-04-28T16:12:24.224714+00:00",
+  "status": "completed",
+  "request": {
+    "document_name": "ip_license_agreement.txt",
+    "role_context": {
+      "role": "Лицензиат",
+      "counterparty_role": "Лицензиар"
+    },
+    "document_text": null,
+    "document_base64": "0JvQmNCm0JXQndCX0JjQntCd0J3Qq9CZINCU0J7Qk9Ce0JLQntCgCgrQm9C40YbQtdC90LfQuNCw0YAg0L/RgNC10LTQvtGB0YLQsNCy0LvRj9C10YIg0JvQuNGG0LXQvdC30LjQsNGC0YMg0LjRgdC60LvRjtGH0LjRgtC10LvRjNC90YPRjiDQu9C40YbQtdC90LfQuNGOINC90LAg0LjRgdC/0L7Qu9GM0LfQvtCy0LDQvdC40LUg0L3QvtGDLdGF0LDRgyDQuCDQv9GA0L7Qs9GA0LDQvNC80L3QvtCz0L4g0L7QsdC10YHQv9C10YfQtdC90LjRjy4K0KDQsNC30LzQtdGAINGA0L7Rj9C70YLQuCDQvtC/0YDQtdC00LXQu9GP0LXRgtGB0Y8g0LTQvtC/0L7Qu9C90LjRgtC10LvRjNC90YvQvCDRg9Cy0LXQtNC+0LzQu9C10L3QuNC10Lwg0JvQuNGG0LXQvdC30LjQsNGA0LAuCtCb0LjRhtC10L3Qt9C40LDRgiDQvtCx0Y/Qt9Cw0L0g0YHQvtGF0YDQsNC90Y/RgtGMINC60L7QvdGE0LjQtNC10L3RhtC40LDQu9GM0L3QvtGB0YLRjCDQu9GO0LHQvtC5INC/0L7Qu9GD0YfQtdC90L3QvtC5INC40L3RhNC+0YDQvNCw0YbQuNC4INCx0LXQtyDQuNGB0LrQu9GO0YfQtdC90LjQuSwg0L/RgNC10LTRg9GB0LzQvtGC0YDQtdC90L3Ri9GFINC30LDQutC+0L3QvtC8LgrQmNGB0LrQu9GO0YfQuNGC0LXQu9GM0L3QvtC1INC/0YDQsNCy0L4g0L3QsCDQstGB0LUg0YDQtdC30YPQu9GM0YLQsNGC0Ysg0LjQvdGC0LXQu9C70LXQutGC0YPQsNC70YzQvdC+0Lkg0LTQtdGP0YLQtdC70YzQvdC+0YHRgtC4LCDRgdC+0LfQtNCw0L3QvdGL0LUg0L/RgNC4INC40YHQv9C+0LvQvdC10L3QuNC4INC00L7Qs9C+0LLQvtGA0LAsINC/0LXRgNC10YXQvtC00LjRgiDQm9C40YbQtdC90LfQuNCw0YDRgy4K",
+    "mime_type": "text/plain",
+    "language": "ru",
+    "locale": "ru"
+  },
+  "ingestion_preflight": {
+    "mime_type": "text/plain",
+    "extractor": "binary:utf8_decode",
+    "extraction_source": "binary:utf8_decode",
+    "extraction_ok": true,
+    "error": null,
+    "extraction_error": null,
+    "sha256": "34e7457186a63c6e63903e23a92c61a6e12cd651f9756831d056f0b7c4b847df"
+  },
+  "metrics": {
+    "risk_count": 3,
+    "high_risk_count": 1,
+    "disputed_clause_count": 1,
+    "asymmetry_signal_count": 0,
+    "contract_type": "ip_agreement"
+  },
+  "analysis": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "local_first",
+      "offline_capable": true,
+      "network_required": false,
+      "policy_source": "mime_type:text/plain",
+      "reason": "Mime type документа перевел задачу в более безопасный lightweight/offload режим согласно policy."
+    },
+    "contract_brief": "Договор 'ip_license_agreement. txt' разобран на 2 пунктов. Ниже показано, что действительно важно для роли 'Лицензиат'. Определен тип договора: Договор об интеллектуальных правах (уверенность 99%, правовая рамка: ГК РФ, часть IV). Что должен Лицензиат: Лицензиат обязан сохранять конфиденциальность любой полученной информации без исключений, предусмотренных законом. . Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "no_warranty_period",
+        "title": "Высокий риск: Отсутствует гарантийный период",
+        "severity": "high",
+        "clause_id": null,
+        "description": "В договоре про результат, дефекты и сопровождение ничего не сказано о гарантийном сроке.",
+        "role_relevance": "Заказчик рискует остаться без механизма бесплатного устранения дефектов.",
+        "mitigation": "Добавьте гарантийный период и отдельно опишите, что входит в бесплатное исправление дефектов."
+      },
+      {
+        "risk_id": "risk-2",
+        "rule_id": "confidentiality_without_exceptions",
+        "title": "Средний риск: Конфиденциальность без carve-outs и разумных исключений",
+        "severity": "medium",
+        "clause_id": "clause-2",
+        "description": "Обязанность по конфиденциальности сформулирована широко, но не содержит исключений для общедоступной информации, законных запросов и ранее известных данных. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: Лицензиар предоставляет Лицензиату исключительную лицензию на использование ноу-хау и программного обеспечения.\nРазмер роялти определяется дополнительным уведомлением Лицензиара.\nЛицензиат обязан сохранять конфиденциальность любой полученной информации без исключений, предусмотренных законом.\nИсключительное право на все результаты интеллектуальной деятельности, созданные при исполнении договора, переходит Лицензиару.",
+        "role_relevance": "Заказчик тоже может столкнуться с неприменимой или оспоримой оговоркой.",
+        "mitigation": "Добавьте стандартные carve-outs и ограничьте ответственность за непредотвратимое раскрытие."
+      },
+      {
+        "risk_id": "risk-3",
+        "rule_id": "ip_transfer_without_scope",
+        "title": "Средний риск: Передача IP без точного объема прав",
+        "severity": "medium",
+        "clause_id": "clause-2",
+        "description": "Договор говорит о передаче результатов, прав или лицензии, но не фиксирует территорию, срок, способ использования или исключительность. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: Лицензиар предоставляет Лицензиату исключительную лицензию на использование ноу-хау и программного обеспечения.\nРазмер роялти определяется дополнительным уведомлением Лицензиара.\nЛицензиат обязан сохранять конфиденциальность любой полученной информации без исключений, предусмотренных законом.\nИсключительное право на все результаты интеллектуальной деятельности, созданные при исполнении договора, переходит Лицензиару.",
+        "role_relevance": "Покупатель прав тоже рискует получить нечеткий и трудно защищаемый объем.",
+        "mitigation": "Опишите объект, объем прав, территорию, срок и момент перехода прав отдельными формулировками."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "ЛИЦЕНЗИОННЫЙ ДОГОВОР.",
+        "dispute_reason": "Явные маркеры спорных формулировок не обнаружены.",
+        "possible_consequence": "Скрытые спорные моменты требуют дополнительной юридической проверки.",
+        "confidence": 0.35
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Лицензиат",
+      "overview": "Договор содержит 2 пунктов и 3 выявленных рисков. Краткий вывод сфокусирован на роли 'Лицензиат'. Обнаружено 1 пунктов с высоким уровнем риска; их стоит перепроверить вручную.",
+      "must_do": [
+        "Лицензиат обязан сохранять конфиденциальность любой полученной информации без исключений, предусмотренных законом. ."
+      ],
+      "should_review": [
+        "Конфиг не выявил явных дискреционных условий."
+      ],
+      "payment_terms": [
+        "Конфиг не выявил явных условий оплаты."
+      ],
+      "deadlines": [
+        "Конфиг не выявил явных сроков."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "binary:utf8_decode",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "34e7457186a63c6e63903e23a92c61a6e12cd651f9756831d056f0b7c4b847df"
+    },
+    "contract_type": {
+      "type_id": "ip_agreement",
+      "confidence": 0.99,
+      "ru_name": "Договор об интеллектуальных правах",
+      "legal_framework": "ГК РФ, часть IV"
+    },
+    "asymmetry_signals": []
+  },
+  "result": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "local_first",
+      "offline_capable": true,
+      "network_required": false,
+      "policy_source": "mime_type:text/plain",
+      "reason": "Mime type документа перевел задачу в более безопасный lightweight/offload режим согласно policy."
+    },
+    "contract_brief": "Договор 'ip_license_agreement. txt' разобран на 2 пунктов. Ниже показано, что действительно важно для роли 'Лицензиат'. Определен тип договора: Договор об интеллектуальных правах (уверенность 99%, правовая рамка: ГК РФ, часть IV). Что должен Лицензиат: Лицензиат обязан сохранять конфиденциальность любой полученной информации без исключений, предусмотренных законом. . Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "no_warranty_period",
+        "title": "Высокий риск: Отсутствует гарантийный период",
+        "severity": "high",
+        "clause_id": null,
+        "description": "В договоре про результат, дефекты и сопровождение ничего не сказано о гарантийном сроке.",
+        "role_relevance": "Заказчик рискует остаться без механизма бесплатного устранения дефектов.",
+        "mitigation": "Добавьте гарантийный период и отдельно опишите, что входит в бесплатное исправление дефектов."
+      },
+      {
+        "risk_id": "risk-2",
+        "rule_id": "confidentiality_without_exceptions",
+        "title": "Средний риск: Конфиденциальность без carve-outs и разумных исключений",
+        "severity": "medium",
+        "clause_id": "clause-2",
+        "description": "Обязанность по конфиденциальности сформулирована широко, но не содержит исключений для общедоступной информации, законных запросов и ранее известных данных. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: Лицензиар предоставляет Лицензиату исключительную лицензию на использование ноу-хау и программного обеспечения.\nРазмер роялти определяется дополнительным уведомлением Лицензиара.\nЛицензиат обязан сохранять конфиденциальность любой полученной информации без исключений, предусмотренных законом.\nИсключительное право на все результаты интеллектуальной деятельности, созданные при исполнении договора, переходит Лицензиару.",
+        "role_relevance": "Заказчик тоже может столкнуться с неприменимой или оспоримой оговоркой.",
+        "mitigation": "Добавьте стандартные carve-outs и ограничьте ответственность за непредотвратимое раскрытие."
+      },
+      {
+        "risk_id": "risk-3",
+        "rule_id": "ip_transfer_without_scope",
+        "title": "Средний риск: Передача IP без точного объема прав",
+        "severity": "medium",
+        "clause_id": "clause-2",
+        "description": "Договор говорит о передаче результатов, прав или лицензии, но не фиксирует территорию, срок, способ использования или исключительность. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: Лицензиар предоставляет Лицензиату исключительную лицензию на использование ноу-хау и программного обеспечения.\nРазмер роялти определяется дополнительным уведомлением Лицензиара.\nЛицензиат обязан сохранять конфиденциальность любой полученной информации без исключений, предусмотренных законом.\nИсключительное право на все результаты интеллектуальной деятельности, созданные при исполнении договора, переходит Лицензиару.",
+        "role_relevance": "Покупатель прав тоже рискует получить нечеткий и трудно защищаемый объем.",
+        "mitigation": "Опишите объект, объем прав, территорию, срок и момент перехода прав отдельными формулировками."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "ЛИЦЕНЗИОННЫЙ ДОГОВОР.",
+        "dispute_reason": "Явные маркеры спорных формулировок не обнаружены.",
+        "possible_consequence": "Скрытые спорные моменты требуют дополнительной юридической проверки.",
+        "confidence": 0.35
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Лицензиат",
+      "overview": "Договор содержит 2 пунктов и 3 выявленных рисков. Краткий вывод сфокусирован на роли 'Лицензиат'. Обнаружено 1 пунктов с высоким уровнем риска; их стоит перепроверить вручную.",
+      "must_do": [
+        "Лицензиат обязан сохранять конфиденциальность любой полученной информации без исключений, предусмотренных законом. ."
+      ],
+      "should_review": [
+        "Конфиг не выявил явных дискреционных условий."
+      ],
+      "payment_terms": [
+        "Конфиг не выявил явных условий оплаты."
+      ],
+      "deadlines": [
+        "Конфиг не выявил явных сроков."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "binary:utf8_decode",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "34e7457186a63c6e63903e23a92c61a6e12cd651f9756831d056f0b7c4b847df"
+    },
+    "contract_type": {
+      "type_id": "ip_agreement",
+      "confidence": 0.99,
+      "ru_name": "Договор об интеллектуальных правах",
+      "legal_framework": "ГК РФ, часть IV"
+    },
+    "asymmetry_signals": []
+  },
+  "finished_at": "2026-04-28T16:12:24.269309+00:00",
+  "duration_ms": 44.74
+}

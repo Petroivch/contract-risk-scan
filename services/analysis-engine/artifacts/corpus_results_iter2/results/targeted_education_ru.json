@@ -1,0 +1,192 @@
+{
+  "case_id": "targeted_education_ru",
+  "relative_path": "contract-risk-scan/services/analysis-engine/golden_set/docs/targeted_education_agreement.txt",
+  "document_path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\contract-risk-scan\\services\\analysis-engine\\golden_set\\docs\\targeted_education_agreement.txt",
+  "document_name": "targeted_education_agreement.txt",
+  "role": "Гражданин",
+  "counterparty_role": "Заказчик",
+  "language": "ru",
+  "mime_type": "text/plain",
+  "tags": [
+    "synthetic",
+    "education"
+  ],
+  "source_group": "manifest",
+  "expected": {
+    "contract_type": "targeted_education_agreement",
+    "min_contract_type_confidence": 0.9,
+    "min_risk_count": 1,
+    "min_disputed_clause_count": 1,
+    "risk_title_fragments_any": [
+      "возврат мер поддержки"
+    ],
+    "execution_mode": "local_first",
+    "expected_high_risk_ids": [
+      "support_reimbursement_after_withdrawal"
+    ]
+  },
+  "started_at": "2026-04-28T16:12:24.143704+00:00",
+  "status": "completed",
+  "request": {
+    "document_name": "targeted_education_agreement.txt",
+    "role_context": {
+      "role": "Гражданин",
+      "counterparty_role": "Заказчик"
+    },
+    "document_text": null,
+    "document_base64": "0JTQntCT0J7QktCe0KAg0J4g0KbQldCb0JXQktCe0Jwg0J7QkdCj0KfQldCd0JjQmAoK0JPRgNCw0LbQtNCw0L3QuNC9INC+0LHRj9C30YPQtdGC0YHRjyDQvtGB0LLQvtC40YLRjCDQvtCx0YDQsNC30L7QstCw0YLQtdC70YzQvdGD0Y4g0L/RgNC+0LPRgNCw0LzQvNGDINC4INC/0L7RgdC70LUg0LfQsNCy0LXRgNGI0LXQvdC40Y8g0L7QsdGD0YfQtdC90LjRjyDQvtGB0YPRidC10YHRgtCy0LvRj9GC0Ywg0YLRgNGD0LTQvtCy0YPRjiDQtNC10Y/RgtC10LvRjNC90L7RgdGC0Ywg0YMg0JfQsNC60LDQt9GH0LjQutCwINC90LUg0LzQtdC90LXQtSDRgtGA0LXRhSDQu9C10YIuCtCX0LDQutCw0LfRh9C40Log0L/RgNC10LTQvtGB0YLQsNCy0LvRj9C10YIg0LzQtdGA0Ysg0L/QvtC00LTQtdGA0LbQutC4INC90LAg0L/QtdGA0LjQvtC0INC+0LHRg9GH0LXQvdC40Y8uCtCf0YDQuCDQvtGC0YfQuNGB0LvQtdC90LjQuCDQs9GA0LDQttC00LDQvdC40L3QsCDQuNC70Lgg0L7RgtC60LDQt9C1INC+0YIg0YLRgNGD0LTQvtGD0YHRgtGA0L7QudGB0YLQstCwINCz0YDQsNC20LTQsNC90LjQvSDQvtCx0Y/Qt9Cw0L0g0LLQtdGA0L3Rg9GC0Ywg0LzQtdGA0Ysg0L/QvtC00LTQtdGA0LbQutC4INCyINC/0L7Qu9C90L7QvCDQvtCx0YrQtdC80LUuCtCe0LHRgNCw0LfQvtCy0LDRgtC10LvRjNC90LDRjyDQvtGA0LPQsNC90LjQt9Cw0YbQuNGPINCy0LXQtNC10YIg0L7QsdGD0YfQtdC90LjQtSDQv9C+INGB0L7Qs9C70LDRgdC+0LLQsNC90L3QvtC5INC/0YDQvtCz0YDQsNC80LzQtS4K",
+    "mime_type": "text/plain",
+    "language": "ru",
+    "locale": "ru"
+  },
+  "ingestion_preflight": {
+    "mime_type": "text/plain",
+    "extractor": "binary:utf8_decode",
+    "extraction_source": "binary:utf8_decode",
+    "extraction_ok": true,
+    "error": null,
+    "extraction_error": null,
+    "sha256": "dd69b0521c63b992a1ecfc2b3a5c5b37ab2754f6d4b71352b3ae5c855deda70f"
+  },
+  "metrics": {
+    "risk_count": 1,
+    "high_risk_count": 1,
+    "disputed_clause_count": 1,
+    "asymmetry_signal_count": 0,
+    "contract_type": "targeted_education_agreement"
+  },
+  "analysis": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "local_first",
+      "offline_capable": true,
+      "network_required": false,
+      "policy_source": "mime_type:text/plain",
+      "reason": "Mime type документа перевел задачу в более безопасный lightweight/offload режим согласно policy."
+    },
+    "contract_brief": "Договор 'targeted_education_agreement. txt' разобран на 2 пунктов. Ниже показано, что действительно важно для роли 'Гражданин'. Определен тип договора: Договор о целевом обучении (уверенность 99%, правовая рамка: ФЗ об образовании, ГК РФ, локальные акты работодателя). Что должен Гражданин: Гражданин обязуется освоить образовательную программу и после завершения обучения осуществлять трудовую деятельность у Заказчика не менее трех лет. ; При отчислении гражданина или отказе от трудоустройства гражданин обязан вернуть меры поддержки в полном объеме. . Что должен Заказчик: Гражданин обязуется освоить образовательную программу и после завершения обучения осуществлять трудовую деятельность у Заказчика не менее трех лет. . Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "support_reimbursement_after_withdrawal",
+        "title": "Критический риск: Возврат мер поддержки и расходов при нарушении договора",
+        "severity": "critical",
+        "clause_id": "clause-2",
+        "description": "При расторжении или неисполнении обязанностей гражданин может вернуть меры поддержки, обучение и иные расходы без прозрачного расчета и исключений. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: Гражданин обязуется освоить образовательную программу и после завершения обучения осуществлять трудовую деятельность у Заказчика не менее трех лет.\nЗаказчик предоставляет меры поддержки на период обучения.\nПри отчислении гражданина или отказе от трудоустройства гражданин обязан вернуть меры поддержки в полном объеме.\nОбразовательная организация ведет обучение по согласованной программе.",
+        "role_relevance": "Для гражданина возврат затрат может стать существенной финансовой нагрузкой.",
+        "mitigation": "Уточните формулу возврата, перечень расходов и случаи, когда возврат не применяется."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "ДОГОВОР О ЦЕЛЕВОМ ОБУЧЕНИИ.",
+        "dispute_reason": "Явные маркеры спорных формулировок не обнаружены.",
+        "possible_consequence": "Скрытые спорные моменты требуют дополнительной юридической проверки.",
+        "confidence": 0.35
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Гражданин",
+      "overview": "Договор содержит 2 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Гражданин'. Обнаружено 1 пунктов с высоким уровнем риска; их стоит перепроверить вручную.",
+      "must_do": [
+        "Гражданин обязуется освоить образовательную программу и после завершения обучения осуществлять трудовую деятельность у Заказчика не менее трех лет. .",
+        "При отчислении гражданина или отказе от трудоустройства гражданин обязан вернуть меры поддержки в полном объеме. ."
+      ],
+      "should_review": [
+        "Конфиг не выявил явных дискреционных условий."
+      ],
+      "payment_terms": [
+        "Конфиг не выявил явных условий оплаты."
+      ],
+      "deadlines": [
+        "Конфиг не выявил явных сроков."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "binary:utf8_decode",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "dd69b0521c63b992a1ecfc2b3a5c5b37ab2754f6d4b71352b3ae5c855deda70f"
+    },
+    "contract_type": {
+      "type_id": "targeted_education_agreement",
+      "confidence": 0.99,
+      "ru_name": "Договор о целевом обучении",
+      "legal_framework": "ФЗ об образовании, ГК РФ, локальные акты работодателя"
+    },
+    "asymmetry_signals": []
+  },
+  "result": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "local_first",
+      "offline_capable": true,
+      "network_required": false,
+      "policy_source": "mime_type:text/plain",
+      "reason": "Mime type документа перевел задачу в более безопасный lightweight/offload режим согласно policy."
+    },
+    "contract_brief": "Договор 'targeted_education_agreement. txt' разобран на 2 пунктов. Ниже показано, что действительно важно для роли 'Гражданин'. Определен тип договора: Договор о целевом обучении (уверенность 99%, правовая рамка: ФЗ об образовании, ГК РФ, локальные акты работодателя). Что должен Гражданин: Гражданин обязуется освоить образовательную программу и после завершения обучения осуществлять трудовую деятельность у Заказчика не менее трех лет. ; При отчислении гражданина или отказе от трудоустройства гражданин обязан вернуть меры поддержки в полном объеме. . Что должен Заказчик: Гражданин обязуется освоить образовательную программу и после завершения обучения осуществлять трудовую деятельность у Заказчика не менее трех лет. . Найдено спорных или расплывчатых пунктов: 1.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "support_reimbursement_after_withdrawal",
+        "title": "Критический риск: Возврат мер поддержки и расходов при нарушении договора",
+        "severity": "critical",
+        "clause_id": "clause-2",
+        "description": "При расторжении или неисполнении обязанностей гражданин может вернуть меры поддержки, обучение и иные расходы без прозрачного расчета и исключений. РќР°Р№РґРµРЅРЅС‹Р№ С„СЂР°РіРјРµРЅС‚: Гражданин обязуется освоить образовательную программу и после завершения обучения осуществлять трудовую деятельность у Заказчика не менее трех лет.\nЗаказчик предоставляет меры поддержки на период обучения.\nПри отчислении гражданина или отказе от трудоустройства гражданин обязан вернуть меры поддержки в полном объеме.\nОбразовательная организация ведет обучение по согласованной программе.",
+        "role_relevance": "Для гражданина возврат затрат может стать существенной финансовой нагрузкой.",
+        "mitigation": "Уточните формулу возврата, перечень расходов и случаи, когда возврат не применяется."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "ДОГОВОР О ЦЕЛЕВОМ ОБУЧЕНИИ.",
+        "dispute_reason": "Явные маркеры спорных формулировок не обнаружены.",
+        "possible_consequence": "Скрытые спорные моменты требуют дополнительной юридической проверки.",
+        "confidence": 0.35
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Гражданин",
+      "overview": "Договор содержит 2 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Гражданин'. Обнаружено 1 пунктов с высоким уровнем риска; их стоит перепроверить вручную.",
+      "must_do": [
+        "Гражданин обязуется освоить образовательную программу и после завершения обучения осуществлять трудовую деятельность у Заказчика не менее трех лет. .",
+        "При отчислении гражданина или отказе от трудоустройства гражданин обязан вернуть меры поддержки в полном объеме. ."
+      ],
+      "should_review": [
+        "Конфиг не выявил явных дискреционных условий."
+      ],
+      "payment_terms": [
+        "Конфиг не выявил явных условий оплаты."
+      ],
+      "deadlines": [
+        "Конфиг не выявил явных сроков."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "binary:utf8_decode",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "dd69b0521c63b992a1ecfc2b3a5c5b37ab2754f6d4b71352b3ae5c855deda70f"
+    },
+    "contract_type": {
+      "type_id": "targeted_education_agreement",
+      "confidence": 0.99,
+      "ru_name": "Договор о целевом обучении",
+      "legal_framework": "ФЗ об образовании, ГК РФ, локальные акты работодателя"
+    },
+    "asymmetry_signals": []
+  },
+  "finished_at": "2026-04-28T16:12:24.182713+00:00",
+  "duration_ms": 39.25
+}

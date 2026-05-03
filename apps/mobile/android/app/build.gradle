@@ -4,6 +4,11 @@ apply plugin: "com.facebook.react"
 
 def projectRoot = rootDir.getAbsoluteFile().getParentFile().getAbsolutePath()
 def repoRoot = new File(projectRoot).getParentFile().getParentFile().getAbsolutePath()
+def nodeModulesRoot = new File(projectRoot, "node_modules")
+def reactNativePackageDir = new File(nodeModulesRoot, "react-native")
+def expoCliFile = new File(nodeModulesRoot, "@expo/cli/build/bin/cli")
+def codegenPackageDir = new File(nodeModulesRoot, "@react-native/codegen")
+def cliPlatformAndroidPackageFile = new File(nodeModulesRoot, "@react-native-community/cli-platform-android/package.json")
 
 def resolveNodeExecutable = {
   def envNode = providers.environmentVariable("CONTRACT_RISK_NODE").orNull
@@ -64,13 +69,13 @@ def rnVersion = getRNVersion(nodeExecutable)
 react {
     nodeExecutableAndArgs = [nodeExecutable]
     entryFile = file([nodeExecutable, "-e", "require('expo/scripts/resolveAppEntry')", projectRoot, "android", "absolute"].execute(null, rootDir).text.trim())
-    reactNativeDir = new File([nodeExecutable, "--print", "require.resolve('react-native/package.json')"].execute(null, rootDir).text.trim()).getParentFile().getAbsoluteFile()
-    hermesCommand = new File([nodeExecutable, "--print", "require.resolve('react-native/package.json')"].execute(null, rootDir).text.trim()).getParentFile().getAbsolutePath() + "/sdks/hermesc/%OS-BIN%/hermesc"
-    codegenDir = new File([nodeExecutable, "--print", "require.resolve('@react-native/codegen/package.json', { paths: [require.resolve('react-native/package.json')] })"].execute(null, rootDir).text.trim()).getParentFile().getAbsoluteFile()
+    reactNativeDir = reactNativePackageDir.getAbsoluteFile()
+    hermesCommand = new File(reactNativePackageDir, "sdks/hermesc/%OS-BIN%/hermesc").getAbsolutePath()
+    codegenDir = codegenPackageDir.getAbsoluteFile()
 
     // Use Expo CLI to bundle the app, this ensures the Metro config
     // works correctly with Expo projects.
-    cliFile = new File([nodeExecutable, "--print", "require.resolve('@expo/cli', { paths: [require.resolve('expo/package.json')] })"].execute(null, rootDir).text.trim())
+    cliFile = expoCliFile.getAbsoluteFile()
     bundleCommand = "export:embed"
 
     /* Folders */
@@ -254,6 +259,6 @@ dependencies {
 }
 
 if (rnVersion < versionToNumber(0, 75, 0)) {
-    apply from: new File([nodeExecutable, "--print", "require.resolve('@react-native-community/cli-platform-android/package.json', { paths: [require.resolve('react-native/package.json')] })"].execute(null, rootDir).text.trim(), "../native_modules.gradle");
+    apply from: new File(cliPlatformAndroidPackageFile.getParentFile(), "native_modules.gradle");
     applyNativeModulesAppBuildGradle(project)
 }

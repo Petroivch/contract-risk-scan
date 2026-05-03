@@ -473,6 +473,23 @@ components:
         dueCondition:
           type: string
 
+    StructuredSummaryRecord:
+      type: object
+      required: [id, headline, description, recommendation, evidence]
+      properties:
+        id:
+          type: string
+        headline:
+          type: string
+        description:
+          type: string
+        recommendation:
+          type: string
+        evidence:
+          type: array
+          items:
+            type: string
+
     ContractRisk:
       type: object
       required: [id, clauseRef, title, severity, description, roleImpact, recommendation]
@@ -526,6 +543,8 @@ components:
           obligations,
           risks,
           disputedClauses,
+          contractBriefRecords,
+          roleFocusedSummaryRecords,
           generatedAt,
           generationNotes
         ]
@@ -556,6 +575,25 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/DisputedClause'
+        roleNotFound:
+          type: boolean
+          description: |
+            `true`, если выбранная роль не найдена в тексте договора. В этом случае `risks`
+            и `obligations` возвращаются пустыми, а `message` объясняет причину.
+          example: true
+        message:
+          type: string
+          nullable: true
+          description: Локализованное пояснение, почему анализ по выбранной роли не был сформирован.
+          example: Выбранная роль 'Finance reviewer' не найдена в тексте договора. Найдены роли: Seller, Buyer.
+        contractBriefRecords:
+          type: array
+          items:
+            $ref: '#/components/schemas/StructuredSummaryRecord'
+        roleFocusedSummaryRecords:
+          type: array
+          items:
+            $ref: '#/components/schemas/StructuredSummaryRecord'
         generatedAt:
           type: string
           format: date-time

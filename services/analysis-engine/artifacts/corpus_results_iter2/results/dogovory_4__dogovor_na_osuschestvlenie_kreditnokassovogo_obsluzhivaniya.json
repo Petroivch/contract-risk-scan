@@ -1,0 +1,235 @@
+{
+  "case_id": "dogovory_4__dogovor_na_osuschestvlenie_kreditnokassovogo_obsluzhivaniya",
+  "relative_path": "договоры 4/dogovor-na-osuschestvlenie-kreditnokassovogo-obsluzhivaniya.html",
+  "document_path": "C:\\Users\\user\\Documents\\Codex\\вайбкод\\договоры 4\\dogovor-na-osuschestvlenie-kreditnokassovogo-obsluzhivaniya.html",
+  "document_name": "dogovor-na-osuschestvlenie-kreditnokassovogo-obsluzhivaniya.html",
+  "role": "Заявитель",
+  "counterparty_role": "Организация",
+  "language": "ru",
+  "mime_type": "text/html",
+  "tags": [
+    "workspace-corpus",
+    "html",
+    "dogovory_4",
+    "non_contract_legal_form"
+  ],
+  "source_group": "manifest",
+  "expected": {
+    "contract_type": "non_contract_legal_form",
+    "min_contract_type_confidence": 0.35,
+    "min_risk_count": 0,
+    "min_disputed_clause_count": 2,
+    "execution_mode": "local_first",
+    "expected_high_risk_ids": []
+  },
+  "started_at": "2026-04-28T16:12:37.535823+00:00",
+  "status": "completed",
+  "request": {
+    "document_name": "dogovor-na-osuschestvlenie-kreditnokassovogo-obsluzhivaniya.html",
+    "role_context": {
+      "role": "Заявитель",
+      "counterparty_role": "Организация"
+    },
+    "document_text": null,
+    "document_base64": "PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMDEgVHJhbnNpdGlvbmFsLy9FTiI+DQo8aHRtbD4NCjxoZWFkPg0KPGJhc2UgaHJlZj0iaHR0cHM6Ly9kb2dvdm9yLXVyaXN0LnJ1LyI+DQo8dGl0bGU+0JTQvtCz0L7QstC+0YAg0L3QsCDQvtGB0YPRidC10YHRgtCy0LvQtdC90LjQtSDQutGA0LXQtNC40YLQvdC+LdC60LDRgdGB0L7QstC+0LPQviAgINC+0LHRgdC70YPQttC40LLQsNC90LjRjyAtINCy0LXRgNGB0LjRjyDQtNC70Y8g0L/QtdGH0LDRgtC4LiAyMDI2LiDQntCx0YDQsNC30YbRiyDQtNC+0LPQvtCy0L7RgNC+0LIsINGC0LjQv9C+0LLRi9C1INC00L7Qs9C+0LLQvtGA0LAsINCw0LrRgtGD0LDQu9GM0L3Ri9C1INC00L7QutGD0LzQtdC90YLRiywg0Y7RgNC40LTQuNGH0LXRgdC60LjQvCDQuCDRhNC40LfQuNGH0LXRgdC60LjQvCDQu9C40YbQsNC8PC90aXRsZT4NCjxtZXRhIGNvbnRlbnQ9IiIgbmFtZT0ia2V5d29yZHMiPg0KPG1ldGEgY29udGVudD0iIiBuYW1lPSJkZXNjcmlwdGlvbiI+DQo8bWV0YSBuYW1lPSJyb2JvdHMiIGNvbnRlbnQ9Im5vaW5kZXgsbm9mb2xsb3ciPg0KPG1ldGEgaHR0cC1lcXVpdj0iQ29udGVudC1UeXBlIiBjb250ZW50PSJ0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgiPg0KPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSIvaW1hZ2VzL3N0eWxlLmNzcyIgdHlwZT0idGV4dC9jc3MiPg0KPC9oZWFkPg0KPGJvZHk+DQo8ZGl2IGNsYXNzPSJkb2N1bWVudFRleHQiPg0KPHByZT4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICDQlNCe0JPQntCS0J7QoA0KICAgICAgICAgINC90LAg0L7RgdGD0YnQtdGB0YLQstC70LXQvdC40LUg0LrRgNC10LTQuNGC0L3Qvi3RgNCw0YHRh9C10YLQvdC+0LPQviDQvtCx0YHQu9GD0LbQuNCy0LDQvdC40Y8NCg0KICAgICAgICAg0LMuX19fX19fX19fX19fX19fX18gICAgICAgICAgICAgICAgIl9fXyJfX19fX18yMF9fX9CzLg0KDQogICAgIF9fX19fX19fLCDQuNC80LXQvdGD0LXQvNC+0LUg0LIg0LTQsNC70YzQvdC10LnRiNC10Lwg0JrQu9C40LXQvdGCLCDQsiDQu9C40YbQtSBfX18sINC00LXQudGB0YLQstGD0Y7RidC10LPQviDQvdCwDQrQvtGB0L3QvtCy0LDQvdC40LggIF9fX19fX19fX18sICDRgSAg0L7QtNC90L7QuSAg0YHRgtC+0YDQvtC90YssICDQuCAgX19fX19fX19fXyAgINC40LzQtdC90YPQtdC80L7QtSAgINCyDQrQtNCw0LvRjNC90LXQudGI0LXQvCDQkdCw0L3QuiwgINCyINC70LjRhtC1IF9fX19fX19fX19fLCDQtNC10LnRgdGC0LLRg9GO0YnQtdCz0L4g0L3QsCDQvtGB0L3QvtCy0LDQvdC40LggX19fX19fLCDRgQ0K0LTRgNGD0LPQvtC5INGB0YLQvtGA0L7QvdGLLCDQt9Cw0LrQu9GO0YfQuNC70Lgg0L3QsNGB0YLQvtGP0YnQuNC5INC00L7Qs9C+0LLQvtGAINC+INC90LjQttC10YHQu9C10LTRg9GO0YnQtdC8Og0KDQogICAgIDEuINCf0YDQtdC00LzQtdGCINC00L7Qs9C+0LLQvtGA0LANCiAgICAgMS4xLiDQmtC70LjQtdC90YIg0L7QsdGP0LfRg9C10YLRgdGPINGF0YDQsNC90LjRgtGMINGB0LLQvtC4INC00LXQvdC10LbQvdGL0LUgINGB0YDQtdC00YHRgtCy0LAgINC90LAgIF9fX19fX19fXw0K0YHRh9C10YLQtSwgICDQvtGC0LrRgNGL0YLQvtC8ICAg0LTQu9GPICAg0L3QtdCz0L4gINCR0LDQvdC60L7QvCwgINCwICDQkdCw0L3QuiAg0L7QsdGP0LfRg9C10YLRgdGPICDQsdC10LfQstC+0LfQvNC10LfQtNC90L4NCtC+0YHRg9GJ0LXRgdGC0LLQu9GP0YLRjCDQutGA0LXQtNC40YLQvdC+LdGA0LDRgdGH0LXRgtC90L7QtSDQvtCx0YHQu9GD0LbQuNCy0LDQvdC40LUg0JrQu9C40LXQvdGC0LAuDQoNCiAgICAgMi4g0J7QsdGP0LfQsNC90L3QvtGB0YLQuCDRgdGC0L7RgNC+0L0NCiAgICAgMi4xLiDQmtC70LjQtdC90YIg0L7QsdGP0LfRg9C10YLRgdGPOg0KICAgICAtINCyICAxMC3QtNC90LXQstC90YvQuSAg0YHRgNC+0LogINGB0L4g0LTQvdGPINC/0L7QtNC/0LjRgdCw0L3QuNGPINC90LDRgdGC0L7Rj9GJ0LXQs9C+INC00L7Qs9C+0LLQvtGA0LAg0LfQsNC60YDRi9GC0YwNCtGB0LLQvtC4INGA0LDRgdGH0LXRgtC90YvQtSAg0YHRh9C10YLQsCAg0LIgINC00YDRg9Cz0LjRhSAg0LHQsNC90LrQsNGFICDRgdGC0YDQsNC90YsgINC4ICDQv9C10YDQtdGH0LjRgdC70LjRgtGMICDQvtGB0YLQsNGC0LrQuA0K0LTQtdC90LXQttC90YvRhSDRgdGA0LXQtNGB0YLQsiDQvdCwINGB0YfQtdGCLCDQvtGC0LrRgNGL0YLRi9C5INC00LvRjyDQvdC10LPQviDQkdCw0L3QutC+0Lw7DQogICAgIC0g0L/RgNC10LTQvtGB0YLQsNCy0LvRj9GC0Ywg0JHQsNC90LrRgyDQuNC90YTQvtGA0LzQsNGG0LjRjiwg0L3QtSDRj9Cy0LvRj9GO0YnRg9GO0YHRjyDQutC+0LzQvNC10YDRh9C10YHQutC+0Lkg0YLQsNC50L3QvtC5LA0K0L4gINC60L7QvdC60YDQtdGC0L3Ri9GFINC90LDQv9GA0LDQstC70LXQvdC40Y/RhSDRgdCy0L7QtdC5INC00LXRj9GC0LXQu9GM0L3QvtGB0YLQuCAsICDRgNCw0LfRgNCw0LHQvtGC0LrQsNGFINC4INC/0YDQvtC10LrRgtCw0YUg0LINCtC+0LHRitC10LzQsNGFLCDRgdC+0LPQu9Cw0YHQvtCy0LDQvdC90YvRhSDRgSDQkdCw0L3QutC+0Lw7DQogICAgINC/0L4g0LjRgdGC0LXRh9C10L3QuNC4ICBfX19fXyAg0LzQtdGB0Y/RhtC10LIgINGB0L4gINC00L3RjyDQv9C+0LTQv9C40YHQsNC90LjRjyDQvdCw0YHRgtC+0Y/RidC10LPQviDQtNC+0LPQvtCy0L7RgNCwDQrRhdGA0LDQvdC40YLRjCDQvdCwINGB0YfQtdGC0LUg0LIg0JHQsNC90LrQtSDQvtGB0YLQsNGC0L7QuiDQtNC10L3QtdC20L3Ri9GFINGB0YDQtdC00YHRgtCyICDQvdC1ICDQvNC10L3QtdC1ICBfX19fICDRgtGL0YHRj9GHDQrRgNGD0LHQu9C10Lk7ICDQsiAg0YHQu9GD0YfQsNC1ICDRg9C80LXQvdGM0YjQtdC90LjRjyAg0L7RgdGC0LDRgtC60LAgINC00LXQvdC10LbQvdGL0YUg0YHRgNC10LTRgdGC0LIg0L/QvtGB0LvQtSDQuNGB0YLQtdGH0LXQvdC40Y8NCtGD0LrQsNC30LDQvdC90L7Qs9C+INCy0YvRiNC1INGB0YDQvtC60LAg0L3QuNC20LUgX19fXyDRgtGL0YHRj9GHINGA0YPQsdC70LXQuSDQkdCw0L3QuiDQstC/0YDQsNCy0LUg0YPRgdGC0LDQvdC+0LLQuNGC0Ywg0L/Qu9Cw0YLRgw0K0LfQsCAg0L7RgdGD0YnQtdGB0YLQstC70LXQvdC40LUgINGA0LDRgdGH0LXRgtC90L7Qs9C+ICDQvtCx0YHQu9GD0LbQuNCy0LDQvdC40Y8g0LIg0YDQsNC30LzQtdGA0LUgX19fXyDRgtGL0YHRj9GHINGA0YPQsdC70LXQuSDQsg0K0LfQsNCy0LjRgdC40LzQvtGB0YLQuCAg0L7RgiAg0L7QsdGK0LXQvNCwICDRgNCw0YHRh9C10YLQvdGL0YUgINC+0L/QtdGA0LDRhtC40LkgINC30LAgINCz0L7QtDsgINC/0LvQsNGC0LAgINGBICDQmtC70LjQtdC90YLQsA0K0LLQt9C40LzQsNC10YLRgdGPICDQsiAg0YLQvtC8ICDRgdC70YPRh9Cw0LUsICDQtdGB0LvQuCDQutC+0LvQuNGH0LXRgdGC0LLQviDQtNC90LXQuSDQsiDQutCw0LvQtdC90LTQsNGA0L3QvtC8INCz0L7QtNGDINC/0L7RgdC70LUNCtC40YHRgtC10YfQtdC90LjRjyBfX19fX18g0LzQtdGB0Y/Rh9C90L7Qs9C+INGB0YDQvtC60LAsICDQsiDQutC+0YLQvtGA0YvRhSAg0L7RgdGC0LDRgtC+0LogINC90LAgINGB0YfQtdGC0LUgINCa0LvQuNC10L3RgtCwDQrRgdC+0YHRgtCw0LLQu9GP0LsgINC80LXQvdC10LUgIF9fX19fICDRgtGL0YEuICDRgNGD0LHQu9C10LksICDQsdGL0LvQviDRgNCw0LLQvdC+INC40LvQuCDQsdC+0LvQtdC1IDMwOyAg0L/Qu9Cw0YLQsCDQsg0K0LTQsNC90L3QvtC8INGB0LvRg9GH0LDQtSDQstC30LjQvNCw0LXRgtGB0Y8g0L/Rg9GC0LXQvCDQsdC10LfQsNC60YbQtdC/0YLQvdC+0LPQviDRgdC/0LjRgdCw0L3QuNGPINGB0YPQvNC80YssINGD0YHRgtCw0L3QvtCy0LvQtdC90L3QvtC5DQrQtNC+0LPQvtCy0L7RgNC+0LwsINGB0L4g0YHRh9C10YLQsCDQmtC70LjQtdC90YLQsDsNCiAgICAgLSDQv9GA0LXQtNC+0YHRgtCw0LLQu9GP0YLRjCAg0LIgINCR0LDQvdC6ICAg0L3QsNC00LvQtdC20LDRidC40LwgICDQvtCx0YDQsNC30L7QvCAgINC30LDQstC10YDQtdC90L3Ri9C1ICAg0LrQvtC/0LjQuA0K0LTQvtC60YPQvNC10L3RgtC+0LIsICDQv9C+0LTRgtCy0LXRgNC20LTQsNGO0YnQuNGFICDRgdC00LDRh9GDICDQmtC70LjQtdC90YLQvtC8ICDQvdCw0LvQuNGH0L3Ri9GFINC00LXQvdC10LbQvdGL0YUg0YHRgNC10LTRgdGC0LIg0LINCtCx0LDQvdC60L7QstGB0LrQvtC1INGD0YfRgNC10LbQtNC10L3QuNC1Ow0KICAgICAtINGB0L7QsdC70Y7QtNCw0YLRjCAgINC90L7RgNC80LDRgtC40LLQvdGL0LUgICDQsNC60YLRiyAg0KbQtdC90YLRgNCw0LvRjNC90L7Qs9C+ICDQsdCw0L3QutCwICDQoNCkICDQuCAg0JHQsNC90LrQsCwNCtGA0LXQs9GD0LvQuNGA0YPRjtGJ0LjQtSDQv9C+0YDRj9C00L7QuiDQvtGB0YPRidC10YHRgtCy0LvQtdC90LjRjyDRgNCw0YHRh9C10YLQvdGL0YUg0Lgg0LrRgNC10LTQuNGC0L3Ri9GFINC+0L/QtdGA0LDRhtC40LkuDQogICAgIDIuMi4g0JHQsNC90Log0L7QsdGP0LfRg9C10YLRgdGPOg0KICAgICAtINC+0YHRg9GJ0LXRgdGC0LLQu9GP0YLRjCAg0YDQsNGB0YfQtdGC0L3QvtC1ICDQvtCx0YHQu9GD0LbQuNCy0LDQvdC40LUgINCa0LvQuNC10L3RgtCwICDQsiAg0YHQvtC+0YLQstC10YLRgdGC0LLQuNC4ICDRgQ0K0LTQtdC50YHRgtCy0YPRjtGJ0LjQvNC4INC/0YDQsNCy0LjQu9Cw0LzQuDsNCiAgICAgLSDQv9GA0L7QuNC30LLQvtC00LjRgtGMINCy0YvQtNCw0YfRgyDQvdCw0LvQuNGH0L3Ri9GFINC00LXQvdC10LMg0LIg0YDQsNC30LzQtdGA0LDRhSwgINC90LXQvtCx0YXQvtC00LjQvNGL0YUg0JrQu9C40LXQvdGC0YMNCtC90LAgICDRhdC+0LfRj9C50YHRgtCy0LXQvdC90YvQtSAgINGA0LDRgdGF0L7QtNGLICAg0LggINC+0L/Qu9Cw0YIgINGB0L7RgtGA0YPQtNC90LjQutC+0LIgINCa0LvQuNC10L3RgtCwLCAg0YEgINGD0YfQtdGC0L7QvA0K0LLQvtC30LzQvtC20L3QvtGB0YLQtdC5INCR0LDQvdC60LAg0Lgg0LTQsNC90L3Ri9GFINC+INGB0LTQsNGH0LUg0JrQu9C40LXQvdGC0L7QvCDQvdCw0LvQuNGH0L3Ri9GFINC00LXQvdC10LM7DQogICAgIC0g0L/RgNC10LTQvtGB0YLQsNCy0LvRj9GC0YwgICDQmtC70LjQtdC90YLRgyAgINC40L3RhNC+0YDQvNCw0YbQuNGOICAg0L4gINC60L7QvdC60YDQtdGC0L3Ri9GFICDQvdCw0L/RgNCw0LLQu9C10L3QuNGP0YUNCtC00LXRj9GC0LXQu9GM0L3QvtGB0YLQuCwgINC/0YDQvtC10LrRgtCw0YUgINC4ICDRgNCw0LfRgNCw0LHQvtGC0LrQsNGFLCAg0L/RgNC10LTQvtGB0YLQsNCy0LvQtdC90L3Ri9GFICDQkdCw0L3QutGDICDQtNGA0YPQs9C40LzQuA0K0LrQu9C40LXQvdGC0LDQvNC4Ow0KICAgICAtINC90LAgINC00L7Qs9C+0LLQvtGA0L3QvtC5ICAg0L7RgdC90L7QstC1ICAg0L7RgNCz0LDQvdC40LfQvtCy0YvQstCw0YLRjCAgINC4ICAg0L/RgNC+0LLQvtC00LjRgtGMICAg0YDQtdC60LvQsNC80YMNCtC00LXRj9GC0LXQu9GM0L3QvtGB0YLQuCDQmtC70LjQtdC90YLQsDsNCiAgICAgLSDQsiAg0YHQu9GD0YfQsNC1ICDQvdC10L7QsdGF0L7QtNC40LzQvtGB0YLQuCAg0L/QviAg0YLRgNC10LHQvtCy0LDQvdC40Y4gINCa0LvQuNC10L3RgtCwICDQkdCw0L3QuiAg0LzQvtC20LXRgiAgINCyDQrQv9GA0LjQvtGA0LjRgtC10YLQvdC+0LwgINC/0L7RgNGP0LTQutC1ICDQv9GA0LXQtNC+0YHRgtCw0LLQuNGC0YwgINCa0LvQuNC10L3RgtGDICDQv9C70LDRgtC10LbQvdGL0LkgINC60YDQtdC00LjRgiDQvdCwINC+0L/Qu9Cw0YLRgw0K0L3QtdC+0YLQu9C+0LbQvdGL0YUgINC90YPQttC0ICDRgSAg0LzQsNC60YHQuNC80LDQu9GM0L3Ri9C8ICDQv9GA0L7RhtC10L3RgtC+0LwgINC30LAgINC/0L7Qu9GM0LfQvtCy0LDQvdC40LUgICDQutGA0LXQtNC40YLQvtC8LA0K0YPRgdGC0LDQvdC+0LLQu9C10L3QvdGL0Lwg0L/QviDRgdC+0LPQu9Cw0YjQtdC90LjRjiDRgdGC0L7RgNC+0L0uDQoNCiAgICAgMy4g0KHRgNC+0Log0LTQvtCz0L7QstC+0YDQsCwg0L/QvtGA0Y/QtNC+0Log0LXQs9C+INC40LfQvNC10L3QtdC90LjRjyDQuCDRgNCw0YHRgtC+0YDQttC10L3QuNGPDQogICAgIDMuMS4g0J3QsNGB0YLQvtGP0YnQuNC5ICDQtNC+0LPQvtCy0L7RgCAg0LLRgdGC0YPQv9Cw0LXRgiAg0LIg0YHQuNC70YMg0YEg0LzQvtC80LXQvdGC0LAg0LXQs9C+INC/0L7QtNC/0LjRgdCw0L3QuNGPINC4DQrQtNC10LnRgdGC0LLRg9C10YIg0LIg0YLQtdGH0LXQvdC40LUg0L3QtdC+0L/RgNC10LTQtdC70LXQvdC90L7Qs9C+INGB0YDQvtC60LAuDQogICAgIDMuMi4g0JjQt9C80LXQvdC10L3QuNGPICDQuCAg0LTQvtC/0L7Qu9C90LXQvdC40Y8gINC90LDRgdGC0L7Rj9GJ0LXQs9C+ICDQtNC+0LPQvtCy0L7RgNCwICDQv9GA0L7QuNC30LLQvtC00Y/RgtGB0Y8g0L/Qvg0K0YHQvtCz0LvQsNGI0LXQvdC40Y4g0YHRgtC+0YDQvtC9Lg0KICAgICAzLjMuINCa0LDQttC00LDRjyAg0LjQtyAg0YHRgtC+0YDQvtC9ICDQstC/0YDQsNCy0LUg0YDQsNGB0YLQvtGA0LPQvdGD0YLRjCDQtNC+0LPQvtCy0L7RgCwgINC/0YDQtdC00YPQv9GA0LXQtNC40YIg0L7QsQ0K0Y3RgtC+0Lwg0LTRgNGD0LPRg9GOINGB0YLQvtGA0L7QvdGDINC30LAg0YLRgNC4INC80LXRgdGP0YbQsCwgINCyINGB0LvRg9GH0LDQtSDQvdCw0YDRg9GI0LXQvdC40Y8g0LTRgNGD0LPQvtC5INGB0YLQvtGA0L7QvdC+0Lkg0LXQtQ0K0L7QsdGP0LfQsNGC0LXQu9GM0YHRgtCyINC/0L4g0L3QsNGB0YLQvtGP0YnQtdC80YMg0LTQvtCz0L7QstC+0YDRgy4NCiAgICAgMy40LiDQkiDQtNCy0YPRhdC90LXQtNC10LvRjNC90YvQuSDRgdGA0L7QuiDQv9C+0YHQu9C1INGA0LDRgdGC0L7RgNC20LXQvdC40Y8g0LTQvtCz0L7QstC+0YDQsCDQkdCw0L3QuiAg0L7QsdGP0LfRg9C10YLRgdGPDQrQv9C10YDQtdGH0LjRgdC70LjRgtGMINC+0YHRgtCw0YLQvtC6INGB0YDQtdC00YHRgtCyLCAg0L3QsNGF0L7QtNGP0YnQuNGF0YHRjyDQvdCwINGB0YfQtdGC0YMg0JrQu9C40LXQvdGC0LAsICDQvdCwINGA0LDRgdGH0LXRgtC90YvQuQ0K0YHRh9C10YIsINC/0YDQtdC00LLQsNGA0LjRgtC10LvRjNC90L4g0YHQvtC+0LHRidC10L3QvdGL0Lkg0JrQu9C40LXQvdGC0L7QvC4NCg0KICAgICA0LiDQlNGA0YPQs9C40LUg0YPRgdC70L7QstC40Y8NCiAgICAgNC4xLiDQktGB0LUg0YHQv9C+0YDRiyDQv9C+INC90LDRgdGC0L7Rj9GJ0LXQvNGDINC00L7Qs9C+0LLQvtGA0YMgINGA0LDQt9GA0LXRiNCw0Y7RgtGB0Y8gINCyICDRg9GB0YLQsNC90L7QstC70LXQvdC90L7QvA0K0LfQsNC60L7QvdC+0Lwg0L/QvtGA0Y/QtNC60LUuDQogICAgIDQuMi4g0JLQviAg0LLRgdC10LwgINC+0YHRgtCw0LvRjNC90L7QvCwgINGH0YLQviAg0L/RgNGP0LzQviAg0L3QtSAg0L/RgNC10LTRg9GB0LzQvtGC0YDQtdC90L4gICDQvdCw0YHRgtC+0Y/RidC40LwNCtC00L7Qs9C+0LLQvtGA0L7QvCwg0YHRgtC+0YDQvtC90Ysg0YDRg9C60L7QstC+0LTRgdGC0LLRg9GO0YLRgdGPINC00LXQudGB0YLQstGD0Y7RidC40Lwg0LfQsNC60L7QvdC+0LTQsNGC0LXQu9GM0YHRgtCy0L7QvC4NCg0KICAgICA1LiDQrtGA0LjQtNC40YfQtdGB0LrQuNC1INCw0LTRgNC10YHQsCDRgdGC0L7RgNC+0L0NCiAgICAgNS4xLiDQmtC70LjQtdC90YJfX19fX19fX19fX19fX19fX19fXw0KICAgICA1LjIuINCR0LDQvdC6IF9fX19fX19fX19fX19fX19fX19fXw0KDQrQmtC70LjQtdC90YIgICAgICAgICAgICAgICAgICAgICAgICDQkdCw0L3Qug0KX19fX19fX18gICAgICAgICAgICAgICAgICAgICAgX19fX19fX19fX19fDQoNCiAg0Jwu0J8uICAgICAgICAgICAgICAgICAgICAgICAgICDQnC7Qny4NCg0KDQogIA0KPC9wcmU+PC9kaXY+DQo8L2JvZHk+DQo8L2h0bWw+",
+    "mime_type": "text/html",
+    "language": "ru",
+    "locale": "ru"
+  },
+  "ingestion_preflight": {
+    "mime_type": "text/html",
+    "extractor": "html:regex",
+    "extraction_source": "html:regex",
+    "extraction_ok": true,
+    "error": null,
+    "extraction_error": null,
+    "sha256": "9e8cb339b88acb3b96fa2be5343516305dc25adbd5df129e21795c0cb919d197"
+  },
+  "metrics": {
+    "risk_count": 1,
+    "high_risk_count": 0,
+    "disputed_clause_count": 2,
+    "asymmetry_signal_count": 0,
+    "contract_type": "non_contract_legal_form"
+  },
+  "analysis": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'dogovor-na-osuschestvlenie-kreditnokassovogo-obsluzhivaniya. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Заявитель'. Определен тип договора: Иной юридический документ (уверенность 48%, правовая рамка: Вне типовой contract taxonomy). Ключевые обязательства по договору для роли 'Заявитель': Клиент обязуется хранить свои денежные средства на _________ счете, открытом для него Банком, а Банк обязуется безвозмездно осуществлять кредитно-расчетное обслуживание Клиента; Обязанности сторон 2; Клиент обязуется: - в 10-дневный срок со дня подписания настоящего договора закрыть свои расчетные счета в других банках страны и перечислить остатки денежных средств на счет, открытый для него Банком. Условия оплаты: Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР на осуществление кредитно-расчетного обслуживания г; Клиент обязуется хранить свои денежные средства на _________ счете, открытом для него Банком, а Банк обязуется безвозмездно осуществлять кредитно-расчетное обслуживание Клиента; Клиент обязуется: - в 10-дневный срок со дня подписания настоящего договора закрыть свои расчетные счета в других банках страны и перечислить остатки денежных средств на счет, открытый для него Банком. Сроки и дедлайны: Клиент обязуется: - в 10-дневный срок со дня подписания настоящего договора закрыть свои расчетные счета в других банках страны и перечислить остатки денежных средств на счет, открытый для него Банком; в случае уменьшения остатка денежных средств после истечения указанного выше срока ниже ____ тысяч рублей Банк вправе установить плату за осуществление расчетного обслуживания в размере ____ тысяч рублей в зависимости от объема расчетных операций за год; плата с Клиента взимается в том случае, если количество дней в календарном году после истечения ______ месячного срока, в которых остаток на счете Клиента составлял менее _____ тыс. Найдено спорных или расплывчатых пунктов: 2.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Заявитель'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Договор на осуществление кредитно-кассового обслуживания - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР на осуществление кредитно-расчетного обслуживания г. _________________ \"___\"______20___г. ________, именуемое в дальнейшем Клиент, в лице ___, действующего на основании __________, с одной стороны, и __________ именуемое в дальнейшем Банк, в лице ___________, действующего на основании ______, с другой стороны,...",
+        "dispute_reason": "Формулировка зависит от будущего согласования и не содержит исполнимого критерия.",
+        "possible_consequence": "При исполнении может возникнуть спор о том, что именно стороны должны были согласовать.",
+        "confidence": 0.79
+      },
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Договор на осуществление кредитно-кассового обслуживания - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР на осуществление кредитно-расчетного обслуживания г. _________________ \"___\"______20___г. ________, именуемое в дальнейшем Клиент, в лице ___, действующего на основании __________, с одной стороны, и __________ именуемое в дальнейшем Банк, в лице ___________, действующего на основании ______, с другой стороны,...",
+        "dispute_reason": "Одна из сторон получила дискреционное право без достаточных ограничителей.",
+        "possible_consequence": "Это может привести к одностороннему применению условия и спору о пределах такого права.",
+        "confidence": 0.76
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Заявитель",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Заявитель'.",
+      "must_do": [
+        "Клиент обязуется хранить свои денежные средства на _________ счете, открытом для него Банком, а Банк обязуется безвозмездно осуществлять кредитно-расчетное обслуживание Клиента.",
+        "Обязанности сторон 2.",
+        "Клиент обязуется: - в 10-дневный срок со дня подписания настоящего договора закрыть свои расчетные счета в других банках страны и перечислить остатки денежных средств на счет, открытый для него Банком.",
+        "Банк обязуется: - осуществлять расчетное обслуживание Клиента в соответствии с действующими правилами.",
+        "- в случае необходимости по требованию Клиента Банк может в приоритетном порядке предоставить Клиенту платежный кредит на оплату неотложных нужд с максимальным процентом за пользование кредитом, установленным по соглашению сторон.",
+        "В двухнедельный срок после расторжения договора Банк обязуется перечислить остаток средств, находящихся на счету Клиента, на расчетный счет, предварительно сообщенный Клиентом."
+      ],
+      "should_review": [
+        "в случае уменьшения остатка денежных средств после истечения указанного выше срока ниже ____ тысяч рублей Банк вправе установить плату за осуществление расчетного обслуживания в размере ____ тысяч рублей в зависимости от объема расчетных операций за год.",
+        "- в случае необходимости по требованию Клиента Банк может в приоритетном порядке предоставить Клиенту платежный кредит на оплату неотложных нужд с максимальным процентом за пользование кредитом, установленным по соглашению сторон.",
+        "Каждая из сторон вправе расторгнуть договор, предупредит об этом другую сторону за три месяца, в случае нарушения другой стороной ее обязательств по настоящему договору."
+      ],
+      "payment_terms": [
+        "Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР на осуществление кредитно-расчетного обслуживания г.",
+        "Клиент обязуется хранить свои денежные средства на _________ счете, открытом для него Банком, а Банк обязуется безвозмездно осуществлять кредитно-расчетное обслуживание Клиента.",
+        "Клиент обязуется: - в 10-дневный срок со дня подписания настоящего договора закрыть свои расчетные счета в других банках страны и перечислить остатки денежных средств на счет, открытый для него Банком.",
+        "по истечении _____ месяцев со дня подписания настоящего договора хранить на счете в Банке остаток денежных средств не менее ____ тысяч рублей.",
+        "в случае уменьшения остатка денежных средств после истечения указанного выше срока ниже ____ тысяч рублей Банк вправе установить плату за осуществление расчетного обслуживания в размере ____ тысяч рублей в зависимости от объема расчетных операций за год.",
+        "плата с Клиента взимается в том случае, если количество дней в календарном году после истечения ______ месячного срока, в которых остаток на счете Клиента составлял менее _____ тыс."
+      ],
+      "deadlines": [
+        "Клиент обязуется: - в 10-дневный срок со дня подписания настоящего договора закрыть свои расчетные счета в других банках страны и перечислить остатки денежных средств на счет, открытый для него Банком.",
+        "в случае уменьшения остатка денежных средств после истечения указанного выше срока ниже ____ тысяч рублей Банк вправе установить плату за осуществление расчетного обслуживания в размере ____ тысяч рублей в зависимости от объема расчетных операций за год.",
+        "плата с Клиента взимается в том случае, если количество дней в календарном году после истечения ______ месячного срока, в которых остаток на счете Клиента составлял менее _____ тыс.",
+        "Срок договора, порядок его изменения и расторжения 3.",
+        "Настоящий договор вступает в силу с момента его подписания и действует в течение неопределенного срока.",
+        "В двухнедельный срок после расторжения договора Банк обязуется перечислить остаток средств, находящихся на счету Клиента, на расчетный счет, предварительно сообщенный Клиентом."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "9e8cb339b88acb3b96fa2be5343516305dc25adbd5df129e21795c0cb919d197"
+    },
+    "contract_type": {
+      "type_id": "non_contract_legal_form",
+      "confidence": 0.48,
+      "ru_name": "Иной юридический документ",
+      "legal_framework": "Вне типовой contract taxonomy"
+    },
+    "asymmetry_signals": []
+  },
+  "result": {
+    "language": "ru",
+    "locale": "ru",
+    "execution_plan": {
+      "mode": "server_assist",
+      "offline_capable": false,
+      "network_required": true,
+      "policy_source": "content_source_default",
+      "reason": "Для бинарного документа допускается server-assisted маршрут, чтобы не требовать тяжелые AI-ассеты на устройстве по умолчанию."
+    },
+    "contract_brief": "Договор 'dogovor-na-osuschestvlenie-kreditnokassovogo-obsluzhivaniya. html' разобран на 1 пунктов. Ниже показано, что действительно важно для роли 'Заявитель'. Определен тип договора: Иной юридический документ (уверенность 48%, правовая рамка: Вне типовой contract taxonomy). Ключевые обязательства по договору для роли 'Заявитель': Клиент обязуется хранить свои денежные средства на _________ счете, открытом для него Банком, а Банк обязуется безвозмездно осуществлять кредитно-расчетное обслуживание Клиента; Обязанности сторон 2; Клиент обязуется: - в 10-дневный срок со дня подписания настоящего договора закрыть свои расчетные счета в других банках страны и перечислить остатки денежных средств на счет, открытый для него Банком. Условия оплаты: Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР на осуществление кредитно-расчетного обслуживания г; Клиент обязуется хранить свои денежные средства на _________ счете, открытом для него Банком, а Банк обязуется безвозмездно осуществлять кредитно-расчетное обслуживание Клиента; Клиент обязуется: - в 10-дневный срок со дня подписания настоящего договора закрыть свои расчетные счета в других банках страны и перечислить остатки денежных средств на счет, открытый для него Банком. Сроки и дедлайны: Клиент обязуется: - в 10-дневный срок со дня подписания настоящего договора закрыть свои расчетные счета в других банках страны и перечислить остатки денежных средств на счет, открытый для него Банком; в случае уменьшения остатка денежных средств после истечения указанного выше срока ниже ____ тысяч рублей Банк вправе установить плату за осуществление расчетного обслуживания в размере ____ тысяч рублей в зависимости от объема расчетных операций за год; плата с Клиента взимается в том случае, если количество дней в календарном году после истечения ______ месячного срока, в которых остаток на счете Клиента составлял менее _____ тыс. Найдено спорных или расплывчатых пунктов: 2.",
+    "risks": [
+      {
+        "risk_id": "risk-1",
+        "rule_id": "fallback_low_risk",
+        "title": "Низкий риск: явные критические маркеры не обнаружены",
+        "severity": "low",
+        "clause_id": null,
+        "description": "Система не нашла явных высокорисковых паттернов, но скрытые правовые риски все равно требуют проверки по контексту договора.",
+        "role_relevance": "Базовый вывод для роли 'Заявитель'.",
+        "mitigation": "Проверьте предмет договора, порядок оплаты, приемку, ответственность и основания расторжения вручную."
+      }
+    ],
+    "disputed_clauses": [
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Договор на осуществление кредитно-кассового обслуживания - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР на осуществление кредитно-расчетного обслуживания г. _________________ \"___\"______20___г. ________, именуемое в дальнейшем Клиент, в лице ___, действующего на основании __________, с одной стороны, и __________ именуемое в дальнейшем Банк, в лице ___________, действующего на основании ______, с другой стороны,...",
+        "dispute_reason": "Формулировка зависит от будущего согласования и не содержит исполнимого критерия.",
+        "possible_consequence": "При исполнении может возникнуть спор о том, что именно стороны должны были согласовать.",
+        "confidence": 0.79
+      },
+      {
+        "clause_id": "clause-1",
+        "clause_excerpt": "Договор на осуществление кредитно-кассового обслуживания - версия для печати. 2026. Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР на осуществление кредитно-расчетного обслуживания г. _________________ \"___\"______20___г. ________, именуемое в дальнейшем Клиент, в лице ___, действующего на основании __________, с одной стороны, и __________ именуемое в дальнейшем Банк, в лице ___________, действующего на основании ______, с другой стороны,...",
+        "dispute_reason": "Одна из сторон получила дискреционное право без достаточных ограничителей.",
+        "possible_consequence": "Это может привести к одностороннему применению условия и спору о пределах такого права.",
+        "confidence": 0.76
+      }
+    ],
+    "role_focused_summary": {
+      "role": "Заявитель",
+      "overview": "Договор содержит 1 пунктов и 1 выявленных рисков. Краткий вывод сфокусирован на роли 'Заявитель'.",
+      "must_do": [
+        "Клиент обязуется хранить свои денежные средства на _________ счете, открытом для него Банком, а Банк обязуется безвозмездно осуществлять кредитно-расчетное обслуживание Клиента.",
+        "Обязанности сторон 2.",
+        "Клиент обязуется: - в 10-дневный срок со дня подписания настоящего договора закрыть свои расчетные счета в других банках страны и перечислить остатки денежных средств на счет, открытый для него Банком.",
+        "Банк обязуется: - осуществлять расчетное обслуживание Клиента в соответствии с действующими правилами.",
+        "- в случае необходимости по требованию Клиента Банк может в приоритетном порядке предоставить Клиенту платежный кредит на оплату неотложных нужд с максимальным процентом за пользование кредитом, установленным по соглашению сторон.",
+        "В двухнедельный срок после расторжения договора Банк обязуется перечислить остаток средств, находящихся на счету Клиента, на расчетный счет, предварительно сообщенный Клиентом."
+      ],
+      "should_review": [
+        "в случае уменьшения остатка денежных средств после истечения указанного выше срока ниже ____ тысяч рублей Банк вправе установить плату за осуществление расчетного обслуживания в размере ____ тысяч рублей в зависимости от объема расчетных операций за год.",
+        "- в случае необходимости по требованию Клиента Банк может в приоритетном порядке предоставить Клиенту платежный кредит на оплату неотложных нужд с максимальным процентом за пользование кредитом, установленным по соглашению сторон.",
+        "Каждая из сторон вправе расторгнуть договор, предупредит об этом другую сторону за три месяца, в случае нарушения другой стороной ее обязательств по настоящему договору."
+      ],
+      "payment_terms": [
+        "Образцы договоров, типовые договора, актуальные документы, юридическим и физическим лицам ДОГОВОР на осуществление кредитно-расчетного обслуживания г.",
+        "Клиент обязуется хранить свои денежные средства на _________ счете, открытом для него Банком, а Банк обязуется безвозмездно осуществлять кредитно-расчетное обслуживание Клиента.",
+        "Клиент обязуется: - в 10-дневный срок со дня подписания настоящего договора закрыть свои расчетные счета в других банках страны и перечислить остатки денежных средств на счет, открытый для него Банком.",
+        "по истечении _____ месяцев со дня подписания настоящего договора хранить на счете в Банке остаток денежных средств не менее ____ тысяч рублей.",
+        "в случае уменьшения остатка денежных средств после истечения указанного выше срока ниже ____ тысяч рублей Банк вправе установить плату за осуществление расчетного обслуживания в размере ____ тысяч рублей в зависимости от объема расчетных операций за год.",
+        "плата с Клиента взимается в том случае, если количество дней в календарном году после истечения ______ месячного срока, в которых остаток на счете Клиента составлял менее _____ тыс."
+      ],
+      "deadlines": [
+        "Клиент обязуется: - в 10-дневный срок со дня подписания настоящего договора закрыть свои расчетные счета в других банках страны и перечислить остатки денежных средств на счет, открытый для него Банком.",
+        "в случае уменьшения остатка денежных средств после истечения указанного выше срока ниже ____ тысяч рублей Банк вправе установить плату за осуществление расчетного обслуживания в размере ____ тысяч рублей в зависимости от объема расчетных операций за год.",
+        "плата с Клиента взимается в том случае, если количество дней в календарном году после истечения ______ месячного срока, в которых остаток на счете Клиента составлял менее _____ тыс.",
+        "Срок договора, порядок его изменения и расторжения 3.",
+        "Настоящий договор вступает в силу с момента его подписания и действует в течение неопределенного срока.",
+        "В двухнедельный срок после расторжения договора Банк обязуется перечислить остаток средств, находящихся на счету Клиента, на расчетный счет, предварительно сообщенный Клиентом."
+      ],
+      "penalties": [
+        "Конфиг не выявил явных штрафных санкций."
+      ]
+    },
+    "ingestion": {
+      "extraction_source": "html:regex",
+      "extraction_ok": true,
+      "extraction_error": null,
+      "sha256": "9e8cb339b88acb3b96fa2be5343516305dc25adbd5df129e21795c0cb919d197"
+    },
+    "contract_type": {
+      "type_id": "non_contract_legal_form",
+      "confidence": 0.48,
+      "ru_name": "Иной юридический документ",
+      "legal_framework": "Вне типовой contract taxonomy"
+    },
+    "asymmetry_signals": []
+  },
+  "finished_at": "2026-04-28T16:12:37.628805+00:00",
+  "duration_ms": 92.97
+}
