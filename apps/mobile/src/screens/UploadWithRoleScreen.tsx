@@ -23,6 +23,26 @@ interface SelectedFileState {
   localFileUri?: string;
 }
 
+const SUPPORTED_DOCUMENT_MIME_TYPES = [
+  'application/pdf',
+  'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+  'text/plain',
+] as const;
+
+const isSupportedDocument = (mimeType: string, fileName?: string): boolean => {
+  const normalizedMimeType = mimeType.toLowerCase();
+  const normalizedFileName = (fileName ?? '').toLowerCase();
+
+  return (
+    normalizedMimeType === 'application/pdf' ||
+    normalizedFileName.endsWith('.pdf') ||
+    normalizedMimeType === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' ||
+    normalizedFileName.endsWith('.docx') ||
+    normalizedMimeType === 'text/plain' ||
+    normalizedFileName.endsWith('.txt')
+  );
+};
+
 const formatFileType = (mimeType: string, fileName?: string): string => {
   const normalizedMimeType = mimeType.toLowerCase();
   const normalizedFileName = (fileName ?? '').toLowerCase();
@@ -36,9 +56,6 @@ const formatFileType = (mimeType: string, fileName?: string): string => {
     normalizedFileName.endsWith('.docx')
   ) {
     return 'DOCX';
-  }
-  if (normalizedMimeType === 'application/msword' || normalizedFileName.endsWith('.doc')) {
-    return 'DOC';
   }
   if (normalizedMimeType === 'text/plain' || normalizedFileName.endsWith('.txt')) {
     return 'TXT';
@@ -78,12 +95,7 @@ export const UploadWithRoleScreen = ({ navigation }: Props): JSX.Element => {
     const result = await DocumentPicker.getDocumentAsync({
       multiple: false,
       copyToCacheDirectory: false,
-      type: [
-        'application/pdf',
-        'application/msword',
-        'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-        'text/plain',
-      ],
+      type: [...SUPPORTED_DOCUMENT_MIME_TYPES],
     });
 
     if (result.canceled) {
@@ -101,9 +113,16 @@ export const UploadWithRoleScreen = ({ navigation }: Props): JSX.Element => {
       return;
     }
 
+    const mimeType = asset.mimeType ?? 'application/octet-stream';
+    const fileName = asset.name ?? appConfig.defaults.stubContractFileName;
+    if (!isSupportedDocument(mimeType, fileName)) {
+      Alert.alert(t('upload.unsupportedFormatTitle'), t('upload.unsupportedFormatMessage'));
+      return;
+    }
+
     setSelectedFile({
-      fileName: asset.name ?? appConfig.defaults.stubContractFileName,
-      mimeType: asset.mimeType ?? 'application/octet-stream',
+      fileName,
+      mimeType,
       fileSizeBytes: asset.size,
       localFileUri: asset.uri,
     });
@@ -220,6 +239,7 @@ export const UploadWithRoleScreen = ({ navigation }: Props): JSX.Element => {
           <Text style={styles.fileHint}>
             {selectedFile ? t('upload.pickAnotherFile') : t('upload.fileTapHint')}
           </Text>
+          <Text style={styles.fileSupportHint}>{t('upload.supportedFormatsHint')}</Text>
         </Pressable>
       </View>
 
@@ -339,6 +359,11 @@ const styles = StyleSheet.create({
     color: colors.textSecondary,
     fontSize: typography.size.bodySm,
     lineHeight: typography.lineHeight.bodySm,
+  },
+  fileSupportHint: {
+    color: colors.textMuted,
+    fontSize: typography.size.caption,
+    lineHeight: typography.lineHeight.caption,
   },
   roleCard: {
     borderRadius: radius.lg,
