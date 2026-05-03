@@ -10,16 +10,20 @@ const ApiClientContext = createContext<ContractRiskScannerApi | null>(null);
 
 export const ApiClientProvider = ({ children }: PropsWithChildren): JSX.Element => {
   const { language } = useAppLanguage();
+  const effectiveTransport =
+    appConfig.api.transport === 'http' && appConfig.api.baseUrl.trim().length === 0
+      ? 'local'
+      : appConfig.api.transport;
 
   const client = useMemo(
     () =>
       createApiClient({
         baseUrl: appConfig.api.baseUrl,
         timeoutMs: appConfig.api.timeoutMs,
-        transport: appConfig.api.transport as 'local' | 'stub' | 'http',
+        transport: effectiveTransport as 'local' | 'stub' | 'http',
         getLanguage: () => language,
       }),
-    [language],
+    [effectiveTransport, language],
   );
 
   return <ApiClientContext.Provider value={client}>{children}</ApiClientContext.Provider>;
