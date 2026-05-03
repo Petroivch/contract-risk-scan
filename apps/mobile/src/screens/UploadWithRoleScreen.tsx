@@ -94,7 +94,7 @@ export const UploadWithRoleScreen = ({ navigation }: Props): JSX.Element => {
   const chooseFile = async (): Promise<void> => {
     const result = await DocumentPicker.getDocumentAsync({
       multiple: false,
-      copyToCacheDirectory: false,
+      copyToCacheDirectory: true,
       type: [...SUPPORTED_DOCUMENT_MIME_TYPES],
     });
 
