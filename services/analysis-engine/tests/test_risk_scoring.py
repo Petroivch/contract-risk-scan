@@ -53,3 +53,34 @@ def test_missing_contract_type_preserves_backward_compatible_rule_matching() -> 
     )
 
     assert any(risk.rule_id == "payment_asymmetry" for risk in generic_risks)
+
+
+def test_role_mismatch_keeps_generic_risk_candidates() -> None:
+    scorer = RiskScoringService()
+    clauses = [
+        ClauseSegment(
+            clause_id="clause-1",
+            text="Seller shall deliver the goods within 5 days.",
+        ),
+        ClauseSegment(
+            clause_id="clause-2",
+            text="Buyer must pay the invoice within 10 days.",
+        ),
+        ClauseSegment(
+            clause_id="clause-3",
+            text="Penalty 1% applies for delay.",
+        ),
+    ]
+
+    risks = scorer.score(
+        clauses=clauses,
+        role="Finance reviewer",
+        language="en",
+        contract_type=None,
+        document_text="\n".join(clause.text for clause in clauses),
+        counterparty_role="Seller",
+    )
+
+    assert risks
+    assert any(risk.rule_id == "payment_asymmetry" for risk in risks)
+    assert any(risk.explanation and risk.explanation.classifier_score >= 0.45 for risk in risks)

@@ -115,6 +115,16 @@ class AnalysisStatusResponse(BaseModel):
     error_message: str | None = None
 
 
+class RiskExplanation(BaseModel):
+    summary: str
+    matched_terms: list[str] = Field(default_factory=list)
+    matched_patterns: list[str] = Field(default_factory=list)
+    retrieval_score: float = Field(..., ge=0.0, le=1.0)
+    classifier_score: float = Field(..., ge=0.0, le=1.0)
+    guardrails: list[str] = Field(default_factory=list)
+    source_excerpt: str | None = None
+
+
 class RiskItem(BaseModel):
     risk_id: str
     rule_id: str | None = None
@@ -124,6 +134,9 @@ class RiskItem(BaseModel):
     description: str
     role_relevance: str
     mitigation: str
+    target_role: str | None = None
+    confidence: float | None = Field(default=None, ge=0.0, le=1.0)
+    explanation: RiskExplanation | None = None
 
 
 class TextOffset(BaseModel):
