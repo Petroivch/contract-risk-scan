@@ -5,14 +5,40 @@ apps/mobile/.tmp-real-smoke/
 apps/mobile/.tmp-smoke/
 apps/mobile/tmp-doc-tools/
 apps/mobile/node_modules/
+apps/mobile/android/.gradle/
+apps/mobile/android/app/build/
+apps/mobile/android/build/
+apps/mobile/ios/build/
 apps/mobile/expo-dev.log
 apps/mobile/expo-web.log
 services/core-api/node_modules/
 services/core-api/dist/
+services/core-api/.runtime/
+.runtime/
 services/analysis-engine/.pytest_cache/
 services/analysis-engine/**/__pycache__/
+services/analysis-engine/artifacts/corpus_results/
+services/analysis-engine/artifacts/corpus_results_smoke/
+services/analysis-engine/artifacts/*.json
+services/analysis-engine/reports/*.json
+services/analysis-engine/reports/[0-9]*_corpus_evaluation.md
+!services/analysis-engine/reports/corpus_evaluation.json
+!services/analysis-engine/reports/corpus_evaluation.md
 *.pyc
 builds/
+.gradle/
+
+# Installable artifacts stay out of the repo by default.
+*.apk
+*.aab
+*.ipa
+!/contract-risk-scanner-android.apk
+
+# Raw payload dumps and ad hoc report exports should not be tracked.
+*.base64
+*.b64
+*.report.json
+*.report.md
 
 apps/mobile/*build-agent.log
 
