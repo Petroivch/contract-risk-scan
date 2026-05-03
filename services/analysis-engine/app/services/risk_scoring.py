@@ -6,7 +6,7 @@ from dataclasses import dataclass
 from app.config.models import RiskRuleConfig, RoleEscalationEntryConfig
 from app.config.runtime import get_runtime_config
 from app.localization import normalize_analysis_language, resolve_localized_text
-from app.schemas.analysis import DisputedClauseItem, RiskItem, RiskSeverity
+from app.schemas.analysis import DisputedClauseItem, RiskExplanation, RiskItem, RiskSeverity
 from app.services.asymmetry_detector import AsymmetrySignal
 from app.services.clause_segmentation import ClauseSegment
 from app.services.contract_analysis import canonicalize_role, extract_roles_from_text, find_role_matches
@@ -25,10 +25,36 @@ class RuleMatch:
 @dataclass(slots=True)
 class RankedRiskCandidate:
     severity_rank: int
+    confidence_rank: float
     clause_rank: int
     risk: RiskItem
     source_has_roles: bool
     role_mentioned: bool
+
+
+@dataclass(slots=True)
+class ClauseFeatures:
+    clause_id: str
+    raw_text: str
+    normalized_text: str
+    excerpt: str
+    tokens: set[str]
+    detected_roles: set[str]
+    obligation_markers: list[str]
+
+
+@dataclass(slots=True)
+class HybridMatch:
+    clause_id: str | None
+    excerpt: str
+    source: str
+    matched_terms: list[str]
+    matched_patterns: list[str]
+    retrieval_score: float
+    classifier_score: float
+    role_mentioned: bool
+    source_has_roles: bool
+    guardrails: list[str]
 
 
 class RiskScoringService:
@@ -39,6 +65,16 @@ class RiskScoringService:
         self._language_behavior = runtime_config.language_behavior
         self._config = runtime_config.risk_scoring
         self._disputed_clause_detector = DisputedClauseDetector()
+        self._obligation_markers = (
+            "must",
+            "shall",
+            "обязан",
+            "обязуется",
+            "должен",
+            "обязаны",
+            "liable",
+            "responsible",
+        )
 
     def score(
         self,
@@ -53,23 +89,33 @@ class RiskScoringService:
         resolved_language = normalize_analysis_language(language)
         canonical_role = canonicalize_role(role)
         normalized_clauses = [self._normalize_clause(clause) for clause in clauses]
-        combined_text = normalize_contract_text(
+        normalized_document_text = normalize_contract_text(
             document_text if document_text is not None else "\n".join(clause.text for clause in normalized_clauses)
-        ).casefold()
+        )
+        combined_text = normalized_document_text.casefold()
         clause_index_by_id = {clause.clause_id: index for index, clause in enumerate(normalized_clauses)}
+        clause_features = [self._build_clause_features(clause) for clause in normalized_clauses]
         risks_with_rank: list[RankedRiskCandidate] = []
         seen_pairs: set[tuple[str, str | None]] = set()
+        selected_role_present = bool(find_role_matches(role, normalized_document_text))
 
         signal_map = self._group_asymmetry_signals(asymmetry_signals or [])
         for rule in self._config.risk_rules:
             if not self._rule_applies_to_contract_type(rule, contract_type):
                 continue
 
-            matches = self._match_rule(
+            guardrail_matches = self._match_rule(
                 rule=rule,
                 clauses=normalized_clauses,
                 combined_text=combined_text,
                 preferred_clause=None,
+            )
+            matches = self._hybrid_match_rule(
+                rule=rule,
+                clause_features=clause_features,
+                guardrail_matches=guardrail_matches,
+                canonical_role=canonical_role,
+                selected_role_present=selected_role_present,
             )
             if not matches:
                 continue
@@ -96,6 +142,7 @@ class RiskScoringService:
                 risks_with_rank.append(
                     RankedRiskCandidate(
                         severity_rank=self._severity_rank(severity),
+                        confidence_rank=match.classifier_score,
                         clause_rank=self._resolve_clause_rank(rule, match.clause_id, clause_index_by_id),
                         risk=RiskItem(
                             risk_id="",
@@ -109,15 +156,31 @@ class RiskScoringService:
                                 role=role,
                                 counterparty_role=counterparty_role,
                                 severity=severity,
-                                role_mentioned=bool(find_role_matches(role, match.source)),
+                                role_mentioned=match.role_mentioned,
                                 escalation_reason=escalation_reason,
                             ),
                             mitigation=self._ensure_complete_sentence(
                                 resolve_localized_text(rule.mitigation, resolved_language)
                             ),
+                            target_role=role,
+                            confidence=match.classifier_score,
+                            explanation=RiskExplanation(
+                                summary=self._build_risk_explanation_summary(
+                                    rule_id=rule.id,
+                                    role=role,
+                                    selected_role_present=selected_role_present,
+                                    role_mentioned=match.role_mentioned,
+                                ),
+                                matched_terms=match.matched_terms,
+                                matched_patterns=match.matched_patterns,
+                                retrieval_score=match.retrieval_score,
+                                classifier_score=match.classifier_score,
+                                guardrails=match.guardrails,
+                                source_excerpt=match.excerpt or None,
+                            ),
                         ),
-                        source_has_roles=bool(extract_roles_from_text(match.source)),
-                        role_mentioned=bool(find_role_matches(role, match.source)),
+                        source_has_roles=match.source_has_roles,
+                        role_mentioned=match.role_mentioned,
                     )
                 )
 
@@ -128,10 +191,15 @@ class RiskScoringService:
                 canonical_role=canonical_role,
                 language=resolved_language,
                 seen_pairs=seen_pairs,
+                selected_role_present=selected_role_present,
             )
         )
-        risks_with_rank = self._filter_risks_for_selected_role(risks_with_rank, canonical_role)
-        risks_with_rank.sort(key=lambda item: (-item.severity_rank, item.clause_rank))
+        risks_with_rank = self._filter_risks_for_selected_role(
+            risks_with_rank,
+            canonical_role,
+            selected_role_present,
+        )
+        risks_with_rank.sort(key=lambda item: (-item.severity_rank, -item.confidence_rank, item.clause_rank))
         risks = [
             candidate.risk.model_copy(update={"risk_id": f"{self._config.risk_id_prefix}{index}"})
             for index, candidate in enumerate(risks_with_rank, start=1)
@@ -151,6 +219,17 @@ class RiskScoringService:
                         resolved_language,
                     ).format(role=role),
                     mitigation=resolve_localized_text(self._config.fallback.mitigation, resolved_language),
+                    target_role=role,
+                    confidence=0.2,
+                    explanation=RiskExplanation(
+                        summary="No hybrid risk candidate cleared the classifier threshold; returning fallback.",
+                        matched_terms=[],
+                        matched_patterns=[],
+                        retrieval_score=0.0,
+                        classifier_score=0.2,
+                        guardrails=["fallback"],
+                        source_excerpt=None,
+                    ),
                 )
             )
 
@@ -158,6 +237,161 @@ class RiskScoringService:
 
     def extract_disputed_clauses(self, clauses: list[ClauseSegment], language: str) -> list[DisputedClauseItem]:
         return self._disputed_clause_detector.detect(clauses, language)
+
+    def _build_clause_features(self, clause: ClauseSegment) -> ClauseFeatures:
+        normalized_text = normalize_contract_text(clause.text)
+        lowered_text = normalized_text.casefold()
+        tokens = set(self._tokenize(normalized_text))
+        return ClauseFeatures(
+            clause_id=clause.clause_id,
+            raw_text=clause.text,
+            normalized_text=lowered_text,
+            excerpt=self._truncate_intelligently(normalized_text),
+            tokens=tokens,
+            detected_roles={role.canonical_role for role in extract_roles_from_text(normalized_text)},
+            obligation_markers=[marker for marker in self._obligation_markers if marker in lowered_text],
+        )
+
+    def _hybrid_match_rule(
+        self,
+        rule: RiskRuleConfig,
+        clause_features: list[ClauseFeatures],
+        guardrail_matches: list[RuleMatch],
+        canonical_role: str,
+        selected_role_present: bool,
+    ) -> list[HybridMatch]:
+        guardrail_by_clause: dict[str | None, RuleMatch] = {
+            match.clause_id: match for match in guardrail_matches
+        }
+        semantic_terms = self._rule_semantic_terms(rule)
+        matches: list[HybridMatch] = []
+
+        if not clause_features and guardrail_matches:
+            for guardrail in guardrail_matches:
+                matches.append(
+                    HybridMatch(
+                        clause_id=guardrail.clause_id,
+                        excerpt=guardrail.excerpt,
+                        source=guardrail.source,
+                        matched_terms=[],
+                        matched_patterns=guardrail.matched_patterns,
+                        retrieval_score=0.35,
+                        classifier_score=0.55,
+                        role_mentioned=False,
+                        source_has_roles=False,
+                        guardrails=["legacy_match"],
+                    )
+                )
+            return matches
+
+        for feature in clause_features:
+            guardrail = guardrail_by_clause.get(feature.clause_id)
+            matched_patterns = self._match_patterns_for_clause(rule, feature)
+            matched_terms = [
+                term for term in semantic_terms if term in feature.tokens or term in feature.normalized_text
+            ]
+            role_mentioned = bool(canonical_role) and canonical_role in feature.detected_roles
+            source_has_roles = bool(feature.detected_roles)
+            term_score = len(matched_terms) / max(1, min(len(semantic_terms), 6))
+            pattern_score = len(matched_patterns) / max(1, len(self._rule_patterns(rule)))
+            retrieval_score = min(
+                1.0,
+                term_score * 0.55
+                + pattern_score * 0.3
+                + (0.1 if feature.obligation_markers else 0.0)
+                + (0.1 if role_mentioned else 0.0),
+            )
+            classifier_score = min(
+                1.0,
+                retrieval_score
+                + (0.22 if guardrail is not None else 0.0)
+                + (0.08 if matched_patterns else 0.0)
+                + (0.05 if source_has_roles and not selected_role_present else 0.0),
+            )
+
+            if classifier_score < 0.42 and guardrail is None:
+                continue
+
+            matches.append(
+                HybridMatch(
+                    clause_id=feature.clause_id,
+                    excerpt=(guardrail.excerpt if guardrail and guardrail.excerpt else feature.excerpt),
+                    source=feature.normalized_text,
+                    matched_terms=matched_terms,
+                    matched_patterns=matched_patterns or (guardrail.matched_patterns if guardrail else []),
+                    retrieval_score=round(retrieval_score, 4),
+                    classifier_score=round(max(classifier_score, 0.45 if guardrail else classifier_score), 4),
+                    role_mentioned=role_mentioned,
+                    source_has_roles=source_has_roles,
+                    guardrails=["legacy_match"] if guardrail is not None else [],
+                )
+            )
+
+        for guardrail in guardrail_matches:
+            if any(match.clause_id == guardrail.clause_id for match in matches):
+                continue
+            matches.append(
+                HybridMatch(
+                    clause_id=guardrail.clause_id,
+                    excerpt=guardrail.excerpt,
+                    source=guardrail.source,
+                    matched_terms=[],
+                    matched_patterns=guardrail.matched_patterns,
+                    retrieval_score=0.3,
+                    classifier_score=0.5,
+                    role_mentioned=bool(find_role_matches(canonical_role, guardrail.source)) if canonical_role else False,
+                    source_has_roles=bool(extract_roles_from_text(guardrail.source)),
+                    guardrails=["legacy_match"],
+                )
+            )
+
+        return matches
+
+    def _rule_patterns(self, rule: RiskRuleConfig) -> list[str]:
+        if rule.detection_logic is None:
+            return list(rule.keywords)
+        logic = rule.detection_logic
+        return [*logic.patterns, *logic.any_patterns, *logic.all_patterns, *rule.keywords]
+
+    def _rule_semantic_terms(self, rule: RiskRuleConfig) -> list[str]:
+        terms: set[str] = set()
+        for raw_value in self._rule_patterns(rule):
+            terms.update(self._tokenize(raw_value))
+        if not terms:
+            terms.update(self._tokenize(rule.id.replace("_", " ")))
+        return sorted(terms, key=len, reverse=True)
+
+    def _match_patterns_for_clause(self, rule: RiskRuleConfig, feature: ClauseFeatures) -> list[str]:
+        return [
+            pattern
+            for pattern in self._rule_patterns(rule)
+            if pattern and self._contains_pattern(feature.normalized_text, pattern)
+        ]
+
+    @staticmethod
+    def _tokenize(text: str) -> list[str]:
+        return [
+            token.casefold()
+            for token in re.findall(r"[0-9A-Za-zА-Яа-яЁё_]{3,}", text)
+            if token
+        ]
+
+    @staticmethod
+    def _build_risk_explanation_summary(
+        *,
+        rule_id: str,
+        role: str,
+        selected_role_present: bool,
+        role_mentioned: bool,
+    ) -> str:
+        if role_mentioned:
+            return f"Hybrid classifier matched rule '{rule_id}' on a clause that explicitly mentions role '{role}'."
+        if not selected_role_present:
+            return (
+                f"Hybrid classifier matched rule '{rule_id}' even though the selected role label "
+                f"'{role}' was not found in the document text."
+            )
+        return f"Hybrid classifier matched rule '{rule_id}' on a clause that remains relevant to role '{role}'."
 
     def _match_rule(
         self,
@@ -392,11 +626,17 @@ class RiskScoringService:
         canonical_role: str,
         language: str,
         seen_pairs: set[tuple[str, str | None]],
+        selected_role_present: bool,
     ) -> list[RankedRiskCandidate]:
         risks_with_rank: list[RankedRiskCandidate] = []
         for signal_group in signal_map.values():
             for signal in signal_group:
-                if canonical_role and signal.affected_roles and canonical_role not in signal.affected_roles:
+                if (
+                    selected_role_present
+                    and canonical_role
+                    and signal.affected_roles
+                    and canonical_role not in signal.affected_roles
+                ):
                     continue
                 dedupe_key = (signal.risk_id, signal.clause_id)
                 if dedupe_key in seen_pairs:
@@ -404,9 +644,12 @@ class RiskScoringService:
                 seen_pairs.add(dedupe_key)
                 severity = RiskSeverity(signal.severity_hint)
                 title = self._format_risk_title(language, severity, signal.summary)
+                role_mentioned = not canonical_role or canonical_role in signal.affected_roles
+                classifier_score = 0.86 if role_mentioned else 0.62
                 risks_with_rank.append(
                     RankedRiskCandidate(
                         severity_rank=self._severity_rank(severity),
+                        confidence_rank=classifier_score,
                         clause_rank=0,
                         risk=RiskItem(
                             risk_id="",
@@ -419,9 +662,20 @@ class RiskScoringService:
                                 f"Сигнал асимметрии затрагивает выбранную роль '{role}'."
                             ),
                             mitigation=self._default_mitigation_for_signal(signal.risk_id),
+                            target_role=role,
+                            confidence=classifier_score,
+                            explanation=RiskExplanation(
+                                summary=f"Asymmetry detector promoted signal '{signal.risk_id}' for role '{role}'.",
+                                matched_terms=[],
+                                matched_patterns=[],
+                                retrieval_score=classifier_score,
+                                classifier_score=classifier_score,
+                                guardrails=["asymmetry_signal"],
+                                source_excerpt=signal.details or signal.summary,
+                            ),
                         ),
                         source_has_roles=bool(signal.affected_roles),
-                        role_mentioned=not canonical_role or canonical_role in signal.affected_roles,
+                        role_mentioned=role_mentioned,
                     )
                 )
         return risks_with_rank
@@ -430,8 +684,9 @@ class RiskScoringService:
     def _filter_risks_for_selected_role(
         risks_with_rank: list[RankedRiskCandidate],
         canonical_role: str,
+        selected_role_present: bool,
     ) -> list[RankedRiskCandidate]:
-        if not canonical_role:
+        if not canonical_role or not selected_role_present:
             return risks_with_rank
 
         return [

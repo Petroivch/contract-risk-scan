@@ -12,7 +12,6 @@ from app.schemas.analysis import (
     ContractTypeMetadata,
     DetectedRoleItem,
     IngestionMetadata,
-    RoleFocusedSummary,
     TextOffset,
 )
 from app.services.asymmetry_detector import AsymmetryDetector
@@ -93,72 +92,71 @@ class AnalysisOrchestrator:
                     else None
                 )
 
-                if role_not_found:
-                    asymmetry_signals = []
-                    risks = []
-                    disputed_clauses = []
-                    role_focused_summary = RoleFocusedSummary(
-                        role=request.role_context.role,
-                        overview=message or "",
-                        must_do=[],
-                        should_review=[],
-                        payment_terms=[],
-                        deadlines=[],
-                        penalties=[],
+                summary_generation_service = self.summary_generation_service
+                asymmetry_signals = self.asymmetry_detector.detect_asymmetries(clauses)
+                risks = self.risk_scoring_service.score(
+                    clauses,
+                    request.role_context.role,
+                    language,
+                    contract_type=(
+                        detected_contract_type.type_id
+                        if detected_contract_type.type_id != "general_contract"
+                        else None
+                    ),
+                    document_text=ocr_result.text,
+                    counterparty_role=request.role_context.counterparty_role,
+                    asymmetry_signals=asymmetry_signals,
+                )
+                disputed_clauses = self.risk_scoring_service.extract_disputed_clauses(clauses, language)
+                role_focused_summary = summary_generation_service.generate(
+                    ocr_result.text,
+                    clauses,
+                    risks,
+                    request.role_context.role,
+                    request.role_context.counterparty_role,
+                    language,
+                )
+                if role_not_found and message:
+                    role_focused_summary = role_focused_summary.model_copy(
+                        update={
+                            "overview": (
+                                role_focused_summary.overview
+                                if role_focused_summary.overview.startswith(message)
+                                else f"{message} {role_focused_summary.overview}"
+                            )
+                        }
                     )
-                    role_focused_summary_records = []
-                    contract_brief = message or ""
-                    contract_brief_records = []
-                else:
-                    summary_generation_service = self.summary_generation_service
-                    asymmetry_signals = self.asymmetry_detector.detect_asymmetries(clauses)
-                    risks = self.risk_scoring_service.score(
-                        clauses,
-                        request.role_context.role,
-                        language,
-                        contract_type=(
-                            detected_contract_type.type_id
-                            if detected_contract_type.type_id != "general_contract"
-                            else None
-                        ),
-                        document_text=ocr_result.text,
-                        counterparty_role=request.role_context.counterparty_role,
-                        asymmetry_signals=asymmetry_signals,
+                role_focused_summary_records = summary_generation_service.generate_records(
+                    role_focused_summary,
+                    len(clauses),
+                    risks,
+                )
+                contract_brief = self.contract_brief_generation_service.generate(
+                    document_name=request.document_name,
+                    document_text=ocr_result.text,
+                    clauses=clauses,
+                    role=request.role_context.role,
+                    counterparty_role=request.role_context.counterparty_role,
+                    language=language,
+                    disputed_clauses=disputed_clauses,
+                    detected_contract_type=detected_contract_type,
+                )
+                if role_not_found and message:
+                    contract_brief = (
+                        contract_brief
+                        if contract_brief.startswith(message)
+                        else f"{message} {contract_brief}"
                     )
-                    disputed_clauses = self.risk_scoring_service.extract_disputed_clauses(clauses, language)
-                    role_focused_summary = summary_generation_service.generate(
-                        ocr_result.text,
-                        clauses,
-                        risks,
-                        request.role_context.role,
-                        request.role_context.counterparty_role,
-                        language,
-                    )
-                    role_focused_summary_records = summary_generation_service.generate_records(
-                        role_focused_summary,
-                        len(clauses),
-                        risks,
-                    )
-                    contract_brief = self.contract_brief_generation_service.generate(
-                        document_name=request.document_name,
-                        document_text=ocr_result.text,
-                        clauses=clauses,
-                        role=request.role_context.role,
-                        counterparty_role=request.role_context.counterparty_role,
-                        language=language,
-                        disputed_clauses=disputed_clauses,
-                        detected_contract_type=detected_contract_type,
-                    )
-                    contract_brief_records = self.contract_brief_generation_service.generate_records(
-                        document_name=request.document_name,
-                        document_text=ocr_result.text,
-                        clauses=clauses,
-                        role=request.role_context.role,
-                        counterparty_role=request.role_context.counterparty_role,
-                        language=language,
-                        disputed_clauses=disputed_clauses,
-                        detected_contract_type=detected_contract_type,
-                    )
+                contract_brief_records = self.contract_brief_generation_service.generate_records(
+                    document_name=request.document_name,
+                    document_text=ocr_result.text,
+                    clauses=clauses,
+                    role=request.role_context.role,
+                    counterparty_role=request.role_context.counterparty_role,
+                    language=language,
+                    disputed_clauses=disputed_clauses,
+                    detected_contract_type=detected_contract_type,
+                )
 
                 output = AnalysisOutput(
                     language=language,

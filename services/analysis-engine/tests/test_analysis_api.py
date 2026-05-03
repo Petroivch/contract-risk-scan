@@ -330,6 +330,12 @@ def test_status_and_result_flow_returns_meaningful_contract_analysis() -> None:
     assert result["risks"]
     assert any(item["severity"] in {"high", "critical"} for item in result["risks"])
     assert not result["risks"][0]["title"].lower().startswith("low risk")
+    assert {"target_role", "confidence", "explanation"}.issubset(result["risks"][0].keys())
+    assert result["risks"][0]["target_role"] == "buyer"
+    assert 0.0 <= result["risks"][0]["confidence"] <= 1.0
+    assert {"summary", "retrieval_score", "classifier_score", "guardrails"}.issubset(
+        result["risks"][0]["explanation"].keys()
+    )
     assert result["role_focused_summary"]["role"] == "buyer"
     assert result["role_focused_summary_records"]
     assert any("Buyer must pay" in line for line in result["role_focused_summary"]["must_do"])
@@ -378,16 +384,15 @@ def test_completed_result_marks_missing_selected_role_without_breaking_async_flo
         "Выбранная роль 'арендатор' не найдена в тексте договора. "
         "Найдены роли: Исполнитель, Заказчик."
     )
-    assert result["contract_brief"] == result["message"]
-    assert result["risks"] == []
-    assert result["disputed_clauses"] == []
-    assert result["asymmetry_signals"] == []
-    assert result["role_focused_summary"]["overview"] == result["message"]
-    assert result["role_focused_summary"]["must_do"] == []
-    assert result["role_focused_summary"]["should_review"] == []
-    assert result["role_focused_summary"]["payment_terms"] == []
-    assert result["role_focused_summary"]["deadlines"] == []
-    assert result["role_focused_summary"]["penalties"] == []
+    assert result["contract_brief"].startswith(result["message"])
+    assert result["risks"]
+    assert result["role_focused_summary"]["overview"].startswith(result["message"])
+    assert isinstance(result["disputed_clauses"], list)
+    assert isinstance(result["asymmetry_signals"], list)
+    assert any(
+        result["role_focused_summary"][field]
+        for field in ("must_do", "should_review", "payment_terms", "deadlines", "penalties")
+    )
     assert result["ingestion"]["detected_roles"][0] == {
         "role": "Исполнитель",
         "canonical_role": "executor",
@@ -580,7 +585,7 @@ def test_missing_job_error_can_be_localized_via_query_locale() -> None:
     assert response.json()["detail"] == "Analysis job was not found"
 
 
-def test_missing_role_returns_role_not_found_payload_and_empty_risks() -> None:
+def test_missing_role_returns_role_not_found_payload_and_preserves_generic_risks() -> None:
     client = TestClient(app)
 
     result = _get_completed_result(
@@ -605,8 +610,10 @@ def test_missing_role_returns_role_not_found_payload_and_empty_risks() -> None:
         "Выбранная роль 'Finance reviewer' не найдена в тексте договора. "
         "Найдены роли: Seller, Buyer."
     )
-    assert result["risks"] == []
-    assert result["contract_brief"] == result["message"]
+    assert result["risks"]
+    assert any(risk["severity"] in {"high", "critical"} for risk in result["risks"])
+    assert result["contract_brief"].startswith(result["message"])
+    assert result["role_focused_summary"]["overview"].startswith(result["message"])
     assert result["ingestion"]["detected_roles"]
     assert {item["canonical_role"] for item in result["ingestion"]["detected_roles"]} >= {
         "executor",
