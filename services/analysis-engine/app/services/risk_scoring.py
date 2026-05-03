@@ -686,8 +686,28 @@ class RiskScoringService:
         canonical_role: str,
         selected_role_present: bool,
     ) -> list[RankedRiskCandidate]:
-        if not canonical_role or not selected_role_present:
+        if not canonical_role:
             return risks_with_rank
+
+        if not selected_role_present:
+            role_agnostic_rule_ids = {
+                "payment_asymmetry",
+                "termination_asymmetry",
+                "undefined_acceptance_criteria",
+                "no_warranty_period",
+                "silent_acceptance",
+            }
+            return [
+                candidate
+                for candidate in risks_with_rank
+                if candidate.role_mentioned
+                or not candidate.source_has_roles
+                or candidate.risk.rule_id in role_agnostic_rule_ids
+                or (
+                    candidate.risk.explanation is not None
+                    and "asymmetry_signal" in candidate.risk.explanation.guardrails
+                )
+            ]
 
         return [
             candidate
