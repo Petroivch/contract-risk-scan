@@ -1,12 +1,12 @@
-﻿# Настройка фронтенда (React Native / Expo)
+# Настройка фронтенда (React Native / Expo)
 
 ## Рабочая директория
-- `C:\Users\user\Documents\Codex\вайбкод\contract-risk-scan-worktrees\agent-ui\apps\mobile`
+- `C:\Users\user\Documents\Codex\вайбкод\contract-risk-scan-worktrees\agent-cleanup-docs\apps\mobile`
 
 ## Правило запуска без догрузок после установки
 - Пользователь устанавливает только финальный релизный пакет приложения.
 - После установки приложение должно работать без скачивания дополнительных модулей, ассетов или функций.
-- MVP-сборка должна содержать все UI-ассеты, словари (`ru/en/it/fr`) и локальные миграции схемы данных.
+- MVP-сборка должна содержать все UI-ассеты и словари (`ru/en/it/fr`).
 
 ## Требования к окружению разработчика
 - Node.js 20 LTS
@@ -31,11 +31,13 @@
 - Сохранение языка: ключ AsyncStorage из runtime config (`LANGUAGE_PREFERENCE_KEY`)
 
 ## Local-first
-- Локальная база данных и кэш обязательны для MVP.
-- Текущая архитектура фронтенда включает:
-  - SQLite-кэш для status/report/history
-  - helper для файлового кэша
-  - local-first API adapter с fallback на SQLite при ошибке remote-запроса
+- Кодовая база сохраняет конфигурационные точки для local-first режима, но текущий runtime их не включает по умолчанию.
+- Сейчас:
+  - `API_TRANSPORT=http`
+  - `ENABLE_LOCAL_FIRST_CACHE=false`
+  - `ENABLE_SQLITE_CACHE=false`
+  - `ENABLE_FILE_CACHE=false`
+- В текущем клиенте сохраняется только языковое предпочтение в AsyncStorage.
 - Подробности: `docs/frontend/local-first-architecture.md`
 
 ## Стандарты качества и архитектуры
