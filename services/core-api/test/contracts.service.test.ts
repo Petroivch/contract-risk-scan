@@ -1,6 +1,7 @@
 import * as assert from 'node:assert/strict';
 import { SupportedLocale } from '../src/common/i18n/supported-locale.enum';
 import { JobStatus } from '../src/common/job-orchestration/job-status.enum';
+import { UPLOAD_POLICY } from '../src/common/policies/upload.policy';
 import { AnalysisEngineOutput } from '../src/contracts/analysis-engine.client';
 import { ContractsService } from '../src/contracts/contracts.service';
 import { StoredContract } from '../src/contracts/stored-contract.type';
@@ -107,3 +108,9 @@ assert.deepEqual(report.contractBriefRecords, remoteResult.contract_brief_record
 assert.deepEqual(report.roleFocusedSummaryRecords, remoteResult.role_focused_summary_records);
 assert.equal(report.contractBriefRecords[0].recommendation.startsWith('Проверьте'), true);
 assert.equal(report.roleFocusedSummaryRecords[0].headline.endsWith('.'), true);
+assert.deepEqual(UPLOAD_POLICY.ALLOWED_MIME_TYPES_DEFAULT, [
+  'application/pdf',
+  'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+  'text/plain',
+]);
+assert.equal(UPLOAD_POLICY.ALLOWED_MIME_TYPES_DEFAULT.includes('application/msword'), false);
