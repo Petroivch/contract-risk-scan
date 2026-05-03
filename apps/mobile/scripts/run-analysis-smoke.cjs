@@ -5,8 +5,21 @@ const path = require('node:path');
 const root = path.resolve(__dirname, '..');
 const outputDir = path.join(root, '.tmp-analysis-smoke');
 const tscBin = path.join(root, 'node_modules', '.bin', process.platform === 'win32' ? 'tsc.cmd' : 'tsc');
-const smokeEntry = path.join(root, 'src', 'analysis', 'contractAnalysis.smoke.ts');
-const compiledEntry = path.join(outputDir, 'analysis', 'contractAnalysis.smoke.js');
+const smokeEntries = [
+  path.join(root, 'src', 'analysis', 'contractAnalysis.smoke.ts'),
+  path.join(root, 'src', 'analysis', 'fileTextExtraction.smoke.ts'),
+];
+const supportEntries = [
+  path.join(root, 'src', 'analysis', 'contractAnalysis.ts'),
+  path.join(root, 'src', 'analysis', 'fileTextExtraction.ts'),
+  path.join(root, 'src', 'analysis', 'textNormalization.ts'),
+  path.join(root, 'src', 'api', 'types.ts'),
+  path.join(root, 'src', 'i18n', 'types.ts'),
+  path.join(root, 'src', 'components', 'report', 'reportText.ts'),
+];
+const compiledEntries = smokeEntries.map((entryPath) =>
+  path.join(outputDir, 'analysis', path.basename(entryPath, '.ts') + '.js'),
+);
 
 const run = (command, args) => {
   execFileSync(command, args, {
@@ -34,10 +47,13 @@ try {
     '--skipLibCheck',
     '--noEmit',
     'false',
-    smokeEntry,
+    ...smokeEntries,
+    ...supportEntries,
   ]);
 
-  run(process.execPath, [compiledEntry]);
+  for (const compiledEntry of compiledEntries) {
+    run(process.execPath, [compiledEntry]);
+  }
 } finally {
   fs.rmSync(outputDir, { recursive: true, force: true });
 }

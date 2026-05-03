@@ -1,4 +1,4 @@
-﻿import * as DocumentPicker from 'expo-document-picker';
+import * as DocumentPicker from 'expo-document-picker';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { useMemo, useState } from 'react';
 import { Alert, Pressable, StyleSheet, Text, View } from 'react-native';
@@ -10,6 +10,8 @@ import { RoleBadge } from '../components/RoleBadge';
 import { StatusChip } from '../components/StatusChip';
 import { ScreenShell } from '../components/layout/ScreenShell';
 import { appConfig } from '../config/appConfig';
+import { useConsent } from '../consent/ConsentGate';
+import { getTransportNotice } from '../consent/transportNotice';
 import { useAppLanguage } from '../i18n/LanguageProvider';
 import type { RootStackParamList } from '../navigation/types';
 import { colors, radius, shadow, spacing, typography } from '../theme/tokens';
@@ -36,7 +38,8 @@ const isSupportedDocument = (mimeType: string, fileName?: string): boolean => {
   return (
     normalizedMimeType === 'application/pdf' ||
     normalizedFileName.endsWith('.pdf') ||
-    normalizedMimeType === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' ||
+    normalizedMimeType ===
+      'application/vnd.openxmlformats-officedocument.wordprocessingml.document' ||
     normalizedFileName.endsWith('.docx') ||
     normalizedMimeType === 'text/plain' ||
     normalizedFileName.endsWith('.txt')
@@ -66,7 +69,7 @@ const formatFileType = (mimeType: string, fileName?: string): string => {
 
 const formatFileSize = (sizeInBytes?: number): string => {
   if (!sizeInBytes || sizeInBytes <= 0) {
-    return '—';
+    return '-';
   }
 
   const sizeInMb = sizeInBytes / (1024 * 1024);
@@ -77,9 +80,32 @@ const formatFileSize = (sizeInBytes?: number): string => {
   return `${sizeInMb.toFixed(sizeInMb >= 10 ? 0 : 1)} MB`;
 };
 
+const AcknowledgementRow = ({
+  selected,
+  label,
+  onPress,
+}: {
+  selected: boolean;
+  label: string;
+  onPress: () => void;
+}): JSX.Element => {
+  return (
+    <Pressable
+      style={[styles.acknowledgementRow, selected && styles.acknowledgementRowSelected]}
+      onPress={onPress}
+    >
+      <View style={[styles.checkbox, selected && styles.checkboxSelected]}>
+        {selected ? <View style={styles.checkboxIndicator} /> : null}
+      </View>
+      <Text style={styles.acknowledgementText}>{label}</Text>
+    </Pressable>
+  );
+};
+
 export const UploadWithRoleScreen = ({ navigation }: Props): JSX.Element => {
   const { t } = useTranslation();
   const { language } = useAppLanguage();
+  const { currentTransport } = useConsent();
   const api = useApiClient();
 
   const presetRoles = useMemo(
@@ -90,6 +116,21 @@ export const UploadWithRoleScreen = ({ navigation }: Props): JSX.Element => {
   const [selectedRole, setSelectedRole] = useState(presetRoles[0] ?? '');
   const [selectedFile, setSelectedFile] = useState<SelectedFileState | null>(null);
   const [submitting, setSubmitting] = useState(false);
+  const [hasAuthorityAcknowledgement, setAuthorityAcknowledgement] = useState(false);
+  const [hasMinimizationAcknowledgement, setMinimizationAcknowledgement] = useState(false);
+
+  const requiresHttpAcknowledgement = currentTransport === 'http';
+  const transportNotice = getTransportNotice(t, currentTransport);
+  const fileStepSubtitle =
+    currentTransport === 'http'
+      ? t('upload.fileStepSubtitleHttp')
+      : currentTransport === 'stub'
+        ? t('upload.fileStepSubtitleStub')
+        : t('upload.fileStepSubtitleLocal');
+  const httpAcknowledgementComplete =
+    !requiresHttpAcknowledgement || (hasAuthorityAcknowledgement && hasMinimizationAcknowledgement);
+  const canStartAnalysis =
+    Boolean(selectedFile) && Boolean(selectedRole) && !submitting && httpAcknowledgementComplete;
 
   const chooseFile = async (): Promise<void> => {
     const result = await DocumentPicker.getDocumentAsync({
@@ -129,7 +170,7 @@ export const UploadWithRoleScreen = ({ navigation }: Props): JSX.Element => {
   };
 
   const startAnalysis = async (): Promise<void> => {
-    if (!selectedFile || !selectedRole) {
+    if (!selectedFile || !selectedRole || !httpAcknowledgementComplete) {
       return;
     }
 
@@ -159,16 +200,19 @@ export const UploadWithRoleScreen = ({ navigation }: Props): JSX.Element => {
 
   const fileType = selectedFile
     ? formatFileType(selectedFile.mimeType, selectedFile.fileName)
-    : '—';
-  const fileSize = selectedFile ? formatFileSize(selectedFile.fileSizeBytes) : '—';
+    : '-';
+  const fileSize = selectedFile ? formatFileSize(selectedFile.fileSizeBytes) : '-';
 
   return (
     <ScreenShell title={t('upload.title')} subtitle={t('upload.subtitle')} scroll>
       <View style={styles.noticeCard}>
         <View style={styles.noticeBlock}>
-          <Text style={styles.noticeKicker}>{t('legal.noticeKicker')}</Text>
-          <Text style={styles.noticeTitle}>{t('legal.disclaimerTitle')}</Text>
+          <Text style={styles.noticeKicker}>{t('privacy.noticeKicker')}</Text>
+          <Text style={styles.noticeTitle}>{t('privacy.noticeTitle')}</Text>
           <Text style={styles.noticeText}>{t('legal.disclaimerText')}</Text>
+          <Text style={styles.noticeText}>{t('privacy.noticeText')}</Text>
+          <Text style={styles.noticeTransportLabel}>{transportNotice.label}</Text>
+          <Text style={styles.noticeText}>{transportNotice.body}</Text>
         </View>
         <Pressable style={styles.secondaryButton} onPress={() => navigation.navigate('Settings')}>
           <Text style={styles.secondaryButtonText}>{t('settings.openSettings')}</Text>
@@ -203,7 +247,7 @@ export const UploadWithRoleScreen = ({ navigation }: Props): JSX.Element => {
           <View style={styles.cardCopy}>
             <Text style={styles.cardKicker}>{t('upload.fileStepKicker')}</Text>
             <Text style={styles.cardTitle}>{t('upload.fileStepTitle')}</Text>
-            <Text style={styles.cardSubtitle}>{t('upload.fileStepSubtitle')}</Text>
+            <Text style={styles.cardSubtitle}>{fileStepSubtitle}</Text>
           </View>
           <StatusChip
             label={selectedFile ? t('upload.readyToAnalyze') : t('upload.selectFile')}
@@ -243,13 +287,46 @@ export const UploadWithRoleScreen = ({ navigation }: Props): JSX.Element => {
         </Pressable>
       </View>
 
+      {requiresHttpAcknowledgement ? (
+        <View style={styles.httpCard}>
+          <View style={styles.cardHeader}>
+            <View style={styles.cardCopy}>
+              <Text style={styles.cardKicker}>{t('upload.httpReviewKicker')}</Text>
+              <Text style={styles.cardTitle}>{t('upload.httpReviewTitle')}</Text>
+              <Text style={styles.cardSubtitle}>{t('upload.httpReviewSubtitle')}</Text>
+            </View>
+            <StatusChip
+              label={
+                httpAcknowledgementComplete
+                  ? t('upload.httpReviewComplete')
+                  : t('upload.httpReviewPending')
+              }
+              tone={httpAcknowledgementComplete ? 'success' : 'neutral'}
+            />
+          </View>
+
+          <Text style={styles.httpTransportLabel}>{transportNotice.label}</Text>
+          <Text style={styles.httpBody}>{transportNotice.body}</Text>
+
+          <AcknowledgementRow
+            selected={hasAuthorityAcknowledgement}
+            label={t('upload.httpAuthorityAcknowledgement')}
+            onPress={() => setAuthorityAcknowledgement((current) => !current)}
+          />
+          <AcknowledgementRow
+            selected={hasMinimizationAcknowledgement}
+            label={t('upload.httpMinimizationAcknowledgement')}
+            onPress={() => setMinimizationAcknowledgement((current) => !current)}
+          />
+
+          <Text style={styles.httpHint}>{t('upload.httpRequiredHint')}</Text>
+        </View>
+      ) : null}
+
       <Pressable
-        style={[
-          styles.primaryButton,
-          (!selectedFile || !selectedRole || submitting) && styles.disabled,
-        ]}
+        style={[styles.primaryButton, !canStartAnalysis && styles.disabled]}
         onPress={startAnalysis}
-        disabled={!selectedFile || !selectedRole || submitting}
+        disabled={!canStartAnalysis}
       >
         <Text style={styles.primaryButtonText}>
           {submitting ? t('upload.submitting') : t('common.startAnalysis')}
@@ -422,6 +499,14 @@ const styles = StyleSheet.create({
     fontSize: typography.size.bodySm,
     lineHeight: typography.lineHeight.bodySm,
   },
+  noticeTransportLabel: {
+    color: colors.accentStrong,
+    fontSize: typography.size.caption,
+    lineHeight: typography.lineHeight.caption,
+    fontWeight: typography.weight.bold,
+    textTransform: 'uppercase',
+    letterSpacing: 0.5,
+  },
   secondaryButton: {
     alignSelf: 'flex-start',
     borderRadius: radius.md,
@@ -434,6 +519,75 @@ const styles = StyleSheet.create({
   secondaryButtonText: {
     color: colors.textPrimary,
     fontSize: typography.size.bodySm,
+    fontWeight: typography.weight.semibold,
+  },
+  httpCard: {
+    borderRadius: radius.lg,
+    borderWidth: 1,
+    borderColor: colors.border,
+    backgroundColor: colors.surface,
+    padding: spacing.md,
+    gap: spacing.sm,
+    ...shadow.card,
+  },
+  httpTransportLabel: {
+    color: colors.accentStrong,
+    fontSize: typography.size.caption,
+    lineHeight: typography.lineHeight.caption,
+    fontWeight: typography.weight.bold,
+    textTransform: 'uppercase',
+    letterSpacing: 0.5,
+  },
+  httpBody: {
+    color: colors.textSecondary,
+    fontSize: typography.size.bodySm,
+    lineHeight: typography.lineHeight.bodySm,
+  },
+  acknowledgementRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.sm,
+    borderRadius: radius.md,
+    borderWidth: 1,
+    borderColor: colors.divider,
+    backgroundColor: colors.surfaceElevated,
+    paddingHorizontal: spacing.sm,
+    paddingVertical: spacing.sm,
+  },
+  acknowledgementRowSelected: {
+    borderColor: colors.accent,
+  },
+  checkbox: {
+    width: 20,
+    height: 20,
+    borderRadius: radius.sm,
+    borderWidth: 1,
+    borderColor: colors.textMuted,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: colors.surface,
+  },
+  checkboxSelected: {
+    borderColor: colors.accent,
+    backgroundColor: colors.accentSoft,
+  },
+  checkboxIndicator: {
+    width: 10,
+    height: 10,
+    borderRadius: radius.sm,
+    backgroundColor: colors.accent,
+  },
+  acknowledgementText: {
+    flex: 1,
+    color: colors.textPrimary,
+    fontSize: typography.size.bodySm,
+    lineHeight: typography.lineHeight.bodySm,
+    fontWeight: typography.weight.medium,
+  },
+  httpHint: {
+    color: colors.warning,
+    fontSize: typography.size.caption,
+    lineHeight: typography.lineHeight.caption,
     fontWeight: typography.weight.semibold,
   },
 });

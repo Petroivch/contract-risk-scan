@@ -491,6 +491,25 @@ assert.ok(
   ),
 );
 
+const summaryBoundaryAnalysis = buildAnalysisArtifacts({
+  text: [
+    'Гражданин обязан осуществить трудовую деятельность на условиях настоящего договора',
+    'Заказчик вправе в одностороннем порядке изменить сроки и порядок взаимодействия.',
+  ].join('\n\n'),
+  fileName: 'summary-boundary.pdf',
+  selectedRole: 'Гражданин',
+  language: 'ru',
+  warnings: [],
+});
+
+assert.match(
+  summaryBoundaryAnalysis.summary.shortDescription,
+  /Ключевая обязанность: .*\. Главный риск:/u,
+);
+assert.ok(
+  summaryBoundaryAnalysis.summary.obligationsForSelectedRole.some((line) => line.endsWith('.')),
+);
+
 const stringNormalizeDescriptor = Object.getOwnPropertyDescriptor(String.prototype, 'normalize');
 try {
   Object.defineProperty(String.prototype, 'normalize', {

@@ -1,5 +1,26 @@
-﻿import { CONFIG_DEFAULTS, DEFAULT_LANGUAGE, DEFAULT_ROLE_PRESET_KEYS, SUPPORTED_LANGUAGES } from './static';
+import {
+  CONFIG_DEFAULTS,
+  DEFAULT_LANGUAGE,
+  DEFAULT_ROLE_PRESET_KEYS,
+  SUPPORTED_LANGUAGES,
+} from './static';
 import { readBoolean, readCsv, readNumber, readString } from './runtime';
+
+export type ApiTransport = 'local' | 'stub' | 'http';
+
+const apiBaseUrl = readString('API_BASE_URL', CONFIG_DEFAULTS.apiBaseUrl);
+const configuredApiTransport = readString(
+  'API_TRANSPORT',
+  CONFIG_DEFAULTS.apiTransport,
+) as ApiTransport;
+
+export const getEffectiveApiTransport = (): ApiTransport => {
+  if (configuredApiTransport === 'http' && apiBaseUrl.trim().length === 0) {
+    return 'local';
+  }
+
+  return configuredApiTransport;
+};
 
 export const appConfig = {
   i18n: {
@@ -8,10 +29,14 @@ export const appConfig = {
     fallbackLanguage: DEFAULT_LANGUAGE,
   },
   api: {
-    baseUrl: readString('API_BASE_URL', CONFIG_DEFAULTS.apiBaseUrl),
-    transport: readString('API_TRANSPORT', CONFIG_DEFAULTS.apiTransport),
+    baseUrl: apiBaseUrl,
+    transport: configuredApiTransport,
+    effectiveTransport: getEffectiveApiTransport(),
     timeoutMs: readNumber('API_TIMEOUT_MS', CONFIG_DEFAULTS.apiTimeoutMs),
-    statusPollIntervalMs: readNumber('STATUS_POLL_INTERVAL_MS', CONFIG_DEFAULTS.statusPollIntervalMs),
+    statusPollIntervalMs: readNumber(
+      'STATUS_POLL_INTERVAL_MS',
+      CONFIG_DEFAULTS.statusPollIntervalMs,
+    ),
   },
   limits: {
     maxUploadFileMb: readNumber('MAX_UPLOAD_FILE_MB', CONFIG_DEFAULTS.maxUploadFileMb),
@@ -22,7 +47,10 @@ export const appConfig = {
   localStorage: {
     sqliteDbName: readString('SQLITE_DB_NAME', CONFIG_DEFAULTS.sqliteDbName),
     fileCacheDir: readString('FILE_CACHE_DIR', CONFIG_DEFAULTS.fileCacheDir),
-    languagePreferenceKey: readString('LANGUAGE_PREFERENCE_KEY', CONFIG_DEFAULTS.languagePreferenceKey),
+    languagePreferenceKey: readString(
+      'LANGUAGE_PREFERENCE_KEY',
+      CONFIG_DEFAULTS.languagePreferenceKey,
+    ),
     policyConsentKey: readString('POLICY_CONSENT_KEY', CONFIG_DEFAULTS.policyConsentKey),
   },
   featureFlags: {
@@ -30,7 +58,16 @@ export const appConfig = {
     enableSQLiteCache: readBoolean('ENABLE_SQLITE_CACHE', false),
     enableFileCache: readBoolean('ENABLE_FILE_CACHE', false),
   },
+  compliance: {
+    policyConsentVersion: readString(
+      'POLICY_CONSENT_VERSION',
+      CONFIG_DEFAULTS.policyConsentVersion,
+    ),
+  },
   defaults: {
-    stubContractFileName: readString('STUB_CONTRACT_FILENAME', CONFIG_DEFAULTS.stubContractFileName),
+    stubContractFileName: readString(
+      'STUB_CONTRACT_FILENAME',
+      CONFIG_DEFAULTS.stubContractFileName,
+    ),
   },
 } as const;

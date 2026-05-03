@@ -1,7 +1,12 @@
 ﻿export const SUPPORTED_LANGUAGES = ['ru', 'en', 'it', 'fr'] as const;
 export const DEFAULT_LANGUAGE = 'ru' as const;
 
-export const DEFAULT_ROLE_PRESET_KEYS = ['roles.performer', 'roles.employer', 'roles.customer', 'roles.contractor'];
+export const DEFAULT_ROLE_PRESET_KEYS = [
+  'roles.performer',
+  'roles.employer',
+  'roles.customer',
+  'roles.contractor',
+];
 
 export const CONFIG_DEFAULTS = {
   apiBaseUrl: '',
@@ -13,5 +18,6 @@ export const CONFIG_DEFAULTS = {
   fileCacheDir: 'contract-file-cache',
   languagePreferenceKey: 'contract-risk-scanner.language',
   policyConsentKey: 'contract-risk-scanner.policy-consent.v1',
+  policyConsentVersion: '2026-05-03-transport-aware-consent',
   stubContractFileName: 'service-agreement-draft.pdf',
 } as const;

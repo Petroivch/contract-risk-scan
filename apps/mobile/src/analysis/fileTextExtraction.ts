@@ -52,7 +52,6 @@ const PDF_MAX_DECODED_STREAMS = 160;
 const PDF_MAX_STREAM_CHARS = 2_500_000;
 const PDF_MAX_RAW_STREAM_BYTES = 750_000;
 const PDF_MAX_UNICODE_MAPS = 16;
-const PDF_GOOD_STREAM_TEXT_LENGTH = 8_000;
 const STRING_CHUNK_SIZE = 0x8000;
 
 const localizedWarnings: Record<
@@ -1094,13 +1093,6 @@ const extractPdfDocumentText = (binary: string): string => {
 
     appendUniqueTextChunk(textChunks, seen, streamText);
 
-    const currentText = textChunks.join('\n');
-    if (
-      currentText.length >= PDF_GOOD_STREAM_TEXT_LENGTH &&
-      isLikelyPdfTextChunk(currentText)
-    ) {
-      break;
-    }
   }
 
   if (textChunks.length === 0 && isLikelyPdfTextChunk(directMainText)) {
@@ -1660,6 +1652,10 @@ const extractPdfTextFromBytes = (bytes: Uint8Array): string => {
   }
 
   return extractReadableTextFromBytes(bytes);
+};
+
+export const extractPdfTextFromBytesForTesting = (bytes: Uint8Array): string => {
+  return extractPdfTextFromBytes(bytes);
 };
 
 const resolveLanguageWarnings = (

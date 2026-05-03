@@ -24,23 +24,42 @@ export const en = {
   },
   privacy: {
     noticeKicker: 'Privacy',
+    noticeTitle: 'How document handling works in this app',
+    noticeText:
+      'The selected contract, your chosen role, and language setting are used only to run the requested analysis flow. This app also stores a consent record on this device so the notice can be shown again if the transport or policy version changes.',
     storageTitle: 'Temporary files',
-    storageText: 'The selected document is used for the current review. Temporary files created while reading documents can be cleared in Settings.',
+    storageText:
+      'The selected document is used for the current review. Temporary files created while reading documents can be cleared in Settings.',
+    transportTitle: 'Current analysis transport',
+    transportLocalLabel: 'On-device analysis',
+    transportLocalText:
+      'This configuration runs the analysis on the device. Temporary local copies can still be created while the file is being read.',
+    transportStubLabel: 'Stubbed local flow',
+    transportStubText:
+      'This configuration uses the local stub flow in the client app. It does not start a remote upload from this screen.',
+    transportHttpLabel: 'Remote HTTP upload',
+    transportHttpText:
+      'This configuration sends the selected file, chosen role, and language fields to the configured server when you start analysis.',
   },
   legal: {
     noticeKicker: 'Legal notice',
     disclaimerTitle: 'This is not a legal opinion',
-    disclaimerText: 'The app shows preliminary risk indicators and disputed wording. The result may be incomplete or wrong, does not replace a lawyer, and does not confirm that the contract can be signed without additional review.',
+    disclaimerText:
+      'The app shows preliminary risk indicators and disputed wording. The result may be incomplete or wrong, does not replace a lawyer, and does not confirm that the contract can be signed without additional review.',
   },
   consent: {
     kicker: 'App policy',
-    title: 'Confirm the rules before starting',
-    body: 'Access to the app is available only after accepting the usage rules.',
+    title: 'Review the notice before using the app',
+    body: 'Access to the app is available only after accepting this legal and privacy notice for the current transport mode.',
+    recordNotice:
+      'Accepting stores a consent record on this device with the notice version, acceptance time, transport mode, and current locale.',
     ruleLegal: 'The app does not provide a legal opinion and does not replace a lawyer.',
-    ruleData: 'The selected document is used for analysis; temporary copies may be created while reading the file.',
-    ruleAccuracy: 'Text extraction and risk detection may be incomplete, especially for scans and poorly recognized PDFs.',
+    ruleData:
+      'The selected document is used for analysis; temporary copies may be created while reading the file.',
+    ruleAccuracy:
+      'Text extraction and risk detection may be incomplete, especially for scans and poorly recognized PDFs.',
     ruleResponsibility: 'The user must verify the results before signing or changing a contract.',
-    accept: 'Accept and continue',
+    accept: 'Accept notice and continue',
     decline: 'Decline',
     declined: 'The app is unavailable without accepting the rules.',
   },
@@ -52,13 +71,18 @@ export const en = {
   },
   upload: {
     title: 'Upload contract',
-    subtitle: 'Choose your role first, then upload the contract. The report will highlight obligations and risks for that role.',
+    subtitle:
+      'Choose your role first, then upload the contract. The report will highlight obligations and risks for that role.',
     roleStepKicker: 'Step 1',
     roleStepTitle: 'Choose your role',
     roleStepSubtitle: 'This determines which obligations and risks are emphasized in the report.',
     fileStepKicker: 'Step 2',
     fileStepTitle: 'Upload the contract',
-    fileStepSubtitle: 'After choosing the role, add the file and start the local analysis.',
+    fileStepSubtitleLocal: 'After choosing the role, add the file and start on-device analysis.',
+    fileStepSubtitleStub:
+      'After choosing the role, add the file and start the local stub analysis flow.',
+    fileStepSubtitleHttp:
+      'After choosing the role, add the file and send it to the configured server for analysis.',
     roleLabel: 'Your role in the contract',
     roleSelectionChip: 'Role selection',
     selectRole: 'Select role',
@@ -72,15 +96,30 @@ export const en = {
     fileSizeLabel: 'Size',
     fileTypeFallback: 'File',
     fileTapHint: 'Tap to choose a PDF, DOCX, or TXT file',
-    supportedFormatsHint: 'Supported: PDF, DOCX, TXT. Scanned PDFs may extract only part of the text. Convert .doc files to DOCX before upload.',
+    supportedFormatsHint:
+      'Supported: PDF, DOCX, TXT. Scanned PDFs may extract only part of the text. Convert .doc files to DOCX before upload.',
     pickAnotherFile: 'Choose another file',
     readyToAnalyze: 'Ready to analyze',
     submitting: 'Starting analysis...',
+    httpReviewKicker: 'Step 3',
+    httpReviewTitle: 'Confirm remote upload',
+    httpReviewSubtitle:
+      'HTTP transport is active. Confirm both statements before sending the document to the configured server.',
+    httpReviewPending: 'Required',
+    httpReviewComplete: 'Confirmed',
+    httpAuthorityAcknowledgement:
+      'I have authority to upload this document and review it in this app.',
+    httpMinimizationAcknowledgement:
+      'I removed or intentionally included only the data needed for this review.',
+    httpRequiredHint: 'Both acknowledgements are required before HTTP upload can start.',
     unsupportedFormatTitle: 'Unsupported format',
-    unsupportedFormatMessage: 'Only PDF, DOCX, and TXT are supported in this flow. Convert .doc files to DOCX. Scanned PDFs may produce lower-quality extraction.',
+    unsupportedFormatMessage:
+      'Only PDF, DOCX, and TXT are supported in this flow. Convert .doc files to DOCX. Scanned PDFs may produce lower-quality extraction.',
     startFailedTitle: 'Unable to start analysis',
-    startFailedMessage: 'Try selecting the file again. If it still fails, note the file type and the step where the issue appears.',
-    fileTooLargeMessage: 'This file is too large for local on-device analysis. Choose a smaller PDF, DOCX, or TXT file, or split the document.',
+    startFailedMessage:
+      'Try selecting the file again. If it still fails, note the file type and the step where the issue appears.',
+    fileTooLargeMessage:
+      'This file exceeds the current upload size limit. Choose a smaller PDF, DOCX, or TXT file, or split the document.',
   },
   analysis: {
     title: 'Analysis status',
@@ -117,7 +156,8 @@ export const en = {
     obligationsCountLabel: 'Obligations',
     risksCountLabel: 'Risks',
     disputedCountLabel: 'Disputed clauses',
-    summaryIntro: 'This is a preliminary summary of risk indicators: review the output yourself or with a lawyer before making any contract decision.',
+    summaryIntro:
+      'This is a preliminary summary of risk indicators: review the output yourself or with a lawyer before making any contract decision.',
     risksIntro: 'Risks are sorted so the most serious items appear first.',
     disputedIntro: 'Disputed wording is separated to make redrafting easier.',
     risksEmpty: 'No explicit risks found.',
@@ -152,6 +192,25 @@ export const en = {
     title: 'Settings',
     subtitle: 'Privacy and temporary file cleanup.',
     openSettings: 'Privacy and data',
+    consentTitle: 'Consent',
+    consentRecordTitle: 'Stored consent record',
+    consentRecordText:
+      'This device keeps the latest accepted notice record so the app can require consent again when the notice version or transport changes.',
+    consentStatusLabel: 'Status',
+    consentStatusActive: 'Accepted',
+    consentStatusNone: 'Not available',
+    consentVersionLabel: 'Notice version',
+    consentTransportLabel: 'Transport',
+    consentLocaleLabel: 'Locale',
+    consentAcceptedAtLabel: 'Accepted at',
+    currentRequirementHint: 'Current requirement: version {{version}}, transport {{transport}}.',
+    withdrawConsent: 'Withdraw consent',
+    withdrawConsentHint:
+      'This clears the on-device consent record and returns the app to the notice screen. Temporary files are managed separately below.',
+    withdrawConsentTitle: 'Withdraw consent?',
+    withdrawConsentMessage:
+      'This removes the stored consent record for this device and returns the app to the notice screen.',
+    withdrawConsentAction: 'Withdraw',
     languageTitle: 'App language',
     languageSubtitle: 'Changes apply immediately without restart.',
     languageActive: 'Active language',
@@ -162,7 +221,8 @@ export const en = {
     clearLocalData: 'Clear temporary files',
     clearInProgress: 'Clearing...',
     clearConfirmTitle: 'Clear temporary files?',
-    clearConfirmMessage: 'Any leftover temporary files created while reading documents will be removed.',
+    clearConfirmMessage:
+      'Any leftover temporary files created while reading documents will be removed.',
     clearConfirmAction: 'Clear',
     clearSuccessTitle: 'Temporary files cleared',
     clearSuccessMessage: 'Temporary file cache was cleared.',

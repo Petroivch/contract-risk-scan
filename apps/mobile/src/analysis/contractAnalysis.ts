@@ -3774,6 +3774,16 @@ const stripTrailingLooseClauseMarker = (text: string): string => {
     .trimEnd();
 };
 
+const ensureSentenceTermination = (value: string): string => {
+  const trimmed = value.trim();
+
+  if (!trimmed || /[.!?…:;]$/u.test(trimmed)) {
+    return trimmed;
+  }
+
+  return `${trimmed}.`;
+};
+
 const sanitizeSummaryItem = (value: string): string => {
   const normalized = normalizeExtractedText(value)
     .replace(/\b(\d+(?:\.\d+){1,5}),(\d+(?:\.\d+){0,5}[.)]?)/gu, '$1.$2')
@@ -3790,7 +3800,7 @@ const sanitizeSummaryItem = (value: string): string => {
     .replace(/^[A-Za-zА-Яа-яЁёÀ-ÖØ-öø-ÿ][A-Za-zА-Яа-яЁёÀ-ÖØ-öø-ÿ\s-]{1,48}:\s*$/u, '')
     .trim();
 
-  return cleaned;
+  return ensureSentenceTermination(cleaned);
 };
 
 const buildExcerpt = (text: string, maxLength = maxClauseExcerptLength): string => {
@@ -3916,13 +3926,16 @@ const buildRoleFocusedShortDescription = (
   const normalizedLanguage = normalizeLanguage(language);
   const primaryObligation = obligations.find((item) => item.trim().length > 0);
   const primaryRisk = risks.find((risk) => risk.groupId !== 'role-missing');
+  const normalizedPrimaryObligation = primaryObligation
+    ? ensureSentenceTermination(primaryObligation)
+    : '';
 
   if (normalizedLanguage === 'ru') {
     const parts = [
       `Для роли "${selectedRole}" найдено ${obligations.length} значимых обязанностей в ${clausesCount} пунктах договора.`,
     ];
-    if (primaryObligation) {
-      parts.push(`Ключевая обязанность: ${primaryObligation}`);
+    if (normalizedPrimaryObligation) {
+      parts.push(`Ключевая обязанность: ${normalizedPrimaryObligation}`);
     }
     if (primaryRisk) {
       parts.push(`Главный риск: ${primaryRisk.title}.`);
@@ -3934,8 +3947,8 @@ const buildRoleFocusedShortDescription = (
     const parts = [
       `Per il ruolo "${selectedRole}" sono stati trovati ${obligations.length} obblighi rilevanti in ${clausesCount} clausole.`,
     ];
-    if (primaryObligation) {
-      parts.push(`Obbligo principale: ${primaryObligation}`);
+    if (normalizedPrimaryObligation) {
+      parts.push(`Obbligo principale: ${normalizedPrimaryObligation}`);
     }
     if (primaryRisk) {
       parts.push(`Rischio principale: ${primaryRisk.title}.`);
@@ -3947,8 +3960,8 @@ const buildRoleFocusedShortDescription = (
     const parts = [
       `Pour le role "${selectedRole}", ${obligations.length} obligations importantes ont ete detectees dans ${clausesCount} clauses.`,
     ];
-    if (primaryObligation) {
-      parts.push(`Obligation principale: ${primaryObligation}`);
+    if (normalizedPrimaryObligation) {
+      parts.push(`Obligation principale: ${normalizedPrimaryObligation}`);
     }
     if (primaryRisk) {
       parts.push(`Risque principal: ${primaryRisk.title}.`);
@@ -3959,8 +3972,8 @@ const buildRoleFocusedShortDescription = (
   const parts = [
     `For the "${selectedRole}" role, ${obligations.length} relevant obligations were found across ${clausesCount} clauses.`,
   ];
-  if (primaryObligation) {
-    parts.push(`Key obligation: ${primaryObligation}`);
+  if (normalizedPrimaryObligation) {
+    parts.push(`Key obligation: ${normalizedPrimaryObligation}`);
   }
   if (primaryRisk) {
     parts.push(`Main risk: ${primaryRisk.title}.`);
