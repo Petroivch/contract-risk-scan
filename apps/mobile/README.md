@@ -8,6 +8,7 @@
 - Поток экранов: `Auth -> UploadWithRole -> AnalysisStatus -> Report -> Settings`
 - i18n: `ru` по умолчанию + `en/it/fr` с fallback на `ru`
 - Runtime по умолчанию использует `API_TRANSPORT=http` и backend path через `core-api`
+- `API_BASE_URL` не зашит в репозиторий: его нужно задавать через env/build-time override для dev, preview и production
 - `ENABLE_LOCAL_FIRST_CACHE`, `ENABLE_SQLITE_CACHE` и `ENABLE_FILE_CACHE` по умолчанию выключены
 - Реальный выбор документа через системный picker; приложение не создает собственный SQLite-кэш или app-managed файловый кэш
 - Слой темы с design tokens (colors/typography/radius/shadow/motion)
@@ -23,9 +24,15 @@
 
 ## Быстрый старт
 1. `npm install`
-2. `npm run start`
-3. Android: `npm run android`
-4. iPhone: `npm run ios`
+2. Задайте backend endpoint для своей среды:
+   - Android emulator: `$env:API_BASE_URL="http://10.0.2.2:3000/api/v1/"`
+   - Android device / Expo Go в одной сети: `$env:API_BASE_URL="http://<your-lan-ip>:3000/api/v1/"`
+   - Production/release build: задайте публичный backend URL в CI/EAS/local shell до сборки
+3. `npm run start`
+4. Android: `npm run android`
+5. iPhone: `npm run ios`
+
+`API_TRANSPORT` по умолчанию остается `http`. Для локальных экспериментов его можно переопределить через `API_TRANSPORT` или `EXPO_PUBLIC_API_TRANSPORT`, но release-поток должен задавать реальный `API_BASE_URL`, а не полагаться на emulator-only host.
 
 ## Скрипты качества
 - `npm run lint`
@@ -67,14 +74,15 @@ cd apps\mobile\android
 1. Создать или войти в Expo account: `npx eas-cli@latest login`
 2. При необходимости связать проект с Expo: `npx eas-cli@latest init`
 3. Убедиться, что Apple Developer account доступен для signing/provisioning.
-4. Проверить iOS bundle identifier в `app.json`: `com.contractriskscanner.mobile`.
+4. Проверить iOS bundle identifier в `app.config.ts`: `com.contractriskscanner.mobile`.
+5. Задать `API_BASE_URL` и другие runtime overrides в EAS environment или локальном shell до `eas build`.
 
 Команды:
 - `npm run eas:build:ios:preview` - internal/ad hoc build для тестирования на зарегистрированных устройствах при наличии Apple signing.
 - `npm run eas:build:ios:production` - production build для App Store/TestFlight при наличии Apple signing.
 - `npm run eas:submit:ios` - отправка production build в App Store Connect.
 
-EAS-конфигурация лежит в `eas.json`; iOS bundle identifier задан в `app.json` как `com.contractriskscanner.mobile`.
+EAS-конфигурация лежит в `eas.json`; iOS bundle identifier и runtime `extra` задаются через `app.config.ts`.
 
 ## Документация фронтенда
 - Настройка: `docs/frontend/setup.md`

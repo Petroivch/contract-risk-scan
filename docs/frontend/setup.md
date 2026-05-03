@@ -1,7 +1,7 @@
 # Настройка фронтенда (React Native / Expo)
 
 ## Рабочая директория
-- `C:\Users\user\Documents\Codex\вайбкод\contract-risk-scan-worktrees\agent-cleanup-docs\apps\mobile`
+- `apps/mobile`
 
 ## Правило запуска без догрузок после установки
 - Пользователь устанавливает только финальный релизный пакет приложения.
@@ -18,8 +18,12 @@
 ## Установка и запуск
 1. Откройте терминал в `apps/mobile`.
 2. Установите зависимости: `npm install`
-3. Запустите приложение: `npm run start`
-4. Запуск платформы:
+3. Перед запуском задайте backend endpoint для текущей среды:
+   - Android emulator: `$env:API_BASE_URL="http://10.0.2.2:3000/api/v1/"`
+   - Android device / iPhone в одной сети с backend: `$env:API_BASE_URL="http://<your-lan-ip>:3000/api/v1/"`
+   - Release/EAS/CI: задайте `API_BASE_URL` и нужные overrides в build environment
+4. Запустите приложение: `npm run start`
+5. Запуск платформы:
    - Android: `npm run android`
    - iPhone: `npm run ios`
 
@@ -42,7 +46,8 @@
 
 ## Стандарты качества и архитектуры
 - Никаких runtime-critical значений в UI-компонентах.
-- Endpoints, лимиты, таймауты, preset-роли и feature flags читаются из config (`app.json` `expo.extra` + env overrides).
+- Endpoints, лимиты, таймауты, preset-роли и feature flags читаются из dynamic Expo config (`app.config.ts` -> `expo.extra`) с env/build-time override-ами.
+- `API_TRANSPORT=http` остается backend-first default, но `API_BASE_URL` не должен быть baked-in под конкретный emulator host.
 - UI-тексты берутся только из словарей i18n.
 
 - Целевой вклад mobile и чеклист оптимизации: `docs/frontend/package-size-optimization.md`
