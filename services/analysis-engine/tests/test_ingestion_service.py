@@ -8,7 +8,8 @@ from app.config.runtime import get_runtime_config
 from app.localization import resolve_localized_text
 from app.schemas.analysis import AnalysisRunRequest
 import app.services.ingestion as ingestion_module
-from app.services.ingestion import IngestionService
+from app.services.ingestion import ExtractionResult, IngestionPayload, IngestionService, RenderedPdfPage
+from app.services.job_store import InMemoryJobStore
 
 
 def _encode_base64(payload: bytes) -> str:
@@ -123,6 +124,39 @@ def test_ingest_uses_filename_metadata_to_parse_docx_without_explicit_mime_type(
     assert payload.binary_payload is not None
 
 
+def test_docx_and_txt_binary_extraction_return_consistent_metadata() -> None:
+    service = IngestionService()
+    docx_request = _build_request(
+        document_name="services.docx",
+        document_text=None,
+        document_base64=_encode_base64(
+            _build_docx_bytes(["Customer must pay within 10 days."])
+        ),
+        mime_type="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    )
+    txt_request = _build_request(
+        document_name="services.txt",
+        document_text=None,
+        document_base64=_encode_base64(b"Customer must pay within 10 days."),
+        mime_type="text/plain",
+    )
+
+    docx_payload = service.ingest(docx_request)
+    txt_payload = service.ingest(txt_request)
+
+    assert docx_payload.text == txt_payload.text == "Customer must pay within 10 days."
+    assert docx_payload.extraction_source.startswith("docx:")
+    assert txt_payload.extraction_source == "txt:utf8"
+    assert docx_payload.extraction_ok is True
+    assert txt_payload.extraction_ok is True
+    assert docx_payload.extraction_error is None
+    assert txt_payload.extraction_error is None
+    assert docx_payload.sha256
+    assert txt_payload.sha256
+    assert docx_payload.binary_payload is not None
+    assert txt_payload.binary_payload is not None
+
+
 def test_ingest_uses_localized_placeholder_when_docx_extraction_returns_empty_text() -> None:
     service = IngestionService()
     runtime_config = get_runtime_config()
@@ -147,6 +181,31 @@ def test_ingest_uses_localized_placeholder_when_docx_extraction_returns_empty_te
     assert payload.extraction_error
     assert payload.binary_payload is not None
     assert payload.detected_roles == []
+
+
+def test_doc_payload_returns_explicit_unsupported_policy_error() -> None:
+    service = IngestionService()
+    runtime_config = get_runtime_config()
+    request = _build_request(
+        document_name="legacy.doc",
+        document_text=None,
+        document_base64=_encode_base64(b"\xd0\xcf\x11\xe0 fake legacy doc payload"),
+        mime_type="application/msword",
+        language="en",
+    )
+
+    payload = service.ingest(request)
+
+    assert payload.text == resolve_localized_text(
+        runtime_config.pipeline.ingestion.empty_text_placeholder,
+        "en",
+    )
+    assert payload.extraction_source == "doc:unsupported"
+    assert payload.extraction_ok is False
+    assert payload.extraction_error
+    assert "application/msword (.doc) is not supported reliably" in payload.extraction_error
+    assert "DOCX, PDF, or TXT" in payload.extraction_error
+    assert payload.binary_payload is not None
 
 
 def test_extract_pdf_skips_pages_that_fail_extraction(monkeypatch) -> None:
@@ -183,6 +242,108 @@ def test_extract_pdf_skips_pages_that_fail_extraction(monkeypatch) -> None:
     assert extracted.extraction_error is None
 
 
+def test_extract_text_pdf_does_not_run_ocr_when_direct_text_is_sufficient(monkeypatch) -> None:
+    service = IngestionService()
+
+    monkeypatch.setattr(
+        service,
+        "_extract_pdf_direct_text",
+        lambda _: ExtractionResult(
+            text="Buyer must pay within 10 days. Seller shall deliver goods within 5 days.",
+            extraction_source="pdf:pypdf",
+            extraction_ok=True,
+        ),
+    )
+
+    def fail_ocr(_: bytes) -> ExtractionResult:
+        raise AssertionError("OCR fallback should not run for text PDFs")
+
+    monkeypatch.setattr(service, "_extract_scanned_pdf_with_ocr", fail_ocr)
+
+    extracted = service._extract_pdf(b"%PDF-1.4 text pdf")
+
+    assert extracted.text.startswith("Buyer must pay")
+    assert extracted.extraction_source == "pdf:pypdf"
+    assert extracted.extraction_ok is True
+    assert extracted.extraction_error is None
+
+
+def test_extract_pdf_uses_ocr_fallback_when_direct_text_is_empty(monkeypatch) -> None:
+    service = IngestionService()
+    monkeypatch.setattr(
+        service,
+        "_extract_pdf_direct_text",
+        lambda _: ExtractionResult(
+            text="",
+            extraction_source="pdf:none",
+            extraction_ok=False,
+            extraction_error="pdfplumber returned empty text; pypdf returned empty text",
+        ),
+    )
+    monkeypatch.setattr(
+        service,
+        "_render_pdf_pages_for_ocr",
+        lambda *_: ([RenderedPdfPage(page_number=1, page_count=1, image=object())], []),
+    )
+    monkeypatch.setattr(
+        service,
+        "_ocr_image_to_text",
+        lambda _: "Buyer must pay within 10 days. Seller shall deliver goods within 5 days.",
+    )
+
+    extracted = service._extract_pdf(b"%PDF-1.4 scanned pdf")
+
+    assert extracted.text.startswith("Buyer must pay")
+    assert extracted.extraction_source == "pdf:ocr:tesseract(1/1 pages)"
+    assert extracted.extraction_ok is True
+    assert extracted.extraction_error is None
+
+
+def test_extract_pdf_uses_ocr_fallback_when_direct_text_is_too_short(monkeypatch) -> None:
+    service = IngestionService()
+    monkeypatch.setattr(
+        service,
+        "_extract_pdf_direct_text",
+        lambda _: ExtractionResult(
+            text="Page 1",
+            extraction_source="pdf:pypdf",
+            extraction_ok=True,
+        ),
+    )
+    monkeypatch.setattr(
+        service,
+        "_extract_scanned_pdf_with_ocr",
+        lambda _: ExtractionResult(
+            text="Buyer must pay within 10 days. Seller shall deliver goods within 5 days.",
+            extraction_source="pdf:ocr:tesseract(1/1 pages)",
+            extraction_ok=True,
+        ),
+    )
+
+    extracted = service._extract_pdf(b"%PDF-1.4 low text pdf")
+
+    assert extracted.text.startswith("Buyer must pay")
+    assert extracted.extraction_source == "pdf:ocr:tesseract(1/1 pages)"
+    assert extracted.extraction_ok is True
+
+
+def test_pdf_ocr_fallback_reports_renderer_failures_without_raw_payload(monkeypatch) -> None:
+    service = IngestionService()
+    monkeypatch.setattr(
+        service,
+        "_render_pdf_pages_for_ocr",
+        lambda *_: ([], ["PyMuPDF renderer unavailable", "pdf2image renderer unavailable"]),
+    )
+
+    extracted = service._extract_scanned_pdf_with_ocr(b"raw secret pdf bytes")
+
+    assert extracted.extraction_source == "pdf:ocr:none"
+    assert extracted.extraction_ok is False
+    assert extracted.extraction_error
+    assert "pdf OCR fallback unavailable" in extracted.extraction_error
+    assert "raw secret pdf bytes" not in extracted.extraction_error
+
+
 def test_decode_base64_payload_accepts_missing_padding() -> None:
     service = IngestionService()
     encoded = _encode_base64(b"plain-text payload").rstrip("=")
@@ -190,3 +351,36 @@ def test_decode_base64_payload_accepts_missing_padding() -> None:
     decoded = service._decode_base64_payload(encoded)
 
     assert decoded == b"plain-text payload"
+
+
+def test_ingestion_payload_repr_does_not_include_raw_binary_payload() -> None:
+    payload = IngestionPayload(
+        document_name="secret.pdf",
+        mime_type="application/pdf",
+        text="extracted text",
+        detected_roles=[],
+        extraction_source="pdf:pypdf",
+        extraction_ok=True,
+        extraction_error=None,
+        sha256="abc123",
+        binary_payload=b"raw secret contract bytes",
+    )
+
+    assert "raw secret contract bytes" not in repr(payload)
+
+
+def test_job_store_redacts_raw_document_inputs() -> None:
+    store = InMemoryJobStore()
+    request = _build_request(
+        document_name="secret.txt",
+        document_text="raw secret contract text",
+        document_base64=_encode_base64(b"raw secret contract bytes"),
+        mime_type="text/plain",
+    )
+
+    record = store.create_job(request)
+
+    assert record.request.document_text == "[redacted]"
+    assert record.request.document_base64 == "[redacted]"
+    assert "raw secret contract text" not in repr(record)
+    assert "raw secret contract bytes" not in repr(record)
