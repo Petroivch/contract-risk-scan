@@ -25,6 +25,7 @@ def resolveNodeExecutable = {
 }
 
 def nodeExecutable = resolveNodeExecutable()
+def internalBuildRequested = gradle.startParameter.taskNames.any { it.toLowerCase().contains('internal') }
 def releaseStoreFile = providers.environmentVariable("CONTRACT_RISK_RELEASE_STORE_FILE").orNull
 def releaseStorePassword = providers.environmentVariable("CONTRACT_RISK_RELEASE_STORE_PASSWORD").orNull
 def releaseKeyAlias = providers.environmentVariable("CONTRACT_RISK_RELEASE_KEY_ALIAS").orNull
@@ -200,6 +201,19 @@ android {
 }
 
 tasks.configureEach { task ->
+    def normalizedTaskName = task.name.toLowerCase()
+
+    if (internalBuildRequested &&
+        normalizedTaskName.contains("internal") &&
+        (normalizedTaskName.contains("bundle") || normalizedTaskName.contains("assets")) &&
+        providers.environmentVariable("API_TRANSPORT").orNull == null &&
+        providers.environmentVariable("EXPO_PUBLIC_API_TRANSPORT").orNull == null &&
+        !(providers.environmentVariable("API_BASE_URL").orNull ?: "").trim() &&
+        !(providers.environmentVariable("EXPO_PUBLIC_API_BASE_URL").orNull ?: "").trim() &&
+        task.metaClass.respondsTo(task, "environment", String, Object)) {
+        task.environment("CONTRACT_RISK_OFFLINE_LOCAL_BUILD", "1")
+    }
+
     if (task.name in ["assembleRelease", "bundleRelease", "packageRelease", "validateSigningRelease"]) {
         task.doFirst {
             if (!hasReleaseSigning) {

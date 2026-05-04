@@ -22,6 +22,8 @@ export const getApiConfigurationError = (): string | undefined => {
   return undefined;
 };
 
+export const getEffectiveApiTransport = (): ApiTransport => configuredApiTransport;
+
 export const appConfig = {
   i18n: {
     defaultLanguage: readString('DEFAULT_LANGUAGE', DEFAULT_LANGUAGE),

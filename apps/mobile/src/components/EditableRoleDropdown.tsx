@@ -14,10 +14,18 @@ import {
 
 import { colors, spacing } from '../theme/tokens';
 
+interface EditableRolePresetOption {
+  id: string;
+  label: string;
+}
+
 interface EditableRoleDropdownProps {
   value: string;
-  presets: string[];
-  onChange: (nextValue: string) => void;
+  presets: EditableRolePresetOption[];
+  selectedPresetId?: string;
+  onSelectPreset: (presetId: string) => void;
+  onChangeCustomValue: (nextValue: string) => void;
+  onSelectCustom: () => void;
   label: string;
   placeholder: string;
   customPlaceholder: string;
@@ -29,7 +37,10 @@ interface EditableRoleDropdownProps {
 export const EditableRoleDropdown = ({
   value,
   presets,
-  onChange,
+  selectedPresetId,
+  onSelectPreset,
+  onChangeCustomValue,
+  onSelectCustom,
   label,
   placeholder,
   customPlaceholder,
@@ -38,7 +49,7 @@ export const EditableRoleDropdown = ({
   containerStyle,
 }: EditableRoleDropdownProps): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isCustom, setIsCustom] = useState(!presets.includes(value));
+  const isCustom = !selectedPresetId;
 
   const visibleValue = useMemo(() => {
     if (!value) {
@@ -47,17 +58,13 @@ export const EditableRoleDropdown = ({
     return value;
   }, [placeholder, value]);
 
-  const selectPreset = (preset: string): void => {
-    setIsCustom(false);
-    onChange(preset);
+  const selectPreset = (presetId: string): void => {
+    onSelectPreset(presetId);
     setIsOpen(false);
   };
 
   const switchToCustom = (): void => {
-    setIsCustom(true);
-    if (!value) {
-      onChange('');
-    }
+    onSelectCustom();
     setIsOpen(false);
   };
 
@@ -73,7 +80,7 @@ export const EditableRoleDropdown = ({
         <TextInput
           placeholder={customPlaceholder}
           value={value}
-          onChangeText={onChange}
+          onChangeText={onChangeCustomValue}
           style={styles.customInput}
           autoCapitalize="sentences"
         />
@@ -84,8 +91,12 @@ export const EditableRoleDropdown = ({
           <View style={styles.modalCard}>
             <Text style={styles.modalTitle}>{modalTitle}</Text>
             {presets.map((preset) => (
-              <TouchableOpacity key={preset} style={styles.option} onPress={() => selectPreset(preset)}>
-                <Text style={styles.optionText}>{preset}</Text>
+              <TouchableOpacity
+                key={preset.id}
+                style={styles.option}
+                onPress={() => selectPreset(preset.id)}
+              >
+                <Text style={styles.optionText}>{preset.label}</Text>
               </TouchableOpacity>
             ))}
             <TouchableOpacity style={styles.customOption} onPress={switchToCustom}>

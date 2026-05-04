@@ -3,6 +3,14 @@
 import { buildAnalysisArtifacts, buildDisputedClauses, segmentClauses } from './contractAnalysis';
 import { normalizeExtractedText } from './textNormalization';
 import { splitStructuredText } from '../components/report/reportText';
+import { getPresetRoleLabel, resolveConfiguredPresetRoleIds } from '../roles/presetRoles';
+
+assert.deepEqual(
+  resolveConfiguredPresetRoleIds(['roles.performer', 'roles.customer', 'roles.performer']),
+  ['performer', 'customer'],
+);
+assert.equal(getPresetRoleLabel('contractor', 'fr'), 'Prestataire');
+assert.equal(getPresetRoleLabel('employer', 'it'), 'Datore di lavoro');
 
 const normalizedParagraphs = normalizeExtractedText('Line 1\r\n\r\nLine 2');
 assert.ok(normalizedParagraphs.includes('Line 1\n\nLine 2'));

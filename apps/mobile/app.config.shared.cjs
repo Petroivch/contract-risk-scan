@@ -81,6 +81,19 @@ const readBooleanEnv = (key, fallback) => {
   return fallback;
 };
 
+const isTruthyEnv = (value) => {
+  if (typeof value !== 'string') {
+    return false;
+  }
+
+  const normalized = value.trim().toLowerCase();
+  return normalized === 'true' || normalized === '1' || normalized === 'yes';
+};
+
+const isExplicitOfflineLocalBuild = () =>
+  isTruthyEnv(readEnv('CONTRACT_RISK_OFFLINE_LOCAL_BUILD')) ||
+  isTruthyEnv(readEnv('EXPO_PUBLIC_CONTRACT_RISK_OFFLINE_LOCAL_BUILD'));
+
 const normalizeTransport = (value) => String(value ?? '').trim().toLowerCase();
 
 const validateRuntimeExtra = (extra) => {
@@ -96,7 +109,9 @@ const validateRuntimeExtra = (extra) => {
 
 const resolveRuntimeExtra = () => ({
   API_BASE_URL: readStringEnv('API_BASE_URL', DEFAULT_EXTRA.API_BASE_URL),
-  API_TRANSPORT: readStringEnv('API_TRANSPORT', DEFAULT_EXTRA.API_TRANSPORT),
+  API_TRANSPORT:
+    readEnv('API_TRANSPORT') ??
+    (isExplicitOfflineLocalBuild() && !readEnv('API_BASE_URL') ? 'local' : DEFAULT_EXTRA.API_TRANSPORT),
   API_TIMEOUT_MS: readNumberEnv('API_TIMEOUT_MS', DEFAULT_EXTRA.API_TIMEOUT_MS),
   STATUS_POLL_INTERVAL_MS: readNumberEnv(
     'STATUS_POLL_INTERVAL_MS',
