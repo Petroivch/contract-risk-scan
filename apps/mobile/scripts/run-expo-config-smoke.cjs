@@ -2,19 +2,11 @@ const { execFileSync } = require('node:child_process');
 const path = require('node:path');
 
 const root = path.resolve(__dirname, '..');
-const expoBin = path.join(
-  root,
-  'node_modules',
-  '.bin',
-  process.platform === 'win32' ? 'expo.cmd' : 'expo',
-);
+const expoCli = path.join(root, 'node_modules', 'expo', 'bin', 'cli');
 
-execFileSync(expoBin, ['config', '--type', 'public'], {
+execFileSync(process.execPath, [expoCli, 'config', '--type', 'public'], {
   cwd: root,
-  env: {
-    ...process.env,
-    API_TRANSPORT: process.env.API_TRANSPORT || 'local',
-  },
+  env: process.env,
   stdio: 'inherit',
   windowsHide: true,
 });

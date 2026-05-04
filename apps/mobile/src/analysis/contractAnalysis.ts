@@ -1,6 +1,7 @@
 ﻿import type { AnalysisReport, DisputedClause, RiskItem } from '../api/types';
 import type { SupportedLanguage } from '../i18n/types';
 import { defaultLanguage } from '../i18n/types';
+import { buildPresetRoleTerms, localizeRoleLabel } from '../roles/rolePresets';
 
 import {
   normalizeExtractedText,
@@ -3189,9 +3190,14 @@ const buildSelectedRoleTerms = (selectedRole: string, includeAliases = true): st
   const normalizedRole = normalizeSearchText(selectedRole);
   const tokens = tokenizeSearchText(selectedRole);
   const terms = new Set<string>();
+  const presetRoleTerms = buildPresetRoleTerms(selectedRole, includeAliases);
 
   if (normalizedRole) {
     terms.add(normalizedRole);
+  }
+
+  for (const presetRoleTerm of presetRoleTerms) {
+    terms.add(presetRoleTerm);
   }
 
   for (const token of tokens) {
@@ -3404,7 +3410,7 @@ const collectRoleObligations = (
   roleTerms: string[],
   maxItems: number,
 ): { roleFound: boolean; items: string[] } => {
-  const roleFound = clauses.some(
+  const roleMentioned = clauses.some(
     (clause) => countMatches(normalizeSearchText(clause.text), roleTerms) > 0,
   );
   const scored = appendMappedItems(clauses, (clause, clauseIndex) => {
@@ -3506,13 +3512,13 @@ const collectRoleObligations = (
 
   if (mergedItems.length > 0) {
     return {
-      roleFound,
+      roleFound: true,
       items: mergedItems,
     };
   }
 
   return {
-    roleFound,
+    roleFound: roleMentioned && roleLedBlockItems.length > 0,
     items: roleLedBlockItems,
   };
 };
@@ -3889,16 +3895,17 @@ const isBeneficialRiskMatch = (
 };
 
 const formatRoleNotFoundMessage = (selectedRole: string, language: SupportedLanguage): string => {
+  const roleLabel = localizeRoleLabel(selectedRole, normalizeLanguage(language)) || selectedRole;
   switch (normalizeLanguage(language)) {
     case 'ru':
-      return `Роль "${selectedRole}" не найдена в тексте договора. Уточните формулировку роли или выберите сторону, которая прямо указана в документе.`;
+      return `Роль "${roleLabel}" не найдена в тексте договора. Уточните формулировку роли или выберите сторону, которая прямо указана в документе.`;
     case 'it':
-      return `Il ruolo "${selectedRole}" non e stato trovato nel testo del contratto. Verificare il nome del ruolo o scegliere una parte indicata esplicitamente nel documento.`;
+      return `Il ruolo "${roleLabel}" non e stato trovato nel testo del contratto. Verificare il nome del ruolo o scegliere una parte indicata esplicitamente nel documento.`;
     case 'fr':
-      return `Le role "${selectedRole}" n a pas ete trouve dans le texte du contrat. Verifiez l intitule du role ou choisissez une partie explicitement indiquee dans le document.`;
+      return `Le role "${roleLabel}" n a pas ete trouve dans le texte du contrat. Verifiez l intitule du role ou choisissez une partie explicitement indiquee dans le document.`;
     case 'en':
     default:
-      return `The role "${selectedRole}" was not found in the contract text. Verify the role wording or choose a party explicitly named in the document.`;
+      return `The role "${roleLabel}" was not found in the contract text. Verify the role wording or choose a party explicitly named in the document.`;
   }
 };
 
@@ -3924,18 +3931,78 @@ const buildRoleFocusedShortDescription = (
   risks: RiskItem[],
 ): string => {
   const normalizedLanguage = normalizeLanguage(language);
-  const primaryObligation = obligations.find((item) => item.trim().length > 0);
+  const roleLabel = localizeRoleLabel(selectedRole, normalizedLanguage) || selectedRole;
   const primaryRisk = risks.find((risk) => risk.groupId !== 'role-missing');
-  const normalizedPrimaryObligation = primaryObligation
-    ? ensureSentenceTermination(primaryObligation)
-    : '';
+  const obligationSignals = normalizeSearchText(obligations.join(' '));
+  const hasPaymentObligation = countMatches(obligationSignals, summaryMarkers.payment) > 0;
+  const hasDeadlineObligation = countMatches(obligationSignals, summaryMarkers.deadlines) > 0;
+  const hasDeliveryObligation =
+    countMatches(obligationSignals, ['оказать', 'выполнить', 'deliver', 'provide', 'perform']) > 0;
+  const hasNoticeObligation =
+    countMatches(obligationSignals, ['уведом', 'notify', 'notice', 'inform', 'avvis', 'notifi']) > 0;
+  const primaryObligationInsight =
+    normalizedLanguage === 'ru'
+      ? hasPaymentObligation && hasDeadlineObligation
+        ? 'Ключевая обязанность: для выбранной роли критичны связанные условия оплаты и сроков.'
+        : hasPaymentObligation
+          ? 'Ключевая обязанность: для выбранной роли критичны условия оплаты и расчетов.'
+          : hasDeadlineObligation
+            ? 'Ключевая обязанность: для выбранной роли критичны сроки исполнения и уведомления.'
+            : hasNoticeObligation
+              ? 'Ключевая обязанность: для выбранной роли критичны уведомления и подтверждение действий.'
+              : hasDeliveryObligation
+                ? 'Ключевая обязанность: для выбранной роли критично исполнение основной предметной обязанности.'
+                : obligations.length > 0
+                  ? 'Ключевая обязанность: для выбранной роли подтверждены прямые договорные обязанности.'
+                  : ''
+      : normalizedLanguage === 'it'
+        ? hasPaymentObligation && hasDeadlineObligation
+          ? 'Obbligo principale: per il ruolo selezionato sono critici i termini di pagamento e le scadenze collegate.'
+          : hasPaymentObligation
+            ? 'Obbligo principale: per il ruolo selezionato sono critici i termini di pagamento e regolamento.'
+            : hasDeadlineObligation
+              ? 'Obbligo principale: per il ruolo selezionato sono critiche le scadenze di esecuzione e notifica.'
+              : hasNoticeObligation
+                ? 'Obbligo principale: per il ruolo selezionato sono critiche le notifiche e le conferme operative.'
+                : hasDeliveryObligation
+                  ? 'Obbligo principale: per il ruolo selezionato e critica l esecuzione della prestazione principale.'
+                  : obligations.length > 0
+                    ? 'Obbligo principale: per il ruolo selezionato risultano obblighi contrattuali espressi.'
+                    : ''
+        : normalizedLanguage === 'fr'
+          ? hasPaymentObligation && hasDeadlineObligation
+            ? 'Obligation principale: pour le role choisi, les conditions de paiement et les delais associes sont critiques.'
+            : hasPaymentObligation
+              ? 'Obligation principale: pour le role choisi, les conditions de paiement et de reglement sont critiques.'
+              : hasDeadlineObligation
+                ? 'Obligation principale: pour le role choisi, les delais d execution et de notification sont critiques.'
+                : hasNoticeObligation
+                  ? 'Obligation principale: pour le role choisi, les notifications et confirmations sont critiques.'
+                  : hasDeliveryObligation
+                    ? 'Obligation principale: pour le role choisi, l execution de la prestation principale est critique.'
+                    : obligations.length > 0
+                      ? 'Obligation principale: des obligations contractuelles explicites ont ete relevees pour le role choisi.'
+                      : ''
+          : hasPaymentObligation && hasDeadlineObligation
+            ? 'Key obligation: payment conditions and linked deadlines are critical for the selected role.'
+            : hasPaymentObligation
+              ? 'Key obligation: payment and settlement terms are critical for the selected role.'
+              : hasDeadlineObligation
+                ? 'Key obligation: performance deadlines and notice duties are critical for the selected role.'
+                : hasNoticeObligation
+                  ? 'Key obligation: notice and confirmation duties are critical for the selected role.'
+                  : hasDeliveryObligation
+                    ? 'Key obligation: performance of the core contractual duty is critical for the selected role.'
+                    : obligations.length > 0
+                      ? 'Key obligation: explicit contractual duties were identified for the selected role.'
+                      : '';
 
   if (normalizedLanguage === 'ru') {
     const parts = [
-      `Для роли "${selectedRole}" найдено ${obligations.length} значимых обязанностей в ${clausesCount} пунктах договора.`,
+      `Для роли "${roleLabel}" найдено ${obligations.length} значимых обязанностей в ${clausesCount} пунктах договора.`,
     ];
-    if (normalizedPrimaryObligation) {
-      parts.push(`Ключевая обязанность: ${normalizedPrimaryObligation}`);
+    if (primaryObligationInsight) {
+      parts.push(primaryObligationInsight);
     }
     if (primaryRisk) {
       parts.push(`Главный риск: ${primaryRisk.title}.`);
@@ -3945,10 +4012,10 @@ const buildRoleFocusedShortDescription = (
 
   if (normalizedLanguage === 'it') {
     const parts = [
-      `Per il ruolo "${selectedRole}" sono stati trovati ${obligations.length} obblighi rilevanti in ${clausesCount} clausole.`,
+      `Per il ruolo "${roleLabel}" sono stati trovati ${obligations.length} obblighi rilevanti in ${clausesCount} clausole.`,
     ];
-    if (normalizedPrimaryObligation) {
-      parts.push(`Obbligo principale: ${normalizedPrimaryObligation}`);
+    if (primaryObligationInsight) {
+      parts.push(primaryObligationInsight);
     }
     if (primaryRisk) {
       parts.push(`Rischio principale: ${primaryRisk.title}.`);
@@ -3958,10 +4025,10 @@ const buildRoleFocusedShortDescription = (
 
   if (normalizedLanguage === 'fr') {
     const parts = [
-      `Pour le role "${selectedRole}", ${obligations.length} obligations importantes ont ete detectees dans ${clausesCount} clauses.`,
+      `Pour le role "${roleLabel}", ${obligations.length} obligations importantes ont ete detectees dans ${clausesCount} clauses.`,
     ];
-    if (normalizedPrimaryObligation) {
-      parts.push(`Obligation principale: ${normalizedPrimaryObligation}`);
+    if (primaryObligationInsight) {
+      parts.push(primaryObligationInsight);
     }
     if (primaryRisk) {
       parts.push(`Risque principal: ${primaryRisk.title}.`);
@@ -3970,10 +4037,10 @@ const buildRoleFocusedShortDescription = (
   }
 
   const parts = [
-    `For the "${selectedRole}" role, ${obligations.length} relevant obligations were found across ${clausesCount} clauses.`,
+    `For the "${roleLabel}" role, ${obligations.length} relevant obligations were found across ${clausesCount} clauses.`,
   ];
-  if (normalizedPrimaryObligation) {
-    parts.push(`Key obligation: ${normalizedPrimaryObligation}`);
+  if (primaryObligationInsight) {
+    parts.push(primaryObligationInsight);
   }
   if (primaryRisk) {
     parts.push(`Main risk: ${primaryRisk.title}.`);

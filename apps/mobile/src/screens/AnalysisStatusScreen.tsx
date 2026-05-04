@@ -11,6 +11,7 @@ import { ScreenShell } from '../components/layout/ScreenShell';
 import { appConfig } from '../config/appConfig';
 import { useAppLanguage } from '../i18n/LanguageProvider';
 import type { RootStackParamList } from '../navigation/types';
+import { localizeRoleLabel } from '../roles/rolePresets';
 import { colors, radius, shadow, spacing, typography } from '../theme/tokens';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'AnalysisStatus'>;
@@ -161,6 +162,7 @@ export const AnalysisStatusScreen = ({ navigation, route }: Props): JSX.Element 
       timeStyle: 'short',
     });
   }, [language, status?.updatedAt]);
+  const displayRole = useMemo(() => localizeRoleLabel(selectedRole, language), [language, selectedRole]);
 
   const stageLabel = useMemo(
     () => getStageLabel(status?.stage, language),
@@ -288,7 +290,7 @@ export const AnalysisStatusScreen = ({ navigation, route }: Props): JSX.Element 
       <View style={styles.statusCard}>
         <View style={styles.sectionHeader}>
           <Text style={styles.sectionTitle}>{t('analysis.timelineTitle')}</Text>
-          <RoleBadge role={selectedRole} />
+          <RoleBadge role={displayRole} />
         </View>
 
         <View style={styles.timeline}>

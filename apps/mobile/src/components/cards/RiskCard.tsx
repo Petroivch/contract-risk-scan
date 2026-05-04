@@ -44,9 +44,12 @@ export const RiskCard = ({ item }: RiskCardProps): JSX.Element => {
       [
         ...splitStructuredText(primaryText || item.description, 8),
         ...splitStructuredText(inlineEvidenceItems.join(' '), 6),
-        ...(item.evidence ?? []).flatMap((entry) => splitStructuredText(entry, 8)),
       ],
     [inlineEvidenceItems, item.description, item.evidence, primaryText],
+  );
+  const detailEvidenceItems = useMemo(
+    () => (item.evidence ?? []).flatMap((entry) => splitStructuredText(entry, 8)),
+    [item.evidence],
   );
   const previewFindingItems = useMemo(() => buildPreviewItems(detailFindingItems, 3, 220), [detailFindingItems]);
   const detailRecommendationItems = useMemo(() => splitStructuredText(item.recommendation, 8), [item.recommendation]);
@@ -59,9 +62,10 @@ export const RiskCard = ({ item }: RiskCardProps): JSX.Element => {
     () => [
       { title: t('report.sections.whereFound'), items: clauseItems },
       { title: t('report.sections.riskPoints'), items: detailFindingItems },
+      { title: t('report.sections.contractFragment'), items: detailEvidenceItems },
       { title: t('report.sections.recommendationSteps'), items: detailRecommendationItems },
     ],
-    [clauseItems, detailFindingItems, detailRecommendationItems, t],
+    [clauseItems, detailEvidenceItems, detailFindingItems, detailRecommendationItems, t],
   );
 
   return (
@@ -100,6 +104,17 @@ export const RiskCard = ({ item }: RiskCardProps): JSX.Element => {
             </Text>
           ))}
         </View>
+
+        {detailEvidenceItems.length > 0 ? (
+          <View style={styles.sectionBox}>
+            <Text style={styles.sectionLabel}>{t('report.sections.contractFragment')}</Text>
+            {buildPreviewItems(detailEvidenceItems, 2, 220).map((value, index) => (
+              <Text key={`evidence-${index}`} style={styles.listItem}>
+                - {value}
+              </Text>
+            ))}
+          </View>
+        ) : null}
 
         <View style={styles.recommendationBox}>
           <Text style={styles.recommendationLabel}>{t('report.sections.recommendationSteps')}</Text>

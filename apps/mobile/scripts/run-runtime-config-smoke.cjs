@@ -50,10 +50,27 @@ withEnv(
   () => {
     const extra = resolveRuntimeExtra();
 
-    assert.equal(extra.API_TRANSPORT, 'http');
+    assert.equal(extra.API_TRANSPORT, 'local');
     assert.equal(extra.API_BASE_URL, '');
     assert.equal(extra.MAX_UPLOAD_FILE_MB, DEFAULT_EXTRA.MAX_UPLOAD_FILE_MB);
     assert.equal(extra.ENABLE_FILE_CACHE, false);
+    assert.doesNotThrow(() => validateRuntimeExtra(extra));
+    assert.doesNotThrow(() => buildExpoConfig());
+  },
+);
+
+withEnv(
+  {
+    API_BASE_URL: undefined,
+    EXPO_PUBLIC_API_BASE_URL: undefined,
+    API_TRANSPORT: 'http',
+    EXPO_PUBLIC_API_TRANSPORT: undefined,
+  },
+  () => {
+    const extra = resolveRuntimeExtra();
+
+    assert.equal(extra.API_TRANSPORT, 'http');
+    assert.equal(extra.API_BASE_URL, '');
     assert.throws(
       () => validateRuntimeExtra(extra),
       /API_TRANSPORT=http requires API_BASE_URL/,

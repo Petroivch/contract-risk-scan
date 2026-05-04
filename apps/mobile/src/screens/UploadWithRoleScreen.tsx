@@ -14,6 +14,12 @@ import { useConsent } from '../consent/ConsentGate';
 import { getTransportNotice } from '../consent/transportNotice';
 import { useAppLanguage } from '../i18n/LanguageProvider';
 import type { RootStackParamList } from '../navigation/types';
+import type { RolePresetId } from '../roles/rolePresets';
+import {
+  getPresetRoleLabel,
+  getPresetRoleOptions,
+  resolveConfiguredPresetRoleIds,
+} from '../roles/rolePresets';
 import { colors, radius, shadow, spacing, typography } from '../theme/tokens';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'UploadWithRole'>;
@@ -108,16 +114,26 @@ export const UploadWithRoleScreen = ({ navigation }: Props): JSX.Element => {
   const { currentTransport } = useConsent();
   const api = useApiClient();
 
+  const presetRoleIds = useMemo(
+    () => resolveConfiguredPresetRoleIds(appConfig.roles.presetTranslationKeys),
+    [],
+  );
   const presetRoles = useMemo(
-    () => appConfig.roles.presetTranslationKeys.map((translationKey) => t(translationKey)),
-    [t],
+    () => getPresetRoleOptions(presetRoleIds, language),
+    [language, presetRoleIds],
   );
 
-  const [selectedRole, setSelectedRole] = useState(presetRoles[0] ?? '');
+  const [selectedPresetRoleId, setSelectedPresetRoleId] = useState<RolePresetId | null>(
+    presetRoleIds[0] ?? null,
+  );
+  const [customRole, setCustomRole] = useState('');
   const [selectedFile, setSelectedFile] = useState<SelectedFileState | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [hasAuthorityAcknowledgement, setAuthorityAcknowledgement] = useState(false);
   const [hasMinimizationAcknowledgement, setMinimizationAcknowledgement] = useState(false);
+  const selectedRole = selectedPresetRoleId
+    ? getPresetRoleLabel(selectedPresetRoleId, language)
+    : customRole.trim();
 
   const requiresHttpAcknowledgement = currentTransport === 'http';
   const transportNotice = getTransportNotice(t, currentTransport);
@@ -237,7 +253,10 @@ export const UploadWithRoleScreen = ({ navigation }: Props): JSX.Element => {
         <EditableRoleDropdown
           value={selectedRole}
           presets={presetRoles}
-          onChange={setSelectedRole}
+          selectedPresetId={selectedPresetRoleId ?? undefined}
+          onSelectPreset={(presetRoleId) => setSelectedPresetRoleId(presetRoleId as RolePresetId)}
+          onChangeCustomValue={setCustomRole}
+          onSelectCustom={() => setSelectedPresetRoleId(null)}
           label={t('upload.roleLabel')}
           placeholder={t('upload.selectRole')}
           customPlaceholder={t('upload.customRolePlaceholder')}

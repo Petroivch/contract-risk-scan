@@ -449,9 +449,9 @@ const isClosingPunctuation = (value: string | undefined): boolean => {
   return Boolean(value && /[)\]},"'»“.!?:;%]/.test(value));
 };
 
-const collapseSpacedRussianLetters = (value: string): string => {
+const collapseSpacedLetterRuns = (value: string): string => {
   return value.replace(
-    /(^|[^0-9A-Za-zА-Яа-яЁё])([А-Яа-яЁё](?:\s+[А-Яа-яЁё]){2,})(?=[^0-9A-Za-zА-Яа-яЁё]|$)/g,
+    /(^|[^0-9A-Za-zÀ-ÖØ-öø-ÿА-Яа-яЁё])([A-Za-zÀ-ÖØ-öø-ÿА-Яа-яЁё](?:\s+[A-Za-zÀ-ÖØ-öø-ÿА-Яа-яЁё]){2,})(?=[^0-9A-Za-zÀ-ÖØ-öø-ÿА-Яа-яЁё]|$)/g,
     (_fullMatch, prefix: string, letters: string) => `${prefix}${letters.replace(/\s+/g, '')}`,
   );
 };
@@ -461,7 +461,7 @@ const repairPdfTextLayout = (value: string): string => {
     .replace(/([0-9A-Za-zА-Яа-яЁё])-\s*\n\s*(?=[0-9A-Za-zА-Яа-яЁё])/g, '$1')
     .replace(/([^\n])\n(?=\s*(?:[-*•▪‣◦]|\d+[.)]|[A-Za-zА-Яа-яЁё][.)])\s+)/g, '$1\n')
     .split('\n')
-    .map((line) => collapseSpacedRussianLetters(line))
+    .map((line) => collapseSpacedLetterRuns(line))
     .join('\n');
 };
 

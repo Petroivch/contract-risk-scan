@@ -3,6 +3,7 @@
 import { buildAnalysisArtifacts, buildDisputedClauses, segmentClauses } from './contractAnalysis';
 import { normalizeExtractedText } from './textNormalization';
 import { splitStructuredText } from '../components/report/reportText';
+import { getPresetRoleLabel, resolveConfiguredPresetRoleIds } from '../roles/rolePresets';
 
 const normalizedParagraphs = normalizeExtractedText('Line 1\r\n\r\nLine 2');
 assert.ok(normalizedParagraphs.includes('Line 1\n\nLine 2'));
@@ -54,6 +55,8 @@ assert.ok(
   analysis.disputedClauses.some((item) => item.whyDisputed.toLowerCase().includes('future agreement between the parties')),
 );
 assert.ok(analysis.disputedClauses.some((item) => item.whyDisputed.toLowerCase().includes('subjective timeline')));
+assert.deepEqual(resolveConfiguredPresetRoleIds(['roles.performer', 'roles.customer']), ['performer', 'customer']);
+assert.equal(getPresetRoleLabel('customer', 'fr'), 'Client');
 
 const russianAnalysis = buildAnalysisArtifacts({
   text: [
@@ -103,6 +106,23 @@ const contractorMissingAnalysis = buildAnalysisArtifacts({
 });
 
 assert.equal(contractorMissingAnalysis.summary.roleFound, false);
+
+const italianPresetRoleAnalysis = buildAnalysisArtifacts({
+  text: [
+    '1. Заказчик обязан оплатить услуги в течение 5 банковских дней.',
+    '2. Подрядчик обязан выполнить работы в течение 10 дней.',
+    '3. За просрочку Подрядчик уплачивает штраф 10% от цены договора.',
+  ].join('\n\n'),
+  fileName: 'it-role-localization.pdf',
+  selectedRole: 'Contraente',
+  language: 'it',
+  warnings: [],
+});
+
+assert.equal(italianPresetRoleAnalysis.summary.roleFound, true);
+assert.ok(italianPresetRoleAnalysis.summary.shortDescription.includes('Contraente'));
+assert.ok(!italianPresetRoleAnalysis.summary.shortDescription.includes('Подрядчик обязан'));
+assert.ok(italianPresetRoleAnalysis.risks.some((risk) => risk.title === 'Penali e sanzioni'));
 
 const beneficiaryAnalysis = buildAnalysisArtifacts({
   text: [

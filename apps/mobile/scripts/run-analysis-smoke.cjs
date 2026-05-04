@@ -4,7 +4,7 @@ const path = require('node:path');
 
 const root = path.resolve(__dirname, '..');
 const outputDir = path.join(root, '.tmp-analysis-smoke');
-const tscBin = path.join(root, 'node_modules', '.bin', process.platform === 'win32' ? 'tsc.cmd' : 'tsc');
+const tscBin = path.join(root, 'node_modules', 'typescript', 'bin', 'tsc');
 const smokeEntries = [
   path.join(root, 'src', 'analysis', 'contractAnalysis.smoke.ts'),
   path.join(root, 'src', 'analysis', 'fileTextExtraction.smoke.ts'),
@@ -32,7 +32,8 @@ const run = (command, args) => {
 fs.rmSync(outputDir, { recursive: true, force: true });
 
 try {
-  run(tscBin, [
+  run(process.execPath, [
+    tscBin,
     '--outDir',
     outputDir,
     '--module',

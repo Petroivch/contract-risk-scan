@@ -13,6 +13,7 @@ import { ScreenShell } from '../components/layout/ScreenShell';
 import { buildPreviewItems, splitStructuredText } from '../components/report/reportText';
 import { useAppLanguage } from '../i18n/LanguageProvider';
 import type { RootStackParamList } from '../navigation/types';
+import { localizeRoleLabel } from '../roles/rolePresets';
 import { colors, radius, shadow, spacing, typography } from '../theme/tokens';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Report'>;
@@ -22,6 +23,119 @@ const riskRank: Record<'low' | 'medium' | 'high', number> = {
   high: 0,
   medium: 1,
   low: 2,
+};
+
+const buildLocalizedObligationItem = (
+  value: string,
+  language: string,
+  roleLabel: string,
+): string => {
+  const normalized = value.toLowerCase();
+  const hasPayment =
+    /оплат|плат|invoice|payment|pay|pagament|reglement|paiement/.test(normalized);
+  const hasDeadline =
+    /срок|дн|deadline|term|entro|scadenz|delai|echeance/.test(normalized);
+  const hasNotice =
+    /уведом|notice|notify|inform|avvis|notifi/.test(normalized);
+  const hasDelivery =
+    /оказат|выполн|предостав|deliver|provide|perform|esegu|fornir|execut/.test(normalized);
+  const hasTrainingOrWork =
+    /образоват|обуч|трудов|training|study|education|formazion|lavor|formation|travail/.test(
+      normalized,
+    );
+
+  if (language === 'it') {
+    if (hasPayment && hasDeadline) {
+      return `Per il ruolo "${roleLabel}" sono stati individuati obblighi di pagamento con scadenze vincolanti.`;
+    }
+    if (hasPayment) {
+      return `Per il ruolo "${roleLabel}" sono stati individuati obblighi di pagamento e regolamento.`;
+    }
+    if (hasDeadline) {
+      return `Per il ruolo "${roleLabel}" sono stati individuati obblighi con termini di esecuzione vincolanti.`;
+    }
+    if (hasNotice) {
+      return `Per il ruolo "${roleLabel}" sono stati individuati obblighi di notifica e conferma.`;
+    }
+    if (hasTrainingOrWork) {
+      return `Per il ruolo "${roleLabel}" sono stati individuati obblighi di studio o lavoro direttamente previsti dal contratto.`;
+    }
+    if (hasDelivery) {
+      return `Per il ruolo "${roleLabel}" sono stati individuati obblighi di esecuzione della prestazione principale.`;
+    }
+    return `Per il ruolo "${roleLabel}" sono stati individuati obblighi contrattuali espliciti.`;
+  }
+
+  if (language === 'fr') {
+    if (hasPayment && hasDeadline) {
+      return `Pour le role "${roleLabel}", des obligations de paiement avec delais contraignants ont ete relevees.`;
+    }
+    if (hasPayment) {
+      return `Pour le role "${roleLabel}", des obligations de paiement et de reglement ont ete relevees.`;
+    }
+    if (hasDeadline) {
+      return `Pour le role "${roleLabel}", des obligations assorties de delais d execution ont ete relevees.`;
+    }
+    if (hasNotice) {
+      return `Pour le role "${roleLabel}", des obligations de notification et de confirmation ont ete relevees.`;
+    }
+    if (hasTrainingOrWork) {
+      return `Pour le role "${roleLabel}", des obligations directes d etude ou de travail ont ete relevees.`;
+    }
+    if (hasDelivery) {
+      return `Pour le role "${roleLabel}", des obligations d execution de la prestation principale ont ete relevees.`;
+    }
+    return `Pour le role "${roleLabel}", des obligations contractuelles explicites ont ete relevees.`;
+  }
+
+  if (language === 'en') {
+    if (hasPayment && hasDeadline) {
+      return `For the "${roleLabel}" role, payment obligations with binding deadlines were identified.`;
+    }
+    if (hasPayment) {
+      return `For the "${roleLabel}" role, payment and settlement obligations were identified.`;
+    }
+    if (hasDeadline) {
+      return `For the "${roleLabel}" role, obligations with binding performance deadlines were identified.`;
+    }
+    if (hasNotice) {
+      return `For the "${roleLabel}" role, notice and confirmation duties were identified.`;
+    }
+    if (hasTrainingOrWork) {
+      return `For the "${roleLabel}" role, direct study or work obligations were identified.`;
+    }
+    if (hasDelivery) {
+      return `For the "${roleLabel}" role, core service or delivery obligations were identified.`;
+    }
+    return `For the "${roleLabel}" role, explicit contractual duties were identified.`;
+  }
+
+  return value;
+};
+
+const buildObligationDisplayItems = (
+  items: string[],
+  language: string,
+  roleLabel: string,
+): string[] => {
+  if (language === 'ru') {
+    return items;
+  }
+
+  const seen = new Set<string>();
+  const localizedItems: string[] = [];
+
+  for (const item of items) {
+    const localizedItem = buildLocalizedObligationItem(item, language, roleLabel);
+    if (!localizedItem || seen.has(localizedItem)) {
+      continue;
+    }
+
+    seen.add(localizedItem);
+    localizedItems.push(localizedItem);
+  }
+
+  return localizedItems;
 };
 
 export const ReportScreen = ({ navigation, route }: Props): JSX.Element => {
@@ -109,11 +223,19 @@ export const ReportScreen = ({ navigation, route }: Props): JSX.Element => {
   const risksCount = report?.risks.length ?? 0;
   const disputedCount = report?.disputedClauses.length ?? 0;
   const summaryRole = report?.selectedRole ?? selectedRole ?? '';
+  const displayRole = useMemo(() => localizeRoleLabel(summaryRole, language), [language, summaryRole]);
 
   const summaryOverviewItems = useMemo(() => splitStructuredText(report?.summary.shortDescription ?? '', 12), [report?.summary.shortDescription]);
   const summaryOverviewPreviewItems = useMemo(() => buildPreviewItems(summaryOverviewItems, 3, 240), [summaryOverviewItems]);
   const summaryObligationItems = useMemo(() => report?.summary.obligationsForSelectedRole ?? [], [report?.summary.obligationsForSelectedRole]);
-  const summaryObligationPreviewItems = useMemo(() => buildPreviewItems(summaryObligationItems, 4, 240), [summaryObligationItems]);
+  const summaryObligationDisplayItems = useMemo(
+    () => buildObligationDisplayItems(summaryObligationItems, language, displayRole),
+    [displayRole, language, summaryObligationItems],
+  );
+  const summaryObligationPreviewItems = useMemo(
+    () => buildPreviewItems(summaryObligationDisplayItems, 4, 240),
+    [summaryObligationDisplayItems],
+  );
 
   const loadStateCopy = useMemo(() => {
     switch (language) {
@@ -150,17 +272,17 @@ export const ReportScreen = ({ navigation, route }: Props): JSX.Element => {
   }, [language]);
 
   const renderHighlightedSummaryText = (value: string): JSX.Element => {
-    if (!value || !summaryRole || !value.includes(summaryRole)) {
+    if (!value || !displayRole || !value.includes(displayRole)) {
       return <Text style={styles.summaryText}>{value}</Text>;
     }
 
-    const parts = value.split(summaryRole);
+    const parts = value.split(displayRole);
     return (
       <Text style={styles.summaryText}>
         {parts.map((part, index) => (
           <Fragment key={`${part}-${index}`}>
             {part}
-            {index < parts.length - 1 ? <Text style={styles.summaryRoleStrong}>{summaryRole}</Text> : null}
+            {index < parts.length - 1 ? <Text style={styles.summaryRoleStrong}>{displayRole}</Text> : null}
           </Fragment>
         ))}
       </Text>
@@ -229,7 +351,7 @@ export const ReportScreen = ({ navigation, route }: Props): JSX.Element => {
         </ScrollView>
         <Pressable
           style={styles.detailsButton}
-          onPress={() => openSummaryDetail(t('report.obligationsTitle'), summaryObligationItems, report?.selectedRole)}
+          onPress={() => openSummaryDetail(t('report.obligationsTitle'), summaryObligationDisplayItems, displayRole)}
         >
           <Text style={styles.detailsButtonText}>{t('common.details')}</Text>
         </Pressable>
@@ -289,7 +411,7 @@ export const ReportScreen = ({ navigation, route }: Props): JSX.Element => {
             <StatusChip label={t('report.generatedAtLabel', { value: generatedAtLabel })} tone="neutral" />
           </View>
 
-          <RoleBadge role={report.selectedRole} />
+          <RoleBadge role={displayRole} />
         </View>
 
         <View style={styles.statsRow}>

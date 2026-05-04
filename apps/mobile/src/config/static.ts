@@ -10,7 +10,7 @@ export const DEFAULT_ROLE_PRESET_KEYS = [
 
 export const CONFIG_DEFAULTS = {
   apiBaseUrl: '',
-  apiTransport: 'http',
+  apiTransport: 'local',
   apiTimeoutMs: 15000,
   statusPollIntervalMs: 2000,
   maxUploadFileMb: 25,
