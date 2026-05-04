@@ -13,9 +13,9 @@
     "lint": "eslint App.tsx src --ext .ts,.tsx",
     "typecheck": "tsc --noEmit",
     "smoke:runtime-config": "node scripts/run-runtime-config-smoke.cjs",
-    "smoke:expo": "expo config --type public",
+    "smoke:expo": "node scripts/run-expo-config-smoke.cjs",
     "smoke:analysis": "node scripts/run-analysis-smoke.cjs",
-    "smoke": "npm run smoke:runtime-config && npm run smoke:expo && npm run smoke:analysis",
+    "smoke": "npm run smoke:runtime-config && npm run smoke:expo && node scripts/run-i18n-smoke.cjs && npm run smoke:analysis",
     "format": "prettier --write ."
   },
   "dependencies": {

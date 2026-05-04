@@ -14,12 +14,12 @@ const configuredApiTransport = readString(
   CONFIG_DEFAULTS.apiTransport,
 ) as ApiTransport;
 
-export const getEffectiveApiTransport = (): ApiTransport => {
+export const getApiConfigurationError = (): string | undefined => {
   if (configuredApiTransport === 'http' && apiBaseUrl.trim().length === 0) {
-    return 'local';
+    return 'Backend analysis is configured, but API_BASE_URL is empty. Set API_BASE_URL for HTTP transport or rebuild with API_TRANSPORT=local for an explicit offline-local app.';
   }
 
-  return configuredApiTransport;
+  return undefined;
 };
 
 export const appConfig = {
@@ -31,7 +31,8 @@ export const appConfig = {
   api: {
     baseUrl: apiBaseUrl,
     transport: configuredApiTransport,
-    effectiveTransport: getEffectiveApiTransport(),
+    effectiveTransport: configuredApiTransport,
+    configurationError: getApiConfigurationError(),
     timeoutMs: readNumber('API_TIMEOUT_MS', CONFIG_DEFAULTS.apiTimeoutMs),
     statusPollIntervalMs: readNumber(
       'STATUS_POLL_INTERVAL_MS',

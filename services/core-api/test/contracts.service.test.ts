@@ -1,8 +1,13 @@
 import * as assert from 'node:assert/strict';
 import { SupportedLocale } from '../src/common/i18n/supported-locale.enum';
+import { JobOrchestrationService } from '../src/common/job-orchestration/job-orchestration.service';
 import { JobStatus } from '../src/common/job-orchestration/job-status.enum';
 import { UPLOAD_POLICY } from '../src/common/policies/upload.policy';
-import { AnalysisEngineOutput } from '../src/contracts/analysis-engine.client';
+import {
+  AnalysisEngineClient,
+  AnalysisEngineOutput
+} from '../src/contracts/analysis-engine.client';
+import { ContractsRepository } from '../src/contracts/contracts.repository';
 import { ContractsService } from '../src/contracts/contracts.service';
 import { StoredContract } from '../src/contracts/stored-contract.type';
 
@@ -114,3 +119,121 @@ assert.deepEqual(UPLOAD_POLICY.ALLOWED_MIME_TYPES_DEFAULT, [
   'text/plain',
 ]);
 assert.equal(UPLOAD_POLICY.ALLOWED_MIME_TYPES_DEFAULT.includes('application/msword'), false);
+assert.deepEqual(UPLOAD_POLICY.REJECTED_MIME_TYPES_DEFAULT, ['application/msword']);
+
+void (async () => {
+  const lifecycleRepository = new ContractsRepository();
+  const lifecycleService = new ContractsService(
+    new JobOrchestrationService(),
+    {} as never,
+    lifecycleRepository,
+    {} as never
+  );
+  const uploadedLifecycleContract = await lifecycleRepository.create({
+    contract: {
+      ...contract,
+      id: 'ctr_lifecycle_success',
+      job: {
+        contractId: 'ctr_lifecycle_success',
+        status: JobStatus.Uploaded,
+        updatedAt: '2026-04-29T10:05:00.000Z'
+      }
+    },
+    file: {
+      originalname: 'service-agreement.txt',
+      mimetype: 'text/plain',
+      size: 19,
+      buffer: Buffer.from('contract text secret')
+    } as Express.Multer.File
+  });
+  const analyzingLifecycleContract = await lifecycleRepository.save({
+    ...uploadedLifecycleContract,
+    job: {
+      ...uploadedLifecycleContract.job,
+      status: JobStatus.Analyzing
+    }
+  });
+
+  assert.equal(lifecycleRepository.hasStoredFileForTesting('ctr_lifecycle_success'), true);
+  await (
+    lifecycleService as unknown as {
+      completeContract: (
+        contract: StoredContract,
+        remoteResult: AnalysisEngineOutput
+      ) => Promise<StoredContract>;
+    }
+  ).completeContract(analyzingLifecycleContract, remoteResult);
+  assert.equal(lifecycleRepository.hasStoredFileForTesting('ctr_lifecycle_success'), false);
+
+  const failedLifecycleContract = await lifecycleRepository.create({
+    contract: {
+      ...contract,
+      id: 'ctr_lifecycle_failed',
+      job: {
+        contractId: 'ctr_lifecycle_failed',
+        status: JobStatus.Uploaded,
+        updatedAt: '2026-04-29T10:05:00.000Z'
+      }
+    },
+    file: {
+      originalname: 'service-agreement.txt',
+      mimetype: 'text/plain',
+      size: 19,
+      buffer: Buffer.from('contract text secret')
+    } as Express.Multer.File
+  });
+
+  assert.equal(lifecycleRepository.hasStoredFileForTesting('ctr_lifecycle_failed'), true);
+  await (
+    lifecycleService as unknown as {
+      markFailed: (contract: StoredContract, errorMessage: string) => Promise<StoredContract>;
+    }
+  ).markFailed(failedLifecycleContract, 'analysis failed');
+  assert.equal(lifecycleRepository.hasStoredFileForTesting('ctr_lifecycle_failed'), false);
+
+  const originalFetch = globalThis.fetch;
+  globalThis.fetch = (async () =>
+    ({
+      ok: false,
+      status: 500,
+      statusText: 'Internal Server Error',
+      json: async () => ({ message: 'raw secret document text' }),
+      text: async () => 'raw secret document text'
+    }) as Response) as typeof fetch;
+
+  try {
+    const redactionClient = new AnalysisEngineClient({
+      get: (key: string) => {
+        const values: Record<string, unknown> = {
+          'analysisEngine.enabled': true,
+          'analysisEngine.baseUrl': 'http://analysis-engine.local/',
+          'analysisEngine.requestTimeoutMs': 100
+        };
+        return values[key];
+      }
+    } as never);
+
+    await assert.rejects(
+      () =>
+        redactionClient.runAnalysis({
+          contractId: 'ctr_redaction',
+          documentName: 'secret.txt',
+          role: 'contractor',
+          locale: SupportedLocale.EN,
+          documentText: 'raw secret document text',
+          mimeType: 'text/plain'
+        }),
+      (error: unknown) => {
+        assert.ok(error instanceof Error);
+        assert.match(error.message, /analysis-engine request failed \(500 Internal Server Error\)/);
+        assert.equal(error.message.includes('raw secret document text'), false);
+        return true;
+      }
+    );
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+})().catch((error: unknown) => {
+  console.error(error);
+  process.exitCode = 1;
+});

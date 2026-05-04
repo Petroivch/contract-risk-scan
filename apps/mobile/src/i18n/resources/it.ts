@@ -24,8 +24,21 @@
   },
   privacy: {
     noticeKicker: 'Privacy',
+    noticeTitle: 'Come vengono gestiti i documenti in questa app',
+    noticeText:
+      'Il contratto selezionato, il ruolo scelto e la lingua vengono usati solo per eseguire il flusso di analisi richiesto. L app conserva anche su questo dispositivo una registrazione del consenso, cosi l avviso puo essere mostrato di nuovo se cambiano il trasporto o la versione della policy.',
     storageTitle: 'File temporanei',
     storageText: 'Il documento selezionato viene usato per la verifica corrente. I file temporanei creati durante la lettura possono essere cancellati nelle impostazioni.',
+    transportTitle: 'Trasporto di analisi corrente',
+    transportLocalLabel: 'Analisi sul dispositivo',
+    transportLocalText:
+      'Questa configurazione esegue l analisi sul dispositivo. Durante la lettura del file possono comunque essere create copie temporanee locali.',
+    transportStubLabel: 'Flusso locale stub',
+    transportStubText:
+      'Questa configurazione usa il flusso stub locale nell app client. Da questa schermata non avvia un caricamento remoto.',
+    transportHttpLabel: 'Caricamento HTTP remoto',
+    transportHttpText:
+      'Questa configurazione invia il file selezionato, il ruolo scelto e la lingua al server configurato quando avvii l analisi.',
   },
   legal: {
     noticeKicker: 'Avviso legale',
@@ -36,6 +49,8 @@
     kicker: 'Policy dell app',
     title: 'Conferma le regole prima di iniziare',
     body: 'L accesso all app e disponibile solo dopo l accettazione delle regole d uso.',
+    recordNotice:
+      'L accettazione salva su questo dispositivo una registrazione con versione dell avviso, ora di accettazione, modalita di trasporto e locale corrente.',
     ruleLegal: 'L app non fornisce un parere legale e non sostituisce un avvocato.',
     ruleData: 'Il documento selezionato viene usato per l analisi; durante la lettura possono essere create copie temporanee.',
     ruleAccuracy: 'L estrazione del testo e la ricerca dei rischi possono essere incomplete, soprattutto per scansioni e PDF riconosciuti male.',
@@ -59,6 +74,11 @@
     fileStepKicker: 'Fase 2',
     fileStepTitle: 'Carica il contratto',
     fileStepSubtitle: 'Dopo aver scelto il ruolo, aggiungi il file e avvia l analisi locale.',
+    fileStepSubtitleLocal: 'Dopo aver scelto il ruolo, aggiungi il file e avvia l analisi sul dispositivo.',
+    fileStepSubtitleStub:
+      'Dopo aver scelto il ruolo, aggiungi il file e avvia il flusso locale stub.',
+    fileStepSubtitleHttp:
+      'Dopo aver scelto il ruolo, aggiungi il file e invialo al server configurato per l analisi.',
     roleLabel: 'Il tuo ruolo nel contratto',
     roleSelectionChip: 'Scelta ruolo',
     selectRole: 'Seleziona ruolo',
@@ -76,6 +96,17 @@
     pickAnotherFile: 'Scegli un altro file',
     readyToAnalyze: 'Pronto per l analisi',
     submitting: 'Avvio analisi...',
+    httpReviewKicker: 'Fase 3',
+    httpReviewTitle: 'Conferma il caricamento remoto',
+    httpReviewSubtitle:
+      'Il trasporto HTTP e attivo. Conferma entrambe le dichiarazioni prima di inviare il documento al server configurato.',
+    httpReviewPending: 'Richiesto',
+    httpReviewComplete: 'Confermato',
+    httpAuthorityAcknowledgement:
+      'Ho l autorizzazione a caricare questo documento e a verificarlo in questa app.',
+    httpMinimizationAcknowledgement:
+      'Ho rimosso o incluso consapevolmente solo i dati necessari per questa verifica.',
+    httpRequiredHint: 'Entrambe le conferme sono richieste prima di avviare il caricamento HTTP.',
     unsupportedFormatTitle: 'Formato non supportato',
     unsupportedFormatMessage: 'In questo flusso sono supportati solo PDF, DOCX e TXT. Converti i file .doc in DOCX. I PDF scansionati possono produrre un estrazione di qualita inferiore.',
     startFailedTitle: 'Impossibile avviare l analisi',
@@ -152,6 +183,25 @@
     title: 'Impostazioni',
     subtitle: 'Privacy e pulizia dei file temporanei.',
     openSettings: 'Privacy e dati',
+    consentTitle: 'Consenso',
+    consentRecordTitle: 'Registrazione del consenso',
+    consentRecordText:
+      'Questo dispositivo conserva l ultima accettazione dell avviso, cosi l app puo richiedere di nuovo il consenso se cambiano versione o trasporto.',
+    consentStatusLabel: 'Stato',
+    consentStatusActive: 'Accettato',
+    consentStatusNone: 'Non disponibile',
+    consentVersionLabel: 'Versione avviso',
+    consentTransportLabel: 'Trasporto',
+    consentLocaleLabel: 'Locale',
+    consentAcceptedAtLabel: 'Accettato il',
+    currentRequirementHint: 'Requisito corrente: versione {{version}}, trasporto {{transport}}.',
+    withdrawConsent: 'Revoca consenso',
+    withdrawConsentHint:
+      'Cancella la registrazione del consenso su questo dispositivo e torna alla schermata dell avviso. I file temporanei sono gestiti separatamente sotto.',
+    withdrawConsentTitle: 'Revocare il consenso?',
+    withdrawConsentMessage:
+      'Rimuove la registrazione del consenso per questo dispositivo e torna alla schermata dell avviso.',
+    withdrawConsentAction: 'Revoca',
     languageTitle: 'Lingua app',
     languageSubtitle: 'Le modifiche si applicano subito senza riavvio.',
     languageActive: 'Lingua attiva',

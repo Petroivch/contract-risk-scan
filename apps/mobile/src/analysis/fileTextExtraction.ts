@@ -1239,16 +1239,6 @@ const extractReadableTextFromBytes = (bytes: Uint8Array): string => {
   return normalizeText(bestText);
 };
 
-const extractLegacyWordText = async (uri: string): Promise<string> => {
-  const bytes = await readFileBytes(uri);
-
-  if (isZipBytes(bytes)) {
-    return extractDocxTextFromBytes(bytes);
-  }
-
-  return extractReadableTextFromBytes(bytes);
-};
-
 const extractXmlAttribute = (xml: string, pattern: RegExp): string => {
   const match = xml.match(pattern);
   return decodeXmlEntities((match?.[1] ?? match?.[2] ?? '').trim());
@@ -1724,15 +1714,7 @@ export const extractContractText = async (
   }
 
   if (mimeType === 'application/msword' || fileName.endsWith('.doc')) {
-    try {
-      const text = await extractLegacyWordText(payload.localFileUri);
-      return {
-        text,
-        warnings: text ? [] : [warningsDictionary.legacyDoc],
-      };
-    } catch {
-      return { text: '', warnings: [warningsDictionary.legacyDoc] };
-    }
+    return { text: '', warnings: [warningsDictionary.legacyDoc] };
   }
 
   if (mimeType === 'application/pdf' || fileName.endsWith('.pdf')) {

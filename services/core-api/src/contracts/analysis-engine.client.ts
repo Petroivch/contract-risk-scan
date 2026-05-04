@@ -241,9 +241,8 @@ export class AnalysisEngineClient {
       });
 
       if (!response.ok) {
-        const errorText = await response.text();
         throw new AnalysisEngineUnavailableError(
-          `analysis-engine request failed (${response.status}): ${errorText || response.statusText}`
+          `analysis-engine request failed (${response.status} ${response.statusText || 'HTTP error'})`
         );
       }
 

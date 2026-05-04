@@ -191,8 +191,12 @@ export const UploadWithRoleScreen = ({ navigation }: Props): JSX.Element => {
         analysisId,
         selectedRole,
       });
-    } catch {
-      Alert.alert(t('upload.startFailedTitle'), t('upload.startFailedMessage'));
+    } catch (error) {
+      const message =
+        error instanceof Error && error.message.trim()
+          ? error.message
+          : t('upload.startFailedMessage');
+      Alert.alert(t('upload.startFailedTitle'), message);
     } finally {
       setSubmitting(false);
     }
