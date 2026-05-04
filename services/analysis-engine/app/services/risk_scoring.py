@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass
+from math import sqrt
 
 from app.config.models import RiskRuleConfig, RoleEscalationEntryConfig
 from app.config.runtime import get_runtime_config
@@ -41,6 +42,16 @@ class ClauseFeatures:
     tokens: set[str]
     detected_roles: set[str]
     obligation_markers: list[str]
+    entity_markers: set[str]
+    embedding: dict[str, float]
+
+
+@dataclass(slots=True)
+class RiskTemplate:
+    text: str
+    tokens: set[str]
+    entity_markers: set[str]
+    embedding: dict[str, float]
 
 
 @dataclass(slots=True)
@@ -65,6 +76,48 @@ class RiskScoringService:
         self._language_behavior = runtime_config.language_behavior
         self._config = runtime_config.risk_scoring
         self._disputed_clause_detector = DisputedClauseDetector()
+        self._semantic_stopwords = {
+            "the",
+            "and",
+            "or",
+            "for",
+            "with",
+            "without",
+            "may",
+            "shall",
+            "must",
+            "this",
+            "that",
+            "contract",
+            "clause",
+            "selected",
+            "role",
+            "risk",
+            "create",
+            "checked",
+            "against",
+            "context",
+            "review",
+            "manually",
+            "clarify",
+            "obligations",
+            "limits",
+            "remedies",
+            "before",
+            "signing",
+        }
+        self._semantic_anchor_noise = {
+            "unilateral",
+            "unilaterally",
+            "without",
+            "approval",
+            "deadline",
+            "deadlines",
+            "delay",
+            "days",
+            "term",
+            "period",
+        }
         self._obligation_markers = (
             "must",
             "shall",
@@ -75,6 +128,36 @@ class RiskScoringService:
             "liable",
             "responsible",
         )
+        self._semantic_expansions = {
+            "payment": {
+                "pay",
+                "paid",
+                "invoice",
+                "settlement",
+                "transfer",
+                "prepayment",
+                "advance",
+                "fee",
+            },
+            "sanction": {
+                "penalty",
+                "penalties",
+                "fine",
+                "fines",
+                "sanction",
+                "liquidated",
+                "damages",
+                "late",
+                "fee",
+                "forfeit",
+            },
+            "deadline": {"deadline", "term", "period", "days", "delay", "late", "overdue"},
+            "discretion": {"sole", "discretion", "unilateral", "may", "without", "approval"},
+            "acceptance": {"acceptance", "accept", "accepted", "act", "defect", "quality"},
+            "termination": {"terminate", "termination", "cancel", "withdraw", "refuse"},
+            "liability": {"liable", "liability", "damages", "losses", "indemnity", "cap"},
+            "security": {"security", "deposit", "guarantee", "collateral", "retention"},
+        }
 
     def score(
         self,
@@ -125,7 +208,12 @@ class RiskScoringService:
                 if dedupe_key in seen_pairs:
                     continue
 
-                severity, escalation_reason = self._escalate_severity(rule, canonical_role, contract_type)
+                severity, escalation_reason = self._escalate_severity(
+                    rule,
+                    canonical_role,
+                    contract_type,
+                    resolved_language,
+                )
                 if self._should_skip_risk(rule, canonical_role, severity, combined_text):
                     continue
 
@@ -137,7 +225,9 @@ class RiskScoringService:
                 )
                 description = resolve_localized_text(rule.description, resolved_language)
                 if match.excerpt and match.excerpt not in description:
-                    description = f"{description} Найденный фрагмент: {match.excerpt}"
+                    description = (
+                        f"{description} {self._localized_evidence_prefix(resolved_language)} {match.excerpt}"
+                    )
 
                 risks_with_rank.append(
                     RankedRiskCandidate(
@@ -241,7 +331,7 @@ class RiskScoringService:
     def _build_clause_features(self, clause: ClauseSegment) -> ClauseFeatures:
         normalized_text = normalize_contract_text(clause.text)
         lowered_text = normalized_text.casefold()
-        tokens = set(self._tokenize(normalized_text))
+        tokens = set(self._filter_semantic_tokens(self._tokenize(normalized_text)))
         return ClauseFeatures(
             clause_id=clause.clause_id,
             raw_text=clause.text,
@@ -250,6 +340,8 @@ class RiskScoringService:
             tokens=tokens,
             detected_roles={role.canonical_role for role in extract_roles_from_text(normalized_text)},
             obligation_markers=[marker for marker in self._obligation_markers if marker in lowered_text],
+            entity_markers=self._extract_entity_markers(lowered_text, tokens),
+            embedding=self._embed_text(lowered_text),
         )
 
     def _hybrid_match_rule(
@@ -263,7 +355,9 @@ class RiskScoringService:
         guardrail_by_clause: dict[str | None, RuleMatch] = {
             match.clause_id: match for match in guardrail_matches
         }
-        semantic_terms = self._rule_semantic_terms(rule)
+        risk_template = self._build_risk_template(rule)
+        semantic_terms = sorted(risk_template.tokens, key=len, reverse=True)
+        semantic_available = bool(risk_template.embedding) and any(feature.embedding for feature in clause_features)
         matches: list[HybridMatch] = []
 
         if not clause_features and guardrail_matches:
@@ -294,20 +388,60 @@ class RiskScoringService:
             source_has_roles = bool(feature.detected_roles)
             term_score = len(matched_terms) / max(1, min(len(semantic_terms), 6))
             pattern_score = len(matched_patterns) / max(1, len(self._rule_patterns(rule)))
+            entity_score = len(feature.entity_markers & risk_template.entity_markers) / max(
+                1,
+                len(risk_template.entity_markers),
+            )
+            semantic_score = (
+                self._cosine_similarity(feature.embedding, risk_template.embedding)
+                if semantic_available
+                else 0.0
+            )
+            shared_entities = feature.entity_markers & risk_template.entity_markers
+            payment_sanction_guardrail = self._is_payment_sanction_guardrail(rule, feature)
+            semantic_evidence = (
+                semantic_score >= 0.28
+                and len(matched_terms) >= 2
+                and bool(shared_entities)
+            )
             retrieval_score = min(
                 1.0,
-                term_score * 0.55
-                + pattern_score * 0.3
+                (semantic_score * 0.55 if semantic_available else term_score * 0.55)
+                + term_score * 0.18
+                + entity_score * 0.17
+                + pattern_score * 0.22
                 + (0.1 if feature.obligation_markers else 0.0)
                 + (0.1 if role_mentioned else 0.0),
             )
+            role_rerank = 0.0
+            if role_mentioned:
+                role_rerank += 0.1
+            elif selected_role_present and source_has_roles:
+                role_rerank -= 0.08
+
+            guardrail_boost = 0.22 if guardrail is not None else 0.0
+            if payment_sanction_guardrail:
+                guardrail_boost = max(guardrail_boost, 0.24)
+                matched_terms = sorted({*matched_terms, "payment_sanction"})
+
             classifier_score = min(
                 1.0,
                 retrieval_score
-                + (0.22 if guardrail is not None else 0.0)
+                + guardrail_boost
                 + (0.08 if matched_patterns else 0.0)
-                + (0.05 if source_has_roles and not selected_role_present else 0.0),
+                + (0.05 if source_has_roles and not selected_role_present else 0.0)
+                + role_rerank,
             )
+
+            has_regex_evidence = guardrail is not None or bool(matched_patterns)
+            has_semantic_anchor = self._has_semantic_anchor(rule, matched_terms)
+            if not (
+                has_regex_evidence
+                or payment_sanction_guardrail
+                or semantic_evidence
+                or has_semantic_anchor
+            ):
+                continue
 
             if classifier_score < 0.42 and guardrail is None:
                 continue
@@ -323,7 +457,11 @@ class RiskScoringService:
                     classifier_score=round(max(classifier_score, 0.45 if guardrail else classifier_score), 4),
                     role_mentioned=role_mentioned,
                     source_has_roles=source_has_roles,
-                    guardrails=["legacy_match"] if guardrail is not None else [],
+                    guardrails=self._build_guardrail_labels(
+                        guardrail=guardrail,
+                        semantic_available=semantic_available,
+                        payment_sanction=payment_sanction_guardrail,
+                    ),
                 )
             )
 
@@ -360,6 +498,130 @@ class RiskScoringService:
         if not terms:
             terms.update(self._tokenize(rule.id.replace("_", " ")))
         return sorted(terms, key=len, reverse=True)
+
+    def _build_risk_template(self, rule: RiskRuleConfig) -> RiskTemplate:
+        localized_parts: list[str] = [rule.id.replace("_", " ")]
+        localized_parts.extend(rule.keywords)
+        for localized_map in (rule.title, rule.description, rule.mitigation):
+            localized_parts.extend(value for value in localized_map.values() if value)
+        if rule.detection_logic is not None:
+            localized_parts.extend(self._rule_patterns(rule))
+
+        template_text = " ".join(localized_parts).casefold()
+        tokens = set(self._filter_semantic_tokens(self._tokenize(template_text)))
+        entity_markers = self._extract_entity_markers(template_text, tokens)
+        expanded_text = " ".join([template_text, *entity_markers, *tokens])
+        return RiskTemplate(
+            text=template_text,
+            tokens=tokens,
+            entity_markers=entity_markers,
+            embedding=self._embed_text(expanded_text),
+        )
+
+    def _has_semantic_anchor(self, rule: RiskRuleConfig, matched_terms: list[str]) -> bool:
+        anchor_terms = self._semantic_anchor_terms(rule)
+        return bool(anchor_terms & set(matched_terms))
+
+    def _semantic_anchor_terms(self, rule: RiskRuleConfig) -> set[str]:
+        raw_parts = [rule.id.replace("_", " "), *rule.keywords, *self._rule_patterns(rule)]
+        tokens = set(self._filter_semantic_tokens(self._tokenize(" ".join(raw_parts))))
+        return {token for token in tokens if token not in self._semantic_anchor_noise}
+
+    def _extract_entity_markers(self, text: str, tokens: set[str]) -> set[str]:
+        markers: set[str] = set()
+        marker_patterns = {
+            "money": r"[$€£₽]|\b(?:rub|eur|usd|amount|price|fee|cost|payment|invoice)\b",
+            "percent": r"\d+(?:[.,]\d+)?\s*%",
+            "deadline": r"\b\d{1,3}\s+(?:business\s+)?days?\b|\b(?:deadline|delay|overdue|period|term)\b",
+            "payment": r"\b(?:pay|paid|payment|invoice|prepayment|advance|settlement|transfer)\b",
+            "sanction": r"\b(?:penalty|penalties|fine|fines|sanction|liquidated\s+damages|late\s+fee|forfeit)\b",
+            "discretion": r"\b(?:sole\s+discretion|unilateral|may|without\s+approval|at\s+any\s+time)\b",
+            "acceptance": r"\b(?:acceptance|accept|accepted|quality|defect|signed\s+act)\b",
+            "termination": r"\b(?:terminate|termination|cancel|withdraw|refuse)\b",
+            "liability": r"\b(?:liable|liability|damages|losses|indemnity|cap|uncapped)\b",
+            "security": r"\b(?:security|deposit|guarantee|collateral|retention)\b",
+        }
+        for marker, pattern in marker_patterns.items():
+            if re.search(pattern, text, flags=re.IGNORECASE):
+                markers.add(marker)
+
+        for marker, expansion_tokens in self._semantic_expansions.items():
+            if tokens & expansion_tokens:
+                markers.add(marker)
+
+        return markers
+
+    def _embed_text(self, text: str) -> dict[str, float]:
+        tokens = self._filter_semantic_tokens(self._tokenize(text))
+        if not tokens:
+            return {}
+
+        vector: dict[str, float] = {}
+        for token in tokens:
+            normalized = self._normalize_semantic_token(token)
+            if not normalized:
+                continue
+            vector[normalized] = vector.get(normalized, 0.0) + 1.0
+            for concept, expansion_tokens in self._semantic_expansions.items():
+                if normalized in expansion_tokens:
+                    vector[f"concept:{concept}"] = vector.get(f"concept:{concept}", 0.0) + 1.3
+            for index in range(max(0, len(normalized) - 3)):
+                gram = normalized[index : index + 4]
+                vector[f"gram:{gram}"] = vector.get(f"gram:{gram}", 0.0) + 0.12
+
+        magnitude = sqrt(sum(weight * weight for weight in vector.values()))
+        if magnitude <= 0:
+            return {}
+        return {key: value / magnitude for key, value in vector.items()}
+
+    @staticmethod
+    def _normalize_semantic_token(token: str) -> str:
+        normalized = token.casefold().strip("_")
+        for suffix in ("ing", "ed", "es", "s"):
+            if len(normalized) > len(suffix) + 3 and normalized.endswith(suffix):
+                return normalized[: -len(suffix)]
+        return normalized
+
+    def _filter_semantic_tokens(self, tokens: list[str]) -> list[str]:
+        return [
+            token
+            for token in tokens
+            if token not in self._semantic_stopwords and not token.isdigit()
+        ]
+
+    @staticmethod
+    def _cosine_similarity(left: dict[str, float], right: dict[str, float]) -> float:
+        if not left or not right:
+            return 0.0
+        if len(left) > len(right):
+            left, right = right, left
+        return min(1.0, sum(weight * right.get(key, 0.0) for key, weight in left.items()))
+
+    @staticmethod
+    def _is_payment_sanction_guardrail(rule: RiskRuleConfig, feature: ClauseFeatures) -> bool:
+        if rule.id not in {"one_sided_penalty", "uncapped_daily_penalty", "penalty_plus_full_damages"}:
+            return False
+        return "sanction" in feature.entity_markers and (
+            "percent" in feature.entity_markers
+            or "deadline" in feature.entity_markers
+            or "payment" in feature.entity_markers
+        )
+
+    @staticmethod
+    def _build_guardrail_labels(
+        *,
+        guardrail: RuleMatch | None,
+        semantic_available: bool,
+        payment_sanction: bool,
+    ) -> list[str]:
+        labels: list[str] = []
+        if semantic_available:
+            labels.append("semantic_embedding_retrieval")
+        if guardrail is not None:
+            labels.append("regex_guardrail")
+        if payment_sanction:
+            labels.append("payment_sanction_guardrail")
+        return labels
 
     def _match_patterns_for_clause(self, rule: RiskRuleConfig, feature: ClauseFeatures) -> list[str]:
         return [
@@ -541,12 +803,13 @@ class RiskScoringService:
         rule: RiskRuleConfig,
         canonical_role: str,
         contract_type: str | None,
+        language: str,
     ) -> tuple[RiskSeverity, str | None]:
         base_severity = RiskSeverity(rule.severity_base or rule.severity or RiskSeverity.MEDIUM.value)
         escalation = self._resolve_escalation(rule, canonical_role, contract_type)
         if escalation is None:
             return base_severity, None
-        return RiskSeverity(escalation.escalate_to), self._resolve_escalation_reason(escalation)
+        return RiskSeverity(escalation.escalate_to), self._resolve_escalation_reason(escalation, language)
 
     def _resolve_escalation(
         self,
@@ -565,8 +828,15 @@ class RiskScoringService:
 
         return None
 
-    def _resolve_escalation_reason(self, escalation: RoleEscalationEntryConfig) -> str | None:
-        return escalation.reason_ru or escalation.reason_en or escalation.reason_it or escalation.reason_fr
+    @staticmethod
+    def _resolve_escalation_reason(escalation: RoleEscalationEntryConfig, language: str) -> str | None:
+        localized_reasons = {
+            "ru": escalation.reason_ru,
+            "en": escalation.reason_en,
+            "it": escalation.reason_it,
+            "fr": escalation.reason_fr,
+        }
+        return localized_reasons.get(language) or escalation.reason_en or escalation.reason_ru
 
     def _rule_applies_to_contract_type(self, rule: RiskRuleConfig, contract_type: str | None) -> bool:
         if not rule.affected_contract_types:
@@ -616,8 +886,30 @@ class RiskScoringService:
 
         result = resolve_localized_text(template_map, language).format(role=role)
         if counterparty_role and severity in {RiskSeverity.HIGH, RiskSeverity.CRITICAL}:
-            result += f" Наиболее вероятный конфликт интересов со стороной '{counterparty_role}'."
+            result += " " + self._localized_counterparty_conflict(language).format(
+                counterparty_role=counterparty_role
+            )
         return self._ensure_complete_sentence(result)
+
+    @staticmethod
+    def _localized_evidence_prefix(language: str) -> str:
+        prefixes = {
+            "ru": "Найденный фрагмент:",
+            "en": "Evidence excerpt:",
+            "it": "Estratto di prova:",
+            "fr": "Extrait probant :",
+        }
+        return prefixes.get(language, prefixes["ru"])
+
+    @staticmethod
+    def _localized_counterparty_conflict(language: str) -> str:
+        templates = {
+            "ru": "Наиболее вероятный конфликт интересов со стороной '{counterparty_role}'.",
+            "en": "The most likely interest conflict is with counterparty '{counterparty_role}'.",
+            "it": "Il conflitto di interessi piu probabile e con la controparte '{counterparty_role}'.",
+            "fr": "Le conflit d'interets le plus probable concerne la contrepartie '{counterparty_role}'.",
+        }
+        return templates.get(language, templates["ru"])
 
     def _build_asymmetry_risks(
         self,

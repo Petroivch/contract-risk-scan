@@ -4,5 +4,6 @@ export const UPLOAD_POLICY = {
     'application/pdf',
     'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
     'text/plain'
-  ]
+  ],
+  REJECTED_MIME_TYPES_DEFAULT: ['application/msword']
 } as const;

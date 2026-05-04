@@ -24,8 +24,21 @@
   },
   privacy: {
     noticeKicker: 'Confidentialite',
+    noticeTitle: 'Comment les documents sont traites dans cette app',
+    noticeText:
+      'Le contrat selectionne, le role choisi et le parametre de langue servent uniquement a lancer le flux d analyse demande. L app conserve aussi sur cet appareil un enregistrement du consentement afin de pouvoir afficher de nouveau l avis si le transport ou la version de la politique change.',
     storageTitle: 'Fichiers temporaires',
     storageText: 'Le document selectionne sert a la verification en cours. Les fichiers temporaires crees pendant la lecture peuvent etre effaces dans les parametres.',
+    transportTitle: 'Transport d analyse actuel',
+    transportLocalLabel: 'Analyse sur l appareil',
+    transportLocalText:
+      'Cette configuration execute l analyse sur l appareil. Des copies temporaires locales peuvent quand meme etre creees pendant la lecture du fichier.',
+    transportStubLabel: 'Flux local stub',
+    transportStubText:
+      'Cette configuration utilise le flux stub local dans l app cliente. Elle ne lance pas de televersement distant depuis cet ecran.',
+    transportHttpLabel: 'Televersement HTTP distant',
+    transportHttpText:
+      'Cette configuration envoie le fichier selectionne, le role choisi et la langue au serveur configure lorsque vous lancez l analyse.',
   },
   legal: {
     noticeKicker: 'Mention juridique',
@@ -36,6 +49,8 @@
     kicker: 'Politique de l app',
     title: 'Confirmez les regles avant de commencer',
     body: 'L acces a l app est disponible uniquement apres acceptation des regles d utilisation.',
+    recordNotice:
+      'L acceptation enregistre sur cet appareil la version de l avis, l heure d acceptation, le mode de transport et la locale courante.',
     ruleLegal: 'L app ne fournit pas un avis juridique et ne remplace pas un avocat.',
     ruleData: 'Le document selectionne est utilise pour l analyse; des copies temporaires peuvent etre creees pendant la lecture.',
     ruleAccuracy: 'L extraction du texte et la detection des risques peuvent etre incompletes, surtout pour les scans et les PDF mal reconnus.',
@@ -59,6 +74,11 @@
     fileStepKicker: 'Etape 2',
     fileStepTitle: 'Chargez le contrat',
     fileStepSubtitle: 'Apres le choix du role, ajoutez le fichier et lancez l analyse locale.',
+    fileStepSubtitleLocal: 'Apres le choix du role, ajoutez le fichier et lancez l analyse sur l appareil.',
+    fileStepSubtitleStub:
+      'Apres le choix du role, ajoutez le fichier et lancez le flux local stub.',
+    fileStepSubtitleHttp:
+      'Apres le choix du role, ajoutez le fichier et envoyez-le au serveur configure pour analyse.',
     roleLabel: 'Votre role dans le contrat',
     roleSelectionChip: 'Choix du role',
     selectRole: 'Choisir un role',
@@ -76,6 +96,17 @@
     pickAnotherFile: 'Choisir un autre fichier',
     readyToAnalyze: 'Pret pour l analyse',
     submitting: 'Demarrage de l analyse...',
+    httpReviewKicker: 'Etape 3',
+    httpReviewTitle: 'Confirmer le televersement distant',
+    httpReviewSubtitle:
+      'Le transport HTTP est actif. Confirmez les deux declarations avant d envoyer le document au serveur configure.',
+    httpReviewPending: 'Requis',
+    httpReviewComplete: 'Confirme',
+    httpAuthorityAcknowledgement:
+      'Je suis autorise a televerser ce document et a le verifier dans cette app.',
+    httpMinimizationAcknowledgement:
+      'J ai retire ou inclus volontairement uniquement les donnees necessaires a cette verification.',
+    httpRequiredHint: 'Les deux confirmations sont requises avant de lancer le televersement HTTP.',
     unsupportedFormatTitle: 'Format non pris en charge',
     unsupportedFormatMessage: 'Ce flux accepte uniquement PDF, DOCX et TXT. Convertissez les fichiers .doc en DOCX. Les PDF scannes peuvent produire une extraction de moindre qualite.',
     startFailedTitle: 'Impossible de lancer l analyse',
@@ -152,6 +183,25 @@
     title: 'Parametres',
     subtitle: 'Confidentialite et nettoyage des fichiers temporaires.',
     openSettings: 'Confidentialite et donnees',
+    consentTitle: 'Consentement',
+    consentRecordTitle: 'Enregistrement du consentement',
+    consentRecordText:
+      'Cet appareil conserve le dernier avis accepte afin que l app puisse redemander le consentement si la version ou le transport change.',
+    consentStatusLabel: 'Statut',
+    consentStatusActive: 'Accepte',
+    consentStatusNone: 'Indisponible',
+    consentVersionLabel: 'Version de l avis',
+    consentTransportLabel: 'Transport',
+    consentLocaleLabel: 'Locale',
+    consentAcceptedAtLabel: 'Accepte le',
+    currentRequirementHint: 'Exigence courante: version {{version}}, transport {{transport}}.',
+    withdrawConsent: 'Retirer le consentement',
+    withdrawConsentHint:
+      'Efface l enregistrement du consentement sur cet appareil et revient a l ecran d avis. Les fichiers temporaires sont geres separement ci-dessous.',
+    withdrawConsentTitle: 'Retirer le consentement ?',
+    withdrawConsentMessage:
+      'Supprime l enregistrement du consentement pour cet appareil et revient a l ecran d avis.',
+    withdrawConsentAction: 'Retirer',
     languageTitle: 'Langue de l application',
     languageSubtitle: 'Les changements s appliquent immediatement sans redemarrage.',
     languageActive: 'Langue active',

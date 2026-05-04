@@ -2,7 +2,8 @@ export const MESSAGE_POLICY = {
   AUTH_INVALID_CREDENTIALS: 'Invalid email or password',
   FILE_REQUIRED: 'file is required (multipart/form-data)',
   FILE_SIZE_LIMIT_EXCEEDED: 'Uploaded file exceeds configured size limit',
-  FILE_MIME_TYPE_NOT_ALLOWED: 'Uploaded file MIME type is not allowed by server policy',
+  FILE_MIME_TYPE_NOT_ALLOWED:
+    'Uploaded file MIME type is not allowed by server policy. Supported formats are PDF, DOCX, and TXT; legacy DOC is rejected in this API path.',
   ANALYSIS_IN_PROGRESS: 'Analysis already in progress',
   ANALYSIS_ALREADY_READY: 'Report already available. Use forceReanalyze=true to rebuild report.',
   ANALYSIS_ACCEPTED: 'Analysis accepted and delegated to analysis-engine.',

@@ -61,6 +61,10 @@ export class ContractsRepository {
     this.fileBuffers.delete(contractId);
   }
 
+  hasStoredFileForTesting(contractId: string): boolean {
+    return this.fileBuffers.has(contractId);
+  }
+
   private buildStoredFileName(
     contractId: string,
     originalFileName: string,

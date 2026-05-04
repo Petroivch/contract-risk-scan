@@ -81,6 +81,19 @@ const readBooleanEnv = (key, fallback) => {
   return fallback;
 };
 
+const normalizeTransport = (value) => String(value ?? '').trim().toLowerCase();
+
+const validateRuntimeExtra = (extra) => {
+  const transport = normalizeTransport(extra.API_TRANSPORT);
+  const baseUrl = String(extra.API_BASE_URL ?? '').trim();
+
+  if (transport === 'http' && !baseUrl) {
+    throw new Error(
+      'Invalid mobile runtime config: API_TRANSPORT=http requires API_BASE_URL. Set API_BASE_URL for backend analysis or set API_TRANSPORT=local for an explicitly offline-local build.',
+    );
+  }
+};
+
 const resolveRuntimeExtra = () => ({
   API_BASE_URL: readStringEnv('API_BASE_URL', DEFAULT_EXTRA.API_BASE_URL),
   API_TRANSPORT: readStringEnv('API_TRANSPORT', DEFAULT_EXTRA.API_TRANSPORT),
@@ -111,40 +124,47 @@ const resolveRuntimeExtra = () => ({
   ),
 });
 
-const buildExpoConfig = (config = {}) => ({
-  ...config,
-  name: 'Contract Risk Scanner',
-  slug: 'contract-risk-scanner-mobile',
-  version: '0.1.0',
-  orientation: 'portrait',
-  userInterfaceStyle: 'light',
-  icon: './assets/icon.png',
-  assetBundlePatterns: ['**/*'],
-  splash: {
-    image: './assets/splash.png',
-    resizeMode: 'contain',
-    backgroundColor: '#0D2236',
-  },
-  ios: {
-    supportsTablet: true,
-    bundleIdentifier: 'com.contractriskscanner.mobile',
-    buildNumber: '1',
-  },
-  android: {
-    package: 'com.contractriskscanner.mobile',
-    adaptiveIcon: {
-      foregroundImage: './assets/adaptive-icon-foreground.png',
-      backgroundColor: '#0D2236',
-    },
-  },
-  extra: {
+const buildExpoConfig = (config = {}) => {
+  const extra = {
     ...(config.extra ?? {}),
     ...resolveRuntimeExtra(),
-  },
-});
+  };
+
+  validateRuntimeExtra(extra);
+
+  return {
+    ...config,
+    name: 'Contract Risk Scanner',
+    slug: 'contract-risk-scanner-mobile',
+    version: '0.1.0',
+    orientation: 'portrait',
+    userInterfaceStyle: 'light',
+    icon: './assets/icon.png',
+    assetBundlePatterns: ['**/*'],
+    splash: {
+      image: './assets/splash.png',
+      resizeMode: 'contain',
+      backgroundColor: '#0D2236',
+    },
+    ios: {
+      supportsTablet: true,
+      bundleIdentifier: 'com.contractriskscanner.mobile',
+      buildNumber: '1',
+    },
+    android: {
+      package: 'com.contractriskscanner.mobile',
+      adaptiveIcon: {
+        foregroundImage: './assets/adaptive-icon-foreground.png',
+        backgroundColor: '#0D2236',
+      },
+    },
+    extra,
+  };
+};
 
 module.exports = {
   DEFAULT_EXTRA,
   buildExpoConfig,
   resolveRuntimeExtra,
+  validateRuntimeExtra,
 };
