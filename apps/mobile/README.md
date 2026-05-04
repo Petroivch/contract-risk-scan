@@ -42,6 +42,13 @@
 
 CI запускает `npm ci`, затем `npm run typecheck`, `npm run lint` и `npm run smoke` из каталога `apps/mobile`.
 
+## Release transport checklist
+- Backend-assisted APK: set `API_TRANSPORT=http` and a non-empty public `https://` `API_BASE_URL` before building.
+- Offline-local/internal APK: use an empty `API_BASE_URL` only when the release note explicitly says the build does not exercise backend analysis quality.
+- Run `npm run smoke` and the runtime config smoke before distributing an APK; record the packaged `assets/app.config` values for `API_TRANSPORT` and `API_BASE_URL`.
+- Do not describe a locally built APK with empty backend URL as backend-first, server-assisted, or production-ready.
+- Upload consent and report copy must keep the preliminary automated review disclaimer: this is not legal advice and does not certify that a contract is safe to sign.
+
 ## Android release signing
 `release` APK/AAB должен быть подписан production keystore. Если signing env vars не заданы, `assembleRelease` и `bundleRelease` завершаются понятной ошибкой и не fallback-ятся на debug keystore.
 

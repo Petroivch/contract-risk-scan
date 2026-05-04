@@ -37,8 +37,27 @@ builds/
 # Raw payload dumps and ad hoc report exports should not be tracked.
 *.base64
 *.b64
+*.base64.json
+*.b64.json
+*.raw
+*.raw.*
 *.report.json
 *.report.md
+*document_base64*
+*payload_dump*
+*raw_payload*
+*raw-document*
+*raw_document*
+raw-corpus/
+raw-corpora/
+corpus-raw/
+corpora-raw/
+generated-corpus/
+generated-corpora/
+services/analysis-engine/**/raw-corpus/
+services/analysis-engine/**/raw-corpora/
+services/analysis-engine/**/generated-corpus/
+services/analysis-engine/**/generated-corpora/
 
 apps/mobile/*build-agent.log
 

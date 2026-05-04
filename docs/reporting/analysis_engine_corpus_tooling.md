@@ -16,7 +16,8 @@ Tracking policy:
 - keep `artifacts/corpus_results_iter2/` tracked as the canonical published golden-set run
 - keep `reports/corpus_evaluation.json` and `reports/corpus_evaluation.md` tracked as the canonical scorecard outputs
 - do not commit fresh timestamped corpus sweeps under `artifacts/corpus_results/**`
-- do not commit smoke-only runs, ad hoc exported report bundles, or base64/raw payload dumps
+- do not commit smoke-only runs, ad hoc exported report bundles, generated corpora, raw document collections, or base64/raw payload dumps
+- do not commit artifacts that contain source contract text, `document_base64`, raw request/response payloads, or enough excerpts to reconstruct a source document
 - if a new corpus snapshot must be published intentionally, replace the canonical checked-in target instead of adding another parallel run tree
 
 Example commands from `services/analysis-engine`:
