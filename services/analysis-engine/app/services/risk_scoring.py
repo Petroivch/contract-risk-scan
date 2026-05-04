@@ -10,7 +10,12 @@ from app.localization import normalize_analysis_language, resolve_localized_text
 from app.schemas.analysis import DisputedClauseItem, RiskExplanation, RiskItem, RiskSeverity
 from app.services.asymmetry_detector import AsymmetrySignal
 from app.services.clause_segmentation import ClauseSegment
-from app.services.contract_analysis import canonicalize_role, extract_roles_from_text, find_role_matches
+from app.services.contract_analysis import (
+    canonicalize_role,
+    extract_roles_from_text,
+    find_role_matches,
+    localize_role_label,
+)
 from app.services.disputed_clause_detector import DisputedClauseDetector
 from app.services.text_normalization import normalize_contract_text
 
@@ -138,12 +143,25 @@ class RiskScoringService:
                 "prepayment",
                 "advance",
                 "fee",
+                "payment",
+                "pagamento",
+                "pagare",
+                "payer",
+                "paiement",
+                "fattura",
+                "facture",
             },
             "sanction": {
                 "penalty",
                 "penalties",
                 "fine",
                 "fines",
+                "penale",
+                "penali",
+                "amende",
+                "amendes",
+                "astreinte",
+                "multa",
                 "sanction",
                 "liquidated",
                 "damages",
@@ -151,7 +169,24 @@ class RiskScoringService:
                 "fee",
                 "forfeit",
             },
-            "deadline": {"deadline", "term", "period", "days", "delay", "late", "overdue"},
+            "deadline": {
+                "deadline",
+                "term",
+                "period",
+                "days",
+                "day",
+                "delay",
+                "late",
+                "overdue",
+                "giorni",
+                "giorno",
+                "jours",
+                "jour",
+                "termine",
+                "delai",
+                "retard",
+                "ritardo",
+            },
             "discretion": {"sole", "discretion", "unilateral", "may", "without", "approval"},
             "acceptance": {"acceptance", "accept", "accepted", "act", "defect", "quality"},
             "termination": {"terminate", "termination", "cancel", "withdraw", "refuse"},
@@ -256,6 +291,7 @@ class RiskScoringService:
                             confidence=match.classifier_score,
                             explanation=RiskExplanation(
                                 summary=self._build_risk_explanation_summary(
+                                    language=resolved_language,
                                     rule_id=rule.id,
                                     role=role,
                                     selected_role_present=selected_role_present,
@@ -312,7 +348,7 @@ class RiskScoringService:
                     target_role=role,
                     confidence=0.2,
                     explanation=RiskExplanation(
-                        summary="No hybrid risk candidate cleared the classifier threshold; returning fallback.",
+                        summary=self._localized_fallback_summary(resolved_language),
                         matched_terms=[],
                         matched_patterns=[],
                         retrieval_score=0.0,
@@ -530,11 +566,11 @@ class RiskScoringService:
     def _extract_entity_markers(self, text: str, tokens: set[str]) -> set[str]:
         markers: set[str] = set()
         marker_patterns = {
-            "money": r"[$€£₽]|\b(?:rub|eur|usd|amount|price|fee|cost|payment|invoice)\b",
+            "money": r"[$€£₽]|\b(?:rub|eur|usd|amount|price|fee|cost|payment|invoice|pagamento|paiement|prezzo|prix|importo|montant)\b",
             "percent": r"\d+(?:[.,]\d+)?\s*%",
-            "deadline": r"\b\d{1,3}\s+(?:business\s+)?days?\b|\b(?:deadline|delay|overdue|period|term)\b",
-            "payment": r"\b(?:pay|paid|payment|invoice|prepayment|advance|settlement|transfer)\b",
-            "sanction": r"\b(?:penalty|penalties|fine|fines|sanction|liquidated\s+damages|late\s+fee|forfeit)\b",
+            "deadline": r"\b\d{1,3}\s+(?:business\s+)?(?:days?|giorni?|jours?)\b|\b(?:deadline|delay|overdue|period|term|termine|delai|ritardo|retard)\b",
+            "payment": r"\b(?:pay|paid|payment|invoice|prepayment|advance|settlement|transfer|pagamento|pagare|payer|paiement|fattura|facture)\b",
+            "sanction": r"\b(?:penalty|penalties|fine|fines|sanction|liquidated\s+damages|late\s+fee|forfeit|penale|penali|amende|amendes|astreinte|multa)\b",
             "discretion": r"\b(?:sole\s+discretion|unilateral|may|without\s+approval|at\s+any\s+time)\b",
             "acceptance": r"\b(?:acceptance|accept|accepted|quality|defect|signed\s+act)\b",
             "termination": r"\b(?:terminate|termination|cancel|withdraw|refuse)\b",
@@ -641,19 +677,41 @@ class RiskScoringService:
     @staticmethod
     def _build_risk_explanation_summary(
         *,
+        language: str,
         rule_id: str,
         role: str,
         selected_role_present: bool,
         role_mentioned: bool,
     ) -> str:
+        localized_role = localize_role_label(role, language) or role
+        templates = {
+            "ru": {
+                "mentioned": "Гибридный классификатор сопоставил правило '{rule_id}' с пунктом, который прямо упоминает роль '{role}'.",
+                "missing": "Гибридный классификатор сопоставил правило '{rule_id}', хотя выбранная роль '{role}' не найдена в тексте договора.",
+                "relevant": "Гибридный классификатор сопоставил правило '{rule_id}' с пунктом, который остается релевантным роли '{role}'.",
+            },
+            "en": {
+                "mentioned": "The hybrid classifier matched rule '{rule_id}' on a clause that explicitly mentions role '{role}'.",
+                "missing": "The hybrid classifier matched rule '{rule_id}' even though the selected role label '{role}' was not found in the document text.",
+                "relevant": "The hybrid classifier matched rule '{rule_id}' on a clause that remains relevant to role '{role}'.",
+            },
+            "it": {
+                "mentioned": "Il classificatore ibrido ha associato la regola '{rule_id}' a una clausola che menziona esplicitamente il ruolo '{role}'.",
+                "missing": "Il classificatore ibrido ha associato la regola '{rule_id}' anche se l'etichetta del ruolo selezionato '{role}' non e stata trovata nel testo del contratto.",
+                "relevant": "Il classificatore ibrido ha associato la regola '{rule_id}' a una clausola che resta rilevante per il ruolo '{role}'.",
+            },
+            "fr": {
+                "mentioned": "Le classifieur hybride a associe la regle '{rule_id}' a une clause qui mentionne explicitement le role '{role}'.",
+                "missing": "Le classifieur hybride a associe la regle '{rule_id}' alors que l'etiquette du role selectionne '{role}' n'a pas ete trouvee dans le texte du contrat.",
+                "relevant": "Le classifieur hybride a associe la regle '{rule_id}' a une clause qui reste pertinente pour le role '{role}'.",
+            },
+        }
+        messages = templates.get(language, templates["ru"])
         if role_mentioned:
-            return f"Hybrid classifier matched rule '{rule_id}' on a clause that explicitly mentions role '{role}'."
+            return messages["mentioned"].format(rule_id=rule_id, role=localized_role)
         if not selected_role_present:
-            return (
-                f"Hybrid classifier matched rule '{rule_id}' even though the selected role label "
-                f"'{role}' was not found in the document text."
-            )
-        return f"Hybrid classifier matched rule '{rule_id}' on a clause that remains relevant to role '{role}'."
+            return messages["missing"].format(rule_id=rule_id, role=localized_role)
+        return messages["relevant"].format(rule_id=rule_id, role=localized_role)
 
     def _match_rule(
         self,
@@ -884,7 +942,7 @@ class RiskScoringService:
         else:
             template_map = self._config.role_relevance_templates.role_generic
 
-        result = resolve_localized_text(template_map, language).format(role=role)
+        result = resolve_localized_text(template_map, language).format(role=localize_role_label(role, language) or role)
         if counterparty_role and severity in {RiskSeverity.HIGH, RiskSeverity.CRITICAL}:
             result += " " + self._localized_counterparty_conflict(language).format(
                 counterparty_role=counterparty_role
@@ -911,6 +969,28 @@ class RiskScoringService:
         }
         return templates.get(language, templates["ru"])
 
+    @staticmethod
+    def _localized_asymmetry_relevance(language: str) -> str:
+        templates = {
+            "ru": "Сигнал асимметрии затрагивает выбранную роль '{role}'.",
+            "en": "The asymmetry signal affects selected role '{role}'.",
+            "it": "Il segnale di asimmetria riguarda il ruolo selezionato '{role}'.",
+            "fr": "Le signal d'asymetrie concerne le role selectionne '{role}'.",
+        }
+        return templates.get(language, templates["ru"])
+
+    @staticmethod
+    def _localized_asymmetry_summary(language: str, risk_id: str, role: str) -> str:
+        templates = {
+            "ru": "Детектор асимметрии повысил сигнал '{risk_id}' для роли '{role}'.",
+            "en": "The asymmetry detector promoted signal '{risk_id}' for role '{role}'.",
+            "it": "Il rilevatore di asimmetria ha promosso il segnale '{risk_id}' per il ruolo '{role}'.",
+            "fr": "Le detecteur d'asymetrie a promu le signal '{risk_id}' pour le role '{role}'.",
+        }
+        return templates.get(language, templates["ru"]).format(
+            risk_id=risk_id,
+            role=localize_role_label(role, language) or role,
+        )
     def _build_asymmetry_risks(
         self,
         signal_map: dict[str, list[AsymmetrySignal]],
@@ -950,14 +1030,14 @@ class RiskScoringService:
                             severity=severity,
                             clause_id=signal.clause_id,
                             description=self._ensure_complete_sentence(signal.details or signal.summary),
-                            role_relevance=self._ensure_complete_sentence(
-                                f"Сигнал асимметрии затрагивает выбранную роль '{role}'."
+                            role_relevance=self._localized_asymmetry_relevance(language).format(
+                                role=localize_role_label(role, language) or role
                             ),
-                            mitigation=self._default_mitigation_for_signal(signal.risk_id),
+                            mitigation=self._default_mitigation_for_signal(signal.risk_id, language),
                             target_role=role,
                             confidence=classifier_score,
                             explanation=RiskExplanation(
-                                summary=f"Asymmetry detector promoted signal '{signal.risk_id}' for role '{role}'.",
+                                summary=self._localized_asymmetry_summary(language, signal.risk_id, role),
                                 matched_terms=[],
                                 matched_patterns=[],
                                 retrieval_score=classifier_score,
@@ -1014,15 +1094,41 @@ class RiskScoringService:
             grouped.setdefault(signal.risk_id, []).append(signal)
         return grouped
 
-    def _default_mitigation_for_signal(self, risk_id: str) -> str:
+    def _default_mitigation_for_signal(self, risk_id: str, language: str) -> str:
         mitigations = {
-            "payment_asymmetry": "Согласуйте аванс, этапные платежи или право приостановить исполнение до оплаты.",
-            "termination_asymmetry": "Добавьте зеркальное право на отказ или четкие основания для одностороннего расторжения.",
-            "undefined_acceptance_criteria": "Зафиксируйте объективные критерии приемки, сроки проверки и мотивированный отказ.",
+            "payment_asymmetry": {
+                "ru": "Согласуйте аванс, этапные платежи или право приостановить исполнение до оплаты.",
+                "en": "Agree an advance, milestone payments, or a right to suspend performance until payment.",
+                "it": "Concorda un anticipo, pagamenti a stati di avanzamento o il diritto di sospendere la prestazione fino al pagamento.",
+                "fr": "Prevoyez une avance, des paiements par jalons ou le droit de suspendre l'execution jusqu'au paiement.",
+            },
+            "termination_asymmetry": {
+                "ru": "Добавьте зеркальное право на отказ или четкие основания для одностороннего расторжения.",
+                "en": "Add a reciprocal termination right or clear grounds for unilateral termination.",
+                "it": "Aggiungi un diritto di recesso reciproco o motivi chiari per il recesso unilaterale.",
+                "fr": "Ajoutez un droit de resiliation reciproque ou des motifs clairs de resiliation unilaterale.",
+            },
+            "undefined_acceptance_criteria": {
+                "ru": "Зафиксируйте объективные критерии приемки, сроки проверки и мотивированный отказ.",
+                "en": "Set objective acceptance criteria, review deadlines, and a reasoned rejection process.",
+                "it": "Definisci criteri oggettivi di accettazione, termini di verifica e una procedura di rifiuto motivato.",
+                "fr": "Fixez des criteres objectifs d'acceptation, des delais de controle et une procedure de refus motive.",
+            },
         }
+        localized = mitigations.get(risk_id, {}).get(language)
         return self._ensure_complete_sentence(
-            mitigations.get(risk_id, resolve_localized_text(self._config.fallback.mitigation, "ru"))
+            localized or resolve_localized_text(self._config.fallback.mitigation, language)
         )
+
+    @staticmethod
+    def _localized_fallback_summary(language: str) -> str:
+        templates = {
+            "ru": "Ни один гибридный риск-кандидат не прошел порог классификатора, поэтому возвращен запасной вариант.",
+            "en": "No hybrid risk candidate cleared the classifier threshold, so the fallback item was returned.",
+            "it": "Nessun candidato di rischio ibrido ha superato la soglia del classificatore, quindi e stato restituito il fallback.",
+            "fr": "Aucun candidat de risque hybride n'a franchi le seuil du classifieur, donc l'element de repli a ete renvoye.",
+        }
+        return templates.get(language, templates["ru"])
 
     def _truncate_intelligently(self, text: str) -> str:
         truncation = self._config.truncation

@@ -12,18 +12,26 @@ ROLE_ALIASES: dict[str, set[str]] = {
         "исполнитель",
         "подрядчик",
         "поставщик",
+        "продавец",
         "агент",
         "комиссионер",
         "поверенный",
         "лицензиар",
         "правообладатель",
         "seller",
+        "supplier",
         "vendor",
         "contractor",
         "executor",
         "agent",
         "commissioner",
         "licensor",
+        "appaltatore",
+        "fornitore",
+        "venditore",
+        "prestataire",
+        "vendeur",
+        "fournisseur",
     },
     "client": {
         "заказчик",
@@ -36,13 +44,63 @@ ROLE_ALIASES: dict[str, set[str]] = {
         "client",
         "principal",
         "licensee",
+        "cliente",
+        "acquirente",
+        "acheteur",
+        "mandante",
+        "mandant",
+        "licenziatario",
+        "licencie",
     },
-    "worker": {"работник", "сотрудник", "гражданин", "employee", "worker"},
-    "employer": {"работодатель", "компания", "organization", "employer"},
-    "tenant": {"арендатор", "tenant", "lessee"},
-    "landlord": {"арендодатель", "landlord", "lessor"},
-    "borrower": {"заемщик", "должник", "borrower"},
-    "lender": {"займодавец", "кредитор", "lender"},
+    "worker": {"работник", "сотрудник", "гражданин", "employee", "worker", "dipendente", "lavoratore", "employe"},
+    "employer": {"работодатель", "компания", "organization", "employer", "azienda", "societe", "employeur"},
+    "tenant": {"арендатор", "tenant", "lessee", "conduttore", "locataire"},
+    "landlord": {"арендодатель", "landlord", "lessor", "locatore", "bailleur"},
+    "borrower": {"заемщик", "должник", "borrower", "mutuatario", "emprunteur"},
+    "lender": {"займодавец", "кредитор", "lender", "creditore", "creancier"},
+}
+
+ROLE_LABELS_BY_VARIANT: dict[str, dict[str, str]] = {
+    "исполнитель": {"ru": "исполнитель", "en": "contractor", "it": "appaltatore", "fr": "prestataire"},
+    "подрядчик": {"ru": "подрядчик", "en": "contractor", "it": "appaltatore", "fr": "prestataire"},
+    "seller": {"ru": "продавец", "en": "seller", "it": "venditore", "fr": "vendeur"},
+    "vendor": {"ru": "поставщик", "en": "vendor", "it": "fornitore", "fr": "fournisseur"},
+    "contractor": {"ru": "исполнитель", "en": "contractor", "it": "appaltatore", "fr": "prestataire"},
+    "executor": {"ru": "исполнитель", "en": "executor", "it": "esecutore", "fr": "executant"},
+    "agent": {"ru": "агент", "en": "agent", "it": "agente", "fr": "agent"},
+    "licensor": {"ru": "лицензиар", "en": "licensor", "it": "licenziante", "fr": "concédant"},
+    "заказчик": {"ru": "заказчик", "en": "customer", "it": "cliente", "fr": "client"},
+    "покупатель": {"ru": "покупатель", "en": "buyer", "it": "acquirente", "fr": "acheteur"},
+    "customer": {"ru": "заказчик", "en": "customer", "it": "cliente", "fr": "client"},
+    "buyer": {"ru": "покупатель", "en": "buyer", "it": "acquirente", "fr": "acheteur"},
+    "client": {"ru": "заказчик", "en": "client", "it": "cliente", "fr": "client"},
+    "principal": {"ru": "принципал", "en": "principal", "it": "mandante", "fr": "mandant"},
+    "licensee": {"ru": "лицензиат", "en": "licensee", "it": "licenziatario", "fr": "licencie"},
+    "работник": {"ru": "работник", "en": "worker", "it": "lavoratore", "fr": "salarie"},
+    "сотрудник": {"ru": "сотрудник", "en": "employee", "it": "dipendente", "fr": "employe"},
+    "гражданин": {"ru": "гражданин", "en": "citizen", "it": "cittadino", "fr": "citoyen"},
+    "работодатель": {"ru": "работодатель", "en": "employer", "it": "datore di lavoro", "fr": "employeur"},
+    "компания": {"ru": "компания", "en": "company", "it": "azienda", "fr": "societe"},
+    "organization": {"ru": "организация", "en": "organization", "it": "organizzazione", "fr": "organisation"},
+    "арендатор": {"ru": "арендатор", "en": "tenant", "it": "conduttore", "fr": "locataire"},
+    "арендодатель": {"ru": "арендодатель", "en": "landlord", "it": "locatore", "fr": "bailleur"},
+    "tenant": {"ru": "арендатор", "en": "tenant", "it": "conduttore", "fr": "locataire"},
+    "landlord": {"ru": "арендодатель", "en": "landlord", "it": "locatore", "fr": "bailleur"},
+    "заемщик": {"ru": "заемщик", "en": "borrower", "it": "mutuatario", "fr": "emprunteur"},
+    "займодавец": {"ru": "займодавец", "en": "lender", "it": "finanziatore", "fr": "preteur"},
+    "borrower": {"ru": "заемщик", "en": "borrower", "it": "mutuatario", "fr": "emprunteur"},
+    "lender": {"ru": "займодавец", "en": "lender", "it": "finanziatore", "fr": "preteur"},
+}
+
+ROLE_LABELS_BY_CANONICAL: dict[str, dict[str, str]] = {
+    "executor": {"ru": "исполнитель", "en": "contractor", "it": "appaltatore", "fr": "prestataire"},
+    "client": {"ru": "заказчик", "en": "customer", "it": "cliente", "fr": "client"},
+    "worker": {"ru": "работник", "en": "worker", "it": "lavoratore", "fr": "salarie"},
+    "employer": {"ru": "работодатель", "en": "employer", "it": "datore di lavoro", "fr": "employeur"},
+    "tenant": {"ru": "арендатор", "en": "tenant", "it": "conduttore", "fr": "locataire"},
+    "landlord": {"ru": "арендодатель", "en": "landlord", "it": "locatore", "fr": "bailleur"},
+    "borrower": {"ru": "заемщик", "en": "borrower", "it": "mutuatario", "fr": "emprunteur"},
+    "lender": {"ru": "займодавец", "en": "lender", "it": "finanziatore", "fr": "preteur"},
 }
 
 
@@ -78,6 +136,27 @@ def role_aliases(role: str | None) -> set[str]:
         aliases.update(alias.casefold() for alias in ROLE_ALIASES.get(canonical, set()))
 
     return aliases
+
+
+def localize_role_label(role: str | None, language: str) -> str:
+    cleaned = normalize_contract_text(role or "").strip()
+    normalized = cleaned.casefold()
+    if not normalized:
+        return ""
+
+    resolved_language = language.strip().lower() if isinstance(language, str) else "ru"
+    if resolved_language not in {"ru", "en", "it", "fr"}:
+        resolved_language = "ru"
+
+    labels = ROLE_LABELS_BY_VARIANT.get(normalized)
+    if labels:
+        return labels.get(resolved_language, labels.get("en", cleaned))
+
+    labels = ROLE_LABELS_BY_CANONICAL.get(canonicalize_role(normalized))
+    if labels:
+        return labels.get(resolved_language, labels.get("en", cleaned))
+
+    return cleaned
 
 
 def extract_roles_from_text(document_text: str) -> list[DetectedRole]:
