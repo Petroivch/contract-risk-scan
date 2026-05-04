@@ -8,9 +8,12 @@ import re
 import subprocess
 import tempfile
 import threading
+import time
 from dataclasses import dataclass
+from dataclasses import field
 from io import BytesIO
 from pathlib import Path
+from typing import Any
 from zipfile import BadZipFile, ZipFile
 from xml.etree import ElementTree as ET
 
@@ -33,7 +36,7 @@ class IngestionPayload:
     extraction_ok: bool
     extraction_error: str | None
     sha256: str | None
-    binary_payload: bytes | None = None
+    binary_payload: bytes | None = field(default=None, repr=False, compare=False)
 
 
 @dataclass(slots=True)
@@ -44,12 +47,21 @@ class ExtractionResult:
     extraction_error: str | None = None
 
 
+@dataclass(slots=True)
+class RenderedPdfPage:
+    page_number: int
+    page_count: int
+    image: Any
+
+
 class IngestionService:
     """Document ingestion with multi-strategy extraction for text, doc, docx, pdf and html."""
 
     _word_app = None
     _word_pythoncom = None
     _word_lock = threading.Lock()
+    _MIN_PDF_TEXT_CHARS = 40
+    _PDF_OCR_DPI = 200
 
     def __init__(self) -> None:
         self._runtime_config = get_runtime_config()
@@ -138,6 +150,9 @@ class IngestionService:
         if self._is_html(normalized_mime_type, normalized_name):
             return self._extract_html(payload)
 
+        if self._is_plain_text(normalized_mime_type, normalized_name):
+            return self._extract_plain_text(payload)
+
         return ExtractionResult(
             text=payload.decode("utf-8", errors="ignore"),
             extraction_source="binary:utf8_decode",
@@ -162,6 +177,20 @@ class IngestionService:
     @staticmethod
     def _is_html(mime_type: str, file_name: str) -> bool:
         return mime_type in {"text/html", "application/xhtml+xml"} or file_name.endswith((".html", ".htm"))
+
+    @staticmethod
+    def _is_plain_text(mime_type: str, file_name: str) -> bool:
+        return mime_type.startswith("text/") or file_name.endswith(".txt")
+
+    @staticmethod
+    def _extract_plain_text(payload: bytes) -> ExtractionResult:
+        text = payload.decode("utf-8", errors="ignore").strip()
+        return ExtractionResult(
+            text=text,
+            extraction_source="txt:utf8",
+            extraction_ok=bool(text),
+            extraction_error=None if text else "txt extraction returned empty text",
+        )
 
     def _extract_docx(self, payload: bytes) -> ExtractionResult:
         errors: list[str] = []
@@ -226,6 +255,34 @@ class IngestionService:
         return "\n".join(paragraphs)
 
     def _extract_pdf(self, payload: bytes) -> ExtractionResult:
+        direct_result = self._extract_pdf_direct_text(payload)
+        if self._has_enough_pdf_text(direct_result.text):
+            return direct_result
+
+        ocr_result = self._extract_scanned_pdf_with_ocr(payload)
+        if ocr_result.extraction_ok and ocr_result.text.strip():
+            return ocr_result
+
+        errors = [error for error in (direct_result.extraction_error, ocr_result.extraction_error) if error]
+        if direct_result.text.strip():
+            return ExtractionResult(
+                text=direct_result.text,
+                extraction_source=direct_result.extraction_source,
+                extraction_ok=True,
+                extraction_error=(
+                    "pdf text below OCR threshold; OCR fallback unavailable: "
+                    + ("; ".join(errors) if errors else "no OCR text returned")
+                ),
+            )
+
+        return ExtractionResult(
+            text="",
+            extraction_source="pdf:none",
+            extraction_ok=False,
+            extraction_error="; ".join(errors) if errors else "pdf extraction failed",
+        )
+
+    def _extract_pdf_direct_text(self, payload: bytes) -> ExtractionResult:
         errors: list[str] = []
 
         if self._extractors_enabled("pdf_pdfplumber"):
@@ -265,7 +322,196 @@ class IngestionService:
             extraction_error="; ".join(errors) if errors else "pdf extraction failed",
         )
 
+    def _has_enough_pdf_text(self, text: str) -> bool:
+        normalized = re.sub(r"\s+", "", text)
+        return len(normalized) >= self._MIN_PDF_TEXT_CHARS
+
+    def _extract_scanned_pdf_with_ocr(self, payload: bytes) -> ExtractionResult:
+        deadline = time.monotonic() + min(
+            self._runtime_config.pipeline.timeouts.ocr_seconds,
+            self._ingestion_config.extraction_timeout_seconds,
+        )
+        rendered_pages, render_errors = self._render_pdf_pages_for_ocr(payload, deadline)
+        if not rendered_pages:
+            return ExtractionResult(
+                text="",
+                extraction_source="pdf:ocr:none",
+                extraction_ok=False,
+                extraction_error=(
+                    "pdf OCR fallback unavailable: "
+                    + ("; ".join(render_errors) if render_errors else "no pages rendered")
+                ),
+            )
+
+        text_chunks: list[str] = []
+        errors: list[str] = list(render_errors)
+        processed_pages = 0
+        page_count = rendered_pages[0].page_count
+        for rendered_page in rendered_pages:
+            if time.monotonic() >= deadline:
+                errors.append(f"pdf OCR timeout after {processed_pages}/{page_count} pages")
+                break
+            processed_pages += 1
+            try:
+                page_text = self._ocr_image_to_text(rendered_page.image).strip()
+            except Exception as exc:  # pragma: no cover - OCR engine dependent
+                errors.append(f"pdf OCR page {rendered_page.page_number}/{page_count} failed: {exc}")
+                continue
+            if page_text:
+                text_chunks.append(page_text)
+
+        text = self._collapse_blank_lines("\n".join(text_chunks).strip())
+        if text:
+            return ExtractionResult(
+                text=text,
+                extraction_source=f"pdf:ocr:tesseract({processed_pages}/{page_count} pages)",
+                extraction_ok=True,
+                extraction_error=None,
+            )
+
+        return ExtractionResult(
+            text="",
+            extraction_source="pdf:ocr:none",
+            extraction_ok=False,
+            extraction_error="; ".join(errors) if errors else "pdf OCR returned empty text",
+        )
+
+    def _render_pdf_pages_for_ocr(
+        self,
+        payload: bytes,
+        deadline: float,
+    ) -> tuple[list[RenderedPdfPage], list[str]]:
+        errors: list[str] = []
+
+        pages, error = self._render_pdf_with_pdfplumber(payload, deadline)
+        if pages:
+            if error:
+                errors.append(error)
+            return pages, errors
+        if error:
+            errors.append(error)
+
+        pages, error = self._render_pdf_with_pymupdf(payload, deadline)
+        if pages:
+            if error:
+                errors.append(error)
+            return pages, errors
+        if error:
+            errors.append(error)
+
+        pages, error = self._render_pdf_with_pdf2image(payload, deadline)
+        if pages:
+            if error:
+                errors.append(error)
+            return pages, errors
+        if error:
+            errors.append(error)
+
+        return [], errors
+
+    def _render_pdf_with_pdfplumber(
+        self,
+        payload: bytes,
+        deadline: float,
+    ) -> tuple[list[RenderedPdfPage], str | None]:
+        try:
+            import pdfplumber
+        except Exception as exc:  # pragma: no cover - configured dependency missing
+            return [], f"pdfplumber renderer unavailable: {exc}"
+
+        pages: list[RenderedPdfPage] = []
+        try:
+            with pdfplumber.open(BytesIO(payload)) as pdf:
+                page_count = len(pdf.pages)
+                for index, page in enumerate(pdf.pages, start=1):
+                    if time.monotonic() >= deadline:
+                        return pages, f"pdfplumber render timeout after {len(pages)}/{page_count} pages"
+                    image = page.to_image(resolution=self._PDF_OCR_DPI).original
+                    pages.append(RenderedPdfPage(page_number=index, page_count=page_count, image=image))
+            return pages, None
+        except Exception as exc:  # pragma: no cover - renderer dependent
+            return pages, f"pdfplumber render failed: {exc}"
+
+    def _render_pdf_with_pymupdf(
+        self,
+        payload: bytes,
+        deadline: float,
+    ) -> tuple[list[RenderedPdfPage], str | None]:
+        try:
+            import fitz  # type: ignore[import-not-found]
+            from PIL import Image
+        except Exception as exc:  # pragma: no cover - optional dependency
+            return [], f"PyMuPDF renderer unavailable: {exc}"
+
+        try:
+            document = fitz.open(stream=payload, filetype="pdf")
+        except Exception as exc:  # pragma: no cover - malformed PDF
+            return [], f"PyMuPDF open failed: {exc}"
+
+        pages: list[RenderedPdfPage] = []
+        try:
+            page_count = len(document)
+            zoom = self._PDF_OCR_DPI / 72
+            matrix = fitz.Matrix(zoom, zoom)
+            for index, page in enumerate(document, start=1):
+                if time.monotonic() >= deadline:
+                    return pages, f"PyMuPDF render timeout after {len(pages)}/{page_count} pages"
+                pixmap = page.get_pixmap(matrix=matrix, alpha=False)
+                image = Image.open(BytesIO(pixmap.tobytes("png")))
+                pages.append(RenderedPdfPage(page_number=index, page_count=page_count, image=image))
+            return pages, None
+        except Exception as exc:  # pragma: no cover - renderer dependent
+            return pages, f"PyMuPDF render failed: {exc}"
+        finally:  # pragma: no cover - cleanup path
+            document.close()
+
+    def _render_pdf_with_pdf2image(
+        self,
+        payload: bytes,
+        deadline: float,
+    ) -> tuple[list[RenderedPdfPage], str | None]:
+        try:
+            from pdf2image import convert_from_bytes  # type: ignore[import-not-found]
+        except Exception as exc:  # pragma: no cover - optional dependency
+            return [], f"pdf2image renderer unavailable: {exc}"
+
+        remaining_seconds = max(1, int(deadline - time.monotonic()))
+        try:
+            images = convert_from_bytes(
+                payload,
+                dpi=self._PDF_OCR_DPI,
+                fmt="png",
+                thread_count=1,
+                timeout=remaining_seconds,
+            )
+        except Exception as exc:  # pragma: no cover - external poppler dependency
+            return [], f"pdf2image render failed: {exc}"
+
+        page_count = len(images)
+        pages = [
+            RenderedPdfPage(page_number=index, page_count=page_count, image=image)
+            for index, image in enumerate(images, start=1)
+        ]
+        return pages, None
+
+    @staticmethod
+    def _ocr_image_to_text(image: Any) -> str:
+        import pytesseract
+
+        return normalize_contract_text(pytesseract.image_to_string(image))
+
     def _extract_doc(self, payload: bytes) -> ExtractionResult:
+        return ExtractionResult(
+            text="",
+            extraction_source="doc:unsupported",
+            extraction_ok=False,
+            extraction_error=(
+                "application/msword (.doc) is not supported reliably by this analysis-engine build; "
+                "convert the document to DOCX, PDF, or TXT before upload"
+            ),
+        )
+
+    def _extract_doc_with_optional_tools(self, payload: bytes) -> ExtractionResult:
         errors: list[str] = []
         with tempfile.TemporaryDirectory(prefix="analysis-doc-") as temp_dir_name:
             temp_dir = Path(temp_dir_name)

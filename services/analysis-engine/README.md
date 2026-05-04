@@ -43,30 +43,23 @@ uvicorn app.main:app --reload --port 8010
 
 ## Native Dependencies
 
-Preferred Windows setup for legacy `.doc`:
+Legacy `.doc` is not accepted by the analysis-engine extractor because reliable support
+depends on desktop applications or native command-line tools outside the Python stack.
+Convert `.doc` files to DOCX, PDF, or TXT before upload.
 
-- Microsoft Word installed locally
-- `pywin32` installed from `requirements.txt`
-
-Optional fallbacks for `.doc` if Word is unavailable:
-
-- LibreOffice (`soffice`)
-- `antiword`
-- `catdoc`
-- `textract` with its native backends
-
-Optional OCR stack for image-only inputs:
+Optional OCR stack for image-only inputs and scanned PDF fallback:
 
 - Tesseract OCR
 - `pytesseract`
 - `Pillow`
+- PDF rendering uses `pdfplumber`/PDFium first; optional fallbacks are PyMuPDF (`fitz`) or `pdf2image` with Poppler
 
 Current behavior:
 
-- `.doc` prefers Word COM, then falls back to `soffice`, `antiword`, `catdoc`, `textract`
+- `.doc` returns an explicit unsupported-format extraction error
 - `.docx` prefers `mammoth`, then `python-docx`, then XML fallback
-- `.pdf` prefers `pdfplumber`, then `pypdf`
-- OCR is used only for `image/*`
+- `.pdf` prefers `pdfplumber`, then `pypdf`, then scanned-PDF OCR when direct text is empty or too short
+- OCR is used for `image/*` and scanned-PDF fallback when native OCR/rendering tools are available
 
 ## Validation
 

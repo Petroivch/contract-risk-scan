@@ -34,7 +34,7 @@ class InMemoryJobStore:
             status=AnalysisJobStatus.QUEUED,
             created_at=timestamp,
             updated_at=timestamp,
-            request=request,
+            request=self._redact_raw_document_inputs(request),
         )
 
         with self._lock:
@@ -69,3 +69,14 @@ class InMemoryJobStore:
             record = self._jobs[job_id]
             record.status = status
             record.updated_at = datetime.now(timezone.utc)
+
+    @staticmethod
+    def _redact_raw_document_inputs(request: AnalysisRunRequest) -> AnalysisRunRequest:
+        updates: dict[str, str] = {}
+        if request.document_text is not None:
+            updates["document_text"] = "[redacted]"
+        if request.document_base64 is not None:
+            updates["document_base64"] = "[redacted]"
+        if not updates:
+            return request
+        return request.model_copy(update=updates)
