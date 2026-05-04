@@ -4,7 +4,7 @@ from app.config.runtime import get_runtime_config
 from app.localization import normalize_analysis_language, resolve_localized_text
 from app.schemas.analysis import RiskItem, RiskSeverity, RoleFocusedSummary, SummaryRecord
 from app.services.clause_segmentation import ClauseSegment
-from app.services.contract_analysis import role_aliases
+from app.services.contract_analysis import localize_role_label, role_aliases
 from app.services.summary_record_formatter import SummaryRecordFormatter, ensure_sentence, smart_truncate_text
 from app.services.text_normalization import normalize_contract_text, split_into_sentences
 
@@ -27,6 +27,7 @@ class SummaryGenerationService:
         language: str,
     ) -> RoleFocusedSummary:
         resolved_language = normalize_analysis_language(language)
+        display_role = localize_role_label(role, resolved_language) or role
         candidates = self._candidate_lines(document_text, clauses)
         role_terms = self._expand_role_terms(role)
         counterparty_terms = self._expand_role_terms(counterparty_role)
@@ -66,7 +67,7 @@ class SummaryGenerationService:
         overview = self._build_overview(
             clauses_count=len(clauses),
             risks=risks,
-            role=role,
+            role=display_role,
             language=resolved_language,
             must_do=must_do,
             should_review=should_review,
@@ -78,7 +79,7 @@ class SummaryGenerationService:
         fallback_values = self._config.fallback_values
 
         return RoleFocusedSummary(
-            role=role,
+            role=display_role,
             overview=overview,
             must_do=must_do or [resolve_localized_text(fallback_values.must_do, resolved_language)],
             should_review=should_review
@@ -103,7 +104,7 @@ class SummaryGenerationService:
                 record_id="role-summary-overview",
                 template=self._record_templates.role_overview,
                 context={
-                    "role": summary.role,
+                    "role": localize_role_label(summary.role, "ru") or summary.role,
                     "clauses_count": clauses_count,
                     "risks_count": len(risks),
                     "high_risks_count": high_risks_count,
@@ -116,7 +117,7 @@ class SummaryGenerationService:
                 section_id="must-do",
                 template=self._record_templates.must_do,
                 items=summary.must_do,
-                role=summary.role,
+                role=localize_role_label(summary.role, "ru") or summary.role,
             )
         )
         records.extend(
@@ -124,7 +125,7 @@ class SummaryGenerationService:
                 section_id="should-review",
                 template=self._record_templates.should_review,
                 items=summary.should_review,
-                role=summary.role,
+                role=localize_role_label(summary.role, "ru") or summary.role,
             )
         )
         records.extend(
@@ -132,7 +133,7 @@ class SummaryGenerationService:
                 section_id="payment-terms",
                 template=self._record_templates.payment_terms,
                 items=summary.payment_terms,
-                role=summary.role,
+                role=localize_role_label(summary.role, "ru") or summary.role,
             )
         )
         records.extend(
@@ -140,7 +141,7 @@ class SummaryGenerationService:
                 section_id="deadlines",
                 template=self._record_templates.deadlines,
                 items=summary.deadlines,
-                role=summary.role,
+                role=localize_role_label(summary.role, "ru") or summary.role,
             )
         )
         records.extend(
@@ -148,7 +149,7 @@ class SummaryGenerationService:
                 section_id="penalties",
                 template=self._record_templates.penalties,
                 items=summary.penalties,
-                role=summary.role,
+                role=localize_role_label(summary.role, "ru") or summary.role,
             )
         )
         return records
@@ -249,6 +250,26 @@ class SummaryGenerationService:
     ) -> str:
         high_risks = [risk for risk in risks if risk.severity.value in {"high", "critical"}]
 
+        if high_risks and payment_terms and deadlines and penalties:
+            return self._localized_recommendation(
+                "high_risk_payment_deadlines_penalties",
+                language,
+            )
+        if high_risks and payment_terms and penalties:
+            return self._localized_recommendation(
+                "high_risk_payment_penalties",
+                language,
+            )
+        if high_risks and deadlines and penalties:
+            return self._localized_recommendation(
+                "high_risk_deadlines_penalties",
+                language,
+            )
+        if high_risks and penalties:
+            return self._localized_recommendation(
+                "high_risk_penalties",
+                language,
+            )
         if high_risks and payment_terms and deadlines:
             return self._localized_recommendation(
                 "high_risk_payment_deadlines",
@@ -272,6 +293,21 @@ class SummaryGenerationService:
         if should_review:
             return self._localized_recommendation(
                 "should_review",
+                language,
+            )
+        if payment_terms and deadlines and penalties:
+            return self._localized_recommendation(
+                "payment_deadlines_penalties",
+                language,
+            )
+        if payment_terms and penalties:
+            return self._localized_recommendation(
+                "payment_penalties",
+                language,
+            )
+        if deadlines and penalties:
+            return self._localized_recommendation(
+                "deadlines_penalties",
                 language,
             )
         if payment_terms and deadlines:
@@ -307,71 +343,113 @@ class SummaryGenerationService:
     @staticmethod
     def _localized_recommendation(key: str, language: str) -> str:
         recommendations = {
+            "high_risk_payment_deadlines_penalties": {
+                "ru": "Проверьте вручную пункты с высоким риском. Подтвердите событие оплаты, ключевые сроки и предел санкций до подписания.",
+                "en": "Review the high-risk clauses manually. Confirm the payment trigger, key deadlines, and penalty cap before signing.",
+                "it": "Rivedi manualmente le clausole ad alto rischio. Conferma l'evento di pagamento, le scadenze chiave e il tetto delle penali prima della firma.",
+                "fr": "Examinez manuellement les clauses a haut risque. Confirmez le declencheur du paiement, les echeances cles et le plafond des penalites avant signature.",
+            },
+            "high_risk_payment_penalties": {
+                "ru": "Проверьте вручную пункты с высоким риском. Подтвердите сумму, событие оплаты и предел санкций до подписания.",
+                "en": "Review the high-risk clauses manually. Confirm the payment amount, trigger, and penalty cap before signing.",
+                "it": "Rivedi manualmente le clausole ad alto rischio. Conferma l'importo del pagamento, il relativo trigger e il tetto delle penali prima della firma.",
+                "fr": "Examinez manuellement les clauses a haut risque. Confirmez le montant du paiement, son declencheur et le plafond des penalites avant signature.",
+            },
+            "high_risk_deadlines_penalties": {
+                "ru": "Проверьте вручную пункты с высоким риском. Подтвердите дедлайны, основания санкций и лимит ответственности до подписания.",
+                "en": "Review the high-risk clauses manually. Confirm the deadlines, penalty triggers, and liability cap before signing.",
+                "it": "Rivedi manualmente le clausole ad alto rischio. Conferma le scadenze, i trigger delle penali e il limite di responsabilita prima della firma.",
+                "fr": "Examinez manuellement les clauses a haut risque. Confirmez les echeances, les declencheurs des penalites et le plafond de responsabilite avant signature.",
+            },
+            "high_risk_penalties": {
+                "ru": "Проверьте вручную пункты с высоким риском. Подтвердите основание санкции, размер взыскания и общий лимит ответственности до подписания.",
+                "en": "Review the high-risk clauses manually. Confirm the penalty trigger, amount, and overall liability cap before signing.",
+                "it": "Rivedi manualmente le clausole ad alto rischio. Conferma il trigger della penale, il relativo importo e il limite complessivo di responsabilita prima della firma.",
+                "fr": "Examinez manuellement les clauses a haut risque. Confirmez le declencheur de la penalite, son montant et le plafond global de responsabilite avant signature.",
+            },
             "high_risk_payment_deadlines": {
                 "ru": "Проверьте вручную пункты с высоким риском. Подтвердите событие оплаты и зафиксируйте ключевые сроки до подписания.",
                 "en": "Review the high-risk clauses manually. Confirm the payment trigger and lock the key deadlines before signing.",
-                "it": "Review the high-risk clauses manually. Confirm the payment trigger and lock the key deadlines before signing.",
-                "fr": "Review the high-risk clauses manually. Confirm the payment trigger and lock the key deadlines before signing.",
+                "it": "Rivedi manualmente le clausole ad alto rischio. Conferma il trigger del pagamento e fissa le scadenze chiave prima della firma.",
+                "fr": "Examinez manuellement les clauses a haut risque. Confirmez le declencheur du paiement et verrouillez les echeances cles avant signature.",
             },
             "high_risk_payment": {
                 "ru": "Проверьте вручную пункты с высоким риском. Подтвердите сумму, событие оплаты и дату перечисления до подписания.",
                 "en": "Review the high-risk clauses manually. Confirm the payment amount, trigger, and transfer date before signing.",
-                "it": "Review the high-risk clauses manually. Confirm the payment amount, trigger, and transfer date before signing.",
-                "fr": "Review the high-risk clauses manually. Confirm the payment amount, trigger, and transfer date before signing.",
+                "it": "Rivedi manualmente le clausole ad alto rischio. Conferma importo, trigger e data del pagamento prima della firma.",
+                "fr": "Examinez manuellement les clauses a haut risque. Confirmez le montant, le declencheur et la date du paiement avant signature.",
             },
             "high_risk_deadlines": {
                 "ru": "Проверьте вручную пункты с высоким риском. Подтвердите дату запуска срока и конечный дедлайн до подписания.",
                 "en": "Review the high-risk clauses manually. Confirm the trigger date and the final deadline before signing.",
-                "it": "Review the high-risk clauses manually. Confirm the trigger date and the final deadline before signing.",
-                "fr": "Review the high-risk clauses manually. Confirm the trigger date and the final deadline before signing.",
+                "it": "Rivedi manualmente le clausole ad alto rischio. Conferma la data di decorrenza e la scadenza finale prima della firma.",
+                "fr": "Examinez manuellement les clauses a haut risque. Confirmez la date de depart et l'echeance finale avant signature.",
             },
             "high_risk_generic": {
                 "ru": "Проверьте вручную пункты с высоким риском. Уточните ключевые обязательства и спорные полномочия сторон до подписания.",
                 "en": "Review the high-risk clauses manually. Clarify the key obligations and any discretionary powers before signing.",
-                "it": "Review the high-risk clauses manually. Clarify the key obligations and any discretionary powers before signing.",
-                "fr": "Review the high-risk clauses manually. Clarify the key obligations and any discretionary powers before signing.",
+                "it": "Rivedi manualmente le clausole ad alto rischio. Chiarisci gli obblighi chiave e gli eventuali poteri discrezionali prima della firma.",
+                "fr": "Examinez manuellement les clauses a haut risque. Clarifiez les obligations cles et les pouvoirs discretionnaires avant signature.",
             },
             "should_review": {
                 "ru": "Проверьте дискреционные формулировки, замените их измеримыми критериями и согласуйте понятный порядок одобрения.",
                 "en": "Review the discretionary wording, replace it with measurable criteria, and agree a clear approval flow.",
-                "it": "Review the discretionary wording, replace it with measurable criteria, and agree a clear approval flow.",
-                "fr": "Review the discretionary wording, replace it with measurable criteria, and agree a clear approval flow.",
+                "it": "Rivedi il testo discrezionale, sostituiscilo con criteri misurabili e concorda un flusso di approvazione chiaro.",
+                "fr": "Examinez le libelle discretionnaire, remplacez-le par des criteres mesurables et convenez d'un circuit d'approbation clair.",
+            },
+            "payment_deadlines_penalties": {
+                "ru": "Подтвердите событие оплаты, ключевые сроки и предел санкций до подписания.",
+                "en": "Confirm the payment trigger, key deadlines, and penalty cap before signing.",
+                "it": "Conferma il trigger del pagamento, le scadenze chiave e il tetto delle penali prima della firma.",
+                "fr": "Confirmez le declencheur du paiement, les echeances cles et le plafond des penalites avant signature.",
+            },
+            "payment_penalties": {
+                "ru": "Подтвердите сумму платежа, основание санкции и предел ответственности до подписания.",
+                "en": "Confirm the payment amount, penalty trigger, and liability cap before signing.",
+                "it": "Conferma l'importo del pagamento, il trigger della penale e il limite di responsabilita prima della firma.",
+                "fr": "Confirmez le montant du paiement, le declencheur de la penalite et le plafond de responsabilite avant signature.",
+            },
+            "deadlines_penalties": {
+                "ru": "Подтвердите сроки, основания начисления санкций и предел ответственности до подписания.",
+                "en": "Confirm the deadlines, penalty triggers, and liability cap before signing.",
+                "it": "Conferma le scadenze, i trigger delle penali e il limite di responsabilita prima della firma.",
+                "fr": "Confirmez les echeances, les declencheurs des penalites et le plafond de responsabilite avant signature.",
             },
             "payment_deadlines": {
                 "ru": "Подтвердите событие оплаты, ответственного за исполнение и ключевые сроки до подписания.",
                 "en": "Confirm the payment trigger, the responsible owner, and the key deadlines before signing.",
-                "it": "Confirm the payment trigger, the responsible owner, and the key deadlines before signing.",
-                "fr": "Confirm the payment trigger, the responsible owner, and the key deadlines before signing.",
+                "it": "Conferma il trigger del pagamento, il responsabile operativo e le scadenze chiave prima della firma.",
+                "fr": "Confirmez le declencheur du paiement, le responsable d'execution et les echeances cles avant signature.",
             },
             "payment_only": {
                 "ru": "Подтвердите сумму, основание платежа и дату перечисления до подписания.",
                 "en": "Confirm the payment amount, basis, and transfer date before signing.",
-                "it": "Confirm the payment amount, basis, and transfer date before signing.",
-                "fr": "Confirm the payment amount, basis, and transfer date before signing.",
+                "it": "Conferma importo, base di pagamento e data di trasferimento prima della firma.",
+                "fr": "Confirmez le montant, la base du paiement et la date de virement avant signature.",
             },
             "deadlines_only": {
                 "ru": "Подтвердите дату начала срока, конечный дедлайн и ответственного за исполнение.",
                 "en": "Confirm when each deadline starts, when it ends, and who is responsible for delivery.",
-                "it": "Confirm when each deadline starts, when it ends, and who is responsible for delivery.",
-                "fr": "Confirm when each deadline starts, when it ends, and who is responsible for delivery.",
+                "it": "Conferma quando decorre ogni scadenza, quando termina e chi e responsabile della consegna.",
+                "fr": "Confirmez le point de depart de chaque echeance, sa date de fin et le responsable de la livraison.",
             },
             "penalties_only": {
                 "ru": "Подтвердите основание санкции, размер взыскания и предел ответственности.",
                 "en": "Confirm the penalty trigger, amount, and liability cap before signing.",
-                "it": "Confirm the penalty trigger, amount, and liability cap before signing.",
-                "fr": "Confirm the penalty trigger, amount, and liability cap before signing.",
+                "it": "Conferma il trigger della penale, il relativo importo e il limite di responsabilita prima della firma.",
+                "fr": "Confirmez le declencheur de la penalite, son montant et le plafond de responsabilite avant signature.",
             },
             "must_do_only": {
                 "ru": "Назначьте ответственного по каждому обязательству и зафиксируйте способ подтверждения исполнения.",
                 "en": "Assign an owner to each obligation and document how performance will be confirmed.",
-                "it": "Assign an owner to each obligation and document how performance will be confirmed.",
-                "fr": "Assign an owner to each obligation and document how performance will be confirmed.",
+                "it": "Assegna un responsabile a ogni obbligo e documenta come verra confermato l'adempimento.",
+                "fr": "Attribuez un responsable a chaque obligation et documentez la preuve d'execution attendue.",
             },
             "generic": {
                 "ru": "Проверьте вручную ключевые обязательства, логику расчетов и условия ответственности до подписания.",
                 "en": "Validate the main obligations, payment logic, and liability terms manually before signing.",
-                "it": "Validate the main obligations, payment logic, and liability terms manually before signing.",
-                "fr": "Validate the main obligations, payment logic, and liability terms manually before signing.",
+                "it": "Verifica manualmente gli obblighi principali, la logica dei pagamenti e i termini di responsabilita prima della firma.",
+                "fr": "Verifiez manuellement les obligations principales, la logique de paiement et les clauses de responsabilite avant signature.",
             },
         }
         template = recommendations[key].get(language, recommendations[key]["ru"])
@@ -398,7 +476,13 @@ class SummaryGenerationService:
 
     @staticmethod
     def _summary_evidence(summary: RoleFocusedSummary) -> list[str]:
-        evidence = summary.must_do[:1] + summary.should_review[:1] + summary.payment_terms[:1] + summary.deadlines[:1]
+        evidence = (
+            summary.must_do[:1]
+            + summary.should_review[:1]
+            + summary.payment_terms[:1]
+            + summary.deadlines[:1]
+            + summary.penalties[:1]
+        )
         seen: set[str] = set()
         unique_items: list[str] = []
         for item in evidence:

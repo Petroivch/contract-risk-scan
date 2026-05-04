@@ -6,7 +6,7 @@ from app.config.runtime import get_runtime_config
 from app.localization import normalize_analysis_language, resolve_localized_text
 from app.schemas.analysis import DisputedClauseItem, SummaryRecord
 from app.services.clause_segmentation import ClauseSegment
-from app.services.contract_analysis import DetectedContractType, role_aliases
+from app.services.contract_analysis import DetectedContractType, localize_role_label, role_aliases
 from app.services.summary_record_formatter import (
     SummaryRecordFormatter,
     ensure_sentence,
@@ -51,6 +51,10 @@ class ContractBriefGenerationService:
         detected_contract_type: DetectedContractType | None = None,
     ) -> str:
         resolved_language = normalize_analysis_language(language)
+        display_role = localize_role_label(role, resolved_language) or role
+        display_counterparty_role = (
+            localize_role_label(counterparty_role, resolved_language) if counterparty_role else ""
+        ) or (counterparty_role or "")
         payload = self._build_sections_payload(
             document_name=document_name,
             document_text=document_text,
@@ -67,14 +71,14 @@ class ContractBriefGenerationService:
         if payload.role_obligations:
             sections.append(
                 resolve_localized_text(self._templates.role_obligations, resolved_language).format(
-                    role=role,
+                    role=display_role,
                     statements=self._join_statements(payload.role_obligations),
                 )
             )
         elif payload.general_obligations:
             sections.append(
                 resolve_localized_text(self._templates.general_obligations, resolved_language).format(
-                    role=role,
+                    role=display_role,
                     statements=self._join_statements(payload.general_obligations),
                 )
             )
@@ -82,7 +86,7 @@ class ContractBriefGenerationService:
         if counterparty_role and payload.counterparty_obligations:
             sections.append(
                 resolve_localized_text(self._templates.counterparty_obligations, resolved_language).format(
-                    counterparty_role=counterparty_role,
+                    counterparty_role=display_counterparty_role,
                     statements=self._join_statements(payload.counterparty_obligations),
                 )
             )
@@ -119,7 +123,7 @@ class ContractBriefGenerationService:
             sections[0] = resolve_localized_text(self._fallback_template, resolved_language).format(
                 document_name=document_name,
                 clauses_count=len(clauses),
-                role=role,
+                role=display_role,
             )
 
         return " ".join(ensure_sentence(section) for section in sections if section)
@@ -135,6 +139,10 @@ class ContractBriefGenerationService:
         disputed_clauses: list[DisputedClauseItem],
         detected_contract_type: DetectedContractType | None = None,
     ) -> list[SummaryRecord]:
+        display_role_ru = localize_role_label(role, "ru") or role
+        display_counterparty_role_ru = (
+            localize_role_label(counterparty_role, "ru") if counterparty_role else ""
+        ) or (counterparty_role or "")
         payload = self._build_sections_payload(
             document_name=document_name,
             document_text=document_text,
@@ -163,7 +171,7 @@ class ContractBriefGenerationService:
                 context={
                     "document_name": document_name,
                     "clauses_count": len(clauses),
-                    "role": role,
+                    "role": display_role_ru,
                     "contract_type_name": contract_type_name,
                     "disputed_count": payload.disputed_count,
                     "legal_framework": legal_framework,
@@ -182,7 +190,7 @@ class ContractBriefGenerationService:
                     section_id="role-obligations",
                     template=self._record_templates.contract_role_obligations,
                     items=payload.role_obligations,
-                    context={"role": role},
+                    context={"role": display_role_ru},
                 )
             )
         elif payload.general_obligations:
@@ -191,7 +199,7 @@ class ContractBriefGenerationService:
                     section_id="general-obligations",
                     template=self._record_templates.contract_general_obligations,
                     items=payload.general_obligations,
-                    context={"role": role},
+                    context={"role": display_role_ru},
                 )
             )
 
@@ -201,7 +209,7 @@ class ContractBriefGenerationService:
                     section_id="counterparty-obligations",
                     template=self._record_templates.contract_counterparty_obligations,
                     items=payload.counterparty_obligations,
-                    context={"counterparty_role": counterparty_role},
+                    context={"counterparty_role": display_counterparty_role_ru},
                 )
             )
 
@@ -211,7 +219,7 @@ class ContractBriefGenerationService:
                     section_id="payment-terms",
                     template=self._record_templates.contract_payment_terms,
                     items=payload.payment_terms,
-                    context={"role": role},
+                    context={"role": display_role_ru},
                 )
             )
 
@@ -221,7 +229,7 @@ class ContractBriefGenerationService:
                     section_id="deadlines",
                     template=self._record_templates.contract_deadlines,
                     items=payload.deadlines,
-                    context={"role": role},
+                    context={"role": display_role_ru},
                 )
             )
 
@@ -231,7 +239,7 @@ class ContractBriefGenerationService:
                     section_id="penalties",
                     template=self._record_templates.contract_penalties,
                     items=payload.penalties,
-                    context={"role": role},
+                    context={"role": display_role_ru},
                 )
             )
 
@@ -333,6 +341,7 @@ class ContractBriefGenerationService:
         detected_contract_type: DetectedContractType | None,
     ) -> ContractBriefSectionsPayload:
         resolved_language = normalize_analysis_language(language)
+        display_role = localize_role_label(role, resolved_language) or role
         statements = self._candidate_statements(document_text, clauses)
         max_items = min(3, self._summary_config.max_items_per_section)
 
@@ -376,14 +385,10 @@ class ContractBriefGenerationService:
         intro = resolve_localized_text(self._templates.intro, resolved_language).format(
             document_name=document_name,
             clauses_count=len(clauses),
-            role=role,
+            role=display_role,
         )
         if detected_contract_type and detected_contract_type.type_id != "general_contract":
-            intro = (
-                f"{intro} Определен тип договора: {detected_contract_type.ru_name} "
-                f"(уверенность {int(detected_contract_type.confidence * 100)}%, "
-                f"правовая рамка: {detected_contract_type.legal_framework})."
-            )
+            intro = f"{intro} {self._localized_contract_type_context(resolved_language, detected_contract_type)}"
 
         return ContractBriefSectionsPayload(
             intro=ensure_sentence(intro),
@@ -437,6 +442,21 @@ class ContractBriefGenerationService:
     @staticmethod
     def _ensure_complete_sentence(text: str) -> str:
         return ensure_sentence(text)
+
+    @staticmethod
+    def _localized_contract_type_context(language: str, detected_contract_type: DetectedContractType) -> str:
+        templates = {
+            "ru": "Определен тип договора: {contract_type} (уверенность {confidence}%, правовая рамка: {legal_framework}).",
+            "en": "Detected contract type: {contract_type} (confidence {confidence}%, legal framework: {legal_framework}).",
+            "it": "Tipo di contratto rilevato: {contract_type} (affidabilita {confidence}%, quadro giuridico: {legal_framework}).",
+            "fr": "Type de contrat detecte : {contract_type} (confiance {confidence}%, cadre juridique : {legal_framework}).",
+        }
+        template = templates.get(language, templates["ru"])
+        return template.format(
+            contract_type=detected_contract_type.ru_name,
+            confidence=int(detected_contract_type.confidence * 100),
+            legal_framework=detected_contract_type.legal_framework,
+        )
 
     @staticmethod
     def _join_statements(statements: list[str]) -> str:
