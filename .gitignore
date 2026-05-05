@@ -8,9 +8,7 @@ apps/mobile/node_modules/
 apps/mobile/android/.gradle/
 apps/mobile/android/app/build/
 apps/mobile/android/build/
-apps/mobile/ios/build/
 apps/mobile/expo-dev.log
-apps/mobile/expo-web.log
 services/core-api/node_modules/
 services/core-api/dist/
 services/core-api/.runtime/

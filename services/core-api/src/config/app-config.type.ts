@@ -7,13 +7,6 @@ export interface AppConfig {
     apiPrefix: string;
     publicBaseUrl: string;
   };
-  swagger: {
-    enabled: boolean;
-    path: string;
-    title: string;
-    description: string;
-    version: string;
-  };
   auth: {
     jwtSecret: string;
     jwtExpiresIn: string;

@@ -134,6 +134,7 @@ const buildExpoConfig = (config = {}) => {
 
   return {
     ...config,
+    platforms: ['android'],
     name: 'Contract Risk Scanner',
     slug: 'contract-risk-scanner-mobile',
     version: '0.1.0',
@@ -145,11 +146,6 @@ const buildExpoConfig = (config = {}) => {
       image: './assets/splash.png',
       resizeMode: 'contain',
       backgroundColor: '#0D2236',
-    },
-    ios: {
-      supportsTablet: true,
-      bundleIdentifier: 'com.contractriskscanner.mobile',
-      buildNumber: '1',
     },
     android: {
       package: 'com.contractriskscanner.mobile',
