@@ -428,7 +428,7 @@ export class ContractsService {
     const summary: ContractSummaryDto = {
       title: contract.contractLabel || contract.originalFileName || textPolicy.defaultTitle,
       contractType: this.resolveContractTypeLabel(contract.fileMimeType, locale),
-      shortDescription: roleMessage || remoteResult.contract_brief,
+      shortDescription: roleNotFound ? roleMessage ?? remoteResult.contract_brief : roleMessage || remoteResult.contract_brief,
       obligationsForSelectedRole: roleNotFound
         ? []
         : this.uniqueStrings([
@@ -439,15 +439,17 @@ export class ContractsService {
           ])
     };
 
-    const risks: ContractRiskDto[] = remoteResult.risks.map((risk) => ({
-      id: risk.risk_id,
-      clauseRef: risk.clause_id || textPolicy.unknownClauseRef,
-      title: risk.title,
-      severity: this.mapSeverity(risk.severity),
-      description: risk.description,
-      roleImpact: risk.role_relevance,
-      recommendation: risk.mitigation
-    }));
+    const risks: ContractRiskDto[] = roleNotFound
+      ? []
+      : remoteResult.risks.map((risk) => ({
+          id: risk.risk_id,
+          clauseRef: risk.clause_id || textPolicy.unknownClauseRef,
+          title: risk.title,
+          severity: this.mapSeverity(risk.severity),
+          description: risk.description,
+          roleImpact: risk.role_relevance,
+          recommendation: risk.mitigation
+        }));
 
     const disputedClauses: DisputedClauseDto[] = remoteResult.disputed_clauses.map((clause) => ({
       id: `${contract.id}_${clause.clause_id}`,
@@ -472,7 +474,7 @@ export class ContractsService {
       roleFocus: contract.role,
       selectedRole: contract.role,
       summary,
-      summaryText: roleMessage || remoteResult.contract_brief,
+      summaryText: roleNotFound ? roleMessage ?? remoteResult.contract_brief : roleMessage || remoteResult.contract_brief,
       obligations,
       risks,
       disputedClauses,
