@@ -103,6 +103,17 @@ ROLE_LABELS_BY_CANONICAL: dict[str, dict[str, str]] = {
     "lender": {"ru": "займодавец", "en": "lender", "it": "finanziatore", "fr": "preteur"},
 }
 
+OPPOSITE_ROLE_MAP: dict[str, set[str]] = {
+    "executor": {"client"},
+    "client": {"executor"},
+    "worker": {"employer"},
+    "employer": {"worker"},
+    "tenant": {"landlord"},
+    "landlord": {"tenant"},
+    "borrower": {"lender"},
+    "lender": {"borrower"},
+}
+
 
 @dataclass(slots=True)
 class DetectedRole:
@@ -136,6 +147,13 @@ def role_aliases(role: str | None) -> set[str]:
         aliases.update(alias.casefold() for alias in ROLE_ALIASES.get(canonical, set()))
 
     return aliases
+
+
+def opposite_canonical_roles(role: str | None) -> set[str]:
+    canonical = canonicalize_role(role)
+    if not canonical:
+        return set()
+    return set(OPPOSITE_ROLE_MAP.get(canonical, set()))
 
 
 def localize_role_label(role: str | None, language: str) -> str:

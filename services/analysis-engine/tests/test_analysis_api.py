@@ -385,7 +385,7 @@ def test_completed_result_marks_missing_selected_role_without_breaking_async_flo
         "Найдены роли: Исполнитель, Заказчик."
     )
     assert result["contract_brief"].startswith(result["message"])
-    assert result["risks"]
+    assert result["risks"] == []
     assert result["role_focused_summary"]["overview"].startswith(result["message"])
     assert isinstance(result["disputed_clauses"], list)
     assert isinstance(result["asymmetry_signals"], list)
@@ -585,7 +585,7 @@ def test_missing_job_error_can_be_localized_via_query_locale() -> None:
     assert response.json()["detail"] == "Analysis job was not found"
 
 
-def test_missing_role_returns_role_not_found_payload_and_preserves_generic_risks() -> None:
+def test_missing_role_returns_role_not_found_payload_without_selected_role_risks() -> None:
     client = TestClient(app)
 
     result = _get_completed_result(
@@ -610,8 +610,7 @@ def test_missing_role_returns_role_not_found_payload_and_preserves_generic_risks
         "Выбранная роль 'Finance reviewer' не найдена в тексте договора. "
         "Найдены роли: Seller, Buyer."
     )
-    assert result["risks"]
-    assert any(risk["severity"] in {"high", "critical"} for risk in result["risks"])
+    assert result["risks"] == []
     assert result["contract_brief"].startswith(result["message"])
     assert result["role_focused_summary"]["overview"].startswith(result["message"])
     assert result["ingestion"]["detected_roles"]

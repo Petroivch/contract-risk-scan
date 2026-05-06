@@ -226,8 +226,9 @@ class SummaryGenerationService:
             risks_count=len(risks),
             role=role,
         )
-        recommendation = self._build_actionable_recommendation(
+        recommendation = self._build_evidence_driven_recommendation(
             risks=risks,
+            role=role,
             language=language,
             must_do=must_do,
             should_review=should_review,
@@ -454,6 +455,118 @@ class SummaryGenerationService:
         }
         template = recommendations[key].get(language, recommendations[key]["ru"])
         return ensure_sentence(template)
+
+    def _build_evidence_driven_recommendation(
+        self,
+        *,
+        risks: list[RiskItem],
+        role: str,
+        language: str,
+        must_do: list[str],
+        should_review: list[str],
+        payment_terms: list[str],
+        deadlines: list[str],
+        penalties: list[str],
+    ) -> str:
+        dominant_risk = self._pick_dominant_risk(risks)
+        supporting_line = next(
+            (
+                item
+                for item in [*must_do, *should_review, *payment_terms, *deadlines, *penalties]
+                if item
+            ),
+            "",
+        )
+        parts: list[str] = []
+
+        if dominant_risk is not None:
+            parts.append(
+                self._localized_risk_focus(
+                    language=language,
+                    role=role,
+                    risk=dominant_risk,
+                )
+            )
+            next_step = dominant_risk.mitigation or supporting_line
+            if next_step:
+                parts.append(self._localized_next_step(language, next_step))
+        elif supporting_line:
+            parts.append(self._localized_line_focus(language, role, supporting_line))
+        else:
+            parts.append(self._localized_generic_follow_up(language, role))
+
+        return " ".join(ensure_sentence(part) for part in parts if part)
+
+    @staticmethod
+    def _pick_dominant_risk(risks: list[RiskItem]) -> RiskItem | None:
+        if not risks:
+            return None
+
+        severity_rank = {
+            RiskSeverity.LOW: 1,
+            RiskSeverity.MEDIUM: 2,
+            RiskSeverity.HIGH: 3,
+            RiskSeverity.CRITICAL: 4,
+        }
+        return sorted(
+            risks,
+            key=lambda risk: (
+                -severity_rank[risk.severity],
+                -(risk.confidence or 0.0),
+                risk.clause_id or "",
+            ),
+        )[0]
+
+    def _localized_risk_focus(self, *, language: str, role: str, risk: RiskItem) -> str:
+        title = self._plain_risk_title(risk.title)
+        description = smart_truncate_text(ensure_sentence(risk.description), 180)
+        templates = {
+            "ru": "Главный риск для роли \"{role}\": {title}. {description}",
+            "en": "The main risk for role \"{role}\" is {title}. {description}",
+            "it": "Il rischio principale per il ruolo \"{role}\" e {title}. {description}",
+            "fr": "Le risque principal pour le role \"{role}\" est {title}. {description}",
+        }
+        template = templates.get(language, templates["ru"])
+        return template.format(role=role, title=title, description=description)
+
+    @staticmethod
+    def _localized_next_step(language: str, text: str) -> str:
+        step = smart_truncate_text(ensure_sentence(text), 180)
+        templates = {
+            "ru": "Сначала проверьте: {text}",
+            "en": "Check this first: {text}",
+            "it": "Verifica prima di tutto questo: {text}",
+            "fr": "Verifiez d'abord ceci : {text}",
+        }
+        template = templates.get(language, templates["ru"])
+        return template.format(text=step)
+
+    @staticmethod
+    def _localized_line_focus(language: str, role: str, text: str) -> str:
+        line = smart_truncate_text(ensure_sentence(text), 180)
+        templates = {
+            "ru": "Для роли \"{role}\" сначала проверьте пункт: {text}",
+            "en": "For role \"{role}\", start with this clause: {text}",
+            "it": "Per il ruolo \"{role}\", inizia da questa clausola: {text}",
+            "fr": "Pour le role \"{role}\", commencez par cette clause : {text}",
+        }
+        template = templates.get(language, templates["ru"])
+        return template.format(role=role, text=line)
+
+    @staticmethod
+    def _localized_generic_follow_up(language: str, role: str) -> str:
+        templates = {
+            "ru": "Для роли \"{role}\" вручную проверьте сроки, оплату, ответственность и право на односторонние действия.",
+            "en": "For role \"{role}\", manually review deadlines, payment terms, liability, and unilateral rights.",
+            "it": "Per il ruolo \"{role}\", controlla manualmente scadenze, pagamenti, responsabilita e diritti unilaterali.",
+            "fr": "Pour le role \"{role}\", verifiez manuellement les delais, les paiements, la responsabilite et les droits unilateraux.",
+        }
+        template = templates.get(language, templates["ru"])
+        return template.format(role=role)
+
+    @staticmethod
+    def _plain_risk_title(title: str) -> str:
+        return title.split(": ", 1)[-1].strip()
 
     def _build_section_records(
         self,

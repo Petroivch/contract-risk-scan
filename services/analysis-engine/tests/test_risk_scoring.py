@@ -55,7 +55,7 @@ def test_missing_contract_type_preserves_backward_compatible_rule_matching() -> 
     assert any(risk.rule_id == "payment_asymmetry" for risk in generic_risks)
 
 
-def test_role_mismatch_keeps_generic_risk_candidates() -> None:
+def test_role_mismatch_returns_no_selected_role_risks() -> None:
     scorer = RiskScoringService()
     clauses = [
         ClauseSegment(
@@ -81,9 +81,7 @@ def test_role_mismatch_keeps_generic_risk_candidates() -> None:
         counterparty_role="Seller",
     )
 
-    assert risks
-    assert any(risk.rule_id == "payment_asymmetry" for risk in risks)
-    assert any(risk.explanation and risk.explanation.classifier_score >= 0.45 for risk in risks)
+    assert risks == []
 
 
 def test_payment_sanctions_are_detected_with_hybrid_guardrail() -> None:
@@ -127,11 +125,40 @@ def test_semantic_retrieval_requires_rule_specific_anchor_terms() -> None:
 
     risks = scorer.score(
         clauses=clauses,
+        role="Contractor",
+        language="en",
+        contract_type="service_agreement",
+        counterparty_role="Customer",
+    )
+
+    assert any(risk.rule_id == "unilateral_scope_change" for risk in risks)
+    assert all(risk.rule_id != "salary_reduction_unilateral" for risk in risks)
+    assert all(risk.rule_id != "unlimited_liability" for risk in risks)
+
+
+def test_unilateral_rights_are_shown_only_for_affected_role() -> None:
+    scorer = RiskScoringService()
+    clauses = [
+        ClauseSegment(
+            clause_id="clause-1",
+            text="Customer may unilaterally change the price, deadlines and scope of services without Contractor approval.",
+        )
+    ]
+
+    contractor_risks = scorer.score(
+        clauses=clauses,
+        role="Contractor",
+        language="en",
+        contract_type="service_agreement",
+        counterparty_role="Customer",
+    )
+    customer_risks = scorer.score(
+        clauses=clauses,
         role="Customer",
         language="en",
         contract_type="service_agreement",
+        counterparty_role="Contractor",
     )
 
-    assert any(risk.rule_id == "unilateral_price_change" for risk in risks)
-    assert all(risk.rule_id != "salary_reduction_unilateral" for risk in risks)
-    assert all(risk.rule_id != "unlimited_liability" for risk in risks)
+    assert any(risk.rule_id == "unilateral_scope_change" for risk in contractor_risks)
+    assert all(risk.rule_id != "unilateral_scope_change" for risk in customer_risks)

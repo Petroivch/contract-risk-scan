@@ -37,7 +37,7 @@ def test_disputed_clause_excerpt_keeps_sentence_boundary() -> None:
     assert "заказчика" in disputed[0].clause_excerpt.casefold()
 
 
-def test_summary_overview_ends_with_concrete_recommendation_for_high_risks() -> None:
+def test_summary_overview_uses_top_risk_and_concrete_next_step() -> None:
     service = SummaryGenerationService()
     clauses = [
         ClauseSegment(clause_id="clause-1", text="Contractor must provide the service within 5 days."),
@@ -71,10 +71,10 @@ def test_summary_overview_ends_with_concrete_recommendation_for_high_risks() -> 
     ]
 
     assert len(overview_sentences) >= 3
-    assert "Review the high-risk clauses manually." in summary.overview
-    assert "Confirm the payment trigger" in summary.overview
-    assert "key deadlines before signing." in summary.overview
-    assert summary.overview.endswith("before signing.")
+    assert 'The main risk for role "contractor" is Payment asymmetry.' in summary.overview
+    assert "Payment is delayed after performance." in summary.overview
+    assert "Check this first: Add an advance payment." in summary.overview
+    assert summary.overview.endswith("Add an advance payment.")
     assert any("45 days" in line for line in summary.payment_terms)
 
 

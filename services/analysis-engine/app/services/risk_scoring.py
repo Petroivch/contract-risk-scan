@@ -15,6 +15,8 @@ from app.services.contract_analysis import (
     extract_roles_from_text,
     find_role_matches,
     localize_role_label,
+    opposite_canonical_roles,
+    role_aliases,
 )
 from app.services.disputed_clause_detector import DisputedClauseDetector
 from app.services.text_normalization import normalize_contract_text
@@ -36,6 +38,17 @@ class RankedRiskCandidate:
     risk: RiskItem
     source_has_roles: bool
     role_mentioned: bool
+    applies_to_selected_role: bool
+
+
+@dataclass(slots=True)
+class RoleContextAssessment:
+    selected_role_mentioned: bool
+    selected_role_burdened: bool
+    selected_role_benefited: bool
+    counterparty_role_mentioned: bool
+    counterparty_role_burdened: bool
+    counterparty_role_benefited: bool
 
 
 @dataclass(slots=True)
@@ -133,6 +146,53 @@ class RiskScoringService:
             "liable",
             "responsible",
         )
+        self._role_burden_markers = (
+            "must",
+            "shall",
+            "liable",
+            "responsible",
+            "indemn",
+            "damages",
+            "penalt",
+            "fine",
+            "security",
+            "deposit",
+            "guarantee",
+            "pay",
+            "payment",
+            "обязан",
+            "обязуется",
+            "должен",
+            "уплач",
+            "штраф",
+            "неустой",
+            "возмещ",
+            "компенс",
+            "обеспеч",
+            "залог",
+            "поручител",
+        )
+        self._role_benefit_markers = (
+            "may",
+            "sole discretion",
+            "without approval",
+            "limited to",
+            "not liable",
+            "deemed accepted",
+            "automatically renew",
+            "automatic renewal",
+            "вправе",
+            "по своему усмотрению",
+            "без согласования",
+            "не несет ответственности",
+            "не отвечает",
+            "ограничена",
+            "считается принятым",
+            "считаются принятыми",
+            "автоматически продлевается",
+            "внесудебн",
+        )
+        self._payment_exposure_roles = {"executor", "landlord", "lender"}
         self._semantic_expansions = {
             "payment": {
                 "pay",
@@ -216,6 +276,8 @@ class RiskScoringService:
         risks_with_rank: list[RankedRiskCandidate] = []
         seen_pairs: set[tuple[str, str | None]] = set()
         selected_role_present = bool(find_role_matches(role, normalized_document_text))
+        if canonical_role and not selected_role_present:
+            return []
 
         signal_map = self._group_asymmetry_signals(asymmetry_signals or [])
         for rule in self._config.risk_rules:
@@ -241,6 +303,20 @@ class RiskScoringService:
             for match in matches:
                 dedupe_key = (rule.id, match.clause_id)
                 if dedupe_key in seen_pairs:
+                    continue
+                role_context = self._assess_role_context(
+                    text=match.source or match.excerpt,
+                    role=role,
+                    counterparty_role=counterparty_role,
+                )
+                applies_to_selected_role = self._applies_to_selected_role(
+                    rule_id=rule.id,
+                    canonical_role=canonical_role,
+                    role_context=role_context,
+                    source_has_roles=match.source_has_roles,
+                    role_mentioned=match.role_mentioned,
+                )
+                if canonical_role and not applies_to_selected_role:
                     continue
 
                 severity, escalation_reason = self._escalate_severity(
@@ -282,10 +358,15 @@ class RiskScoringService:
                                 counterparty_role=counterparty_role,
                                 severity=severity,
                                 role_mentioned=match.role_mentioned,
+                                role_context=role_context,
                                 escalation_reason=escalation_reason,
                             ),
-                            mitigation=self._ensure_complete_sentence(
-                                resolve_localized_text(rule.mitigation, resolved_language)
+                            mitigation=self._build_contextual_mitigation(
+                                rule_id=rule.id,
+                                language=resolved_language,
+                                base_mitigation=resolve_localized_text(rule.mitigation, resolved_language),
+                                excerpt=match.excerpt,
+                                role_context=role_context,
                             ),
                             target_role=role,
                             confidence=match.classifier_score,
@@ -307,6 +388,7 @@ class RiskScoringService:
                         ),
                         source_has_roles=match.source_has_roles,
                         role_mentioned=match.role_mentioned,
+                        applies_to_selected_role=applies_to_selected_role,
                     )
                 )
 
@@ -925,6 +1007,92 @@ class RiskScoringService:
         severity_label = self._severity_label(language, severity)
         return f"{severity_label}: {title_fragment}"
 
+    def _assess_role_context(
+        self,
+        *,
+        text: str,
+        role: str,
+        counterparty_role: str | None,
+    ) -> RoleContextAssessment:
+        normalized_text = normalize_contract_text(text).casefold()
+        selected_aliases = role_aliases(role)
+        counterparty_aliases = role_aliases(counterparty_role)
+
+        if not counterparty_aliases:
+            for opposite_role in opposite_canonical_roles(role):
+                counterparty_aliases.update(role_aliases(opposite_role))
+
+        selected_windows = self._extract_role_windows(normalized_text, selected_aliases)
+        counterparty_windows = self._extract_role_windows(normalized_text, counterparty_aliases)
+
+        return RoleContextAssessment(
+            selected_role_mentioned=bool(selected_windows),
+            selected_role_burdened=any(self._window_has_marker(window, self._role_burden_markers) for window in selected_windows),
+            selected_role_benefited=any(self._window_has_marker(window, self._role_benefit_markers) for window in selected_windows),
+            counterparty_role_mentioned=bool(counterparty_windows),
+            counterparty_role_burdened=any(
+                self._window_has_marker(window, self._role_burden_markers) for window in counterparty_windows
+            ),
+            counterparty_role_benefited=any(
+                self._window_has_marker(window, self._role_benefit_markers) for window in counterparty_windows
+            ),
+        )
+
+    def _extract_role_windows(self, text: str, aliases: set[str]) -> list[str]:
+        windows: list[str] = []
+        seen: set[tuple[int, int]] = set()
+
+        for alias in sorted({alias.casefold().strip() for alias in aliases if alias and alias.strip()}, key=len, reverse=True):
+            for match in re.finditer(rf"(?<!\w){re.escape(alias)}(?!\w)", text):
+                start = max(0, match.start() - 72)
+                end = min(len(text), match.end() + 180)
+                key = (start, end)
+                if key in seen:
+                    continue
+                seen.add(key)
+                windows.append(text[start:end])
+
+        return windows
+
+    @staticmethod
+    def _window_has_marker(window: str, markers: tuple[str, ...]) -> bool:
+        return any(marker in window for marker in markers)
+
+    def _applies_to_selected_role(
+        self,
+        *,
+        rule_id: str,
+        canonical_role: str,
+        role_context: RoleContextAssessment,
+        source_has_roles: bool,
+        role_mentioned: bool,
+    ) -> bool:
+        if not canonical_role:
+            return True
+
+        if role_context.selected_role_burdened:
+            return True
+        if role_context.counterparty_role_benefited:
+            return True
+
+        if (
+            rule_id == "payment_asymmetry"
+            and canonical_role in self._payment_exposure_roles
+            and role_context.counterparty_role_burdened
+        ):
+            return True
+
+        if role_context.selected_role_benefited and not role_context.selected_role_burdened:
+            return False
+        if role_context.counterparty_role_burdened and not role_context.counterparty_role_benefited:
+            return False
+
+        if role_context.selected_role_mentioned:
+            return True
+        if source_has_roles:
+            return role_mentioned
+        return True
+
     def _build_role_relevance(
         self,
         language: str,
@@ -932,20 +1100,41 @@ class RiskScoringService:
         counterparty_role: str | None,
         severity: RiskSeverity,
         role_mentioned: bool,
+        role_context: RoleContextAssessment,
         escalation_reason: str | None,
     ) -> str:
         if escalation_reason:
             return self._ensure_complete_sentence(escalation_reason)
+
+        localized_role = localize_role_label(role, language) or role
+        localized_counterparty = (
+            localize_role_label(counterparty_role, language) or counterparty_role or ""
+        )
+
+        if role_context.selected_role_burdened:
+            return self._ensure_complete_sentence(
+                self._localized_direct_burden(language).format(role=localized_role)
+            )
+        if localized_counterparty and role_context.counterparty_role_benefited:
+            result = self._localized_counterparty_advantage(language).format(
+                role=localized_role,
+                counterparty_role=localized_counterparty,
+            )
+            if severity in {RiskSeverity.HIGH, RiskSeverity.CRITICAL}:
+                result += " " + self._localized_counterparty_conflict(language).format(
+                    counterparty_role=localized_counterparty
+                )
+            return self._ensure_complete_sentence(result)
 
         if role_mentioned:
             template_map = self._config.role_relevance_templates.role_mentioned
         else:
             template_map = self._config.role_relevance_templates.role_generic
 
-        result = resolve_localized_text(template_map, language).format(role=localize_role_label(role, language) or role)
+        result = resolve_localized_text(template_map, language).format(role=localized_role)
         if counterparty_role and severity in {RiskSeverity.HIGH, RiskSeverity.CRITICAL}:
             result += " " + self._localized_counterparty_conflict(language).format(
-                counterparty_role=counterparty_role
+                counterparty_role=localized_counterparty or counterparty_role
             )
         return self._ensure_complete_sentence(result)
 
@@ -966,6 +1155,135 @@ class RiskScoringService:
             "en": "The most likely interest conflict is with counterparty '{counterparty_role}'.",
             "it": "Il conflitto di interessi piu probabile e con la controparte '{counterparty_role}'.",
             "fr": "Le conflit d'interets le plus probable concerne la contrepartie '{counterparty_role}'.",
+        }
+        return templates.get(language, templates["ru"])
+
+    @staticmethod
+    def _localized_direct_burden(language: str) -> str:
+        templates = {
+            "ru": "Пункт прямо возлагает обязанность, санкцию или ответственность на роль '{role}'.",
+            "en": "This clause directly places a duty, sanction, or liability on role '{role}'.",
+            "it": "Questa clausola impone direttamente un obbligo, una sanzione o una responsabilita al ruolo '{role}'.",
+            "fr": "Cette clause impose directement une obligation, une sanction ou une responsabilite au role '{role}'.",
+        }
+        return templates.get(language, templates["ru"])
+
+    @staticmethod
+    def _localized_counterparty_advantage(language: str) -> str:
+        templates = {
+            "ru": "Пункт дает стороне '{counterparty_role}' одностороннее преимущество против роли '{role}'.",
+            "en": "This clause gives counterparty '{counterparty_role}' a one-sided advantage against role '{role}'.",
+            "it": "Questa clausola attribuisce alla controparte '{counterparty_role}' un vantaggio unilaterale rispetto al ruolo '{role}'.",
+            "fr": "Cette clause accorde a la contrepartie '{counterparty_role}' un avantage unilateral a l'encontre du role '{role}'.",
+        }
+        return templates.get(language, templates["ru"])
+
+    def _build_contextual_mitigation(
+        self,
+        *,
+        rule_id: str,
+        language: str,
+        base_mitigation: str,
+        excerpt: str,
+        role_context: RoleContextAssessment,
+    ) -> str:
+        base = self._ensure_complete_sentence(base_mitigation)
+        detail = self._localized_precision_hint(
+            language=language,
+            rule_id=rule_id,
+            excerpt=excerpt,
+            role_context=role_context,
+        )
+        if not detail or detail.casefold() in base.casefold():
+            return base
+        return self._ensure_complete_sentence(f"{base} {detail}")
+
+    def _localized_precision_hint(
+        self,
+        *,
+        language: str,
+        rule_id: str,
+        excerpt: str,
+        role_context: RoleContextAssessment,
+    ) -> str:
+        payment_rules = {"payment_asymmetry"}
+        burden_rules = {
+            "one_sided_penalty",
+            "uncapped_daily_penalty",
+            "penalty_plus_full_damages",
+            "unlimited_liability",
+            "lost_profit_waiver",
+            "security_foreclosure",
+            "pledge_foreclosure",
+            "bank_guarantee_on_demand",
+        }
+        control_rules = {
+            "unilateral_price_change",
+            "unilateral_termination",
+            "silent_acceptance",
+            "undefined_acceptance_criteria",
+            "exclusive_jurisdiction",
+            "short_claim_window",
+            "automatic_renewal",
+        }
+
+        if rule_id in payment_rules:
+            return self._localized_payment_hint(language)
+        if role_context.selected_role_burdened or rule_id in burden_rules:
+            return self._localized_burden_hint(language)
+        if role_context.counterparty_role_benefited or rule_id in control_rules:
+            return self._localized_control_hint(language)
+        if excerpt and any(token in excerpt.casefold() for token in ("срок", "deadline", "term", "days", "jours", "giorni")):
+            return self._localized_deadline_hint(language)
+        return self._localized_generic_precision_hint(language)
+
+    @staticmethod
+    def _localized_payment_hint(language: str) -> str:
+        templates = {
+            "ru": "Зафиксируйте событие оплаты, предельный срок перечисления и право приостановить исполнение при просрочке.",
+            "en": "Pin down the payment trigger, the outside payment date, and a right to suspend performance for delay.",
+            "it": "Definisci con precisione il trigger del pagamento, la data limite di versamento e il diritto di sospendere la prestazione in caso di ritardo.",
+            "fr": "Precisez le declencheur du paiement, la date limite de versement et le droit de suspendre l'execution en cas de retard.",
+        }
+        return templates.get(language, templates["ru"])
+
+    @staticmethod
+    def _localized_burden_hint(language: str) -> str:
+        templates = {
+            "ru": "Свяжите риск с закрытым перечнем нарушений, лимитом суммы и ясными исключениями из ответственности.",
+            "en": "Tie the exposure to a closed list of breaches, a capped amount, and explicit carve-outs.",
+            "it": "Collega l'esposizione a un elenco chiuso di violazioni, a un tetto di importo e a esclusioni esplicite.",
+            "fr": "Rattachez l'exposition a une liste fermee de manquements, a un plafond de montant et a des exceptions explicites.",
+        }
+        return templates.get(language, templates["ru"])
+
+    @staticmethod
+    def _localized_control_hint(language: str) -> str:
+        templates = {
+            "ru": "Уберите одностороннее усмотрение: перечислите основания, сроки уведомления и порядок возражений.",
+            "en": "Remove one-sided discretion by listing the grounds, notice timing, and objection procedure.",
+            "it": "Elimina la discrezionalita unilaterale indicando presupposti, tempi di preavviso e procedura di contestazione.",
+            "fr": "Supprimez la discretion unilaterale en listant les motifs, les delais de preavis et la procedure de contestation.",
+        }
+        return templates.get(language, templates["ru"])
+
+    @staticmethod
+    def _localized_deadline_hint(language: str) -> str:
+        templates = {
+            "ru": "Пропишите дату начала срока, конечный дедлайн и последствия пропуска без оценочных формулировок.",
+            "en": "Spell out the start date, the final deadline, and the consequences of delay without subjective wording.",
+            "it": "Indica data iniziale, scadenza finale e conseguenze del ritardo senza formulazioni discrezionali.",
+            "fr": "Precisez la date de depart, l'echeance finale et les consequences du retard sans formulation subjective.",
+        }
+        return templates.get(language, templates["ru"])
+
+    @staticmethod
+    def _localized_generic_precision_hint(language: str) -> str:
+        templates = {
+            "ru": "Привяжите формулировку к измеримым критериям, документам-подтверждениям и симметричным правам сторон.",
+            "en": "Anchor the clause to measurable criteria, documentary evidence, and balanced rights for both sides.",
+            "it": "Ancora la clausola a criteri misurabili, prove documentali e diritti bilanciati per entrambe le parti.",
+            "fr": "Ancrez la clause dans des criteres mesurables, des preuves documentaires et des droits equilibres pour les deux parties.",
         }
         return templates.get(language, templates["ru"])
 
@@ -1018,6 +1336,7 @@ class RiskScoringService:
                 title = self._format_risk_title(language, severity, signal.summary)
                 role_mentioned = not canonical_role or canonical_role in signal.affected_roles
                 classifier_score = 0.86 if role_mentioned else 0.62
+                applies_to_selected_role = not canonical_role or not signal.affected_roles or canonical_role in signal.affected_roles
                 risks_with_rank.append(
                     RankedRiskCandidate(
                         severity_rank=self._severity_rank(severity),
@@ -1048,6 +1367,7 @@ class RiskScoringService:
                         ),
                         source_has_roles=bool(signal.affected_roles),
                         role_mentioned=role_mentioned,
+                        applies_to_selected_role=applies_to_selected_role,
                     )
                 )
         return risks_with_rank
@@ -1062,29 +1382,12 @@ class RiskScoringService:
             return risks_with_rank
 
         if not selected_role_present:
-            role_agnostic_rule_ids = {
-                "payment_asymmetry",
-                "termination_asymmetry",
-                "undefined_acceptance_criteria",
-                "no_warranty_period",
-                "silent_acceptance",
-            }
-            return [
-                candidate
-                for candidate in risks_with_rank
-                if candidate.role_mentioned
-                or not candidate.source_has_roles
-                or candidate.risk.rule_id in role_agnostic_rule_ids
-                or (
-                    candidate.risk.explanation is not None
-                    and "asymmetry_signal" in candidate.risk.explanation.guardrails
-                )
-            ]
+            return []
 
         return [
             candidate
             for candidate in risks_with_rank
-            if candidate.role_mentioned or not candidate.source_has_roles
+            if candidate.applies_to_selected_role or not candidate.source_has_roles
         ]
 
     @staticmethod

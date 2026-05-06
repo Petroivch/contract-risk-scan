@@ -107,6 +107,8 @@ class AnalysisOrchestrator:
                     counterparty_role=request.role_context.counterparty_role,
                     asymmetry_signals=asymmetry_signals,
                 )
+                if role_not_found:
+                    risks = []
                 disputed_clauses = self.risk_scoring_service.extract_disputed_clauses(clauses, language)
                 role_focused_summary = summary_generation_service.generate(
                     ocr_result.text,
