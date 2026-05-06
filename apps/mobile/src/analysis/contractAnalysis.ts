@@ -3909,20 +3909,6 @@ const formatRoleNotFoundMessage = (selectedRole: string, language: SupportedLang
   }
 };
 
-const formatRoleNotFoundRecommendation = (language: SupportedLanguage): string => {
-  switch (normalizeLanguage(language)) {
-    case 'ru':
-      return 'Проверьте название роли в выпадающем списке и выберите сторону, которая действительно указана в договоре.';
-    case 'it':
-      return 'Verificare il nome del ruolo scelto e selezionare una parte realmente indicata nel contratto.';
-    case 'fr':
-      return 'Verifiez le nom du role choisi et selectionnez une partie effectivement mentionnee dans le contrat.';
-    case 'en':
-    default:
-      return 'Verify the chosen role name and select a party that is explicitly mentioned in the contract.';
-  }
-};
-
 const buildRoleFocusedShortDescription = (
   language: SupportedLanguage,
   selectedRole: string,
@@ -3932,7 +3918,7 @@ const buildRoleFocusedShortDescription = (
 ): string => {
   const normalizedLanguage = normalizeLanguage(language);
   const roleLabel = localizeRoleLabel(selectedRole, normalizedLanguage) || selectedRole;
-  const primaryRisk = risks.find((risk) => risk.groupId !== 'role-missing');
+  const primaryRisk = risks[0];
   const obligationSignals = normalizeSearchText(obligations.join(' '));
   const hasPaymentObligation = countMatches(obligationSignals, summaryMarkers.payment) > 0;
   const hasDeadlineObligation = countMatches(obligationSignals, summaryMarkers.deadlines) > 0;
@@ -3985,7 +3971,7 @@ const buildRoleFocusedShortDescription = (
                       : ''
           : hasPaymentObligation && hasDeadlineObligation
             ? 'Key obligation: payment conditions and linked deadlines are critical for the selected role.'
-            : hasPaymentObligation
+          : hasPaymentObligation
               ? 'Key obligation: payment and settlement terms are critical for the selected role.'
               : hasDeadlineObligation
                 ? 'Key obligation: performance deadlines and notice duties are critical for the selected role.'
@@ -4259,31 +4245,13 @@ export const buildAnalysisArtifacts = ({
     ? roleObligations.items.length > 0
       ? roleObligations.items
       : [strings.obligationsFallback]
-    : [formatRoleNotFoundMessage(selectedRole, normalizedLanguage)];
+    : [];
 
-  const risks = runAnalysisStage('risk-items', () =>
-    buildRiskItems(clauses, selectedRole, normalizedLanguage, warnings),
-  );
-  if (!roleFound) {
-    risks.unshift({
-      id: 'risk-role-missing',
-      groupId: 'role-missing',
-      severity: 'medium',
-      clauseRef: 'overview',
-      clauseRefs: ['overview'],
-      occurrences: 1,
-      title:
-        normalizedLanguage === 'ru'
-          ? 'Выбранная роль не найдена'
-          : normalizedLanguage === 'it'
-            ? 'Ruolo selezionato non trovato'
-            : normalizedLanguage === 'fr'
-              ? 'Role selectionne introuvable'
-              : 'Selected role not found',
-      description: formatRoleNotFoundMessage(selectedRole, normalizedLanguage),
-      recommendation: formatRoleNotFoundRecommendation(normalizedLanguage),
-    });
-  }
+  const risks = roleFound
+    ? runAnalysisStage('risk-items', () =>
+        buildRiskItems(clauses, selectedRole, normalizedLanguage, warnings),
+      )
+    : [];
 
   const contractType = runAnalysisStage('contract-type', () =>
     detectContractType(normalizedText, normalizedLanguage),
@@ -4302,8 +4270,7 @@ export const buildAnalysisArtifacts = ({
             risks,
           )
         : formatRoleNotFoundMessage(selectedRole, normalizedLanguage),
-      obligationsForSelectedRole:
-        summaryItems.length > 0 ? summaryItems : [strings.obligationsFallback],
+      obligationsForSelectedRole: summaryItems,
       roleFound,
     },
     risks,

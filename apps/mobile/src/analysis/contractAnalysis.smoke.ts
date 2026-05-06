@@ -106,6 +106,12 @@ const contractorMissingAnalysis = buildAnalysisArtifacts({
 });
 
 assert.equal(contractorMissingAnalysis.summary.roleFound, false);
+assert.deepEqual(contractorMissingAnalysis.summary.obligationsForSelectedRole, []);
+assert.deepEqual(contractorMissingAnalysis.risks, []);
+assert.match(
+  contractorMissingAnalysis.summary.shortDescription,
+  /Роль "Подрядчик" не найдена/,
+);
 
 const italianPresetRoleAnalysis = buildAnalysisArtifacts({
   text: [
