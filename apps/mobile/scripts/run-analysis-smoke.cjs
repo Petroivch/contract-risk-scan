@@ -8,10 +8,12 @@ const tscBin = path.join(root, 'node_modules', 'typescript', 'bin', 'tsc');
 const smokeEntries = [
   path.join(root, 'src', 'analysis', 'contractAnalysis.smoke.ts'),
   path.join(root, 'src', 'analysis', 'fileTextExtraction.smoke.ts'),
+  path.join(root, 'src', 'analysis', 'localContractAnalyzer.smoke.ts'),
 ];
 const supportEntries = [
   path.join(root, 'src', 'analysis', 'contractAnalysis.ts'),
   path.join(root, 'src', 'analysis', 'fileTextExtraction.ts'),
+  path.join(root, 'src', 'analysis', 'localContractAnalyzer.ts'),
   path.join(root, 'src', 'analysis', 'textNormalization.ts'),
   path.join(root, 'src', 'api', 'types.ts'),
   path.join(root, 'src', 'i18n', 'types.ts'),

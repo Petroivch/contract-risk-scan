@@ -443,10 +443,15 @@ const summaryMarkers = {
     'убыт',
     'штраф',
     'неустойк',
+    'упущенн',
     'liability',
     'penalty',
     'penalties',
     'damages',
+    'lost profit',
+    'lost profits',
+    'recoverable',
+    'recovery',
     'responsabil',
     'penale',
     'indemn',
@@ -776,9 +781,13 @@ const hybridSignals = {
     'убыт',
     'возмещ',
     'компенсац',
+    'упущенн',
     'indemn',
     'liability',
     'damages',
+    'lost profit',
+    'lost profits',
+    'recoverable',
     'responsabil',
   ],
   liabilityHard: [
@@ -786,12 +795,16 @@ const hybridSignals = {
     'возмещ',
     'компенсац',
     'ущерб',
+    'упущенн',
     'ограничена размером',
     'ограничивается размером',
     'лимит ответственности',
     'предел ответственности',
     'indemn',
     'damages',
+    'recoverable',
+    'lost profit',
+    'lost profits',
   ],
   unilateralSupport: [
     'односторон',
@@ -1431,6 +1444,11 @@ const riskRules: RiskRule[] = [
       'возмещ',
       'убыт',
       'ущерб',
+      'упущенн',
+      'recoverable',
+      'recovery',
+      'lost profit',
+      'lost profits',
       'manleva',
       'responsabil',
       'indemni',
@@ -2254,6 +2272,20 @@ const countMatches = (normalizedText: string, markers: string[]): number => {
 };
 
 const escapeRegExp = (value: string): string => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+const roleBoundaryPattern = /[\p{L}\p{N}]/u;
+
+const isRoleBoundaryCharacter = (value: string | undefined): boolean =>
+  Boolean(value) && roleBoundaryPattern.test(value ?? '');
+
+const isWholeRoleMatch = (
+  normalizedText: string,
+  matchIndex: number,
+  markerLength: number,
+): boolean => {
+  const before = matchIndex > 0 ? normalizedText[matchIndex - 1] : '';
+  const after = normalizedText[matchIndex + markerLength] ?? '';
+  return !isRoleBoundaryCharacter(before) && !isRoleBoundaryCharacter(after);
+};
 
 const findMarkerPositions = (normalizedText: string, markers: string[]): number[] => {
   const positions: number[] = [];
@@ -2279,13 +2311,46 @@ const findMarkerPositions = (normalizedText: string, markers: string[]): number[
   return positions.sort((left, right) => left - right);
 };
 
+const findWholeRolePositions = (normalizedText: string, roleTerms: string[]): number[] => {
+  const positions: number[] = [];
+
+  for (const roleTerm of roleTerms) {
+    const normalizedRoleTerm = normalizeMarker(roleTerm);
+    if (!normalizedRoleTerm) {
+      continue;
+    }
+
+    let searchIndex = 0;
+    while (searchIndex < normalizedText.length) {
+      const matchIndex = normalizedText.indexOf(normalizedRoleTerm, searchIndex);
+      if (matchIndex < 0) {
+        break;
+      }
+
+      if (isWholeRoleMatch(normalizedText, matchIndex, normalizedRoleTerm.length)) {
+        positions.push(matchIndex);
+      }
+
+      searchIndex = matchIndex + normalizedRoleTerm.length;
+    }
+  }
+
+  return positions.sort((left, right) => left - right);
+};
+
+const countRoleMatches = (normalizedText: string, roleTerms: string[]): number =>
+  findWholeRolePositions(normalizedText, roleTerms).length;
+
+const hasRoleMatch = (normalizedText: string, roleTerms: string[]): boolean =>
+  countRoleMatches(normalizedText, roleTerms) > 0;
+
 const hasNearbyMarkers = (
   normalizedText: string,
   roleTerms: string[],
   markers: string[],
   maxDistance = 96,
 ): boolean => {
-  const rolePositions = findMarkerPositions(normalizedText, roleTerms);
+  const rolePositions = findWholeRolePositions(normalizedText, roleTerms);
   if (rolePositions.length === 0) {
     return false;
   }
@@ -2306,7 +2371,7 @@ const hasLeadingRoleMarker = (
   markers: string[],
   maxDistance = 96,
 ): boolean => {
-  const rolePositions = findMarkerPositions(normalizedText, roleTerms);
+  const rolePositions = findWholeRolePositions(normalizedText, roleTerms);
   if (rolePositions.length === 0) {
     return false;
   }
@@ -2377,7 +2442,7 @@ const isForeignRoleLeadFragment = (
   normalizedText: string,
   roleTerms: string[],
 ): boolean => {
-  if (countMatches(normalizedText, roleTerms) > 0 && hasRoleActionLead(normalizedText, roleTerms)) {
+  if (countRoleMatches(normalizedText, roleTerms) > 0 && hasRoleActionLead(normalizedText, roleTerms)) {
     return false;
   }
 
@@ -2387,7 +2452,7 @@ const isForeignRoleLeadFragment = (
 };
 
 const hasRoleActionLead = (normalizedText: string, roleTerms: string[]): boolean => {
-  const rolePositions = findMarkerPositions(normalizedText, roleTerms);
+  const rolePositions = findWholeRolePositions(normalizedText, roleTerms);
   if (rolePositions.length === 0) {
     return false;
   }
@@ -2423,7 +2488,7 @@ const isRoleLeadFragment = (
   normalizedText: string,
   roleTerms: string[],
 ): boolean => {
-  if (countMatches(normalizedText, roleTerms) <= 0) {
+  if (countRoleMatches(normalizedText, roleTerms) <= 0) {
     return false;
   }
 
@@ -2491,7 +2556,7 @@ const scoreRiskContext = (
   excerpt: string,
   roleTerms: string[],
 ): number => {
-  const roleHits = countMatches(normalizedText, roleTerms);
+  const roleHits = countRoleMatches(normalizedText, roleTerms);
   const actionHits = countMatches(normalizedText, hybridSignals.roleAction);
   const roleActsAsSubject = roleHits > 0 && hasRoleActionLead(normalizedText, roleTerms);
 
@@ -2822,8 +2887,11 @@ const countNearbyMarkerPairs = (
   sourceMarkers: string[],
   targetMarkers: string[],
   maxDistance = 96,
+  wholeSourceMatches = false,
 ): number => {
-  const sourcePositions = findMarkerPositions(normalizedText, sourceMarkers);
+  const sourcePositions = wholeSourceMatches
+    ? findWholeRolePositions(normalizedText, sourceMarkers)
+    : findMarkerPositions(normalizedText, sourceMarkers);
   if (sourcePositions.length === 0) {
     return 0;
   }
@@ -2988,7 +3056,13 @@ const rerankRiskCandidates = (
     );
     const roleProximityScore =
       roleTerms.length > 0
-        ? countNearbyMarkerPairs(candidate.normalizedText, roleTerms, candidate.rule.keywords, 88) *
+        ? countNearbyMarkerPairs(
+            candidate.normalizedText,
+            roleTerms,
+            candidate.rule.keywords,
+            88,
+            true,
+          ) *
           2
         : 0;
     const actionProximityScore = countNearbyMarkerPairs(
@@ -3411,7 +3485,7 @@ const collectRoleObligations = (
   maxItems: number,
 ): { roleFound: boolean; items: string[] } => {
   const roleMentioned = clauses.some(
-    (clause) => countMatches(normalizeSearchText(clause.text), roleTerms) > 0,
+    (clause) => countRoleMatches(normalizeSearchText(clause.text), roleTerms) > 0,
   );
   const scored = appendMappedItems(clauses, (clause, clauseIndex) => {
     const fragments = getClauseFragments(clause.text);
@@ -3427,7 +3501,7 @@ const collectRoleObligations = (
 
     for (const [fragmentIndex, fragment] of fragments.entries()) {
       const normalized = normalizeSearchText(fragment);
-      const roleHits = countMatches(normalized, roleTerms);
+      const roleHits = countRoleMatches(normalized, roleTerms);
       const obligationHits = countMatches(normalized, summaryMarkers.obligations);
       const paymentHits = countMatches(normalized, summaryMarkers.payment);
       const deadlineHits = countMatches(normalized, summaryMarkers.deadlines);
@@ -3512,7 +3586,7 @@ const collectRoleObligations = (
 
   if (mergedItems.length > 0) {
     return {
-      roleFound: true,
+      roleFound: roleMentioned,
       items: mergedItems,
     };
   }
@@ -3639,7 +3713,7 @@ const getCounterpartyTerms = (roleTerms: string[]): string[] =>
   commonPartyRoleTerms.filter((term) => !roleTerms.some((roleTerm) => roleTerm === term));
 
 const hasCounterpartyMarker = (normalizedText: string, roleTerms: string[]): boolean =>
-  countMatches(normalizedText, getCounterpartyTerms(roleTerms)) > 0;
+  countRoleMatches(normalizedText, getCounterpartyTerms(roleTerms)) > 0;
 
 const isCounterpartyBurdenForSelectedRole = (
   ruleId: string,
@@ -3651,7 +3725,7 @@ const isCounterpartyBurdenForSelectedRole = (
   }
 
   const counterpartyTerms = getCounterpartyTerms(roleTerms);
-  if (counterpartyTerms.length === 0 || countMatches(normalizedText, counterpartyTerms) === 0) {
+  if (counterpartyTerms.length === 0 || countRoleMatches(normalizedText, counterpartyTerms) === 0) {
     return false;
   }
 
@@ -3850,6 +3924,42 @@ const buildExcerpt = (text: string, maxLength = maxClauseExcerptLength): string 
   return `${candidate.trimEnd()}...`;
 };
 
+const isRoleFocusedRiskMatch = (
+  ruleId: string,
+  normalizedText: string,
+  roleTerms: string[],
+): boolean => {
+  const selectedRoleMentioned = hasRoleMatch(normalizedText, roleTerms);
+  const counterpartyTerms = getCounterpartyTerms(roleTerms);
+  const counterpartyMentioned = hasRoleMatch(normalizedText, counterpartyTerms);
+
+  if (
+    selectedRoleMentioned &&
+    (hasRoleActionLead(normalizedText, roleTerms) ||
+      hasLeadingRoleMarker(normalizedText, roleTerms, hybridSignals.roleAction, 112))
+  ) {
+    return true;
+  }
+
+  if (ruleId === 'liability') {
+    return (
+      (selectedRoleMentioned &&
+        countMatches(normalizedText, recoveryExclusionMarkers) > 0 &&
+        hasNearbyMarkers(normalizedText, roleTerms, recoverySubjectMarkers, 88)) ||
+      (counterpartyMentioned &&
+        hasNearbyMarkers(normalizedText, counterpartyTerms, roleBenefitMarkers.liability))
+    );
+  }
+
+  if (ruleId === 'penalties') {
+    return counterpartyMentioned
+      ? hasNearbyMarkers(normalizedText, counterpartyTerms, roleBenefitMarkers.penalties)
+      : false;
+  }
+
+  return false;
+};
+
 const isBeneficialRiskMatch = (
   ruleId: string,
   normalizedText: string,
@@ -3866,7 +3976,7 @@ const isBeneficialRiskMatch = (
       ) {
         return true;
       }
-      if (roleTerms.length === 0 || countMatches(normalizedText, roleTerms) === 0) {
+      if (roleTerms.length === 0 || countRoleMatches(normalizedText, roleTerms) === 0) {
         return false;
       }
       return hasNearbyMarkers(normalizedText, roleTerms, roleBenefitMarkers.liability);
@@ -3880,12 +3990,12 @@ const isBeneficialRiskMatch = (
       ) {
         return true;
       }
-      if (roleTerms.length === 0 || countMatches(normalizedText, roleTerms) === 0) {
+      if (roleTerms.length === 0 || countRoleMatches(normalizedText, roleTerms) === 0) {
         return false;
       }
       return hasNearbyMarkers(normalizedText, roleTerms, roleBenefitMarkers.penalties);
     case 'unilateral':
-      if (roleTerms.length === 0 || countMatches(normalizedText, roleTerms) === 0) {
+      if (roleTerms.length === 0 || countRoleMatches(normalizedText, roleTerms) === 0) {
         return false;
       }
       return hasLeadingRoleMarker(normalizedText, roleTerms, roleBenefitMarkers.unilateral, 72);
@@ -4114,17 +4224,22 @@ export const buildRiskItems = (
   const groupedResults = selectRiskMatches(
     rerankRiskCandidates(buildRiskCandidates(clauses, roleTerms), roleTerms),
   );
+  const roleDirectedRiskIds = new Set(['liability', 'penalties']);
 
   for (const { rule, matches } of groupedResults.values()) {
-    const directionFilteredMatches = matches.filter((item) => {
-      if (countMatches(item.normalizedText, roleTerms) === 0) {
-        return true;
-      }
+    const effectiveMatches = roleDirectedRiskIds.has(rule.id)
+      ? matches.filter((item) => {
+          const explicitPartyMentioned = hasRoleMatch(item.normalizedText, commonPartyRoleTerms);
+          if (!explicitPartyMentioned) {
+            return true;
+          }
 
-      return hasRoleActionLead(item.normalizedText, roleTerms);
-    });
-    const effectiveMatches =
-      directionFilteredMatches.length > 0 ? directionFilteredMatches : matches;
+          return isRoleFocusedRiskMatch(rule.id, item.normalizedText, roleTerms);
+        })
+      : matches;
+    if (effectiveMatches.length === 0) {
+      continue;
+    }
     const rankedMatches = [...effectiveMatches].sort(compareRiskCandidates);
     const clauseRefs = uniqueStrings(rankedMatches.map((item) => item.clauseRef));
     const occurrences = rankedMatches.length;

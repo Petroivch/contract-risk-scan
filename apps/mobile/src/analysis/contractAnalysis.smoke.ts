@@ -113,6 +113,18 @@ assert.match(
   /Роль "Подрядчик" не найдена/,
 );
 
+const subcontractorMismatchAnalysis = buildAnalysisArtifacts({
+  text: 'Субподрядчик обязан выполнить отдельный этап работ в течение 10 дней.',
+  fileName: 'subcontractor-only.pdf',
+  selectedRole: 'Подрядчик',
+  language: 'ru',
+  warnings: [],
+});
+
+assert.equal(subcontractorMismatchAnalysis.summary.roleFound, false);
+assert.deepEqual(subcontractorMismatchAnalysis.summary.obligationsForSelectedRole, []);
+assert.deepEqual(subcontractorMismatchAnalysis.risks, []);
+
 const italianPresetRoleAnalysis = buildAnalysisArtifacts({
   text: [
     '1. Заказчик обязан оплатить услуги в течение 5 банковских дней.',
@@ -262,6 +274,32 @@ const counterpartyPenaltyAnalysis = buildAnalysisArtifacts({
 });
 
 assert.ok(!counterpartyPenaltyAnalysis.risks.some((risk) => risk.title === 'Штрафы и санкции'));
+
+const counterpartyUnilateralAnalysis = buildAnalysisArtifacts({
+  text: [
+    '1. Исполнитель оказывает услуги по настройке системы.',
+    '4.1. Заказчик вправе в одностороннем порядке изменить объем услуг и сроки исполнения без согласования с Исполнителем.',
+  ].join('\n\n'),
+  fileName: 'counterparty-unilateral.docx',
+  selectedRole: 'Исполнитель',
+  language: 'ru',
+  warnings: [],
+});
+
+assert.ok(counterpartyUnilateralAnalysis.risks.some((risk) => risk.groupId === 'unilateral'));
+
+const selectedRoleUnilateralBenefitAnalysis = buildAnalysisArtifacts({
+  text: [
+    '1. Исполнитель оказывает услуги по настройке системы.',
+    '4.1. Заказчик вправе в одностороннем порядке изменить объем услуг и сроки исполнения без согласования с Исполнителем.',
+  ].join('\n\n'),
+  fileName: 'selected-role-unilateral-benefit.docx',
+  selectedRole: 'Заказчик',
+  language: 'ru',
+  warnings: [],
+});
+
+assert.ok(!selectedRoleUnilateralBenefitAnalysis.risks.some((risk) => risk.groupId === 'unilateral'));
 
 const suppressedRiskAnalysis = buildAnalysisArtifacts({
   text: [

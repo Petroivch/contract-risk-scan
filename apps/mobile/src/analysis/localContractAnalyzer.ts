@@ -70,25 +70,10 @@ const buildSafeFallbackReport = (
           : `Contract analysis: ${payload.fileName}`,
       contractType: language === 'ru' ? 'Договор общего типа' : 'General contract',
       shortDescription: details,
-      obligationsForSelectedRole: [details],
+      obligationsForSelectedRole: [],
       roleFound: false,
     },
-    risks: [
-      {
-        id: 'risk-1',
-        groupId: 'analysis-safe-mode',
-        severity: 'medium',
-        clauseRef: 'overview',
-        clauseRefs: ['overview'],
-        occurrences: Math.max(warnings.length, 1),
-        title: language === 'ru' ? 'Требуется ручная проверка' : 'Manual review required',
-        description: details,
-        recommendation:
-          language === 'ru'
-            ? 'Проверьте договор вручную или повторите анализ после сохранения файла в DOCX, TXT или текстовый PDF.'
-            : 'Review the contract manually or retry after saving it as DOCX, TXT, or a text-based PDF.',
-      },
-    ],
+    risks: [],
     disputedClauses: [],
   };
 };
