@@ -138,7 +138,7 @@ def test_contract_brief_uses_fallback_template_when_no_sections_are_extracted() 
         resolve_localized_text(runtime_config.templates.contract_brief, "en").format(
             document_name="neutral.txt",
             clauses_count=1,
-            role="Contractor",
+            role="contractor",
         )
     )
 

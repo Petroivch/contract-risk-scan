@@ -3518,7 +3518,7 @@ const collectRoleObligations = (
   }
 
   return {
-    roleFound: roleMentioned && roleLedBlockItems.length > 0,
+    roleFound: roleMentioned,
     items: roleLedBlockItems,
   };
 };

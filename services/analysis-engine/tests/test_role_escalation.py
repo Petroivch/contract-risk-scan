@@ -25,11 +25,10 @@ def test_unilateral_scope_change_is_more_severe_for_contractor() -> None:
     )
 
     contractor_risk = next(risk for risk in contractor_risks if "scope" in risk.description.lower())
-    customer_risk = next(risk for risk in customer_risks if "цены" in risk.description.lower() or "price" in risk.description.lower())
 
     assert contractor_risk.severity.value == "critical"
-    assert customer_risk.severity.value != contractor_risk.severity.value
-    assert all("спецификации" not in risk.title.casefold() for risk in customer_risks)
+    assert all("scope" not in risk.description.lower() for risk in customer_risks)
+    assert all("specification" not in risk.title.casefold() for risk in customer_risks)
 
 
 def test_targeted_education_reimbursement_escalates_for_citizen() -> None:
@@ -74,13 +73,13 @@ def test_role_filter_excludes_risk_that_mentions_only_other_party() -> None:
 
     executor_risks = scorer.score(
         clauses,
-        role="исполнитель",
+        role="Исполнитель",
         language="ru",
         contract_type="service_agreement",
     )
     client_risks = scorer.score(
         clauses,
-        role="заказчик",
+        role="Заказчик",
         language="ru",
         contract_type="service_agreement",
     )

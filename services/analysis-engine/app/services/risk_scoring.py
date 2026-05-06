@@ -275,8 +275,9 @@ class RiskScoringService:
         clause_features = [self._build_clause_features(clause) for clause in normalized_clauses]
         risks_with_rank: list[RankedRiskCandidate] = []
         seen_pairs: set[tuple[str, str | None]] = set()
+        detected_roles_in_document = extract_roles_from_text(normalized_document_text)
         selected_role_present = bool(find_role_matches(role, normalized_document_text))
-        if canonical_role and not selected_role_present:
+        if canonical_role and detected_roles_in_document and not selected_role_present:
             return []
 
         signal_map = self._group_asymmetry_signals(asymmetry_signals or [])
