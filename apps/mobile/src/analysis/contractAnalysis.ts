@@ -388,6 +388,7 @@ const summaryMarkers = {
   ],
   payment: [
     'оплат',
+    'оплачива',
     'вознагражд',
     'цена',
     'payment',
@@ -562,6 +563,7 @@ const hybridSignals = {
   ],
   paymentDeadlineSupport: [
     'оплат',
+    'оплачива',
     'платеж',
     'расчет',
     'стоимость',
@@ -884,6 +886,7 @@ const hybridSignals = {
     'подсудн',
     'арбитражн',
     'суд',
+    'спор',
     'досудебн',
     'претензионн',
     'претензию',
@@ -1522,6 +1525,7 @@ const riskRules: RiskRule[] = [
     severity: 'medium',
     keywords: [
       'оплат',
+      'оплачива',
       'платеж',
       'расчет',
       'стоимость',
@@ -1602,9 +1606,13 @@ const riskRules: RiskRule[] = [
     keywords: [
       'подсудн',
       'арбитражн',
+      'суд',
+      'спор',
+      'по месту нахождения',
       'досудебн',
       'претензионн',
       'претензия',
+      'disputes',
       'dispute resolution',
       'jurisdiction',
       'venue',
@@ -3709,8 +3717,130 @@ const recoverySubjectMarkers = [
   'expenses',
 ];
 
+const paymentCoreMarkers = [
+  'оплат',
+  'оплачива',
+  'платеж',
+  'расчет',
+  'стоимость',
+  'цена',
+  'тариф',
+  'вознагражден',
+  'предоплат',
+  'постоплат',
+  'арендная плата',
+  'расход',
+  'payment',
+  'invoice',
+  'price',
+  'fee',
+  'rent',
+  'expense',
+];
+
+const paymentCounterpartyDelayMarkers = [
+  'после подписания акта',
+  'после подписания акта сдачи',
+  'после подписания акта сдачи-приемки',
+  'после приемки',
+  'после получения уведомления',
+  'с даты подписания акта',
+  'с даты выполнения',
+  'встречных обязательств',
+  'при условии выполнения',
+  'after acceptance',
+  'after signing the acceptance certificate',
+  'subject to acceptance',
+  'subject to payment',
+];
+
+const paymentSelectedBurdenMarkers = [
+  'не входят в стоимость',
+  'оплачиваются отдельно',
+  'дополнительные расходы',
+  'повторные правки',
+  'выходящие за рамки',
+  'может быть изменена',
+  'может быть изменен',
+  'изменить тариф',
+  'изменить цену',
+  'без согласования',
+  'не возвращается',
+  'удерживается',
+  'безакцепт',
+  'additional expenses',
+  'not included in the price',
+  'may change the price',
+  'may change the fees',
+  'non-refundable',
+];
+
+const roleCounterpartyPairs = [
+  {
+    left: ['Заказчик', 'Клиент', 'Покупатель', 'Принципал', 'Комитент', 'Доверитель'],
+    right: [
+      'Исполнитель',
+      'Подрядчик',
+      'Субподрядчик',
+      'Поставщик',
+      'Продавец',
+      'Агент',
+      'Комиссионер',
+      'Поверенный',
+    ],
+  },
+  {
+    left: ['Арендатор'],
+    right: ['Арендодатель'],
+  },
+  {
+    left: ['Лицензиат'],
+    right: ['Лицензиар'],
+  },
+  {
+    left: ['Страхователь'],
+    right: ['Страховщик'],
+  },
+  {
+    left: ['Залогодатель'],
+    right: ['Залогодержатель'],
+  },
+  {
+    left: ['Бенефициар'],
+    right: ['Гарант'],
+  },
+  {
+    left: ['Работодатель'],
+    right: ['Работник'],
+  },
+] as const;
+
+const buildRolePairTerms = (baseTerms: readonly string[]): string[] =>
+  uniqueStrings(baseTerms.flatMap((term) => buildSelectedRoleTerms(term, false))).filter(
+    (term) => term.length >= 5,
+  );
+
+const roleCounterpartyGroups = roleCounterpartyPairs.map((pair) => ({
+  left: buildRolePairTerms(pair.left),
+  right: buildRolePairTerms(pair.right),
+}));
+
 const getCounterpartyTerms = (roleTerms: string[]): string[] =>
-  commonPartyRoleTerms.filter((term) => !roleTerms.some((roleTerm) => roleTerm === term));
+  roleCounterpartyGroups.reduce<string[]>((matchedTerms, group) => {
+    if (matchedTerms.length > 0) {
+      return matchedTerms;
+    }
+
+    if (group.left.some((term) => roleTerms.includes(term))) {
+      return group.right;
+    }
+
+    if (group.right.some((term) => roleTerms.includes(term))) {
+      return group.left;
+    }
+
+    return matchedTerms;
+  }, []);
 
 const hasCounterpartyMarker = (normalizedText: string, roleTerms: string[]): boolean =>
   countRoleMatches(normalizedText, getCounterpartyTerms(roleTerms)) > 0;
@@ -3932,32 +4062,113 @@ const isRoleFocusedRiskMatch = (
   const selectedRoleMentioned = hasRoleMatch(normalizedText, roleTerms);
   const counterpartyTerms = getCounterpartyTerms(roleTerms);
   const counterpartyMentioned = hasRoleMatch(normalizedText, counterpartyTerms);
+  const selectedRoleActs = selectedRoleMentioned
+    ? hasRoleActionLead(normalizedText, roleTerms) ||
+      hasLeadingRoleMarker(normalizedText, roleTerms, hybridSignals.roleAction, 112)
+    : false;
+  const counterpartyActs = counterpartyMentioned
+    ? hasRoleActionLead(normalizedText, counterpartyTerms) ||
+      hasLeadingRoleMarker(normalizedText, counterpartyTerms, hybridSignals.roleAction, 112)
+    : false;
 
-  if (
-    selectedRoleMentioned &&
-    (hasRoleActionLead(normalizedText, roleTerms) ||
-      hasLeadingRoleMarker(normalizedText, roleTerms, hybridSignals.roleAction, 112))
-  ) {
-    return true;
+  switch (ruleId) {
+    case 'liability':
+      if (selectedRoleActs) {
+        return true;
+      }
+      return (
+        (selectedRoleMentioned &&
+          countMatches(normalizedText, recoveryExclusionMarkers) > 0 &&
+          hasNearbyMarkers(normalizedText, roleTerms, recoverySubjectMarkers, 88)) ||
+        (counterpartyMentioned &&
+          hasNearbyMarkers(normalizedText, counterpartyTerms, roleBenefitMarkers.liability))
+      );
+    case 'penalties':
+      if (selectedRoleActs) {
+        return true;
+      }
+      return counterpartyMentioned
+        ? hasNearbyMarkers(normalizedText, counterpartyTerms, roleBenefitMarkers.penalties)
+        : false;
+    case 'payment-deadlines': {
+      const selectedPaymentContext =
+        selectedRoleMentioned &&
+        hasNearbyMarkers(normalizedText, roleTerms, paymentCoreMarkers, 112);
+      const counterpartyPaymentContext =
+        counterpartyMentioned &&
+        hasNearbyMarkers(normalizedText, counterpartyTerms, paymentCoreMarkers, 112);
+      if (selectedPaymentContext) {
+        return hasNearbyMarkers(normalizedText, roleTerms, paymentSelectedBurdenMarkers, 112);
+      }
+      if (counterpartyPaymentContext) {
+        return countMatches(normalizedText, paymentCounterpartyDelayMarkers) > 0;
+      }
+      return !selectedRoleMentioned && !counterpartyMentioned;
+    }
+    case 'acceptance':
+      if (selectedRoleMentioned) {
+        return hasNearbyMarkers(normalizedText, roleTerms, hybridSignals.acceptanceSupport, 112);
+      }
+      if (counterpartyMentioned) {
+        return false;
+      }
+      return true;
+    case 'jurisdiction-claim':
+      if (counterpartyMentioned) {
+        return hasNearbyMarkers(
+          normalizedText,
+          counterpartyTerms,
+          hybridSignals.jurisdictionSupport,
+          112,
+        );
+      }
+      if (selectedRoleMentioned) {
+        return false;
+      }
+      return true;
+    case 'operational-dependencies':
+      if (counterpartyMentioned) {
+        return hasNearbyMarkers(
+          normalizedText,
+          counterpartyTerms,
+          hybridSignals.operationalDependencySupport,
+          112,
+        );
+      }
+      if (selectedRoleMentioned) {
+        return false;
+      }
+      return true;
+    case 'confidentiality':
+      if (selectedRoleActs) {
+        return true;
+      }
+      if (selectedRoleMentioned) {
+        return hasNearbyMarkers(
+          normalizedText,
+          roleTerms,
+          hybridSignals.confidentialitySupport,
+          112,
+        );
+      }
+      if (counterpartyMentioned) {
+        return false;
+      }
+      return true;
+    case 'personal-data':
+      if (selectedRoleActs) {
+        return true;
+      }
+      if (selectedRoleMentioned) {
+        return hasNearbyMarkers(normalizedText, roleTerms, hybridSignals.personalDataSupport, 112);
+      }
+      if (counterpartyMentioned) {
+        return false;
+      }
+      return true;
+    default:
+      return !counterpartyActs;
   }
-
-  if (ruleId === 'liability') {
-    return (
-      (selectedRoleMentioned &&
-        countMatches(normalizedText, recoveryExclusionMarkers) > 0 &&
-        hasNearbyMarkers(normalizedText, roleTerms, recoverySubjectMarkers, 88)) ||
-      (counterpartyMentioned &&
-        hasNearbyMarkers(normalizedText, counterpartyTerms, roleBenefitMarkers.liability))
-    );
-  }
-
-  if (ruleId === 'penalties') {
-    return counterpartyMentioned
-      ? hasNearbyMarkers(normalizedText, counterpartyTerms, roleBenefitMarkers.penalties)
-      : false;
-  }
-
-  return false;
 };
 
 const isBeneficialRiskMatch = (
@@ -4224,7 +4435,16 @@ export const buildRiskItems = (
   const groupedResults = selectRiskMatches(
     rerankRiskCandidates(buildRiskCandidates(clauses, roleTerms), roleTerms),
   );
-  const roleDirectedRiskIds = new Set(['liability', 'penalties']);
+  const roleDirectedRiskIds = new Set([
+    'liability',
+    'penalties',
+    'payment-deadlines',
+    'acceptance',
+    'jurisdiction-claim',
+    'confidentiality',
+    'personal-data',
+    'operational-dependencies',
+  ]);
 
   for (const { rule, matches } of groupedResults.values()) {
     const effectiveMatches = roleDirectedRiskIds.has(rule.id)
@@ -4347,26 +4567,36 @@ export const buildAnalysisArtifacts = ({
   const normalizedLanguage = normalizeLanguage(language);
   const strings = localizedStrings[normalizedLanguage];
   const normalizedText = runAnalysisStage('normalize-text', () => normalizeExtractedText(text));
+  const searchableText = runAnalysisStage('normalize-search', () => normalizeSearchText(normalizedText));
   const clauses = runAnalysisStage('segment-clauses', () => segmentClauses(normalizedText));
   const strictRoleTerms = runAnalysisStage('role-terms', () =>
     buildStrictRoleTerms(selectedRole),
   );
+  const counterpartyTerms = getCounterpartyTerms(strictRoleTerms);
   const roleObligations = runAnalysisStage('role-obligations', () =>
     collectRoleObligations(clauses, strictRoleTerms, maxSummaryItems),
   );
-
-  const roleFound = roleObligations.roleFound;
+  const selectedRoleContextFound = hasRoleMatch(searchableText, strictRoleTerms);
+  const counterpartyContextFound =
+    counterpartyTerms.length > 0 && hasRoleMatch(searchableText, counterpartyTerms);
+  const tentativeRisks =
+    selectedRoleContextFound || counterpartyContextFound
+      ? runAnalysisStage('risk-items', () =>
+          buildRiskItems(clauses, selectedRole, normalizedLanguage, warnings),
+        )
+      : [];
+  const hasSubstantiveRisk = tentativeRisks.some((risk) => risk.groupId !== 'low-signal');
+  const roleFound =
+    roleObligations.roleFound ||
+    selectedRoleContextFound ||
+    (counterpartyContextFound && hasSubstantiveRisk);
   const summaryItems = roleFound
     ? roleObligations.items.length > 0
       ? roleObligations.items
       : [strings.obligationsFallback]
     : [];
 
-  const risks = roleFound
-    ? runAnalysisStage('risk-items', () =>
-        buildRiskItems(clauses, selectedRole, normalizedLanguage, warnings),
-      )
-    : [];
+  const risks = roleFound ? tentativeRisks : [];
 
   const contractType = runAnalysisStage('contract-type', () =>
     detectContractType(normalizedText, normalizedLanguage),

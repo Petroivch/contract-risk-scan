@@ -87,32 +87,32 @@ const run = async (): Promise<void> => {
   assert.equal(performerReport.summary.roleFound, true);
   assert.equal(customerReport.summary.roleFound, true);
 
-  const performerGroups = new Set(performerReport.risks.map((risk) => risk.groupId));
+  const performerGroups = new Set(performerReport.risks.map((risk: any) => risk.groupId));
   assert.ok(performerGroups.has('penalties'));
   assert.ok(performerGroups.has('unilateral'));
   assert.ok(
     performerReport.risks
-      .find((risk) => risk.groupId === 'penalties')
-      ?.evidence?.some((line) =>
+      .find((risk: any) => risk.groupId === 'penalties')
+      ?.evidence?.some((line: string) =>
         line.includes('The contractor shall pay liquidated damages of 10% of the contract price for each day of delay.'),
       ),
   );
   assert.ok(
     performerReport.risks
-      .find((risk) => risk.groupId === 'unilateral')
-      ?.evidence?.some((line) =>
+      .find((risk: any) => risk.groupId === 'unilateral')
+      ?.evidence?.some((line: string) =>
         line.includes('The customer may at its sole discretion terminate this contract.'),
       ),
   );
 
-  const customerGroups = new Set(customerReport.risks.map((risk) => risk.groupId));
+  const customerGroups = new Set(customerReport.risks.map((risk: any) => risk.groupId));
   assert.ok(customerGroups.has('liability'));
   assert.ok(!customerGroups.has('penalties'));
   assert.ok(!customerGroups.has('unilateral'));
   assert.ok(
     customerReport.risks
-      .find((risk) => risk.groupId === 'liability')
-      ?.evidence?.some((line) => line.includes('The customer lost profits are not recoverable.')),
+      .find((risk: any) => risk.groupId === 'liability')
+      ?.evidence?.some((line: string) => line.includes('The customer lost profits are not recoverable.')),
   );
 };
 

@@ -223,7 +223,7 @@ const postamatExecutorGroups = new Set(postamatExecutorAnalysis.risks.map((risk)
 assert.equal(postamatExecutorAnalysis.summary.contractType, 'Договор оказания услуг');
 assert.ok(postamatExecutorAnalysis.risks.every((risk) => !/[РС][\u0080-\u04ff]/u.test(risk.title)));
 assert.ok(postamatExecutorGroups.has('payment-deadlines'));
-assert.ok(postamatExecutorGroups.has('acceptance'));
+assert.ok(!postamatExecutorGroups.has('acceptance'));
 assert.ok(postamatExecutorGroups.has('operational-dependencies'));
 assert.ok(!postamatExecutorGroups.has('liability'));
 assert.ok(
@@ -370,6 +370,68 @@ const clearAcceptanceAnalysis = buildAnalysisArtifacts({
 
 assert.ok(!clearAcceptanceAnalysis.risks.some((risk) => risk.title === 'Неясная приемка результата'));
 
+const acceptanceCustomerAnalysis = buildAnalysisArtifacts({
+  text:
+    '4.1. Результат считается принятым, если Заказчик не направит замечания в течение 2 календарных дней.',
+  fileName: 'acceptance-customer.docx',
+  selectedRole: 'Заказчик',
+  language: 'ru',
+  warnings: [],
+});
+
+assert.ok(acceptanceCustomerAnalysis.risks.some((risk) => risk.groupId === 'acceptance'));
+
+const acceptanceContractorAnalysis = buildAnalysisArtifacts({
+  text:
+    '4.1. Результат считается принятым, если Заказчик не направит замечания в течение 2 календарных дней.',
+  fileName: 'acceptance-contractor.docx',
+  selectedRole: 'Исполнитель',
+  language: 'ru',
+  warnings: [],
+});
+
+assert.ok(!acceptanceContractorAnalysis.risks.some((risk) => risk.groupId === 'acceptance'));
+
+const paymentContractorAnalysis = buildAnalysisArtifacts({
+  text: '1. Заказчик оплачивает услуги в течение 30 банковских дней после подписания акта.',
+  fileName: 'payment-contractor.docx',
+  selectedRole: 'Исполнитель',
+  language: 'ru',
+  warnings: [],
+});
+
+assert.ok(paymentContractorAnalysis.risks.some((risk) => risk.groupId === 'payment-deadlines'));
+
+const paymentCustomerAnalysis = buildAnalysisArtifacts({
+  text: '1. Заказчик оплачивает услуги в течение 30 банковских дней после подписания акта.',
+  fileName: 'payment-customer.docx',
+  selectedRole: 'Заказчик',
+  language: 'ru',
+  warnings: [],
+});
+
+assert.ok(!paymentCustomerAnalysis.risks.some((risk) => risk.groupId === 'payment-deadlines'));
+
+const jurisdictionContractorAnalysis = buildAnalysisArtifacts({
+  text: '5. Все споры рассматриваются по месту нахождения Заказчика.',
+  fileName: 'jurisdiction-contractor.docx',
+  selectedRole: 'Исполнитель',
+  language: 'ru',
+  warnings: [],
+});
+
+assert.ok(jurisdictionContractorAnalysis.risks.some((risk) => risk.groupId === 'jurisdiction-claim'));
+
+const jurisdictionCustomerAnalysis = buildAnalysisArtifacts({
+  text: '5. Все споры рассматриваются по месту нахождения Заказчика.',
+  fileName: 'jurisdiction-customer.docx',
+  selectedRole: 'Заказчик',
+  language: 'ru',
+  warnings: [],
+});
+
+assert.ok(!jurisdictionCustomerAnalysis.risks.some((risk) => risk.groupId === 'jurisdiction-claim'));
+
 const legalCoreAnalysis = buildAnalysisArtifacts({
   text: [
     '1.1. Исполнитель обязан оказать услуги и не разглашать любую конфиденциальную информацию Заказчика без ограничения срока.',
@@ -393,7 +455,7 @@ assert.ok(legalCoreRiskTitles.includes('Конфиденциальность и 
 assert.ok(legalCoreRiskTitles.includes('Одностороннее изменение или расторжение'));
 assert.ok(legalCoreRiskTitles.includes('Штрафы и санкции'));
 assert.ok(legalCoreRiskTitles.includes('Ответственность и возмещение убытков'));
-assert.ok(legalCoreRiskTitles.includes('Неясная приемка результата'));
+assert.ok(!legalCoreRiskTitles.includes('Неясная приемка результата'));
 assert.ok(legalCoreRiskTitles.includes('Подсудность и претензионный порядок'));
 assert.ok(legalCoreRiskTitles.includes('Персональные данные'));
 assert.ok(legalCoreRiskTitles.includes('Форс-мажор'));
