@@ -1,6 +1,6 @@
-import { ApiProperty } from '@nestjs/swagger';
-import { RiskSeverity } from '../../common/domain/risk-severity.enum';
-import { SupportedLocale } from '../../common/i18n/supported-locale.enum';
+﻿import { ApiProperty } from '@nestjs/swagger';
+import { RiskSeverity } from '../common/domain/risk-severity.enum';
+import { SupportedLocale } from '../common/i18n/supported-locale.enum';
 
 export class StructuredSummaryRecordDto {
   @ApiProperty({ example: 'role-summary-overview' })
@@ -167,3 +167,4 @@ export class ContractReportDto {
   @ApiProperty({ nullable: true, example: 'Pay special attention to liability terms.' })
   generationNotes!: string | null;
 }
+

@@ -1,6 +1,6 @@
 import { SupportedLocale } from '../common/i18n/supported-locale.enum';
-import { AnalysisJobState } from '../common/job-orchestration/job-orchestration.service';
-import { ContractReportDto } from './dto/contract-report.dto';
+import { AnalysisJobState } from '../services/job-orchestration.service';
+import { ContractReportDto } from '../dto/contract-report.dto';
 
 export interface StoredContract {
   id: string;

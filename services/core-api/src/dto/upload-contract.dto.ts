@@ -1,7 +1,7 @@
-import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+﻿import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { IsOptional, IsString, MaxLength, MinLength } from 'class-validator';
-import { DEFAULT_LOCALE, SupportedLocale } from '../../common/i18n/supported-locale.enum';
-import { CONTRACT_POLICY } from '../../common/policies/contracts.policy';
+import { DEFAULT_LOCALE, SupportedLocale } from '../common/i18n/supported-locale.enum';
+import { CONTRACT_POLICY } from '../common/policies/contracts.policy';
 
 export class UploadContractDto {
   @ApiProperty({

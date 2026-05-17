@@ -321,6 +321,8 @@ def test_status_and_result_flow_returns_meaningful_contract_analysis() -> None:
     assert "Penalties and sanctions" in result["contract_brief"]
     assert "Detected disputed or vague clauses" in result["contract_brief"]
     assert result["contract_brief_records"][0]["id"] == "contract-brief-intro"
+    assert result["reasoning_insights"]
+    assert any(record["id"] == "contract-brief-ai-reasoning" for record in result["contract_brief_records"])
     assert result["contract_brief_records"][0]["headline"].endswith(".")
     assert result["contract_brief_records"][0]["description"].endswith(".")
     assert result["contract_brief_records"][0]["recommendation"].startswith(
@@ -346,6 +348,7 @@ def test_status_and_result_flow_returns_meaningful_contract_analysis() -> None:
         for line in result["role_focused_summary"]["deadlines"]
     )
     assert result["role_focused_summary_records"][0]["id"] == "role-summary-overview"
+    assert any(record["id"] == "role-summary-ai-reasoning" for record in result["role_focused_summary_records"])
     assert result["role_focused_summary_records"][0]["recommendation"].startswith(
         "\u041f\u0440\u043e\u0432\u0435\u0440\u044c\u0442\u0435"
     )

@@ -1,6 +1,6 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
-import { JOB_STATUS_TRANSITIONS } from './job-transition.map';
-import { JobStatus } from './job-status.enum';
+import { JOB_STATUS_TRANSITIONS } from '../common/job-orchestration/job-transition.map';
+import { JobStatus } from '../common/job-orchestration/job-status.enum';
 
 export interface AnalysisJobState {
   contractId: string;

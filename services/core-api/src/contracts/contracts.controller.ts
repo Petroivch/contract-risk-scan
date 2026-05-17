@@ -23,14 +23,14 @@ import {
   CONTRACT_POLICY
 } from '../common/policies/contracts.policy';
 import { MESSAGE_POLICY } from '../common/policies/messages.policy';
-import { AnalyzeContractDto } from './dto/analyze-contract.dto';
-import { AnalyzeContractResponseDto } from './dto/analyze-contract-response.dto';
-import { ContractsHistoryResponseDto } from './dto/contracts-history-response.dto';
-import { ContractReportDto } from './dto/contract-report.dto';
-import { ContractStatusResponseDto } from './dto/contract-status-response.dto';
-import { UploadContractDto } from './dto/upload-contract.dto';
-import { UploadContractResponseDto } from './dto/upload-contract-response.dto';
-import { ContractsService } from './contracts.service';
+import { AnalyzeContractDto } from '../dto/analyze-contract.dto';
+import { AnalyzeContractResponseDto } from '../dto/analyze-contract-response.dto';
+import { ContractsHistoryResponseDto } from '../dto/contracts-history-response.dto';
+import { ContractReportDto } from '../dto/contract-report.dto';
+import { ContractStatusResponseDto } from '../dto/contract-status-response.dto';
+import { UploadContractDto } from '../dto/upload-contract.dto';
+import { UploadContractResponseDto } from '../dto/upload-contract-response.dto';
+import { ContractsService } from '../services/contracts.service';
 
 @ApiTags('contracts')
 @Controller('contracts')

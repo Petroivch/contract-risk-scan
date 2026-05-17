@@ -86,6 +86,11 @@ const run = async (): Promise<void> => {
 
   assert.equal(performerReport.summary.roleFound, true);
   assert.equal(customerReport.summary.roleFound, true);
+  assert.ok(
+    performerReport.contractBriefRecords?.some(
+      (record: any) => record.id === 'local-ai-reasoning-overview',
+    ),
+  );
 
   const performerGroups = new Set(performerReport.risks.map((risk: any) => risk.groupId));
   assert.ok(performerGroups.has('penalties'));

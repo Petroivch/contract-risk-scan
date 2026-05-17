@@ -7,7 +7,7 @@ import { SupportedLocale } from '../common/i18n/supported-locale.enum';
 import {
   AnalysisJobState,
   JobOrchestrationService
-} from '../common/job-orchestration/job-orchestration.service';
+} from './job-orchestration.service';
 import { JobStatus } from '../common/job-orchestration/job-status.enum';
 import { getContractReportText } from '../common/policies/contract-report-text.policy';
 import { CONTRACT_POLICY } from '../common/policies/contracts.policy';
@@ -19,10 +19,10 @@ import {
   AnalysisEngineOutput,
   AnalysisEngineUnavailableError
 } from './analysis-engine.client';
-import { ContractsRepository } from './contracts.repository';
-import { AnalyzeContractDto } from './dto/analyze-contract.dto';
-import { AnalyzeContractResponseDto } from './dto/analyze-contract-response.dto';
-import { ContractHistoryItemDto } from './dto/contracts-history-response.dto';
+import { ContractsRepository } from '../repository/contracts.repository';
+import { AnalyzeContractDto } from '../dto/analyze-contract.dto';
+import { AnalyzeContractResponseDto } from '../dto/analyze-contract-response.dto';
+import { ContractHistoryItemDto } from '../dto/contracts-history-response.dto';
 import {
   ContractObligationDto,
   ContractReportDto,
@@ -30,11 +30,11 @@ import {
   ContractSummaryDto,
   DisputedClauseDto,
   StructuredSummaryRecordDto
-} from './dto/contract-report.dto';
-import { ContractStatusResponseDto } from './dto/contract-status-response.dto';
-import { UploadContractDto } from './dto/upload-contract.dto';
-import { UploadContractResponseDto } from './dto/upload-contract-response.dto';
-import { StoredContract } from './stored-contract.type';
+} from '../dto/contract-report.dto';
+import { ContractStatusResponseDto } from '../dto/contract-status-response.dto';
+import { UploadContractDto } from '../dto/upload-contract.dto';
+import { UploadContractResponseDto } from '../dto/upload-contract-response.dto';
+import { StoredContract } from '../repository/stored-contract.type';
 
 interface StartAnalysisOptions {
   locale: SupportedLocale;

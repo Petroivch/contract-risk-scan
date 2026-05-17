@@ -26,6 +26,7 @@ from app.services.contract_brief import ContractBriefGenerationService
 from app.services.execution_strategy import ExecutionStrategyService
 from app.services.ingestion import IngestionService
 from app.services.job_store import InMemoryJobStore
+from app.services.legal_reasoning import LegalReasoningService
 from app.services.ocr import OCRService
 from app.services.risk_scoring import RiskScoringService
 
@@ -48,6 +49,7 @@ class AnalysisOrchestrator:
         execution_strategy_service: ExecutionStrategyService | None = None,
         contract_type_detector: ContractTypeDetector | None = None,
         asymmetry_detector: AsymmetryDetector | None = None,
+        legal_reasoning_service: LegalReasoningService | None = None,
     ) -> None:
         self.store = store
         self._runtime_config = get_runtime_config()
@@ -62,6 +64,7 @@ class AnalysisOrchestrator:
         self.execution_strategy_service = execution_strategy_service or ExecutionStrategyService()
         self.contract_type_detector = contract_type_detector or ContractTypeDetector()
         self.asymmetry_detector = asymmetry_detector or AsymmetryDetector()
+        self.legal_reasoning_service = legal_reasoning_service or LegalReasoningService()
 
     async def process_job(self, job_id: str, request: AnalysisRunRequest) -> None:
         self.store.mark_processing(job_id)
@@ -159,6 +162,30 @@ class AnalysisOrchestrator:
                     disputed_clauses=disputed_clauses,
                     detected_contract_type=detected_contract_type,
                 )
+                reasoning_insights = self.legal_reasoning_service.build_insights(
+                    role_summary=role_focused_summary,
+                    risks=risks,
+                    disputed_clauses=disputed_clauses,
+                    asymmetry_signals=asymmetry_signals,
+                    language=language,
+                )
+                contract_brief = self.legal_reasoning_service.enrich_contract_brief(
+                    contract_brief,
+                    reasoning_insights,
+                    language,
+                )
+                contract_brief_records = self.legal_reasoning_service.enrich_records(
+                    contract_brief_records,
+                    reasoning_insights,
+                    language,
+                    "contract-brief-ai-reasoning",
+                )
+                role_focused_summary_records = self.legal_reasoning_service.enrich_records(
+                    role_focused_summary_records,
+                    reasoning_insights,
+                    language,
+                    "role-summary-ai-reasoning",
+                )
 
                 output = AnalysisOutput(
                     language=language,
@@ -213,6 +240,7 @@ class AnalysisOrchestrator:
                         )
                         for signal in asymmetry_signals
                     ],
+                    reasoning_insights=reasoning_insights,
                     role_not_found=role_not_found,
                     message=message,
                 )

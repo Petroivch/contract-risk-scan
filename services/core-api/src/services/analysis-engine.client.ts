@@ -102,6 +102,7 @@ export interface AnalysisEngineOutput {
   disputed_clauses: AnalysisEngineDisputedClauseItem[];
   role_focused_summary: AnalysisEngineRoleFocusedSummary;
   ingestion?: AnalysisEngineIngestionMetadata;
+  reasoning_insights?: string[];
   role_not_found?: boolean;
   message?: string | null;
   role_focused_summary_records: AnalysisEngineSummaryRecord[];

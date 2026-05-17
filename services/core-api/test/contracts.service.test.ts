@@ -1,15 +1,15 @@
 import * as assert from 'node:assert/strict';
 import { SupportedLocale } from '../src/common/i18n/supported-locale.enum';
-import { JobOrchestrationService } from '../src/common/job-orchestration/job-orchestration.service';
 import { JobStatus } from '../src/common/job-orchestration/job-status.enum';
 import { UPLOAD_POLICY } from '../src/common/policies/upload.policy';
+import { ContractsRepository } from '../src/repository/contracts.repository';
+import { StoredContract } from '../src/repository/stored-contract.type';
 import {
   AnalysisEngineClient,
   AnalysisEngineOutput
-} from '../src/contracts/analysis-engine.client';
-import { ContractsRepository } from '../src/contracts/contracts.repository';
-import { ContractsService } from '../src/contracts/contracts.service';
-import { StoredContract } from '../src/contracts/stored-contract.type';
+} from '../src/services/analysis-engine.client';
+import { ContractsService } from '../src/services/contracts.service';
+import { JobOrchestrationService } from '../src/services/job-orchestration.service';
 
 const service = new ContractsService({} as never, {} as never, {} as never, {} as never);
 const contract: StoredContract = {

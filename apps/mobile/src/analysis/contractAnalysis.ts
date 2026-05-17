@@ -58,6 +58,8 @@ interface AnalysisArtifacts {
   summary: AnalysisReport['summary'];
   risks: RiskItem[];
   disputedClauses: DisputedClause[];
+  contractBriefRecords: AnalysisReport['contractBriefRecords'];
+  roleFocusedSummaryRecords: AnalysisReport['roleFocusedSummaryRecords'];
 }
 
 const runAnalysisStage = <T>(stage: string, operation: () => T): T => {
@@ -4374,6 +4376,234 @@ const elevateSeverity = (
   return severity;
 };
 
+interface AiReasoningProfile {
+  insights: string[];
+  riskGroups: Set<string>;
+  highRiskCount: number;
+  disputedCount: number;
+}
+
+const riskSeverityRank: Record<RiskItem['severity'], number> = {
+  low: 1,
+  medium: 2,
+  high: 3,
+};
+
+const aiText = {
+  summaryLead: {
+    ru: 'AI-приоритет',
+    en: 'AI priority',
+    it: 'Priorita AI',
+    fr: 'Priorite IA',
+  },
+  highRiskCluster: {
+    ru: 'сначала согласуйте условия с высоким риском, потому что несколько независимых сигналов усиливают общий риск для выбранной роли',
+    en: 'start with the high-risk clauses because multiple independent signals increase the selected role exposure',
+    it: 'iniziare dalle clausole ad alto rischio perche piu segnali indipendenti aumentano l esposizione del ruolo selezionato',
+    fr: 'commencez par les clauses a haut risque, car plusieurs signaux independants augmentent l exposition du role choisi',
+  },
+  paymentAcceptance: {
+    ru: 'оплата и приемка связаны между собой; зафиксируйте объективное событие приемки, крайний срок оплаты и право приостановить исполнение при просрочке',
+    en: 'payment and acceptance are linked; define the objective acceptance event, the outside payment date, and a suspension right for late payment',
+    it: 'pagamento e accettazione sono collegati; definire evento oggettivo di accettazione, data limite di pagamento e diritto di sospensione in caso di ritardo',
+    fr: 'paiement et acceptation sont lies; definissez l evenement objectif d acceptation, la date limite de paiement et le droit de suspension en cas de retard',
+  },
+  unilateralSanctions: {
+    ru: 'односторонние права сочетаются с санкциями или ответственностью; нужны закрытый перечень оснований, уведомление и лимит последствий',
+    en: 'one-sided rights combine with sanctions or liability; require a closed list of grounds, notice, and a cap on consequences',
+    it: 'diritti unilaterali e sanzioni o responsabilita si sommano; servono presupposti chiusi, preavviso e limite alle conseguenze',
+    fr: 'les droits unilateraux se combinent avec sanctions ou responsabilite; exigez une liste fermee de motifs, un preavis et un plafond des consequences',
+  },
+  disputedClauses: {
+    ru: 'спорные формулировки лучше заменить измеримыми критериями, сроками и документами-подтверждениями',
+    en: 'replace disputed wording with measurable criteria, deadlines, and documentary evidence',
+    it: 'sostituire le formule controverse con criteri misurabili, scadenze e prove documentali',
+    fr: 'remplacez les formulations litigieuses par des criteres mesurables, des delais et des preuves documentaires',
+  },
+  fallback: {
+    ru: 'критичных связок немного, но вручную проверьте сроки, оплату, ответственность и право на односторонние действия',
+    en: 'few critical combinations were found, but manually review deadlines, payment terms, liability, and unilateral rights',
+    it: 'sono state trovate poche combinazioni critiche, ma controllare manualmente scadenze, pagamenti, responsabilita e diritti unilaterali',
+    fr: 'peu de combinaisons critiques ont ete trouvees, mais verifiez manuellement delais, paiements, responsabilite et droits unilateraux',
+  },
+  riskHint: {
+    payment: {
+      ru: 'AI-подсказка: проверьте, не зависит ли оплата от субъективной приемки или действий другой стороны.',
+      en: 'AI hint: check whether payment depends on subjective acceptance or counterparty action.',
+      it: 'Suggerimento AI: verificare se il pagamento dipende da accettazione soggettiva o azioni della controparte.',
+      fr: 'Indice IA : verifiez si le paiement depend d une acceptation subjective ou d une action de la contrepartie.',
+    },
+    control: {
+      ru: 'AI-подсказка: уберите одностороннее усмотрение или добавьте встречное право возражения.',
+      en: 'AI hint: remove one-sided discretion or add a reciprocal objection right.',
+      it: 'Suggerimento AI: eliminare la discrezionalita unilaterale o aggiungere un diritto reciproco di opposizione.',
+      fr: 'Indice IA : supprimez la discretion unilaterale ou ajoutez un droit reciproque d objection.',
+    },
+    liability: {
+      ru: 'AI-подсказка: проверьте общий лимит ответственности, исключения и запрет двойного взыскания.',
+      en: 'AI hint: verify the aggregate liability cap, carve-outs, and no double recovery.',
+      it: 'Suggerimento AI: verificare limite complessivo di responsabilita, eccezioni e divieto di doppio recupero.',
+      fr: 'Indice IA : verifiez le plafond global de responsabilite, les exclusions et l absence de double indemnisation.',
+    },
+    generic: {
+      ru: 'AI-подсказка: свяжите правку с конкретным пунктом, сроком, суммой и подтверждающим документом.',
+      en: 'AI hint: tie the edit to a specific clause, deadline, amount, and supporting document.',
+      it: 'Suggerimento AI: collegare la modifica a clausola, scadenza, importo e documento di prova specifici.',
+      fr: 'Indice IA : rattachez la modification a une clause, un delai, un montant et une preuve documentaire precis.',
+    },
+  },
+};
+
+const localizedAiText = (
+  value: Record<SupportedLanguage, string>,
+  language: SupportedLanguage,
+): string => value[normalizeLanguage(language)] ?? value.ru;
+
+const buildAiReasoningProfile = (
+  language: SupportedLanguage,
+  risks: RiskItem[],
+  disputedClauses: DisputedClause[],
+): AiReasoningProfile => {
+  const normalizedLanguage = normalizeLanguage(language);
+  const riskGroups = new Set(risks.map((risk) => risk.groupId).filter(Boolean) as string[]);
+  const highRiskCount = risks.filter((risk) => riskSeverityRank[risk.severity] >= 3).length;
+  const insights: string[] = [];
+  const prefix = localizedAiText(aiText.summaryLead, normalizedLanguage);
+
+  const appendInsight = (message: string): void => {
+    const insight = `${prefix}: ${message}.`;
+    if (!insights.includes(insight)) {
+      insights.push(insight);
+    }
+  };
+
+  if (highRiskCount >= 2) {
+    appendInsight(localizedAiText(aiText.highRiskCluster, normalizedLanguage));
+  }
+
+  if (riskGroups.has('payment-deadlines') && riskGroups.has('acceptance')) {
+    appendInsight(localizedAiText(aiText.paymentAcceptance, normalizedLanguage));
+  }
+
+  if (
+    riskGroups.has('unilateral') &&
+    (riskGroups.has('penalties') || riskGroups.has('liability'))
+  ) {
+    appendInsight(localizedAiText(aiText.unilateralSanctions, normalizedLanguage));
+  }
+
+  if (disputedClauses.length > 0) {
+    appendInsight(localizedAiText(aiText.disputedClauses, normalizedLanguage));
+  }
+
+  if (insights.length === 0) {
+    appendInsight(localizedAiText(aiText.fallback, normalizedLanguage));
+  }
+
+  return {
+    insights: insights.slice(0, 3),
+    riskGroups,
+    highRiskCount,
+    disputedCount: disputedClauses.length,
+  };
+};
+
+const buildAiRiskHint = (
+  risk: RiskItem,
+  profile: AiReasoningProfile,
+  language: SupportedLanguage,
+): string => {
+  const normalizedLanguage = normalizeLanguage(language);
+
+  if (risk.groupId === 'payment-deadlines' || risk.groupId === 'acceptance') {
+    return localizedAiText(aiText.riskHint.payment, normalizedLanguage);
+  }
+
+  if (risk.groupId === 'unilateral' || risk.groupId === 'jurisdiction-claim') {
+    return localizedAiText(aiText.riskHint.control, normalizedLanguage);
+  }
+
+  if (risk.groupId === 'liability' || risk.groupId === 'penalties') {
+    return localizedAiText(aiText.riskHint.liability, normalizedLanguage);
+  }
+
+  if (profile.highRiskCount > 0 || profile.disputedCount > 0) {
+    return localizedAiText(aiText.riskHint.generic, normalizedLanguage);
+  }
+
+  return '';
+};
+
+const enrichRisksWithAiReasoning = (
+  risks: RiskItem[],
+  profile: AiReasoningProfile,
+  language: SupportedLanguage,
+): RiskItem[] =>
+  risks.map((risk) => {
+    const hint = buildAiRiskHint(risk, profile, language);
+    if (!hint || risk.recommendation.includes(hint)) {
+      return risk;
+    }
+
+    return {
+      ...risk,
+      recommendation: `${ensureSentenceTermination(risk.recommendation)} ${hint}`,
+    };
+  });
+
+const appendAiInsightsToSummary = (summary: string, profile: AiReasoningProfile): string => {
+  const additions = profile.insights.filter((insight) => !summary.includes(insight));
+  if (additions.length === 0) {
+    return summary;
+  }
+
+  return [summary, ...additions].join(' ');
+};
+
+const buildLocalStructuredRecords = (
+  language: SupportedLanguage,
+  selectedRole: string,
+  contractType: string,
+  summaryItems: string[],
+  risks: RiskItem[],
+  disputedClauses: DisputedClause[],
+  profile: AiReasoningProfile,
+): NonNullable<AnalysisReport['contractBriefRecords']> => {
+  const normalizedLanguage = normalizeLanguage(language);
+  const roleLabel = localizeRoleLabel(selectedRole, normalizedLanguage) || selectedRole;
+  const topRisk = risks[0];
+  const firstEvidence =
+    topRisk?.evidence?.[0] ?? summaryItems[0] ?? disputedClauses[0]?.clauseText ?? contractType;
+  const headline =
+    normalizedLanguage === 'ru'
+      ? `AI-сводка для роли "${roleLabel}".`
+      : normalizedLanguage === 'it'
+        ? `Sintesi AI per il ruolo "${roleLabel}".`
+        : normalizedLanguage === 'fr'
+          ? `Synthese IA pour le role "${roleLabel}".`
+          : `AI summary for role "${roleLabel}".`;
+  const description =
+    profile.insights[0] ??
+    (normalizedLanguage === 'ru'
+      ? `Договор определен как "${contractType}", рисков найдено: ${risks.length}.`
+      : `The contract is classified as "${contractType}", risks found: ${risks.length}.`);
+  const recommendation =
+    profile.insights[1] ??
+    (normalizedLanguage === 'ru'
+      ? 'Начните проверку с пунктов, где одновременно есть сроки, оплата, санкции или односторонние права.'
+      : 'Start review with clauses combining deadlines, payment, sanctions, or one-sided rights.');
+
+  return [
+    {
+      id: 'local-ai-reasoning-overview',
+      headline,
+      description,
+      recommendation,
+      evidence: firstEvidence ? [firstEvidence] : [],
+    },
+  ];
+};
+
 export const detectContractType = (text: string, language: SupportedLanguage): string => {
   const normalizedHead = normalizeSearchText(normalizeExtractedText(text).slice(0, 4000));
   const localization = localizedStrings[normalizeLanguage(language)];
@@ -4596,31 +4826,55 @@ export const buildAnalysisArtifacts = ({
       : [strings.obligationsFallback]
     : [];
 
-  const risks = roleFound ? tentativeRisks : [];
-
   const contractType = runAnalysisStage('contract-type', () =>
     detectContractType(normalizedText, normalizedLanguage),
   );
+  const disputedClauses = runAnalysisStage('disputed-clauses', () =>
+    buildDisputedClauses(clauses, normalizedLanguage),
+  );
+  const reasoningProfile = runAnalysisStage('ai-reasoning', () =>
+    buildAiReasoningProfile(normalizedLanguage, roleFound ? tentativeRisks : [], disputedClauses),
+  );
+  const risks = roleFound
+    ? runAnalysisStage('ai-risk-enrichment', () =>
+        enrichRisksWithAiReasoning(tentativeRisks, reasoningProfile, normalizedLanguage),
+      )
+    : [];
+  const shortDescription = roleFound
+    ? appendAiInsightsToSummary(
+        buildRoleFocusedShortDescription(
+          normalizedLanguage,
+          selectedRole,
+          clauses.length,
+          summaryItems,
+          risks,
+        ),
+        reasoningProfile,
+      )
+    : formatRoleNotFoundMessage(selectedRole, normalizedLanguage);
+  const structuredRecords = roleFound
+    ? buildLocalStructuredRecords(
+        normalizedLanguage,
+        selectedRole,
+        contractType,
+        summaryItems,
+        risks,
+        disputedClauses,
+        reasoningProfile,
+      )
+    : [];
 
   return {
     summary: {
       title: `${strings.reportTitle}: ${fileName}`,
       contractType,
-      shortDescription: roleFound
-        ? buildRoleFocusedShortDescription(
-            normalizedLanguage,
-            selectedRole,
-            clauses.length,
-            summaryItems,
-            risks,
-          )
-        : formatRoleNotFoundMessage(selectedRole, normalizedLanguage),
+      shortDescription,
       obligationsForSelectedRole: summaryItems,
       roleFound,
     },
     risks,
-    disputedClauses: runAnalysisStage('disputed-clauses', () =>
-      buildDisputedClauses(clauses, normalizedLanguage),
-    ),
+    disputedClauses,
+    contractBriefRecords: structuredRecords,
+    roleFocusedSummaryRecords: structuredRecords,
   };
 };

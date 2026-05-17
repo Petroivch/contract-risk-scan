@@ -119,5 +119,7 @@ export const analyzeContractLocally = async (
     summary: artifacts.summary,
     risks: artifacts.risks,
     disputedClauses: artifacts.disputedClauses,
+    contractBriefRecords: artifacts.contractBriefRecords,
+    roleFocusedSummaryRecords: artifacts.roleFocusedSummaryRecords,
   };
 };

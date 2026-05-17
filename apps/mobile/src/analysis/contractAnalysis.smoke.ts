@@ -401,6 +401,11 @@ const paymentContractorAnalysis = buildAnalysisArtifacts({
 });
 
 assert.ok(paymentContractorAnalysis.risks.some((risk) => risk.groupId === 'payment-deadlines'));
+assert.ok(
+  paymentContractorAnalysis.risks
+    .find((risk) => risk.groupId === 'payment-deadlines')
+    ?.recommendation.includes('AI-подсказка'),
+);
 
 const paymentCustomerAnalysis = buildAnalysisArtifacts({
   text: '1. Заказчик оплачивает услуги в течение 30 банковских дней после подписания акта.',
@@ -461,6 +466,12 @@ assert.ok(legalCoreRiskTitles.includes('Персональные данные'))
 assert.ok(legalCoreRiskTitles.includes('Форс-мажор'));
 assert.ok(legalCoreRiskTitles.includes('Автоматическое продление'));
 assert.ok(legalCoreRiskTitles.includes('Обеспечение и взыскание'));
+assert.ok(legalCoreAnalysis.summary.shortDescription.includes('AI-приоритет'));
+assert.ok(
+  legalCoreAnalysis.contractBriefRecords?.some(
+    (record) => record.id === 'local-ai-reasoning-overview',
+  ),
+);
 
 const referenceNoiseAnalysis = buildAnalysisArtifacts({
   text: [

@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
-import { JobOrchestrationService } from '../common/job-orchestration/job-orchestration.service';
-import { AnalysisEngineClient } from './analysis-engine.client';
+import { JobOrchestrationService } from '../services/job-orchestration.service';
+import { AnalysisEngineClient } from '../services/analysis-engine.client';
 import { ContractsController } from './contracts.controller';
-import { ContractsRepository } from './contracts.repository';
-import { ContractsService } from './contracts.service';
+import { ContractsRepository } from '../repository/contracts.repository';
+import { ContractsService } from '../services/contracts.service';
 
 @Module({
   controllers: [ContractsController],

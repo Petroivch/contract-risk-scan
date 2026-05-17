@@ -1,7 +1,7 @@
-import { ApiProperty } from '@nestjs/swagger';
-import { AnalysisLifecycleStatus } from '../../common/domain/analysis-lifecycle-status.enum';
-import { JobStatus } from '../../common/job-orchestration/job-status.enum';
-import { SupportedLocale } from '../../common/i18n/supported-locale.enum';
+﻿import { ApiProperty } from '@nestjs/swagger';
+import { AnalysisLifecycleStatus } from '../common/domain/analysis-lifecycle-status.enum';
+import { JobStatus } from '../common/job-orchestration/job-status.enum';
+import { SupportedLocale } from '../common/i18n/supported-locale.enum';
 
 export class UploadContractResponseDto {
   @ApiProperty({ example: 'ctr_k2v4m8x1' })
@@ -31,3 +31,4 @@ export class UploadContractResponseDto {
   @ApiProperty({ example: '2026-04-20T10:15:00.000Z' })
   uploadedAt!: string;
 }
+

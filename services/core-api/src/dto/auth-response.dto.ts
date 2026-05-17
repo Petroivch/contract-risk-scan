@@ -1,6 +1,6 @@
-import { ApiProperty } from '@nestjs/swagger';
-import { AuthTokenType } from '../../common/domain/auth-token-type.enum';
-import { AUTH_POLICY } from '../../common/policies/auth.policy';
+﻿import { ApiProperty } from '@nestjs/swagger';
+import { AuthTokenType } from '../common/domain/auth-token-type.enum';
+import { AUTH_POLICY } from '../common/policies/auth.policy';
 
 export class AuthResponseDto {
   @ApiProperty({ example: 'usr_a81f10d2' })

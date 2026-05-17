@@ -1,7 +1,7 @@
-import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
-import { AnalysisLifecycleStatus } from '../../common/domain/analysis-lifecycle-status.enum';
-import { SupportedLocale } from '../../common/i18n/supported-locale.enum';
-import { JobStatus } from '../../common/job-orchestration/job-status.enum';
+﻿import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+import { AnalysisLifecycleStatus } from '../common/domain/analysis-lifecycle-status.enum';
+import { SupportedLocale } from '../common/i18n/supported-locale.enum';
+import { JobStatus } from '../common/job-orchestration/job-status.enum';
 
 export class ContractStatusResponseDto {
   @ApiProperty({ example: 'ctr_k2v4m8x1' })
@@ -37,3 +37,4 @@ export class ContractStatusResponseDto {
   @ApiPropertyOptional({ example: 'Failed to parse DOCX stream' })
   errorMessage?: string;
 }
+

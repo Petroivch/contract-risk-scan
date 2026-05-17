@@ -5,33 +5,28 @@ import { AUTH_POLICY } from '../common/policies/auth.policy';
 import { MESSAGE_POLICY } from '../common/policies/messages.policy';
 import { generateEntityId } from '../common/utils/id.util';
 import { AppConfig } from '../config/app-config.type';
-import { AuthResponseDto } from './dto/auth-response.dto';
-import { LoginDto } from './dto/login.dto';
-import { RegisterDto } from './dto/register.dto';
-
-interface UserRecord {
-  id: string;
-  email: string;
-  passwordHash: string;
-  fullName: string;
-}
+import { AuthResponseDto } from '../dto/auth-response.dto';
+import { LoginDto } from '../dto/login.dto';
+import { RegisterDto } from '../dto/register.dto';
+import { AuthRepository } from '../repository/auth.repository';
 
 @Injectable()
 export class AuthService {
-  private readonly users = new Map<string, UserRecord>();
+  constructor(
+    private readonly configService: ConfigService<AppConfig, true>,
+    private readonly authRepository: AuthRepository
+  ) {}
 
-  constructor(private readonly configService: ConfigService<AppConfig, true>) {}
-
-  register(dto: RegisterDto): AuthResponseDto {
+  async register(dto: RegisterDto): Promise<AuthResponseDto> {
     const email = dto.email.toLowerCase();
 
-    const existing = Array.from(this.users.values()).find((user) => user.email === email);
+    const existing = await this.authRepository.findByEmail(email);
     if (existing) {
       return this.buildAuthResponse(existing.id, existing.email);
     }
 
     const id = generateEntityId(AUTH_POLICY.USER_ID_PREFIX);
-    this.users.set(id, {
+    await this.authRepository.create({
       id,
       email,
       fullName: dto.fullName,
@@ -41,9 +36,9 @@ export class AuthService {
     return this.buildAuthResponse(id, email);
   }
 
-  login(dto: LoginDto): AuthResponseDto {
+  async login(dto: LoginDto): Promise<AuthResponseDto> {
     const email = dto.email.toLowerCase();
-    const user = Array.from(this.users.values()).find((record) => record.email === email);
+    const user = await this.authRepository.findByEmail(email);
 
     if (!user || user.passwordHash !== this.hashPassword(dto.password)) {
       throw new UnauthorizedException(MESSAGE_POLICY.AUTH_INVALID_CREDENTIALS);

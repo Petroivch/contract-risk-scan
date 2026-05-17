@@ -1,6 +1,6 @@
-import { ApiProperty } from '@nestjs/swagger';
+﻿import { ApiProperty } from '@nestjs/swagger';
 import { IsEmail, IsString, MinLength } from 'class-validator';
-import { AUTH_POLICY } from '../../common/policies/auth.policy';
+import { AUTH_POLICY } from '../common/policies/auth.policy';
 
 export class LoginDto {
   @ApiProperty({ example: 'legal.owner@example.com' })

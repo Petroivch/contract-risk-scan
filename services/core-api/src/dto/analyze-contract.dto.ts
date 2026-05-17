@@ -1,8 +1,8 @@
-import { ApiPropertyOptional } from '@nestjs/swagger';
+﻿import { ApiPropertyOptional } from '@nestjs/swagger';
 import { Transform } from 'class-transformer';
 import { IsBoolean, IsOptional, IsString, MaxLength } from 'class-validator';
-import { DEFAULT_LOCALE, SupportedLocale } from '../../common/i18n/supported-locale.enum';
-import { CONTRACT_POLICY } from '../../common/policies/contracts.policy';
+import { DEFAULT_LOCALE, SupportedLocale } from '../common/i18n/supported-locale.enum';
+import { CONTRACT_POLICY } from '../common/policies/contracts.policy';
 
 export class AnalyzeContractDto {
   @ApiPropertyOptional({

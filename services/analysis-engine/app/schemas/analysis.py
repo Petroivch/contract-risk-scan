@@ -263,6 +263,7 @@ class AnalysisOutput(BaseModel):
     ingestion: IngestionMetadata | None = None
     contract_type: ContractTypeMetadata | None = None
     asymmetry_signals: list[AsymmetrySignalItem] = Field(default_factory=list)
+    reasoning_insights: list[str] = Field(default_factory=list)
     role_not_found: bool = False
     message: str | None = None
 
