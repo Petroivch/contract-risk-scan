@@ -37,6 +37,20 @@ export interface AnalysisEngineRiskItem {
   description: string;
   role_relevance: string;
   mitigation: string;
+  evidence?: AnalysisEngineRiskEvidence[];
+  explanation?: {
+    source_excerpt?: string | null;
+    source_offset?: AnalysisEngineTextOffset | null;
+  } | null;
+}
+
+export interface AnalysisEngineRiskEvidence {
+  source?: string;
+  source_ref?: string | null;
+  clause_id?: string | null;
+  source_excerpt: string;
+  offset: AnalysisEngineTextOffset;
+  matched_patterns?: string[];
 }
 
 export interface AnalysisEngineDisputedClauseItem {

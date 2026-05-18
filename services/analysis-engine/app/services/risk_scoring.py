@@ -7,7 +7,7 @@ from math import sqrt
 from app.config.models import RiskRuleConfig, RoleEscalationEntryConfig
 from app.config.runtime import get_runtime_config
 from app.localization import normalize_analysis_language, resolve_localized_text
-from app.dto.analysis import DisputedClauseItem, RiskExplanation, RiskItem, RiskSeverity
+from app.dto.analysis import DisputedClauseItem, RiskEvidence, RiskExplanation, RiskItem, RiskSeverity, TextOffset
 from app.services.asymmetry_detector import AsymmetrySignal
 from app.services.clause_segmentation import ClauseSegment
 from app.services.contract_analysis import (
@@ -28,6 +28,8 @@ class RuleMatch:
     excerpt: str
     matched_patterns: list[str]
     source: str
+    offset: int | None = None
+    end_offset: int | None = None
 
 
 @dataclass(slots=True)
@@ -57,6 +59,8 @@ class ClauseFeatures:
     raw_text: str
     normalized_text: str
     excerpt: str
+    offset: int
+    end_offset: int
     tokens: set[str]
     detected_roles: set[str]
     obligation_markers: list[str]
@@ -84,6 +88,8 @@ class HybridMatch:
     role_mentioned: bool
     source_has_roles: bool
     guardrails: list[str]
+    offset: int | None = None
+    end_offset: int | None = None
 
 
 class RiskScoringService:
@@ -328,6 +334,15 @@ class RiskScoringService:
                 )
                 if self._should_skip_risk(rule, canonical_role, severity, combined_text):
                     continue
+                validation_result = self._validate_risk_match(
+                    rule_id=rule.id,
+                    match=match,
+                    role_context=role_context,
+                    selected_role_present=selected_role_present,
+                )
+                if validation_result is None:
+                    continue
+                confidence, validation_guardrails = validation_result
 
                 seen_pairs.add(dedupe_key)
                 risk_title = self._format_risk_title(
@@ -340,11 +355,14 @@ class RiskScoringService:
                     description = (
                         f"{description} {self._localized_evidence_prefix(resolved_language)} {match.excerpt}"
                     )
+                evidence = self._build_risk_evidence(rule, match)
+                source_offset = evidence[0].offset if evidence else None
+                source_excerpt = evidence[0].source_excerpt if evidence else (match.excerpt or None)
 
                 risks_with_rank.append(
                     RankedRiskCandidate(
                         severity_rank=self._severity_rank(severity),
-                        confidence_rank=match.classifier_score,
+                        confidence_rank=confidence,
                         clause_rank=self._resolve_clause_rank(rule, match.clause_id, clause_index_by_id),
                         risk=RiskItem(
                             risk_id="",
@@ -370,7 +388,7 @@ class RiskScoringService:
                                 role_context=role_context,
                             ),
                             target_role=role,
-                            confidence=match.classifier_score,
+                            confidence=confidence,
                             explanation=RiskExplanation(
                                 summary=self._build_risk_explanation_summary(
                                     language=resolved_language,
@@ -382,10 +400,12 @@ class RiskScoringService:
                                 matched_terms=match.matched_terms,
                                 matched_patterns=match.matched_patterns,
                                 retrieval_score=match.retrieval_score,
-                                classifier_score=match.classifier_score,
-                                guardrails=match.guardrails,
-                                source_excerpt=match.excerpt or None,
+                                classifier_score=confidence,
+                                guardrails=[*match.guardrails, *validation_guardrails],
+                                source_excerpt=source_excerpt,
+                                source_offset=source_offset,
                             ),
+                            evidence=evidence,
                         ),
                         source_has_roles=match.source_has_roles,
                         role_mentioned=match.role_mentioned,
@@ -456,12 +476,114 @@ class RiskScoringService:
             raw_text=clause.text,
             normalized_text=lowered_text,
             excerpt=self._truncate_intelligently(normalized_text),
+            offset=clause.offset,
+            end_offset=clause.end_offset or clause.offset + len(normalized_text),
             tokens=tokens,
             detected_roles={role.canonical_role for role in extract_roles_from_text(normalized_text)},
             obligation_markers=[marker for marker in self._obligation_markers if marker in lowered_text],
             entity_markers=self._extract_entity_markers(lowered_text, tokens),
             embedding=self._embed_text(lowered_text),
         )
+
+    def _source_fragment_from_clause(
+        self,
+        clause: ClauseSegment,
+        patterns: list[str],
+    ) -> tuple[str, int, int]:
+        return self._source_fragment_from_text(
+            text=normalize_contract_text(clause.text),
+            base_offset=clause.offset,
+            patterns=patterns,
+        )
+
+    def _source_fragment_from_feature(
+        self,
+        feature: ClauseFeatures,
+        patterns: list[str],
+    ) -> tuple[str, int, int]:
+        return self._source_fragment_from_text(
+            text=normalize_contract_text(feature.raw_text),
+            base_offset=feature.offset,
+            patterns=patterns,
+        )
+
+    def _source_fragment_from_text(
+        self,
+        *,
+        text: str,
+        base_offset: int,
+        patterns: list[str],
+    ) -> tuple[str, int, int]:
+        if not text:
+            return "", base_offset, base_offset
+
+        span = self._first_pattern_span(text, patterns)
+        if span is None:
+            relative_start = 0
+            relative_end = min(len(text), self._config.max_clause_excerpt_chars)
+        else:
+            relative_start, relative_end = self._expand_fragment_window(
+                text,
+                span[0],
+                span[1],
+                self._config.max_clause_excerpt_chars,
+            )
+
+        fragment = text[relative_start:relative_end]
+        leading_trim = len(fragment) - len(fragment.lstrip())
+        trailing_trim = len(fragment.rstrip())
+        relative_start += leading_trim
+        relative_end = relative_start + max(0, trailing_trim - leading_trim)
+        fragment = text[relative_start:relative_end]
+        return fragment, base_offset + relative_start, base_offset + relative_end
+
+    @staticmethod
+    def _first_pattern_span(text: str, patterns: list[str]) -> tuple[int, int] | None:
+        lowered_text = text.casefold()
+        for pattern in patterns:
+            if not pattern:
+                continue
+            try:
+                match = re.search(pattern, text, flags=re.IGNORECASE)
+            except re.error:
+                match = None
+            if match is not None and match.end() > match.start():
+                return match.start(), match.end()
+
+            needle = pattern.casefold()
+            position = lowered_text.find(needle)
+            if position >= 0:
+                return position, position + len(needle)
+        return None
+
+    @staticmethod
+    def _expand_fragment_window(text: str, start: int, end: int, max_chars: int) -> tuple[int, int]:
+        window_start = max(0, start - 120)
+        window_end = min(len(text), end + 180)
+        boundary_chars = "\n.!?;:"
+
+        previous_boundaries = [text.rfind(boundary, window_start, start) for boundary in boundary_chars]
+        previous_boundary = max(previous_boundaries)
+        if previous_boundary >= 0:
+            window_start = previous_boundary + 1
+
+        next_boundaries = [
+            position
+            for boundary in boundary_chars
+            for position in [text.find(boundary, end, window_end)]
+            if position >= 0
+        ]
+        if next_boundaries:
+            window_end = min(next_boundaries) + 1
+
+        if window_end - window_start > max_chars:
+            window_start = max(0, start - 80)
+            window_end = min(len(text), window_start + max_chars)
+            if window_end < end:
+                window_end = min(len(text), end + 80)
+                window_start = max(0, window_end - max_chars)
+
+        return window_start, window_end
 
     def _hybrid_match_rule(
         self,
@@ -493,6 +615,8 @@ class RiskScoringService:
                         role_mentioned=False,
                         source_has_roles=False,
                         guardrails=["legacy_match"],
+                        offset=guardrail.offset,
+                        end_offset=guardrail.end_offset,
                     )
                 )
             return matches
@@ -565,10 +689,18 @@ class RiskScoringService:
             if classifier_score < 0.42 and guardrail is None:
                 continue
 
+            evidence_patterns = matched_patterns or (guardrail.matched_patterns if guardrail else matched_terms)
+            if guardrail and guardrail.excerpt:
+                excerpt = guardrail.excerpt
+                offset = guardrail.offset
+                end_offset = guardrail.end_offset
+            else:
+                excerpt, offset, end_offset = self._source_fragment_from_feature(feature, evidence_patterns)
+
             matches.append(
                 HybridMatch(
                     clause_id=feature.clause_id,
-                    excerpt=(guardrail.excerpt if guardrail and guardrail.excerpt else feature.excerpt),
+                    excerpt=excerpt or feature.excerpt,
                     source=feature.normalized_text,
                     matched_terms=matched_terms,
                     matched_patterns=matched_patterns or (guardrail.matched_patterns if guardrail else []),
@@ -581,6 +713,8 @@ class RiskScoringService:
                         semantic_available=semantic_available,
                         payment_sanction=payment_sanction_guardrail,
                     ),
+                    offset=offset,
+                    end_offset=end_offset,
                 )
             )
 
@@ -599,6 +733,8 @@ class RiskScoringService:
                     role_mentioned=bool(find_role_matches(canonical_role, guardrail.source)) if canonical_role else False,
                     source_has_roles=bool(extract_roles_from_text(guardrail.source)),
                     guardrails=["legacy_match"],
+                    offset=guardrail.offset,
+                    end_offset=guardrail.end_offset,
                 )
             )
 
@@ -830,12 +966,15 @@ class RiskScoringService:
             normalized_clause = normalize_contract_text(clause.text).casefold()
             if not any(keyword.casefold() in normalized_clause for keyword in rule.keywords):
                 continue
+            excerpt, offset, end_offset = self._source_fragment_from_clause(clause, rule.keywords)
             matches.append(
                 RuleMatch(
                     clause_id=clause.clause_id,
-                    excerpt=self._truncate_intelligently(normalize_contract_text(clause.text)),
+                    excerpt=excerpt,
                     matched_patterns=rule.keywords,
                     source=normalized_clause,
+                    offset=offset,
+                    end_offset=end_offset,
                 )
             )
             if preferred_clause is not None and clause.clause_id == preferred_clause.clause_id:
@@ -858,13 +997,15 @@ class RiskScoringService:
 
         if source == "document":
             if self._document_match_succeeds(combined_text, patterns, all_patterns, logic.min_matches):
-                excerpt = self._select_best_excerpt(clauses, patterns or all_patterns)
+                excerpt = self._select_best_evidence(clauses, patterns or all_patterns)
                 matches.append(
                     RuleMatch(
                         clause_id=excerpt[0],
                         excerpt=excerpt[1],
                         matched_patterns=patterns or all_patterns,
                         source=combined_text,
+                        offset=excerpt[2],
+                        end_offset=excerpt[3],
                     )
                 )
             return matches
@@ -877,13 +1018,17 @@ class RiskScoringService:
                 continue
             if not hit_patterns and not all_patterns:
                 continue
+            matched_patterns = hit_patterns or all_patterns
+            excerpt, offset, end_offset = self._source_fragment_from_clause(clause, matched_patterns)
             total_hits += len(hit_patterns) or 1
             matches.append(
                 RuleMatch(
                     clause_id=clause.clause_id,
-                    excerpt=self._truncate_intelligently(normalize_contract_text(clause.text)),
-                    matched_patterns=hit_patterns or all_patterns,
+                    excerpt=excerpt,
+                    matched_patterns=matched_patterns,
                     source=normalized_clause,
+                    offset=offset,
+                    end_offset=end_offset,
                 )
             )
 
@@ -938,6 +1083,18 @@ class RiskScoringService:
             if any(self._contains_pattern(normalized_clause, pattern) for pattern in patterns):
                 return clause.clause_id, self._truncate_intelligently(normalize_contract_text(clause.text))
         return None, ""
+
+    def _select_best_evidence(
+        self,
+        clauses: list[ClauseSegment],
+        patterns: list[str],
+    ) -> tuple[str | None, str, int | None, int | None]:
+        for clause in clauses:
+            normalized_clause = normalize_contract_text(clause.text).casefold()
+            if any(self._contains_pattern(normalized_clause, pattern) for pattern in patterns):
+                excerpt, offset, end_offset = self._source_fragment_from_clause(clause, patterns)
+                return clause.clause_id, excerpt, offset, end_offset
+        return None, "", None, None
 
     def _escalate_severity(
         self,
@@ -1093,6 +1250,87 @@ class RiskScoringService:
         if source_has_roles:
             return role_mentioned
         return True
+
+    def _validate_risk_match(
+        self,
+        *,
+        rule_id: str,
+        match: HybridMatch,
+        role_context: RoleContextAssessment,
+        selected_role_present: bool,
+    ) -> tuple[float, list[str]] | None:
+        score = match.classifier_score
+        labels = ["validation_rerank"]
+        source_text = f"{match.excerpt} {match.source}".casefold()
+
+        if self._looks_like_reference_noise(source_text):
+            return None
+
+        if not match.excerpt.strip() or match.offset is None or match.end_offset is None:
+            score -= 0.1
+            labels.append("weak_source_evidence")
+        elif len(match.excerpt.strip()) < 18:
+            score -= 0.08
+            labels.append("short_source_evidence")
+
+        if role_context.selected_role_burdened or role_context.counterparty_role_benefited:
+            score += 0.08
+            labels.append("role_harm_validated")
+        elif role_context.selected_role_mentioned:
+            score += 0.03
+            labels.append("role_mention_validated")
+
+        if "regex_guardrail" in match.guardrails or "payment_sanction_guardrail" in match.guardrails:
+            score += 0.04
+            labels.append("guardrail_validated")
+
+        if (
+            selected_role_present
+            and match.source_has_roles
+            and not match.role_mentioned
+            and not role_context.counterparty_role_benefited
+            and rule_id not in {"payment_asymmetry"}
+        ):
+            score -= 0.12
+            labels.append("other_role_downrank")
+
+        threshold = 0.4 if "regex_guardrail" in match.guardrails else 0.48
+        if score < threshold:
+            return None
+
+        return round(max(0.0, min(1.0, score)), 4), labels
+
+    @staticmethod
+    def _looks_like_reference_noise(text: str) -> bool:
+        reference_markers = (
+            "reference only",
+            "sample clause",
+            "not part of this agreement",
+            "for information only",
+            "example only",
+            "для справки",
+            "только для сведения",
+            "пример условия",
+            "образец условия",
+            "не является частью договора",
+        )
+        return any(marker in text for marker in reference_markers)
+
+    @staticmethod
+    def _build_risk_evidence(rule: RiskRuleConfig, match: HybridMatch) -> list[RiskEvidence]:
+        if not match.excerpt.strip() or match.offset is None or match.end_offset is None:
+            return []
+
+        matched_patterns = list(dict.fromkeys(match.matched_patterns))
+        return [
+            RiskEvidence(
+                source_ref=rule.source_ref,
+                clause_id=match.clause_id,
+                source_excerpt=match.excerpt,
+                offset=TextOffset(start=match.offset, end=match.end_offset),
+                matched_patterns=matched_patterns,
+            )
+        ]
 
     def _build_role_relevance(
         self,
@@ -1338,6 +1576,19 @@ class RiskScoringService:
                 role_mentioned = not canonical_role or canonical_role in signal.affected_roles
                 classifier_score = 0.86 if role_mentioned else 0.62
                 applies_to_selected_role = not canonical_role or not signal.affected_roles or canonical_role in signal.affected_roles
+                evidence = (
+                    [
+                        RiskEvidence(
+                            source_ref=signal.risk_id,
+                            clause_id=signal.clause_id,
+                            source_excerpt=signal.source_excerpt,
+                            offset=TextOffset(start=signal.offset, end=signal.end_offset),
+                            matched_patterns=[signal.risk_id],
+                        )
+                    ]
+                    if signal.source_excerpt and signal.offset is not None and signal.end_offset is not None
+                    else []
+                )
                 risks_with_rank.append(
                     RankedRiskCandidate(
                         severity_rank=self._severity_rank(severity),
@@ -1363,8 +1614,10 @@ class RiskScoringService:
                                 retrieval_score=classifier_score,
                                 classifier_score=classifier_score,
                                 guardrails=["asymmetry_signal"],
-                                source_excerpt=signal.details or signal.summary,
+                                source_excerpt=(evidence[0].source_excerpt if evidence else signal.details or signal.summary),
+                                source_offset=(evidence[0].offset if evidence else None),
                             ),
+                            evidence=evidence,
                         ),
                         source_has_roles=bool(signal.affected_roles),
                         role_mentioned=role_mentioned,

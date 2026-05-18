@@ -162,3 +162,69 @@ def test_unilateral_rights_are_shown_only_for_affected_role() -> None:
 
     assert any(risk.rule_id == "unilateral_scope_change" for risk in contractor_risks)
     assert all(risk.rule_id != "unilateral_scope_change" for risk in customer_risks)
+
+
+def test_english_risk_evidence_has_source_excerpt_and_offsets() -> None:
+    scorer = RiskScoringService()
+    text = "Contractor pays a 10% penalty for each day of delay and must compensate full damages."
+    clauses = [ClauseSegment(clause_id="clause-1", text=text, offset=0, end_offset=len(text))]
+
+    risks = scorer.score(
+        clauses=clauses,
+        role="Contractor",
+        language="en",
+        contract_type="service_agreement",
+    )
+
+    penalty_risk = next(risk for risk in risks if risk.rule_id == "one_sided_penalty")
+
+    assert penalty_risk.evidence
+    evidence = penalty_risk.evidence[0]
+    assert evidence.source_excerpt
+    assert evidence.offset.start >= 0
+    assert evidence.offset.end > evidence.offset.start
+    assert text[evidence.offset.start : evidence.offset.end] == evidence.source_excerpt
+    assert penalty_risk.explanation is not None
+    assert penalty_risk.explanation.source_offset == evidence.offset
+
+
+def test_russian_risk_evidence_has_source_excerpt_and_offsets() -> None:
+    scorer = RiskScoringService()
+    text = (
+        "\u0418\u0441\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c "
+        "\u0437\u0430 \u043f\u0440\u043e\u0441\u0440\u043e\u0447\u043a\u0443 "
+        "\u0443\u043f\u043b\u0430\u0447\u0438\u0432\u0430\u0435\u0442 "
+        "\u0448\u0442\u0440\u0430\u0444 5%."
+    )
+    clauses = [ClauseSegment(clause_id="clause-1", text=text, offset=0, end_offset=len(text))]
+
+    risks = scorer.score(
+        clauses=clauses,
+        role="\u0418\u0441\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c",
+        language="ru",
+        contract_type="service_agreement",
+    )
+
+    penalty_risk = next(risk for risk in risks if risk.rule_id == "one_sided_penalty")
+    evidence = penalty_risk.evidence[0]
+
+    assert "\u0448\u0442\u0440\u0430\u0444" in evidence.source_excerpt.casefold()
+    assert text[evidence.offset.start : evidence.offset.end] == evidence.source_excerpt
+
+
+def test_validation_rerank_filters_reference_only_risk_examples() -> None:
+    scorer = RiskScoringService()
+    text = (
+        "Reference only: sample clause is not part of this agreement. "
+        "Contractor pays a 10% penalty for each day of delay."
+    )
+    clauses = [ClauseSegment(clause_id="clause-1", text=text, offset=0, end_offset=len(text))]
+
+    risks = scorer.score(
+        clauses=clauses,
+        role="Contractor",
+        language="en",
+        contract_type="service_agreement",
+    )
+
+    assert all(risk.rule_id != "one_sided_penalty" for risk in risks)

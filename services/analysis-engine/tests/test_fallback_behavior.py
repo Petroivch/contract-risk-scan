@@ -34,6 +34,21 @@ def test_clause_segmentation_returns_localized_fallback_for_blank_text() -> None
     ]
 
 
+def test_clause_segmentation_splits_inline_numbered_clauses_with_offsets() -> None:
+    service = ClauseSegmentationService()
+    text = (
+        "1. Contractor shall deliver the report within 5 days. "
+        "2. Customer may unilaterally change the scope without Contractor approval. "
+        "3. Contractor pays a 10% penalty for delay."
+    )
+
+    clauses = service.segment(text, "en")
+
+    assert [clause.clause_id for clause in clauses] == ["clause-1", "clause-2", "clause-3"]
+    assert "unilaterally change the scope" in clauses[1].text
+    assert text[clauses[1].offset : clauses[1].end_offset] == clauses[1].text
+
+
 def test_risk_scoring_returns_single_fallback_risk_for_neutral_clause() -> None:
     runtime_config = get_runtime_config()
     service = RiskScoringService()

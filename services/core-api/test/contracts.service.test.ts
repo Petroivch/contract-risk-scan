@@ -62,7 +62,17 @@ const remoteResult: AnalysisEngineOutput = {
       clause_id: 'clause-1',
       description: 'Description',
       role_relevance: 'Role relevance',
-      mitigation: 'Mitigation'
+      mitigation: 'Mitigation',
+      evidence: [
+        {
+          source: 'normalized_document_text',
+          source_ref: 'RSK-PEN-001',
+          clause_id: 'clause-1',
+          source_excerpt: 'Contractor pays a 10% penalty for each day of delay.',
+          offset: { start: 128, end: 181 },
+          matched_patterns: ['penalty']
+        }
+      ]
     }
   ],
   disputed_clauses: [
@@ -113,6 +123,11 @@ assert.deepEqual(report.contractBriefRecords, remoteResult.contract_brief_record
 assert.deepEqual(report.roleFocusedSummaryRecords, remoteResult.role_focused_summary_records);
 assert.equal(report.contractBriefRecords[0].recommendation.startsWith('Проверьте'), true);
 assert.equal(report.roleFocusedSummaryRecords[0].headline.endsWith('.'), true);
+assert.deepEqual(report.risks[0].evidence, [
+  'Contractor pays a 10% penalty for each day of delay.'
+]);
+assert.deepEqual(report.risks[0].riskEvidence[0].offset, { start: 128, end: 181 });
+assert.equal(report.risks[0].riskEvidence[0].sourceRef, 'RSK-PEN-001');
 assert.deepEqual(UPLOAD_POLICY.ALLOWED_MIME_TYPES_DEFAULT, [
   'application/pdf',
   'application/vnd.openxmlformats-officedocument.wordprocessingml.document',

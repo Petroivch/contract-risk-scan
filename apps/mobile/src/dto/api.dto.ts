@@ -31,6 +31,20 @@ export interface AnalysisStatus {
   errorMessage?: string;
 }
 
+export interface TextOffset {
+  start: number;
+  end: number;
+}
+
+export interface RiskEvidence {
+  source?: string;
+  sourceRef?: string | null;
+  clauseId?: string | null;
+  sourceExcerpt: string;
+  offset: TextOffset;
+  matchedPatterns?: string[];
+}
+
 export interface RiskItem {
   id: string;
   severity: 'low' | 'medium' | 'high';
@@ -38,6 +52,7 @@ export interface RiskItem {
   clauseRefs?: string[];
   occurrences?: number;
   evidence?: string[];
+  riskEvidence?: RiskEvidence[];
   groupId?: string;
   title: string;
   description: string;

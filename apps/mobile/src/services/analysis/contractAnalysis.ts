@@ -13,6 +13,8 @@ export interface ClauseSegment {
   clauseId: string;
   clauseRef: string;
   text: string;
+  offset: number;
+  endOffset: number;
 }
 
 interface RiskRule {
@@ -78,10 +80,13 @@ const runAnalysisStage = <T>(stage: string, operation: () => T): T => {
 
 interface RiskCandidate {
   rule: RiskRule;
+  clauseId: string;
   clauseRef: string;
   clauseIndex: number;
   fragmentIndex: number;
   excerpt: string;
+  sourceExcerpt: string;
+  sourceOffset: { start: number; end: number };
   normalizedText: string;
   normalizedClauseText: string;
   markerHits: number;
@@ -2436,6 +2441,53 @@ const getClauseFragments = (text: string): string[] => {
   return fragments.length > 0 ? fragments : [normalizeExtractedText(text)].filter(Boolean);
 };
 
+const locateFragmentStart = (sourceText: string, fragment: string, cursor: number): number => {
+  const directIndex = sourceText.indexOf(fragment, cursor);
+  if (directIndex >= 0) {
+    return directIndex;
+  }
+
+  const fallbackIndex = sourceText.indexOf(fragment);
+  return fallbackIndex >= 0 ? fallbackIndex : cursor;
+};
+
+const buildExactSourceExcerpt = (
+  fragment: string,
+  absoluteStart: number,
+): { sourceExcerpt: string; sourceOffset: { start: number; end: number } } => {
+  const normalized = normalizeExtractedText(fragment);
+  const sourceExcerpt =
+    normalized.length <= maxClauseExcerptLength
+      ? normalized
+      : normalized.slice(0, maxClauseExcerptLength).trimEnd();
+
+  return {
+    sourceExcerpt,
+    sourceOffset: {
+      start: absoluteStart,
+      end: absoluteStart + sourceExcerpt.length,
+    },
+  };
+};
+
+const splitInlineNumberedClauses = (text: string): string[] => {
+  const pattern =
+    /(^|[\n]|[.;:]\s+|[A-Za-zА-Яа-яЁё]\s+)(\d+(?:\.\d+){0,3}[.)]\s+)/gu;
+  const matches = Array.from(text.matchAll(pattern));
+  if (matches.length < 2) {
+    return [];
+  }
+
+  return matches
+    .map((match, index) => {
+      const marker = match[2] ?? '';
+      const start = match.index + match[0].length - marker.length;
+      const end = index + 1 < matches.length ? matches[index + 1].index : text.length;
+      return text.slice(start, end).trim();
+    })
+    .filter(Boolean);
+};
+
 const isContinuationListFragment = (fragment: string): boolean => {
   return /^(?:\(?[a-zа-яё]\)|\d+(?:\.\d+)*[.)]|[-–—*])\s*/iu.test(fragment);
 };
@@ -2836,6 +2888,24 @@ const meetsRiskThreshold = (
   }
 };
 
+const passesRiskValidation = (candidate: RiskCandidate): boolean => {
+  if (!candidate.sourceExcerpt || isReferenceLikeFragment(candidate.normalizedText)) {
+    return false;
+  }
+
+  const hasContext = candidate.contextualScore > 0;
+  const hasMultipleMarkers = candidate.markerHits > 1;
+  const hasAction = countMatches(candidate.normalizedText, hybridSignals.roleAction) > 0;
+  const hasNumericSignal =
+    hasExplicitNumericSignal(candidate.normalizedText) || hasMonetarySignal(candidate.normalizedText);
+
+  if (candidate.sourceExcerpt.length < 18 && !hasMultipleMarkers && !hasAction && !hasNumericSignal) {
+    return false;
+  }
+
+  return hasContext || hasMultipleMarkers || hasAction || hasNumericSignal;
+};
+
 const scoreDisputeContext = (markerId: string, normalizedText: string, excerpt: string): number => {
   switch (markerId) {
     case 'reasonable-time':
@@ -2980,8 +3050,12 @@ const buildRiskCandidates = (clauses: ClauseSegment[], roleTerms: string[]): Ris
 
   for (const [clauseIndex, clause] of clauses.entries()) {
     const normalizedClauseText = normalizeSearchText(clause.text);
+    let fragmentCursor = 0;
 
     for (const [fragmentIndex, fragment] of getClauseFragments(clause.text).entries()) {
+      const relativeStart = locateFragmentStart(clause.text, fragment, fragmentCursor);
+      fragmentCursor = relativeStart + fragment.length;
+      const sourceEvidence = buildExactSourceExcerpt(fragment, clause.offset + relativeStart);
       const normalizedText = normalizeSearchText(fragment);
       const excerpt = buildExcerpt(fragment, 220);
       if (!excerpt || isReferenceLikeFragment(normalizedText)) {
@@ -3027,10 +3101,13 @@ const buildRiskCandidates = (clauses: ClauseSegment[], roleTerms: string[]): Ris
 
         candidates.push({
           rule,
+          clauseId: clause.clauseId,
           clauseRef,
           clauseIndex,
           fragmentIndex,
           excerpt,
+          sourceExcerpt: sourceEvidence.sourceExcerpt,
+          sourceOffset: sourceEvidence.sourceOffset,
           normalizedText,
           normalizedClauseText,
           markerHits,
@@ -3102,7 +3179,10 @@ const selectRiskMatches = (
   const groupedResults = new Map<string, { rule: RiskRule; matches: RiskCandidate[] }>();
 
   for (const candidate of candidates.sort(compareRiskCandidates)) {
-    if (!meetsRiskThreshold(candidate.rule.id, candidate.totalScore, candidate.normalizedText)) {
+    if (
+      !meetsRiskThreshold(candidate.rule.id, candidate.totalScore, candidate.normalizedText) ||
+      !passesRiskValidation(candidate)
+    ) {
       continue;
     }
 
@@ -3312,18 +3392,40 @@ export const segmentClauses = (text: string): ClauseSegment[] => {
     .map((clause) => clause.trim())
     .filter(Boolean);
 
-  const clauses =
+  const baseClauses =
     rawClauses.length > 0
       ? rawClauses
       : normalizedText
           .split('\n')
           .map((clause) => clause.trim())
           .filter(Boolean);
-  return clauses.map((clause, index) => ({
-    clauseId: `${clauseIdPrefix}${index + 1}`,
-    clauseRef: buildClauseReference(clause, index),
-    text: clause,
-  }));
+  const inlineNumberedClauses =
+    baseClauses.length === 1 ? splitInlineNumberedClauses(baseClauses[0]) : [];
+  const candidateClauses = inlineNumberedClauses.length > 1 ? inlineNumberedClauses : baseClauses;
+  const clauses = candidateClauses.flatMap((clause) =>
+    clause.length > 700 ? getClauseFragments(clause) : [clause],
+  );
+  let cursor = 0;
+
+  return clauses.map((clause, index) => {
+    let offset = normalizedText.indexOf(clause, cursor);
+    if (offset < 0) {
+      offset = normalizedText.indexOf(clause);
+    }
+    if (offset < 0) {
+      offset = cursor;
+    }
+    const endOffset = offset + clause.length;
+    cursor = endOffset;
+
+    return {
+      clauseId: `${clauseIdPrefix}${index + 1}`,
+      clauseRef: buildClauseReference(clause, index),
+      text: clause,
+      offset,
+      endOffset,
+    };
+  });
 };
 
 export const collectCandidateLines = (text: string, clauses: ClauseSegment[]): string[] => {
@@ -4693,6 +4795,20 @@ export const buildRiskItems = (
     const rankedMatches = [...effectiveMatches].sort(compareRiskCandidates);
     const clauseRefs = uniqueStrings(rankedMatches.map((item) => item.clauseRef));
     const occurrences = rankedMatches.length;
+    const riskEvidence = rankedMatches
+      .map((item) => ({
+        source: 'normalized_document_text',
+        sourceRef: rule.id,
+        clauseId: item.clauseId,
+        sourceExcerpt: item.sourceExcerpt,
+        offset: item.sourceOffset,
+        matchedPatterns: rule.keywords.filter((keyword) => {
+          const marker = normalizeMarker(keyword);
+          return marker.length > 0 && item.normalizedText.includes(marker);
+        }),
+      }))
+      .filter((item) => item.sourceExcerpt.length > 0)
+      .slice(0, 6);
 
     results.push({
       id: `risk-${results.length + 1}`,
@@ -4701,10 +4817,8 @@ export const buildRiskItems = (
       clauseRef: clauseRefs.join(', '),
       clauseRefs,
       occurrences,
-      evidence: rankedMatches
-        .map((item) => item.excerpt)
-        .filter(Boolean)
-        .slice(0, 6),
+      evidence: riskEvidence.map((item) => item.sourceExcerpt),
+      riskEvidence,
       title: rule.title[normalizedLanguage],
       description: rule.description[normalizedLanguage],
       recommendation: rule.recommendation[normalizedLanguage],

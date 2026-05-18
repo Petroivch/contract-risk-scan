@@ -115,6 +115,26 @@ class AnalysisStatusResponse(BaseModel):
     error_message: str | None = None
 
 
+class TextOffset(BaseModel):
+    start: int = Field(..., ge=0)
+    end: int = Field(..., ge=0)
+
+
+class RiskEvidence(BaseModel):
+    source: str = Field(
+        default="normalized_document_text",
+        description="Coordinate space used for offsets, for example normalized_document_text.",
+    )
+    source_ref: str | None = Field(
+        default=None,
+        description="Config registry reference for the rule that produced the evidence.",
+    )
+    clause_id: str | None = None
+    source_excerpt: str = Field(..., description="Matched risk fragment in the configured source text.")
+    offset: TextOffset
+    matched_patterns: list[str] = Field(default_factory=list)
+
+
 class RiskExplanation(BaseModel):
     summary: str
     matched_terms: list[str] = Field(default_factory=list)
@@ -123,6 +143,7 @@ class RiskExplanation(BaseModel):
     classifier_score: float = Field(..., ge=0.0, le=1.0)
     guardrails: list[str] = Field(default_factory=list)
     source_excerpt: str | None = None
+    source_offset: TextOffset | None = None
 
 
 class RiskItem(BaseModel):
@@ -137,11 +158,7 @@ class RiskItem(BaseModel):
     target_role: str | None = None
     confidence: float | None = Field(default=None, ge=0.0, le=1.0)
     explanation: RiskExplanation | None = None
-
-
-class TextOffset(BaseModel):
-    start: int = Field(..., ge=0)
-    end: int = Field(..., ge=0)
+    evidence: list[RiskEvidence] = Field(default_factory=list)
 
 
 class DetectedRoleItem(BaseModel):

@@ -211,6 +211,8 @@ class ClauseSignature:
     actors: list[str]
     clause_id: str
     clause_text: str
+    offset: int
+    end_offset: int
     obligation_types: set[str]
     timeline_days: int | None
     unilateral_right: bool
@@ -230,6 +232,9 @@ class AsymmetrySignal:
     details: str
     severity_hint: str
     affected_roles: list[str]
+    source_excerpt: str = ""
+    offset: int | None = None
+    end_offset: int | None = None
 
 
 class AsymmetryDetector:
@@ -257,6 +262,8 @@ class AsymmetryDetector:
             actors=actors,
             clause_id=clause.clause_id,
             clause_text=normalized_text,
+            offset=clause.offset,
+            end_offset=clause.end_offset or clause.offset + len(normalized_text),
             obligation_types=obligation_types,
             timeline_days=self._extract_timeline_days(lowered_text),
             unilateral_right=self._matches_any(lowered_text, self._config.unilateral_markers),
@@ -312,6 +319,9 @@ class AsymmetryDetector:
                         details=delay_details,
                         severity_hint="high",
                         affected_roles=[performer.actor],
+                        source_excerpt=performer.clause_text,
+                        offset=performer.offset,
+                        end_offset=performer.end_offset,
                     )
                 )
         return signals
@@ -342,6 +352,9 @@ class AsymmetryDetector:
                 details=source.clause_text,
                 severity_hint="critical",
                 affected_roles=self._counterpart_roles(signatures, actor),
+                source_excerpt=source.clause_text,
+                offset=source.offset,
+                end_offset=source.end_offset,
             )
         ]
 
@@ -383,6 +396,9 @@ class AsymmetryDetector:
                     ),
                     severity_hint="high",
                     affected_roles=[actor],
+                    source_excerpt=source.clause_text,
+                    offset=source.offset,
+                    end_offset=source.end_offset,
                 )
             )
         return signals
@@ -412,6 +428,9 @@ class AsymmetryDetector:
                     details=signature.clause_text,
                     severity_hint="high",
                     affected_roles=counterpart_roles,
+                    source_excerpt=signature.clause_text,
+                    offset=signature.offset,
+                    end_offset=signature.end_offset,
                 )
             )
         return signals
@@ -436,6 +455,9 @@ class AsymmetryDetector:
                 details=source_clause.clause_text if source_clause else "",
                 severity_hint="medium",
                 affected_roles=["executor", "client"],
+                source_excerpt=source_clause.clause_text if source_clause else "",
+                offset=source_clause.offset if source_clause else None,
+                end_offset=source_clause.end_offset if source_clause else None,
             )
         ]
 

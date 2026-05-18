@@ -490,9 +490,42 @@ components:
           items:
             type: string
 
+    TextOffset:
+      type: object
+      required: [start, end]
+      properties:
+        start:
+          type: integer
+          minimum: 0
+        end:
+          type: integer
+          minimum: 0
+
+    ContractRiskEvidence:
+      type: object
+      required: [source, sourceExcerpt, offset, matchedPatterns]
+      properties:
+        source:
+          type: string
+          example: normalized_document_text
+        sourceRef:
+          type: string
+          nullable: true
+        clauseId:
+          type: string
+          nullable: true
+        sourceExcerpt:
+          type: string
+        offset:
+          $ref: '#/components/schemas/TextOffset'
+        matchedPatterns:
+          type: array
+          items:
+            type: string
+
     ContractRisk:
       type: object
-      required: [id, clauseRef, title, severity, description, roleImpact, recommendation]
+      required: [id, clauseRef, title, severity, description, roleImpact, recommendation, evidence, riskEvidence]
       properties:
         id:
           type: string
@@ -508,6 +541,14 @@ components:
           type: string
         recommendation:
           type: string
+        evidence:
+          type: array
+          items:
+            type: string
+        riskEvidence:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContractRiskEvidence'
 
     DisputedClause:
       type: object

@@ -143,20 +143,30 @@ const mapRemoteRisk = (risk: {
   riskId?: string;
   clauseRef?: string;
   clauseRefs?: string[];
+  evidence?: string[];
+  riskEvidence?: RiskItem['riskEvidence'];
   title?: string;
   severity?: unknown;
   description?: string;
   roleImpact?: string;
   recommendation?: string;
-}): RiskItem => ({
-  id: risk.id ?? risk.riskId ?? `risk-${Date.now()}`,
-  clauseRef: risk.clauseRef ?? 'overview',
-  clauseRefs: risk.clauseRefs,
-  title: risk.title ?? 'Risk',
-  severity: normalizeSeverity(risk.severity),
-  description: risk.description ?? risk.roleImpact ?? '',
-  recommendation: risk.recommendation ?? '',
-});
+}): RiskItem => {
+  const evidence =
+    risk.evidence ??
+    risk.riskEvidence?.map((item) => item.sourceExcerpt).filter(Boolean);
+
+  return {
+    id: risk.id ?? risk.riskId ?? `risk-${Date.now()}`,
+    clauseRef: risk.clauseRef ?? 'overview',
+    clauseRefs: risk.clauseRefs,
+    evidence,
+    riskEvidence: risk.riskEvidence,
+    title: risk.title ?? 'Risk',
+    severity: normalizeSeverity(risk.severity),
+    description: risk.description ?? risk.roleImpact ?? '',
+    recommendation: risk.recommendation ?? '',
+  };
+};
 
 const mapRemoteDisputedClause = (item: {
   id?: string;

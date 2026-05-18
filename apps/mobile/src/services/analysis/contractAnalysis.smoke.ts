@@ -323,6 +323,19 @@ const explicitDeadlineDispute = buildDisputedClauses(
 );
 assert.equal(explicitDeadlineDispute.length, 0);
 
+const inlineNumberedClauses = segmentClauses(
+  '1. Contractor shall deliver the report within 5 days. 2. Customer may unilaterally change the scope without Contractor approval. 3. Contractor pays a 10% penalty for delay.',
+);
+assert.equal(inlineNumberedClauses.length, 3);
+assert.ok(inlineNumberedClauses[1].text.includes('unilaterally change the scope'));
+assert.equal(
+  '1. Contractor shall deliver the report within 5 days. 2. Customer may unilaterally change the scope without Contractor approval. 3. Contractor pays a 10% penalty for delay.'.slice(
+    inlineNumberedClauses[1].offset,
+    inlineNumberedClauses[1].endOffset,
+  ),
+  inlineNumberedClauses[1].text,
+);
+
 const penaltyEvidenceAnalysis = buildAnalysisArtifacts({
   text: [
     '4. Гражданин вправе запросить изменение условий обучения.',
@@ -338,6 +351,16 @@ const penaltyRisk = penaltyEvidenceAnalysis.risks.find((risk) => risk.title === 
 assert.ok(penaltyRisk);
 assert.ok(penaltyRisk?.evidence?.some((line) => line.includes('гражданин уплачивает штраф')));
 assert.ok(!penaltyRisk?.evidence?.some((line) => line.includes('4. Гражданин вправе запросить изменение условий обучения.')));
+assert.ok(penaltyRisk?.riskEvidence?.some((item) => item.sourceExcerpt.includes('гражданин уплачивает штраф')));
+const penaltyRiskEvidence = penaltyRisk?.riskEvidence?.[0];
+assert.ok(penaltyRiskEvidence);
+assert.ok(penaltyRiskEvidence.offset.end > penaltyRiskEvidence.offset.start);
+assert.equal(
+  penaltyEvidenceAnalysis.risks
+    .flatMap((risk) => risk.riskEvidence ?? [])
+    .every((item) => item.sourceExcerpt.length === item.offset.end - item.offset.start),
+  true,
+);
 
 const educationAnalysis = buildAnalysisArtifacts({
   text: [

@@ -335,9 +335,15 @@ def test_status_and_result_flow_returns_meaningful_contract_analysis() -> None:
     assert {"target_role", "confidence", "explanation"}.issubset(result["risks"][0].keys())
     assert result["risks"][0]["target_role"] == "buyer"
     assert 0.0 <= result["risks"][0]["confidence"] <= 1.0
+    assert result["risks"][0]["evidence"]
+    assert {"source_excerpt", "offset", "source_ref", "clause_id"}.issubset(
+        result["risks"][0]["evidence"][0].keys()
+    )
+    assert result["risks"][0]["evidence"][0]["offset"]["end"] > result["risks"][0]["evidence"][0]["offset"]["start"]
     assert {"summary", "retrieval_score", "classifier_score", "guardrails"}.issubset(
         result["risks"][0]["explanation"].keys()
     )
+    assert result["risks"][0]["explanation"]["source_offset"] == result["risks"][0]["evidence"][0]["offset"]
     assert result["role_focused_summary"]["role"] == "buyer"
     assert result["role_focused_summary_records"]
     assert any("Buyer must pay" in line for line in result["role_focused_summary"]["must_do"])

@@ -64,6 +64,34 @@ export class ContractObligationDto {
   dueCondition!: string;
 }
 
+export class TextOffsetDto {
+  @ApiProperty({ example: 128 })
+  start!: number;
+
+  @ApiProperty({ example: 196 })
+  end!: number;
+}
+
+export class ContractRiskEvidenceDto {
+  @ApiProperty({ example: 'normalized_document_text' })
+  source!: string;
+
+  @ApiProperty({ example: 'RSK-PEN-001', required: false, nullable: true })
+  sourceRef?: string | null;
+
+  @ApiProperty({ example: 'clause-3', required: false, nullable: true })
+  clauseId?: string | null;
+
+  @ApiProperty({ example: 'Contractor pays a 10% penalty for each day of delay.' })
+  sourceExcerpt!: string;
+
+  @ApiProperty({ type: TextOffsetDto })
+  offset!: TextOffsetDto;
+
+  @ApiProperty({ type: String, isArray: true, example: ['penalty'] })
+  matchedPatterns!: string[];
+}
+
 export class ContractRiskDto {
   @ApiProperty({ example: 'RISK-001' })
   id!: string;
@@ -85,6 +113,12 @@ export class ContractRiskDto {
 
   @ApiProperty({ example: 'Introduce liability cap as percentage of contract value.' })
   recommendation!: string;
+
+  @ApiProperty({ type: String, isArray: true, example: ['Contractor pays a 10% penalty for each day of delay.'] })
+  evidence!: string[];
+
+  @ApiProperty({ type: ContractRiskEvidenceDto, isArray: true })
+  riskEvidence!: ContractRiskEvidenceDto[];
 }
 
 export class DisputedClauseDto {

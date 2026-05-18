@@ -26,6 +26,7 @@ import { ContractHistoryItemDto } from '../dto/contracts-history-response.dto';
 import {
   ContractObligationDto,
   ContractReportDto,
+  ContractRiskEvidenceDto,
   ContractRiskDto,
   ContractSummaryDto,
   DisputedClauseDto,
@@ -441,15 +442,20 @@ export class ContractsService {
 
     const risks: ContractRiskDto[] = roleNotFound
       ? []
-      : remoteResult.risks.map((risk) => ({
-          id: risk.risk_id,
-          clauseRef: risk.clause_id || textPolicy.unknownClauseRef,
-          title: risk.title,
-          severity: this.mapSeverity(risk.severity),
-          description: risk.description,
-          roleImpact: risk.role_relevance,
-          recommendation: risk.mitigation
-        }));
+      : remoteResult.risks.map((risk) => {
+          const riskEvidence = this.buildRiskEvidence(risk);
+          return {
+            id: risk.risk_id,
+            clauseRef: risk.clause_id || textPolicy.unknownClauseRef,
+            title: risk.title,
+            severity: this.mapSeverity(risk.severity),
+            description: risk.description,
+            roleImpact: risk.role_relevance,
+            recommendation: risk.mitigation,
+            evidence: this.uniqueStrings(riskEvidence.map((item) => item.sourceExcerpt)),
+            riskEvidence
+          };
+        });
 
     const disputedClauses: DisputedClauseDto[] = remoteResult.disputed_clauses.map((clause) => ({
       id: `${contract.id}_${clause.clause_id}`,
@@ -513,6 +519,34 @@ export class ContractsService {
       recommendation: record.recommendation,
       evidence: record.evidence
     };
+  }
+
+  private buildRiskEvidence(risk: AnalysisEngineOutput['risks'][number]): ContractRiskEvidenceDto[] {
+    if (risk.evidence && risk.evidence.length > 0) {
+      return risk.evidence.map((item) => ({
+        source: item.source ?? 'normalized_document_text',
+        sourceRef: item.source_ref ?? null,
+        clauseId: item.clause_id ?? risk.clause_id ?? null,
+        sourceExcerpt: item.source_excerpt,
+        offset: item.offset,
+        matchedPatterns: item.matched_patterns ?? []
+      }));
+    }
+
+    if (risk.explanation?.source_excerpt && risk.explanation.source_offset) {
+      return [
+        {
+          source: 'normalized_document_text',
+          sourceRef: null,
+          clauseId: risk.clause_id ?? null,
+          sourceExcerpt: risk.explanation.source_excerpt,
+          offset: risk.explanation.source_offset,
+          matchedPatterns: []
+        }
+      ];
+    }
+
+    return [];
   }
 
   private resolveContractTypeLabel(
