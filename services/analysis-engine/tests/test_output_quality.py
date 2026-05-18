@@ -1,6 +1,6 @@
-import re
+﻿import re
 
-from app.schemas.analysis import (
+from app.dto.analysis import (
     DisputedClauseItem,
     RiskItem,
     RiskSeverity,
@@ -179,3 +179,4 @@ def test_smart_truncate_text_prefers_complete_sentence_boundary() -> None:
     truncated = smart_truncate_text(text, max_chars=90)
 
     assert truncated == "Contractor must maintain an audit log for thirty six months."
+

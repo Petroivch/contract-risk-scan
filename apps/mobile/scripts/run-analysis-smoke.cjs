@@ -6,21 +6,21 @@ const root = path.resolve(__dirname, '..');
 const outputDir = path.join(root, '.tmp-analysis-smoke');
 const tscBin = path.join(root, 'node_modules', 'typescript', 'bin', 'tsc');
 const smokeEntries = [
-  path.join(root, 'src', 'analysis', 'contractAnalysis.smoke.ts'),
-  path.join(root, 'src', 'analysis', 'fileTextExtraction.smoke.ts'),
-  path.join(root, 'src', 'analysis', 'localContractAnalyzer.smoke.ts'),
+  path.join(root, 'src', 'services', 'analysis', 'contractAnalysis.smoke.ts'),
+  path.join(root, 'src', 'services', 'analysis', 'fileTextExtraction.smoke.ts'),
+  path.join(root, 'src', 'services', 'analysis', 'localContractAnalyzer.smoke.ts'),
 ];
 const supportEntries = [
-  path.join(root, 'src', 'analysis', 'contractAnalysis.ts'),
-  path.join(root, 'src', 'analysis', 'fileTextExtraction.ts'),
-  path.join(root, 'src', 'analysis', 'localContractAnalyzer.ts'),
-  path.join(root, 'src', 'analysis', 'textNormalization.ts'),
-  path.join(root, 'src', 'api', 'types.ts'),
+  path.join(root, 'src', 'services', 'analysis', 'contractAnalysis.ts'),
+  path.join(root, 'src', 'services', 'analysis', 'fileTextExtraction.ts'),
+  path.join(root, 'src', 'services', 'analysis', 'localContractAnalyzer.ts'),
+  path.join(root, 'src', 'services', 'analysis', 'textNormalization.ts'),
+  path.join(root, 'src', 'dto', 'api.dto.ts'),
   path.join(root, 'src', 'i18n', 'types.ts'),
   path.join(root, 'src', 'components', 'report', 'reportText.ts'),
 ];
 const compiledEntries = smokeEntries.map((entryPath) =>
-  path.join(outputDir, 'analysis', path.basename(entryPath, '.ts') + '.js'),
+  path.join(outputDir, 'services', 'analysis', path.basename(entryPath, '.ts') + '.js'),
 );
 
 const run = (command, args) => {

@@ -1,7 +1,7 @@
-﻿import type { AnalysisReport, DisputedClause, RiskItem } from '../api/types';
-import type { SupportedLanguage } from '../i18n/types';
-import { defaultLanguage } from '../i18n/types';
-import { buildPresetRoleTerms, localizeRoleLabel } from '../roles/rolePresets';
+﻿import type { AnalysisReport, DisputedClause, RiskItem } from '../../dto/api.dto';
+import type { SupportedLanguage } from '../../i18n/types';
+import { defaultLanguage } from '../../i18n/types';
+import { buildPresetRoleTerms, localizeRoleLabel } from '../../roles/rolePresets';
 
 import {
   normalizeExtractedText,
@@ -4878,3 +4878,5 @@ export const buildAnalysisArtifacts = ({
     roleFocusedSummaryRecords: structuredRecords,
   };
 };
+
+

@@ -2,8 +2,8 @@
 
 import { buildAnalysisArtifacts, buildDisputedClauses, segmentClauses } from './contractAnalysis';
 import { normalizeExtractedText } from './textNormalization';
-import { splitStructuredText } from '../components/report/reportText';
-import { getPresetRoleLabel, resolveConfiguredPresetRoleIds } from '../roles/rolePresets';
+import { splitStructuredText } from '../../components/report/reportText';
+import { getPresetRoleLabel, resolveConfiguredPresetRoleIds } from '../../roles/rolePresets';
 
 const normalizedParagraphs = normalizeExtractedText('Line 1\r\n\r\nLine 2');
 assert.ok(normalizedParagraphs.includes('Line 1\n\nLine 2'));
@@ -702,3 +702,5 @@ try {
 } finally {
   globalThis.RegExp = originalRegExp;
 }
+
+

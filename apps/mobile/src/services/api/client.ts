@@ -1,6 +1,6 @@
-﻿import { appConfig } from '../config/appConfig';
-import type { SupportedLanguage } from '../i18n/types';
-import { defaultLanguage } from '../i18n/types';
+﻿import { appConfig } from '../../config/appConfig';
+import type { SupportedLanguage } from '../../i18n/types';
+import { defaultLanguage } from '../../i18n/types';
 
 import { createStubApiClient } from './stubs';
 import type {
@@ -12,7 +12,7 @@ import type {
   RequestMeta,
   RiskItem,
   UploadContractRequest,
-} from './types';
+} from '../../dto/api.dto';
 
 export interface ApiClientConfig {
   baseUrl?: string;
@@ -294,3 +294,4 @@ export const createApiClient = (config: ApiClientConfig = {}): ContractRiskScann
 
   throw new ApiClientNotImplementedError(`Unsupported API transport: ${transport}`);
 };
+

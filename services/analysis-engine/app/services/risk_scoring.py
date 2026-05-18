@@ -1,4 +1,4 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 import re
 from dataclasses import dataclass
@@ -7,7 +7,7 @@ from math import sqrt
 from app.config.models import RiskRuleConfig, RoleEscalationEntryConfig
 from app.config.runtime import get_runtime_config
 from app.localization import normalize_analysis_language, resolve_localized_text
-from app.schemas.analysis import DisputedClauseItem, RiskExplanation, RiskItem, RiskSeverity
+from app.dto.analysis import DisputedClauseItem, RiskExplanation, RiskItem, RiskSeverity
 from app.services.asymmetry_detector import AsymmetrySignal
 from app.services.clause_segmentation import ClauseSegment
 from app.services.contract_analysis import (
@@ -1491,3 +1491,4 @@ class RiskScoringService:
         if not canonical_role:
             return False
         return canonical_role not in combined_text and bool(rule.role_escalation or rule.affected_contract_types)
+

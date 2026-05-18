@@ -1,4 +1,4 @@
-import type { ContractRiskScannerApi } from './types';
+﻿import type { ContractRiskScannerApi } from '../../dto/api.dto';
 
 interface LocalFirstAdapterConfig {
   enableLocalFirst: boolean;
@@ -15,3 +15,4 @@ export const createLocalFirstAdapter = (
 ): ContractRiskScannerApi => {
   return remoteClient;
 };
+

@@ -1,8 +1,8 @@
 ﻿import * as FileSystem from 'expo-file-system';
 import JSZip from 'jszip';
 
-import type { UploadContractRequest } from '../api/types';
-import type { SupportedLanguage } from '../i18n/types';
+import type { UploadContractRequest } from '../../dto/api.dto';
+import type { SupportedLanguage } from '../../i18n/types';
 
 import { decodeXmlEntities, normalizeExtractedText } from './textNormalization';
 
@@ -1753,3 +1753,5 @@ export const extractContractText = async (
     warnings: fallbackText ? [] : [warningsDictionary.emptyText],
   };
 };
+
+

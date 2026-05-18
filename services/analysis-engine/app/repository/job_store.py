@@ -6,7 +6,7 @@ from threading import Lock
 from typing import Any
 from uuid import uuid4
 
-from app.schemas.analysis import AnalysisJobStatus, AnalysisRunRequest
+from app.dto.analysis import AnalysisJobStatus, AnalysisRunRequest
 
 
 @dataclass(slots=True)
@@ -80,3 +80,4 @@ class InMemoryJobStore:
         if not updates:
             return request
         return request.model_copy(update=updates)
+

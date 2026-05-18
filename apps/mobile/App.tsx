@@ -1,9 +1,9 @@
-import 'react-native-gesture-handler';
+﻿import 'react-native-gesture-handler';
 import { ActivityIndicator, StatusBar, StyleSheet, Text, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-import { ApiClientProvider } from './src/api/ApiClientProvider';
+import { ApiClientProvider } from './src/services/api/ApiClientProvider';
 import { ConsentGate } from './src/consent/ConsentGate';
 import { colors } from './src/theme/tokens';
 import { i18n } from './src/i18n';
@@ -82,3 +82,4 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 });
+

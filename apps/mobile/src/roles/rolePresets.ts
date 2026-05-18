@@ -1,4 +1,4 @@
-import type { SupportedLanguage } from '../i18n/types';
+﻿import type { SupportedLanguage } from '../i18n/types';
 
 export const presetRoleIds = ['performer', 'employer', 'customer', 'contractor'] as const;
 
@@ -230,3 +230,5 @@ export const buildPresetRoleTerms = (
 ): string[] => {
   return expandPresetRoleTerms(value, includeAliases);
 };
+
+

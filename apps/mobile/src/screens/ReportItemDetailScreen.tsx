@@ -1,4 +1,4 @@
-import type { NativeStackScreenProps } from '@react-navigation/native-stack';
+﻿import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 
@@ -90,3 +90,5 @@ const styles = StyleSheet.create({
     lineHeight: typography.lineHeight.body,
   },
 });
+
+

@@ -1,11 +1,11 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 import asyncio
 from typing import TYPE_CHECKING
 
 from app.config.runtime import get_runtime_config
 from app.localization import normalize_analysis_language
-from app.schemas.analysis import (
+from app.dto.analysis import (
     AnalysisOutput,
     AnalysisRunRequest,
     AsymmetrySignalItem,
@@ -25,7 +25,7 @@ from app.services.contract_analysis import (
 from app.services.contract_brief import ContractBriefGenerationService
 from app.services.execution_strategy import ExecutionStrategyService
 from app.services.ingestion import IngestionService
-from app.services.job_store import InMemoryJobStore
+from app.repository.job_store import InMemoryJobStore
 from app.services.legal_reasoning import LegalReasoningService
 from app.services.ocr import OCRService
 from app.services.risk_scoring import RiskScoringService
@@ -279,3 +279,4 @@ class AnalysisOrchestrator:
             f"Выбранная роль '{selected_role}' не найдена в тексте договора. "
             "В тексте не удалось определить роли сторон."
         )
+

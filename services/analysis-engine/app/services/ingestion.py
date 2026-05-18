@@ -1,4 +1,4 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 import atexit
 import base64
@@ -21,7 +21,7 @@ from pypdf import PdfReader
 
 from app.config.runtime import get_runtime_config
 from app.localization import resolve_localized_text
-from app.schemas.analysis import AnalysisRunRequest
+from app.dto.analysis import AnalysisRunRequest
 from app.services.contract_analysis import DetectedRole, extract_roles_from_text
 from app.services.text_normalization import normalize_contract_text
 
@@ -735,3 +735,4 @@ class IngestionService:
             check=False,
         )
         return completed.returncode == 0
+

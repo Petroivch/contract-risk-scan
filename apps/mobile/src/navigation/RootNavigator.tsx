@@ -1,4 +1,4 @@
-import { NavigationContainer } from '@react-navigation/native';
+﻿import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { AnalysisStatusScreen } from '../screens/AnalysisStatusScreen';
@@ -30,3 +30,5 @@ export const RootNavigator = (): JSX.Element => {
     </NavigationContainer>
   );
 };
+
+

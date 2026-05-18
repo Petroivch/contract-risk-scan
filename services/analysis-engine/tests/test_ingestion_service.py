@@ -1,4 +1,4 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 import base64
 from io import BytesIO
@@ -6,10 +6,10 @@ from zipfile import ZipFile
 
 from app.config.runtime import get_runtime_config
 from app.localization import resolve_localized_text
-from app.schemas.analysis import AnalysisRunRequest
+from app.dto.analysis import AnalysisRunRequest
 import app.services.ingestion as ingestion_module
 from app.services.ingestion import ExtractionResult, IngestionPayload, IngestionService, RenderedPdfPage
-from app.services.job_store import InMemoryJobStore
+from app.repository.job_store import InMemoryJobStore
 
 
 def _encode_base64(payload: bytes) -> str:
@@ -384,3 +384,4 @@ def test_job_store_redacts_raw_document_inputs() -> None:
     assert record.request.document_base64 == "[redacted]"
     assert "raw secret contract text" not in repr(record)
     assert "raw secret contract bytes" not in repr(record)
+

@@ -1,7 +1,7 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 from app.localization import normalize_analysis_language
-from app.schemas.analysis import DisputedClauseItem, RiskItem, RiskSeverity, RoleFocusedSummary, SummaryRecord
+from app.dto.analysis import DisputedClauseItem, RiskItem, RiskSeverity, RoleFocusedSummary, SummaryRecord
 from app.services.asymmetry_detector import AsymmetrySignal
 
 
@@ -155,3 +155,4 @@ class LegalReasoningService:
             },
         }
         return messages[key].get(language, messages[key]["ru"])
+

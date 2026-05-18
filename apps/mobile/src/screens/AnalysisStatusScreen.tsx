@@ -3,8 +3,8 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 
-import { useApiClient } from '../api/ApiClientProvider';
-import type { AnalysisReport, AnalysisStatus as AnalysisStatusType } from '../api/types';
+import { useApiClient } from '../services/api/ApiClientProvider';
+import type { AnalysisReport, AnalysisStatus as AnalysisStatusType } from '../dto/api.dto';
 import { RoleBadge } from '../components/RoleBadge';
 import { StatusChip } from '../components/StatusChip';
 import { ScreenShell } from '../components/layout/ScreenShell';
@@ -507,3 +507,6 @@ const styles = StyleSheet.create({
     lineHeight: typography.lineHeight.bodySm,
   },
 });
+
+
+

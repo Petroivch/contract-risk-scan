@@ -1,4 +1,4 @@
-import type { AnalysisReport } from '../api/types';
+﻿import type { AnalysisReport } from '../dto/api.dto';
 
 export interface ReportDetailSectionParam {
   title: string;
@@ -23,3 +23,6 @@ export type RootStackParamList = {
     sections: ReportDetailSectionParam[];
   };
 };
+
+
+

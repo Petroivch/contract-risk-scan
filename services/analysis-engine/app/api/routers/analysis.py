@@ -6,7 +6,7 @@ from fastapi import APIRouter, HTTPException, Query, status
 
 from app.config.runtime import get_runtime_config
 from app.localization import default_analysis_language, normalize_analysis_language, resolve_localized_text
-from app.schemas.analysis import (
+from app.dto.analysis import (
     AnalysisCapabilitiesResponse,
     AnalysisJobStatus,
     AnalysisOutput,
@@ -17,7 +17,7 @@ from app.schemas.analysis import (
 )
 from app.services.analysis_orchestrator import AnalysisOrchestrator
 from app.services.execution_strategy import ExecutionStrategyService
-from app.services.job_store import InMemoryJobStore
+from app.repository.job_store import InMemoryJobStore
 
 router = APIRouter()
 _runtime_config = get_runtime_config()
@@ -122,3 +122,4 @@ async def get_analysis_result(
         result=output,
         error_message=record.error_message,
     )
+

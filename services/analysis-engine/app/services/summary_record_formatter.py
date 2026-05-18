@@ -1,4 +1,4 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 import re
 from collections.abc import Mapping
@@ -6,7 +6,7 @@ from collections.abc import Mapping
 from app.config.models import StructuredSummaryRecordTemplateConfig
 from app.config.runtime import get_runtime_config
 from app.localization import resolve_localized_text
-from app.schemas.analysis import SummaryRecord
+from app.dto.analysis import SummaryRecord
 from app.services.text_normalization import normalize_contract_text, split_into_sentences
 
 _NON_IMPERATIVE_PREFIXES = (
@@ -163,3 +163,4 @@ class SummaryRecordFormatter:
         prefix_pattern = re.compile(rf"^{re.escape(prefix)}", re.IGNORECASE)
         rewritten = prefix_pattern.sub("Проверьте и зафиксируйте ", text, count=1)
         return rewritten[0].upper() + rewritten[1:] if rewritten else text
+

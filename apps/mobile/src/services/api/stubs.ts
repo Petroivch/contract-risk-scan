@@ -1,7 +1,7 @@
 ﻿import { analyzeContractLocally } from '../analysis/localContractAnalyzer';
-import { localFileCache } from '../data/local/file/LocalFileCache';
-import type { SupportedLanguage } from '../i18n/types';
-import { defaultLanguage } from '../i18n/types';
+import { localFileCache } from '../../repository/local/LocalFileCache';
+import type { SupportedLanguage } from '../../i18n/types';
+import { defaultLanguage } from '../../i18n/types';
 
 import { prepareRequestContext } from './client';
 import type {
@@ -11,7 +11,7 @@ import type {
   ContractRiskScannerApi,
   RequestMeta,
   UploadContractRequest,
-} from './types';
+} from '../../dto/api.dto';
 
 interface StoredAnalysis {
   analysisId: string;
@@ -251,3 +251,5 @@ export const createStubApiClient = (config: StubClientConfig = {}): ContractRisk
     return report;
   },
 });
+
+

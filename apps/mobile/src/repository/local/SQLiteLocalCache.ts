@@ -1,4 +1,4 @@
-import type { LocalCacheStore } from '../types';
+﻿import type { LocalCacheStore } from '../../dto/local-cache.dto';
 
 export class SQLiteLocalCache implements LocalCacheStore {
   // Mobile runtime stays memory-only; this class intentionally does not create a SQLite file.
@@ -6,3 +6,4 @@ export class SQLiteLocalCache implements LocalCacheStore {
 
   public clearAll = async (): Promise<void> => {};
 }
+

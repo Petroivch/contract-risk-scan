@@ -1,4 +1,4 @@
-import type { StyleProp, TextStyle, ViewStyle } from 'react-native';
+﻿import type { StyleProp, TextStyle, ViewStyle } from 'react-native';
 import { StyleSheet, Text, View } from 'react-native';
 
 import { colors, radius, spacing, typography } from '../theme/tokens';
@@ -72,3 +72,5 @@ const styles = StyleSheet.create({
     fontWeight: typography.weight.semibold,
   },
 });
+
+

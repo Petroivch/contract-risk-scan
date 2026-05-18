@@ -1,8 +1,8 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 from app.config.runtime import get_runtime_config
 from app.localization import resolve_localized_text
-from app.schemas.analysis import RiskSeverity
+from app.dto.analysis import RiskSeverity
 from app.services.clause_segmentation import ClauseSegment, ClauseSegmentationService
 from app.services.contract_analysis import DetectedContractType
 from app.services.contract_brief import ContractBriefGenerationService
@@ -143,3 +143,4 @@ def test_contract_brief_uses_fallback_template_when_no_sections_are_extracted() 
     )
 
     assert brief == expected
+

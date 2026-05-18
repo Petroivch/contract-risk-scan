@@ -1,12 +1,12 @@
-import type { PropsWithChildren } from 'react';
+﻿import type { PropsWithChildren } from 'react';
 import { createContext, useContext, useMemo } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import { appConfig } from '../config/appConfig';
-import { useAppLanguage } from '../i18n/LanguageProvider';
-import { colors, spacing, typography } from '../theme/tokens';
+import { appConfig } from '../../config/appConfig';
+import { useAppLanguage } from '../../i18n/LanguageProvider';
+import { colors, spacing, typography } from '../../theme/tokens';
 import { createApiClient } from './client';
-import type { ContractRiskScannerApi } from './types';
+import type { ContractRiskScannerApi } from '../../dto/api.dto';
 
 const ApiClientContext = createContext<ContractRiskScannerApi | null>(null);
 
@@ -65,3 +65,4 @@ const styles = StyleSheet.create({
     lineHeight: typography.lineHeight.body,
   },
 });
+

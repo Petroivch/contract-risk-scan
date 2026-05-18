@@ -1,4 +1,4 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 from dataclasses import dataclass
 import re
@@ -6,7 +6,7 @@ import re
 from app.config.models import DetectionLogicConfig, DisputeMarkerConfig
 from app.config.runtime import get_runtime_config
 from app.localization import normalize_analysis_language, resolve_localized_text
-from app.schemas.analysis import DisputedClauseItem, SourceFragmentProvenance, TextOffset
+from app.dto.analysis import DisputedClauseItem, SourceFragmentProvenance, TextOffset
 from app.services.clause_segmentation import ClauseSegment
 from app.services.text_normalization import normalize_contract_text
 
@@ -313,3 +313,4 @@ class DisputedClauseDetector:
         if cleaned[-1] not in ".!?":
             return f"{cleaned}."
         return cleaned
+

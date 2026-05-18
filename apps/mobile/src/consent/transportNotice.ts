@@ -1,4 +1,4 @@
-import type { TFunction } from 'i18next';
+﻿import type { TFunction } from 'i18next';
 
 import type { ApiTransport } from '../config/appConfig';
 
@@ -30,3 +30,5 @@ export const getTransportNotice = (
     body: t('privacy.transportLocalText'),
   };
 };
+
+

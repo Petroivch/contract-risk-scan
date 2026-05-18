@@ -1,6 +1,6 @@
-import type { AnalysisReport, UploadContractRequest } from '../api/types';
-import type { SupportedLanguage } from '../i18n/types';
-import { defaultLanguage, isSupportedLanguage } from '../i18n/types';
+﻿import type { AnalysisReport, UploadContractRequest } from '../../dto/api.dto';
+import type { SupportedLanguage } from '../../i18n/types';
+import { defaultLanguage, isSupportedLanguage } from '../../i18n/types';
 
 import { buildAnalysisArtifacts } from './contractAnalysis';
 import { extractContractText } from './fileTextExtraction';
@@ -123,3 +123,5 @@ export const analyzeContractLocally = async (
     roleFocusedSummaryRecords: artifacts.roleFocusedSummaryRecords,
   };
 };
+
+

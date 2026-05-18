@@ -1,10 +1,10 @@
-import { useNavigation } from '@react-navigation/native';
+﻿import { useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useMemo } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 
-import type { RiskItem } from '../../api/types';
+import type { RiskItem } from '../../dto/api.dto';
 import { useAppLanguage } from '../../i18n/LanguageProvider';
 import type { RootStackParamList } from '../../navigation/types';
 import { colors, radius, shadow, spacing, typography } from '../../theme/tokens';
@@ -249,4 +249,5 @@ const styles = StyleSheet.create({
     fontWeight: typography.weight.semibold,
   },
 });
+
 

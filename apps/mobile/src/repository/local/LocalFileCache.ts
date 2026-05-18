@@ -1,6 +1,6 @@
 ﻿import * as FileSystem from 'expo-file-system';
 
-import { appConfig } from '../../../config/appConfig';
+import { appConfig } from '../../config/appConfig';
 
 const sanitizeFileName = (fileName: string): string => {
   const normalized = fileName.trim().replace(/[^A-Za-z0-9._-]+/g, '-');
@@ -99,3 +99,4 @@ export class LocalFileCache {
 }
 
 export const localFileCache = new LocalFileCache();
+

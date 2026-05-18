@@ -1,10 +1,10 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 from dataclasses import dataclass
 
 from app.config.runtime import get_runtime_config
 from app.localization import normalize_analysis_language, resolve_localized_text
-from app.schemas.analysis import DisputedClauseItem, SummaryRecord
+from app.dto.analysis import DisputedClauseItem, SummaryRecord
 from app.services.clause_segmentation import ClauseSegment
 from app.services.contract_analysis import DetectedContractType, localize_role_label, role_aliases
 from app.services.summary_record_formatter import (
@@ -462,3 +462,4 @@ class ContractBriefGenerationService:
     def _join_statements(statements: list[str]) -> str:
         fragments = [sentence_to_fragment(statement) for statement in statements]
         return "; ".join(fragment for fragment in fragments if fragment)
+

@@ -1,4 +1,4 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
+﻿import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { appConfig, getEffectiveApiTransport, type ApiTransport } from '../config/appConfig';
 
@@ -81,3 +81,5 @@ export const isCurrentConsentRecord = (
     record && record.version === snapshot.version && record.transport === snapshot.transport,
   );
 };
+
+

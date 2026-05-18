@@ -1,7 +1,7 @@
-import type { TFunction } from 'i18next';
+﻿import type { TFunction } from 'i18next';
 
 import type { SupportedLanguage } from '../../i18n/types';
-import { collapseWhitespace, uniqueStrings } from '../../analysis/textNormalization';
+import { collapseWhitespace, uniqueStrings } from '../../services/analysis/textNormalization';
 
 const sentenceBoundaryPattern = /([.!?])\s+/gu;
 const previewBoundaryPattern = /[.!?;:]\s*/gu;
@@ -127,3 +127,4 @@ export const buildClauseItems = (
       .map((ref) => t('report.clause', { value: ref })),
   );
 };
+

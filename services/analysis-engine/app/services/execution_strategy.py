@@ -1,8 +1,8 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 from app.config.runtime import get_runtime_config
 from app.localization import normalize_analysis_language, resolve_localized_text
-from app.schemas.analysis import AnalysisExecutionPlan, AnalysisRunRequest
+from app.dto.analysis import AnalysisExecutionPlan, AnalysisRunRequest
 
 
 class ExecutionStrategyService:
@@ -42,3 +42,4 @@ class ExecutionStrategyService:
             policy_source=policy_source,
             reason=resolve_localized_text(reason_map, language),
         )
+

@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+﻿import { useMemo, useState } from 'react';
 import type { StyleProp, ViewStyle } from 'react-native';
 import {
   Modal,
@@ -177,3 +177,5 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
 });
+
+

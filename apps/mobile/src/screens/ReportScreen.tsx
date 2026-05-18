@@ -1,10 +1,10 @@
-import type { NativeStackScreenProps } from '@react-navigation/native-stack';
+﻿import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { Fragment, useEffect, useMemo, useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 
-import { useApiClient } from '../api/ApiClientProvider';
-import type { AnalysisReport } from '../api/types';
+import { useApiClient } from '../services/api/ApiClientProvider';
+import type { AnalysisReport } from '../dto/api.dto';
 import { DisputedCard } from '../components/cards/DisputedCard';
 import { RiskCard } from '../components/cards/RiskCard';
 import { RoleBadge } from '../components/RoleBadge';
@@ -665,4 +665,7 @@ const styles = StyleSheet.create({
     paddingVertical: spacing.sm,
   },
 });
+
+
+
 

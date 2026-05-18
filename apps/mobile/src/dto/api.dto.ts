@@ -90,3 +90,5 @@ export interface ContractRiskScannerApi {
     meta?: RequestMeta,
   ): Promise<AnalysisReport>;
 }
+
+
