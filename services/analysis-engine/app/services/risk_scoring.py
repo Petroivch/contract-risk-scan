@@ -49,10 +49,12 @@ class RoleContextAssessment:
     selected_role_burdened: bool
     selected_role_benefited: bool
     selected_role_penalty_burdened: bool
+    selected_role_penalty_benefited: bool
     counterparty_role_mentioned: bool
     counterparty_role_burdened: bool
     counterparty_role_benefited: bool
     counterparty_role_penalty_burdened: bool
+    counterparty_role_penalty_benefited: bool
 
 
 @dataclass(slots=True)
@@ -191,10 +193,6 @@ class RiskScoringService:
             "deemed accepted",
             "automatically renew",
             "automatic renewal",
-            "receives the penalty",
-            "receives a penalty",
-            "entitled to the penalty",
-            "entitled to a penalty",
             "may charge",
             "may impose",
             "may deduct",
@@ -208,63 +206,80 @@ class RiskScoringService:
             "считаются принятыми",
             "автоматически продлевается",
             "внесудебн",
-            "получает штраф",
-            "получает неустой",
-            "вправе начислить штраф",
-            "вправе наложить штраф",
-            "вправе взыскать штраф",
-            "вправе взыскать неустой",
         )
-        self._role_penalty_burden_markers = (
-            "pays a penalty",
-            "pay a penalty",
-            "pays penalties",
-            "pay penalties",
-            "shall pay a penalty",
-            "must pay a penalty",
-            "pays penalty",
-            "pay penalty",
-            "shall pay penalty",
-            "must pay penalty",
-            "is subject to a penalty",
-            "subject to penalty",
-            "liable for a penalty",
-            "liable for liquidated damages",
-            "shall pay liquidated damages",
-            "must pay liquidated damages",
-            "shall pay a late fee",
-            "must pay a late fee",
-            "forfeits",
-            "уплачивает штраф",
-            "уплачивает неустой",
-            "уплачивает неустойку",
-            "уплачивает пеню",
-            "выплачивает штраф",
-            "выплачивает неустой",
-            "выплачивает неустойку",
-            "выплачивает пеню",
-            "обязан уплатить штраф",
-            "обязана уплатить штраф",
-            "обязуется уплатить штраф",
-            "обязан уплатить неустой",
-            "обязана уплатить неустой",
-            "обязуется уплатить неустой",
-            "обязан уплатить пеню",
-            "обязана уплатить пеню",
-            "обязуется уплатить пеню",
-            "подлежит штрафу",
-            "несет штраф",
+        self._penalty_term_patterns = (
+            r"\bpenalt(?:y|ies)\b",
+            r"\bfines?\b",
+            r"\bliquidated\s+damages\b",
+            r"\blate\s+fees?\b",
+            r"\bforfeit(?:s|ed|ure)?\b",
+            r"штраф\w*",
+            r"неустой\w*",
+            r"\bпен[яиюей]\b",
         )
-        self._role_penalty_burden_patterns = (
-            r"\b(?:pays?|shall pay|must pay)\b.{0,48}\b(?:penalt(?:y|ies)|fine|liquidated damages|late fee)\b",
-            r"\b(?:is subject to|liable for)\b.{0,32}\b(?:a\s+)?(?:penalt(?:y|ies)|fine|liquidated damages|late fee)\b",
-            r"(?:уплачивает|выплачивает|обязан[а]? уплатить|обязуется уплатить).{0,48}(?:штраф|неустой|пен[яию])",
-            r"(?:подлежит|несет).{0,32}(?:штраф|неустой|пен[яию])",
+        self._penalty_direct_burden_roots = (
+            "pay",
+            "paid",
+            "owe",
+            "owing",
+            "liable",
+            "subject",
+            "forfeit",
+            "payable",
+            "charged",
+            "appl",
+            "уплач",
+            "выплач",
+            "оплач",
+            "плат",
+            "долж",
+            "обязан",
+            "обязуется",
+            "подлеж",
+            "несет",
+            "применя",
+            "начисля",
         )
-        self._role_penalty_imposed_evidence_patterns = (
-            r"\b(?:charge|charges|charged|impose|imposes|imposed|levy|levies|deduct|deducts)\b.{0,80}\b(?:penalt(?:y|ies)|fine|liquidated damages|late fee)\b",
-            r"(?:начисляет|начислить|налагает|наложить|взыскивает|взыскать|удерживает|удержать).{0,80}(?:штраф|неустой|пен[яию])",
+        self._penalty_imposition_roots = (
+            "charg",
+            "impos",
+            "levy",
+            "deduct",
+            "withhold",
+            "recover",
+            "claim",
+            "collect",
+            "assess",
+            "начисл",
+            "налаг",
+            "налож",
+            "взыск",
+            "удерж",
+            "треб",
+            "предъяв",
         )
+        self._penalty_benefit_roots = (
+            "receiv",
+            "entitled",
+            "right",
+            "recover",
+            "claim",
+            "collect",
+            "charg",
+            "impos",
+            "levy",
+            "deduct",
+            "withhold",
+            "получ",
+            "вправ",
+            "право",
+            "треб",
+            "взыск",
+            "начисл",
+            "налож",
+            "удерж",
+        )
+        self._penalty_negation_roots = ("not", "no", "without", "не", "без")
         self._payment_exposure_roles = {"executor", "landlord", "lender"}
         self._semantic_expansions = {
             "payment": {
@@ -556,22 +571,28 @@ class RiskScoringService:
         self,
         clause: ClauseSegment,
         patterns: list[str],
+        rule_id: str | None = None,
     ) -> tuple[str, int, int]:
+        text = normalize_contract_text(clause.text)
         return self._source_fragment_from_text(
-            text=normalize_contract_text(clause.text),
+            text=text,
             base_offset=clause.offset,
             patterns=patterns,
+            preferred_span=self._penalty_relation_span(text) if rule_id in self._penalty_rule_ids else None,
         )
 
     def _source_fragment_from_feature(
         self,
         feature: ClauseFeatures,
         patterns: list[str],
+        rule_id: str | None = None,
     ) -> tuple[str, int, int]:
+        text = normalize_contract_text(feature.raw_text)
         return self._source_fragment_from_text(
-            text=normalize_contract_text(feature.raw_text),
+            text=text,
             base_offset=feature.offset,
             patterns=patterns,
+            preferred_span=self._penalty_relation_span(text) if rule_id in self._penalty_rule_ids else None,
         )
 
     def _source_fragment_from_text(
@@ -580,11 +601,12 @@ class RiskScoringService:
         text: str,
         base_offset: int,
         patterns: list[str],
+        preferred_span: tuple[int, int] | None = None,
     ) -> tuple[str, int, int]:
         if not text:
             return "", base_offset, base_offset
 
-        span = self._first_pattern_span(text, patterns)
+        span = preferred_span or self._first_pattern_span(text, patterns)
         if span is None:
             relative_start = 0
             relative_end = min(len(text), self._config.max_clause_excerpt_chars)
@@ -762,7 +784,7 @@ class RiskScoringService:
                 offset = guardrail.offset
                 end_offset = guardrail.end_offset
             else:
-                excerpt, offset, end_offset = self._source_fragment_from_feature(feature, evidence_patterns)
+                excerpt, offset, end_offset = self._source_fragment_from_feature(feature, evidence_patterns, rule.id)
 
             matches.append(
                 HybridMatch(
@@ -1033,7 +1055,7 @@ class RiskScoringService:
             normalized_clause = normalize_contract_text(clause.text).casefold()
             if not any(keyword.casefold() in normalized_clause for keyword in rule.keywords):
                 continue
-            excerpt, offset, end_offset = self._source_fragment_from_clause(clause, rule.keywords)
+            excerpt, offset, end_offset = self._source_fragment_from_clause(clause, rule.keywords, rule.id)
             matches.append(
                 RuleMatch(
                     clause_id=clause.clause_id,
@@ -1064,7 +1086,7 @@ class RiskScoringService:
 
         if source == "document":
             if self._document_match_succeeds(combined_text, patterns, all_patterns, logic.min_matches):
-                excerpt = self._select_best_evidence(clauses, patterns or all_patterns)
+                excerpt = self._select_best_evidence(clauses, patterns or all_patterns, rule.id)
                 matches.append(
                     RuleMatch(
                         clause_id=excerpt[0],
@@ -1086,8 +1108,7 @@ class RiskScoringService:
             if not hit_patterns and not all_patterns:
                 continue
             matched_patterns = hit_patterns or all_patterns
-            evidence_patterns = self._evidence_patterns_for_rule(rule.id, matched_patterns)
-            excerpt, offset, end_offset = self._source_fragment_from_clause(clause, evidence_patterns)
+            excerpt, offset, end_offset = self._source_fragment_from_clause(clause, matched_patterns, rule.id)
             total_hits += len(hit_patterns) or 1
             matches.append(
                 RuleMatch(
@@ -1121,17 +1142,6 @@ class RiskScoringService:
         if clause_id is None:
             return 0
         return clause_index_by_id.get(clause_id, 0)
-
-    def _evidence_patterns_for_rule(self, rule_id: str, patterns: list[str]) -> list[str]:
-        if rule_id not in self._penalty_rule_ids:
-            return patterns
-
-        return [
-            *self._role_penalty_burden_patterns,
-            *self._role_penalty_imposed_evidence_patterns,
-            *self._role_penalty_burden_markers,
-            *patterns,
-        ]
 
     @staticmethod
     def _document_match_succeeds(
@@ -1167,11 +1177,12 @@ class RiskScoringService:
         self,
         clauses: list[ClauseSegment],
         patterns: list[str],
+        rule_id: str | None = None,
     ) -> tuple[str | None, str, int | None, int | None]:
         for clause in clauses:
             normalized_clause = normalize_contract_text(clause.text).casefold()
             if any(self._contains_pattern(normalized_clause, pattern) for pattern in patterns):
-                excerpt, offset, end_offset = self._source_fragment_from_clause(clause, patterns)
+                excerpt, offset, end_offset = self._source_fragment_from_clause(clause, patterns, rule_id)
                 return clause.clause_id, excerpt, offset, end_offset
         return None, "", None, None
 
@@ -1270,6 +1281,10 @@ class RiskScoringService:
                 normalized_text,
                 selected_aliases,
             ),
+            selected_role_penalty_benefited=self._role_has_penalty_benefit(
+                normalized_text,
+                selected_aliases,
+            ),
             counterparty_role_mentioned=bool(counterparty_windows),
             counterparty_role_burdened=any(
                 self._window_has_marker(window, self._role_burden_markers) for window in counterparty_windows
@@ -1278,6 +1293,10 @@ class RiskScoringService:
                 self._window_has_marker(window, self._role_benefit_markers) for window in counterparty_windows
             ),
             counterparty_role_penalty_burdened=self._role_has_penalty_burden(
+                normalized_text,
+                counterparty_aliases,
+            ),
+            counterparty_role_penalty_benefited=self._role_has_penalty_benefit(
                 normalized_text,
                 counterparty_aliases,
             ),
@@ -1327,9 +1346,27 @@ class RiskScoringService:
         self,
         text: str,
         aliases: set[str],
-        *,
-        max_distance: int = 128,
     ) -> bool:
+        for sentence, role_start, role_end in self._role_sentence_contexts(text, aliases):
+            if self._sentence_assigns_penalty_burden(sentence, role_start, role_end):
+                return True
+        return False
+
+    def _role_has_penalty_benefit(self, text: str, aliases: set[str]) -> bool:
+        for sentence, role_start, role_end in self._role_sentence_contexts(text, aliases):
+            if self._sentence_assigns_penalty_burden(sentence, role_start, role_end):
+                continue
+            if self._sentence_assigns_penalty_benefit(sentence, role_start, role_end):
+                return True
+        return False
+
+    def _role_sentence_contexts(
+        self,
+        text: str,
+        aliases: set[str],
+    ) -> list[tuple[str, int, int]]:
+        contexts: list[tuple[str, int, int]] = []
+        seen: set[tuple[int, int, int, int]] = set()
         normalized_aliases = sorted(
             {alias.casefold().strip() for alias in aliases if alias and alias.strip()},
             key=len,
@@ -1337,36 +1374,127 @@ class RiskScoringService:
         )
         for alias in normalized_aliases:
             for match in re.finditer(rf"(?<!\w){re.escape(alias)}(?!\w)", text):
-                window = self._same_sentence_forward_window(
-                    text[match.end() : min(len(text), match.end() + max_distance)]
-                )
-                if self._window_has_penalty_burden(window):
-                    return True
-                surrounding = text[max(0, match.start() - 96) : min(len(text), match.end() + max_distance)]
-                if self._window_imposes_penalty_on_alias(surrounding, alias):
-                    return True
+                start, end = self._sentence_bounds(text, match.start(), match.end())
+                key = (start, end, match.start(), match.end())
+                if key in seen:
+                    continue
+                seen.add(key)
+                contexts.append((text[start:end], match.start() - start, match.end() - start))
+        return contexts
+
+    @staticmethod
+    def _sentence_bounds(text: str, start: int, end: int) -> tuple[int, int]:
+        boundary_chars = ".!?;:\n"
+        previous_boundary = max(text.rfind(boundary, 0, start) for boundary in boundary_chars)
+        next_boundaries = [
+            position for boundary in boundary_chars for position in [text.find(boundary, end)] if position >= 0
+        ]
+        return previous_boundary + 1 if previous_boundary >= 0 else 0, min(next_boundaries) + 1 if next_boundaries else len(text)
+
+    def _sentence_assigns_penalty_burden(self, sentence: str, role_start: int, role_end: int) -> bool:
+        if not self._contains_penalty_term(sentence):
+            return False
+
+        direct_pos = self._first_root_position(sentence, self._penalty_direct_burden_roots)
+        if direct_pos is not None and not self._is_negated_near(sentence, direct_pos):
+            if role_start <= direct_pos and direct_pos - role_start <= 128:
+                return True
+            if role_start > direct_pos and self._role_follows_payer_marker(sentence, role_start):
+                return True
+
+        imposition_pos = self._first_root_position(sentence, self._penalty_imposition_roots)
+        if imposition_pos is None or self._is_negated_near(sentence, imposition_pos):
+            return False
+        if role_start > imposition_pos and role_start - imposition_pos <= 160:
+            return not self._role_follows_imposer_marker(sentence, role_start)
+        if role_end <= imposition_pos and imposition_pos - role_end <= 120:
+            return self._role_has_source_marker(sentence, role_start)
         return False
 
-    def _window_has_penalty_burden(self, window: str) -> bool:
-        return any(marker in window for marker in self._role_penalty_burden_markers) or any(
-            re.search(pattern, window) for pattern in self._role_penalty_burden_patterns
-        )
+    def _sentence_assigns_penalty_benefit(self, sentence: str, role_start: int, role_end: int) -> bool:
+        if not self._contains_penalty_term(sentence):
+            return False
+
+        benefit_pos = self._first_root_position(sentence, self._penalty_benefit_roots)
+        direct_pos = self._first_root_position(sentence, self._penalty_direct_burden_roots)
+        if benefit_pos is not None and not self._is_negated_near(sentence, benefit_pos):
+            if role_start <= benefit_pos and benefit_pos - role_start <= 128:
+                return True
+            if role_start > benefit_pos and self._role_follows_recipient_marker(sentence, role_start):
+                return True
+
+        if direct_pos is not None and self._is_negated_near(sentence, direct_pos):
+            return abs(role_start - direct_pos) <= 128
+
+        return False
+
+    def _penalty_relation_span(self, text: str) -> tuple[int, int] | None:
+        for start, end, sentence in self._iter_sentence_spans(text):
+            if not self._contains_penalty_term(sentence):
+                continue
+            if self._has_any_root(sentence, self._penalty_direct_burden_roots) or self._has_any_root(
+                sentence,
+                self._penalty_imposition_roots,
+            ):
+                return start, end
+        return None
 
     @staticmethod
-    def _window_imposes_penalty_on_alias(window: str, alias: str) -> bool:
-        alias_pattern = rf"(?<!\w){re.escape(alias)}(?!\w)"
-        patterns = (
-            rf"\b(?:charge|charges|charged|impose|imposes|imposed|levy|levies|deduct|deducts)\b.{{0,64}}{alias_pattern}.{{0,64}}\b(?:penalt(?:y|ies)|fine|liquidated damages|late fee)\b",
-            rf"(?:начисляет|начислить|налагает|наложить|взыскивает|взыскать|удерживает|удержать).{{0,64}}{alias_pattern}.{{0,64}}(?:штраф|неустой|пен[яию])",
-        )
-        return any(re.search(pattern, window) for pattern in patterns)
+    def _iter_sentence_spans(text: str) -> list[tuple[int, int, str]]:
+        spans: list[tuple[int, int, str]] = []
+        start = 0
+        for match in re.finditer(r"[.!?;:\n]", text):
+            end = match.end()
+            sentence = text[start:end].strip()
+            if sentence:
+                leading_trim = len(text[start:end]) - len(text[start:end].lstrip())
+                spans.append((start + leading_trim, end, text[start + leading_trim : end]))
+            start = end
+        if start < len(text):
+            sentence = text[start:].strip()
+            if sentence:
+                leading_trim = len(text[start:]) - len(text[start:].lstrip())
+                spans.append((start + leading_trim, len(text), text[start + leading_trim :]))
+        return spans
+
+    def _contains_penalty_term(self, text: str) -> bool:
+        return any(re.search(pattern, text, flags=re.IGNORECASE) for pattern in self._penalty_term_patterns)
 
     @staticmethod
-    def _same_sentence_forward_window(window: str) -> str:
-        boundary_positions = [position for marker in ".!?;\n" for position in [window.find(marker)] if position >= 0]
-        if not boundary_positions:
-            return window
-        return window[: min(boundary_positions)]
+    def _has_any_root(text: str, roots: tuple[str, ...]) -> bool:
+        lowered = text.casefold()
+        return any(root in lowered for root in roots)
+
+    @staticmethod
+    def _first_root_position(text: str, roots: tuple[str, ...]) -> int | None:
+        lowered = text.casefold()
+        positions = [position for root in roots for position in [lowered.find(root)] if position >= 0]
+        return min(positions) if positions else None
+
+    @staticmethod
+    def _is_negated_near(text: str, position: int) -> bool:
+        prefix = text[max(0, position - 28) : position].casefold()
+        return bool(re.search(r"(?:\b(?:not|no|without)\b|(?:^|\s)(?:не|без)\s*)", prefix))
+
+    @staticmethod
+    def _role_follows_payer_marker(sentence: str, role_start: int) -> bool:
+        prefix = sentence[max(0, role_start - 24) : role_start].casefold()
+        return bool(re.search(r"(?:\bby\s+|(?:^|\s)(?:с|со)\s+)$", prefix))
+
+    @staticmethod
+    def _role_follows_imposer_marker(sentence: str, role_start: int) -> bool:
+        prefix = sentence[max(0, role_start - 32) : role_start].casefold()
+        return bool(re.search(r"(?:\bby\s+|в\s+пользу\s+)$", prefix))
+
+    @staticmethod
+    def _role_has_source_marker(sentence: str, role_start: int) -> bool:
+        prefix = sentence[max(0, role_start - 16) : role_start].casefold()
+        return bool(re.search(r"(?:\bfrom\s+|(?:^|\s)(?:с|со|у)\s+)$", prefix))
+
+    @staticmethod
+    def _role_follows_recipient_marker(sentence: str, role_start: int) -> bool:
+        prefix = sentence[max(0, role_start - 32) : role_start].casefold()
+        return bool(re.search(r"(?:\bto\s+|\bin\s+favor\s+of\s+|в\s+пользу\s+)$", prefix))
 
     def _applies_to_selected_role(
         self,
@@ -1383,9 +1511,9 @@ class RiskScoringService:
         if rule_id in self._penalty_rule_ids:
             if role_context.selected_role_penalty_burdened:
                 return True
-            if role_context.counterparty_role_penalty_burdened or role_context.selected_role_benefited:
+            if role_context.counterparty_role_penalty_burdened or role_context.selected_role_penalty_benefited:
                 return False
-            if role_context.counterparty_role_benefited:
+            if role_context.counterparty_role_penalty_benefited:
                 return role_context.selected_role_mentioned or (source_has_roles and role_mentioned)
             if source_has_roles:
                 return role_mentioned
@@ -1436,7 +1564,12 @@ class RiskScoringService:
             score -= 0.08
             labels.append("short_source_evidence")
 
-        if role_context.selected_role_burdened or role_context.counterparty_role_benefited:
+        if rule_id in self._penalty_rule_ids and (
+            role_context.selected_role_penalty_burdened or role_context.counterparty_role_penalty_benefited
+        ):
+            score += 0.08
+            labels.append("role_harm_validated")
+        elif role_context.selected_role_burdened or role_context.counterparty_role_benefited:
             score += 0.08
             labels.append("role_harm_validated")
         elif role_context.selected_role_mentioned:

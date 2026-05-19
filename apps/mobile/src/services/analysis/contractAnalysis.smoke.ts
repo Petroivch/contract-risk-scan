@@ -377,6 +377,57 @@ assert.ok(
   ),
 );
 
+const recoveredPenaltyForEmployeeAnalysis = buildAnalysisArtifacts({
+  text: [
+    '1. Employee performs work for Employer.',
+    '7.1. Employer may recover liquidated damages from Employee for unexcused absence.',
+  ].join('\n\n'),
+  fileName: 'recovered-penalty-employee.docx',
+  selectedRole: 'Employee',
+  language: 'en',
+  warnings: [],
+});
+
+assert.ok(
+  recoveredPenaltyForEmployeeAnalysis.risks.some(
+    (risk) => risk.title === 'Penalties and sanctions',
+  ),
+);
+
+const recoveredPenaltyForEmployerAnalysis = buildAnalysisArtifacts({
+  text: [
+    '1. Employee performs work for Employer.',
+    '7.1. Employer may recover liquidated damages from Employee for unexcused absence.',
+  ].join('\n\n'),
+  fileName: 'recovered-penalty-employer.docx',
+  selectedRole: 'Employer',
+  language: 'en',
+  warnings: [],
+});
+
+assert.ok(
+  !recoveredPenaltyForEmployerAnalysis.risks.some(
+    (risk) => risk.title === 'Penalties and sanctions',
+  ),
+);
+
+const negatedPenaltyForContractorAnalysis = buildAnalysisArtifacts({
+  text: [
+    '1. Contractor provides implementation services to Customer.',
+    '7.1. Contractor is not subject to penalty for delays caused by Customer.',
+  ].join('\n\n'),
+  fileName: 'negated-penalty-contractor.docx',
+  selectedRole: 'Contractor',
+  language: 'en',
+  warnings: [],
+});
+
+assert.ok(
+  !negatedPenaltyForContractorAnalysis.risks.some(
+    (risk) => risk.title === 'Penalties and sanctions',
+  ),
+);
+
 const counterpartyUnilateralAnalysis = buildAnalysisArtifacts({
   text: [
     '1. Исполнитель оказывает услуги по настройке системы.',

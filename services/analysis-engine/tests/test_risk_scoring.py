@@ -222,6 +222,77 @@ def test_penalty_charged_to_role_is_selected_role_risk_only() -> None:
     assert all(risk.rule_id != "one_sided_penalty" for risk in customer_risks)
 
 
+def test_penalty_recovery_direction_targets_paying_role_without_phrase_case() -> None:
+    scorer = RiskScoringService()
+    text = "Employer may recover liquidated damages from Employee for unexcused absence."
+    clauses = [ClauseSegment(clause_id="clause-1", text=text, offset=0, end_offset=len(text))]
+
+    employee_risks = scorer.score(
+        clauses=clauses,
+        role="Employee",
+        language="en",
+        contract_type=None,
+        counterparty_role="Employer",
+    )
+    employer_risks = scorer.score(
+        clauses=clauses,
+        role="Employer",
+        language="en",
+        contract_type=None,
+        counterparty_role="Employee",
+    )
+
+    assert any(risk.rule_id == "one_sided_penalty" for risk in employee_risks)
+    assert all(risk.rule_id != "one_sided_penalty" for risk in employer_risks)
+
+
+def test_russian_penalty_obligation_direction_targets_employee_only() -> None:
+    scorer = RiskScoringService()
+    text = (
+        "\u0420\u0430\u0431\u043e\u0442\u043d\u0438\u043a "
+        "\u043e\u0431\u044f\u0437\u0430\u043d "
+        "\u0432\u044b\u043f\u043b\u0430\u0442\u0438\u0442\u044c "
+        "\u0448\u0442\u0440\u0430\u0444 "
+        "\u0420\u0430\u0431\u043e\u0442\u043e\u0434\u0430\u0442\u0435\u043b\u044e "
+        "\u0437\u0430 \u043f\u0440\u043e\u0433\u0443\u043b."
+    )
+    clauses = [ClauseSegment(clause_id="clause-1", text=text, offset=0, end_offset=len(text))]
+
+    employee_risks = scorer.score(
+        clauses=clauses,
+        role="\u0420\u0430\u0431\u043e\u0442\u043d\u0438\u043a",
+        language="ru",
+        contract_type=None,
+        counterparty_role="\u0420\u0430\u0431\u043e\u0442\u043e\u0434\u0430\u0442\u0435\u043b\u044c",
+    )
+    employer_risks = scorer.score(
+        clauses=clauses,
+        role="\u0420\u0430\u0431\u043e\u0442\u043e\u0434\u0430\u0442\u0435\u043b\u044c",
+        language="ru",
+        contract_type=None,
+        counterparty_role="\u0420\u0430\u0431\u043e\u0442\u043d\u0438\u043a",
+    )
+
+    assert any(risk.rule_id == "one_sided_penalty" for risk in employee_risks)
+    assert all(risk.rule_id != "one_sided_penalty" for risk in employer_risks)
+
+
+def test_negated_penalty_burden_is_not_selected_role_risk() -> None:
+    scorer = RiskScoringService()
+    text = "Contractor is not subject to penalty for delays caused by Customer."
+    clauses = [ClauseSegment(clause_id="clause-1", text=text, offset=0, end_offset=len(text))]
+
+    risks = scorer.score(
+        clauses=clauses,
+        role="Contractor",
+        language="en",
+        contract_type="service_agreement",
+        counterparty_role="Customer",
+    )
+
+    assert all(risk.rule_id != "one_sided_penalty" for risk in risks)
+
+
 def test_semantic_retrieval_requires_rule_specific_anchor_terms() -> None:
     scorer = RiskScoringService()
     clauses = [

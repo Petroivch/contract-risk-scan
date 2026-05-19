@@ -503,32 +503,7 @@ const roleBenefitMarkers = {
     'n est pas responsable',
     'sans responsabilite',
   ],
-  penalties: [
-    'не уплачивает штраф',
-    'не уплачивает неустой',
-    'не применяется штраф',
-    'не применяется неустой',
-    'вправе взыскать неустойку',
-    'вправе требовать неустойку',
-    'вправе требовать штраф',
-    'вправе требовать уплаты штрафа',
-    'имеет право на штраф',
-    'получает штраф',
-    'получает неустой',
-    'вправе начислить штраф',
-    'вправе наложить штраф',
-    'receives the penalty',
-    'receives a penalty',
-    'entitled to the penalty',
-    'entitled to a penalty',
-    'without penalty',
-    'no penalty',
-    'penalty shall not apply',
-    'not subject to penalty',
-    'sans penalite',
-    'senza penali',
-    'non e soggetto a penali',
-  ],
+  penalties: [],
   unilateral: [
     'вправе в одностороннем порядке',
     'может в одностороннем порядке',
@@ -553,13 +528,7 @@ const genericBenefitMarkers = {
     'получить возмещение',
     'взыскать убытки',
   ],
-  penalties: [
-    'требовать уплаты штрафа',
-    'требовать уплаты неустойки',
-    'взыскать неустойку',
-    'взыскать штраф',
-    'получить неустойку',
-  ],
+  penalties: [],
 };
 
 const hybridSignals = {
@@ -768,41 +737,6 @@ const hybridSignals = {
     'forfeit',
     'penale',
     'penalite',
-  ],
-  penaltyTrigger: [
-    'уплачивает штраф',
-    'выплачивает штраф',
-    'уплачивает пени',
-    'оплачивает пени',
-    'уплачивает неустой',
-    'выплачивает неустой',
-    'применяются пени',
-    'применяется неустой',
-    'пени начисляются',
-    'пеня в размере',
-    'пени в размере',
-    'неустойка в размере',
-    'штраф в размере',
-    'за каждый день',
-    '% от',
-    'liable to pay',
-    'subject to penalty',
-    'pay a penalty',
-    'pays',
-    'charge',
-    'charges',
-    'impose',
-    'imposes',
-    'levy',
-    'deduct',
-    'начисляет',
-    'налагает',
-    'взыскивает',
-    'удерживает',
-    'penalties apply',
-    'penalty of',
-    'liquidated damages of',
-    'liquidated damages apply',
   ],
   liabilitySupport: [
     'ответственност',
@@ -2423,6 +2357,189 @@ const hasLeadingRoleMarker = (
   );
 };
 
+const hasPenaltyTerm = (value: string): boolean =>
+  penaltyTermPatterns.some((pattern) => pattern.test(value));
+
+const hasAnyRoot = (value: string, roots: string[]): boolean => {
+  const normalized = normalizeSearchText(value);
+  return roots.some((root) => normalized.includes(root));
+};
+
+const firstRootPosition = (value: string, roots: string[]): number | null => {
+  const normalized = normalizeSearchText(value);
+  const positions = roots
+    .map((root) => normalized.indexOf(root))
+    .filter((position) => position >= 0);
+  return positions.length > 0 ? Math.min(...positions) : null;
+};
+
+const isNegatedNear = (value: string, position: number): boolean => {
+  const prefix = normalizeSearchText(value.slice(Math.max(0, position - 28), position));
+  return /(?:\b(?:not|no|without)\b|(?:^|\s)(?:не|без)\s*)/iu.test(prefix);
+};
+
+const roleFollowsPayerMarker = (sentence: string, roleStart: number): boolean => {
+  const prefix = normalizeSearchText(sentence.slice(Math.max(0, roleStart - 24), roleStart));
+  return /(?:\bby\s+|(?:^|\s)(?:с|со)\s+)$/iu.test(prefix);
+};
+
+const roleFollowsImposerMarker = (sentence: string, roleStart: number): boolean => {
+  const prefix = normalizeSearchText(sentence.slice(Math.max(0, roleStart - 32), roleStart));
+  return /(?:\bby\s+|в\s+пользу\s+)$/iu.test(prefix);
+};
+
+const roleHasSourceMarker = (sentence: string, roleStart: number): boolean => {
+  const prefix = normalizeSearchText(sentence.slice(Math.max(0, roleStart - 16), roleStart));
+  return /(?:\bfrom\s+|(?:^|\s)(?:с|со|у)\s+)$/iu.test(prefix);
+};
+
+const roleFollowsRecipientMarker = (sentence: string, roleStart: number): boolean => {
+  const prefix = normalizeSearchText(sentence.slice(Math.max(0, roleStart - 32), roleStart));
+  return /(?:\bto\s+|\bin\s+favor\s+of\s+|в\s+пользу\s+)$/iu.test(prefix);
+};
+
+const sentenceBounds = (
+  text: string,
+  roleStart: number,
+  roleEnd: number,
+): { start: number; end: number } => {
+  const boundaries = ['.', '!', '?', ';', ':', '\n'];
+  const previousBoundary = Math.max(...boundaries.map((boundary) => text.lastIndexOf(boundary, roleStart - 1)));
+  const nextBoundaries = boundaries
+    .map((boundary) => text.indexOf(boundary, roleEnd))
+    .filter((position) => position >= 0);
+  return {
+    start: previousBoundary >= 0 ? previousBoundary + 1 : 0,
+    end: nextBoundaries.length > 0 ? Math.min(...nextBoundaries) + 1 : text.length,
+  };
+};
+
+const findWholeRoleSpans = (
+  normalizedText: string,
+  roleTerms: string[],
+): Array<{ start: number; end: number }> => {
+  const spans: Array<{ start: number; end: number }> = [];
+  const seen = new Set<string>();
+
+  for (const roleTerm of [...roleTerms].sort((left, right) => right.length - left.length)) {
+    const normalizedRoleTerm = normalizeMarker(roleTerm);
+    if (!normalizedRoleTerm) {
+      continue;
+    }
+
+    let searchIndex = 0;
+    while (searchIndex < normalizedText.length) {
+      const matchIndex = normalizedText.indexOf(normalizedRoleTerm, searchIndex);
+      if (matchIndex < 0) {
+        break;
+      }
+
+      if (isWholeRoleMatch(normalizedText, matchIndex, normalizedRoleTerm.length)) {
+        const key = `${matchIndex}:${normalizedRoleTerm.length}`;
+        if (!seen.has(key)) {
+          seen.add(key);
+          spans.push({ start: matchIndex, end: matchIndex + normalizedRoleTerm.length });
+        }
+      }
+
+      searchIndex = matchIndex + normalizedRoleTerm.length;
+    }
+  }
+
+  return spans.sort((left, right) => left.start - right.start);
+};
+
+const roleSentenceContexts = (
+  normalizedText: string,
+  roleTerms: string[],
+): Array<{ sentence: string; roleStart: number; roleEnd: number }> =>
+  findWholeRoleSpans(normalizedText, roleTerms).map((span) => {
+    const bounds = sentenceBounds(normalizedText, span.start, span.end);
+    return {
+      sentence: normalizedText.slice(bounds.start, bounds.end),
+      roleStart: span.start - bounds.start,
+      roleEnd: span.end - bounds.start,
+    };
+  });
+
+const sentenceAssignsPenaltyBurden = (
+  sentence: string,
+  roleStart: number,
+  roleEnd: number,
+): boolean => {
+  if (!hasPenaltyTerm(sentence)) {
+    return false;
+  }
+
+  const directPosition = firstRootPosition(sentence, penaltyDirectBurdenRoots);
+  if (directPosition !== null && !isNegatedNear(sentence, directPosition)) {
+    if (roleStart <= directPosition && directPosition - roleStart <= 128) {
+      return true;
+    }
+    if (roleStart > directPosition && roleFollowsPayerMarker(sentence, roleStart)) {
+      return true;
+    }
+  }
+
+  const impositionPosition = firstRootPosition(sentence, penaltyImpositionRoots);
+  if (impositionPosition === null || isNegatedNear(sentence, impositionPosition)) {
+    return false;
+  }
+  if (roleStart > impositionPosition && roleStart - impositionPosition <= 160) {
+    return !roleFollowsImposerMarker(sentence, roleStart);
+  }
+  if (roleEnd <= impositionPosition && impositionPosition - roleEnd <= 120) {
+    return roleHasSourceMarker(sentence, roleStart);
+  }
+  return false;
+};
+
+const sentenceAssignsPenaltyBenefit = (
+  sentence: string,
+  roleStart: number,
+  _roleEnd: number,
+): boolean => {
+  if (!hasPenaltyTerm(sentence)) {
+    return false;
+  }
+
+  const benefitPosition = firstRootPosition(sentence, penaltyBenefitRoots);
+  const directPosition = firstRootPosition(sentence, penaltyDirectBurdenRoots);
+  if (benefitPosition !== null && !isNegatedNear(sentence, benefitPosition)) {
+    if (roleStart <= benefitPosition && benefitPosition - roleStart <= 128) {
+      return true;
+    }
+    if (roleStart > benefitPosition && roleFollowsRecipientMarker(sentence, roleStart)) {
+      return true;
+    }
+  }
+
+  return directPosition !== null && isNegatedNear(sentence, directPosition)
+    ? Math.abs(roleStart - directPosition) <= 128
+    : false;
+};
+
+const isPenaltyBurdenForRole = (normalizedText: string, roleTerms: string[]): boolean =>
+  roleSentenceContexts(normalizedText, roleTerms).some(({ sentence, roleStart, roleEnd }) =>
+    sentenceAssignsPenaltyBurden(sentence, roleStart, roleEnd),
+  );
+
+const isPenaltyBenefitForRole = (normalizedText: string, roleTerms: string[]): boolean =>
+  roleSentenceContexts(normalizedText, roleTerms).some(({ sentence, roleStart, roleEnd }) =>
+    !sentenceAssignsPenaltyBurden(sentence, roleStart, roleEnd) &&
+    sentenceAssignsPenaltyBenefit(sentence, roleStart, roleEnd),
+  );
+
+const hasPenaltyRelationActivity = (normalizedText: string): boolean =>
+  hasPenaltyTerm(normalizedText) &&
+  (hasAnyRoot(normalizedText, penaltyDirectBurdenRoots) ||
+    hasAnyRoot(normalizedText, penaltyImpositionRoots));
+
+const countPenaltyRelationSignals = (normalizedText: string): number =>
+  (hasPenaltyTerm(normalizedText) ? 1 : 0) +
+  (hasAnyRoot(normalizedText, penaltyDirectBurdenRoots) ? 1 : 0) +
+  (hasAnyRoot(normalizedText, penaltyImpositionRoots) ? 1 : 0);
+
 const splitClauseIntoFragments = (text: string): string[] => {
   const prepared = normalizeExtractedText(text)
     .replace(/\r/g, '\n')
@@ -2474,9 +2591,11 @@ const buildExactSourceExcerpt = (
   fragment: string,
   absoluteStart: number,
   markers: string[] = [],
+  ruleId?: string,
 ): { sourceExcerpt: string; sourceOffset: { start: number; end: number } } => {
   const normalized = normalizeExtractedText(fragment);
-  const markerSpan = findSourceMarkerSpan(normalized, markers);
+  const relationSpan = ruleId === 'penalties' ? findPenaltyRelationSpan(normalized) : null;
+  const markerSpan = relationSpan ?? findSourceMarkerSpan(normalized, markers);
   let excerptStart = 0;
   let excerptEnd = Math.min(normalized.length, maxClauseExcerptLength);
 
@@ -2530,6 +2649,29 @@ const findSourceMarkerSpan = (
         start: literalIndex,
         end: literalIndex + trimmedMarker.length,
       };
+    }
+  }
+
+  return null;
+};
+
+const findPenaltyRelationSpan = (sourceText: string): { start: number; end: number } | null => {
+  let start = 0;
+  for (const match of sourceText.matchAll(/[.!?;:\n]/gu)) {
+    const end = (match.index ?? 0) + match[0].length;
+    const sentence = sourceText.slice(start, end).trim();
+    if (sentence && hasPenaltyRelationActivity(sentence)) {
+      const leadingTrim = sourceText.slice(start, end).length - sourceText.slice(start, end).trimStart().length;
+      return { start: start + leadingTrim, end };
+    }
+    start = end;
+  }
+
+  if (start < sourceText.length) {
+    const sentence = sourceText.slice(start).trim();
+    if (sentence && hasPenaltyRelationActivity(sentence)) {
+      const leadingTrim = sourceText.slice(start).length - sourceText.slice(start).trimStart().length;
+      return { start: start + leadingTrim, end: sourceText.length };
     }
   }
 
@@ -2722,7 +2864,7 @@ const scoreRiskContext = (
     }
     case 'penalties': {
       const supportHits = countMatches(normalizedText, hybridSignals.penaltySupport);
-      const triggerHits = countMatches(normalizedText, hybridSignals.penaltyTrigger);
+      const relationHits = countPenaltyRelationSignals(normalizedText);
       const roleScore = roleActsAsSubject
         ? roleHits
         : roleHits > 0
@@ -2732,7 +2874,7 @@ const scoreRiskContext = (
             : 0;
       return (
         supportHits * 4 +
-        triggerHits * 3 +
+        relationHits * 3 +
         (hasMonetarySignal(excerpt) ? 3 : 0) +
         (hasExplicitNumericSignal(excerpt) ? 1 : 0) +
         roleScore
@@ -2874,8 +3016,7 @@ const meetsRiskThreshold = (
       return (
         totalScore >= 8 &&
         countMatches(normalizedText, hybridSignals.penaltySupport) >= 1 &&
-        (countMatches(normalizedText, hybridSignals.penaltyTrigger) > 0 ||
-          hasMonetarySignal(normalizedText))
+        (hasPenaltyRelationActivity(normalizedText) || hasMonetarySignal(normalizedText))
       );
     case 'liability':
       return (
@@ -3167,6 +3308,7 @@ const buildRiskCandidates = (clauses: ClauseSegment[], roleTerms: string[]): Ris
           fragment,
           clause.offset + relativeStart,
           rule.keywords,
+          rule.id,
         );
 
         candidates.push({
@@ -3852,62 +3994,83 @@ const counterpartyBurdenMarkers = {
     'shall be liable',
     'compensates',
   ],
-  penalties: [
-    'уплачивает штраф',
-    'уплачивает неустой',
-    'выплачивает штраф',
-    'выплачивает неустой',
-    'обязан уплатить штраф',
-    'обязуется уплатить штраф',
-    'обязан уплатить неустой',
-    'обязуется уплатить неустой',
-    'shall pay a penalty',
-    'must pay a penalty',
-    'pays a penalty',
-    'shall pay penalty',
-    'must pay penalty',
-    'pays penalty',
-    'is subject to a penalty',
-    'subject to penalty',
-  ],
 };
 
-const penaltyBurdenPatterns = [
-  /\b(?:pays?|shall pay|must pay)\b.{0,48}\b(?:penalt(?:y|ies)|fine|liquidated damages|late fee)\b/u,
-  /\b(?:is subject to|liable for)\b.{0,32}\b(?:a\s+)?(?:penalt(?:y|ies)|fine|liquidated damages|late fee)\b/u,
-  /(?:уплачивает|выплачивает|обязан[а]? уплатить|обязуется уплатить).{0,48}(?:штраф|неустой|пен[яию])/u,
-  /(?:подлежит|несет).{0,32}(?:штраф|неустой|пен[яию])/u,
+const penaltyTermPatterns = [
+  /\bpenalt(?:y|ies)\b/iu,
+  /\bfines?\b/iu,
+  /\bliquidated\s+damages\b/iu,
+  /\blate\s+fees?\b/iu,
+  /\bforfeit(?:s|ed|ure)?\b/iu,
+  /штраф\w*/iu,
+  /неустой\w*/iu,
+  /\bпен[яиюей]\b/iu,
 ];
 
-const buildPenaltyImposedOnRolePatterns = (roleTerm: string): RegExp[] => {
-  const rolePattern = escapeRegExp(roleTerm);
-  return [
-    new RegExp(
-      String.raw`\b(?:charge|charges|charged|impose|imposes|imposed|levy|levies|deduct|deducts)\b.{0,64}${rolePattern}.{0,64}\b(?:penalt(?:y|ies)|fine|liquidated damages|late fee)\b`,
-      'u',
-    ),
-    new RegExp(
-      String.raw`\b(?:charge|charges|charged|impose|imposes|imposed|levy|levies|deduct|deducts)\b.{0,64}\b(?:penalt(?:y|ies)|fine|liquidated damages|late fee)\b.{0,64}${rolePattern}`,
-      'u',
-    ),
-    new RegExp(
-      String.raw`(?:начисляет|начислить|налагает|наложить|взыскивает|взыскать|удерживает|удержать).{0,64}${rolePattern}.{0,64}(?:штраф|неустой|пен[яию])`,
-      'u',
-    ),
-    new RegExp(
-      String.raw`(?:начисляет|начислить|налагает|наложить|взыскивает|взыскать|удерживает|удержать).{0,64}(?:штраф|неустой|пен[яию]).{0,64}${rolePattern}`,
-      'u',
-    ),
-  ];
-};
+const penaltyDirectBurdenRoots = [
+  'pay',
+  'paid',
+  'owe',
+  'owing',
+  'liable',
+  'subject',
+  'forfeit',
+  'payable',
+  'charged',
+  'appl',
+  'уплач',
+  'выплач',
+  'оплач',
+  'плат',
+  'долж',
+  'обязан',
+  'обязуется',
+  'подлеж',
+  'несет',
+  'применя',
+  'начисля',
+];
 
-const trimToSameForwardSentence = (value: string): string => {
-  const boundaryIndexes = ['.', '!', '?', ';', '\n']
-    .map((boundary) => value.indexOf(boundary))
-    .filter((index) => index >= 0);
+const penaltyImpositionRoots = [
+  'charg',
+  'impos',
+  'levy',
+  'deduct',
+  'withhold',
+  'recover',
+  'claim',
+  'collect',
+  'assess',
+  'начисл',
+  'налаг',
+  'налож',
+  'взыск',
+  'удерж',
+  'треб',
+  'предъяв',
+];
 
-  return boundaryIndexes.length > 0 ? value.slice(0, Math.min(...boundaryIndexes)) : value;
-};
+const penaltyBenefitRoots = [
+  'receiv',
+  'entitled',
+  'right',
+  'recover',
+  'claim',
+  'collect',
+  'charg',
+  'impos',
+  'levy',
+  'deduct',
+  'withhold',
+  'получ',
+  'вправ',
+  'право',
+  'треб',
+  'взыск',
+  'начисл',
+  'налож',
+  'удерж',
+];
 
 const recoveryExclusionMarkers = [
   'возмещению не подлежит',
@@ -4125,63 +4288,18 @@ const isCounterpartyBurdenForSelectedRole = (
   }
 
   if (ruleId === 'penalties') {
-    if (
-      hasLeadingRoleMarker(normalizedText, roleTerms, counterpartyBurdenMarkers.penalties, 112)
-    ) {
+    if (isPenaltyBurdenForRole(normalizedText, roleTerms)) {
       return false;
     }
 
-    if (hasNearbyMarkers(normalizedText, counterpartyTerms, roleBenefitMarkers.penalties)) {
+    if (isPenaltyBenefitForRole(normalizedText, counterpartyTerms)) {
       return false;
     }
 
-    return hasLeadingRoleMarker(
-      normalizedText,
-      counterpartyTerms,
-      counterpartyBurdenMarkers.penalties,
-      112,
-    );
+    return isPenaltyBurdenForRole(normalizedText, counterpartyTerms);
   }
 
   return false;
-};
-
-const isExplicitPenaltyBurdenForRole = (
-  normalizedText: string,
-  roleTerms: string[],
-): boolean => {
-  const rolePositions = findWholeRolePositions(normalizedText, roleTerms);
-  if (rolePositions.length === 0) {
-    return false;
-  }
-
-  const maxRoleTermLength = Math.max(
-    ...roleTerms.map((roleTerm) => normalizeMarker(roleTerm).length),
-    0,
-  );
-  return rolePositions.some((rolePosition) => {
-    const window = trimToSameForwardSentence(
-      normalizedText.slice(rolePosition, rolePosition + maxRoleTermLength + 128),
-    );
-    const surroundingWindow = normalizedText.slice(
-      Math.max(0, rolePosition - 96),
-      rolePosition + maxRoleTermLength + 128,
-    );
-    return (
-      countMatches(window, counterpartyBurdenMarkers.penalties) > 0 ||
-      penaltyBurdenPatterns.some((pattern) => pattern.test(window)) ||
-      roleTerms.some((roleTerm) => {
-        const normalizedRoleTerm = normalizeMarker(roleTerm);
-        return (
-          normalizedRoleTerm.length > 0 &&
-          surroundingWindow.includes(normalizedRoleTerm) &&
-          buildPenaltyImposedOnRolePatterns(normalizedRoleTerm).some((pattern) =>
-            pattern.test(surroundingWindow),
-          )
-        );
-      })
-    );
-  });
 };
 
 const extractExplicitClauseReference = (text: string): string | undefined => {
@@ -4356,21 +4474,19 @@ const isRoleFocusedRiskMatch = (
           hasNearbyMarkers(normalizedText, counterpartyTerms, roleBenefitMarkers.liability))
       );
     case 'penalties':
-      if (selectedRoleMentioned && hasNearbyMarkers(normalizedText, roleTerms, roleBenefitMarkers.penalties)) {
-        return false;
-      }
-      if (isExplicitPenaltyBurdenForRole(normalizedText, roleTerms)) {
+      if (isPenaltyBurdenForRole(normalizedText, roleTerms)) {
         return true;
       }
-      if (isExplicitPenaltyBurdenForRole(normalizedText, counterpartyTerms)) {
+      if (isPenaltyBenefitForRole(normalizedText, roleTerms)) {
         return false;
       }
-      if (selectedRoleActs) {
-        return true;
+      if (isPenaltyBurdenForRole(normalizedText, counterpartyTerms)) {
+        return false;
       }
-      return counterpartyMentioned
-        ? hasNearbyMarkers(normalizedText, counterpartyTerms, roleBenefitMarkers.penalties)
-        : false;
+      if (isPenaltyBenefitForRole(normalizedText, counterpartyTerms)) {
+        return selectedRoleMentioned;
+      }
+      return selectedRoleActs && hasPenaltyRelationActivity(normalizedText);
     case 'payment-deadlines': {
       const selectedPaymentContext =
         selectedRoleMentioned &&
@@ -4476,22 +4592,16 @@ const isBeneficialRiskMatch = (
       if (isCounterpartyBurdenForSelectedRole(ruleId, normalizedText, roleTerms)) {
         return true;
       }
-      if (
-        countMatches(normalizedText, genericBenefitMarkers.penalties) > 0 &&
-        !hasCounterpartyMarker(normalizedText, roleTerms)
-      ) {
-        return true;
-      }
       if (roleTerms.length === 0 || countRoleMatches(normalizedText, roleTerms) === 0) {
         return false;
       }
-      if (hasNearbyMarkers(normalizedText, roleTerms, roleBenefitMarkers.penalties)) {
+      if (isPenaltyBenefitForRole(normalizedText, roleTerms)) {
         return true;
       }
-      if (isExplicitPenaltyBurdenForRole(normalizedText, roleTerms)) {
+      if (isPenaltyBurdenForRole(normalizedText, roleTerms)) {
         return false;
       }
-      return hasNearbyMarkers(normalizedText, roleTerms, roleBenefitMarkers.penalties);
+      return false;
     case 'unilateral':
       if (roleTerms.length === 0 || countRoleMatches(normalizedText, roleTerms) === 0) {
         return false;
