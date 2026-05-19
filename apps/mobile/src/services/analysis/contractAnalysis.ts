@@ -780,6 +780,7 @@ const hybridSignals = {
     'liable to pay',
     'subject to penalty',
     'pay a penalty',
+    'pays',
     'penalties apply',
     'penalty of',
     'liquidated damages of',
@@ -3746,6 +3747,8 @@ const commonPartyRoleTerms = uniqueStrings(
     'Образовательная организация',
     'Работодатель',
     'Работник',
+    'Employer',
+    'Employee',
     'Customer',
     'Client',
     'Contractor',
@@ -3791,8 +3794,20 @@ const counterpartyBurdenMarkers = {
     'shall pay a penalty',
     'must pay a penalty',
     'pays a penalty',
+    'shall pay penalty',
+    'must pay penalty',
+    'pays penalty',
+    'is subject to a penalty',
+    'subject to penalty',
   ],
 };
+
+const penaltyBurdenPatterns = [
+  /\b(?:pays?|shall pay|must pay)\b.{0,48}\b(?:penalt(?:y|ies)|fine|liquidated damages|late fee)\b/u,
+  /\b(?:is subject to|liable for)\b.{0,32}\b(?:a\s+)?(?:penalt(?:y|ies)|fine|liquidated damages|late fee)\b/u,
+  /(?:уплачивает|выплачивает|обязан[а]? уплатить|обязуется уплатить).{0,48}(?:штраф|неустой|пен[яию])/u,
+  /(?:подлежит|несет).{0,32}(?:штраф|неустой|пен[яию])/u,
+];
 
 const recoveryExclusionMarkers = [
   'возмещению не подлежит',
@@ -3881,7 +3896,18 @@ const paymentSelectedBurdenMarkers = [
 
 const roleCounterpartyPairs = [
   {
-    left: ['Заказчик', 'Клиент', 'Покупатель', 'Принципал', 'Комитент', 'Доверитель'],
+    left: [
+      'Заказчик',
+      'Клиент',
+      'Покупатель',
+      'Принципал',
+      'Комитент',
+      'Доверитель',
+      'Customer',
+      'Client',
+      'Buyer',
+      'Principal',
+    ],
     right: [
       'Исполнитель',
       'Подрядчик',
@@ -3891,6 +3917,10 @@ const roleCounterpartyPairs = [
       'Агент',
       'Комиссионер',
       'Поверенный',
+      'Contractor',
+      'Supplier',
+      'Seller',
+      'Agent',
     ],
   },
   {
@@ -3914,8 +3944,8 @@ const roleCounterpartyPairs = [
     right: ['Гарант'],
   },
   {
-    left: ['Работодатель'],
-    right: ['Работник'],
+    left: ['Работодатель', 'Employer'],
+    right: ['Работник', 'Employee'],
   },
 ] as const;
 
@@ -4014,6 +4044,28 @@ const isCounterpartyBurdenForSelectedRole = (
   }
 
   return false;
+};
+
+const isExplicitPenaltyBurdenForRole = (
+  normalizedText: string,
+  roleTerms: string[],
+): boolean => {
+  const rolePositions = findWholeRolePositions(normalizedText, roleTerms);
+  if (rolePositions.length === 0) {
+    return false;
+  }
+
+  const maxRoleTermLength = Math.max(
+    ...roleTerms.map((roleTerm) => normalizeMarker(roleTerm).length),
+    0,
+  );
+  return rolePositions.some((rolePosition) => {
+    const window = normalizedText.slice(rolePosition, rolePosition + maxRoleTermLength + 128);
+    return (
+      countMatches(window, counterpartyBurdenMarkers.penalties) > 0 ||
+      penaltyBurdenPatterns.some((pattern) => pattern.test(window))
+    );
+  });
 };
 
 const extractExplicitClauseReference = (text: string): string | undefined => {
@@ -4188,6 +4240,15 @@ const isRoleFocusedRiskMatch = (
           hasNearbyMarkers(normalizedText, counterpartyTerms, roleBenefitMarkers.liability))
       );
     case 'penalties':
+      if (selectedRoleMentioned && hasNearbyMarkers(normalizedText, roleTerms, roleBenefitMarkers.penalties)) {
+        return false;
+      }
+      if (isExplicitPenaltyBurdenForRole(normalizedText, roleTerms)) {
+        return true;
+      }
+      if (isExplicitPenaltyBurdenForRole(normalizedText, counterpartyTerms)) {
+        return false;
+      }
       if (selectedRoleActs) {
         return true;
       }
@@ -4306,6 +4367,12 @@ const isBeneficialRiskMatch = (
         return true;
       }
       if (roleTerms.length === 0 || countRoleMatches(normalizedText, roleTerms) === 0) {
+        return false;
+      }
+      if (hasNearbyMarkers(normalizedText, roleTerms, roleBenefitMarkers.penalties)) {
+        return true;
+      }
+      if (isExplicitPenaltyBurdenForRole(normalizedText, roleTerms)) {
         return false;
       }
       return hasNearbyMarkers(normalizedText, roleTerms, roleBenefitMarkers.penalties);

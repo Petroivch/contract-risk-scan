@@ -54,6 +54,14 @@ class RenderedPdfPage:
     image: Any
 
 
+@dataclass(slots=True)
+class PdfTextCandidate:
+    text: str
+    extraction_source: str
+    quality_score: float
+    usable: bool
+
+
 class IngestionService:
     """Document ingestion with multi-strategy extraction for text, doc, docx, pdf and html."""
 
@@ -61,6 +69,7 @@ class IngestionService:
     _word_pythoncom = None
     _word_lock = threading.Lock()
     _MIN_PDF_TEXT_CHARS = 40
+    _MIN_PDF_TEXT_QUALITY = 0.55
     _PDF_OCR_DPI = 200
 
     def __init__(self) -> None:
@@ -256,7 +265,7 @@ class IngestionService:
 
     def _extract_pdf(self, payload: bytes) -> ExtractionResult:
         direct_result = self._extract_pdf_direct_text(payload)
-        if self._has_enough_pdf_text(direct_result.text):
+        if self._has_usable_pdf_text(direct_result.text):
             return direct_result
 
         ocr_result = self._extract_scanned_pdf_with_ocr(payload)
@@ -279,52 +288,162 @@ class IngestionService:
             text="",
             extraction_source="pdf:none",
             extraction_ok=False,
-            extraction_error="; ".join(errors) if errors else "pdf extraction failed",
+            extraction_error=(
+                "; ".join(errors)
+                if errors
+                else "pdf extraction failed: no readable text found; document may be scanned or image-only"
+            ),
         )
 
     def _extract_pdf_direct_text(self, payload: bytes) -> ExtractionResult:
         errors: list[str] = []
+        candidates: list[PdfTextCandidate] = []
 
         if self._extractors_enabled("pdf_pdfplumber"):
             try:
                 import pdfplumber
 
                 with pdfplumber.open(BytesIO(payload)) as pdf:
-                    pages = [(page.extract_text() or "").strip() for page in pdf.pages]
-                text = "\n".join(page for page in pages if page).strip()
-                if text:
-                    return ExtractionResult(text=text, extraction_source="pdf:pdfplumber", extraction_ok=True)
-                errors.append("pdfplumber returned empty text")
+                    pages = [self._normalize_pdf_page_text(page.extract_text() or "") for page in pdf.pages]
+                text = self._normalize_pdf_text("\n\n".join(page for page in pages if page))
+                if self._add_pdf_text_candidate(candidates, text, "pdf:pdfplumber"):
+                    if not candidates[-1].usable:
+                        errors.append("pdfplumber returned low-quality text")
+                else:
+                    errors.append("pdfplumber returned empty text")
             except Exception as exc:  # pragma: no cover - environment dependent
                 errors.append(f"pdfplumber: {exc}")
 
-        try:
-            reader = PdfReader(BytesIO(payload))
-            text_chunks: list[str] = []
-            for page in reader.pages:
-                try:
-                    page_text = (page.extract_text() or "").strip()
-                except Exception:
-                    page_text = ""
-                if page_text:
-                    text_chunks.append(page_text)
-            text = "\n".join(text_chunks).strip()
-            if text:
-                return ExtractionResult(text=text, extraction_source="pdf:pypdf", extraction_ok=True)
-            errors.append("pypdf returned empty text")
-        except Exception as exc:  # pragma: no cover - environment dependent
-            errors.append(f"pypdf: {exc}")
+        if self._extractors_enabled("pdf_pdfminer"):
+            try:
+                from pdfminer.high_level import extract_text as pdfminer_extract_text
+
+                text = self._normalize_pdf_text(pdfminer_extract_text(BytesIO(payload)) or "")
+                if self._add_pdf_text_candidate(candidates, text, "pdf:pdfminer"):
+                    if not candidates[-1].usable:
+                        errors.append("pdfminer returned low-quality text")
+                else:
+                    errors.append("pdfminer returned empty text")
+            except Exception as exc:  # pragma: no cover - environment dependent
+                errors.append(f"pdfminer: {exc}")
+
+        if self._extractors_enabled("pdf_pypdf"):
+            try:
+                reader = PdfReader(BytesIO(payload))
+                text_chunks: list[str] = []
+                page_errors = 0
+                for page in reader.pages:
+                    try:
+                        page_text = self._normalize_pdf_page_text(page.extract_text() or "")
+                    except Exception:
+                        page_errors += 1
+                        page_text = ""
+                    if page_text:
+                        text_chunks.append(page_text)
+                text = self._normalize_pdf_text("\n\n".join(text_chunks))
+                if self._add_pdf_text_candidate(candidates, text, "pdf:pypdf"):
+                    if not candidates[-1].usable:
+                        errors.append("pypdf returned low-quality text")
+                else:
+                    errors.append("pypdf returned empty text")
+                if page_errors:
+                    errors.append(f"pypdf skipped {page_errors} page(s) after extraction errors")
+            except Exception as exc:  # pragma: no cover - environment dependent
+                errors.append(f"pypdf: {exc}")
+
+        usable_candidates = [candidate for candidate in candidates if candidate.usable]
+        if usable_candidates:
+            best = max(usable_candidates, key=self._pdf_candidate_rank)
+            return ExtractionResult(text=best.text, extraction_source=best.extraction_source, extraction_ok=True)
+
+        if candidates:
+            best = max(candidates, key=self._pdf_candidate_rank)
+            return ExtractionResult(
+                text=best.text,
+                extraction_source=best.extraction_source,
+                extraction_ok=False,
+                extraction_error=(
+                    "; ".join(errors)
+                    if errors
+                    else "pdf direct text extraction returned only low-quality text"
+                ),
+            )
 
         return ExtractionResult(
             text="",
             extraction_source="pdf:none",
             extraction_ok=False,
-            extraction_error="; ".join(errors) if errors else "pdf extraction failed",
+            extraction_error=(
+                "; ".join(errors)
+                if errors
+                else "pdf direct text extraction found no readable text; document may be scanned or image-only"
+            ),
         )
+
+    def _add_pdf_text_candidate(
+        self,
+        candidates: list[PdfTextCandidate],
+        text: str,
+        extraction_source: str,
+    ) -> bool:
+        if not text.strip():
+            return False
+
+        quality_score = self._pdf_text_quality_score(text)
+        candidates.append(
+            PdfTextCandidate(
+                text=text,
+                extraction_source=extraction_source,
+                quality_score=quality_score,
+                usable=quality_score >= self._MIN_PDF_TEXT_QUALITY,
+            )
+        )
+        return True
+
+    @classmethod
+    def _normalize_pdf_page_text(cls, text: str) -> str:
+        text = text.replace("\x00", "").replace("\xa0", " ").replace("\r", "\n")
+        text = re.sub(r"(?<=\w)-\n(?=\w)", "", text)
+        text = re.sub(r"[ \t]+", " ", text)
+        text = re.sub(r"[ \t]*\n[ \t]*", "\n", text)
+        return text.strip()
+
+    @classmethod
+    def _normalize_pdf_text(cls, text: str) -> str:
+        paragraphs = [cls._normalize_pdf_page_text(paragraph) for paragraph in re.split(r"\n{2,}", text)]
+        text = "\n\n".join(paragraph for paragraph in paragraphs if paragraph)
+        text = re.sub(r"\n{3,}", "\n\n", text)
+        return text.strip()
+
+    @classmethod
+    def _pdf_text_quality_score(cls, text: str) -> float:
+        compact = re.sub(r"\s+", "", text)
+        if not compact:
+            return 0.0
+
+        replacement_penalty = min(0.45, compact.count("\ufffd") / len(compact) * 3)
+        control_count = sum(1 for char in compact if ord(char) < 32)
+        control_penalty = min(0.25, control_count / len(compact) * 2)
+        readable_count = sum(1 for char in compact if char.isalnum() or char in ".,;:!?()[]{}№%+-=/\\\"'")
+        readable_ratio = readable_count / len(compact)
+        letter_ratio = sum(1 for char in compact if char.isalpha()) / len(compact)
+        return max(0.0, readable_ratio * 0.75 + min(letter_ratio * 2, 1.0) * 0.25 - replacement_penalty - control_penalty)
+
+    @staticmethod
+    def _pdf_candidate_rank(candidate: PdfTextCandidate) -> tuple[float, int, int]:
+        source_priority = {
+            "pdf:pdfplumber": 3,
+            "pdf:pypdf": 2,
+            "pdf:pdfminer": 1,
+        }.get(candidate.extraction_source, 0)
+        return candidate.quality_score, source_priority, len(candidate.text)
 
     def _has_enough_pdf_text(self, text: str) -> bool:
         normalized = re.sub(r"\s+", "", text)
         return len(normalized) >= self._MIN_PDF_TEXT_CHARS
+
+    def _has_usable_pdf_text(self, text: str) -> bool:
+        return self._has_enough_pdf_text(text) and self._pdf_text_quality_score(text) >= self._MIN_PDF_TEXT_QUALITY
 
     def _extract_scanned_pdf_with_ocr(self, payload: bytes) -> ExtractionResult:
         deadline = time.monotonic() + min(

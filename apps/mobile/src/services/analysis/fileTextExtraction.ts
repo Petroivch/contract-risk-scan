@@ -487,7 +487,7 @@ const scorePdfTextCandidate = (value: string): number => {
     }
 
     if (char.toLowerCase() !== char.toUpperCase()) {
-      score += 2;
+      score += CYRILLIC_LETTER_PATTERN.test(char) ? 4 : 2;
       continue;
     }
 
@@ -499,7 +499,12 @@ const scorePdfTextCandidate = (value: string): number => {
     score -= 1;
   }
 
-  return score;
+  const latin1MojibakeSignals = (value.match(/[ÐÑ][\u0080-\u00bf]/gu) ?? []).length;
+  const windows1251MojibakeSignals = (
+    value.match(/[РС](?:\s|[ЂЃ‚ѓ„…†‡€‰Љ‹ЊЌЋЏђ‘’“”•–—™љ›њќћџ])/gu) ?? []
+  ).length;
+
+  return score - (latin1MojibakeSignals + windows1251MojibakeSignals) * 8;
 };
 
 const isLikelyPdfTextChunk = (value: string): boolean => {
@@ -708,6 +713,8 @@ const decodePdfTextBytes = (bytes: Uint8Array, unicodeMaps: PdfUnicodeMap[]): st
     addCandidate(decodeUtf16BeBytes(bytes));
   }
 
+  addCandidate(decodeUtf8Bytes(bytes));
+  addCandidate(decodeWindows1251Bytes(bytes));
   addCandidate(decodePdfBytesAsLatin1(bytes));
 
   for (const unicodeMap of unicodeMaps) {

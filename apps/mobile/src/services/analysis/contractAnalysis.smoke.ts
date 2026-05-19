@@ -275,6 +275,74 @@ const counterpartyPenaltyAnalysis = buildAnalysisArtifacts({
 
 assert.ok(!counterpartyPenaltyAnalysis.risks.some((risk) => risk.title === 'Штрафы и санкции'));
 
+const contractorPenaltyForCustomerAnalysis = buildAnalysisArtifacts({
+  text: [
+    '1. Contractor provides implementation services to Customer.',
+    '7.1. Contractor pays a 10% penalty to Customer for each day of delay.',
+  ].join('\n\n'),
+  fileName: 'contractor-penalty.docx',
+  selectedRole: 'Customer',
+  language: 'en',
+  warnings: [],
+});
+
+assert.ok(
+  !contractorPenaltyForCustomerAnalysis.risks.some(
+    (risk) => risk.title === 'Penalties and sanctions',
+  ),
+);
+
+const contractorPenaltyForContractorAnalysis = buildAnalysisArtifacts({
+  text: [
+    '1. Contractor provides implementation services to Customer.',
+    '7.1. Contractor pays a 10% penalty to Customer for each day of delay.',
+  ].join('\n\n'),
+  fileName: 'contractor-penalty-selected.docx',
+  selectedRole: 'Contractor',
+  language: 'en',
+  warnings: [],
+});
+
+assert.ok(
+  contractorPenaltyForContractorAnalysis.risks.some(
+    (risk) => risk.title === 'Penalties and sanctions',
+  ),
+);
+
+const employeePenaltyForEmployerAnalysis = buildAnalysisArtifacts({
+  text: [
+    '1. Employee performs work for Employer.',
+    '7.1. Employee pays a penalty to Employer for unexcused absence.',
+  ].join('\n\n'),
+  fileName: 'employee-penalty.docx',
+  selectedRole: 'Employer',
+  language: 'en',
+  warnings: [],
+});
+
+assert.ok(
+  !employeePenaltyForEmployerAnalysis.risks.some(
+    (risk) => risk.title === 'Penalties and sanctions',
+  ),
+);
+
+const employeePenaltyForEmployeeAnalysis = buildAnalysisArtifacts({
+  text: [
+    '1. Employee performs work for Employer.',
+    '7.1. Employee pays a penalty to Employer for unexcused absence.',
+  ].join('\n\n'),
+  fileName: 'employee-penalty-selected.docx',
+  selectedRole: 'Employee',
+  language: 'en',
+  warnings: [],
+});
+
+assert.ok(
+  employeePenaltyForEmployeeAnalysis.risks.some(
+    (risk) => risk.title === 'Penalties and sanctions',
+  ),
+);
+
 const counterpartyUnilateralAnalysis = buildAnalysisArtifacts({
   text: [
     '1. Исполнитель оказывает услуги по настройке системы.',

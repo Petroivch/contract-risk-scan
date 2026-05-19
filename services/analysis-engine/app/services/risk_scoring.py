@@ -48,9 +48,11 @@ class RoleContextAssessment:
     selected_role_mentioned: bool
     selected_role_burdened: bool
     selected_role_benefited: bool
+    selected_role_penalty_burdened: bool
     counterparty_role_mentioned: bool
     counterparty_role_burdened: bool
     counterparty_role_benefited: bool
+    counterparty_role_penalty_burdened: bool
 
 
 @dataclass(slots=True)
@@ -94,6 +96,8 @@ class HybridMatch:
 
 class RiskScoringService:
     """Rule engine for legal risk scoring with contract-type and role-aware escalation."""
+
+    _penalty_rule_ids = {"one_sided_penalty", "uncapped_daily_penalty", "penalty_plus_full_damages"}
 
     def __init__(self) -> None:
         runtime_config = get_runtime_config()
@@ -197,6 +201,52 @@ class RiskScoringService:
             "считаются принятыми",
             "автоматически продлевается",
             "внесудебн",
+        )
+        self._role_penalty_burden_markers = (
+            "pays a penalty",
+            "pay a penalty",
+            "pays penalties",
+            "pay penalties",
+            "shall pay a penalty",
+            "must pay a penalty",
+            "pays penalty",
+            "pay penalty",
+            "shall pay penalty",
+            "must pay penalty",
+            "is subject to a penalty",
+            "subject to penalty",
+            "liable for a penalty",
+            "liable for liquidated damages",
+            "shall pay liquidated damages",
+            "must pay liquidated damages",
+            "shall pay a late fee",
+            "must pay a late fee",
+            "forfeits",
+            "уплачивает штраф",
+            "уплачивает неустой",
+            "уплачивает неустойку",
+            "уплачивает пеню",
+            "выплачивает штраф",
+            "выплачивает неустой",
+            "выплачивает неустойку",
+            "выплачивает пеню",
+            "обязан уплатить штраф",
+            "обязана уплатить штраф",
+            "обязуется уплатить штраф",
+            "обязан уплатить неустой",
+            "обязана уплатить неустой",
+            "обязуется уплатить неустой",
+            "обязан уплатить пеню",
+            "обязана уплатить пеню",
+            "обязуется уплатить пеню",
+            "подлежит штрафу",
+            "несет штраф",
+        )
+        self._role_penalty_burden_patterns = (
+            r"\b(?:pays?|shall pay|must pay)\b.{0,48}\b(?:penalt(?:y|ies)|fine|liquidated damages|late fee)\b",
+            r"\b(?:is subject to|liable for)\b.{0,32}\b(?:a\s+)?(?:penalt(?:y|ies)|fine|liquidated damages|late fee)\b",
+            r"(?:уплачивает|выплачивает|обязан[а]? уплатить|обязуется уплатить).{0,48}(?:штраф|неустой|пен[яию])",
+            r"(?:подлежит|несет).{0,32}(?:штраф|неустой|пен[яию])",
         )
         self._payment_exposure_roles = {"executor", "landlord", "lender"}
         self._semantic_expansions = {
@@ -1187,12 +1237,20 @@ class RiskScoringService:
             selected_role_mentioned=bool(selected_windows),
             selected_role_burdened=any(self._window_has_marker(window, self._role_burden_markers) for window in selected_windows),
             selected_role_benefited=any(self._window_has_marker(window, self._role_benefit_markers) for window in selected_windows),
+            selected_role_penalty_burdened=self._role_has_penalty_burden(
+                normalized_text,
+                selected_aliases,
+            ),
             counterparty_role_mentioned=bool(counterparty_windows),
             counterparty_role_burdened=any(
                 self._window_has_marker(window, self._role_burden_markers) for window in counterparty_windows
             ),
             counterparty_role_benefited=any(
                 self._window_has_marker(window, self._role_benefit_markers) for window in counterparty_windows
+            ),
+            counterparty_role_penalty_burdened=self._role_has_penalty_burden(
+                normalized_text,
+                counterparty_aliases,
             ),
         )
 
@@ -1216,6 +1274,50 @@ class RiskScoringService:
     def _window_has_marker(window: str, markers: tuple[str, ...]) -> bool:
         return any(marker in window for marker in markers)
 
+    @staticmethod
+    def _role_has_leading_marker(
+        text: str,
+        aliases: set[str],
+        markers: tuple[str, ...],
+        *,
+        max_distance: int = 112,
+    ) -> bool:
+        normalized_aliases = sorted(
+            {alias.casefold().strip() for alias in aliases if alias and alias.strip()},
+            key=len,
+            reverse=True,
+        )
+        for alias in normalized_aliases:
+            for match in re.finditer(rf"(?<!\w){re.escape(alias)}(?!\w)", text):
+                window = text[match.end() : min(len(text), match.end() + max_distance)]
+                if any(marker in window for marker in markers):
+                    return True
+        return False
+
+    def _role_has_penalty_burden(
+        self,
+        text: str,
+        aliases: set[str],
+        *,
+        max_distance: int = 128,
+    ) -> bool:
+        normalized_aliases = sorted(
+            {alias.casefold().strip() for alias in aliases if alias and alias.strip()},
+            key=len,
+            reverse=True,
+        )
+        for alias in normalized_aliases:
+            for match in re.finditer(rf"(?<!\w){re.escape(alias)}(?!\w)", text):
+                window = text[match.end() : min(len(text), match.end() + max_distance)]
+                if self._window_has_penalty_burden(window):
+                    return True
+        return False
+
+    def _window_has_penalty_burden(self, window: str) -> bool:
+        return any(marker in window for marker in self._role_penalty_burden_markers) or any(
+            re.search(pattern, window) for pattern in self._role_penalty_burden_patterns
+        )
+
     def _applies_to_selected_role(
         self,
         *,
@@ -1226,6 +1328,17 @@ class RiskScoringService:
         role_mentioned: bool,
     ) -> bool:
         if not canonical_role:
+            return True
+
+        if rule_id in self._penalty_rule_ids:
+            if role_context.selected_role_penalty_burdened:
+                return True
+            if role_context.counterparty_role_penalty_burdened or role_context.selected_role_benefited:
+                return False
+            if role_context.counterparty_role_benefited:
+                return role_context.selected_role_mentioned or (source_has_roles and role_mentioned)
+            if source_has_roles:
+                return role_mentioned
             return True
 
         if role_context.selected_role_burdened:

@@ -1,6 +1,8 @@
 ﻿from __future__ import annotations
 
 import base64
+import sys
+from types import SimpleNamespace
 from io import BytesIO
 from zipfile import ZipFile
 
@@ -50,6 +52,47 @@ def _build_docx_bytes(paragraphs: list[str], *, include_document_xml: bool = Tru
             archive.writestr("word/document.xml", document_xml)
 
     return buffer.getvalue()
+
+
+def _build_simple_pdf_bytes(lines: list[str]) -> bytes:
+    def escape_pdf_text(value: str) -> str:
+        return value.replace("\\", "\\\\").replace("(", "\\(").replace(")", "\\)")
+
+    commands = ["BT", "/F1 12 Tf", "72 720 Td"]
+    for index, line in enumerate(lines):
+        if index:
+            commands.append("0 -18 Td")
+        commands.append(f"({escape_pdf_text(line)}) Tj")
+    commands.append("ET")
+
+    content = "\n".join(commands).encode("latin-1")
+    objects = [
+        b"1 0 obj\n<< /Type /Catalog /Pages 2 0 R >>\nendobj\n",
+        b"2 0 obj\n<< /Type /Pages /Kids [3 0 R] /Count 1 >>\nendobj\n",
+        b"3 0 obj\n<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] "
+        b"/Resources << /Font << /F1 4 0 R >> >> /Contents 5 0 R >>\nendobj\n",
+        b"4 0 obj\n<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>\nendobj\n",
+        f"5 0 obj\n<< /Length {len(content)} >>\nstream\n".encode("ascii")
+        + content
+        + b"\nendstream\nendobj\n",
+    ]
+
+    pdf = b"%PDF-1.4\n"
+    offsets: list[int] = []
+    for obj in objects:
+        offsets.append(len(pdf))
+        pdf += obj
+
+    xref_offset = len(pdf)
+    pdf += b"xref\n0 6\n0000000000 65535 f \n"
+    for offset in offsets:
+        pdf += f"{offset:010d} 00000 n \n".encode("ascii")
+    pdf += (
+        b"trailer\n<< /Size 6 /Root 1 0 R >>\nstartxref\n"
+        + str(xref_offset).encode("ascii")
+        + b"\n%%EOF"
+    )
+    return pdf
 
 
 def _build_request(**overrides: object) -> AnalysisRunRequest:
@@ -234,9 +277,66 @@ def test_extract_pdf_skips_pages_that_fail_extraction(monkeypatch) -> None:
     extracted = service._extract_pdf(b"%PDF-1.4 fake payload")
 
     assert extracted.text == (
-        "Buyer pays within 10 days.\n"
+        "Buyer pays within 10 days.\n\n"
         "Seller delivers the goods within 5 days."
     )
+    assert extracted.extraction_source == "pdf:pypdf"
+    assert extracted.extraction_ok is True
+    assert extracted.extraction_error is None
+
+
+def test_extract_pdf_direct_text_preserves_multiline_pdf_text() -> None:
+    service = IngestionService()
+    pdf_payload = _build_simple_pdf_bytes(
+        [
+            "Buyer must pay within 10 days.",
+            "Seller shall deliver the goods within 5 days.",
+            "Penalty applies for delay.",
+        ]
+    )
+
+    extracted = service._extract_pdf_direct_text(pdf_payload)
+
+    assert extracted.extraction_ok is True
+    assert extracted.extraction_source in {"pdf:pdfplumber", "pdf:pdfminer", "pdf:pypdf"}
+    assert "Buyer must pay within 10 days." in extracted.text
+    assert "Seller shall deliver the goods within 5 days." in extracted.text
+    assert "Penalty applies for delay." in extracted.text
+    assert "\x00" not in extracted.text
+
+
+def test_extract_pdf_direct_text_falls_back_when_first_extractor_returns_garbage(monkeypatch) -> None:
+    service = IngestionService()
+
+    class FakePdfPage:
+        def extract_text(self) -> str:
+            return "\ufffd" * 80
+
+    class FakePdf:
+        pages = [FakePdfPage()]
+
+        def __enter__(self) -> "FakePdf":
+            return self
+
+        def __exit__(self, *_: object) -> None:
+            return None
+
+    class FakePypdfPage:
+        def extract_text(self) -> str:
+            return "Buyer must pay within 10 days. Seller shall deliver goods within 5 days."
+
+    class FakeReader:
+        def __init__(self, _: BytesIO) -> None:
+            self.pages = [FakePypdfPage()]
+
+    fake_pdfplumber = SimpleNamespace(open=lambda _: FakePdf())
+    monkeypatch.setitem(sys.modules, "pdfplumber", fake_pdfplumber)
+    monkeypatch.setattr(ingestion_module, "PdfReader", FakeReader)
+    monkeypatch.setattr(service, "_extractors_enabled", lambda key: key != "pdf_pdfminer")
+
+    extracted = service._extract_pdf_direct_text(b"%PDF-1.4 fake payload")
+
+    assert extracted.text.startswith("Buyer must pay")
     assert extracted.extraction_source == "pdf:pypdf"
     assert extracted.extraction_ok is True
     assert extracted.extraction_error is None
@@ -297,6 +397,39 @@ def test_extract_pdf_uses_ocr_fallback_when_direct_text_is_empty(monkeypatch) ->
     assert extracted.extraction_source == "pdf:ocr:tesseract(1/1 pages)"
     assert extracted.extraction_ok is True
     assert extracted.extraction_error is None
+
+
+def test_extract_pdf_reports_scanned_or_empty_pdf_when_no_text_backend_succeeds(monkeypatch) -> None:
+    service = IngestionService()
+    monkeypatch.setattr(
+        service,
+        "_extract_pdf_direct_text",
+        lambda _: ExtractionResult(
+            text="",
+            extraction_source="pdf:none",
+            extraction_ok=False,
+            extraction_error="pdf direct text extraction found no readable text; document may be scanned or image-only",
+        ),
+    )
+    monkeypatch.setattr(
+        service,
+        "_extract_scanned_pdf_with_ocr",
+        lambda _: ExtractionResult(
+            text="",
+            extraction_source="pdf:ocr:none",
+            extraction_ok=False,
+            extraction_error="pdf OCR fallback unavailable: no pages rendered",
+        ),
+    )
+
+    extracted = service._extract_pdf(b"%PDF-1.4 scanned or empty pdf")
+
+    assert extracted.text == ""
+    assert extracted.extraction_source == "pdf:none"
+    assert extracted.extraction_ok is False
+    assert extracted.extraction_error
+    assert "scanned or image-only" in extracted.extraction_error
+    assert "pdf OCR fallback unavailable" in extracted.extraction_error
 
 
 def test_extract_pdf_uses_ocr_fallback_when_direct_text_is_too_short(monkeypatch) -> None:
