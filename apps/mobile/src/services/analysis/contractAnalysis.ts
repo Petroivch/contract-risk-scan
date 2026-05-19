@@ -513,6 +513,14 @@ const roleBenefitMarkers = {
     'вправе требовать штраф',
     'вправе требовать уплаты штрафа',
     'имеет право на штраф',
+    'получает штраф',
+    'получает неустой',
+    'вправе начислить штраф',
+    'вправе наложить штраф',
+    'receives the penalty',
+    'receives a penalty',
+    'entitled to the penalty',
+    'entitled to a penalty',
     'without penalty',
     'no penalty',
     'penalty shall not apply',
@@ -781,6 +789,16 @@ const hybridSignals = {
     'subject to penalty',
     'pay a penalty',
     'pays',
+    'charge',
+    'charges',
+    'impose',
+    'imposes',
+    'levy',
+    'deduct',
+    'начисляет',
+    'налагает',
+    'взыскивает',
+    'удерживает',
     'penalties apply',
     'penalty of',
     'liquidated damages of',
@@ -2455,20 +2473,67 @@ const locateFragmentStart = (sourceText: string, fragment: string, cursor: numbe
 const buildExactSourceExcerpt = (
   fragment: string,
   absoluteStart: number,
+  markers: string[] = [],
 ): { sourceExcerpt: string; sourceOffset: { start: number; end: number } } => {
   const normalized = normalizeExtractedText(fragment);
-  const sourceExcerpt =
-    normalized.length <= maxClauseExcerptLength
-      ? normalized
-      : normalized.slice(0, maxClauseExcerptLength).trimEnd();
+  const markerSpan = findSourceMarkerSpan(normalized, markers);
+  let excerptStart = 0;
+  let excerptEnd = Math.min(normalized.length, maxClauseExcerptLength);
+
+  if (markerSpan) {
+    excerptStart = Math.max(0, markerSpan.start - 100);
+    excerptEnd = Math.min(normalized.length, markerSpan.end + 140);
+    if (excerptEnd - excerptStart > maxClauseExcerptLength) {
+      excerptEnd = Math.min(normalized.length, excerptStart + maxClauseExcerptLength);
+    }
+  }
+
+  let sourceExcerpt = normalized.slice(excerptStart, excerptEnd);
+  const leadingTrim = sourceExcerpt.length - sourceExcerpt.trimStart().length;
+  sourceExcerpt = sourceExcerpt.trim();
+  excerptStart += leadingTrim;
 
   return {
     sourceExcerpt,
     sourceOffset: {
-      start: absoluteStart,
-      end: absoluteStart + sourceExcerpt.length,
+      start: absoluteStart + excerptStart,
+      end: absoluteStart + excerptStart + sourceExcerpt.length,
     },
   };
+};
+
+const findSourceMarkerSpan = (
+  sourceText: string,
+  markers: string[],
+): { start: number; end: number } | null => {
+  for (const marker of markers) {
+    const trimmedMarker = marker.trim();
+    if (!trimmedMarker) {
+      continue;
+    }
+
+    try {
+      const regexMatch = new RegExp(trimmedMarker, 'iu').exec(sourceText);
+      if (regexMatch?.[0]) {
+        return {
+          start: regexMatch.index,
+          end: regexMatch.index + regexMatch[0].length,
+        };
+      }
+    } catch {
+      // Fall through to literal search for plain keyword markers.
+    }
+
+    const literalIndex = sourceText.toLowerCase().indexOf(trimmedMarker.toLowerCase());
+    if (literalIndex >= 0) {
+      return {
+        start: literalIndex,
+        end: literalIndex + trimmedMarker.length,
+      };
+    }
+  }
+
+  return null;
 };
 
 const splitInlineNumberedClauses = (text: string): string[] => {
@@ -3056,7 +3121,6 @@ const buildRiskCandidates = (clauses: ClauseSegment[], roleTerms: string[]): Ris
     for (const [fragmentIndex, fragment] of getClauseFragments(clause.text).entries()) {
       const relativeStart = locateFragmentStart(clause.text, fragment, fragmentCursor);
       fragmentCursor = relativeStart + fragment.length;
-      const sourceEvidence = buildExactSourceExcerpt(fragment, clause.offset + relativeStart);
       const normalizedText = normalizeSearchText(fragment);
       const excerpt = buildExcerpt(fragment, 220);
       if (!excerpt || isReferenceLikeFragment(normalizedText)) {
@@ -3099,6 +3163,11 @@ const buildRiskCandidates = (clauses: ClauseSegment[], roleTerms: string[]): Ris
         }
 
         const clauseRef = extractExplicitClauseReference(fragment) ?? clause.clauseRef;
+        const sourceEvidence = buildExactSourceExcerpt(
+          fragment,
+          clause.offset + relativeStart,
+          rule.keywords,
+        );
 
         candidates.push({
           rule,
@@ -3400,9 +3469,10 @@ export const segmentClauses = (text: string): ClauseSegment[] => {
           .split('\n')
           .map((clause) => clause.trim())
           .filter(Boolean);
-  const inlineNumberedClauses =
-    baseClauses.length === 1 ? splitInlineNumberedClauses(baseClauses[0]) : [];
-  const candidateClauses = inlineNumberedClauses.length > 1 ? inlineNumberedClauses : baseClauses;
+  const candidateClauses = baseClauses.flatMap((clause) => {
+    const inlineNumberedClauses = splitInlineNumberedClauses(clause);
+    return inlineNumberedClauses.length > 1 ? inlineNumberedClauses : [clause];
+  });
   const clauses = candidateClauses.flatMap((clause) =>
     clause.length > 700 ? getClauseFragments(clause) : [clause],
   );
@@ -3809,6 +3879,36 @@ const penaltyBurdenPatterns = [
   /(?:подлежит|несет).{0,32}(?:штраф|неустой|пен[яию])/u,
 ];
 
+const buildPenaltyImposedOnRolePatterns = (roleTerm: string): RegExp[] => {
+  const rolePattern = escapeRegExp(roleTerm);
+  return [
+    new RegExp(
+      String.raw`\b(?:charge|charges|charged|impose|imposes|imposed|levy|levies|deduct|deducts)\b.{0,64}${rolePattern}.{0,64}\b(?:penalt(?:y|ies)|fine|liquidated damages|late fee)\b`,
+      'u',
+    ),
+    new RegExp(
+      String.raw`\b(?:charge|charges|charged|impose|imposes|imposed|levy|levies|deduct|deducts)\b.{0,64}\b(?:penalt(?:y|ies)|fine|liquidated damages|late fee)\b.{0,64}${rolePattern}`,
+      'u',
+    ),
+    new RegExp(
+      String.raw`(?:начисляет|начислить|налагает|наложить|взыскивает|взыскать|удерживает|удержать).{0,64}${rolePattern}.{0,64}(?:штраф|неустой|пен[яию])`,
+      'u',
+    ),
+    new RegExp(
+      String.raw`(?:начисляет|начислить|налагает|наложить|взыскивает|взыскать|удерживает|удержать).{0,64}(?:штраф|неустой|пен[яию]).{0,64}${rolePattern}`,
+      'u',
+    ),
+  ];
+};
+
+const trimToSameForwardSentence = (value: string): string => {
+  const boundaryIndexes = ['.', '!', '?', ';', '\n']
+    .map((boundary) => value.indexOf(boundary))
+    .filter((index) => index >= 0);
+
+  return boundaryIndexes.length > 0 ? value.slice(0, Math.min(...boundaryIndexes)) : value;
+};
+
 const recoveryExclusionMarkers = [
   'возмещению не подлежит',
   'не подлежит возмещению',
@@ -4060,10 +4160,26 @@ const isExplicitPenaltyBurdenForRole = (
     0,
   );
   return rolePositions.some((rolePosition) => {
-    const window = normalizedText.slice(rolePosition, rolePosition + maxRoleTermLength + 128);
+    const window = trimToSameForwardSentence(
+      normalizedText.slice(rolePosition, rolePosition + maxRoleTermLength + 128),
+    );
+    const surroundingWindow = normalizedText.slice(
+      Math.max(0, rolePosition - 96),
+      rolePosition + maxRoleTermLength + 128,
+    );
     return (
       countMatches(window, counterpartyBurdenMarkers.penalties) > 0 ||
-      penaltyBurdenPatterns.some((pattern) => pattern.test(window))
+      penaltyBurdenPatterns.some((pattern) => pattern.test(window)) ||
+      roleTerms.some((roleTerm) => {
+        const normalizedRoleTerm = normalizeMarker(roleTerm);
+        return (
+          normalizedRoleTerm.length > 0 &&
+          surroundingWindow.includes(normalizedRoleTerm) &&
+          buildPenaltyImposedOnRolePatterns(normalizedRoleTerm).some((pattern) =>
+            pattern.test(surroundingWindow),
+          )
+        );
+      })
     );
   });
 };

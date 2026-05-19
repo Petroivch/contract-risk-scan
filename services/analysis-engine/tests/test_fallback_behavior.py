@@ -49,6 +49,38 @@ def test_clause_segmentation_splits_inline_numbered_clauses_with_offsets() -> No
     assert text[clauses[1].offset : clauses[1].end_offset] == clauses[1].text
 
 
+def test_clause_segmentation_splits_role_led_sentences_with_offsets() -> None:
+    service = ClauseSegmentationService()
+    text = (
+        "Contractor shall deliver the report within 5 days. "
+        "Customer may unilaterally change the scope without Contractor approval. "
+        "Contractor pays a 10% penalty for delay."
+    )
+
+    clauses = service.segment(text, "en")
+
+    assert [clause.text for clause in clauses] == [
+        "Contractor shall deliver the report within 5 days.",
+        "Customer may unilaterally change the scope without Contractor approval.",
+        "Contractor pays a 10% penalty for delay.",
+    ]
+    assert text[clauses[2].offset : clauses[2].end_offset] == clauses[2].text
+
+
+def test_clause_segmentation_keeps_decimal_clause_marker_with_clause_text() -> None:
+    service = ClauseSegmentationService()
+    text = (
+        "4.1. Party may send notice before termination. "
+        "The implementation stage 1 lasts 30 calendar days (1 month)."
+    )
+
+    clauses = service.segment(text, "en")
+
+    assert clauses[0].text.startswith("4.1. Party may send notice")
+    assert all(clause.text != "4.1." for clause in clauses)
+    assert all(text[clause.offset : clause.end_offset] == clause.text for clause in clauses)
+
+
 def test_risk_scoring_returns_single_fallback_risk_for_neutral_clause() -> None:
     runtime_config = get_runtime_config()
     service = RiskScoringService()

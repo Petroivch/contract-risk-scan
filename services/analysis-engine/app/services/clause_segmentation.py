@@ -36,6 +36,10 @@ class ClauseSegmentationService:
             numbered_chunks = self._split_numbered_clauses(normalized_text)
             if numbered_chunks:
                 chunks = numbered_chunks
+            else:
+                sentence_chunks = self._split_sentence_clauses(normalized_text)
+                if sentence_chunks:
+                    chunks = sentence_chunks
 
         if not chunks:
             chunks = [
@@ -96,6 +100,29 @@ class ClauseSegmentationService:
             if chunk:
                 chunks.append(chunk)
         return chunks
+
+    @staticmethod
+    def _split_sentence_clauses(text: str) -> list[str]:
+        boundary = re.compile(r"(?<=[.!?;])\s+(?=[A-ZА-ЯЁ])")
+        starts = [0]
+
+        for match in boundary.finditer(text):
+            prefix = text[starts[-1] : match.start()].rstrip()
+            if re.search(r"(?:^|\s)(?:\d+(?:\.\d+){0,5}|[A-Za-zА-Яа-яЁё])\.$", prefix):
+                continue
+            starts.append(match.end())
+
+        if len(starts) < 2:
+            return []
+
+        chunks: list[str] = []
+        for index, start in enumerate(starts):
+            end = starts[index + 1] if index + 1 < len(starts) else len(text)
+            chunk = text[start:end].strip()
+            if chunk:
+                chunks.append(chunk)
+
+        return chunks if len(chunks) > 1 else []
 
     @staticmethod
     def _split_oversized_chunks(chunks: list[str], max_chars: int = 700) -> list[str]:

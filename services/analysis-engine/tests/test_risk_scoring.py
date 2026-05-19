@@ -170,6 +170,58 @@ def test_employee_penalty_is_not_employer_risk() -> None:
     assert all(risk.rule_id != "one_sided_penalty" for risk in employer_risks)
 
 
+def test_penalty_recipient_sentence_is_not_recipient_risk_or_evidence() -> None:
+    scorer = RiskScoringService()
+    text = "Customer receives the penalty. Contractor pays a 10% penalty for delay."
+    clauses = [ClauseSegment(clause_id="clause-1", text=text, offset=0, end_offset=len(text))]
+
+    contractor_risks = scorer.score(
+        clauses=clauses,
+        role="Contractor",
+        language="en",
+        contract_type="service_agreement",
+        counterparty_role="Customer",
+    )
+    customer_risks = scorer.score(
+        clauses=clauses,
+        role="Customer",
+        language="en",
+        contract_type="service_agreement",
+        counterparty_role="Contractor",
+    )
+
+    penalty_risk = next(risk for risk in contractor_risks if risk.rule_id == "one_sided_penalty")
+
+    assert all(risk.rule_id != "one_sided_penalty" for risk in customer_risks)
+    assert penalty_risk.evidence
+    assert "Contractor pays" in penalty_risk.evidence[0].source_excerpt
+    assert "Customer receives" not in penalty_risk.evidence[0].source_excerpt
+
+
+def test_penalty_charged_to_role_is_selected_role_risk_only() -> None:
+    scorer = RiskScoringService()
+    text = "Customer may charge Contractor a 10% penalty for delivery delay."
+    clauses = [ClauseSegment(clause_id="clause-1", text=text, offset=0, end_offset=len(text))]
+
+    contractor_risks = scorer.score(
+        clauses=clauses,
+        role="Contractor",
+        language="en",
+        contract_type="service_agreement",
+        counterparty_role="Customer",
+    )
+    customer_risks = scorer.score(
+        clauses=clauses,
+        role="Customer",
+        language="en",
+        contract_type="service_agreement",
+        counterparty_role="Contractor",
+    )
+
+    assert any(risk.rule_id == "one_sided_penalty" for risk in contractor_risks)
+    assert all(risk.rule_id != "one_sided_penalty" for risk in customer_risks)
+
+
 def test_semantic_retrieval_requires_rule_specific_anchor_terms() -> None:
     scorer = RiskScoringService()
     clauses = [

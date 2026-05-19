@@ -27,6 +27,7 @@ const { inflate: inflateZlib } = require('pako') as PakoModule;
 const PDF_HEX_TEXT_OBJECT_PATTERN = /<([0-9A-Fa-f\s]+)>\s*(?:Tj|'|")/g;
 const PDF_LENGTH_PATTERN = /\/Length\s+(\d+)/;
 const PDF_OBJECT_PATTERN = /(\d+)\s+(\d+)\s+obj([\s\S]*?)endobj/g;
+const PDF_LITERAL_TEXT_OPERATOR_PATTERN = /\)\s*(?:Tj|'|")/g;
 const PDF_STREAM_HINT_PATTERN = /\b(?:BT|ET|Tf|Tj|TJ|Tm|Td|TD)\b|['"]/;
 const PDF_STREAM_START_PATTERN = /\bstream(?:\r\n|\n|\r)/;
 const PDF_TEXT_ARRAY_ITEM_PATTERN = /\(([^()]*(?:\\.[^()]*)*)\)|<([0-9A-Fa-f\s]+)>|(-?\d*\.?\d+)/g;
@@ -559,6 +560,58 @@ const appendUniqueTextChunk = (target: string[], seen: Set<string>, value: strin
   target.push(normalized);
 };
 
+const isEscapedPdfStringCharacter = (value: string, index: number): boolean => {
+  let slashCount = 0;
+  for (let cursor = index - 1; cursor >= 0 && value[cursor] === '\\'; cursor -= 1) {
+    slashCount += 1;
+  }
+
+  return slashCount % 2 === 1;
+};
+
+const findPdfLiteralStart = (value: string, endIndex: number): number => {
+  let depth = 0;
+
+  for (let cursor = endIndex; cursor >= 0; cursor -= 1) {
+    const char = value[cursor];
+    if ((char !== ')' && char !== '(') || isEscapedPdfStringCharacter(value, cursor)) {
+      continue;
+    }
+
+    if (char === ')') {
+      depth += 1;
+      continue;
+    }
+
+    depth -= 1;
+    if (depth === 0) {
+      return cursor;
+    }
+  }
+
+  return -1;
+};
+
+const extractPdfLiteralTextObjects = (value: string): string[] => {
+  const literals: string[] = [];
+
+  for (const match of value.matchAll(PDF_LITERAL_TEXT_OPERATOR_PATTERN)) {
+    const endIndex = match.index ?? -1;
+    if (endIndex < 0) {
+      continue;
+    }
+
+    const startIndex = findPdfLiteralStart(value, endIndex);
+    if (startIndex < 0) {
+      continue;
+    }
+
+    literals.push(value.slice(startIndex + 1, endIndex));
+  }
+
+  return literals;
+};
+
 const decodeUnicodeHexString = (value: string): string => {
   return decodeUtf16BeBytes(decodePdfHexToBytes(value));
 };
@@ -1047,6 +1100,10 @@ const extractDecodedPdfStreams = (binary: string): string[] => {
 const extractPdfText = (binary: string, unicodeMaps: PdfUnicodeMap[]): string => {
   const textChunks: string[] = [];
   const seen = new Set<string>();
+
+  for (const literal of extractPdfLiteralTextObjects(binary)) {
+    appendUniqueTextChunk(textChunks, seen, decodePdfString(literal, unicodeMaps));
+  }
 
   for (const match of binary.matchAll(PDF_TEXT_OBJECT_PATTERN)) {
     appendUniqueTextChunk(textChunks, seen, decodePdfString(match[1] ?? '', unicodeMaps));

@@ -30,10 +30,10 @@ TEXT_CONTRACT_RU = "\n".join(
 TEXT_CONTRACT_EN = "\n".join(
     [
         "Buyer must pay within 10 days.",
-        "Seller shall deliver the goods within 5 days.",
-        "Penalty 1% applies for delay.",
-        "Any change is by agreement of the parties.",
-        "Buyer may unilaterally terminate the contract.",
+                    "Seller shall deliver the goods within 5 days.",
+                    "Penalty 1% applies for delay.",
+                    "Any change is by agreement of the parties.",
+                    "Seller may unilaterally terminate the contract.",
     ]
 )
 
@@ -283,7 +283,7 @@ def test_status_and_result_flow_returns_meaningful_contract_analysis() -> None:
                 "Seller shall deliver the goods within 5 days.",
                 "Penalty 1% applies for delay.",
                 "Any change is by agreement of the parties.",
-                "Buyer may unilaterally terminate the contract.",
+                "Seller may unilaterally terminate the contract.",
             ]
         ),
         "locale": "EN",
@@ -422,10 +422,10 @@ def test_docx_base64_payload_is_parsed_as_document_text() -> None:
         "document_name": "services.docx",
         "role_context": {"role": "customer", "counterparty_role": "contractor"},
         "document_base64": _build_simple_docx_base64(
-            [
-                "Customer must pay the invoice within 10 business days.",
-                "Contractor shall deliver the report within 5 days.",
-                "Buyer may unilaterally terminate the contract.",
+                [
+                    "Customer must pay the invoice within 10 business days.",
+                    "Contractor shall deliver the report within 5 days.",
+                    "Contractor may unilaterally terminate the contract.",
             ]
         ),
         "language": "en",
@@ -498,11 +498,11 @@ def test_pdf_base64_payload_is_extracted_with_pdf_reader() -> None:
         "document_name": "services.pdf",
         "role_context": {"role": "buyer", "counterparty_role": "seller"},
         "document_base64": _build_simple_pdf_base64(
-            [
-                "Buyer must pay within 10 days.",
-                "Seller shall deliver the goods within 5 days.",
-                "Buyer may unilaterally terminate the contract.",
-            ]
+                [
+                    "Buyer must pay within 10 days.",
+                    "Seller shall deliver the goods within 5 days.",
+                    "Seller may unilaterally terminate the contract.",
+                ]
         ),
         "language": "en",
         "mime_type": "application/pdf",

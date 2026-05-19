@@ -343,6 +343,40 @@ assert.ok(
   ),
 );
 
+const chargedPenaltyForContractorAnalysis = buildAnalysisArtifacts({
+  text: [
+    '1. Contractor provides implementation services to Customer.',
+    '7.1. Customer may charge Contractor a 10% penalty for each day of delay.',
+  ].join('\n\n'),
+  fileName: 'charged-penalty-contractor.docx',
+  selectedRole: 'Contractor',
+  language: 'en',
+  warnings: [],
+});
+
+assert.ok(
+  chargedPenaltyForContractorAnalysis.risks.some(
+    (risk) => risk.title === 'Penalties and sanctions',
+  ),
+);
+
+const chargedPenaltyForCustomerAnalysis = buildAnalysisArtifacts({
+  text: [
+    '1. Contractor provides implementation services to Customer.',
+    '7.1. Customer may charge Contractor a 10% penalty for each day of delay.',
+  ].join('\n\n'),
+  fileName: 'charged-penalty-customer.docx',
+  selectedRole: 'Customer',
+  language: 'en',
+  warnings: [],
+});
+
+assert.ok(
+  !chargedPenaltyForCustomerAnalysis.risks.some(
+    (risk) => risk.title === 'Penalties and sanctions',
+  ),
+);
+
 const counterpartyUnilateralAnalysis = buildAnalysisArtifacts({
   text: [
     '1. Исполнитель оказывает услуги по настройке системы.',
@@ -404,6 +438,13 @@ assert.equal(
   inlineNumberedClauses[1].text,
 );
 
+const headedInlineNumberedClauses = segmentClauses(
+  'SERVICE AGREEMENT\n1. Contractor shall deliver the report within 5 days. 2. Customer may unilaterally change the scope without Contractor approval. 3. Contractor pays a 10% penalty for delay.',
+);
+assert.equal(headedInlineNumberedClauses.length, 4);
+assert.ok(headedInlineNumberedClauses[2].text.includes('unilaterally change the scope'));
+assert.ok(headedInlineNumberedClauses[3].text.includes('10% penalty'));
+
 const penaltyEvidenceAnalysis = buildAnalysisArtifacts({
   text: [
     '4. Гражданин вправе запросить изменение условий обучения.',
@@ -428,6 +469,31 @@ assert.equal(
     .flatMap((risk) => risk.riskEvidence ?? [])
     .every((item) => item.sourceExcerpt.length === item.offset.end - item.offset.start),
   true,
+);
+
+const longPenaltyEvidenceText = [
+  '1. Contractor provides implementation services to Customer.',
+  `7.1. ${'The parties confirm neutral operating context. '.repeat(9)}Contractor pays a penalty for delay.`,
+].join('\n\n');
+const longPenaltyEvidenceAnalysis = buildAnalysisArtifacts({
+  text: longPenaltyEvidenceText,
+  fileName: 'long-penalty-evidence.pdf',
+  selectedRole: 'Contractor',
+  language: 'en',
+  warnings: [],
+});
+const longPenaltyRisk = longPenaltyEvidenceAnalysis.risks.find(
+  (risk) => risk.title === 'Penalties and sanctions',
+);
+const longPenaltyRiskEvidence = longPenaltyRisk?.riskEvidence?.[0];
+assert.ok(longPenaltyRiskEvidence);
+assert.ok(longPenaltyRiskEvidence.sourceExcerpt.includes('penalty'));
+assert.equal(
+  longPenaltyEvidenceText.slice(
+    longPenaltyRiskEvidence.offset.start,
+    longPenaltyRiskEvidence.offset.end,
+  ),
+  longPenaltyRiskEvidence.sourceExcerpt,
 );
 
 const educationAnalysis = buildAnalysisArtifacts({

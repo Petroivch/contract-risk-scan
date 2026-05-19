@@ -85,6 +85,11 @@ const buildPdfTextObjectFromBytes = (objectId: number, textBytes: Uint8Array): s
   return `${objectId} 0 obj\n<< /Length ${stream.length} >>\nstream\n${stream}\nendstream\nendobj`;
 };
 
+const buildRawPdfTextObject = (objectId: number, rawLiteralText: string): string => {
+  const stream = `BT\n/F1 12 Tf\n72 720 Td\n(${rawLiteralText}) Tj\nET`;
+  return `${objectId} 0 obj\n<< /Length ${stream.length} >>\nstream\n${stream}\nendstream\nendobj`;
+};
+
 const multiStreamPdfPages = Array.from({ length: 7 }, (_, index) => {
   const pageNumber = index + 1;
   const repeatedSentence =
@@ -138,3 +143,16 @@ const utf8ExtractedText = extractPdfTextFromBytesForTesting(
 
 assert.ok(utf8ExtractedText.includes(utf8PdfText));
 assert.ok(!utf8ExtractedText.includes('Ð'));
+
+const nestedParenthesesPdfText =
+  'Customer (Buyer) may charge Contractor a penalty for delay.';
+const nestedParenthesesPdfBinary = [
+  '%PDF-1.4',
+  buildRawPdfTextObject(22, nestedParenthesesPdfText),
+  '%%EOF',
+].join('\n');
+const nestedParenthesesExtractedText = extractPdfTextFromBytesForTesting(
+  Uint8Array.from(Buffer.from(nestedParenthesesPdfBinary, 'latin1')),
+);
+
+assert.ok(nestedParenthesesExtractedText.includes(nestedParenthesesPdfText));

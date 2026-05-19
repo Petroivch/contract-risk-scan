@@ -191,6 +191,13 @@ class RiskScoringService:
             "deemed accepted",
             "automatically renew",
             "automatic renewal",
+            "receives the penalty",
+            "receives a penalty",
+            "entitled to the penalty",
+            "entitled to a penalty",
+            "may charge",
+            "may impose",
+            "may deduct",
             "вправе",
             "по своему усмотрению",
             "без согласования",
@@ -201,6 +208,12 @@ class RiskScoringService:
             "считаются принятыми",
             "автоматически продлевается",
             "внесудебн",
+            "получает штраф",
+            "получает неустой",
+            "вправе начислить штраф",
+            "вправе наложить штраф",
+            "вправе взыскать штраф",
+            "вправе взыскать неустой",
         )
         self._role_penalty_burden_markers = (
             "pays a penalty",
@@ -247,6 +260,10 @@ class RiskScoringService:
             r"\b(?:is subject to|liable for)\b.{0,32}\b(?:a\s+)?(?:penalt(?:y|ies)|fine|liquidated damages|late fee)\b",
             r"(?:уплачивает|выплачивает|обязан[а]? уплатить|обязуется уплатить).{0,48}(?:штраф|неустой|пен[яию])",
             r"(?:подлежит|несет).{0,32}(?:штраф|неустой|пен[яию])",
+        )
+        self._role_penalty_imposed_evidence_patterns = (
+            r"\b(?:charge|charges|charged|impose|imposes|imposed|levy|levies|deduct|deducts)\b.{0,80}\b(?:penalt(?:y|ies)|fine|liquidated damages|late fee)\b",
+            r"(?:начисляет|начислить|налагает|наложить|взыскивает|взыскать|удерживает|удержать).{0,80}(?:штраф|неустой|пен[яию])",
         )
         self._payment_exposure_roles = {"executor", "landlord", "lender"}
         self._semantic_expansions = {
@@ -1069,7 +1086,8 @@ class RiskScoringService:
             if not hit_patterns and not all_patterns:
                 continue
             matched_patterns = hit_patterns or all_patterns
-            excerpt, offset, end_offset = self._source_fragment_from_clause(clause, matched_patterns)
+            evidence_patterns = self._evidence_patterns_for_rule(rule.id, matched_patterns)
+            excerpt, offset, end_offset = self._source_fragment_from_clause(clause, evidence_patterns)
             total_hits += len(hit_patterns) or 1
             matches.append(
                 RuleMatch(
@@ -1103,6 +1121,17 @@ class RiskScoringService:
         if clause_id is None:
             return 0
         return clause_index_by_id.get(clause_id, 0)
+
+    def _evidence_patterns_for_rule(self, rule_id: str, patterns: list[str]) -> list[str]:
+        if rule_id not in self._penalty_rule_ids:
+            return patterns
+
+        return [
+            *self._role_penalty_burden_patterns,
+            *self._role_penalty_imposed_evidence_patterns,
+            *self._role_penalty_burden_markers,
+            *patterns,
+        ]
 
     @staticmethod
     def _document_match_succeeds(
@@ -1308,8 +1337,13 @@ class RiskScoringService:
         )
         for alias in normalized_aliases:
             for match in re.finditer(rf"(?<!\w){re.escape(alias)}(?!\w)", text):
-                window = text[match.end() : min(len(text), match.end() + max_distance)]
+                window = self._same_sentence_forward_window(
+                    text[match.end() : min(len(text), match.end() + max_distance)]
+                )
                 if self._window_has_penalty_burden(window):
+                    return True
+                surrounding = text[max(0, match.start() - 96) : min(len(text), match.end() + max_distance)]
+                if self._window_imposes_penalty_on_alias(surrounding, alias):
                     return True
         return False
 
@@ -1317,6 +1351,22 @@ class RiskScoringService:
         return any(marker in window for marker in self._role_penalty_burden_markers) or any(
             re.search(pattern, window) for pattern in self._role_penalty_burden_patterns
         )
+
+    @staticmethod
+    def _window_imposes_penalty_on_alias(window: str, alias: str) -> bool:
+        alias_pattern = rf"(?<!\w){re.escape(alias)}(?!\w)"
+        patterns = (
+            rf"\b(?:charge|charges|charged|impose|imposes|imposed|levy|levies|deduct|deducts)\b.{{0,64}}{alias_pattern}.{{0,64}}\b(?:penalt(?:y|ies)|fine|liquidated damages|late fee)\b",
+            rf"(?:начисляет|начислить|налагает|наложить|взыскивает|взыскать|удерживает|удержать).{{0,64}}{alias_pattern}.{{0,64}}(?:штраф|неустой|пен[яию])",
+        )
+        return any(re.search(pattern, window) for pattern in patterns)
+
+    @staticmethod
+    def _same_sentence_forward_window(window: str) -> str:
+        boundary_positions = [position for marker in ".!?;\n" for position in [window.find(marker)] if position >= 0]
+        if not boundary_positions:
+            return window
+        return window[: min(boundary_positions)]
 
     def _applies_to_selected_role(
         self,
